@@ -1,0 +1,114 @@
+       ------
+                                    Features
+                                    ------
+                                    ------
+
+
+Features
+
+    The Reader Project comprises three separate modules:
+
+        *   the Reader implementation itself
+	
+	*   the Reader Proxy (host)
+	
+	*   the Reader Test Client
+	
+    All three implement the reader protocol version 1.1 defined by EPCglobal and its members.
+    
+*   Reader Protocol Features Implemented
+
+    The three modules implement all SHALLs and the vast majority of CANs of the reader protocol. This includes:
+    
+        *   Transport Binding: TCP and HTTP
+ 
+        *   Message Binding: XML and Text
+    	
+        *   Synchronous and Asynchronous Messaging (Notification Channels)
+    	
+        *   Triggers
+    	
+        *   Data Selectors
+    	
+    A detailed list of the features implemented is available here.
+
+*   Reader Features
+
+    The Reader module currently supports readers from the following manufacturers as a surrogate (or in reader protocol terms as a concentrator).
+
+	*   Feig
+	
+	*   Hitachi
+	
+	*   Softronica
+	
+    There is also support for a graphical RFID reader simulator and an extensive simulation framework.
+    
+
+*   Reader Proxy Features
+
+    The Reader Proxy module facilitates RFID application development. It features:
+
+	*   a Java interface hides communication with a reader instance - 
+	
+	    no need to get your hands dirty with low-level details such as TCP/text transport message bindings. The Reader Proxy provides you with a local instance of the reader instance.
+	
+	[]
+	*   a configuration engine that allows the developer to specify a reader configuration in a configuration file - 
+	
+	    no need for the developer to go through the tedious process of configuring sources, triggers, and notification channels by producing lines of code.
+	
+	[]
+
+    Java Example code:	
+    
++----
+     
+	// get reader device proxy
+        Handshake handshake = new Handshake();
+        handshake.setMessageFormat(Handshake.FORMAT_XML);
+        handshake.setTransportProtocol(Handshake.HTTP);
+        readerDevice = ReaderDeviceFactory.getReaderDevice(COMMAND_CHANNEL_HOST, 
+        			Integer.parseInt(COMMAND_CHANNEL_PORT), handshake);
+        log.info("Connection established with reader device " + readerDevice.getName()
+				+ " at address " + COMMAND_CHANNEL_HOST + ":" + COMMAND_CHANNEL_PORT);
+
++----	
+
+
+*   Reader Test Client Features
+
+    The Reader Test Client provides an intuitive graphical user interface to test a reader instance. It supports all of the reader protocol features mentioned above.
+
+[images/ReaderTestClientScreenshot.png] Reader Test Client Screenshot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

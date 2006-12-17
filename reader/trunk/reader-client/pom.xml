@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- POM basics  -->
+  <groupId>org.accada.reader</groupId>
+  <artifactId>reader-client</artifactId>
+  <version>0.2.1-SNAPSHOT</version>
+  <parent>
+    <artifactId>reader</artifactId>
+    <groupId>org.accada.reader</groupId>
+    <version>0.2.1-SNAPSHOT</version>
+  </parent>
+  <packaging>jar</packaging>
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Dependencies -->
+  <dependencies>
+    <!--
+    Uncomment these as soon as source is checked in
+    <dependency>
+      <groupId>org.accada.reader</groupId>
+      <artifactId>reader-proxy</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.accada.reader</groupId>
+      <artifactId>reader-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.12</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>jgoodies</groupId>
+      <artifactId>forms</artifactId>
+      <version>1.0.5</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+
+  <!-- Additional project information -->
+  <name>reader-client</name>
+
+</project>

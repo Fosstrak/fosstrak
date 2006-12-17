@@ -1,0 +1,70 @@
+       ------
+                                    Reader
+                                    ------
+                                    ------
+
+
+
+Welcome to the Accada Reader Project
+
+
+* Objective
+
+    The objective of the Reader Project is to implement the reader role in the EPC Network and to develop the appropriate tools that facilitate communication with the reader instance. 
+
+* Organization
+
+[images/ReaderProjectOverview.png]
+
+    The Reader Project comprises three separate modules:	
+
+   *   the Reader implementation itself
+
+   *   the Reader Proxy (host)
+
+   *   the Reader Test Client
+
+    All three implement the Reader Protocol Version 1.1 defined by EPCglobal and its members.
+    
+
+    
+* Usage Scenarios
+
+    Possible usage scenarios include the following:
+    
+    *   Interact with reader that implements the EPCglobal Reader Protocol Version 1.1 - 
+        use the Accada Reader Test Client
+    
+    []
+    *   Communicate with a reader via the EPCglobal Reader Protocol Version 1.1 from within your Java application - 
+        use the Accada Reader Proxy
+    
+    []
+    *   Enable a reader that does not implement the EPCglobal Reader Protocol yet by deploying a surrogate - 
+        use the Accada Reader as an adaptor
+    
+    []
+    *   Simulate the deployment of hundreds of readers - use the Accada Reader with its simulation framework
+    
+    []
+    *   Test your RFID application without any reader hardware attached - use the Accada Reader with its GUI simulator 
+    
+    []
+    *   Embed our reader implementation in your reader - requires a powerful reader platform:)
+	
+    []
+	
+* Features
+
+     A detailed feature list is available {{{features.html} here}}.
+     
+* Demo
+
+     Some screenshots and a demo is available {{{demo.html} here}}.     
+
+
+
+     
+       
+	
+    

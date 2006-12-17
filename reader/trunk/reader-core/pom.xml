@@ -1,0 +1,123 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- POM basics  -->
+  <groupId>org.accada.reader</groupId>
+  <artifactId>reader-core</artifactId>
+  <version>0.2.1-SNAPSHOT</version>
+  <parent>
+    <artifactId>reader</artifactId>
+    <groupId>org.accada.reader</groupId>
+    <version>0.2.1-SNAPSHOT</version>
+  </parent>
+  <packaging>jar</packaging>
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Dependencies -->
+  <dependencies>
+    <dependency>
+      <groupId>org.autoidlabs</groupId>
+      <artifactId>tdt</artifactId>
+      <version>0.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.accada.reader.wrappers</groupId>
+      <artifactId>softronica</artifactId>
+      <version>0.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.accada.reader.wrappers</groupId>
+      <artifactId>feig</artifactId>
+      <version>0.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.accada.reader.wrappers</groupId>
+      <artifactId>hitachi_mu-chip</artifactId>
+      <version>0.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.12</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>antlr</groupId>
+      <artifactId>antlr</artifactId>
+      <version>2.7.6</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-configuration</groupId>
+      <artifactId>commons-configuration</artifactId>
+      <version>1.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.0EA3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>2.0EA3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jsr173_api</artifactId>
+      <version>1.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>castor</groupId>
+      <artifactId>castor</artifactId>
+      <version>0.9.9.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!--
+    Uncomment these as soon as source is checked in
+    <dependency>
+      <groupId>javax.activation</groupId>
+      <artifactId>activation</artifactId>
+      <version>1.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>comm</artifactId>
+      <version>1.0</version>
+      <scope>test</scope>
+    </dependency>
+    -->
+  </dependencies>
+
+  <!-- Build settings -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Additional project information -->
+  <name>reader-core</name>
+
+</project>

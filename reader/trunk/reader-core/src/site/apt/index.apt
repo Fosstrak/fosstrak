@@ -1,0 +1,97 @@
+       ------
+                                    Reader Module
+                                    ------
+                                    ------
+
+
+Reader Module
+
+
+* Features  
+   
+   *  implements the EPCglobal Reader Protocol Version 1.1. in Java. Elements of the protocol implemented include:
+    
+    	*   Transport Binding: TCP and HTTP
+ 
+    	*   Message Binding: XML and Text
+    	
+    	*   Synchronous and Asynchronous Messaging (Notification Channels)
+    	
+    	*   Triggers
+    	
+    	*   Data Selectors
+    	
+    A detailed list of the features implemented is available here.
+
+   *  supports readers from the following manufacturers as a surrogate (or in reader protocol terms as a concentrator).
+
+	*   Feig
+	
+	*   Hitachi
+	
+	*   Softronica
+	
+   *  provides graphical RFID reader simulator and an extensive simulation framework.
+    
+
+* Usage Scenarios
+
+   *   Enable one-of-the-above readers that do not implement the EPCglobal Reader Protocol yet by deploying the software on a surrogate 
+   
+   *   Write your own wrapper for your reader and then leverage the filtering, event generation and messaging provided by our reader implementation
+           
+   *   Simulate a single reader via a graphical user interface 
+   
+   *   Simulate a network of hundred of readers using the simulation framework
+       
+   *   Embed our reader implementation in your reader 
+
+
+* User Documentation
+
+   *   {{{gettingStarted.html} Getting Started}}
+   
+   *   EPCglobal Reader Protocol Specification Version 1.1
+
+
+* Download
+
+   *   see {{{../download.html}download page}}
+   
+* System Requirements
+
+*---------------------+------+
+Java Virtual Machine | JDK 1.5 
+*---------------------+------+
+Operating System | No minimum requirement. Tested on Windows XP. 
+*---------------------+------+
+  
+    	
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

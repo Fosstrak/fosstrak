@@ -1,0 +1,80 @@
+       ------
+                                    Reader Test Client Module
+                                    ------
+                                    ------
+
+
+Reader Test Client Module: Getting Started
+
+* Installing the Accada Test Client
+
+   The following instructions show how to install the Accada Reader Test Client:
+   
+   * Download the Reader Test Client binaries with the dependencies included from the {{{../download.html}download}} section of the website.
+  
+   * Unzip the downloaded file
+   
+   * Make sure a JRE 1.5 is installed and it is added to the path variable.
+   
+   
+   
+   
+* First Steps
+
+   * Start the Reader Test Client instance by invoking the run.bat script in the classes sub-directory
+   
+   * Enter the IP address and port of a RP compatible reader
+   
+   * Select the appropriate transport and message binding 
+   
+   * Click the "Connect" Button
+   
+   * Select a sample command from the drop-down menus (e.g. ReaderDevice.GetName())
+   
+   * Generate the message by hitting the "Create Command" button
+   
+   * Transmit the command to the reader instance by clicking on the "Send" button
+   
+   []
+ 
+[../images/ReaderTestClientScreenshot.png]
+
+
+
+
+    
+    
+
+
+
+	
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

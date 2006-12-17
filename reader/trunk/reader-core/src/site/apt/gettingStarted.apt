@@ -1,0 +1,67 @@
+       ------
+                                    Reader Module
+                                    ------
+                                    ------
+
+
+Reader Module: Getting Started
+
+
+* Installing the Accada Reader 
+
+   The following instructions show how to install the Accada Reader:
+   
+   * Download the reader binaries with the dependencies included from the {{{../download.html}download}} section of the website.
+  
+   * Unzip the downloaded file
+   
+   * Make sure a JRE 1.5 is installed and it is added to the path variable.
+   
+   
+   
+   
+* First Steps
+
+   * Start the reader instance by invoking the run.bat script in the classes sub-directory
+   
+   The reader is now listening for incoming http requests on port 8000 and incoming tcp requests on port 5566. To communicate with the reader instance, you might want to consider using the Accada Reader Proxy and Accada Reader Test Client.
+   For more information, on how to use theses tools, please {{{../index.html}click}} here
+   
+   We will soon add information on how to configure the reader instance to use with different readers.
+   
+    
+
+    
+
+
+	
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

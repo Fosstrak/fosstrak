@@ -1,0 +1,46 @@
+       ------
+                                    Source Repository
+                                    ------
+                                    ------
+
+
+Overview
+
+    This project uses {{{http://subversion.tigris.org} Subversion}} to manage its source code. Instructions on Subversion use can be found at {{{http://svnbook.red-bean.com/} http://svnbook.red-bean.com/}} .
+
+
+
+Developer access
+
+    Developers with commit rights can checkout the module using the following command:
+    
+----------------------------------------
+$ svn checkout https://vs0.inf.ethz.ch/svn/projects/stud/EPCNetwork/RFIDReader/trunk/RFIDReader/src reader
+----------------------------------------
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

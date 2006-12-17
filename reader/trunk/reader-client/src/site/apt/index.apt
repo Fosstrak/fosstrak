@@ -1,0 +1,78 @@
+       ------
+                                    Reader Test Client Module
+                                    ------
+                                    ------
+
+
+Reader Test Client Module
+
+
+* Features  
+
+   *  graphical user interface implementing the EPCglobal Reader Protocol Version 1.1. in Java. Elements of the protocol implemented include:
+    
+    	*   Transport Binding: TCP and HTTP
+ 
+    	*   Message Binding: XML and Text
+    	
+    	*   Synchronous and Asynchronous Messaging (Notification Channels)
+    	
+    	*   Triggers
+    	
+    	*   Data Selectors
+    	
+    A detailed list of the features implemented is available here.
+
+    
+
+* Usage Scenario
+
+   *   Communicate with a reader via the EPCglobal Reader Protocol Version 1.1 from within your Java application 
+
+
+* User Documentation
+
+   *   {{{gettingStarted.html} Getting Started}}
+   
+   *   EPCglobal Reader Protocol Specification Version 1.1
+
+
+* Download
+
+     *   see {{{../download.html}download page}}
+     
+  * System Requirements
+ 
+*---------------------+------+
+Java Virtual Machine | JDK 1.5 
+*---------------------+------+
+Operating System | No minimum requirement. Tested on Windows XP. 
+*---------------------+------+
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

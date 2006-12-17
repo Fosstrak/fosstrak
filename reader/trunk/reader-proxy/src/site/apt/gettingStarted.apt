@@ -1,0 +1,303 @@
+       ------
+                                    Reader Proxy Module
+                                    ------
+                                    ------
+
+
+Reader Proxy Module: Getting Started
+
+
+* Installing the Accada Reader Proxy
+
+   The following instructions show how to install the Accada Reader Proxy:
+   
+   * Download the readerProxy binaries from the {{{../download.html}download}} section of the website.
+
+   * Add the jar to your classpath
+
+   * Make sure all the {{{dependencies.html} dependencies}} are added to your classpath as well. Alternatively, you can also use the jar with all the dependencies included.
+   
+   * Make sure you are using a Java Runtime environment 1.5 
+   
+   * Use the proxy as outlined in the two examples below. 
+
+    
+* First Steps 
+    
+    
+** Configure the reader yourself with a series of Java method calls
+
+    * Implement the following example ({{{example/ReaderProxyExample.java} ReaderProxyExample.java}}).  
+
+
+     This example requires that there is a reader running that supports the HTTP/XML transport message binding of the Reader Protocol available at localhost:8000. If these settings are incorrect for your setup, you will need to adjust the following variables:
+        
+        *  MESSAGE_FORMAT 
+        
+        *  TRANSPORT_PROTOCOL
+        
+        *  COMMAND_CHANNEL_HOST
+        
+        *  COMMAND_CHANNEL_PORT
+    
+    You might also want to consider using our existing Java implementation of a {{{../index.html}reader}} which includes a simulation engine.
+    
++---
+
+
+import org.accada.reader.EventType;
+import org.accada.reader.FieldName;
+import org.accada.reader.proxy.DataSelector;
+import org.accada.reader.proxy.NotificationChannel;
+import org.accada.reader.proxy.ReaderDevice;
+import org.accada.reader.proxy.Source;
+import org.accada.reader.proxy.Trigger;
+import org.accada.reader.proxy.factories.DataSelectorFactory;
+import org.accada.reader.proxy.factories.NotificationChannelFactory;
+import org.accada.reader.proxy.factories.ReaderDeviceFactory;
+import org.accada.reader.proxy.factories.TriggerFactory;
+import org.accada.reader.proxy.msg.Handshake;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+
+
+public class ReaderProxyExample {
+
+        private static int MESSAGE_FORMAT = Handshake.FORMAT_XML;
+        private static int TRANSPORT_PROTOCOL = Handshake.HTTP;
+        
+        private static final String COMMAND_CHANNEL_HOST = "localhost";
+        private static final int COMMAND_CHANNEL_PORT = 8000;
+        
+        private static final String READ_TRIGGER_NAME = "ReadTrigger";
+        private static final String READ_TRIGGER_TYPE = Trigger.TIMER;
+        private static final String READ_TRIGGER_VALUE = "ms=2000";
+        
+        private static final String NOTIFICATION_TRIGGER_NAME = "NotificationTrigger";
+        private static final String NOTIFICATION_TRIGGER_TYPE = Trigger.CONTINUOUS;
+        private static final String NOTIFICATION_TRIGGER_VALUE = "";
+        
+        private static final String DATA_SELECTOR_NAME = "DataSelector";
+
+        private static final String[] EVENT_FILTERS = new String[] {EventType.EV_NEW};
+        private static final String[] FIELD_NAMES = new String[] {FieldName.ALL_EVENT};
+        private static final String[] TAG_FIELDS = new String[] {"tagId"};
+        
+        private static final String NOTIFICATION_CHANNEL_NAME = "NotificationChannel";
+        private static final String NOTIFICATION_CHANNEL_HOST = "localhost";
+        private static final int NOTIFICATION_CHANNEL_PORT = 9000;
+        private static final String NOTIFICATION_CHANNEL_MODE = "connect";
+        private static final String NOTIFICATION_CHANNEL_ADDRESS = "tcp://"     + NOTIFICATION_CHANNEL_HOST
+                        + ":" + NOTIFICATION_CHANNEL_PORT + "?mode=" + NOTIFICATION_CHANNEL_MODE;
+        
+        private static final Logger LOG = Logger.getLogger(ReaderProxyExample.class);
+        
+        public static void main(String[] args) throws Exception {
+                
+                // configurate logger
+                BasicConfigurator.configure();
+                
+                // create handshake
+                Handshake handshake = new Handshake();
+                handshake.setMessageFormat(MESSAGE_FORMAT);
+                handshake.setTransportProtocol(TRANSPORT_PROTOCOL);
+                
+                // get reader device proxy
+                LOG.info("Get reader device proxy.");
+                ReaderDevice readerDevice = ReaderDeviceFactory.getReaderDevice(COMMAND_CHANNEL_HOST,
+                                COMMAND_CHANNEL_PORT, handshake);
+
+                // get current source proxy
+                LOG.info("Get current source.");
+                Source source = readerDevice.getCurrentSource();
+                LOG.info("Name of current source is: " + source.getName());
+                
+                // create read trigger
+                LOG.info("Create read trigger.");
+                Trigger readTrigger = TriggerFactory.createTrigger(READ_TRIGGER_NAME,
+                                READ_TRIGGER_TYPE, READ_TRIGGER_VALUE, readerDevice);
+                
+                // create notification trigger
+                LOG.info("Create notification trigger.");
+                Trigger notificationTrigger = TriggerFactory.createTrigger(NOTIFICATION_TRIGGER_NAME,
+                                NOTIFICATION_TRIGGER_TYPE, NOTIFICATION_TRIGGER_VALUE, readerDevice);
+                
+                // data selector
+                LOG.info("Create data selector.");
+                DataSelector dataSelector = DataSelectorFactory.createDataSelector(DATA_SELECTOR_NAME,
+                                readerDevice);
+                LOG.info("Add event filters to data selector.");
+                dataSelector.addEventFilters(EVENT_FILTERS);
+                LOG.info("Add field names to data selector.");
+                dataSelector.addFieldNames(FIELD_NAMES);
+                LOG.info("Add tag fields to data selector.");
+                dataSelector.addTagFieldNames(TAG_FIELDS);
+                
+                // create notification channel
+                LOG.info("Create notification channel.");
+                NotificationChannel notificationChannel = NotificationChannelFactory.createNotificationChannel(
+                                NOTIFICATION_CHANNEL_NAME, NOTIFICATION_CHANNEL_ADDRESS, readerDevice);
+                LOG.info("Set data selector of notification channel.");
+                notificationChannel.setDataSelector(dataSelector);
+                LOG.info("Add notification trigger to notification channel.");
+                notificationChannel.addNotificationTriggers(new Trigger[] {notificationTrigger});
+                
+                
+                // add current source to notification channel
+                LOG.info("Add source to notification channel.");
+                notificationChannel.addSources(new Source[] {source});
+                
+                // add read trigger to source
+                LOG.info("Add read trigger to source.");
+                source.addReadTriggers(new Trigger[] {readTrigger});            
+                
+        }
+        
+}
+
+
++---  
+
+   
+
+
+
+** Configure the reader with our configuration engine and the corresponding properties file
+
+    * Implement the following example 
+    
++---
+
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.BasicConfigurator;
+import org.accada.reader.proxy.configurator.ReaderConfigurator;
+
+
+public class ReaderConfiguratorExample {
+
+	private static final String CONFIG_FILE_PATH = "./props/ReaderDeviceConfiguration.xml";
+	
+	private static final Logger LOG = Logger.getLogger(ReaderConfiguratorExample.class);
+	
+	public static void main(String[] args) throws Exception {
+		
+		BasicConfigurator.configure();
+		
+		LOG.info("Configurate reader device.");
+		ReaderConfigurator.initReaderDeviceConfiguration(CONFIG_FILE_PATH);
+		
+	}
+	
+}
+
++---    
+    
+The corresponding properties ("ReaderDeviceConfiguration.xml") file looks like this:
+
++---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../ReaderDeviceConfiguration.xsd">
+	<readerDeviceConfiguration>
+	
+		<!-- reader configuration -->
+		<readerConfig>
+			<commandChannelHost>localhost</commandChannelHost>
+			<commandChannelPort>8000</commandChannelPort>
+			<transportProtocol>HTTP</transportProtocol>
+			<transportFormat>XML</transportFormat>
+		</readerConfig>
+
+		<!-- read tiggers -->
+		<triggers>
+			<timerTrigger name="ReadTrigger">
+				<value>2000</value>
+			</timerTrigger>
+		</triggers>
+
+		<!-- notification tiggers -->
+		<triggers>
+			<continuousTrigger name="NotificationTrigger"/>
+		</triggers>
+
+		<!-- data selectors -->
+		<dataSelectors>
+			<dataSelector name="DataSelector">
+				<eventFilters>
+					<eventFilter>evNew</eventFilter>
+				</eventFilters>
+				<fieldNames>
+					<fieldName>allEvent</fieldName>
+				</fieldNames>
+				<tagFields>
+					<tagField>tagId</tagField>
+				</tagFields>
+			</dataSelector>
+		</dataSelectors>
+
+		<!-- notification channels -->
+		<notificationChannels>
+			<notificationChannel name="NotificationChannel">
+				<notificationChannelHost>localhost</notificationChannelHost>
+				<notificationChannelPort>9000</notificationChannelPort>
+				<transportProtocol>HTTP</transportProtocol>
+				<notificationChannelMode>connect</notificationChannelMode>
+				<sources>
+					<source>source1</source>
+				</sources>
+				<notificationTriggers>
+					<triggerName>NotificationTrigger</triggerName>
+				</notificationTriggers>
+				<dataSelector>DataSelector</dataSelector>
+			</notificationChannel>
+		</notificationChannels>
+		
+		<!-- sources -->
+		<sources>
+			<source name="source1">
+				<triggerName>ReadTrigger</triggerName>
+			</source>
+		</sources>
+		
+	</readerDeviceConfiguration>
+</configurationDocument>
++---
+
+
+    
+
+    
+
+
+	
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
