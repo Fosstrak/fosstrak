@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<faqs title="Accada - Frequently Asked Questions">
+
+<part id="about">
+<faq>
+<question>Is this a reference implementation of the EPC Network?</question>
+<answer>No, not at all. It is currently alpha software that is intended to facilitate rapid prototyping.</answer>
+</faq>
+<faq>
+<question>Where can I find more information about the EPC Network?</question>
+<answer>Check out the website of <a href="http://www.epcglobalinc.org">EPCglobal</a>.</answer>
+</faq>
+<faq>
+<question>Which components of the EPC Network have you implemented?</question>
+<answer>Have a look at the <a href="status.html">status page </a>.</answer>
+</faq>
+<faq>
+<question>Who is EPCglobal?</question>
+<answer>EPCglobal is a subscriber-driven organisation comprised of industry leaders and organisations focused on creating global standards for the EPCglobal Network.</answer>
+</faq>
+<faq>
+<question>Do I have to publish any modifications and extension I make again as open source?</question>
+<answer>No, have a look at the <a href="license.html">license </a> or at the explanation of BSD-style licences at <a href="http://en.wikipedia.org/wiki/BSD_licenses"> wikipedia.</a></answer>
+</faq>												
+<faq>
+<question>Can I contribute to this project even, if I am not part of the Auto-ID Labs or EPCglobal?</question>
+<answer>Yes. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.</answer>
+</faq>
+<faq>
+<question>How is this Accada project different from other rfid open source efforts?</question>
+<answer>The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations. </answer>
+</faq>
+</part>								     
+</faqs>								      

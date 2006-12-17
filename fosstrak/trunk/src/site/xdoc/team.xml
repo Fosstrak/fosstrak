@@ -1,0 +1,108 @@
+<document>
+  <properties>
+    
+    <title>Team</title>
+  </properties>
+
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Team">
+
+   
+   <subsection name="Project Coordination">
+      
+      
+      <TABLE BORDER="0">
+      	   <TR>
+      	     <TD><img src="images/floerkem.jpg"/></TD>
+      	     <TD><img src="images/mlampe.jpg"/></TD>
+      	     <TD><img src="images/rodunerc.jpg"/></TD>
+      	   </TR>
+      	   <TR><TD COLSPAN="3"><BR/></TD></TR>
+      	   <TR>
+      	     <TD><a href="http://people.inf.ethz.ch/floerkem/"> Christian Floerkemeier</a></TD>
+      	     <TD><a href="http://people.inf.ethz.ch/mlampe/">Matthias Lampe</a></TD>
+      	     <TD><a href="http://people.inf.ethz.ch/rodunerc/">Christof Roduner</a></TD>
+      	   </TR>
+	</TABLE>
+      
+    </subsection>  
+
+    <subsection name="Team Members">
+          
+   <p>(in alphabetical order)</p>
+
+	<TABLE BORDER="0">
+	   <TR>
+	     <TD><img src="images/ArthurVanDorp.jpg"/></TD>
+	     <TD><img src="images/egli.jpg"/></TD>
+	     <TD><img src="images/afuerer.jpg"/></TD>
+	   </TR>
+	   <TR><TD COLSPAN="3"><BR/></TD></TR>
+	   <TR>
+	     <TD>Arthur van Dorp</TD>
+	     <TD>Remo Egli</TD>
+	     <TD>Andreas Fuerer</TD>
+	   </TR>
+	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
+	   <TR>
+   	     <TD><img src="images/AndreaGroessbauer.jpg"/></TD>
+   	     <TD><img src="images/DavidGubler.jpg"/></TD>
+   	     <TD><img src="images/jhaller.jpg"/></TD>
+   	   </TR>
+   	   <TR><TD COLSPAN="3"><BR/></TD></TR>
+   	   <TR>
+             <TD>Andrea Gr&ouml;ssbauer</TD>
+   	     <TD>David Gubler</TD>
+   	     <TD>Jonas Haller</TD>
+	   </TR>
+	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
+   	   <TR>
+   	     <TD><img src="images/nektarios.jpg"/></TD>
+	     <TD><img src="images/oehen.jpg"/></TD>
+	     <TD><img src="images/RemundAlain.jpg"/></TD>
+	   </TR>
+	   <TR><TD COLSPAN="3"><BR/></TD></TR>
+	   <TR>
+	     <TD><a href="http://score.eltrun.gr/members/m_n.leontiadis.html">Nektarios Leontiadis</a></TD>
+	     <TD>Patrice Oehen</TD>
+	     <TD>Alain Remund</TD>
+	   </TR>
+	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
+   	   <TR>
+   	     <TD><img src="images/noimage.jpg"/></TD>
+   	     <TD><img src="images/schnerol.JPG"/></TD>
+   	     <TD><img src="images/MarcoSteybe.jpg"/></TD>
+   	   </TR>
+   	   <TR><TD COLSPAN="3"><BR/></TD></TR>
+   	   <TR>
+   	     <TD>Angelo Rosenfelder</TD>
+	     <TD>Roland Schneider</TD>
+             <TD>Marco Steybe</TD>
+	   </TR>
+	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
+   	   <TR>
+   	     <TD><img src="images/noimage.jpg"/></TD>
+   	     <TD><img src="images/zweifel.jpg"/></TD>
+   	     <TD></TD>
+   	   </TR>
+   	   <TR><TD COLSPAN="3"><BR/></TD></TR>
+   	   <TR>
+   	     <TD>Markus Vitalini</TD>
+	     <TD>Oliver Zweifel</TD>
+	     <TD></TD>
+	   </TR>
+	</TABLE>
+
+      </subsection>  
+
+
+
+
+
+
+
+
+    </section>
+  </body>
+</document>

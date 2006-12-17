@@ -1,0 +1,46 @@
+ ------
+                              How to help
+                              ------
+                              ------
+
+Guide to helping with Accada
+
+    As with any open source project, there are several ways you can help:
+
+    *   Join the mailing list and answer other user's questions
+    
+    *   Report bugs, feature requests and other issues in the issue tracking application.
+    
+    *   Submit patches to reported issues (both those you find, or that others have filed)
+
+    *   Help with the documentation by pointing out areas that are lacking or unclear, and if you are so inclined, submitting patches to correct it.
+
+     Your participation is much appreciated!
+
+
+How do I Join the Project?
+
+    {{{contact.html} Contact us}} if you are interested in joining the project.
+
+    This is as much based on ability to work with other developers as it is with proven technical ability. 
+
+Developer Conventions
+
+    There are a number of conventions used in the project, which contributors and developers alike should follow for consistency's sake.
+
+    Coming soon:
+    
+    *   Code Style
+    
+    *   Commit Message Template
+
+
+
+
+
+
+
+
+
+
+

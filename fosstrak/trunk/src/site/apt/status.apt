@@ -1,0 +1,81 @@
+       ------
+                                    Welcome
+                                    ------
+                                    ------
+
+
+Status
+
+    
+    This {{{publ/AccadaDetails.pdf}recent talk}} gives a good overview of the current status.
+
+
+* Available
+
+     The following Java software packages are available as alpha software:
+     	
+     	 * Reader (implements Reader Protocol (RP))
+     	 
+     	 * Reader Proxy (implements RP)
+     	 
+     	 * Reader Test Client (implements RP)
+     	 
+     	 * Filtering and collection middleware that implements the ALE interface and RP interface (almost - will be available in a few days)
+     	 
+     	 * EPCIS Repository (implements EPCIS Capture and Query Interface based on outdated specifications - binaries only)
+     	 
+     	 * EPCIS Repository Graphical User Interface (implements EPCIS Capture and Query Interface - binaries only)
+     	 
+     	      	 
+     	 
+*  Work in progress:
+     
+     	 
+     	 
+     	 * Reader (implements Reader Management Protocol)
+     	  
+     	 * EPCIS Repository (based on latest versions of EPCIS Capture and Query Interface)
+     	 
+      
+* Limitations  
+
+     The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

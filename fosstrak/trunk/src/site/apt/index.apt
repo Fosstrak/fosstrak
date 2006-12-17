@@ -1,0 +1,83 @@
+       ------
+                                    Welcome
+                                    ------
+                                    ------
+
+
+Welcome to Accada
+
+
+* Project Mission
+
+    <<Accada>> is an open source RFID prototyping platform that implements the <<EPC Network>> specifications. It is intended to foster the rapid prototyping of RFID applications and to accelerate the development of an <<Internet of Things>>.
+ 
+
+* How can Accada help you?
+
+     
+     *  if you are an <<EPC Network Novice>>, use the demo apps of <<Accada>> to check out the functionality of the EPC Network. 
+    
+    []
+    
+     *  if you are an <<RFID Application Developer>>, use the Java libraries of <<Accada>> to facilitate communication with EPC Network components. 
+    
+    []
+    
+     *  if you are an <<RFID System Integrator>>, extend and deploy our implementations of the major components of the EPC Network.
+
+    []
+
+     *  if you are a <<Researcher or Student>> who works with RFID, use our software as a common codebase for your work. 
+    
+ 
+    []
+    
+    
+* More information about Accada
+
+
+   *  {{{overview.html} What is Accada?}}
+     
+   *  {{{epcnetwork.html} What is the EPC Network?}}
+     
+   *  {{{status.html} What is the current status of Accada?}}
+     
+   *  {{{license.html} Under which license is the software available?}}  
+          
+   *  {{{team.html} Who is behind Accada?}}
+     
+   *  {{{howtohelp.html} Can I contribute?}}
+     
+       
+	
+    
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

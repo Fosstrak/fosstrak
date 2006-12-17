@@ -1,0 +1,82 @@
+                                    ------
+                                    Overview
+                                    ------
+                                    ------
+
+
+Accada Overview
+
+
+* Project Mission
+
+  
+    <<Accada>> is an open source RFID prototyping platform that implements the <<EPC Network>> specifications. It is intended to foster the rapid prototyping of RFID applications and to accelerate the development of an <<Internet of Things>>.
+   
+     
+
+* Background
+
+    The <<Accada>> project was initiated by {{{http://people.inf.ethz.ch/floerkem} Christian Floerkemeier}}, {{{http://people.inf.ethz.ch/mlampe} Matthias Lampe}}, and {{{http://people.inf.ethz.ch/rodunerc} Christof Roduner}} of the {{{http://www.vs.inf.ethz.ch} Distributed Systems Group}} at ETH Zurich led by {{{http://people.inf.ethz.ch/mattern} Friedemann Mattern}} and the {{{http://www.autoidlabs.ch} Auto-ID Lab }} at ETH Zurich/University of St. Gallen led by {{{http://www.item.unisg.ch/org/item/web2.nsf/c2d5250e0954edd3c12568e40027f306/c50b89b455a2b4cfc1256c41005d049e?OpenDocument} Elgar Fleisch}} . 
+
+
+[images/ethautoid.gif] 
+
+* Target Groups
+
+  The <<Accada>> project can support:
+
+    *  <<EPC Network Novices>> because our prototyping platform contains simple demo applications that illustrate the functionality of the EPC Network. 
+    
+    []
+    
+    *  <<RFID Application Developers>> because we provide Java libraries that facilitate communication with EPC Network components. 
+    
+    []
+    
+    *  <<RFID System Integrators>> because our prototyping platform features implementations of the major components of the EPC Network. 
+
+    []
+
+    *  <<Researchers and Students>> who work on RFID issues because we provide a common codebase for experimental software. 
+    
+ 
+    []
+
+
+* Current Status
+
+   This {{{publ/AccadaDetails.pdf}recent talk}} gives a good overview of the current status.   
+      
+      
+** Available
+
+     The following Java software packages are available as alpha software:
+     	
+     	 * Reader (implements Reader Protocol (RP))
+     	 
+     	 * Reader Proxy (implements RP)
+     	       
+     	 * Reader Test Client (implements RP)
+     	 
+     	 * Filtering and collection middleware that implements the ALE interface and RP interface (almost - will be available in a few days)
+     	 
+     	 * EPCIS Repository (implements EPCIS Capture and Query Interface - based on outdated specifications)    
+     	     
+     	 * EPCIS Repository Graphical User Interface (implements EPCIS Capture and Query Interface)
+     	 
+**  Work in progress:    
+                
+     	       
+     	 * Reader (implements Reader Management Protocol)
+     	  
+     	 * EPCIS Repository (based on latest versions of EPCIS Capture and Query Interface)    
+
+	
+* License
+
+    The software is available under an {{{license.html} BSD-style license.}} 
+	
+	
+* Limitations
+      
+   The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments.
