@@ -12,7 +12,7 @@
     <links>
       <item name="Accada" href="/index.html" />
       <item name="Reader" href="reader/index.html"/>
-      <item name="Filtering&amp;Collection" href="filteringCollection/index.html"/>
+      <item name="Filtering and Collection" href="fc/index.html"/>
       <item name="EPCIS" href="epcis/index.html"/>
       <item name="Tag Data Translation" href="tdt/index.html"/>
     </links>
@@ -32,7 +32,7 @@
 	
     <menu name="Projects" inherit="none">
               <item name="Reader" href="reader/index.html"/>
-              <item name="Filtering&amp;Collection" href="filteringCollection/index.html" />
+              <item name="Filtering and Collection" href="fc/index.html" />
               <item name="EPCIS" href="epcis/index.html"/>
               <item name="Tag Data Translation" href="tdt/index.html"/>
     </menu>
@@ -40,7 +40,7 @@
     <menu name="Specifications" inherit="none">
                   <item name="Reader Protocol" href="reader/index.html"/>
                   <item name="Reader Management" href="reader/index.html" />
-                  <item name="ALE" href="filteringCollection/index.html"/>
+                  <item name="ALE" href="fc/index.html"/>
                   <item name="EPCIS Capture Interface" href="epcis/index.html"/>
                   <item name="EPCIS Query Interface" href="epcis/index.html"/>
                   <item name="TDT Specification" href="tdt/index.html"/>
