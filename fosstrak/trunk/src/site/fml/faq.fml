@@ -7,6 +7,9 @@
 <answer>No, not at all. It is currently alpha software that is intended to facilitate rapid prototyping.</answer>
 </faq>
 <faq>
+<question>Are there other open source projects incorporating the EPC Network standards?</question>
+<answer>Yes, there are. See <a href="www.autoidlabs.org/opensource">www.autoidlabs.org/opensource</a> for an overview.</answer>
+</faq><faq>
 <question>Where can I find more information about the EPC Network?</question>
 <answer>Check out the website of <a href="http://www.epcglobalinc.org">EPCglobal</a>.</answer>
 </faq>
