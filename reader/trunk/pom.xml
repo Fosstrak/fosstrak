@@ -1,17 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <!-- POM basics  -->
+
+  <!-- =========================================================== -->
+  <!-- Basics                                                      -->
+  <!-- =========================================================== -->
+
   <groupId>org.accada.reader</groupId>
   <artifactId>reader</artifactId>
-  <version>0.2.1-SNAPSHOT</version>
+  <version>0.3.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Modules -->
+
+  <!-- =========================================================== -->
+  <!-- Modules                                                     -->
+  <!-- =========================================================== -->
+
   <modules>
-    <module>reader-core</module>
-    <module>reader-proxy</module>
-    <module>reader-client</module>
+    <module>reader-rprm-core</module>
+    <module>reader-rp-proxy</module>
+    <module>reader-rp-client</module>
   </modules>
 
   <!-- Dependencies -->
@@ -24,7 +32,11 @@
     </dependency>
   </dependencies>
 
-  <!-- Build settings -->
+
+  <!-- =========================================================== -->
+  <!-- Plugins                                                     -->
+  <!-- =========================================================== -->
+
   <build>
     <pluginManagement>
       <plugins>
@@ -47,7 +59,11 @@
     </pluginManagement>
   </build>
 
-  <!-- Repositories -->
+
+  <!-- =========================================================== -->
+  <!-- Repositories                                                -->
+  <!-- =========================================================== -->
+
   <repositories>
     <repository>
       <releases>
@@ -67,7 +83,11 @@
     </repository>
   </repositories>
 
-  <!-- Infrastructure -->
+
+  <!-- =========================================================== -->
+  <!-- Infrastructure                                              -->
+  <!-- =========================================================== -->
+
   <scm>
     <!-- keep empty tags here to avoid release:prepare crashes -->
     <connection/>
@@ -112,7 +132,11 @@
     </mailingList>
   </mailingLists>
 
-  <!-- Site generation -->
+
+  <!-- =========================================================== -->
+  <!-- Reporting                                                   -->
+  <!-- =========================================================== -->
+
   <reporting>
     <plugins>
       <plugin>
@@ -134,7 +158,11 @@
     </plugins>
   </reporting>
 
-  <!-- Additional project information -->
+
+  <!-- =========================================================== -->
+  <!-- Project Information                                         -->
+  <!-- =========================================================== -->
+
   <name>reader</name>
   <url>http://www.accada.org/reader</url>
   <licenses>
@@ -143,9 +171,5 @@
       <url>http://www.gnu.org/licenses/lgpl.txt</url>
     </license>
   </licenses>
-  <developers>
-  </developers>
-  <contributors>
-  </contributors>
 
 </project>
