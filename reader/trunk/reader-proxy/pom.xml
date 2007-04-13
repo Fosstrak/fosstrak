@@ -1,27 +1,98 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <!-- POM basics  -->
-  <groupId>org.accada.reader</groupId>
-  <artifactId>reader-proxy</artifactId>
-  <version>0.2.1-SNAPSHOT</version>
-  <parent>
-    <artifactId>reader</artifactId>
-    <groupId>org.accada.reader</groupId>
-    <version>0.2.1-SNAPSHOT</version>
-  </parent>
-  <packaging>jar</packaging>
-  <modelVersion>4.0.0</modelVersion>
+  <!-- =========================================================== -->
+  <!-- Basics                                                  -->
+  <!-- =========================================================== -->
 
-  <!-- Dependencies -->
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.accada.reader</groupId>
+  <artifactId>reader-rp-proxy</artifactId>
+  <name>reader-rp-proxy</name>
+  <version>0.3.0</version>
+  
+  <!-- =========================================================== -->
+  <!-- Project Information                                         -->
+  <!-- =========================================================== -->
+  
+  
+  <issueManagement>
+    <system>Sourceforge</system>
+    <url>http://sourceforge.net/tracker/?group_id=170795</url>
+  </issueManagement>
+  <mailingLists>
+    <mailingList>
+      <name>Reader Developer mailing list</name>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</unsubscribe>
+      <post>accada-reader-developer@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum=accada-reader-developer</archive>
+    </mailingList>
+  </mailingLists>
+  
+
+  
+  
+  <!-- =========================================================== -->
+  <!-- Build Plugins                                               -->
+  <!-- =========================================================== -->
+  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-jar-plugin</artifactId>  
+         <configuration>
+                <archive>
+                <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+                <!-- TODO is the classpath really required here ? -->
+                <!--   
+                  <manifest>
+                    <addClasspath>true</addClasspath> 
+                  </manifest>-->
+          </archive>
+          </configuration>
+       </plugin>
+     <plugin>
+	        <artifactId>maven-assembly-plugin</artifactId>
+	        <configuration>
+	         <descriptors>
+	          <descriptor>src/main/assembly/src.xml</descriptor>
+	          <descriptor>src/main/assembly/bin-with-dependencies.xml</descriptor>
+	           </descriptors>
+	        </configuration>
+	        <executions>
+		          <execution>
+		            <id>make-assembly</id>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>single</goal>
+		            </goals>
+		          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  
+  
+  
+  <!-- =========================================================== -->
+  <!-- Dependencies                                                -->
+  <!-- =========================================================== -->
+  
   <dependencies>
-    <!--
-    Uncomment this as soon as source is checked in
     <dependency>
       <groupId>org.accada.reader</groupId>
-      <artifactId>reader-core</artifactId>
-      <version>${project.version}</version>
+      <artifactId>reader-rprm-core</artifactId>
+      <version>0.3.0</version>
     </dependency>
-    -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -44,9 +115,7 @@
       <artifactId>jaxb-impl</artifactId>
       <version>2.0EA3</version>
     </dependency>
-    <!--
-    Uncomment these as soon as source is checked in
-    <dependency>
+     <dependency>
       <groupId>javax.activation</groupId>
       <artifactId>activation</artifactId>
       <version>1.0</version>
@@ -56,12 +125,49 @@
       <artifactId>jsr173_api</artifactId>
       <version>1.0</version>
     </dependency>
-    -->
   </dependencies>
-
-  <!-- Build settings -->
-
-  <!-- Additional project information -->
-  <name>reader-proxy</name>
+  
+  <!-- =========================================================== -->
+  <!-- Reporting                                                   -->
+  <!-- =========================================================== -->
+    
+    <reporting>
+      <plugins>
+      <!--
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>2.0</version>
+          <configuration>
+            <includes>**/*.java</includes>
+            <excludes>org/accada/reader/msg/command/*.*</excludes>
+            <excludes>org/accada/reader/msg/notification/*.*</excludes>
+            <excludes>org/accada/reader/msg/reply/*.*</excludes>
+            <configLocation>src/config/accada-checks.xml</configLocation>
+            <headerLocation>src/config/HEADER.txt</headerLocation>
+            <enableRulesSummary>false</enableRulesSummary>
+            <xrefLocation>../xref</xrefLocation>
+          </configuration>
+        </plugin>
+        -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <reportSets>
+            <reportSet>
+              <reports>
+                <report>dependencies</report>
+                <report>summary</report>
+                <report>index</report>
+              </reports>
+            </reportSet>
+          </reportSets>
+        </plugin>
+      </plugins>
+    </reporting>
 
 </project>
