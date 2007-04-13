@@ -66,6 +66,11 @@
 
   <repositories>
     <repository>
+      <id>java.net</id>
+      <url>https://maven-repository.dev.java.net/repository</url>
+      <layout>legacy</layout>
+    </repository>
+    <repository>
       <releases>
         <enabled>true</enabled>
         <updatePolicy>daily</updatePolicy>
