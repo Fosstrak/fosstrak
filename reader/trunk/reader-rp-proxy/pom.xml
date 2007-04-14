@@ -8,7 +8,7 @@
   
   <groupId>org.accada.reader</groupId>
   <artifactId>reader-rp-proxy</artifactId>
-  <version>0.3.0</version>
+  <version>0.3.0-SNAPSHOT</version>
   <parent>
       <artifactId>reader</artifactId>
       <groupId>org.accada.reader</groupId>
@@ -78,7 +78,7 @@
     <dependency>
       <groupId>org.accada.reader</groupId>
       <artifactId>reader-rprm-core</artifactId>
-      <version>0.3.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -105,10 +105,10 @@
      <dependency>
       <groupId>javax.activation</groupId>
       <artifactId>activation</artifactId>
-      <version>1.0</version>
+      <version>1.1</version>
     </dependency>
     <dependency>
-      <groupId>javax.xml</groupId>
+      <groupId>javax.xml.bind</groupId>
       <artifactId>jsr173_api</artifactId>
       <version>1.0</version>
     </dependency>
