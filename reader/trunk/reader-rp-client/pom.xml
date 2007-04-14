@@ -22,19 +22,16 @@
   <!-- =========================================================== -->
 
   <dependencies>
-    <!--
-    Uncomment these as soon as source is checked in
     <dependency>
       <groupId>org.accada.reader</groupId>
-      <artifactId>reader-proxy</artifactId>
+      <artifactId>reader-rp-proxy</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.accada.reader</groupId>
-      <artifactId>reader-core</artifactId>
+      <artifactId>reader-rprm-core</artifactId>
       <version>${project.version}</version>
     </dependency>
-    -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
