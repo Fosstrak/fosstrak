@@ -1,15 +1,15 @@
        ------
-                                    Reader Module
+                                    Reader RP/RM Core Module
                                     ------
                                     ------
 
 
-Reader Module
+Reader RP/RM Core Module
 
 
 * Features  
    
-   *  implements the EPCglobal Reader Protocol Version 1.1. in Java. Elements of the protocol implemented include:
+   *  implements the EPCglobal Reader Protocol Version 1.1. and Reader Management in Java. Elements of the protocol implemented include:
     
     	*   Transport Binding: TCP and HTTP
  
@@ -21,7 +21,9 @@ Reader Module
     	
     	*   Data Selectors
     	
-    A detailed list of the features implemented is available here.
+    	*   SNMP Binding of RM 1.0
+    	
+   
 
    *  supports readers from the following manufacturers as a surrogate (or in reader protocol terms as a concentrator).
 
@@ -30,6 +32,8 @@ Reader Module
 	*   Hitachi
 	
 	*   Softronica
+	
+	these are currently not available for download. Contact us if you are interested.
 	
    *  provides graphical RFID reader simulator and an extensive simulation framework.
     

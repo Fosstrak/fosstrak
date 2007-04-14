@@ -10,17 +10,17 @@ Getting Started
 
    If you have a Reader Protocol compliant reader in front of you or you want to communicate with a reader that is online via a GUI, 
 
-   * {{{readerTestClient/gettingStarted.html} get started}} with the <<Reader Test Client module>> 
+   * {{{reader-rp-client/gettingStarted.html} get started}} with the <<Reader RP Client module>> 
    
    []
    If you have a Reader Protocol compliant reader in front of you or you want to communicate with a reader that is online from within your Java application,    
   
-   * {{{readerProxy/gettingStarted.html} get started}} with the <<Reader Proxy module>>
+   * {{{reader-rp-proxy/gettingStarted.html} get started}} with the <<Reader RP Proxy module>>
    
    []
    If you don't have access to a Reader Protocol compliant reader, 
 
-   * {{{reader/gettingStarted.html} get started}} with the <<Reader module>>
+   * {{{reader-rprm-core/gettingStarted.html} get started}} with the <<Reader RP/RM Core module>>
    
    []
 
@@ -29,12 +29,12 @@ Getting Started
      
 * Sign up to the Reader User Mailing List 
 
-  https://lists.sourceforge.net/lists/listinfo/accada-reader-user
+  {{{https://lists.sourceforge.net/lists/listinfo/accada-reader-user} Sign up here}}
      
      
 * Having problems
 
-  Check out the {{{http://sourceforge.net/mailarchive/forum.php?forum=accada-reader-user} Mailing List Archives}}
+  Check out the {{{http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-user} Mailing List Archives}}
 
 
 

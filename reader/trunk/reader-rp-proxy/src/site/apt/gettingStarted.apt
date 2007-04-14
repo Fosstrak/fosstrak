@@ -1,21 +1,21 @@
        ------
-                                    Reader Proxy Module
+                                    Reader RP Proxy Module
                                     ------
                                     ------
 
 
-Reader Proxy Module: Getting Started
+Reader RP Proxy Module: Getting Started
 
 
-* Installing the Accada Reader Proxy
+* Installing the Accada Reader RP Proxy
 
-   The following instructions show how to install the Accada Reader Proxy:
+   The following instructions show how to install the Accada Reader RP Proxy:
    
-   * Download the readerProxy binaries from the {{{../download.html}download}} section of the website.
+   * Download the reader-rp-proxy binaries from the {{{../download.html}download}} section of the website.
 
    * Add the jar to your classpath
 
-   * Make sure all the {{{dependencies.html} dependencies}} are added to your classpath as well. Alternatively, you can also use the jar with all the dependencies included.
+   * Make sure all the {{{dependencies.html} dependencies}} are added to your classpath as well. Alternatively, you can also use the zip with all the dependencies included.
    
    * Make sure you are using a Java Runtime environment 1.5 
    
@@ -41,6 +41,8 @@ Reader Proxy Module: Getting Started
         *  COMMAND_CHANNEL_PORT
     
     You might also want to consider using our existing Java implementation of a {{{../index.html}reader}} which includes a simulation engine.
+    
+    TODO: Update the code below and the example with the new Reader RP package structure
     
 +---
 

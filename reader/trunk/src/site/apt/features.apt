@@ -8,13 +8,13 @@ Features
 
     The Reader Project comprises three separate modules:
 
-        *   the Reader implementation itself
+        *   the Reader RP/RM Core that implements the EPCglobal Reader Protocol and Reader Management Specification 
+       
+        *   the Reader RP Proxy (host) 
+        
+        *   the Reader RP Client 
 	
-	*   the Reader Proxy (host)
-	
-	*   the Reader Test Client
-	
-    All three implement the reader protocol version 1.1 defined by EPCglobal and its members.
+   
     
 *   Reader Protocol Features Implemented
 
@@ -30,9 +30,14 @@ Features
     	
         *   Data Selectors
     	
-    A detailed list of the features implemented is available here.
+*   Reader Management Features Implemented
+    	
+   
+   The Reader RP/RM Core implements the SNMP part of the EPCglobal Reader Management including nearly all optional features. The proxy and the client do not support the reader management standard.
+   
+   
 
-*   Reader Features
+*   Reader RP/RM Core Features
 
     The Reader module currently supports readers from the following manufacturers as a surrogate (or in reader protocol terms as a concentrator).
 
@@ -42,12 +47,14 @@ Features
 	
 	*   Softronica
 	
+    These are not part of the current release. We will make these available upon request.	
+	
     There is also support for a graphical RFID reader simulator and an extensive simulation framework.
     
 
-*   Reader Proxy Features
+*   Reader RP Proxy Features
 
-    The Reader Proxy module facilitates RFID application development. It features:
+    The Reader RP Proxy module facilitates RFID application development. It features:
 
 	*   a Java interface hides communication with a reader instance - 
 	
@@ -76,7 +83,7 @@ Features
 +----	
 
 
-*   Reader Test Client Features
+*   Reader RP Client Features
 
     The Reader Test Client provides an intuitive graphical user interface to test a reader instance. It supports all of the reader protocol features mentioned above.
 

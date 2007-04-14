@@ -16,40 +16,41 @@ Welcome to the Accada Reader Project
 
 [images/ReaderProjectOverview.png]
 
-    The Reader Project comprises three separate modules:	
+    The Reader Project currently comprises three separate modules:	
 
-   *   the Reader implementation itself
+   *   the Reader RP/RM Core that implements the EPCglobal Reader Protocol and Reader Management Specification 
 
-   *   the Reader Proxy (host)
-
-   *   the Reader Test Client
-
-    All three implement the Reader Protocol Version 1.1 defined by EPCglobal and its members.
-    
+   *   the Reader RP Proxy (host) 
+   
+   *   the Reader RP Client 
+   
 
     
 * Usage Scenarios
 
     Possible usage scenarios include the following:
     
-    *   Interact with reader that implements the EPCglobal Reader Protocol Version 1.1 - 
-        use the Accada Reader Test Client
-    
-    []
-    *   Communicate with a reader via the EPCglobal Reader Protocol Version 1.1 from within your Java application - 
-        use the Accada Reader Proxy
-    
-    []
-    *   Enable a reader that does not implement the EPCglobal Reader Protocol yet by deploying a surrogate - 
+
+    *   Enable a reader that does not implement the EPCglobal Reader Protocol or the Reader Management Standard by deploying a surrogate - 
         use the Accada Reader as an adaptor
     
     []
     *   Simulate the deployment of hundreds of readers - use the Accada Reader with its simulation framework
     
     []
-    *   Test your RFID application without any reader hardware attached - use the Accada Reader with its GUI simulator 
+    *   Test your RFID application without any reader hardware attached - use the Accada Reader RP/RM Core with its GUI simulator 
     
     []
+    
+    *   Interact with reader that implements the EPCglobal Reader Protocol Version 1.1 - 
+        use the Accada Reader Client
+        
+    []
+    *   Communicate with a reader via the EPCglobal Reader Protocol Version 1.1 from within your Java application - 
+        use the Accada Reader RP Proxy
+        
+    []
+    
     *   Embed our reader implementation in your reader - requires a powerful reader platform:)
 	
     []

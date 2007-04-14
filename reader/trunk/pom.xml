@@ -200,7 +200,7 @@
             <excludes>
               <exclude>**/*Test.java</exclude>
               <exclude>**/package-info.java</exclude>
-              <exclude>org/accada/reader/rp/proxy/configurator/TransportFormat.java</exclude>
+              <exclude>org/accada/reader/rp/proxy/configurator/*.java</exclude>
             </excludes>
           </configuration>
         </plugin>

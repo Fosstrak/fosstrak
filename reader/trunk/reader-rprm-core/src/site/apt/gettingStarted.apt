@@ -1,13 +1,13 @@
        ------
-                                    Reader Module
+                                    Reader RP/RM Core Module
                                     ------
                                     ------
 
 
-Reader Module: Getting Started
+Reader RP/RM Core Module: Getting Started
 
 
-* Installing the Accada Reader 
+* Installing the Accada Reader RP/RM Core
 
    The following instructions show how to install the Accada Reader:
    
@@ -22,10 +22,12 @@ Reader Module: Getting Started
    
 * First Steps
 
-   * Start the reader instance by invoking the run.bat script in the classes sub-directory
+   * Start the reader instance by invoking the executable jar 
    
-   The reader is now listening for incoming http requests on port 8000 and incoming tcp requests on port 5566. To communicate with the reader instance, you might want to consider using the Accada Reader Proxy and Accada Reader Test Client.
+   The reader is now listening for incoming http requests on port 8000, incoming tcp requests on port 5566, and incoming snmp requests on port 161. To communicate with the reader instance, you might want to consider using the Accada Reader RP Proxy and Accada Reader RP Client or a SNMP Manager such as MIB Explorer.
    For more information, on how to use theses tools, please {{{../index.html}click}} here
+   
+   You might also want to consider unpacking the jar and adjusting the settings in the ReaderDevice.properties file.
    
    We will soon add information on how to configure the reader instance to use with different readers.
    
