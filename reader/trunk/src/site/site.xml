@@ -32,9 +32,9 @@
     </menu>
     
      <menu name="Reader Project Modules" inherit="none">
-       <item name="Reader" href="/reader/index.html"/>
-       <item name="ReaderProxy" href="/readerProxy/index.html"/>
-       <item name="ReaderTestClient" href="/readerTestClient/index.html"/>
+       <item name="RP/RM Core" href="/reader-rprm-core/index.html"/>
+       <item name="RP Proxy" href="/reader-rp-core/index.html"/>
+       <item name="RP Client" href="/reader-rp-client/index.html"/>
      </menu>
 
 
