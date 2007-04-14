@@ -55,6 +55,28 @@
             <target>1.5</target>
           </configuration>
         </plugin>
+      <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                  <locales>en</locales>
+                  <publishDate position="left" format="yyyy-MM-dd hh:mm:ss"/>
+                </configuration>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <!--
+                  By default, the surefire plugin automatically includes all test classes
+                  with following wildcard patterns:
+                  **/Test*.java
+                  **/*Test.java
+                  **/*TestCase.java
+                -->
+                <configuration>
+                  <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+              </plugin>
       </plugins>
     </pluginManagement>
   </build>
@@ -99,6 +121,7 @@
     <developerConnection>scm:svn:https://svn.accada.org/repos/reader</developerConnection>
     <url/>
   </scm>
+  <!--
   <distributionManagement>
     <repository>
       <id>accada-repository</id>
@@ -116,6 +139,7 @@
       <url>sftp://svn.accada.org/local/home/accadaweb/public_html/reader</url>
     </site>
   </distributionManagement>
+  -->
   <issueManagement>
     <system>Sourceforge</system>
     <url>http://sourceforge.net/mail/?group_id=170795</url>
@@ -126,14 +150,14 @@
       <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-user</subscribe>
       <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-user</unsubscribe>
       <post>accada-reader-user@lists.sourceforge.net</post>
-      <archive>http://sourceforge.net/mailarchive/forum.php?forum=accada-reader-user</archive>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-user</archive>
     </mailingList>
     <mailingList>
       <name>Reader developer mailing list</name>
       <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</subscribe>
       <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</unsubscribe>
       <post>accada-reader-developer@lists.sourceforge.net</post>
-      <archive>http://sourceforge.net/mailarchive/forum.php?forum=accada-reader-developer</archive>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-developer</archive>
     </mailingList>
   </mailingLists>
 
@@ -142,26 +166,68 @@
   <!-- Reporting                                                   -->
   <!-- =========================================================== -->
 
+
   <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>dependencies</report>
-              <report>project-team</report>
-              <report>mailing-list</report>
-              <report>issue-tracking</report>
-              <report>license</report>
-              <report>scm</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>  
-    </plugins>
-  </reporting>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+        </plugin>
+        <!--<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <configuration>
+            <maxmemory>1024</maxmemory>
+            <aggregate>true</aggregate>
+          </configuration>
+        </plugin>-->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <configuration>
+            <aggregate>true</aggregate>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>2.1</version>
+          <configuration>
+            <linkXref>true</linkXref>
+            <sourceEncoding>utf-8</sourceEncoding>
+            <minimumTokens>100</minimumTokens>
+            <targetJdk>1.5</targetJdk>
+            <excludes>
+              <exclude>**/*Test.java</exclude>
+              <exclude>**/package-info.java</exclude>
+              <exclude>org/accada/reader/rp/proxy/configurator/TransportFormat.java</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+        <!--
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <configuration>
+            <threshold>Low</threshold>
+            <effort>Default</effort>
+          </configuration>
+        </plugin>
+        -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>javancss-maven-plugin</artifactId>
+          <version>2.0-beta-2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>taglist-maven-plugin</artifactId>
+        </plugin>
+      </plugins>
+    </reporting>
+
+
+
 
 
   <!-- =========================================================== -->

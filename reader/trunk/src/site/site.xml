@@ -29,11 +29,12 @@
       <item name="License" href="/license.html"/>
       <item name="How to help" href="/howtohelp.html"/>
       <item name="FAQ" href="/faq.html"/>
+      <item name="Mailing Lists" href="/mail-lists.html"/>
     </menu>
     
      <menu name="Reader Project Modules" inherit="none">
        <item name="RP/RM Core" href="/reader-rprm-core/index.html"/>
-       <item name="RP Proxy" href="/reader-rp-core/index.html"/>
+       <item name="RP Proxy" href="/reader-rp-proxy/index.html"/>
        <item name="RP Client" href="/reader-rp-client/index.html"/>
      </menu>
 

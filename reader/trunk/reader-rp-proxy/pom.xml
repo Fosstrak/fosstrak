@@ -5,31 +5,18 @@
   <!-- =========================================================== -->
 
 
-  <modelVersion>4.0.0</modelVersion>
+  
   <groupId>org.accada.reader</groupId>
   <artifactId>reader-rp-proxy</artifactId>
-  <name>reader-rp-proxy</name>
   <version>0.3.0</version>
-  
-  <!-- =========================================================== -->
-  <!-- Project Information                                         -->
-  <!-- =========================================================== -->
-  
-  
-  <issueManagement>
-    <system>Sourceforge</system>
-    <url>http://sourceforge.net/tracker/?group_id=170795</url>
-  </issueManagement>
-  <mailingLists>
-    <mailingList>
-      <name>Reader Developer mailing list</name>
-      <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</subscribe>
-      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</unsubscribe>
-      <post>accada-reader-developer@lists.sourceforge.net</post>
-      <archive>http://sourceforge.net/mailarchive/forum.php?forum=accada-reader-developer</archive>
-    </mailingList>
-  </mailingLists>
-  
+  <parent>
+      <artifactId>reader</artifactId>
+      <groupId>org.accada.reader</groupId>
+      <version>0.3.0-SNAPSHOT</version>
+  </parent>
+  <name>reader-rp-proxy</name>
+  <modelVersion>4.0.0</modelVersion>
+
 
   
   
@@ -127,47 +114,4 @@
     </dependency>
   </dependencies>
   
-  <!-- =========================================================== -->
-  <!-- Reporting                                                   -->
-  <!-- =========================================================== -->
-    
-    <reporting>
-      <plugins>
-      <!--
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.0</version>
-          <configuration>
-            <includes>**/*.java</includes>
-            <excludes>org/accada/reader/msg/command/*.*</excludes>
-            <excludes>org/accada/reader/msg/notification/*.*</excludes>
-            <excludes>org/accada/reader/msg/reply/*.*</excludes>
-            <configLocation>src/config/accada-checks.xml</configLocation>
-            <headerLocation>src/config/HEADER.txt</headerLocation>
-            <enableRulesSummary>false</enableRulesSummary>
-            <xrefLocation>../xref</xrefLocation>
-          </configuration>
-        </plugin>
-        -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-report-plugin</artifactId>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <reportSets>
-            <reportSet>
-              <reports>
-                <report>dependencies</report>
-                <report>summary</report>
-                <report>index</report>
-              </reports>
-            </reportSet>
-          </reportSets>
-        </plugin>
-      </plugins>
-    </reporting>
-
 </project>
