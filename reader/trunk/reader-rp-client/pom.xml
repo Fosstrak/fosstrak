@@ -15,7 +15,7 @@
   </parent>
   <packaging>jar</packaging>
   <modelVersion>4.0.0</modelVersion>
-
+  <name>reader-rp-client</name>
 
   <!-- =========================================================== -->
   <!-- Dependencies                                                -->
@@ -53,10 +53,57 @@
   </dependencies>
 
 
-  <!-- =========================================================== -->
-  <!-- Project Information                                         -->
-  <!-- =========================================================== -->
+     
+     <!-- =========================================================== -->
+     <!-- Build Plugins                                               -->
+     <!-- =========================================================== -->
+     
+     <build>
+       <plugins>
+         <plugin>
+           <artifactId>maven-compiler-plugin</artifactId>
+           <configuration>
+             <source>1.5</source>
+             <target>1.5</target>
+           </configuration>
+         </plugin>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>  
+            <configuration>
+                   <archive>
+                   <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+                   <!-- TODO is the classpath really required here ? -->
+                   <!--   
+                     <manifest>
+                       <addClasspath>true</addClasspath> 
+                     </manifest>-->
+             </archive>
+             </configuration>
+          </plugin>
+        <plugin>
+   	        <artifactId>maven-assembly-plugin</artifactId>
+   	        <configuration>
+   	         <descriptors>
+   	          <descriptor>src/main/assembly/src.xml</descriptor>
+   	          <descriptor>src/main/assembly/bin-with-dependencies.xml</descriptor>
+   	           </descriptors>
+   	        </configuration>
+   	        <executions>
+   		          <execution>
+   		            <id>make-assembly</id>
+   		            <phase>package</phase>
+   		            <goals>
+   		              <goal>single</goal>
+   		            </goals>
+   		          </execution>
+           </executions>
+         </plugin>
+       </plugins>
+     </build>
+     
 
-  <name>reader-rp-client</name>
+
+ 
 
 </project>
