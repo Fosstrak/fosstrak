@@ -8,10 +8,10 @@
 </faq>
 <faq>
 <question>Are there other open source projects incorporating the EPC Network standards?</question>
-<answer>Yes, there are. See <a href="www.autoidlabs.org/opensource">www.autoidlabs.org/opensource</a> for an overview.</answer>
+<answer>Yes, there are. See <a href="www.autoidlabs.org/opensource">www.autoidlabs.org/opensource</a> for an overview. There is in particular the MENTOR effort which provides .NET implementation of EPCIS</answer>
 </faq><faq>
 <question>Where can I find more information about the EPC Network?</question>
-<answer>Check out the website of <a href="http://www.epcglobalinc.org">EPCglobal</a>.</answer>
+<answer>Check out the website of <a href="http://www.epcglobalinc.org">EPCglobal</a> and in particular the architecture framework document</answer>
 </faq>
 <faq>
 <question>Which components of the EPC Network have you implemented?</question>
@@ -23,8 +23,8 @@
 </faq>
 <faq>
 <question>Do I have to publish any modifications and extension I make again as open source?</question>
-<answer>No, have a look at the <a href="license.html">license </a> or at the explanation of BSD-style licences at <a href="http://en.wikipedia.org/wiki/BSD_licenses"> wikipedia.</a></answer>
-</faq>												
+<answer>Have a look at the <a href="license.html">license </a> or at the explanation of LGPL-style licences at <a href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License"> wikipedia.</a></answer>
+</faq>											
 <faq>
 <question>Can I contribute to this project even, if I am not part of the Auto-ID Labs or EPCglobal?</question>
 <answer>Yes. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.</answer>

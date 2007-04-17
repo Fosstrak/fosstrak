@@ -1,0 +1,50 @@
+
+<document>
+  <properties>
+    
+    <title>Mailing Lists</title>
+  </properties>
+
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Mailing Lists"> 
+    
+   <p> These are general the mailing lists that have been established for Accada. There are also mailing lists for each individual project, e.g. for EPCIS or the Reader project. For each list, there is a subscribe, unsubscribe, and an archive link. </p>
+   
+   
+      <table class="bodyTable"><tr class="a"><th>Name</th><th>Subscribe</th><th>Unsubscribe</th><th>Post</th><th>Archive</th></tr><tr class="b"><td>Accada user mailing list</td><td><a href="https://lists.sourceforge.net/lists/listinfo/accada-user">Subscribe</a></td><td><a href="https://lists.sourceforge.net/lists/listinfo/accada-user">Unsubscribe</a></td><td><a href="mailto:accada-user@lists.sourceforge.net">Post</a></td><td><a href="http://sourceforge.net/mailarchive/forum.php?forum_name=accada-user">sourceforge.net</a></td></tr><tr class="a"><td>Accada developer mailing list</td><td><a href="https://lists.sourceforge.net/lists/listinfo/accada-developer">Subscribe</a></td><td><a href="https://lists.sourceforge.net/lists/listinfo/accada-developer">Unsubscribe</a></td><td><a href="mailto:accada-developer@lists.sourceforge.net">Post</a></td><td><a href="http://sourceforge.net/mailarchive/forum.php?forum_name=accada-developer">sourceforge.net</a></td></tr></table>
+     </section>  
+    
+      
+  </body>
+ </document>
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

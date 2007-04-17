@@ -24,9 +24,11 @@
       <item name="About the EPC Network" href="/epcnetwork.html"/>
       <item name="Status" href="/status.html"/>
       <item name="License" href="/license.html"/>
-      <item name="FAQ" href="/faq.html"/>
       <item name="Publications" href="/pub.html"/>
       <item name="Quick Demos" href="/demo.html"/>
+      <item name="Success Stories" href="/success.html"/>
+      <item name="Mailing Lists" href="/mail-lists.html"/>
+      <item name="FAQ" href="/faq.html"/>
       <item name="Contact" href="/contact.html"/>
     </menu>
 	
@@ -54,7 +56,7 @@
   </body>
   <skin>
       <groupId>org.apache.maven.skins</groupId>
-      <artifactId>maven-classic-skin</artifactId>
+      <artifactId>maven-stylus-skin</artifactId>
       <version>1.0</version>
   </skin>
   <poweredBy>

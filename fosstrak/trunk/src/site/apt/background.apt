@@ -15,7 +15,6 @@ Background
 
 [images/ethautoid.gif] 
 
-
 * History
 
    At the Auto-ID Lab and in the Distributed Systems Group at ETH Zurich, we started working on the EPC Network and RFID middleware as early as 2001 through our involvement with the Auto-ID Center, a research program headquartered at MIT to foster the adoption of RFID (more information about the Auto-ID Center). Our early contributions include for example the PML Core language, a mark-up language for Auto-ID events, which was published by EPCglobal in 2003, and the RFIDStack, an RFID middleware that abstracts from the idiosycracies of different reader devices. 
@@ -59,3 +58,4 @@ Background
 	
 	* Arthur van Dorp (2006)
     
+   

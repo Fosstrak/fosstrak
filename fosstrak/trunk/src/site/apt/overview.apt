@@ -21,12 +21,20 @@ Accada Overview
 
 [images/ethautoid.gif] 
 
+
+    Mark Harrison and James Brusey from the Cambridge University Auto-ID Lab contributed the Tag Data Translation Engine.	
+
 * Target Groups
 
   The <<Accada>> project can support:
 
     *  <<EPC Network Novices>> because our prototyping platform contains simple demo applications that illustrate the functionality of the EPC Network. 
     
+    []
+    
+    *  <<Researchers and Students>> who work on RFID issues because we provide a common codebase for experimental software. 
+        
+     
     []
     
     *  <<RFID Application Developers>> because we provide Java libraries that facilitate communication with EPC Network components. 
@@ -37,10 +45,7 @@ Accada Overview
 
     []
 
-    *  <<Researchers and Students>> who work on RFID issues because we provide a common codebase for experimental software. 
     
- 
-    []
 
 
 * Current Status
@@ -52,31 +57,33 @@ Accada Overview
 
      The following Java software packages are available as alpha software:
      	
-     	 * Reader (implements Reader Protocol (RP))
+     	 * Reader (implements EPCglobal Reader Protocol (RP) and Reader Management (RM))
      	 
      	 * Reader Proxy (implements RP)
      	       
      	 * Reader Test Client (implements RP)
      	 
-     	 * Filtering and collection middleware that implements the ALE interface and RP interface (almost - will be available in a few days)
+     	 * Filtering and collection middleware that implements the ALE 1.0 interface and RP interface 
      	 
-     	 * EPCIS Repository (implements EPCIS Capture and Query Interface - based on outdated specifications)    
+     	 * EPCIS Repository (implements EPCIS Capture and Query Interface)    
      	     
      	 * EPCIS Repository Graphical User Interface (implements EPCIS Capture and Query Interface)
+     	 
+     	 * Tag Data Translation Engine
      	 
 **  Work in progress:    
                 
      	       
-     	 * Reader (implements Reader Management Protocol)
+     	 * Reader Proxy and Client implementing LLRP
      	  
-     	 * EPCIS Repository (based on latest versions of EPCIS Capture and Query Interface)    
+     	 * ALE 1.1   
 
 	
 * License
 
-    The software is available under an {{{license.html} BSD-style license.}} 
+    The software is available under an {{{license.html} LGPL-style license.}} 
 	
 	
 * Limitations
       
-   The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments.
+   The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments. It is alpha software.

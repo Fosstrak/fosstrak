@@ -7,41 +7,38 @@
 Status
 
     
-    This {{{publ/AccadaDetails.pdf}recent talk}} gives a good overview of the current status.
+    This {{{publ/AccadaDetails.pdf}recent talk}} gives a good overview of the current status. It does not feature the latest developments though.
 
 
 * Available
 
      The following Java software packages are available as alpha software:
-     	
-     	 * Reader (implements Reader Protocol (RP))
-     	 
-     	 * Reader Proxy (implements RP)
-     	 
-     	 * Reader Test Client (implements RP)
-     	 
-     	 * Filtering and collection middleware that implements the ALE interface and RP interface (almost - will be available in a few days)
-     	 
-     	 * EPCIS Repository (implements EPCIS Capture and Query Interface based on outdated specifications - binaries only)
-     	 
-     	 * EPCIS Repository Graphical User Interface (implements EPCIS Capture and Query Interface - binaries only)
-     	 
-     	      	 
-     	 
-*  Work in progress:
-     
-     	 
-     	 
-     	 * Reader (implements Reader Management Protocol)
-     	  
-     	 * EPCIS Repository (based on latest versions of EPCIS Capture and Query Interface)
-     	 
+          	
+          	 * Reader (implements EPCglobal Reader Protocol (RP) and Reader Management (RM))
+          	 
+          	 * Reader Proxy (implements RP)
+          	       
+          	 * Reader Client (implements RP)
+          	 
+          	 * Filtering and collection middleware that implements the ALE 1.0 interface and RP interface 
+          	 
+          	 * EPCIS Repository (implements EPCIS Capture and Query Interface)    
+          	     
+          	 * EPCIS Repository Graphical User Interface (implements EPCIS Capture and Query Interface)
+          	 
+          	 * Tag Data Translation Engine
+          	 
+*  Work in progress:    
+                     
+          	       
+          	 * Reader Proxy and Client implementing LLRP
+          	  
+          	 * ALE 1.1   
+
       
 * Limitations  
 
-     The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments.
-
-
+     The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments. It is alpha software.
 
 
 
