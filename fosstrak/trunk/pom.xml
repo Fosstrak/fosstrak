@@ -1,21 +1,33 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <!-- POM basics  -->
+
+  <!-- =========================================================== -->
+  <!-- Basics                                                      -->
+  <!-- =========================================================== -->
+
   <groupId>org.accada</groupId>
   <artifactId>accada</artifactId>
   <version>0.2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Modules -->
+
+  <!-- =========================================================== -->
+  <!-- Modules                                                     -->
+  <!-- =========================================================== -->
+
   <modules>
     <module>../reader</module>
     <module>../fc</module>
     <module>../epcis</module>
     <module>../tdt</module>
   </modules>
+
+
+  <!-- =========================================================== -->
+  <!-- Infrastructure                                              -->
+  <!-- =========================================================== -->
   
-  <!-- Infrastructure -->
   <distributionManagement>
     <site>
       <id>accada-website</id>
@@ -24,7 +36,11 @@
     </site>
   </distributionManagement>
 
-  <!-- Additional project information -->
+
+  <!-- =========================================================== -->
+  <!-- Project Information                                         -->
+  <!-- =========================================================== -->
+
   <name>accada</name>
   <url>http://www.accada.org</url>
   <licenses>
@@ -33,9 +49,6 @@
       <url>http://www.gnu.org/licenses/lgpl.txt</url>
     </license>
   </licenses>
-  <developers>
-  </developers>
-  <contributors>
-  </contributors>
+
 
 </project>
