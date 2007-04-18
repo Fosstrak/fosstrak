@@ -121,7 +121,6 @@
     <developerConnection>scm:svn:https://svn.accada.org/repos/reader</developerConnection>
     <url/>
   </scm>
-  <!--
   <distributionManagement>
     <repository>
       <id>accada-repository</id>
@@ -139,7 +138,6 @@
       <url>sftp://svn.accada.org/local/home/accadaweb/public_html/reader</url>
     </site>
   </distributionManagement>
-  -->
   <issueManagement>
     <system>Sourceforge</system>
     <url>http://sourceforge.net/mail/?group_id=170795</url>
