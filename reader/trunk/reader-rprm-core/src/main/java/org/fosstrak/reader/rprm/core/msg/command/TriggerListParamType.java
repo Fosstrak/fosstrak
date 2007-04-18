@@ -29,7 +29,7 @@
 package org.accada.reader.rprm.core.msg.command;
 
 import java.util.ArrayList;
-import javax.xml.bind.annotation.AccessType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
@@ -67,7 +67,7 @@ import org.accada.reader.rprm.core.msg.command.TriggerListParamType;
  * 
  * 
  */
-@XmlAccessorType(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TriggerListParamType", propOrder = {
     "list"
 })
@@ -119,7 +119,7 @@ public class TriggerListParamType {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "value"
     })

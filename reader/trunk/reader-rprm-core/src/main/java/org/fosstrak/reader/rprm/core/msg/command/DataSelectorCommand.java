@@ -28,7 +28,7 @@
 
 package org.accada.reader.rprm.core.msg.command;
 
-import javax.xml.bind.annotation.AccessType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlType;
@@ -151,7 +151,7 @@ import org.w3c.dom.Element;
  * 
  * 
  */
-@XmlAccessorType(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DataSelectorCommand", propOrder = {
     "create",
     "getName",
@@ -570,7 +570,7 @@ public class DataSelectorCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "eventType"
     })
@@ -624,7 +624,7 @@ public class DataSelectorCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "fieldNames"
     })
@@ -678,7 +678,7 @@ public class DataSelectorCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "fieldNames"
     })
@@ -732,7 +732,7 @@ public class DataSelectorCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -786,7 +786,7 @@ public class DataSelectorCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "eventType"
     })
@@ -840,7 +840,7 @@ public class DataSelectorCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "fieldNames"
     })
@@ -894,7 +894,7 @@ public class DataSelectorCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "fieldNames"
     })

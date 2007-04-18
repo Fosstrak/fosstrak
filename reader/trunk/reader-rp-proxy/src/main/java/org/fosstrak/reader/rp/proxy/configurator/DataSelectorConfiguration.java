@@ -31,7 +31,7 @@ package org.accada.reader.rp.proxy.configurator;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.AccessType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -91,7 +91,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DataSelectorConfiguration", propOrder = {
     "fieldNamesOrEventFiltersOrTagFields"
 })
@@ -181,7 +181,7 @@ public class DataSelectorConfiguration {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "eventFilter"
     })
@@ -240,7 +240,7 @@ public class DataSelectorConfiguration {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "fieldName"
     })
@@ -299,7 +299,7 @@ public class DataSelectorConfiguration {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "tagField"
     })

@@ -31,7 +31,7 @@ package org.accada.reader.rp.proxy.configurator;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.AccessType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
@@ -63,7 +63,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReaderDeviceConfiguration", propOrder = {
     "readerConfig",
     "triggersOrDataSelectorsOrNotificationChannels"

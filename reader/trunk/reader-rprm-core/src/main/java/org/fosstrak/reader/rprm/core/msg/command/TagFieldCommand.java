@@ -29,7 +29,7 @@
 package org.accada.reader.rprm.core.msg.command;
 
 import java.math.BigInteger;
-import javax.xml.bind.annotation.AccessType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
@@ -121,7 +121,7 @@ import org.accada.reader.rprm.core.msg.command.TagFieldCommand.SetTagFieldName;
  * 
  * 
  */
-@XmlAccessorType(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TagFieldCommand", propOrder = {
     "create",
     "getName",
@@ -407,7 +407,7 @@ public class TagFieldCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -461,7 +461,7 @@ public class TagFieldCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "length"
     })
@@ -508,7 +508,7 @@ public class TagFieldCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "memoryBank"
     })
@@ -562,7 +562,7 @@ public class TagFieldCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "offset"
     })
@@ -609,7 +609,7 @@ public class TagFieldCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "tagFieldName"
     })

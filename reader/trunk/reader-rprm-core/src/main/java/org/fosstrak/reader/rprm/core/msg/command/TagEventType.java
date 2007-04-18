@@ -30,7 +30,7 @@ package org.accada.reader.rprm.core.msg.command;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.AccessType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
@@ -72,7 +72,7 @@ import org.accada.reader.rprm.core.msg.command.TagEventType.EventTriggers;
  * 
  * 
  */
-@XmlAccessorType(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TagEventType", propOrder = {
     "eventType",
     "eventTriggers",
@@ -176,7 +176,7 @@ public class TagEventType {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "trigger"
     })

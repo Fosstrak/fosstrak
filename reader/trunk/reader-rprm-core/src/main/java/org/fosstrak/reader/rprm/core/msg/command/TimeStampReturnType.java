@@ -28,7 +28,7 @@
 
 package org.accada.reader.rprm.core.msg.command;
 
-import javax.xml.bind.annotation.AccessType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -55,7 +55,7 @@ import org.accada.reader.rprm.core.msg.command.TimeStampReturnType;
  * 
  * 
  */
-@XmlAccessorType(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "timeStampReturnType", propOrder = {
     "returnValue"
 })

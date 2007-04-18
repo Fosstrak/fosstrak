@@ -28,7 +28,7 @@
 
 package org.accada.reader.rprm.core.msg.reply;
 
-import javax.xml.bind.annotation.AccessType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
@@ -56,7 +56,7 @@ import org.accada.reader.rprm.core.msg.reply.EPC;
  * 
  * 
  */
-@XmlAccessorType(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EPC", namespace = "urn:epcglobal:xsd:1", propOrder = {
     "value"
 })

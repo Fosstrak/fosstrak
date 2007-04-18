@@ -28,7 +28,7 @@
 
 package org.accada.reader.rprm.core.msg.command;
 
-import javax.xml.bind.annotation.AccessType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlElement;
@@ -322,7 +322,7 @@ import org.w3c.dom.Element;
  * 
  * 
  */
-@XmlAccessorType(AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReaderDeviceCommand", propOrder = {
     "getEPC",
     "getManufacturer",
@@ -1573,7 +1573,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -1627,7 +1627,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -1681,7 +1681,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -1735,7 +1735,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -1789,7 +1789,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -1843,7 +1843,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -1897,7 +1897,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -1951,7 +1951,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "dataSelectors"
     })
@@ -2005,7 +2005,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "channels"
     })
@@ -2059,7 +2059,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "sources"
     })
@@ -2113,7 +2113,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "fields"
     })
@@ -2167,7 +2167,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "selectors"
     })
@@ -2221,7 +2221,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "triggers"
     })
@@ -2275,7 +2275,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "currentDataSelector"
     })
@@ -2329,7 +2329,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "currentSource"
     })
@@ -2383,7 +2383,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "handle"
     })
@@ -2430,7 +2430,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "name"
     })
@@ -2484,7 +2484,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "role"
     })
@@ -2538,7 +2538,7 @@ public class ReaderDeviceCommand {
      * 
      * 
      */
-    @XmlAccessorType(AccessType.FIELD)
+    @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
         "utc"
     })
