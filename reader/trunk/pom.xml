@@ -55,28 +55,28 @@
             <target>1.5</target>
           </configuration>
         </plugin>
-      <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <configuration>
-                  <locales>en</locales>
-                  <publishDate position="left" format="yyyy-MM-dd hh:mm:ss"/>
-                </configuration>
-              </plugin>
-              <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <!--
-                  By default, the surefire plugin automatically includes all test classes
-                  with following wildcard patterns:
-                  **/Test*.java
-                  **/*Test.java
-                  **/*TestCase.java
-                -->
-                <configuration>
-                  <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-              </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <configuration>
+            <locales>en</locales>
+            <publishDate position="left" format="yyyy-MM-dd hh:mm:ss"/>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <!--
+            By default, the surefire plugin automatically includes all test classes
+            with following wildcard patterns:
+               **/Test*.java
+               **/*Test.java
+               **/*TestCase.java
+           -->
+          <configuration>
+            <testFailureIgnore>true</testFailureIgnore>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
@@ -103,9 +103,7 @@
       </snapshots>
       <id>accada-repository</id>
       <name>Accada repository</name>
-      <!-- change url to www.accada.org/repository/... as soon as server
-           migration is completed. -->
-      <url>http://accada.inf.ethz.ch/repository/releases</url>
+      <url>http://maven-repository.accada.org/releases</url>
       <layout>default</layout>
     </repository>
   </repositories>
@@ -125,17 +123,17 @@
     <repository>
       <id>accada-repository</id>
       <name>Accada repository</name>
-      <url>sftp://svn.accada.org/local/home/accadarep/public_html/releases</url>
+      <url>sftp://maven-repository.accada.org/local/home/accadarep/public_html/releases</url>
     </repository>
     <snapshotRepository>
       <id>accada-repository</id>
       <name>Accada repository</name>
-      <url>sftp://svn.accada.org/local/home/accadarep/public_html/snapshots</url>
+      <url>sftp://maven-repository.accada.org/local/home/accadarep/public_html/snapshots</url>
     </snapshotRepository>
     <site>
       <id>accada-website</id>
       <name>Accada website</name>
-      <url>sftp://svn.accada.org/local/home/accadaweb/public_html/reader</url>
+      <url>sftp://www.accada.org/local/home/accadaweb/public_html/reader</url>
     </site>
   </distributionManagement>
   <issueManagement>
@@ -164,68 +162,64 @@
   <!-- Reporting                                                   -->
   <!-- =========================================================== -->
 
-
   <reporting>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <configuration>
-            <maxmemory>1024</maxmemory>
-            <aggregate>true</aggregate>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jxr-plugin</artifactId>
-          <configuration>
-            <aggregate>true</aggregate>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-pmd-plugin</artifactId>
-          <version>2.1</version>
-          <configuration>
-            <linkXref>true</linkXref>
-            <sourceEncoding>utf-8</sourceEncoding>
-            <minimumTokens>100</minimumTokens>
-            <targetJdk>1.5</targetJdk>
-            <excludes>
-              <exclude>**/*Test.java</exclude>
-              <exclude>**/package-info.java</exclude>
-              <exclude>org/accada/reader/rp/proxy/configurator/*.java</exclude>
-            </excludes>
-          </configuration>
-        </plugin>
-        <!--
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>findbugs-maven-plugin</artifactId>
-          <configuration>
-            <threshold>Low</threshold>
-            <effort>Default</effort>
-          </configuration>
-        </plugin>
-        -->
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>javancss-maven-plugin</artifactId>
-          <version>2.0-beta-2</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>taglist-maven-plugin</artifactId>
-        </plugin>
-      </plugins>
-    </reporting>
-
-
-
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <maxmemory>1024</maxmemory>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <linkXref>true</linkXref>
+          <sourceEncoding>utf-8</sourceEncoding>
+          <minimumTokens>100</minimumTokens>
+          <targetJdk>1.5</targetJdk>
+          <excludes>
+            <exclude>**/*Test.java</exclude>
+            <exclude>**/package-info.java</exclude>
+            <exclude>org/accada/reader/rp/proxy/configurator/*.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <!--
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <configuration>
+          <threshold>Low</threshold>
+          <effort>Default</effort>
+        </configuration>
+      </plugin>
+      -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>javancss-maven-plugin</artifactId>
+        <version>2.0-beta-2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
 
 
   <!-- =========================================================== -->
@@ -240,5 +234,6 @@
       <url>http://www.gnu.org/licenses/lgpl.txt</url>
     </license>
   </licenses>
+
 
 </project>
