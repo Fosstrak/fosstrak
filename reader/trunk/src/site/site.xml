@@ -12,7 +12,7 @@
    <links>
          <item name="Accada" href="../index.html" />
          <item name="Reader" href="/index.html"/>
-         <item name="Filtering&amp;Collection" href="../filteringCollection/index.html"/>
+         <item name="Filtering and Collection" href="../fc/index.html"/>
          <item name="EPCIS" href="../epcis/index.html"/>
          <item name="Tag Data Translation" href="../tdt/index.html"/>
     </links>
