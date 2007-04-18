@@ -30,9 +30,9 @@ import org.accada.reader.rprm.core.msg.command.TextLexer;
  */
 public class Context {
 	
-	private static final String COMMAND_PACKAGE = "org.accada.reader.msg.command";
-	private static final String REPLY_PACKAGE = "org.accada.reader.msg.reply";
-	private static final String NOTIFICATION_PACKAGE = "org.accada.reader.msg.notification";
+	private static final String COMMAND_PACKAGE = "org.accada.reader.rprm.core.msg.command";
+	private static final String REPLY_PACKAGE = "org.accada.reader.rprm.core.msg.reply";
+	private static final String NOTIFICATION_PACKAGE = "org.accada.reader.rprm.core.msg.notification";
 	
 	private static final String[] JAXB_PACKAGES = new String[]{COMMAND_PACKAGE, REPLY_PACKAGE, NOTIFICATION_PACKAGE};
 	

@@ -43,10 +43,10 @@ public class XmlMessageSerializer implements MessageSerializer {
 	// ====================================================================
 
 	/** String which defines the command package used for the JAXBContext. */
-	private static final String REPLY_PACKAGE = "org.accada.reader.msg.reply";
+	private static final String REPLY_PACKAGE = "org.accada.reader.rprm.core.msg.reply";
 
 	/** String which defines the command package used for the JAXBContext. */
-	private static final String NOTIFICATION_PACKAGE = "org.accada.reader.msg.notification";
+	private static final String NOTIFICATION_PACKAGE = "org.accada.reader.rprm.core.msg.notification";
 
 	/** The logger. */
 	static private Logger log;
