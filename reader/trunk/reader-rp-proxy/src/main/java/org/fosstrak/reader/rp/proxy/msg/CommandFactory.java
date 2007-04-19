@@ -1275,7 +1275,7 @@ public class CommandFactory {
 	private static String serializeCommand(Command cmd) {
 		
 		try {
-			JAXBContext ctx = JAXBContext.newInstance("org.accada.reader.msg.command");
+			JAXBContext ctx = JAXBContext.newInstance("org.accada.reader.rprm.core.msg.command");
 			Marshaller marshaller = ctx.createMarshaller();
 	        marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE );
 	        StringWriter sw = new StringWriter();

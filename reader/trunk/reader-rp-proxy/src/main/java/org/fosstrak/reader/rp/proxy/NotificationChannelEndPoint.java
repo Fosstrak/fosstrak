@@ -179,7 +179,7 @@ public class NotificationChannelEndPoint implements Runnable {
 		
 		Notification notification = null;
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance("org.accada.reader.msg.notification");
+			JAXBContext jaxbContext = JAXBContext.newInstance("org.accada.reader.rprm.core.msg.notification");
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			notification = (Notification)unmarshaller.unmarshal(new ByteArrayInputStream(data.substring(data.indexOf("<")).getBytes()));
 			

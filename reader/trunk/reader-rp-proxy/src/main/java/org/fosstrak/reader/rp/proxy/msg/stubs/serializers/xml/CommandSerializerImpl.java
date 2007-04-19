@@ -113,7 +113,7 @@ public class CommandSerializerImpl implements CommandSerializer {
 			command.setId(Integer.toString(id));
 
 			JAXBContext ctx = JAXBContext
-					.newInstance("org.accada.reader.msg.command");
+					.newInstance("org.accada.reader.rprm.core.msg.command");
 			Marshaller marshaller = ctx.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
 					Boolean.TRUE);
