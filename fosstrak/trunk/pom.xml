@@ -25,6 +25,21 @@
 
 
   <!-- =========================================================== -->
+  <!-- Plugins                                                     -->
+  <!-- =========================================================== -->
+
+  <build>
+    <extensions>
+      <extension>
+	    <groupId>org.apache.maven.wagon</groupId>
+	    <artifactId>wagon-webdav</artifactId>
+	    <version>1.0-beta-2</version>
+      </extension>
+    </extensions>
+  </build>
+
+
+  <!-- =========================================================== -->
   <!-- Infrastructure                                              -->
   <!-- =========================================================== -->
   
@@ -32,7 +47,7 @@
     <site>
       <id>accada-website</id>
       <name>Accada website</name>
-      <url>sftp://www.accada.org/local/home/accadaweb/public_html</url>
+      <url>dav:https://svn.accada.org/website/</url>
     </site>
   </distributionManagement>
 
