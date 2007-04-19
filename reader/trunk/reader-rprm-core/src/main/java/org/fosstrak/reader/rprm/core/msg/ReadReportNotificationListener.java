@@ -473,7 +473,7 @@ public class ReadReportNotificationListener implements NotificationListener {
 		StringWriter sw = new StringWriter();
 		Marshaller notificationMarshaller = null;
 		JAXBContext notificationContext = null;
-		String NOTIFICATION_PACKAGE = "org.accada.reader.msg.notification";
+		String NOTIFICATION_PACKAGE = "org.accada.reader.rprm.core.msg.notification";
 		org.accada.reader.rprm.core.msg.notification.ObjectFactory notificationFactory = new org.accada.reader.rprm.core.msg.notification.ObjectFactory();
 
 		try {
