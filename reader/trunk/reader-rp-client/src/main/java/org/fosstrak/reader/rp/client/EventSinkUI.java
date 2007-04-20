@@ -42,7 +42,7 @@ import javax.swing.JTextArea;
 
 public class EventSinkUI extends JFrame implements ActionListener {
 	
-	private static int DEFAULT_PORT = 9000;
+	private static int DEFAULT_PORT = 9999;
 	
 	private JTextArea inText;
 	
