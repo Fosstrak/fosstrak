@@ -75,6 +75,11 @@
   
   <dependencies>
     <dependency>
+      <groupId>org.accada.reader</groupId>
+      <artifactId>reader-hal</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
