@@ -1,0 +1,101 @@
+       ------
+                                    Reader RP/RM Core Module
+                                    ------
+                                    ------
+
+
+Reader RP/RM Core Module
+
+
+* Features  
+   
+   *  implements the EPCglobal Reader Protocol Version 1.1. and Reader Management in Java. Elements of the protocol implemented include:
+    
+    	*   Transport Binding: TCP and HTTP
+ 
+    	*   Message Binding: XML and Text
+    	
+    	*   Synchronous and Asynchronous Messaging (Notification Channels)
+    	
+    	*   Triggers
+    	
+    	*   Data Selectors
+    	
+    	*   SNMP Binding of RM 1.0
+    	
+   
+
+   *  supports readers from the following manufacturers as a surrogate (or in reader protocol terms as a concentrator).
+
+	*   Feig
+	
+	*   Hitachi
+	
+	*   Softronica
+	
+	these are currently not available for download. Contact us if you are interested.
+	
+   *  provides graphical RFID reader simulator and an extensive simulation framework.
+    
+
+* Usage Scenarios
+
+   *   Enable one-of-the-above readers that do not implement the EPCglobal Reader Protocol yet by deploying the software on a surrogate 
+   
+   *   Write your own wrapper for your reader and then leverage the filtering, event generation and messaging provided by our reader implementation
+           
+   *   Simulate a single reader via a graphical user interface 
+   
+   *   Simulate a network of hundred of readers using the simulation framework
+       
+   *   Embed our reader implementation in your reader 
+
+
+* User Documentation
+
+   *   {{{gettingStarted.html} Getting Started}}
+   
+   *   EPCglobal Reader Protocol Specification Version 1.1
+
+
+* Download
+
+   *   see {{{../download.html}download page}}
+   
+* System Requirements
+
+*---------------------+------+
+Java Virtual Machine | JDK 1.5 
+*---------------------+------+
+Operating System | No minimum requirement. Tested on Windows XP. 
+*---------------------+------+
+  
+    	
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
