@@ -11,7 +11,7 @@ import org.accada.reader.rprm.core.ReaderDevice;
 import org.accada.reader.rprm.core.ReaderProtocolException;
 import org.accada.reader.rprm.core.Source;
 import org.accada.reader.rprm.core.Source.ReaderAndReadPoints;
-import org.accada.reader.rprm.core.hal.HardwareAbstraction;
+import org.accada.reader.hal.HardwareAbstraction;
 import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
 import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
@@ -22,30 +22,30 @@ import org.apache.log4j.PropertyConfigurator;
  * Tests for the class <code>org.accada.reader.Source</code>.
  */
 public class SourceTest extends TestCase {
-	
+
 	private Source source;
 	HardwareAbstraction hal = null;
 	private ReadPoint readPoint1;
 	private ReadPoint readPoint2;
 	private ReadPoint readPoint3;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
+
 		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		source = Source.create("SourceTestSource", readerDevice);
 		ReadPoint[] readPoints = readerDevice.getAllReadPoints();
 		if (readPoints.length > 0) {
@@ -58,14 +58,14 @@ public class SourceTest extends TestCase {
 			source.addReadPoints(new ReadPoint[] { readPoint1, readPoint2, readPoint3 });
 		}
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
 	 */
 	protected final void tearDown() throws Exception {
 		super.tearDown();
-		
+
 		readerDevice.removeSources(new Source[] { source });
 		if (hal != null) {
 			readerDevice.getReadPoints().remove(readPoint1.getName());
@@ -73,7 +73,7 @@ public class SourceTest extends TestCase {
 			readerDevice.getReadPoints().remove(readPoint3.getName());
 		}
 	}
-	
+
 	/**
 	 * Tests the <code>getOperStatus()</code> method.
 	 */
@@ -106,27 +106,27 @@ public class SourceTest extends TestCase {
 			operStatus = OperationalStatus.UNKNOWN;
 		assertEquals(operStatus, source.getOperStatus());
 	}
-	
+
 	/**
 	 * Tests the <code>setAdminStatus()</code> method.
 	 */
 	public final void testSetAdminStatus() {
 		ReadPoint[] readPoints = source.getAllReadPoints();
 		AdministrativeStatus adminStatus;
-		
+
 		adminStatus = AdministrativeStatus.UP;
 		source.setAdminStatus(adminStatus);
 		for (int i = 0; i < readPoints.length; i++) {
 			assertEquals(adminStatus, readPoints[i].getAdminStatus());
 		}
-		
+
 		adminStatus = AdministrativeStatus.DOWN;
 		source.setAdminStatus(adminStatus);
 		for (int i = 0; i < readPoints.length; i++) {
 			assertEquals(adminStatus, readPoints[i].getAdminStatus());
 		}
 	}
-	
+
 	/**
 	 * Tests the <code>supportsWriteOperations()</code> method.
 	 */
@@ -147,25 +147,25 @@ public class SourceTest extends TestCase {
 			fail();
 		}
 	}
-	
+
 	/**
 	 * Tests the <code>resetCounters()</code> method.
 	 */
 	public final void testResetCounters() {
 		source.resetCounters();
-		
+
 		assertEquals(0, source.getUnknownToGlimpsedCount());
 		assertEquals(0, source.getGlimpsedToUnknownCount());
 		assertEquals(0, source.getGlimpsedToObservedCount());
 		assertEquals(0, source.getObservedToLostCount());
 		assertEquals(0, source.getLostToGlimpsedCount());
 		assertEquals(0, source.getLostToUnknownCount());
-		
+
 		assertEquals(0, source.getAntennaReadPointMemReadCount());
 		assertEquals(0, source.getAntennaReadPointWriteCount());
 		assertEquals(0, source.getAntennaReadPointKillCount());
 	}
-	
+
 	/**
 	 * Tests the <code>increaseOperStateSuppressions()</code> method.
 	 */
@@ -174,7 +174,7 @@ public class SourceTest extends TestCase {
 		source.increaseOperStateSuppressions();
 		assertEquals(value + 1, source.getOperStateSuppressions());
 	}
-	
+
 	/**
 	 * Tests the <code>resetOperStateSuppressions()</code> method.
 	 */
@@ -184,7 +184,7 @@ public class SourceTest extends TestCase {
 		source.resetOperStateSuppressions();
 		assertEquals(0, source.getOperStateSuppressions());
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -192,5 +192,5 @@ public class SourceTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(SourceTest.class);
     }
-	
+
 }

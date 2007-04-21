@@ -20,7 +20,6 @@
 
 package org.accada.reader.rprm.core;
 
-import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
@@ -34,18 +33,16 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.Vector;
 
-import org.accada.reader.rprm.core.hal.HardwareAbstraction;
-import org.accada.reader.rprm.core.hal.HardwareException;
-import org.accada.reader.rprm.core.hal.Observation;
-import org.accada.reader.rprm.core.hal.UnsupportedOperationException;
+import org.accada.reader.hal.HardwareAbstraction;
+import org.accada.reader.hal.UnsupportedOperationException;
+import org.accada.reader.hal.HardwareException;
+import org.accada.reader.hal.Observation;
 import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
 import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
 import org.accada.reader.rprm.core.mgmt.alarm.SourceOperStatusAlarm;
 import org.accada.reader.rprm.core.mgmt.alarm.TTOperationalStatusAlarmControl;
 import org.accada.reader.rprm.core.msg.MessagingConstants;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.GetTagField;
-import org.accada.reader.rprm.core.msg.util.HexUtil;
 import org.accada.reader.rprm.core.readreport.ReadReport;
 import org.accada.reader.rprm.core.readreport.ReaderInfoType;
 import org.accada.reader.rprm.core.readreport.SourceInfoType;
@@ -58,10 +55,7 @@ import org.accada.reader.rprm.core.triggers.IOValueTriggerPortManager;
 import org.accada.reader.rprm.core.triggers.TimerReadThread;
 import org.apache.log4j.Logger;
 import org.autoidlabs.tdt.TDTEngine;
-import org.autoidlabs.tdt.TDTException;
 import org.autoidlabs.tdt.types.LevelTypeList;
-import org.exolab.castor.xml.MarshalException;
-import org.exolab.castor.xml.ValidationException;
 
 /**
  * This class represents the Source of the object model.

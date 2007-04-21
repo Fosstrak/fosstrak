@@ -30,9 +30,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.accada.reader.rprm.core.hal.HardwareAbstraction;
-import org.accada.reader.rprm.core.hal.impl.sim.BatchSimulator;
-import org.accada.reader.rprm.core.hal.impl.sim.SimulatorController;
+import org.accada.reader.hal.HardwareAbstraction;
 import org.accada.reader.rprm.core.mgmt.IOPort;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
 import org.accada.reader.rprm.core.mgmt.agent.MgmtAgent;

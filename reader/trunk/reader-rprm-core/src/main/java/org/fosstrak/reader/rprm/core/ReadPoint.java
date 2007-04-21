@@ -20,7 +20,7 @@
 
 package org.accada.reader.rprm.core;
 
-import org.accada.reader.rprm.core.hal.HardwareAbstraction;
+import org.accada.reader.hal.HardwareAbstraction;
 import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
 import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
