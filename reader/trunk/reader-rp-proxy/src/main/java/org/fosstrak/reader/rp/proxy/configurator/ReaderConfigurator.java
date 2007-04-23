@@ -57,7 +57,7 @@ public class ReaderConfigurator {
 	private static final Logger LOG = Logger.getLogger(ReaderConfigurator.class);
 	
 	/** the jaxb context */
-	private static final String JAXB_CONTEXT = "org.accada.reader.rprm.core.proxy.configurator";
+	private static final String JAXB_CONTEXT = "org.accada.reader.rp.proxy.configurator";
 
 	/** the reader device to configurate */
 	private static ReaderDevice readerDevice;
