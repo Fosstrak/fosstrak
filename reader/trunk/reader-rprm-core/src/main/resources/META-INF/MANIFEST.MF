@@ -7,12 +7,13 @@ Extension-Name: reader-rprm-core
 Implementation-Title: reader-rprm-core
 Implementation-Version: 0.3.0
 Main-Class: org.accada.reader.rprm.core.msg.MessageLayer
-Class-Path: lib/relaxngDatatype-20020414.jar lib/isorelax-20020414.jar lib/log4j-1
- .2.12.jar lib/commons-logging-1.0.4.jar lib/commons-digester-1.5.jar lib/antlr-2.
- 7.6.jar lib/snmp4j-1.7.6.jar lib/commons-collections-3.0.jar lib/commons-beanutil
- s-bean-collections-1.7.0.jar lib/msv-20020414.jar lib/xercesImpl-2.2.1.jar lib/se
- rvlet-api-2.3.jar lib/castor-0.9.9.1.jar lib/commons-lang-2.0.jar lib/tdt-0.2.jar
-  lib/commons-configuration-1.1.jar lib/jsr173_api-1.0.jar lib/jaxb-impl-2.0EA3.ja
- r lib/jaxen-1.0-FCS.jar lib/activation-1.0.jar lib/commons-beanutils-1.6.jar lib/xml-
- apis-1.0.b2.jar lib/jaxb-api-2.0EA3.jar lib/commons-beanutils-core-1.7.0.jar 
- lib/dom4j-1.4.jar lib/saxpath-1.0-FCS.jar lib/snmp4j-agent-1.0.1.jar .
+Class-Path: lib/relaxngDatatype-20020414.jar lib/isorelax-20020414.jar lib/reader-
+ hal-0.3.0-SNAPSHOT.jar lib/log4j-1.2.12.jar lib/commons-logging-1.0.4.jar lib/com
+ mons-digester-1.5.jar lib/antlr-2.7.6.jar lib/snmp4j-1.7.6.jar lib/jaxb-api-2.0.j
+ ar lib/commons-collections-3.0.jar lib/jaxb-impl-2.0.1.jar lib/commons-beanutils-
+ bean-collections-1.7.0.jar lib/activation-1.1.jar lib/msv-20020414.jar lib/servle
+ t-api-2.3.jar lib/castor-0.9.9.1.jar lib/tdt-0.3.0.jar lib/commons-lang-2.0.jar lib/c
+ ommons-configuration-1.1.jar lib/jaxen-1.0-FCS.jar lib/jsr173_api-1.0.jar lib/com
+ mons-beanutils-1.6.jar lib/xml-apis-1.0.b2.jar lib/commons-beanutils-core-1.7
+ .0.jar lib/xercesImpl-2.4.0.jar lib/dom4j-1.4.jar lib/saxpath-1.0-FCS.jar lib/snmp4j-
+ agent-1.0.1.jar . lib
