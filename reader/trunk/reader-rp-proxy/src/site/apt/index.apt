@@ -46,7 +46,7 @@ Reader RP Proxy Module
 * System Requirements
 
 *---------------------+------+
-Java Virtual Machine | JDK 1.5 
+Java Virtual Machine | JDK 1.5 or higher 
 *---------------------+------+
 Operating System | No minimum requirement. Tested on Windows XP. 
 *---------------------+------+

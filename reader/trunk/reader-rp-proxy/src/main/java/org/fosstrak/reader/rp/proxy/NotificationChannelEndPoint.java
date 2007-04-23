@@ -38,7 +38,9 @@ import org.accada.reader.rprm.core.msg.notification.Notification;
 import org.apache.log4j.Logger;
 
 /**
- * This class listen to a notification channel of a reader and notify his subscribers about new notifications.
+ * The class provides the basic functionality to listen to notification messages from
+ * a reader via TCP and notify registered listeners. It acts as a end point for a 
+ * notification channel on a reader.
  * 
  * @author regli
  */
@@ -149,9 +151,10 @@ public class NotificationChannelEndPoint implements Runnable {
 	}
 	
 	/**
-	 * This method starts the notification channel end point.
+	 * This method starts the notification channel end point for testing purposes.
 	 * 
-	 * @param args command line arguments, which can contain the port number
+	 * @param args command line arguments, which can contain the port number. If the
+	 * port number is not given port 9000 is used.
 	 * @throws RPProxyException if something goes wrong while creating notification channel end point
 	 */
 	public static void main(String[] args) throws RPProxyException {
@@ -171,7 +174,8 @@ public class NotificationChannelEndPoint implements Runnable {
 	//
 	
 	/**
-	 * This method parses the data to a notification and notify all subscribers about the newly received notification.
+	 * This method parses a received notification message and notifies all
+	 * subscribers.
 	 * 
 	 * @param data string buffer with notification as string
 	 */
