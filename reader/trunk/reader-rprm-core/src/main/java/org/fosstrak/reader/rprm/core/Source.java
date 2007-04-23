@@ -54,8 +54,8 @@ import org.accada.reader.rprm.core.triggers.IOEdgeTriggerPortManager;
 import org.accada.reader.rprm.core.triggers.IOValueTriggerPortManager;
 import org.accada.reader.rprm.core.triggers.TimerReadThread;
 import org.apache.log4j.Logger;
-import org.autoidlabs.tdt.TDTEngine;
-import org.autoidlabs.tdt.types.LevelTypeList;
+import org.accada.tdt.TDTEngine;
+import org.accada.tdt.types.LevelTypeList;
 
 /**
  * This class represents the Source of the object model.
@@ -1300,7 +1300,7 @@ public final class Source {
       }
 
 
-   
+
 
    /**
     * Programs a tag with the given ID and the optionally specified passwords.
