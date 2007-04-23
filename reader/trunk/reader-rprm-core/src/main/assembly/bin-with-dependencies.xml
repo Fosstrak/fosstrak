@@ -27,11 +27,11 @@
           </includes>
     </fileSet>
     <fileSet>
-          <directory>src/main/resources/schemes</directory>
+          <directory>src/main/resources/props/schemes</directory>
           <outputDirectory>/props/schemes</outputDirectory>
     </fileSet>
     <fileSet>
-          <directory>src/main/resources/auxiliary</directory>
+          <directory>src/main/resources/props/auxiliary</directory>
           <outputDirectory>/props/auxiliary</outputDirectory>
     </fileSet>
   </fileSets>
