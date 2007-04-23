@@ -18,6 +18,22 @@
         <include>*.jar</include>
       </includes>
     </fileSet>
+    <fileSet>
+          <directory>src/main/resources/props</directory>
+          <outputDirectory>/props</outputDirectory>
+          <includes>
+	          <include>log4j.properties</include>
+	          <include>messaging.properties</include>
+          </includes>
+    </fileSet>
+    <fileSet>
+          <directory>src/main/resources/schemes</directory>
+          <outputDirectory>/props/schemes</outputDirectory>
+    </fileSet>
+    <fileSet>
+          <directory>src/main/resources/auxiliary</directory>
+          <outputDirectory>/props/auxiliary</outputDirectory>
+    </fileSet>
   </fileSets>
   <dependencySets>
     <dependencySet>
