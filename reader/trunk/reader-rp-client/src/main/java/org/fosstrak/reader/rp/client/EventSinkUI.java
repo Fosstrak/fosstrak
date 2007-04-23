@@ -50,13 +50,20 @@ public class EventSinkUI extends JFrame implements ActionListener {
 	
 	private int fontSize;
 	
+	private int port;
 	
-	public EventSinkUI() {
+	
+	public EventSinkUI(int port) {
 		super("Event Sink");
+		this.port = port;
 		fontSize = 12;
 		buildUI();
 	}
-	
+
+	public EventSinkUI() {
+		this(DEFAULT_PORT);
+	}
+
 	private void buildUI() {
 		this.setContentPane(getInputPanel());
 		
@@ -108,7 +115,7 @@ public class EventSinkUI extends JFrame implements ActionListener {
         inPane.setBorder(
                 BorderFactory.createCompoundBorder(
                     BorderFactory.createCompoundBorder(
-                                    BorderFactory.createTitledBorder("Waiting for notifications on port " + DEFAULT_PORT + "..."),
+                                    BorderFactory.createTitledBorder("Waiting for notifications on port " + port + "..."),
                                     BorderFactory.createEmptyBorder(5,5,5,5)),
                     inPane.getBorder()));
         
@@ -123,7 +130,7 @@ public class EventSinkUI extends JFrame implements ActionListener {
 	
 	public void run() {
 		try {
-			ServerSocket ss = new ServerSocket(DEFAULT_PORT);
+			ServerSocket ss = new ServerSocket(port);
 			while(true) {
 				Socket s = ss.accept();
 				DataInputStream in = new DataInputStream( s.getInputStream());
@@ -160,13 +167,23 @@ public class EventSinkUI extends JFrame implements ActionListener {
 		}
 	}
 	/**
-	 * @param args
+	 * starts the TCP GUI Testclient.
+	 * 
+	 * @param args the first command line parameter is the TCP port. if omitted port 9999 is used.
 	 */
 	public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //Create and set up the window.
-        EventSinkUI client = new EventSinkUI();
+        EventSinkUI client;
+        int port;
+        // check if args[0] is tcp-port
+        if (args.length == 1){
+        	port = Integer.parseInt(args[0]);
+            client = new EventSinkUI(port);
+        } else
+        	client = new EventSinkUI();
+        
+        // Set up the window.
         client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //Display the window.
