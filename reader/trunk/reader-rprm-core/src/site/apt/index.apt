@@ -9,7 +9,7 @@ Reader RP/RM Core Module
 
 * Features  
    
-   *  implements the EPCglobal Reader Protocol Version 1.1. and Reader Management in Java. Elements of the protocol implemented include:
+   *  implements the EPCglobal Reader Protocol Version 1.1. and Reader Management 1.0 in Java. Elements of the protocol implemented include:
     
     	*   Transport Binding: TCP and HTTP
  
@@ -53,7 +53,7 @@ Reader RP/RM Core Module
 * System Requirements
 
 *---------------------+------+
-Java Virtual Machine | JDK 1.5 
+Java Virtual Machine | JDK 1.5 or higher
 *---------------------+------+
 Operating System | No minimum requirement. Tested on Windows XP. 
 *---------------------+------+

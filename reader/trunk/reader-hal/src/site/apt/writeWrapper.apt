@@ -15,9 +15,11 @@ Reader HAL Module: Write your own Wrapper
    If you have a device that we do not support yet, you need to implement 
    this  {{{../apidocs/org/accada/reader/hal/HardwareAbstraction.html} HAL interface}} 
    so you can reuse all of the filtering, configuration, messaging, and configuration
-   functionality we implemented in the RP/RM Core. 
+   functionality we implemented in the Reader RP/RM Core. 
    
    The wrapper should be configure by a property file named after the 
    controller type. For a Feig reader, there should thus be a 
    FeigController.java implementing the HardwareAbstraction Interface 
    and a FeigControllerProperties.properties file that is used to configure the reader.
+   The wrapper that is dynamically loaded into the Reader RP/RM Core is 
+   specified in the ReaderDevice.properties file of the Reader RP/RM Core.
