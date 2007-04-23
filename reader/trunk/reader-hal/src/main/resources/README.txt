@@ -1,14 +1,14 @@
 
-Accada Reader Hardware Abstraction Layer
-=================
+Accada Reader Hardware Abstraction Layer (HAL)
+==============================================
 
 The objective of the Accada Reader HAL Module is to provide an interface and the appropriate wrapper implementations to communicate with reader devices that do not implement any of the standardized interfaces (such as RP, LLRP, and ALE yet). 
 
 In the current version, the Reader HAL Module features a simulation framework only. In the next release, we will include support for a number of different readers with proprietary interfaces.
 
 
-How to use the reader hal module
-==================
+How to use the Reader HAL
+=========================
 
 - Include as a dependency (by default, it is configured as a dependency in the reader-rprm-core already)
 

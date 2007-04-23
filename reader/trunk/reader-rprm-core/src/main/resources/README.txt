@@ -1,5 +1,5 @@
 Accada Reader
-=================
+=============
 
 The objective of the Accada Reader Module is to provide an implementation
 of the EPCglobal Reader Protocol 1.1 (RP) and Reader Management Specification 1.0 (RM).
@@ -14,8 +14,8 @@ The elements of the protocol implemented include:
 Existing non-RP/RM RFID readers can be integrated into the Accada Reader using the 
 Accada Reader Hardware Abstraction Layer (see Accada Reader HAL module).
 
-How to use Accada Reader
-==================
+How to use the Accada Reader
+============================
 
 - Download the reader binaries with the dependencies included from the download section of the website.
 - Unzip the downloaded file

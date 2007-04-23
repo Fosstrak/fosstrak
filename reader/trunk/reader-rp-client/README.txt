@@ -1,14 +1,14 @@
 
 Accada Reader Client
-=================
+====================
 
 The objective of the Accada Reader Client Module is to provide Java Swing based
 test clients to execute Reader Protocoll (RP) commands on a RFID reader that
 implements the RP.
 
 
-How to use the reader client
-==================
+How to use the Reader Client
+============================
 
 Unpack the zip file 'reader-rp-client-x.x.x-bin-with-dependencies.zip' and execute
 the class 'org.accada.reader.rp.client.TestClient' in the jar file. In order to be
