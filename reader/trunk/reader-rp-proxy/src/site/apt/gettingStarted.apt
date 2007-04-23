@@ -214,7 +214,7 @@ The corresponding properties ("ReaderDeviceConfiguration.xml") file looks like t
 +---
 
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../ReaderDeviceConfiguration.xsd">
+<configurationDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ReaderDeviceConfiguration.xsd">
 	<readerDeviceConfiguration>
 	
 		<!-- reader configuration -->
@@ -241,14 +241,16 @@ The corresponding properties ("ReaderDeviceConfiguration.xml") file looks like t
 		<dataSelectors>
 			<dataSelector name="DataSelector">
 				<eventFilters>
-					<eventFilter>evNew</eventFilter>
+					<eventFilter>evObserved</eventFilter>
+					<eventFilter>evLost</eventFilter>
 				</eventFilters>
 				<fieldNames>
-					<fieldName>allEvent</fieldName>
+					<fieldName>eventType</fieldName>
+					<fieldName>readerName</fieldName>
+					<fieldName>tagID</fieldName>
+					<fieldName>tagIDasPureURI</fieldName>
+					<fieldName>sourceName</fieldName>
 				</fieldNames>
-				<tagFields>
-					<tagField>tagId</tagField>
-				</tagFields>
 			</dataSelector>
 		</dataSelectors>
 
@@ -278,6 +280,7 @@ The corresponding properties ("ReaderDeviceConfiguration.xml") file looks like t
 		
 	</readerDeviceConfiguration>
 </configurationDocument>
+
 +---
 
 

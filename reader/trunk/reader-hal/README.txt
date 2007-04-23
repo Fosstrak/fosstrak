@@ -14,3 +14,4 @@ How to use the reader hal module
 
 - Use the appropriate configuration files to configure the reader device (or the reader simulator) (The jar includes a number of example config files for the simulator: SimulatorController.properties). these are expected in a directory of the classphath named props. The main property file needs to be named after the controller class, e.g. SimulatorControllerProperties.properties for a controller named SimulatorController.
 
+For more information,  please see http://www.accada.org/reader/reader-hal/
