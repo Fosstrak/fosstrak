@@ -1,30 +1,16 @@
 
-Overview Accada Reader 
+Accada Reader Hardware Abstraction Layer
 =================
 
-This directory contains a demo of the Accada Reader Project. The objective of the Accada Reader Project is to implement the reader role in the EPC Network and to develop the appropriate tools that facilitate communication with the reader instance.
+The objective of the Accada Reader HAL Module is to provide an interface and the appropriate wrapper implementations to communicate with reader devices that do not implement any of the standardized interfaces (such as RP, LLRP, and ALE yet). 
 
-This version of the Accada Reader implements the EPCglobal Reader Protocol and Reader Management Specification and uses a graphical user interface to simulate tag reads and errors.
-
-The Accada Reader is part of the Accada Open Source RFID prototyping platform that implements the EPC Network specifications. At www.accada.org, there is also software available that implements the ALE, TDT, and EPCIS specification of EPCglobal.
+In the current version, the Reader HAL Module features a simulation framework only. In the next release, we will include support for a number of different readers with proprietary interfaces.
 
 
-Installing and Running the Accada Reader Simulator 
+How to use the reader hal module
 ==================
 
-The following instructions show how to install and run the Accada Reader Simulator:
+- Include as a dependency (by default, it is configured as a dependency in the reader-rprm-core already)
 
-1) Make sure there is a Java Runtime Environemnt (JRE) 1.5 installed on your computer and added to the path variable. Otherwise download JRE1.5 from http://java.sun.com/javase/downloads/index_jdk5.jsp
-
-2) Click on the Accada-Reader.jar icon in the Accada-Reader folder. This starts the Accada Reader Simulator. A window should pop up, which shows pictures of a reader and four antennas.
-
-The reader is also listening for incoming http requests on port 8000 and incoming tcp requests on port 5566. The reader also listens to incoming SNMP requests on port 161. 
-
-3) Click on the Accada-DemoApp.jar icon in the Accada-DemoApp folder. This starts a demo application that connects to the  virtual reader started in the previous step. Note that the connection procedure takes as much as 15 seconds and the window will only appear, once the connection is established.
-
-4) You can now go back to the simulator user interface, generate a tag by right clicking, and then drag-and-drop this tag across antennas. The tag movements are then communicated via the RP to the DemoApp which you started in step 3. 
-
-To evaluate the reader management functionality, you will need to use a SNMP manager tool such as MIB Explorer.
-
-For more information, on how to use the Accada Reader and how to configure the reader instance, please see http://www.accada.org/reader. There is also a flash demo in the "Info about Accada" folder.
+- Use the appropriate configuration files to configure the reader device (or the reader simulator) (The jar includes a number of example config files for the simulator: SimulatorController.properties). these are expected in a directory of the classphath named props. The main property file needs to be named after the controller class, e.g. SimulatorControllerProperties.properties for a controller named SimulatorController.
 
