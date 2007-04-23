@@ -72,12 +72,13 @@
             <artifactId>maven-jar-plugin</artifactId>  
             <configuration>
                    <archive>
-                   <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+                  <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>   
                    <!-- TODO is the classpath really required here ? -->
-                   <!--   
+                   <!-- MAKE SURE YOU ADJUST THE ABOVE MANIFEST IF YOU ADD/CHANGE DEPENDENCIES -->
+                   <!--  
                      <manifest>
                        <addClasspath>true</addClasspath> 
-                     </manifest>-->
+                     </manifest> -->
              </archive>
              </configuration>
           </plugin>
