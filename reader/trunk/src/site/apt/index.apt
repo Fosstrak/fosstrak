@@ -16,13 +16,16 @@ Welcome to the Accada Reader Project
 
 [images/ReaderProjectOverview.png]
 
-    The Reader Project currently comprises three separate modules:	
+    The Reader Project currently comprises four separate modules:	
 
    *   the Reader RP/RM Core that implements the EPCglobal Reader Protocol and Reader Management Specification 
 
    *   the Reader RP Proxy (host) 
    
    *   the Reader RP Client 
+   
+   *   the Reader HAL - an abstraction layer that implements a reader simulator and wrappers for proprietary reader interfaces
+	
    
 
     

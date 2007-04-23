@@ -23,30 +23,18 @@ Reader RP/RM Core Module
     	
     	*   SNMP Binding of RM 1.0
     	
-   
-
-   *  supports readers from the following manufacturers as a surrogate (or in reader protocol terms as a concentrator).
-
-	*   Feig
-	
-	*   Hitachi
-	
-	*   Softronica
-	
-	these are currently not available for download. Contact us if you are interested.
-	
-   *  provides graphical RFID reader simulator and an extensive simulation framework.
+  
     
 
 * Usage Scenarios
 
-   *   Enable one-of-the-above readers that do not implement the EPCglobal Reader Protocol yet by deploying the software on a surrogate 
+   *   Enable one-of-the-above readers that do not implement the EPCglobal Reader Protocol yet by deploying this module together with the reader HAL module on a surrogate 
    
-   *   Write your own wrapper for your reader and then leverage the filtering, event generation and messaging provided by our reader implementation
+   *   Write your own HAL wrapper for your reader and then leverage the filtering, event generation and messaging provided by our reader implementation
            
-   *   Simulate a single reader via a graphical user interface 
+   *   Simulate a single reader via a graphical user interface (using the reader HAL module)
    
-   *   Simulate a network of hundred of readers using the simulation framework
+   *   Simulate a network of hundred of readers using the simulation framework (using the reader HAL module)
        
    *   Embed our reader implementation in your reader 
 

@@ -7,7 +7,7 @@
 
 Download 
 
-    The current version of Accada Filtering and Collection is 0.3.0.
+    The current version of Accada Reader is 0.3.0.
 
 * Reader RP/RM Core
 
@@ -36,6 +36,16 @@ Download
  Package | Binaries | Source
 *---------------------+------+------+
  Reader RP Client 0.3.0  | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.3.0/reader-rp-client-0.3.0-bin-with-dependencies.zip }reader-rp-client-0.3.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.3.0/reader-rp-client-0.3.0-src.zip }reader-rp-client-0.3.0-src.zip}}
+*---------------------+------+------+
+
+
+* Reader HAL
+
+
+*---------------------+------+------+
+ Package | Binaries | Source
+*---------------------+------+------+
+ Reader HAL 0.3.0  | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-hal/0.3.0/reader-hal-0.3.0-bin-with-dependencies.zip }reader-hal-0.3.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-hal/0.3.0/reader-hal-0.3.0-src.zip }reader-hal-0.3.0-src.zip}}
 *---------------------+------+------+
 
 

@@ -1,0 +1,60 @@
+       ------
+                                    Reader HAL Module
+                                    ------
+                                    ------
+
+
+Reader HAL Module: Getting Started
+
+
+   The Reader HAL Module cannot be used by itself. Its use is currently envisioned together with the Reader RP/RM Core. The RP/RM Core provides all of the filtering, aggregation, messaging, and configuration capabilities specified in the EPCglobal RP and RM specifications. To carry out the actual commands on a physical device or a simulator, the Reader RP/RM Core uses the interface and implementation provided by the reader HAL module.
+   
+   
+   
+   
+* How to use the reader hal module
+
+    * Include as a dependency (by default, it is configured as a dependency in the reader-rprm-core already)
+
+    * Use the appropriate configuration files to configure the reader device (or the reader simulator) (The jar includes a number of example config files for the simulator: SimulatorControllerProperties.properties and GraphicSimulator.properties). 
+    
+    These are expected in a directory of the classphath named props. The main property file needs to be named after the controller class, e.g. SimulatorControllerProperties.properties for a controller named SimulatorController. It also important that the entries in the controller property file agree with the settings in the ReaderDevice.properties file of the RP/RM Core.
+
+
+   
+    
+
+    
+
+
+	
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

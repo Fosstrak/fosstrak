@@ -6,13 +6,15 @@
 
 Features
 
-    The Reader Project comprises three separate modules:
+    The Reader Project comprises four separate modules:
 
         *   the Reader RP/RM Core that implements the EPCglobal Reader Protocol and Reader Management Specification 
        
         *   the Reader RP Proxy (host) 
         
         *   the Reader RP Client 
+        
+        *   the Reader HAL - an abstraction layer that implements a reader simulator and wrappers for proprietary reader interfaces
 	
    
     
@@ -37,7 +39,7 @@ Features
    
    
 
-*   Reader RP/RM Core Features
+*   Reader HAL Features
 
     The Reader module currently supports readers from the following manufacturers as a surrogate (or in reader protocol terms as a concentrator).
 
