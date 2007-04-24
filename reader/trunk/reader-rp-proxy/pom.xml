@@ -37,13 +37,11 @@
         <groupId>org.apache.maven.plugins</groupId>
          <artifactId>maven-jar-plugin</artifactId>  
          <configuration>
-                <archive>
-                <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
-                <!-- TODO is the classpath really required here ? -->
-                <!--   
+                <archive>  
                   <manifest>
-                    <addClasspath>true</addClasspath> 
-                  </manifest>-->
+		    <addClasspath>true</addClasspath>
+                    <classpathPrefix>./lib</classpathPrefix>
+                  </manifest>
           </archive>
           </configuration>
        </plugin>
