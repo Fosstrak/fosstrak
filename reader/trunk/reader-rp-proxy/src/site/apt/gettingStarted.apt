@@ -27,7 +27,7 @@ Reader RP Proxy Module: Getting Started
     
 ** Configure the reader yourself with a series of Java method calls
 
-    * Implement the following example ({{{example/ReaderProxyExample.java} ReaderProxyExample.java}}).  
+    Implement the following example ({{{example/ReaderProxyExample.java} ReaderProxyExample.java}}).  
 
      This example requires that there is a reader running that supports the HTTP/XML transport message binding of the Reader Protocol available at localhost:8000. If these settings are incorrect for your setup, you will need to adjust the following variables:
         
@@ -183,7 +183,7 @@ public class ReaderNotificationChannelListener implements NotificationChannelLis
 
 ** Configure the reader with our configuration engine and the corresponding properties file
 
-    * Implement the following example 
+    Implement the following example 
     
 +---
 
