@@ -35,16 +35,12 @@
         <groupId>org.apache.maven.plugins</groupId>
          <artifactId>maven-jar-plugin</artifactId>  
          <configuration>
-                <archive>
-                   <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>   
-                <!-- TODO once there is a way to adjust classpath to a /lib dir -->
-                <!-- MAKE SURE YOU ADJUST THE ABOVE MANIFEST IF YOU ADD/CHANGE DEPENDENCIES -->
-                <!--   
+                <archive>  
                   <manifest>
-                    <mainClass>org.accada.reader.msg.MessageLayer</mainClass>
+                    <mainClass>org.accada.reader.rprm.core.msg.MessageLayer</mainClass>
                     <addClasspath>true</addClasspath>
-                     
-                  </manifest>-->
+                    <classpathPrefix>./lib</classpathPrefix>
+                  </manifest>
           </archive>
           </configuration>
        </plugin>
