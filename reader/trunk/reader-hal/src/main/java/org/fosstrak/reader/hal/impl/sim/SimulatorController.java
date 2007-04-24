@@ -105,9 +105,6 @@ public class SimulatorController implements HardwareAbstraction {
 	 */
 	private HashMap reader;
 	
-	/** the polling frequency */
-	private long frequency;
-	
 	/**
 	 * Contains the names of all read points that are ready.
 	 */
@@ -203,8 +200,6 @@ public class SimulatorController implements HardwareAbstraction {
 		
 		//sets the parameters according to the properties file
 		try{
-			frequency = Long.parseLong(props.getParameter("frequency"));
-			
 			simType = props.getParameter("simType");
 			
 			nOfReadPoints = Integer.parseInt(props.getParameter("numberOfReadPoints"));

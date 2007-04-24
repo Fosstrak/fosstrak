@@ -21,40 +21,95 @@ Reader HAL Module: Getting Started
     These are expected in a directory of the classphath named props. The main property file needs to be named after the controller class, e.g. SimulatorControllerProperties.properties for a controller named SimulatorController. It also important that the entries in the controller property file agree with the settings in the ReaderDevice.properties file of the RP/RM Core.
 
 
-   
-    
 
-    
+* How to configure the Simulator
 
+   The simulator framework (i.e. the SimulatorController implementation) has a properties file
+   ({{{example/SimulatorController.properties} SimulatorController.properties}}) as shown below.
+   The property simType has to be set to the fully qualified name of the simulator class. In the
+   current release only the GraphicSimulator is supported. The property numberOfReadPoints specifies
+   the number of read points (i.e. antennas) of the simulator. The read point names are set using the
+   properties readPoint_n, with n as the read point number.
 
-	
-    
++---
 
-   
+##########################################################
+#     ACCADA READER PROTOCOL SIMULATOR PROPERTIES        #
+##########################################################
 
+## SimulatorType to be loaded dynamically
+ # State the full package path
+ # currently only the GraphicSimulator is supported
+simType = org.accada.reader.hal.impl.sim.GraphicSimulator
 
+##
+ # Read point definition
+ # numberOfReadPoints specifies the number of sources...
+ #
+ # Read points are numbered according to the following convention:
+ # readPoint_1
+ # readPoint_2
+ #    ...
+ # readPoint_n
+ #
+ # For the read point choose a name what ever you want. The client has to use the same names to address this read points.
+numberOfReadPoints=4
+readPoint_1=Shelf1
+readPoint_2=Shelf2
+readPoint_3=Shelf3
+readPoint_4=Shelf4
 
++---
 
+   The concrete simulator implementation (in our case the GraphicSimulator) itself has a property file to set specific parameters.
+   The name of the property file for the GraphicSimulator is GraphicSimulator.properties
+   ({{{example/GraphicSimulator.properties} GraphicSimulator.properties}}) as shown below.
+   The layout, text and images of the GraphicSimulator can be adjusted by the different properties.
+   The property Language is used to load the texts of the GUI components. The filename is constructed
+   by adding the value of the Language property to GUIText_ and appending .properties (in our case
+   GUIText_en.properties). The other properties set the image, fonts and dimensions of the GUI components
+   of the GraphicSimulator.
+      
++---
+# language
+Language = en
 
+# rfid reader
+ReaderImage = /images/rfid-reader.png
+ReaderWidth = 141
+ReaderHeight = 100
+ReaderLabelSize = 10
+ReaderLabelFont = Verdana
 
+# rfid antenna
+AntennasPerRow = 4
+AntennaImage = /images/rfid-antenna_0.png
+#AntennaImage = /images/rfid-antenna_1.png
+#AntennaImage = /images/rfid-antenna_2.png
+AntennaLabelFont = Verdana
+AntennaLabelSize = 10
+AntennaWidth = 100
+AntennaHeight = 110
+HorizontalInterAntennaPadding = 120
+VerticalInterAntennaPadding = 60
 
+# rfid tag
+TagImage = /images/rfid-tag.png
+TagLabelFont = Verdana
+TagLabelSize = 10
+TagWidth = 100
+TagHeight = 20
+InterTagPadding = 10
+#TagPrefix = A1B4F537D3
+TagPrefix = 9204F0004B0
 
+# paddings
+FramePadding = 50
+HorizontalPadding = 50
+VerticalPadding = 50
 
+# Dialog Windows
+DialogWindowWidth = 800
+DialogWindowHeight = 120
++---
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
- 
-
- 
- 
- 
- 
