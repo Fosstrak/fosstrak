@@ -41,40 +41,14 @@ Reader RP Client Module: Getting Started
 
 
 
+* Display Notification Messages
 
-    
-    
+   * Start the class org.accada.reader.rp.client.EventSinkUI in the jar file with the
+     following command:
 
+     java -cp reader-rp-client-VERSION.jar org.accada.reader.rp.client.EventSinkUI [port]
 
+   * As the port use the TCP port to which the reader is sending the notification messages
+     which is specified in the definition of the notification channel. The default port 9999.
 
-	
-    
-
-   
-
-
-
-
-
-
-
-
-
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
- 
-
- 
- 
- 
- 
+[../images/EventSinkUIScreenshot.jpg]

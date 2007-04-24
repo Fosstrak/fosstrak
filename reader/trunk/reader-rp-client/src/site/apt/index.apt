@@ -29,7 +29,7 @@ Reader RP Client Module
 * Usage Scenario
 
    *   Communicate with a reader via the EPCglobal Reader Protocol Version 1.1 using a graphical front end to create and send commands. 
-
+   *   Receive and display notification messages from a reader.
 
 * User Documentation
 
