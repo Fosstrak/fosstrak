@@ -29,19 +29,18 @@ Reader RP/RM Core Module: Getting Started
    
    You might also want to consider unpacking the jar and adjusting the settings in the ReaderDevice.properties file (see below).
    
-   We will soon add information on how to configure the reader instance to use with different readers.
-   
-    
+
 * Configure Reader
 
-  
-   
-   ({{{example/messaging.properties} messaging.properties}})
+  The reader can be configured by setting properties in the two property files messaging.properties and ReaderDevice.properties.
+  Properties of the messaging layer of the reader are set in the file  
+  {{{example/messaging.properties} messaging.properties}} (see below). The properties tcpServerConnection and tcpPort specify 
+  if the command channel via TCP is active and which port the reader is listening for incoming TCP connections. Likewise, the properties
+  httpServerConnection and httpPort define if the HTPP command channel is active and which port is used. The property 
+  notificationListenTimeout sets the time in ms a notification connection waits in listen mode. The properties threadPoolSize,
+  startPattern and stopPattern must not be changed to ensure correct operation of the reader.
 
 +---
-
-# ----- Thread Pool -----
-threadPoolSize = 16
 
 # ----- TCP Properties -----
 tcpServerConnection = true
@@ -51,29 +50,41 @@ tcpPort = 5566
 httpServerConnection = true
 httpPort = 8000
 
-# ----- Message Properties -----
-startPattern = <command xmlns="urn:epcglobal:rp:xsd:1">
-stopPattern =  </command>
-
 # Time in ms a notification connection waits in listen mode
 # A timeout of zero is interpreted as an infinite timeout. 
 notificationListenTimeout = 30000
 
+# ----- Message Properties -----
+startPattern = <command xmlns="urn:epcglobal:rp:xsd:1">
+stopPattern =  </command>
+
+# ----- Thread Pool -----
+threadPoolSize = 16
+
 +---
 
-
-   ({{{example/ReaderDevice.properties} ReaderDevice.properties}})
-
-
+  The reader specific properties such as readpoints, sources, triggers, and reader management information can be set
+  in the file {{{example/ReaderDevice.properties} ReaderDevice.properties}} (see below). 
+  The information about the reader are properties describing the reader including the epc, name and manufacturer
+  of the reader. The properties maxSourceNumber, maxTagSelectorNumber and maxTriggerNumber set a limit for the number
+  of sources, tag selectors and triggers which a client can define. In the reader section the different instances
+  of the hardware abstraction layer with their read points are given. In this case the SimulatorController is used 
+  with the four read points Shelf1, Shelf2, Shelf3 and Shelf4 which correspond with four antennas of the 
+  simulated reader. The sources of the reader are specified by their name and the read points through which they
+  acquire the RFID data. In our example the reader has four sources wheras each source has one read point that
+  has the same name as the source. In another reader setting one source could have more than one read point.
+  If the reader provides IO edge triggers or IO value triggers the classes that implement the functionalities to 
+  access the IO ports are specified by the two properties IOEdgeTriggerPortManager and IOValueTriggerPortManager.
+  
+  The remaining properties define the information used for the reader management of the reader. The properties
+  description, locationDescription, contact and serialNumber specify additional information about the reader.
+  The SNMP agent is specified by the properties mgmtAgentType, mgmtAgentAddress, mgmtAgentPort, macAddress and
+  mgmtSimulatorStart. Alarm channels can be defined using the properties alarmChannels.
+  
 +---
 
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
-	<!-- The location of the simulation file -->
-		<simFileLocation>props/Simulation_mt.properties</simFileLocation>
-	<!-- End -->  
-
-	
 	<!-- Information about the reader -->
 	   	<epc>ReaderEPC</epc>
 	   	<name>MyReader</name>
