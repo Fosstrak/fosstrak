@@ -24,31 +24,31 @@ import org.snmp4j.agent.mo.snmp.SnmpTargetMIB;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.SnmpTargetAddrRowStatusListener</code>.
  */
 public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
-	
+
 	private SnmpTargetAddrRowStatusListener rowStatusListener;
 	private ReaderDevice readerDevice;
 	private SnmpAgent snmpAgent;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		snmpAgent = SnmpAgent.getInstance();
-		
+
 		rowStatusListener = new SnmpTargetAddrRowStatusListener(readerDevice);
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -56,7 +56,7 @@ public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>rowStatusChanged()</code> method.
 	 */
@@ -85,9 +85,9 @@ public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 			}
 		}
 		assertNotNull(row);
-		
+
 		RowStatusEvent event;
-		
+
 		try {
 			readerDevice.getAlarmChannel(alarmChan.getName());
 		} catch (ReaderProtocolException rpe) {
@@ -101,7 +101,7 @@ public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 		} catch (ReaderProtocolException rpe) {
 			// ok
 		}
-		
+
 		event = new RowStatusEvent(row, null, row, null, RowStatus.destroy, RowStatus.active);
 		rowStatusListener.rowStatusChanged(event);
 		try {
@@ -109,7 +109,7 @@ public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 		} catch (ReaderProtocolException rpe) {
 			fail();
 		}
-		
+
 		event = new RowStatusEvent(row, null, row, null, RowStatus.active, RowStatus.destroy);
 		rowStatusListener.rowStatusChanged(event);
 		try {
@@ -118,7 +118,7 @@ public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 		} catch (ReaderProtocolException rpe) {
 			// ok
 		}
-		
+
 		event = new RowStatusEvent(row, null, row, null, RowStatus.destroy, RowStatus.createAndGo);
 		rowStatusListener.rowStatusChanged(event);
 		try {
@@ -126,7 +126,7 @@ public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 		} catch (ReaderProtocolException rpe) {
 			fail();
 		}
-		
+
 		event = new RowStatusEvent(row, null, row, null, RowStatus.active, RowStatus.destroy);
 		rowStatusListener.rowStatusChanged(event);
 		try {
@@ -136,7 +136,7 @@ public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 			// ok
 		}
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -144,5 +144,5 @@ public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(SnmpTargetAddrRowStatusListenerTest.class);
     }
-	
+
 }

@@ -13,39 +13,39 @@ import org.apache.log4j.PropertyConfigurator;
  * Tests for the class <code>org.accada.reader.Trigger</code>.
  */
 public class TriggerTest extends TestCase {
-	
+
 	private Trigger trigger;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		trigger = Trigger.create("TriggerTestTrigger", TriggerType.TIMER, "ms=2500", readerDevice);
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
 	 */
 	protected final void tearDown() throws Exception {
 		super.tearDown();
-		
+
 		readerDevice.removeTriggers(new Trigger[] { trigger });
 	}
-	
+
 	/**
 	 * Tests the <code>resetFireCount()</code> method.
 	 */
@@ -55,7 +55,7 @@ public class TriggerTest extends TestCase {
 		trigger.resetFireCount();
 		assertEquals(0, trigger.getFireCount());
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -63,5 +63,5 @@ public class TriggerTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(TriggerTest.class);
     }
-	
+
 }

@@ -24,30 +24,30 @@ import org.snmp4j.smi.Integer32;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow</code>.
  */
 public class EpcgGlobalCountersTableRowTest extends TestCase {
-	
-	
+
+
 	private SnmpTable table;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		table = (SnmpTable) SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_GLOBAL_COUNTERS_TABLE);
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -55,21 +55,21 @@ public class EpcgGlobalCountersTableRowTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>getValue()</code> method.
 	 */
 	public final void testGetValue() {
 		ReadPoint[] readPoints;
 		Source[] sources;
-		
+
 		Iterator iter = table.getModel().iterator();
 		while (iter.hasNext()) {
 			int value = 0;
 			EpcgGlobalCountersTableRow row = (EpcgGlobalCountersTableRow) iter.next();
 			CounterType type = CounterType.intToEnum(Integer.parseInt(row.getIndex().toString()));
 			switch (type) {
-				
+
 				case ANTENNA_TAGS_IDENTIFIED:
 					readPoints = readerDevice.getAllReadPoints();
 					for (int i = 0; i < readPoints.length; i++) {
@@ -241,16 +241,16 @@ public class EpcgGlobalCountersTableRowTest extends TestCase {
 						}
 					}
 					break;
-				
+
 			}
 			if (!new Integer32(value).equals(row.getValue(EpcglobalReaderMib.idxEpcgGlobalCountersData))) {
 				System.out.println(type);
 			}
 			assertEquals(new Integer32(value), row.getValue(EpcglobalReaderMib.idxEpcgGlobalCountersData));
-			
+
 		}
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -258,5 +258,5 @@ public class EpcgGlobalCountersTableRowTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(EpcgGlobalCountersTableRowTest.class);
     }
-	
+
 }

@@ -12,29 +12,29 @@ import org.apache.log4j.PropertyConfigurator;
  * Tests for the class <code>org.accada.reader.mgmt.IOPort</code>.
  */
 public class IOPortTest extends TestCase {
-	
+
 	private IOPort ioPort;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		ioPort = new IOPort("IOPortTestIOPort");
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -42,7 +42,7 @@ public class IOPortTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>increaseOperStateSuppressions()</code> method.
 	 */
@@ -51,7 +51,7 @@ public class IOPortTest extends TestCase {
 		ioPort.increaseOperStateSuppressions();
 		assertEquals(value + 1, ioPort.getOperStateSuppressions());
 	}
-	
+
 	/**
 	 * Tests the <code>resetOperStateSuppressions()</code> method.
 	 */
@@ -61,7 +61,7 @@ public class IOPortTest extends TestCase {
 		ioPort.resetOperStateSuppressions();
 		assertEquals(0, ioPort.getOperStateSuppressions());
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -69,5 +69,5 @@ public class IOPortTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(IOPortTest.class);
     }
-	
+
 }

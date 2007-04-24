@@ -22,53 +22,53 @@ import org.snmp4j.smi.Variable;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.EpcgTriggerTableRow</code>.
  */
 public class EpcgTriggerTableRowTest extends TestCase {
-	
-	
+
+
 	private SnmpTableRow row;
-	
+
 	private Trigger trigger;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		trigger = Trigger.create("EpcgTriggerTableRowTestTrigger", TriggerType.CONTINUOUS, "", readerDevice);
-		
+
 		row = SnmpTableRow.getSnmpTableRow(new RowObjectContainer(TableTypeEnum.EPCG_TRIGGER_TABLE, new Object[] { trigger }));
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
 	 */
 	protected final void tearDown() throws Exception {
 		super.tearDown();
-		
+
 		readerDevice.removeTriggers(new Trigger[] { trigger });
 	}
-	
+
 	/**
 	 * Tests the <code>getValue()</code> method.
 	 */
 	public final void testGetValue() {
 		Variable value;
-		
+
 		value = row.getValue(EpcglobalReaderMib.idxEpcgTrigName);
 		assertEquals(new OctetString(trigger.getName()), value);
-		
+
 		value = row.getValue(EpcglobalReaderMib.idxEpcgTrigType);
 		int triggerTypeInt;
 		String type = trigger.getType();
@@ -79,17 +79,17 @@ public class EpcgTriggerTableRowTest extends TestCase {
 		else if (type.equals(TriggerType.VENDOR_EXTENSION)) triggerTypeInt = 5;
 		else triggerTypeInt = 0;
 		assertEquals(new Integer32(triggerTypeInt), value);
-		
+
 		value = row.getValue(EpcglobalReaderMib.idxEpcgTrigParameters);
 		assertEquals(new OctetString(trigger.getValue()), value);
-		
+
 		value = row.getValue(EpcglobalReaderMib.idxEpcgTriggerMatches);
 		assertEquals(new Gauge32(trigger.getFireCount()), value);
-		
+
 		value = row.getValue(EpcglobalReaderMib.idxEpcgTrigIoPort);
 		assertEquals(new OID("0.0"), value); // we don't associate triggers with IOPorts
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -97,5 +97,5 @@ public class EpcgTriggerTableRowTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(EpcgTriggerTableRowTest.class);
     }
-	
+
 }

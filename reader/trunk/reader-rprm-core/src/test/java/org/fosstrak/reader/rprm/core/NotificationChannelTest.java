@@ -17,48 +17,48 @@ import org.apache.log4j.PropertyConfigurator;
  * Tests for the class <code>org.accada.reader.NotificationChannel</code>.
  */
 public class NotificationChannelTest extends TestCase {
-	
+
 	private NotificationChannel notifChan;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		notifChan = NotificationChannel.create("NotificationChannelTestNotifChan", "addr", readerDevice);
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
 	 */
 	protected final void tearDown() throws Exception {
 		super.tearDown();
-		
+
 		readerDevice.removeNotificationChannels(new NotificationChannel[] { notifChan });
 	}
-	
+
 	/**
 	 * Tests the <code>getOperStatus()</code> method.
 	 */
 	public final void testGetOperStatus() {
 		// try to reach the host
-		
+
 		int timeout = 200;
 		OperationalStatus operStatus;
-		
+
 		URI addr = null;
 		try {
 			addr = new URI(notifChan.getAddress());
@@ -66,7 +66,7 @@ public class NotificationChannelTest extends TestCase {
 			assertEquals(OperationalStatus.UNKNOWN, notifChan.getOperStatus());
 			return;
 		}
-		
+
 		try {
 			InetAddress host = InetAddress.getByName(addr.getHost());
 			if (host.isReachable(timeout))
@@ -76,10 +76,10 @@ public class NotificationChannelTest extends TestCase {
 		} catch (Exception e) {
 			operStatus = OperationalStatus.UNKNOWN;
 		}
-		
+
 		assertEquals(operStatus, notifChan.getOperStatus());
 	}
-	
+
 	/**
 	 * Tests the <code>increaseOperStateSuppressions()</code> method.
 	 */
@@ -88,7 +88,7 @@ public class NotificationChannelTest extends TestCase {
 		notifChan.increaseOperStateSuppressions();
 		assertEquals(value + 1, notifChan.getOperStateSuppressions());
 	}
-	
+
 	/**
 	 * Tests the <code>resetOperStateSuppressions()</code> method.
 	 */
@@ -98,7 +98,7 @@ public class NotificationChannelTest extends TestCase {
 		notifChan.resetOperStateSuppressions();
 		assertEquals(0, notifChan.getOperStateSuppressions());
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -106,5 +106,5 @@ public class NotificationChannelTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(NotificationChannelTest.class);
     }
-	
+
 }

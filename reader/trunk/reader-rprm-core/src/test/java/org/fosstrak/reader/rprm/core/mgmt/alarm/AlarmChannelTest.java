@@ -16,23 +16,23 @@ import org.apache.log4j.PropertyConfigurator;
  * Tests for the class <code>org.accada.reader.mgmt.alarm.AlarmChannel</code>.
  */
 public class AlarmChannelTest extends TestCase {
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
 		readerDevice = ReaderDevice.getInstance();
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -40,7 +40,7 @@ public class AlarmChannelTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>create()</code> method.
 	 */
@@ -57,7 +57,7 @@ public class AlarmChannelTest extends TestCase {
 			fail();
 		}
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -65,5 +65,5 @@ public class AlarmChannelTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(AlarmChannelTest.class);
     }
-	
+
 }

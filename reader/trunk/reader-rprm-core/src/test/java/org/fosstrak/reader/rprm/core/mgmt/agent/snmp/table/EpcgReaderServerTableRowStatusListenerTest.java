@@ -18,28 +18,28 @@ import org.snmp4j.agent.mo.snmp.RowStatusEvent;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.EpcgReaderServerTableRowStatusListener</code>.
  */
 public class EpcgReaderServerTableRowStatusListenerTest extends TestCase {
-	
+
 	private EpcgReaderServerTableRowStatusListener rowStatusListener;
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		rowStatusListener = new EpcgReaderServerTableRowStatusListener(readerDevice);
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -47,7 +47,7 @@ public class EpcgReaderServerTableRowStatusListenerTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>rowStatusChanged()</code> method.
 	 */
@@ -58,7 +58,7 @@ public class EpcgReaderServerTableRowStatusListenerTest extends TestCase {
 		rowStatusListener.rowStatusChanged(event);
 //		assertTrue(!dhcp.equals(readerDevice.getDHCPServer())); // TODO: activate this
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -66,5 +66,5 @@ public class EpcgReaderServerTableRowStatusListenerTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(EpcgReaderServerTableRowStatusListenerTest.class);
     }
-	
+
 }

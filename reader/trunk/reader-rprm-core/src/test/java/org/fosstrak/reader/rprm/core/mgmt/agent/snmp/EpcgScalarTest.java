@@ -27,9 +27,9 @@ import org.snmp4j.smi.UnsignedInteger32;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.EpcgScalar</code>.
  */
 public class EpcgScalarTest extends TestCase {
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	private EpcgScalar epcgRdrDevDescription;
 	private EpcgScalar epcgRdrDevRole;
 	private EpcgScalar epcgRdrDevEpc;
@@ -75,20 +75,20 @@ public class EpcgScalarTest extends TestCase {
 	private EpcgScalar sysContact;
 //	private EpcgScalar sysUpTime;
 	private EpcgScalar sysName;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		epcgRdrDevDescription = new EpcgScalar(EpcgScalarType.EPCG_RDR_DEV_DESCRIPTION, MOAccessImpl.ACCESS_READ_ONLY, null, readerDevice);
 		epcgRdrDevRole = new EpcgScalar(EpcgScalarType.EPCG_RDR_DEV_ROLE, MOAccessImpl.ACCESS_READ_ONLY, null, readerDevice);
 		epcgRdrDevEpc = new EpcgScalar(EpcgScalarType.EPCG_RDR_DEV_EPC, MOAccessImpl.ACCESS_READ_ONLY, null, readerDevice);
@@ -135,7 +135,7 @@ public class EpcgScalarTest extends TestCase {
 //		sysUpTime = new EpcgScalar(EpcgScalarType.SYS_UP_TIME, MOAccessImpl.ACCESS_READ_ONLY, null, readerDevice);
 		sysName = new EpcgScalar(EpcgScalarType.SYS_NAME, MOAccessImpl.ACCESS_READ_WRITE, null, readerDevice);
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -143,21 +143,21 @@ public class EpcgScalarTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>getValue()</code> method.
 	 */
 	public final void testGetValue() {
 		assertEquals(new OctetString(readerDevice.getDescription()), epcgRdrDevDescription.getValue());
-		
+
 		assertEquals(new OctetString(readerDevice.getRole()), epcgRdrDevRole.getValue());
-		
+
 		assertEquals(new OctetString(readerDevice.getEPC()), epcgRdrDevEpc.getValue());
-		
+
 		assertEquals(new OctetString(readerDevice.getSerialNumber()), epcgRdrDevSerialNumber.getValue());
-		
+
 //		assertEquals(SnmpUtil.dateToOctetString(readerDevice.getTimeUTC()), epcgRdrDevTimeUtc.getValue()); // cannot test
-		
+
 		SnmpTable sourceTable = (SnmpTable)SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_SOURCE_TABLE);
 		String sourceName = readerDevice.getCurrentSource().getName();
 		OID index = sourceTable.getTableRowIndexByValue(new OctetString(sourceName), EpcglobalReaderMib.idxEpcgSrcName);
@@ -165,75 +165,75 @@ public class EpcgScalarTest extends TestCase {
 		oid.append(EpcglobalReaderMib.colEpcgSrcName);
 		oid.append(index);
 		assertEquals(oid, epcgRdrDevCurrentSource.getValue());
-		
+
 		assertEquals(new Integer32(2), epcgRdrDevReboot.getValue());
-		
+
 		assertEquals(new Integer32(2), epcgRdrDevResetStatistics.getValue());
-		
+
 		// don't need to test epcgRdrDevResetTimestamp
-		
+
 		// epcgRdrDevNormalizePowerLevel // TODO: implement
-		
+
 		// epcgRdrDevNormalizeNoiseLevel // TODO: implement
-		
+
 		assertEquals(new Integer32(readerDevice.getOperStatus().toInt()), epcgRdrDevOperStatus.getValue());
-		
+
 		// don't need to test epcgRdrDevOperStatusPrior
-		
+
 		assertEquals(new Integer32(readerDevice.getOperStatusAlarmControl().getEnabled() ? 1 : 2), epcgRdrDevOperStateEnable.getValue());
-		
+
 		assertEquals(SnmpUtil.operStateToBITS(readerDevice.getOperStatusAlarmControl().getTriggerFromState()), epcgRdrDevOperNotifFromState.getValue());
-		
+
 		assertEquals(SnmpUtil.operStateToBITS(readerDevice.getOperStatusAlarmControl().getTriggerToState()), epcgRdrDevOperNotifToState.getValue());
-		
+
 		assertEquals(new Integer32(readerDevice.getOperStatusAlarmControl().getLevel().toInt()), epcgRdrDevOperNotifStateLevel.getValue());
-		
+
 		assertEquals(new UnsignedInteger32(readerDevice.getOperStatusAlarmControl().getSuppressInterval()), epcgRdrDevOperStateSuppressInterval.getValue());
-		
+
 		assertEquals(new Counter32(ReaderDevice.getOperStateSuppressions()), epcgRdrDevOperStateSuppressions.getValue());
-		
+
 //		assertEquals(new Gauge32(readerDevice.getFreeMemory()), epcgRdrDevFreeMemory.getValue()); // cannot test
-		
+
 		assertEquals(new Integer32(readerDevice.getFreeMemoryAlarmControl().getEnabled() ? 1 : 2), epcgRdrDevFreeMemoryNotifEnable.getValue());
-		
+
 		assertEquals(new Integer32(readerDevice.getFreeMemoryAlarmControl().getLevel().toInt()), epcgRdrDevFreeMemoryNotifLevel.getValue());
-		
+
 		assertEquals(new UnsignedInteger32(readerDevice.getFreeMemoryAlarmControl().getAlarmThreshold()), epcgRdrDevFreeMemoryOnsetThreshold.getValue());
-		
+
 		assertEquals(new UnsignedInteger32(readerDevice.getFreeMemoryAlarmControl().getRearmThreshold()), epcgRdrDevFreeMemoryAbateThreshold.getValue());
-		
+
 		assertEquals(new Integer32(readerDevice.getFreeMemory() < readerDevice.getFreeMemoryAlarmControl().getAlarmThreshold() ? 1 : 2), epcgRdrDevFreeMemoryStatus.getValue());
-		
+
 		assertEquals(new UnsignedInteger32(readerDevice.getFreeMemoryAlarmControl().getSuppressInterval()), epcgRdrDevMemStateSuppressInterval.getValue());
-		
+
 		assertEquals(new Counter32(ReaderDevice.getMemStateSuppressions()), epcgRdrDevMemStateSuppressions.getValue());
-		
+
 		// don't need to test epcgReadPointPriorOperStatus
-		
+
 		// epcgReadPointOperStateSuppressInterval // ...
-		
+
 //		assertEquals(new Counter32(ReadPoint.getOperStateSuppressions()), epcgReadPointOperStateSuppressions.getValue());
-		
+
 		// epcgAntRdPntSuppressInterval // ...
-		
+
 		// don't need to test epcgIoPortOperStatusPrior
-		
+
 		// epcgIoPortOperStateSuppressInterval // ...
-		
+
 //		assertEquals(new Counter32(IOPort.getOperStateSuppressions()), epcgIoPortOperStateSuppressions.getValue());
-		
+
 		// don't need to test epcgSrcOperPriorStatus
-		
+
 		// epcgSrcOperStateSuppressInterval // ...
-		
+
 //		assertEquals(new Counter32(Source.getOperStateSuppressions()), epcgSrcOperStateSuppressions.getValue());
-		
+
 		// don't need to test epcgNotifChanOperStatusPrior
-		
+
 		// epcgNotifChanOperStateSuppressInterval // ...
-		
+
 //		assertEquals(new Counter32(NotificationChannel.getOperStateSuppressions()), epcgNotifChanOperStateSuppressions.getValue());
-		
+
 		String descr =
 			"Manufacturer: "
 			+ readerDevice.getManufacturer()
@@ -242,16 +242,16 @@ public class EpcgScalarTest extends TestCase {
 			+ ", Manufacturer Description: "
 			+ readerDevice.getManufacturerDescription();
 		assertEquals(new OctetString(descr), sysDescr.getValue());
-		
+
 		assertEquals(new OctetString(readerDevice.getLocationDescription()), sysLocation.getValue());
-		
+
 		assertEquals(new OctetString(readerDevice.getContact()), sysContact.getValue());
-		
+
 //		assertEquals(new TimeTicks(readerDevice.getTimeTicks()), sysUpTime.getValue()); // cannot test
-		
+
 		assertEquals(new OctetString(readerDevice.getName()), sysName.getValue());
 	}
-	
+
 	/**
 	 * Tests the <code>setValue()</code> method.
 	 */
@@ -261,14 +261,14 @@ public class EpcgScalarTest extends TestCase {
 		AlarmLevel oldAlarmLevel;
 		int oldInterval;
 		int oldThreshold;
-		
+
 		String cont = readerDevice.getContact();
 		String newCont = cont + "_new";
 		readerDevice.setContact(newCont);
 		assertEquals(newCont, readerDevice.getContact());
 		epcgRdrDevReboot.setValue(new Integer32(1));
 		assertEquals(cont, readerDevice.getContact());
-		
+
 		AntennaReadPoint antReadPoint = null;
 		ReadPoint[] readPoints = readerDevice.getAllReadPoints();
 		for (int i = 0; i < readPoints.length; i++) {
@@ -282,84 +282,84 @@ public class EpcgScalarTest extends TestCase {
 			epcgRdrDevResetStatistics.setValue(new Integer32(1));
 			assertEquals(0, antReadPoint.getWriteCount());
 		}
-		
+
 		oldBoolean = readerDevice.getOperStatusAlarmControl().getEnabled();
 		epcgRdrDevOperStateEnable.setValue(new Integer32(!oldBoolean ? 1 : 2));
 		assertEquals(!oldBoolean, readerDevice.getOperStatusAlarmControl().getEnabled());
 		readerDevice.getOperStatusAlarmControl().setEnabled(oldBoolean);
-		
+
 		oldOperStatus = readerDevice.getOperStatusAlarmControl().getTriggerFromState();
 		epcgRdrDevOperNotifFromState.setValue(SnmpUtil.operStateToBITS(OperationalStatus.UP));
 		assertEquals(OperationalStatus.UP, readerDevice.getOperStatusAlarmControl().getTriggerFromState());
 		epcgRdrDevOperNotifFromState.setValue(SnmpUtil.operStateToBITS(OperationalStatus.DOWN));
 		assertEquals(OperationalStatus.DOWN, readerDevice.getOperStatusAlarmControl().getTriggerFromState());
 		readerDevice.getOperStatusAlarmControl().setTriggerFromState(oldOperStatus);
-		
+
 		oldOperStatus = readerDevice.getOperStatusAlarmControl().getTriggerToState();
 		epcgRdrDevOperNotifToState.setValue(SnmpUtil.operStateToBITS(OperationalStatus.UP));
 		assertEquals(OperationalStatus.UP, readerDevice.getOperStatusAlarmControl().getTriggerToState());
 		epcgRdrDevOperNotifToState.setValue(SnmpUtil.operStateToBITS(OperationalStatus.DOWN));
 		assertEquals(OperationalStatus.DOWN, readerDevice.getOperStatusAlarmControl().getTriggerToState());
 		readerDevice.getOperStatusAlarmControl().setTriggerFromState(oldOperStatus);
-		
+
 		oldAlarmLevel = readerDevice.getOperStatusAlarmControl().getLevel();
 		epcgRdrDevOperNotifStateLevel.setValue(new Integer32(AlarmLevel.CRITICAL.toInt()));
 		assertEquals(AlarmLevel.CRITICAL, readerDevice.getOperStatusAlarmControl().getLevel());
 		epcgRdrDevOperNotifStateLevel.setValue(new Integer32(AlarmLevel.DEBUG.toInt()));
 		assertEquals(AlarmLevel.DEBUG, readerDevice.getOperStatusAlarmControl().getLevel());
 		readerDevice.getOperStatusAlarmControl().setLevel(oldAlarmLevel);
-		
+
 		oldInterval = readerDevice.getOperStatusAlarmControl().getSuppressInterval();
 		epcgRdrDevOperStateSuppressInterval.setValue(new UnsignedInteger32(oldInterval + 1));
 		assertEquals(oldInterval + 1, readerDevice.getOperStatusAlarmControl().getSuppressInterval());
 		readerDevice.getOperStatusAlarmControl().setSuppressInterval(oldInterval);
-		
+
 		oldBoolean = readerDevice.getFreeMemoryAlarmControl().getEnabled();
 		epcgRdrDevFreeMemoryNotifEnable.setValue(new Integer32(!oldBoolean ? 1 : 2));
 		assertEquals(!oldBoolean, readerDevice.getFreeMemoryAlarmControl().getEnabled());
 		readerDevice.getFreeMemoryAlarmControl().setEnabled(oldBoolean);
-		
+
 		oldAlarmLevel = readerDevice.getFreeMemoryAlarmControl().getLevel();
 		epcgRdrDevFreeMemoryNotifLevel.setValue(new Integer32(AlarmLevel.CRITICAL.toInt()));
 		assertEquals(AlarmLevel.CRITICAL, readerDevice.getFreeMemoryAlarmControl().getLevel());
 		epcgRdrDevFreeMemoryNotifLevel.setValue(new Integer32(AlarmLevel.DEBUG.toInt()));
 		assertEquals(AlarmLevel.DEBUG, readerDevice.getFreeMemoryAlarmControl().getLevel());
 		readerDevice.getFreeMemoryAlarmControl().setLevel(oldAlarmLevel);
-		
+
 		oldThreshold = readerDevice.getFreeMemoryAlarmControl().getAlarmThreshold();
 		epcgRdrDevFreeMemoryOnsetThreshold.setValue(new UnsignedInteger32(oldThreshold + 1));
 		assertEquals(oldThreshold + 1, readerDevice.getFreeMemoryAlarmControl().getAlarmThreshold());
 		readerDevice.getFreeMemoryAlarmControl().setAlarmThreshold(oldThreshold);
-		
+
 		oldThreshold = readerDevice.getFreeMemoryAlarmControl().getRearmThreshold();
 		epcgRdrDevFreeMemoryAbateThreshold.setValue(new UnsignedInteger32(oldThreshold + 1));
 		assertEquals(oldThreshold + 1, readerDevice.getFreeMemoryAlarmControl().getRearmThreshold());
 		readerDevice.getFreeMemoryAlarmControl().setRearmThreshold(oldThreshold);
-		
+
 		oldInterval = readerDevice.getFreeMemoryAlarmControl().getSuppressInterval();
 		epcgRdrDevMemStateSuppressInterval.setValue(new UnsignedInteger32(oldInterval + 1));
 		assertEquals(oldInterval + 1, readerDevice.getFreeMemoryAlarmControl().getSuppressInterval());
 		readerDevice.getFreeMemoryAlarmControl().setSuppressInterval(oldInterval);
-		
+
 		String contact = readerDevice.getContact();
 		String newContact = contact + "_new";
 		sysContact.setValue(new OctetString(newContact));
 		assertEquals(newContact, readerDevice.getContact());
 		readerDevice.setContact(contact);
-		
+
 		String location = readerDevice.getLocationDescription();
 		String newLocation = location + "_new";
 		sysLocation.setValue(new OctetString(newLocation));
 		assertEquals(newLocation, readerDevice.getLocationDescription());
 		readerDevice.setLocationDescription(location);
-		
+
 		String name = readerDevice.getName();
 		String newName = name + "_new";
 		sysName.setValue(new OctetString(newName));
 		assertEquals(newName, readerDevice.getName());
 		readerDevice.setName(name);
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -367,5 +367,5 @@ public class EpcgScalarTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(EpcgScalarTest.class);
     }
-	
+
 }

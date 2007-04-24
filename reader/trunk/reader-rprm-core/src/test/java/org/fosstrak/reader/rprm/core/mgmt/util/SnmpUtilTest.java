@@ -28,25 +28,25 @@ import org.snmp4j.smi.UdpAddress;
  * Tests for the class <code>org.accada.reader.mgmt.util.SnmpUtil</code>.
  */
 public class SnmpUtilTest extends TestCase {
-	
+
 	private SnmpUtil snmpUtil;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		snmpUtil = new SnmpUtil();
-		
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -54,7 +54,7 @@ public class SnmpUtilTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>dateToOctetString()</code> method.
 	 */
@@ -64,14 +64,14 @@ public class SnmpUtilTest extends TestCase {
 				.dateToOctetString(date));
 		assertEquals(date.toString(), result.toString());
 	}
-	
+
 	/**
 	 * Tests the <code>octetStringToDate()</code> method.
 	 */
 	public final void testOctetStringToDate() {
 		testDateToOctetString();
 	}
-	
+
 	/**
 	 * Tests the <code>findMOScalar()</code> method.
 	 */
@@ -86,7 +86,7 @@ public class SnmpUtilTest extends TestCase {
 		String desc = readerDevice.getDescription();
 		assertEquals(desc, ((OctetString)descScalar.getValue()).toString());
 	}
-	
+
 	/**
 	 * Tests the <code>getSnmpTable()</code> method.
 	 */
@@ -96,56 +96,56 @@ public class SnmpUtilTest extends TestCase {
 		IpMib ipMib = IpMib.getInstance();
 		SnmpTargetMIB snmpTargetMIB = SnmpAgent.getInstance().getSnmpTargetMIB();
 		MOTable table;
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_GLOBAL_COUNTERS_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgGlobalCountersEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_READER_SERVER_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgReaderServerEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_READ_POINT_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgReadPointEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_ANT_READ_POINT_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgAntReadPointEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_IO_PORT_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgIoPortEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_SOURCE_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgSourceEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgNotificationChannelEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_TRIGGER_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgTriggerEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_NOTIF_TRIG_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgNotifTrigEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_READ_TRIG_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgReadTrigEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_RD_PNT_SRC_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgRdPntSrcEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_NOTIF_CHAN_SRC_TABLE);
 		assertEquals(epcglobalReaderMib.getEpcgNotifChanSrcEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.IF_TABLE);
 		assertEquals(ifMib.getIfEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.IP_ADDR_TABLE);
 		assertEquals(ipMib.getIpAddrEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.IP_NET_TO_MEDIA_TABLE);
 		assertEquals(ipMib.getIpNetToMediaEntry(), table);
-		
+
 		table = SnmpUtil.getSnmpTable(TableTypeEnum.SNMP_TARGET_ADDR_TABLE);
 		assertEquals(snmpTargetMIB.getSnmpTargetAddrEntry(), table);
 	}
-	
+
 	/**
 	 * Tests the <code>operStateToBITS()</code> method.
 	 */
@@ -157,14 +157,14 @@ public class SnmpUtilTest extends TestCase {
 			assertEquals(operState, result);
 		}
 	}
-	
+
 	/**
 	 * Tests the <code>bitsToOperState()</code> method.
 	 */
 	public final void testBitsToOperState() {
 		testOperStateToBITS();
 	}
-	
+
 	/**
 	 * Tests the <code>octetStringToAddress()</code> method.
 	 */
@@ -172,7 +172,7 @@ public class SnmpUtilTest extends TestCase {
 		OID transportType;
 		OctetString address = OctetString.fromByteArray(new byte[] { (byte) 127, (byte) 0, (byte) 0, (byte) 1, (byte) 0, (byte) 162 });
 		String addrString;
-		
+
 		addrString = "";
 		transportType = new OID("1.3.6.1.2.1.100.1.1");
 		UdpAddress udpAddress = new UdpAddress();
@@ -187,7 +187,7 @@ public class SnmpUtilTest extends TestCase {
 		} catch (Exception e) {
 			fail();
 		}
-		
+
 		addrString = "";
 		transportType = new OID("1.3.6.1.2.1.100.1.5");
 		TcpAddress tcpAddress = new TcpAddress();
@@ -202,7 +202,7 @@ public class SnmpUtilTest extends TestCase {
 		} catch (Exception e) {
 			fail();
 		}
-		
+
 		transportType = new OID("1.3.6.1.5.1.1.1.1");
 		try {
 			assertNull(SnmpUtil.octetStringToAddress(address, transportType));
@@ -210,7 +210,7 @@ public class SnmpUtilTest extends TestCase {
 			fail();
 		}
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -218,5 +218,5 @@ public class SnmpUtilTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(SnmpUtilTest.class);
     }
-	
+
 }

@@ -39,47 +39,47 @@ import org.snmp4j.smi.OctetString;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.SnmpTableRow</code>.
  */
 public class SnmpTableRowTest extends TestCase {
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	private Trigger trigger;
 	private NotificationChannel notifChan;
 	private Source source;
 	private AntennaReadPoint antReadPoint;
 	private IOPort ioPort;
-	
+
 	private int triggerIndex;
 	private int notifChanIndex;
 	private int sourceIndex;
 	private int antReadPointIndex;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		notifChan = NotificationChannel.create("SnmpTableRowTestNotifChan", "addr", readerDevice);
 		trigger = Trigger.create("SnmpTableRowTestTrigger", TriggerType.CONTINUOUS, "", readerDevice);
 		source = Source.create("SnmpTableRowTestSource", readerDevice);
 		antReadPoint = AntennaReadPoint.create("SnmpTableRowTestAntReadPoint", readerDevice, null);
 		ioPort = new IOPort("SnmpTableRowTestIOPort");
-		
+
 		triggerIndex = Integer.parseInt(((SnmpTable) SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_TRIGGER_TABLE)).getTableRowIndexByValue(new OctetString(trigger.getName()), EpcglobalReaderMib.idxEpcgTrigName).toString());
 		notifChanIndex = Integer.parseInt(((SnmpTable) SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE)).getTableRowIndexByValue(new OctetString(notifChan.getName()), EpcglobalReaderMib.idxEpcgNotifChanName).toString());
 		sourceIndex = Integer.parseInt(((SnmpTable) SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_SOURCE_TABLE)).getTableRowIndexByValue(new OctetString(source.getName()), EpcglobalReaderMib.idxEpcgSrcName).toString());
 		antReadPointIndex = Integer.parseInt(((SnmpTable) SnmpUtil.getSnmpTable(TableTypeEnum.EPCG_READ_POINT_TABLE)).getTableRowIndexByValue(new OctetString(antReadPoint.getName()), EpcglobalReaderMib.idxEpcgReadPointName).toString());
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -91,13 +91,13 @@ public class SnmpTableRowTest extends TestCase {
 		readerDevice.removeSources(new Source[] { source });
 		readerDevice.getReadPoints().remove(antReadPoint.getName());
 	}
-	
+
 	/**
 	 * Tests the <code>getSnmpTableRow()</code> method.
 	 */
 	public final void testGetSnmpTableRow() {
 		SnmpTableRow row;
-		
+
 		// getSnmpTableRow(RowObjectContainer)
 		row = SnmpTableRow.getSnmpTableRow(new RowObjectContainer(TableTypeEnum.EPCG_GLOBAL_COUNTERS_TABLE, new Object[] { CounterType.ANTENNA_TAGS_IDENTIFIED }));
 		assertTrue(row instanceof EpcgGlobalCountersTableRow);
@@ -127,7 +127,7 @@ public class SnmpTableRowTest extends TestCase {
 		row = SnmpTableRow.getSnmpTableRow(new RowObjectContainer(TableTypeEnum.EPCG_NOTIF_CHAN_SRC_TABLE, new Object[] { notifChan, source }));
 		assertTrue(row instanceof EpcgNotifChanSrcTableRow);
 		assertEquals(new OID(notifChanIndex + "." + sourceIndex), row.getIndex());
-		
+
 		// getSnmpTableRow(TableTypeEnum, OID, Variable[])
 		row = SnmpTableRow.getSnmpTableRow(TableTypeEnum.EPCG_READER_SERVER_TABLE, new OID("1.1"), null);
 		assertTrue(row instanceof EpcgReaderServerTableRow);
@@ -140,7 +140,7 @@ public class SnmpTableRowTest extends TestCase {
 		row = SnmpTableRow.getSnmpTableRow(TableTypeEnum.EPCG_NOTIF_CHAN_SRC_TABLE, new OID(notifChanIndex + "." + sourceIndex), null);
 		assertTrue(row instanceof EpcgNotifChanSrcTableRow);
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -148,5 +148,5 @@ public class SnmpTableRowTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(SnmpTableRowTest.class);
     }
-	
+
 }

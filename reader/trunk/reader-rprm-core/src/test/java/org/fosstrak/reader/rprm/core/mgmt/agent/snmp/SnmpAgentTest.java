@@ -18,27 +18,27 @@ import org.snmp4j.smi.OctetString;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.SnmpAgent</code>.
  */
 public class SnmpAgentTest extends TestCase {
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	private SnmpAgent snmpAgent;
-	
-	
+
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
 		readerDevice = ReaderDevice.getInstance();
 		snmpAgent = SnmpAgent.getInstance();
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -46,14 +46,14 @@ public class SnmpAgentTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>isInitialized()</code> method.
 	 */
 	public final void testIsInitialized() {
 		assertEquals(true, snmpAgent.isInitialized());
 	}
-	
+
 	/**
 	 * Tests the <code>addAlarmChannels()</code> method.
 	 */
@@ -72,7 +72,7 @@ public class SnmpAgentTest extends TestCase {
 			fail();
 		}
 		readerDevice.removeAlarmChannels(new AlarmChannel[] { alarmChannel });
-		
+
 		SnmpTargetMIB targetMib = snmpAgent.getSnmpTargetMIB();
 		assertNull(targetMib.getTargetAddress(new OctetString(name)));
 		snmpAgent.addAlarmChannels(new AlarmChannel[] { alarmChannel });
@@ -80,15 +80,15 @@ public class SnmpAgentTest extends TestCase {
 		snmpAgent.removeAlarmChannel(alarmChannel);
 		assertNull(targetMib.getTargetAddress(new OctetString(name)));
 	}
-	
+
 	/**
 	 * Tests the <code>removeAlarmChannel()</code> method.
 	 */
 	public final void testRemoveAlarmChannel() {
 		testAddAlarmChannels();
 	}
-	
-	
+
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -96,5 +96,5 @@ public class SnmpAgentTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(SnmpAgentTest.class);
     }
-	
+
 }

@@ -13,21 +13,21 @@ import org.snmp4j.smi.Variable;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.mib.BitsEnumerationConstraint</code>.
  */
 public class BitsEnumerationConstraintTest extends TestCase {
-	
+
 	private BitsEnumerationConstraint bitsEnumerationConstraint;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		bitsEnumerationConstraint = new BitsEnumerationConstraint();
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -35,38 +35,38 @@ public class BitsEnumerationConstraintTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>validate()</code> method.
 	 */
 	public final void testValidate() {
 		Variable value;
-		
+
 		value = OctetString.fromHexString(Integer.toHexString(Integer.valueOf("10000000", 2).intValue()));
 		assertEquals(PDU.noError, bitsEnumerationConstraint.validate(value));
-		
+
 		value = OctetString.fromHexString(Integer.toHexString(Integer.valueOf("01000000", 2).intValue()));
 		assertEquals(PDU.noError, bitsEnumerationConstraint.validate(value));
-		
+
 		value = OctetString.fromHexString(Integer.toHexString(Integer.valueOf("00100000", 2).intValue()));
 		assertEquals(PDU.noError, bitsEnumerationConstraint.validate(value));
-		
+
 		value = OctetString.fromHexString(Integer.toHexString(Integer.valueOf("00010000", 2).intValue()));
 		assertEquals(PDU.noError, bitsEnumerationConstraint.validate(value));
-		
+
 		value = OctetString.fromHexString(Integer.toHexString(Integer.valueOf("11110000", 2).intValue()));
 		assertEquals(PDU.noError, bitsEnumerationConstraint.validate(value));
-		
+
 		value = OctetString.fromHexString(Integer.toHexString(Integer.valueOf("11000000", 2).intValue()));
 		assertTrue(bitsEnumerationConstraint.validate(value) != PDU.noError);
-		
+
 		value = OctetString.fromHexString(Integer.toHexString(Integer.valueOf("10000010", 2).intValue()));
 		assertTrue(bitsEnumerationConstraint.validate(value) != PDU.noError);
-		
+
 		value = new Integer32(Integer.valueOf("10000000", 2).intValue());
 		assertTrue(bitsEnumerationConstraint.validate(value) != PDU.noError);
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -74,5 +74,5 @@ public class BitsEnumerationConstraintTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(BitsEnumerationConstraintTest.class);
     }
-	
+
 }

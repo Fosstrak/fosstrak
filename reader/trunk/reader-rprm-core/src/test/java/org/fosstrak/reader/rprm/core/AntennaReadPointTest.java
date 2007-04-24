@@ -14,26 +14,26 @@ import org.apache.log4j.PropertyConfigurator;
  * Tests for the class <code>org.accada.reader.AntennaReadPoint</code>.
  */
 public class AntennaReadPointTest extends TestCase {
-	
+
 	private AntennaReadPoint antReadPoint;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		ReadPoint[] readPoints = readerDevice.getAllReadPoints();
 		for (int i = 0; i < readPoints.length; i++) {
 			if (readPoints[i] instanceof AntennaReadPoint)
@@ -42,7 +42,7 @@ public class AntennaReadPointTest extends TestCase {
 		}
 		fail();
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -50,7 +50,7 @@ public class AntennaReadPointTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>create()</code> method.
 	 */
@@ -65,7 +65,7 @@ public class AntennaReadPointTest extends TestCase {
 			assertEquals(readPointCount, readerDevice.getAllReadPoints().length);
 		}
 	}
-	
+
 	/**
 	 * Tests the <code>resetCounters()</code> method.
 	 */
@@ -82,7 +82,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.killFailureOccurred();
 		antReadPoint.eraseFailureOccurred();
 		antReadPoint.lockFailureOccurred();
-		
+
 		assertEquals(1, antReadPoint.getIdentificationCount());
 		assertEquals(1, antReadPoint.getMemReadCount());
 		assertEquals(1, antReadPoint.getWriteCount());
@@ -95,9 +95,9 @@ public class AntennaReadPointTest extends TestCase {
 		assertEquals(1, antReadPoint.getFailedKillCount());
 		assertEquals(1, antReadPoint.getFailedEraseCount());
 		assertEquals(1, antReadPoint.getFailedLockCount());
-		
+
 		antReadPoint.resetCounters();
-		
+
 		assertEquals(0, antReadPoint.getIdentificationCount());
 		assertEquals(0, antReadPoint.getMemReadCount());
 		assertEquals(0, antReadPoint.getWriteCount());
@@ -111,7 +111,7 @@ public class AntennaReadPointTest extends TestCase {
 		assertEquals(0, antReadPoint.getFailedEraseCount());
 		assertEquals(0, antReadPoint.getFailedLockCount());
 	}
-	
+
 	/**
 	 * Tests the <code>memReadFailureOccurred()</code> method.
 	 */
@@ -120,7 +120,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.memReadFailureOccurred();
 		assertEquals(value + 1, antReadPoint.getFailedMemReadCount());
 	}
-	
+
 	/**
 	 * Tests the <code>writeFailureOccurred()</code> method.
 	 */
@@ -129,7 +129,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.writeFailureOccurred();
 		assertEquals(value + 1, antReadPoint.getFailedWriteCount());
 	}
-	
+
 	/**
 	 * Tests the <code>killFailureOccurred()</code> method.
 	 */
@@ -138,7 +138,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.killFailureOccurred();
 		assertEquals(value + 1, antReadPoint.getFailedKillCount());
 	}
-	
+
 	/**
 	 * Tests the <code>eraseFailureOccurred()</code> method.
 	 */
@@ -147,7 +147,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.eraseFailureOccurred();
 		assertEquals(value + 1, antReadPoint.getFailedEraseCount());
 	}
-	
+
 	/**
 	 * Tests the <code>lockFailureOccurred()</code> method.
 	 */
@@ -156,7 +156,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.lockFailureOccurred();
 		assertEquals(value + 1, antReadPoint.getFailedLockCount());
 	}
-	
+
 	/**
 	 * Tests the <code>increaseIdentificationCount()</code> method.
 	 */
@@ -165,7 +165,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.increaseIdentificationCount();
 		assertEquals(value + 1, antReadPoint.getIdentificationCount());
 	}
-	
+
 	/**
 	 * Tests the <code>increaseFailedIdentificationCount()</code> method.
 	 */
@@ -174,7 +174,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.increaseFailedIdentificationCount();
 		assertEquals(value + 1, antReadPoint.getFailedIdentificationCount());
 	}
-	
+
 	/**
 	 * Tests the <code>increaseMemReadCount()</code> method.
 	 */
@@ -183,7 +183,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.increaseMemReadCount();
 		assertEquals(value + 1, antReadPoint.getMemReadCount());
 	}
-	
+
 	/**
 	 * Tests the <code>increaseWriteCount()</code> method.
 	 */
@@ -192,7 +192,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.increaseWriteCount();
 		assertEquals(value + 1, antReadPoint.getWriteCount());
 	}
-	
+
 	/**
 	 * Tests the <code>increaseKillCount()</code> method.
 	 */
@@ -201,7 +201,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.increaseKillCount();
 		assertEquals(value + 1, antReadPoint.getKillCount());
 	}
-	
+
 	/**
 	 * Tests the <code>increaseEraseCount()</code> method.
 	 */
@@ -210,7 +210,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.increaseEraseCount();
 		assertEquals(value + 1, antReadPoint.getEraseCount());
 	}
-	
+
 	/**
 	 * Tests the <code>increaseLockCount()</code> method.
 	 */
@@ -219,7 +219,7 @@ public class AntennaReadPointTest extends TestCase {
 		antReadPoint.increaseLockCount();
 		assertEquals(value + 1, antReadPoint.getLockCount());
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -227,5 +227,5 @@ public class AntennaReadPointTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(AntennaReadPointTest.class);
     }
-	
+
 }

@@ -28,34 +28,34 @@ import org.snmp4j.smi.OctetString;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.SnmpTable</code>.
  */
 public class SnmpTableTest extends TestCase {
-	
+
 	/**
 	 * SnmpTable instance.
 	 */
 	private SnmpTable snmpTable;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		readerDevice.removeAllNotificationChannels();
-		
+
 		snmpTable = (new TableCreator(new DefaultMOServer(), readerDevice)).createTable(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE);
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -63,7 +63,7 @@ public class SnmpTableTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>getValue()</code> method.
 	 */
@@ -78,7 +78,7 @@ public class SnmpTableTest extends TestCase {
 			fail();
 		}
 	}
-	
+
 	/**
 	 * Tests the <code>getSortedIndices()</code> method.
 	 */
@@ -89,7 +89,7 @@ public class SnmpTableTest extends TestCase {
 			assertTrue(oids.elementAt(i).compareTo(oids.elementAt(i + 1)) < 0);
 		}
 	}
-	
+
 	/**
 	 * Tests the <code>find()</code> method.
 	 */
@@ -101,18 +101,18 @@ public class SnmpTableTest extends TestCase {
 		oid.append("2.1");
 		assertEquals(oid, foundOID);
 	}
-	
+
 	/**
 	 * Tests the <code>update()</code> method.
 	 */
 	public final void testUpdate() {
 		MOTableModel model = snmpTable.getModel();
-		
+
 		String chan1Name = "notifChan1";
 		String chan2Name = "notifChan2";
 		String chan3Name = "notifChan3";
 		String chan4Name = "notifChan4";
-		
+
 		NotificationChannel chan1 = null, chan2 = null, chan3 = null, chan4 = null;
 		try {
 			chan1 = NotificationChannel.create(chan1Name, "NotifChan1Addr", readerDevice);
@@ -122,9 +122,9 @@ public class SnmpTableTest extends TestCase {
 		} catch (ReaderProtocolException rpe) {
 			fail("Should not throw any exceptions.");
 		}
-		
+
 		snmpTable.update();
-		
+
 		Vector<NotificationChannel> notifChans = new Vector<NotificationChannel>();
 		Iterator<SnmpTableRow> iter = model.iterator();
 		while (iter.hasNext()) {
@@ -136,21 +136,21 @@ public class SnmpTableTest extends TestCase {
 		assertTrue(notifChans.contains(chan3));
 		assertTrue(notifChans.contains(chan4));
 		assertEquals(4, notifChans.size());
-		
+
 		readerDevice.removeAllNotificationChannels();
 	}
-	
+
 	/**
 	 * Tests the <code>updateStoredRows()</code> method.
 	 */
 	public final void testUpdateStoredRows() {
 		MOTableModel model = snmpTable.getModel();
-		
+
 		String chan1Name = "notifChan1";
 		String chan2Name = "notifChan2";
 		String chan3Name = "notifChan3";
 		String chan4Name = "notifChan4";
-		
+
 		NotificationChannel chan1 = null, chan2 = null, chan3 = null, chan4 = null;
 		try {
 			chan1 = NotificationChannel.create(chan1Name, "NotifChan1Addr", readerDevice);
@@ -160,17 +160,17 @@ public class SnmpTableTest extends TestCase {
 		} catch (ReaderProtocolException rpe) {
 			fail("Should not throw any exceptions.");
 		}
-		
+
 		Vector<RowObjectContainer> conts = new Vector<RowObjectContainer>();
 		conts.add(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan1}));
 		conts.add(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan2}));
 		conts.add(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan3}));
-		
+
 		snmpTable.updateStoredRows(conts);
-		
+
 		Iterator<SnmpTableRow> iter;
 		SnmpTableRow curRow;
-		
+
 		iter = model.iterator();
 		curRow = iter.next();
 		assertEquals(1, Integer.parseInt(curRow.getIndex().toString()));
@@ -181,11 +181,11 @@ public class SnmpTableTest extends TestCase {
 		curRow = iter.next();
 		assertEquals(3, Integer.parseInt(curRow.getIndex().toString()));
 		assertEquals(chan3Name, ((NotificationChannel)curRow.getRowObjectContainer().getRowObjects()[0]).getName());
-		
-		
+
+
 		conts.remove(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan2}));
-		snmpTable.updateStoredRows(conts); 
-		
+		snmpTable.updateStoredRows(conts);
+
 		iter = model.iterator();
 		curRow = iter.next();
 		assertEquals(1, Integer.parseInt(curRow.getIndex().toString()));
@@ -193,10 +193,10 @@ public class SnmpTableTest extends TestCase {
 		curRow = iter.next();
 		assertEquals(3, Integer.parseInt(curRow.getIndex().toString()));
 		assertEquals(chan3Name, ((NotificationChannel)curRow.getRowObjectContainer().getRowObjects()[0]).getName());
-		
+
 		conts.add(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan4}));
 		snmpTable.updateStoredRows(conts);
-		
+
 		iter = model.iterator();
 		curRow = iter.next();
 		assertEquals(1, Integer.parseInt(curRow.getIndex().toString()));
@@ -207,10 +207,10 @@ public class SnmpTableTest extends TestCase {
 		curRow = iter.next();
 		assertEquals(3, Integer.parseInt(curRow.getIndex().toString()));
 		assertEquals(chan3Name, ((NotificationChannel)curRow.getRowObjectContainer().getRowObjects()[0]).getName());
-		
+
 		conts.add(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan2}));
 		snmpTable.updateStoredRows(conts);
-		
+
 		iter = model.iterator();
 		curRow = iter.next();
 		assertEquals(1, Integer.parseInt(curRow.getIndex().toString()));
@@ -224,10 +224,10 @@ public class SnmpTableTest extends TestCase {
 		curRow = iter.next();
 		assertEquals(4, Integer.parseInt(curRow.getIndex().toString()));
 		assertEquals(chan2Name, ((NotificationChannel)curRow.getRowObjectContainer().getRowObjects()[0]).getName());
-		
+
 		readerDevice.removeAllNotificationChannels();
 	}
-	
+
 	/**
 	 * Tests the <code>getTableRowIndexByValue()</code> method.
 	 */
@@ -236,7 +236,7 @@ public class SnmpTableTest extends TestCase {
 		String chan2Name = "notifChan2";
 		String chan3Name = "notifChan3";
 		String chan4Name = "notifChan4";
-		
+
 		NotificationChannel chan1 = null, chan2 = null, chan3 = null, chan4 = null;
 		try {
 			chan1 = NotificationChannel.create(chan1Name, "NotifChan1Addr", readerDevice);
@@ -246,21 +246,21 @@ public class SnmpTableTest extends TestCase {
 		} catch (ReaderProtocolException rpe) {
 			fail("Should not throw any exceptions.");
 		}
-		
+
 		Vector<RowObjectContainer> conts = new Vector<RowObjectContainer>();
 		conts.add(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan1}));
 		conts.add(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan2}));
 		conts.add(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan3}));
 		conts.add(new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan4}));
-		
+
 		snmpTable.updateStoredRows(conts);
-		
+
 		OID oid = snmpTable.getTableRowIndexByValue(new OctetString(chan3Name), EpcglobalReaderMib.idxEpcgNotifChanName);
 		assertEquals(new OctetString(chan3Name), snmpTable.getValue(oid, EpcglobalReaderMib.idxEpcgNotifChanName));
-		
+
 		readerDevice.removeAllNotificationChannels();
 	}
-	
+
 	/**
 	 * Tests the <code>getRowObjContOfRow()</code> method.
 	 */
@@ -269,7 +269,7 @@ public class SnmpTableTest extends TestCase {
 		String chan2Name = "notifChan2";
 		String chan3Name = "notifChan3";
 		String chan4Name = "notifChan4";
-		
+
 		NotificationChannel chan1 = null, chan2 = null, chan3 = null, chan4 = null;
 		try {
 			chan1 = NotificationChannel.create(chan1Name, "NotifChan1Addr", readerDevice);
@@ -279,7 +279,7 @@ public class SnmpTableTest extends TestCase {
 		} catch (ReaderProtocolException rpe) {
 			fail("Should not throw any exceptions.");
 		}
-		
+
 		Vector<RowObjectContainer> conts = new Vector<RowObjectContainer>();
 		RowObjectContainer cont1 = new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan1});
 		RowObjectContainer cont2 = new RowObjectContainer(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE, new Object[] {chan2});
@@ -289,15 +289,15 @@ public class SnmpTableTest extends TestCase {
 		conts.add(cont2);
 		conts.add(cont3);
 		conts.add(cont4);
-		
+
 		snmpTable.updateStoredRows(conts);
-		
+
 		OID oid = snmpTable.getTableRowIndexByValue(new OctetString(chan3Name), EpcglobalReaderMib.idxEpcgNotifChanName);
 		assertEquals(cont3, snmpTable.getRowObjContOfRow(oid));
-		
+
 		readerDevice.removeAllNotificationChannels();
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -305,5 +305,5 @@ public class SnmpTableTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(SnmpTableTest.class);
     }
-	
+
 }

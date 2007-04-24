@@ -38,7 +38,7 @@ public class SourceTest extends TestCase {
 	protected final void setUp() throws Exception {
 		super.setUp();
 
-		PropertyConfigurator.configure("./props/log4j.properties");
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
 
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });

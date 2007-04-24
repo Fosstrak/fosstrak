@@ -13,28 +13,28 @@ import org.apache.log4j.PropertyConfigurator;
  * Tests for the class <code>org.accada.reader.ReadPoint</code>.
  */
 public class ReadPointTest extends TestCase {
-	
+
 	private ReadPoint readPoint;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
 		readPoint = readerDevice.getAllReadPoints()[0];
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -42,7 +42,7 @@ public class ReadPointTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>getOperStatus()</code> method.
 	 */
@@ -53,7 +53,7 @@ public class ReadPointTest extends TestCase {
 			assertEquals(OperationalStatus.DOWN, readPoint.getOperStatus());
 		}
 	}
-	
+
 	/**
 	 * Tests the <code>increaseOperStateSuppressions()</code> method.
 	 */
@@ -62,7 +62,7 @@ public class ReadPointTest extends TestCase {
 		readPoint.increaseOperStateSuppressions();
 		assertEquals(value + 1, readPoint.getOperStateSuppressions());
 	}
-	
+
 	/**
 	 * Tests the <code>resetOperStateSuppressions()</code> method.
 	 */
@@ -72,7 +72,7 @@ public class ReadPointTest extends TestCase {
 		readPoint.resetOperStateSuppressions();
 		assertEquals(0, readPoint.getOperStateSuppressions());
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -80,5 +80,5 @@ public class ReadPointTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(ReadPointTest.class);
     }
-	
+
 }

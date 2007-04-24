@@ -23,40 +23,40 @@ import org.snmp4j.agent.mo.MOTableModel;
  * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.SnmpTableLookupListener</code>.
  */
 public class SnmpTableLookupListenerTest extends TestCase {
-	
+
 	/**
 	 * SnmpTable instance.
 	 */
 	private SnmpTable snmpTable;
-	
+
 	/**
 	 * The lookup listener.
 	 */
 	private SnmpTableLookupListener lookupListener;
-	
+
 	private ReaderDevice readerDevice;
-	
+
 	/**
 	 * Sets up the test.
 	 * @exception Exception An error occurred
 	 */
 	protected final void setUp() throws Exception {
 		super.setUp();
-		
-		PropertyConfigurator.configure("./props/log4j.properties");
-		
+
+		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}
-		
+
 		readerDevice = ReaderDevice.getInstance();
-		
+
 		readerDevice.removeAllNotificationChannels();
-		
+
 		snmpTable = (new TableCreator(new DefaultMOServer(), readerDevice)).createTable(TableTypeEnum.EPCG_NOTIFICATION_CHANNEL_TABLE);
 		lookupListener = new SnmpTableLookupListener(snmpTable);
 	}
-	
+
 	/**
 	 * Does the cleanup.
 	 * @exception Exception An error occurred
@@ -64,18 +64,18 @@ public class SnmpTableLookupListenerTest extends TestCase {
 	protected final void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
+
 	/**
 	 * Tests the <code>lookupEvent()</code> method.
 	 */
 	public final void testLookupEvent() {
 		MOTableModel model = snmpTable.getModel();
-		
+
 		String chan1Name = "notifChan1";
 		String chan2Name = "notifChan2";
 		String chan3Name = "notifChan3";
 		String chan4Name = "notifChan4";
-		
+
 		NotificationChannel chan1 = null, chan2 = null, chan3 = null, chan4 = null;
 		try {
 			chan1 = NotificationChannel.create(chan1Name, "NotifChan1Addr", readerDevice);
@@ -85,9 +85,9 @@ public class SnmpTableLookupListenerTest extends TestCase {
 		} catch (ReaderProtocolException rpe) {
 			fail("Should not throw any exceptions.");
 		}
-		
+
 		lookupListener.lookupEvent(null);
-		
+
 		Vector<NotificationChannel> notifChans = new Vector<NotificationChannel>();
 		Iterator iter = model.iterator();
 		while (iter.hasNext()) {
@@ -99,10 +99,10 @@ public class SnmpTableLookupListenerTest extends TestCase {
 		assertTrue(notifChans.contains(chan3));
 		assertTrue(notifChans.contains(chan4));
 		assertEquals(4, notifChans.size());
-		
+
 		readerDevice.removeAllNotificationChannels();
 	}
-	
+
 	/**
 	 * Runs the test using the gui runner.
 	 * @param args No arguments
@@ -110,5 +110,5 @@ public class SnmpTableLookupListenerTest extends TestCase {
 	public static void main(String[] args) {
         junit.swingui.TestRunner.run(SnmpTableLookupListenerTest.class);
     }
-	
+
 }
