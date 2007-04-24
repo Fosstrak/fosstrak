@@ -71,16 +71,14 @@
            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>  
             <configuration>
-                   <archive>
-                  <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>   
-                   <!-- TODO is the classpath really required here ? -->
-                   <!-- MAKE SURE YOU ADJUST THE ABOVE MANIFEST IF YOU ADD/CHANGE DEPENDENCIES -->
-                   <!--  
-                     <manifest>
-                       <addClasspath>true</addClasspath> 
-                     </manifest> -->
-             </archive>
-             </configuration>
+	                    <archive>  
+	                      <manifest>
+	                         <mainClass>org.accada.reader.rp.client.TestClient</mainClass>
+	    		         <addClasspath>true</addClasspath>
+	                         <classpathPrefix>./lib</classpathPrefix>
+	                      </manifest>
+	              </archive>
+          </configuration>
           </plugin>
         <plugin>
    	        <artifactId>maven-assembly-plugin</artifactId>
