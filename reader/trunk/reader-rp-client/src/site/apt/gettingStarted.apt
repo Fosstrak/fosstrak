@@ -51,4 +51,6 @@ Reader RP Client Module: Getting Started
    * As the port use the TCP port to which the reader is sending the notification messages
      which is specified in the definition of the notification channel. The default port 9999.
 
+   []
+
 [../images/EventSinkUIScreenshot.jpg]
