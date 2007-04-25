@@ -212,7 +212,8 @@ public class ReaderConfiguratorExample {
 
 +---    
     
-   The corresponding properties ("ReaderDeviceConfiguration.xml") file looks like this:
+   The corresponding properties ({{{example/ReaderDeviceConfiguration.xml} ReaderDeviceConfiguration.xml}})
+   file looks like this:
 
 +---
 
@@ -240,23 +241,6 @@ public class ReaderConfiguratorExample {
 			<continuousTrigger name="NotificationTrigger"/>
 		</triggers>
 
-		<!-- data selectors -->
-		<dataSelectors>
-			<dataSelector name="DataSelector">
-				<eventFilters>
-					<eventFilter>evObserved</eventFilter>
-					<eventFilter>evLost</eventFilter>
-				</eventFilters>
-				<fieldNames>
-					<fieldName>eventType</fieldName>
-					<fieldName>readerName</fieldName>
-					<fieldName>tagID</fieldName>
-					<fieldName>tagIDasPureURI</fieldName>
-					<fieldName>sourceName</fieldName>
-				</fieldNames>
-			</dataSelector>
-		</dataSelectors>
-
 		<!-- notification channels -->
 		<notificationChannels>
 			<notificationChannel name="NotificationChannel">
@@ -270,7 +254,6 @@ public class ReaderConfiguratorExample {
 				<notificationTriggers>
 					<triggerName>NotificationTrigger</triggerName>
 				</notificationTriggers>
-				<dataSelector>DataSelector</dataSelector>
 			</notificationChannel>
 		</notificationChannels>
 		
