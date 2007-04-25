@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ReaderDeviceConfiguration.xsd">
+	<readerDeviceConfiguration>
+	
+		<!-- reader configuration -->
+		<readerConfig>
+			<commandChannelHost>localhost</commandChannelHost>
+			<commandChannelPort>8000</commandChannelPort>
+			<transportProtocol>HTTP</transportProtocol>
+			<transportFormat>XML</transportFormat>
+		</readerConfig>
+
+		<!-- read tiggers -->
+		<triggers>
+			<timerTrigger name="ReadTrigger">
+				<value>2000</value>
+			</timerTrigger>
+		</triggers>
+
+		<!-- notification tiggers -->
+		<triggers>
+			<continuousTrigger name="NotificationTrigger"/>
+		</triggers>
+
+		<!-- notification channels -->
+		<notificationChannels>
+			<notificationChannel name="NotificationChannel">
+				<notificationChannelHost>localhost</notificationChannelHost>
+				<notificationChannelPort>9000</notificationChannelPort>
+				<transportProtocol>TCP</transportProtocol>
+				<notificationChannelMode>connect</notificationChannelMode>
+				<sources>
+					<source>Shelf1</source>
+				</sources>
+				<notificationTriggers>
+					<triggerName>NotificationTrigger</triggerName>
+				</notificationTriggers>
+			</notificationChannel>
+		</notificationChannels>
+		
+		<!-- sources -->
+		<sources>
+			<source name="Shelf1">
+				<triggerName>ReadTrigger</triggerName>
+			</source>
+		</sources>
+		
+	</readerDeviceConfiguration>
+</configurationDocument>
