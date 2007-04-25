@@ -14,7 +14,8 @@ Download
 *---------------------+------+------+
  Package | Binaries | Source
 *---------------------+------+------+
- Reader RP/RM Core 0.3.0 | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.3.0/reader-rprm-core-0.3.0-bin-with-dependencies.zip }reader-rprm-core-0.3.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.3.0/reader-rprm-core-0.3.0-src.zip }reader-rprm-core-0.3.0-src.zip}}
+ Reader RP/RM Core 0.3.0 (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.3.0/reader-rprm-core-0.3.0-bin-with-dependencies.zip}reader-rprm-core-0.3.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.3.0/reader-rprm-core-0.3.0-src.zip}reader-rprm-core-0.3.0-src.zip}}
+ Reader RP/RM Core 0.3.0 (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.3.0/reader-rprm-core-0.3.0-bin-with-dependencies.tar.gz}reader-rprm-core-0.3.0-bin-with-dependencies.tar.gz}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.3.0/reader-rprm-core-0.3.0-src.tar.gz}reader-rprm-core-0.3.0-src.tar.gz}}
 *---------------------+------+------+
  
 
@@ -24,7 +25,8 @@ Download
 *---------------------+------+------+
  Package | Binaries | Source
 *---------------------+------+------+
- Reader RP Proxy 0.3.0  | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.3.0/reader-rp-proxy-0.3.0-bin-with-dependencies.zip }reader-rp-proxy-0.3.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.3.0/reader-rp-proxy-0.3.0-src.zip }reader-rp-proxy-0.3.0-src.zip}}
+ Reader RP Proxy 0.3.0 (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.3.0/reader-rp-proxy-0.3.0-bin-with-dependencies.zip}reader-rp-proxy-0.3.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.3.0/reader-rp-proxy-0.3.0-src.zip}reader-rp-proxy-0.3.0-src.zip}}
+ Reader RP Proxy 0.3.0 (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.3.0/reader-rp-proxy-0.3.0-bin-with-dependencies.tar.gz}reader-rp-proxy-0.3.0-bin-with-dependencies.tar.gz}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.3.0/reader-rp-proxy-0.3.0-src.tar.gz}reader-rp-proxy-0.3.0-src.tar.gz}}
 *---------------------+------+------+
  
 
@@ -35,7 +37,8 @@ Download
 *---------------------+------+------+
  Package | Binaries | Source
 *---------------------+------+------+
- Reader RP Client 0.3.0  | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.3.0/reader-rp-client-0.3.0-bin-with-dependencies.zip }reader-rp-client-0.3.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.3.0/reader-rp-client-0.3.0-src.zip }reader-rp-client-0.3.0-src.zip}}
+ Reader RP Client 0.3.0 (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.3.0/reader-rp-client-0.3.0-bin-with-dependencies.zip}reader-rp-client-0.3.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.3.0/reader-rp-client-0.3.0-src.zip}reader-rp-client-0.3.0-src.zip}}
+ Reader RP Client 0.3.0 (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.3.0/reader-rp-client-0.3.0-bin-with-dependencies.tar.gz}reader-rp-client-0.3.0-bin-with-dependencies.tar.gz}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.3.0/reader-rp-client-0.3.0-src.tar.gz}reader-rp-client-0.3.0-src.tar.gz}}
 *---------------------+------+------+
 
 
@@ -45,13 +48,10 @@ Download
 *---------------------+------+------+
  Package | Binaries | Source
 *---------------------+------+------+
- Reader HAL 0.3.0  | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-hal/0.3.0/reader-hal-0.3.0-bin-with-dependencies.zip }reader-hal-0.3.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-hal/0.3.0/reader-hal-0.3.0-src.zip }reader-hal-0.3.0-src.zip}}
+ Reader HAL 0.3.0 (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-hal/0.3.0/reader-hal-0.3.0.jar}reader-hal-0.3.0-bin-with-dependencies.jar}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-hal/0.3.0/reader-hal-0.3.0-src.zip}reader-hal-0.3.0-src.zip}}
+ Reader HAL 0.3.0 (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-hal/0.3.0/reader-hal-0.3.0.jar}reader-hal-0.3.0-bin-with-dependencies.jar}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-hal/0.3.0/reader-hal-0.3.0-src.tar.gz}reader-hal-0.3.0-src.tar.gz}}
 *---------------------+------+------+
 
-
-* Acknowledgements
-
-   The above downloads contain the tag data translation (TDT) engine developed by Mark Harrison and James Brusey at the {{{http://www.autoidlabs.org.uk/} Auto-ID Lab in Cambridge, UK}}. 
 
 * System Requirements
 
