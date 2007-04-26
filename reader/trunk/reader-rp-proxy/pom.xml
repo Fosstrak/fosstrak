@@ -1,25 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
+
   <!-- =========================================================== -->
-  <!-- Basics                                                  -->
+  <!-- Basics                                                      -->
   <!-- =========================================================== -->
 
-
-  
   <groupId>org.accada.reader</groupId>
   <artifactId>reader-rp-proxy</artifactId>
   <version>0.3.0-SNAPSHOT</version>
   <parent>
-      <artifactId>reader</artifactId>
-      <groupId>org.accada.reader</groupId>
-      <version>0.3.0-SNAPSHOT</version>
+    <groupId>org.accada.reader</groupId>
+    <artifactId>reader</artifactId>
+    <version>0.3.0-SNAPSHOT</version>
   </parent>
-  <name>reader-rp-proxy</name>
   <modelVersion>4.0.0</modelVersion>
+  <name>reader-rp-proxy</name>
 
-
-  
-  
+    
   <!-- =========================================================== -->
   <!-- Build Plugins                                               -->
   <!-- =========================================================== -->
@@ -35,37 +32,36 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-         <artifactId>maven-jar-plugin</artifactId>  
-         <configuration>
-                <archive>  
-                  <manifest>
-		    <addClasspath>true</addClasspath>
-                    <classpathPrefix>./lib</classpathPrefix>
-                  </manifest>
+        <artifactId>maven-jar-plugin</artifactId>  
+        <configuration>
+          <archive>  
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>./lib</classpathPrefix>
+            </manifest>
           </archive>
-          </configuration>
-       </plugin>
-     <plugin>
-	        <artifactId>maven-assembly-plugin</artifactId>
-	        <configuration>
-	         <descriptors>
-	          <descriptor>src/main/assembly/src.xml</descriptor>
-	          <descriptor>src/main/assembly/bin-with-dependencies.xml</descriptor>
-	           </descriptors>
-	        </configuration>
-	        <executions>
-		          <execution>
-		            <id>make-assembly</id>
-		            <phase>package</phase>
-		            <goals>
-		              <goal>single</goal>
-		            </goals>
-		          </execution>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptors>
+            <descriptor>src/main/assembly/src.xml</descriptor>
+            <descriptor>src/main/assembly/bin-with-dependencies.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
-  
   
   
   <!-- =========================================================== -->
@@ -111,5 +107,6 @@
       <version>1.0</version>
     </dependency>
   </dependencies>
+  
   
 </project>

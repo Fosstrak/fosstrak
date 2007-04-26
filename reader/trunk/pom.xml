@@ -23,7 +23,11 @@
     <module>reader-rp-client</module>
   </modules>
 
-  <!-- Dependencies -->
+
+  <!-- =========================================================== -->
+  <!-- Dependencies                                          -->
+  <!-- =========================================================== -->
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

@@ -20,20 +20,20 @@
       </includes>
     </fileSet>
     <fileSet>
-          <directory>src/main/resources/props</directory>
-          <outputDirectory>/props</outputDirectory>
-          <includes>
-	          <include>log4j.properties</include>
-	          <include>messaging.properties</include>
-          </includes>
+      <directory>src/main/resources/props</directory>
+      <outputDirectory>/props</outputDirectory>
+      <includes>
+        <include>log4j.properties</include>
+        <include>messaging.properties</include>
+      </includes>
     </fileSet>
     <fileSet>
-          <directory>src/main/resources/props/schemes</directory>
-          <outputDirectory>/props/schemes</outputDirectory>
+      <directory>src/main/resources/props/schemes</directory>
+      <outputDirectory>/props/schemes</outputDirectory>
     </fileSet>
     <fileSet>
-          <directory>src/main/resources/props/auxiliary</directory>
-          <outputDirectory>/props/auxiliary</outputDirectory>
+      <directory>src/main/resources/props/auxiliary</directory>
+      <outputDirectory>/props/auxiliary</outputDirectory>
     </fileSet>
   </fileSets>
   <dependencySets>
