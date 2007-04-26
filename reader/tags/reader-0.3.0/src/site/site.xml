@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Accada - Reader">
+<bannerLeft>
+    <name>Accada</name>
+    <src>images/banner2_left.jpg</src>
+    <href>http://www.accada.org/</href>
+  </bannerLeft>
+  <bannerRight>
+    <src>images/banner2_middle.jpg</src>
+  </bannerRight>
+  <body>
+   <links>
+         <item name="Accada" href="../index.html" />
+         <item name="Reader" href="/index.html"/>
+         <item name="Filtering and Collection" href="../fc/index.html"/>
+         <item name="EPCIS" href="../epcis/index.html"/>
+         <item name="Tag Data Translation" href="../tdt/index.html"/>
+    </links>
+   <menu name="Accada" inherit="top">
+      <item name="Home" href="../index.html"/>
+    </menu>
+   
+    <menu name="Reader Project" inherit="top">
+      <item name="Overview" href="/index.html"/>
+      <item name="Features" href="/features.html"/>
+      <item name="Demo" href="/demo.html"/>
+      <item name="Getting Started" href="/started.html"/>
+      <item name="Download" href="/download.html"/>
+      <item name="License" href="/license.html"/>
+      <item name="How to help" href="/howtohelp.html"/>
+      <item name="FAQ" href="/faq.html"/>
+      <item name="JavaDoc" href="/apidocs/index.html"/>
+      <item name="Mailing Lists" href="/mail-lists.html"/>
+    </menu>
+    
+     <menu name="Reader Project Modules" inherit="none">
+       <item name="RP/RM Core" href="/reader-rprm-core/index.html"/>
+       <item name="RP Proxy" href="/reader-rp-proxy/index.html"/>
+       <item name="RP Client" href="/reader-rp-client/index.html"/>
+       <item name="HAL" href="/reader-hal/index.html"/>
+     </menu>
+
+
+     <breadcrumbs>
+         <item href="../index.html" name="Accada" />
+         <item name="Reader"/> <!-- href is derived from project.url -->
+  </breadcrumbs>
+  
+  </body>
+   <skin>
+         <groupId>org.apache.maven.skins</groupId>
+         <artifactId>maven-stylus-skin</artifactId>
+         <version>1.0</version>
+     </skin>
+     <poweredBy>
+            <logo img="images/logos/supportedByAutoid4.png" name="Auto-ID" href="http://www.autoidlabs.org/" />
+     </poweredBy>
+   
+
+
+</project>

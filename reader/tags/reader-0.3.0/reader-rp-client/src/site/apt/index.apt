@@ -1,0 +1,79 @@
+       ------
+                                    Reader RP Client Module
+                                    ------
+                                    ------
+
+
+Reader RP Client Module
+
+
+* Features  
+
+   *  Java Swing-based graphical user interface to executes commands and communicate
+   with a RFID reader that implements the EPCglobal Reader Protocol Version 1.1.
+   The RP client supports the following elements of the protocol:
+    
+    	*   Transport Binding: TCP and HTTP
+ 
+    	*   Message Binding: XML and Text
+    	
+    	*   Synchronous and Asynchronous Messaging (Notification Channels)
+    	
+    	*   Triggers
+    	
+    	*   Data Selectors
+    	
+    A detailed list of the features implemented is available here.
+
+
+* Usage Scenario
+
+   *   Communicate with a reader via the EPCglobal Reader Protocol Version 1.1 using a graphical front end to create and send commands. 
+   *   Receive and display notification messages from a reader.
+
+* User Documentation
+
+   *   {{{gettingStarted.html} Getting Started}}
+   
+   *   EPCglobal Reader Protocol Specification Version 1.1
+
+
+* Download
+
+     *   see {{{../download.html}download page}}
+     
+  * System Requirements
+ 
+*---------------------+------+
+Java Virtual Machine | JDK 1.5 or higher
+*---------------------+------+
+Operating System | No minimum requirement. Tested on Windows XP. 
+*---------------------+------+
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
