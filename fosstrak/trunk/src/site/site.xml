@@ -43,8 +43,7 @@
                   <item name="Reader Protocol" href="reader/index.html"/>
                   <item name="Reader Management" href="reader/index.html" />
                   <item name="ALE" href="fc/index.html"/>
-                  <item name="EPCIS Capture Interface" href="epcis/index.html"/>
-                  <item name="EPCIS Query Interface" href="epcis/index.html"/>
+                  <item name="EPCIS" href="epcis/index.html"/>
                   <item name="TDT Specification" href="tdt/index.html"/>
     </menu>
 
