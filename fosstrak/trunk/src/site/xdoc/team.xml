@@ -12,16 +12,16 @@
      <tr>
        <td>Co-Founders and Project Coordinators</td>
        <td>
-         Christian Floerkemeier<br/>
-         Christof Roduner<br/>
-         Matthias Lampe
+         <a href="http://people.inf.ethz.ch/floerkem/">Christian Floerkemeier</a><br/>
+         <a href="http://people.inf.ethz.ch/rodunerc/">Christof Roduner</a><br/>
+         <a href="http://people.inf.ethz.ch/mlampe/">Matthias Lampe</a>
        </td>
      </tr>
      <tr>
        <td>Project Leads</td>
        <td>
          Christian Floerkemeier (Reader)<br/>
-         Mark Harrison (Tag Data Translation)<br/>
+         <a href="http://www.ifm.eng.cam.ac.uk/people/mgh12/">Mark Harrison</a> (Tag Data Translation)<br/>
          Matthias Lampe (Filtering and Collection)<br/>
          Christof Roduner (EPCIS)<br/>
          Marco Steybe (EPCIS)<br/>
@@ -37,7 +37,7 @@
          Andrea Groessbauer<br/>
          David Gubler<br/>
          Jonas Haller<br/>
-         Nektarios Leontiadis<br/>
+         <a href="http://www.leontiadis.info">Nektarios Leontiadis</a><br/>
          Patrice Oehen<br/>
          Alain Remund<br/>
          Angelo Rosenfelder<br/>
@@ -75,7 +75,7 @@
 	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
 	   <TR>
   	     <TD><img src="images/mlampe.jpg"/><br/><br/>Matthias Lampe</TD>
-   	     <TD><img src="images/nektarios.jpg"/><br/><br/><a href="http://www.leontiadis.info">Nektarios Leontiadis</a></TD>
+   	     <TD><img src="images/nektarios.jpg"/><br/><br/>Nektarios Leontiadis</TD>
 	     <TD><img src="images/oehen.jpg"/><br/><br/>Patrice Oehen</TD>
 	   </TR>
 	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
