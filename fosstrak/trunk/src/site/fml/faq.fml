@@ -8,7 +8,7 @@
 </faq>
 <faq>
 <question>Are there other open source projects incorporating the EPC Network standards?</question>
-<answer>Yes, there are. See <a href="www.autoidlabs.org/opensource">www.autoidlabs.org/opensource</a> for an overview. There is in particular the MENTOR effort which provides .NET implementation of EPCIS</answer>
+<answer>Yes, there are. See <a href="http://www.autoidlabs.org/opensource">www.autoidlabs.org/opensource</a> for an overview. There is in particular the MENTOR effort which provides .NET implementation of EPCIS.</answer>
 </faq><faq>
 <question>Where can I find more information about the EPC Network?</question>
 <answer>Check out the website of <a href="http://www.epcglobalinc.org">EPCglobal</a> and in particular the architecture framework document</answer>
@@ -39,7 +39,7 @@ Note that this is in stark contrast to a BSD or Apache-style license that allows
 </faq>	
 <faq>
 <question>Do I have to publish any modifications and extension I make again as open source?</question>
-<answer>Have a look at the <a href="license.html">license </a> or at the explanation of LGPL-style licences at <a href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License"> wikipedia.</a></answer>
+<answer>Have a look at the <a href="license.html">license </a> or at the explanation of LGPL-style licences at <a href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License"> Wikipedia.</a></answer>
 </faq>											
 <faq>
 <question>Can I contribute to this project even, if I am not part of the Auto-ID Labs or EPCglobal?</question>
