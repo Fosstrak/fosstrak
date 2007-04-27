@@ -34,7 +34,7 @@
 <question>Why is Accada Software available under LGPL License?</question>
 <answer>The LGPL License allows software vendors to bundle Accada components in their applications and systems without the reciprocal open source requirement. And it provides all Accada users the assurance that enhancements to the Accada source code will continue to remain free and openly available. It means that the people that make changes and enhancements to the Accada source code have the obligation to LGPL their changes back when they redistribute our code.
 
-Note that this is in stark contrast to a BSD or Apache-style license that allows for forking and creation of commercial projects. The latter allows for a "bait and switch" to users where the major sponsor withdrawals support from the open source project and forks a commercial version. (Quote from JBOSS website which also uses LPGL license)
+Note that this is in contrast to a BSD or Apache-style license that allows for forking and creation of commercial projects. 
 </answer>
 </faq>	
 <faq>
@@ -48,12 +48,6 @@ Note that this is in stark contrast to a BSD or Apache-style license that allows
 <faq>
 <question>How is this Accada project different from other rfid open source efforts?</question>
 <answer>The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations. </answer>
-</faq>
-<faq>
-<question>How is the Accada Approac different from the MENTOR project (http://epcis.mit.edu) </question>
-<answer> Accada and Mentor are two complimentary efforts:
-Accada provides Java implementation and MENTOR .NET software; Accada focus is on efficient data capture and dissemination - Mentor focus is on scalable data sharing and discovery.
-</answer>
 </faq>
 </part>								     
 </faqs>								      
