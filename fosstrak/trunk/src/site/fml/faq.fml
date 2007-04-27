@@ -49,5 +49,9 @@ Note that this is in contrast to a BSD or Apache-style license that allows for f
 <question>How is this Accada project different from other rfid open source efforts?</question>
 <answer>The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations. </answer>
 </faq>
+<faq>
+<question>Why are you using Maven and how can I use it?</question>
+<answer>The Accada project uses <a href="http://maven.apache.org/">Maven </a> for the build and project management. An introduction to running  maven can be found <a href="http://maven.apache.org/run-maven/index.html"> here </a>. There is also information available on the <a href="http://m2eclipse.codehaus.org/"> maven eclipse intregration </a>. </answer>
+</faq>
 </part>								     
 </faqs>								      
