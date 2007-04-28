@@ -25,7 +25,7 @@ Reader HAL Module: Getting Started
 * How to configure the Simulator
 
    The simulator framework (i.e. the SimulatorController implementation) has a properties file
-   ({{{examples/SimulatorControllerProperties.properties} SimulatorControllerProperties.properties}}) as shown below.
+   ({{{example/SimulatorControllerProperties.properties} SimulatorControllerProperties.properties}}) as shown below.
    The property simType has to be set to the fully qualified name of the simulator class. In the
    current release only the GraphicSimulator is supported. The property numberOfReadPoints specifies
    the number of read points (i.e. antennas) of the simulator. The read point names are set using the
