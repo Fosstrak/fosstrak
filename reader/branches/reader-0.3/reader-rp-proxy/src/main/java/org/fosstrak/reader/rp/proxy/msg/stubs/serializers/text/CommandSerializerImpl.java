@@ -393,8 +393,9 @@ public class CommandSerializerImpl implements CommandSerializer {
 		StringBuffer buf = new StringBuffer();
 		buf.append(LIST_BEGIN);
 		for(int i=0; i < objArray.length; i++) {
-			buf.append(objArray.toString());
-			if(i < objArray.length) {
+			buf.append(objArray[i].toString());
+			// add a comma if there is another parameter to be added
+			if((i+1) < objArray.length) {
 				buf.append(COMMA);
 			}
 		}
