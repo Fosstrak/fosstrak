@@ -85,7 +85,7 @@ public class Parameter {
 		try {
 			return (String)value;
 		} catch (ClassCastException e) {
-			throw new ParameterTypeException("Es wird ein String statt " + type.getName() + " erwartet.");
+			throw new ParameterTypeException("A string was expected instead of a " + type.getName() + ".");
 		}
 	}
 	
@@ -93,7 +93,7 @@ public class Parameter {
 		try {
 			return ((Boolean)value).booleanValue();
 		} catch (ClassCastException e) {
-			throw new ParameterTypeException("Es wird ein boolean statt " + type.getName() + " erwartet.");
+			throw new ParameterTypeException("A boolean was expected instead of a " + type.getName() + ".");
 		}
 	}
 	
@@ -101,7 +101,7 @@ public class Parameter {
 		try {
 			return ((Integer)value).intValue();
 		} catch (ClassCastException e) {
-			throw new ParameterTypeException("Es wird ein int statt " + type.getName() + " erwartet.");
+			throw new ParameterTypeException("An integer was expected instead of a " + type.getName() + ".");
 		}
 	}
 	
@@ -109,7 +109,7 @@ public class Parameter {
 		try {
 			return (Collection)value;
 		} catch (ClassCastException e) {
-			throw new ParameterTypeException("Es wird ein Array statt " + type.getName() + " erwartet.");
+			throw new ParameterTypeException("An array was expected instead of a " + type.getName() + ".");
 		}
 	}
 	
@@ -124,3 +124,4 @@ public class Parameter {
 		return value + " [" + type.getName() + "]";
 	}
 }
+
