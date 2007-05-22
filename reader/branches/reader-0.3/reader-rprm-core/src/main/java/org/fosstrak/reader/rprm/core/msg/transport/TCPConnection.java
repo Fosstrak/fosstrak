@@ -197,8 +197,8 @@ public class TCPConnection extends Connection implements Runnable {
 						+ clientSocket.getRemoteSocketAddress().toString()
 						+ " to the clients.");
 
-				// TODO: Falls sender ein ack des handshake erwartet, dieses
-				// noch senden, wenn alles i.O.
+				// TODO: In the case that the sender expects an ack of the handshake,
+				// still send this, if everything is OK
 			}
 
 			/* Read the messages */
