@@ -78,7 +78,7 @@ public class MethodComboBoxModel {
 		rdModel.addElement("removeAllNotificationChannels");
 		rdModel.addElement("getNotificationChannel");
 		rdModel.addElement("getAllNotificationChannels");
-		rdModel.addElement("removeTrigger");
+		rdModel.addElement("removeTriggers");
 		rdModel.addElement("removeAllTriggers");
 		rdModel.addElement("getTrigger");
 		rdModel.addElement("getAllTriggers");
