@@ -1,0 +1,61 @@
+       ------
+                                    Demo
+                                    ------
+                                    ------
+
+
+Demo
+
+*   Flash Movie of Reader Simulator, Reader Implementation, and Reader Test Client
+
+    {{{demo/SimulatorAndTestClient_v2.html} Click here to start movie}}
+
+*   Reader Test Client Screenshot
+
+[images/ReaderTestClientScreenshot.png]
+
+*   Reader Simulator Screenshot
+
+[images/ReaderSimulatorScreenshot70.png]
+
+*   Reader Proxy Example 
+
++----
+     
+	// get reader device proxy
+        Handshake handshake = new Handshake();
+        handshake.setMessageFormat(Handshake.FORMAT_XML);
+        handshake.setTransportProtocol(Handshake.HTTP);
+        readerDevice = ReaderDeviceFactory.getReaderDevice(COMMAND_CHANNEL_HOST, 
+        			Integer.parseInt(COMMAND_CHANNEL_PORT), handshake);
+        log.info("Connection established with reader device " + readerDevice.getName()
+				+ " at address " + COMMAND_CHANNEL_HOST + ":" + COMMAND_CHANNEL_PORT);
+
++----
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

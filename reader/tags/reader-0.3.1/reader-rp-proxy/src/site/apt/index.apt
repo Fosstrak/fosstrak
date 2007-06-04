@@ -1,0 +1,83 @@
+       ------
+                                    Reader RP Proxy Module
+                                    ------
+                                    ------
+
+
+Reader RP Proxy Module
+
+
+* Features  
+   
+   *  Java class library that supports the communication with a reader which implements the EPCglobal Reader Protocol Version 1.1.
+   Elements of the protocol implemented include:
+    
+    	*   Transport Binding: TCP and HTTP
+ 
+    	*   Message Binding: XML and Text
+    	
+    	*   Synchronous and Asynchronous Messaging (Notification Channels)
+    	
+    	*   Triggers
+    	
+    	*   Data Selectors
+    	
+    A detailed list of the features implemented is available here.
+
+   *  configuration of reader with single configuration file 
+	
+    
+
+* Usage Scenario
+
+   *   Communicate with a reader via the EPCglobal Reader Protocol Version 1.1 from within your Java application
+
+
+* User Documentation
+
+   *   {{{gettingStarted.html} Getting Started}}
+   
+   *   EPCglobal Reader Protocol Specification Version 1.1
+
+
+* Download
+
+   *   see {{{../download.html}download page}}
+   
+* System Requirements
+
+*---------------------+------+
+Java Virtual Machine | JDK 1.5 or higher 
+*---------------------+------+
+Operating System | No minimum requirement. Tested on Windows XP. 
+*---------------------+------+
+  
+    	
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

@@ -1,0 +1,121 @@
+       ------
+                                    Getting Started
+                                    ------
+                                    ------
+
+
+Getting Started 
+
+* Decide what you would like to do
+
+   If you have a Reader Protocol compliant reader in front of you or you want to communicate with a reader that is online via a GUI, 
+
+   * {{{reader-rp-client/gettingStarted.html} get started}} with the <<Reader RP Client module>> 
+   
+   []
+   If you have a Reader Protocol compliant reader in front of you or you want to communicate with a reader that is online from within your Java application,    
+  
+   * {{{reader-rp-proxy/gettingStarted.html} get started}} with the <<Reader RP Proxy module>>
+   
+   []
+   If you don't have access to a Reader Protocol compliant reader, 
+
+   * {{{reader-rprm-core/gettingStarted.html} get started}} with the <<Reader RP/RM Core module>>
+   
+   []
+
+   If this does not make sense to you, have a look at the {{{demo.html} demos}} to get a better idea of the functionality the Accada Reader project offers.
+     
+     
+* Sign up to the Reader User Mailing List 
+
+  {{{https://lists.sourceforge.net/lists/listinfo/accada-reader-user} Sign up here}}
+     
+     
+* Having problems
+
+  Check out the {{{http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-user} Mailing List Archives}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

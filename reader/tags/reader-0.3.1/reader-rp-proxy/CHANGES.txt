@@ -1,0 +1,7 @@
+Changes in version 0.3.1 (4 June 2007)
+
+- The ReaderDevice.removeSources method previously generated the wrong text command. This problem has been fixed.
+
+- A number of error messages in German have been replaced by error messages in English.
+
+- The XML binding did not work due to a backwards compatibility problem of JDK1.6 and JDK1.5, when the software was run with JDK1.5. This has been fixed in the current release.
