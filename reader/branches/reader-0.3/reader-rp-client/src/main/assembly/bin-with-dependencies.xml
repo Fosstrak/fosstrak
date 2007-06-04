@@ -10,6 +10,7 @@
         <include>README*</include>
         <include>LICENSE*</include>
         <include>NOTICE*</include>
+        <include>CHANGES*</include>
       </includes>
     </fileSet>
     <fileSet>
