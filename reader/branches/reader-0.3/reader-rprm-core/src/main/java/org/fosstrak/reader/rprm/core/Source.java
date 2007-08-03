@@ -20,6 +20,8 @@
 
 package org.accada.reader.rprm.core;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
@@ -32,6 +34,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.Vector;
+import java.util.Properties;
 
 import org.accada.reader.hal.HardwareAbstraction;
 import org.accada.reader.hal.UnsupportedOperationException;
@@ -295,6 +298,96 @@ public final class Source {
     */
    private Set tagsEverDetected;
 
+   /**
+    * The path of the property file.
+    */
+   private static final String propFile = "./props/source.properties";
+
+   /**
+    * Key for the isFixed property.
+    */
+   private static final String IS_FIXED = "isFixed";
+
+   /**
+    * Default value for isFixed.
+    */
+   public static final String IS_FIXED_DEFAULT = "false";
+
+   /**
+    * Key for the glimpsedTimeout property.
+    */
+   private static final String GLIMPSED_TIMEOUT = "glimpsedTimeout";
+
+   /**
+    * Default value for glimpsedTimeout.
+    */
+   public static final String GLIMPSED_TIMEOUT_DEFAULT = "2000";
+
+   /**
+    * Key for the observedThreshold property.
+    */
+   private static final String OBSERVED_THRESHOLD = "observedThreshold";
+
+   /**
+    * Default value for observedThreshold.
+    */
+   public static final String OBSERVED_THRESHOLD_DEFAULT = "0";
+
+   /**
+    * Key for the observedTimeout property.
+    */
+   private static final String OBSERVED_TIMEOUT = "observedTimeout";
+
+   /**
+    * Default value for observedTimeout.
+    */
+   public static final String OBSERVED_TIMEOUT_DEFAULT = "1000";
+
+   /**
+    * Key for the lostTimeout property.
+    */
+   private static final String LOST_TIMEOUT = "lostTimeout";
+
+   /**
+    * Default value for lostTimeout.
+    */
+   public static final String LOST_TIMEOUT_DEFAULT = "0";
+
+   /**
+    * Key for the readCyclesPerTrigger property.
+    */
+   private static final String READ_CYCLES_PER_TRIGGER = "readCyclesPerTrigger";
+
+   /**
+    * Default value for readCyclesPerTrigger.
+    */
+   public static final String READ_CYCLES_PER_TRIGGER_DEFAULT = "1";
+
+   /**
+    * Key for the maxReadDutyCycles property.
+    */
+   private static final String MAX_READ_DUTY_CYCLES = "maxReadDutyCycles";
+
+   /**
+    * Default value for maxReadDutyCycles.
+    */
+   public static final String MAX_READ_DUTY_CYCLES_DEFAULT = "100";
+
+   /**
+    * Key for the readTimeout property.
+    */
+   private static final String READ_TIMEOUT = "readTimeout";
+
+   /**
+    * Default value for readTimeout.
+    */
+   public static final String READ_TIMEOUT_DEFAULT = "0";
+
+   /**
+    * The properties. 
+    */
+   private static Properties properties;
+
 
    // ====================================================================
    // ----- Fields added for the reader management implementation ------//
@@ -425,15 +518,34 @@ public final class Source {
       this.readerDevice = readerDevice;
 
       // initial values
-      this.isFixed = false;
-      this.glimpsedTimeout = 2000;
-      this.observedThreshold = 0;
-      this.observedTimeout = 1000;
-      this.lostTimeout = 0;
-      this.readCyclesPerTrigger = 1;
-      final int hundred = 100;
-      this.maxReadDutyCycles = hundred;
-      this.readTimeout = 0;
+      properties = getProperties();
+      String isFixed_str = properties.getProperty(IS_FIXED);
+      if (isFixed_str != null && isFixed_str.equalsIgnoreCase("true")) {
+    	  this.isFixed = true;
+      } else {
+    	  this.isFixed = false;
+      }
+      this.glimpsedTimeout = Integer.parseInt(properties.getProperty(
+				GLIMPSED_TIMEOUT,
+				GLIMPSED_TIMEOUT_DEFAULT));
+      this.observedThreshold = Integer.parseInt(properties.getProperty(
+				OBSERVED_THRESHOLD,
+				OBSERVED_THRESHOLD_DEFAULT));
+      this.observedTimeout = Integer.parseInt(properties.getProperty(
+				OBSERVED_TIMEOUT,
+				OBSERVED_TIMEOUT_DEFAULT));
+      this.lostTimeout = Integer.parseInt(properties.getProperty(
+				LOST_TIMEOUT,
+				LOST_TIMEOUT_DEFAULT));
+      this.readCyclesPerTrigger = Integer.parseInt(properties.getProperty(
+				READ_CYCLES_PER_TRIGGER,
+				READ_CYCLES_PER_TRIGGER_DEFAULT));
+      this.maxReadDutyCycles = Integer.parseInt(properties.getProperty(
+				MAX_READ_DUTY_CYCLES,
+				MAX_READ_DUTY_CYCLES_DEFAULT));
+      this.readTimeout = Integer.parseInt(properties.getProperty(
+				READ_TIMEOUT,
+				READ_TIMEOUT_DEFAULT));
       this.session = 0;
       this.readPoints = new Hashtable();
       this.readTriggers = new Hashtable();
@@ -452,6 +564,23 @@ public final class Source {
 				+ "_OperStatusAlarmControl", false, AlarmLevel.ERROR, 0,
 				OperationalStatus.ANY, OperationalStatus.ANY);
 
+   }
+
+   /**
+    * Singleton implementation of properties file accessor.
+    * 
+    * @return properties instance
+    */
+   private static Properties getProperties() {
+      if (properties == null) {
+         properties = new Properties();
+         try {
+            properties.load(new FileInputStream(propFile));
+         } catch (IOException e) {
+            log.error("Could not find properties file: " + propFile);
+         }
+      }
+      return properties;
    }
 
    /**
