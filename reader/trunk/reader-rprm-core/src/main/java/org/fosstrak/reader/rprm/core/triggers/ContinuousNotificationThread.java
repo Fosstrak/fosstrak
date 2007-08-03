@@ -74,6 +74,7 @@ public class ContinuousNotificationThread extends Thread {
                      notificationChannel.getDataSelector());
             }
             // ReaderTester.printReadReport(nc);
+            Thread.yield();
          } catch (ReaderProtocolException e1) {
             System.out.println(e1.getErrorName());
          }

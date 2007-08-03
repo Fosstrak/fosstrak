@@ -111,7 +111,10 @@ public final class NotificationChannel {
    /**
     * The thread for continuous triggers.
     */
-   private ContinuousNotificationThread continuousThread;
+   // As the ContinuousNotificationThread had problems,
+   // we use a Timer thread for now
+   //private ContinuousNotificationThread continuousThread
+   private Timer continuousThread;
 
    /**
     * The threads for timer triggers (of type Timer).
@@ -418,11 +421,16 @@ public final class NotificationChannel {
          if (!this.notificationTriggers.containsKey(cur.getName())) {
             this.notificationTriggers.put(cur.getName(), cur);
             if (cur.getType().equals(TriggerType.CONTINUOUS)) {
-               // conitnuous trigger
+               // continuous trigger
                if (continuousThread == null && timerThreads.size() == 0) {
-                  continuousThread = new ContinuousNotificationThread(this,
-                        cur);
-                  continuousThread.start();
+            	  // ContinuousNotificationThread takes up significant system resources right now
+            	  // as it runs without any delay. We'll use a Timer thread with a low latency instead.
+            	  //continuousThread = new ContinuousNotificationThread(this, cur);
+            	  //continuousThread.start();
+                  continuousThread = new Timer();
+                  final int delay = 50;
+                  continuousThread.schedule(
+                          new TimerNotificationThread(this, cur), 0, delay);
                }
             } else if (cur.getType().equals(TriggerType.TIMER)) {
                // timer trigger
@@ -503,7 +511,8 @@ public final class NotificationChannel {
          if (notificationTriggers.containsKey(cur.getName())) {
             if (cur.getType().equals(TriggerType.CONTINUOUS)) {
                // continuous trigger
-               continuousThread.stop();
+               //continuousThread.stop();
+               continuousThread.cancel();
                continuousThread = null;
             } else if (cur.getType().equals(TriggerType.TIMER)) {
                // timer trigger
