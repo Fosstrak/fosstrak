@@ -2122,4 +2122,13 @@ public class ReaderDevice {
 	   }
    }
 
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            Not used
+	 */
+	public static void main(String[] args) {
+		MessageLayer m = new MessageLayer();
+	}
 }
