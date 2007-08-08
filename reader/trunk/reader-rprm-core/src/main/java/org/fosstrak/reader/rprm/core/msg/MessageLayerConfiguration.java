@@ -20,10 +20,8 @@
 
 package org.accada.reader.rprm.core.msg;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
 
 /**
@@ -40,13 +38,13 @@ public final class MessageLayerConfiguration {
 			.getLogger(MessageLayerConfiguration.class);
 
 	/** The path of the property file. */
-	private static final String propFile = "./props/messaging.properties";
+	private static final String PROPERTIES_FILE = "props/ReaderDevice.properties";
 
 	/** Key for the thread pool size property. */
 	private static final String THREAD_POOL_SIZE = "threadPoolSize";
 
 	/** Default value for the thread pool size. */
-	public static final int THREAD_POOL_SIZE_DEFAULT = 16;
+	public static final String THREAD_POOL_SIZE_DEFAULT = "16";
 
 	/** Key for the TCP server connection property. */
 	private static final String TCP_SERVER_CONNECTION = "tcpServerConnection";
@@ -67,7 +65,7 @@ public final class MessageLayerConfiguration {
 	public static final String NOTIFICATION_LISTEN_TIMEOUT_DEFAULT = "0";
 
 	/** The properties. */
-	private static Properties properties;
+	private static XMLConfiguration configuration;
 
 	/** The singleton configuration instance. */
 	private static MessageLayerConfiguration instance;
@@ -76,7 +74,7 @@ public final class MessageLayerConfiguration {
 	 * Private constructor to construct the hide the default constructor.
 	 */
 	private MessageLayerConfiguration() {
-		properties = getProperties();
+		configuration = getProperties();
 	}
 
 	/**
@@ -91,21 +89,31 @@ public final class MessageLayerConfiguration {
 		return instance;
 	}
 
+   /**
+    * Singleton implementation of properties file accessor.
+    * 
+    * @return properties instance
+    */
+   private static XMLConfiguration getProperties() {
+      return getProperties(PROPERTIES_FILE);
+   }
+
 	/**
 	 * Singleton implementation of properties file accessor.
 	 * 
 	 * @return properties instance
 	 */
-	private static Properties getProperties() {
-		if (properties == null) {
-			properties = new Properties();
-			try {
-				properties.load(new FileInputStream(propFile));
-			} catch (IOException e) {
-				log.error("Could not find properties file: " + propFile);
-			}
-		}
-		return properties;
+	private static XMLConfiguration getProperties(final String propFile) {
+		if (configuration == null) {
+	      // properties
+		   configuration = new XMLConfiguration();
+	      try {
+	         configuration.load(propFile);
+	      } catch (ConfigurationException e) {
+	         log.error("Could not find properties file: " + propFile);
+	      }
+	   }
+		return configuration;
 	}
 
 	/**
@@ -118,12 +126,8 @@ public final class MessageLayerConfiguration {
 	 *             <code>int</code>.
 	 */
 	public int getThreadPoolSize() throws NumberFormatException {
-		String poolSize = properties.getProperty(THREAD_POOL_SIZE);
-		if (poolSize != null) {
-			return Integer.parseInt(poolSize);
-		} else {
-			return THREAD_POOL_SIZE_DEFAULT;
-		}
+      return Integer.parseInt(configuration.getString(
+            THREAD_POOL_SIZE, THREAD_POOL_SIZE_DEFAULT));
 	}
 
 	/**
@@ -134,7 +138,7 @@ public final class MessageLayerConfiguration {
 	 *         TCP port is not specified it returns <code>false</code>.
 	 */
 	public boolean hasTcpServerConnection() {
-		String tcpConn = properties.getProperty(TCP_SERVER_CONNECTION);
+		String tcpConn = configuration.getString(TCP_SERVER_CONNECTION);
 		if (tcpConn != null && tcpConn.equalsIgnoreCase("true")
 				&& getTcpPort() != -1) {
 			return true;
@@ -152,7 +156,7 @@ public final class MessageLayerConfiguration {
 	 *             If the value couldn't be converted into an <code>int</code>.
 	 */
 	public int getTcpPort() throws NumberFormatException {
-		String tcpPort = properties.getProperty(TCP_PORT);
+		String tcpPort = configuration.getString(TCP_PORT);
 		if (tcpPort != null) {
 			return Integer.parseInt(tcpPort);
 		} else {
@@ -168,7 +172,7 @@ public final class MessageLayerConfiguration {
 	 *         HTTP port is not specified it returns <code>false</code>.
 	 */
 	public boolean hasHttpServerConnection() {
-		String httpConn = properties.getProperty(HTTP_SERVER_CONNECTION);
+		String httpConn = configuration.getString(HTTP_SERVER_CONNECTION);
 		if (httpConn != null && httpConn.equalsIgnoreCase("true")
 				&& getHttpPort() != -1) {
 			return true;
@@ -186,7 +190,7 @@ public final class MessageLayerConfiguration {
 	 *             If the value couldn't be converted into an <code>int</code>.
 	 */
 	public int getHttpPort() throws NumberFormatException {
-		String httpPort = properties.getProperty(HTTP_PORT);
+		String httpPort = configuration.getString(HTTP_PORT);
 		if (httpPort != null) {
 			return Integer.parseInt(httpPort);
 		} else {
@@ -204,7 +208,7 @@ public final class MessageLayerConfiguration {
 	 *             If the value couldn't be converted into an <code>int</code>.
 	 */
 	public int getNotificationListenTimeout() throws NumberFormatException {
-		return Integer.parseInt(properties.getProperty(
+		return Integer.parseInt(configuration.getString(
 				NOTIFICATION_LISTEN_TIMEOUT,
 				NOTIFICATION_LISTEN_TIMEOUT_DEFAULT));
 	}

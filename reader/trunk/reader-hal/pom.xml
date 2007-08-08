@@ -16,12 +16,12 @@
   <packaging>jar</packaging>
   <modelVersion>4.0.0</modelVersion>
   <name>reader-hal</name>
-  
-  
+
+
   <!-- =========================================================== -->
   <!-- Plugins                                                     -->
   <!-- =========================================================== -->
-  
+
   <build>
     <plugins>
       <plugin>
@@ -33,9 +33,9 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>  
+        <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <archive>  
+          <archive>
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>./lib</classpathPrefix>
@@ -62,12 +62,12 @@
       </plugin>
     </plugins>
   </build>
-  
-  
+
+
   <!-- =========================================================== -->
   <!-- Dependencies                                                -->
   <!-- =========================================================== -->
-  
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -84,9 +84,9 @@
     <dependency>
       <groupId>commons-configuration</groupId>
       <artifactId>commons-configuration</artifactId>
-      <version>1.1</version>
+      <version>1.4</version>
     </dependency>
   </dependencies>
-   
+
 
 </project>

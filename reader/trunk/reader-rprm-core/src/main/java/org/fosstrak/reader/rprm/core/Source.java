@@ -20,8 +20,6 @@
 
 package org.accada.reader.rprm.core;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
@@ -34,7 +32,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.Vector;
-import java.util.Properties;
 
 import org.accada.reader.hal.HardwareAbstraction;
 import org.accada.reader.hal.UnsupportedOperationException;
@@ -56,6 +53,8 @@ import org.accada.reader.rprm.core.triggers.ContinuousReadThread;
 import org.accada.reader.rprm.core.triggers.IOEdgeTriggerPortManager;
 import org.accada.reader.rprm.core.triggers.IOValueTriggerPortManager;
 import org.accada.reader.rprm.core.triggers.TimerReadThread;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
 import org.accada.tdt.TDTEngine;
 import org.accada.tdt.types.LevelTypeList;
@@ -301,7 +300,7 @@ public final class Source {
    /**
     * The path of the property file.
     */
-   private static final String propFile = "./props/source.properties";
+   private static final String PROPERTIES_FILE = "props/ReaderDevice.properties";
 
    /**
     * Key for the isFixed property.
@@ -386,7 +385,7 @@ public final class Source {
    /**
     * The properties. 
     */
-   private static Properties properties;
+   private static XMLConfiguration configuration;
 
 
    // ====================================================================
@@ -518,34 +517,34 @@ public final class Source {
       this.readerDevice = readerDevice;
 
       // initial values
-      properties = getProperties();
-      String isFixed_str = properties.getProperty(IS_FIXED);
+      configuration = getProperties();
+      String isFixed_str = configuration.getString(IS_FIXED);
       if (isFixed_str != null && isFixed_str.equalsIgnoreCase("true")) {
     	  this.isFixed = true;
       } else {
     	  this.isFixed = false;
       }
-      this.glimpsedTimeout = Integer.parseInt(properties.getProperty(
-				GLIMPSED_TIMEOUT,
-				GLIMPSED_TIMEOUT_DEFAULT));
-      this.observedThreshold = Integer.parseInt(properties.getProperty(
-				OBSERVED_THRESHOLD,
-				OBSERVED_THRESHOLD_DEFAULT));
-      this.observedTimeout = Integer.parseInt(properties.getProperty(
-				OBSERVED_TIMEOUT,
-				OBSERVED_TIMEOUT_DEFAULT));
-      this.lostTimeout = Integer.parseInt(properties.getProperty(
-				LOST_TIMEOUT,
-				LOST_TIMEOUT_DEFAULT));
-      this.readCyclesPerTrigger = Integer.parseInt(properties.getProperty(
-				READ_CYCLES_PER_TRIGGER,
-				READ_CYCLES_PER_TRIGGER_DEFAULT));
-      this.maxReadDutyCycles = Integer.parseInt(properties.getProperty(
-				MAX_READ_DUTY_CYCLES,
-				MAX_READ_DUTY_CYCLES_DEFAULT));
-      this.readTimeout = Integer.parseInt(properties.getProperty(
-				READ_TIMEOUT,
-				READ_TIMEOUT_DEFAULT));
+      this.glimpsedTimeout = Integer.parseInt(configuration.getString(
+            GLIMPSED_TIMEOUT,
+            GLIMPSED_TIMEOUT_DEFAULT));
+      this.observedThreshold = Integer.parseInt(configuration.getString(
+              OBSERVED_THRESHOLD,
+              OBSERVED_THRESHOLD_DEFAULT));
+      this.observedTimeout = Integer.parseInt(configuration.getString(
+              OBSERVED_TIMEOUT,
+              OBSERVED_TIMEOUT_DEFAULT));
+      this.lostTimeout = Integer.parseInt(configuration.getString(
+              LOST_TIMEOUT,
+              LOST_TIMEOUT_DEFAULT));
+      this.readCyclesPerTrigger = Integer.parseInt(configuration.getString(
+              READ_CYCLES_PER_TRIGGER,
+              READ_CYCLES_PER_TRIGGER_DEFAULT));
+      this.maxReadDutyCycles = Integer.parseInt(configuration.getString(
+              MAX_READ_DUTY_CYCLES,
+              MAX_READ_DUTY_CYCLES_DEFAULT));
+      this.readTimeout = Integer.parseInt(configuration.getString(
+              READ_TIMEOUT,
+              READ_TIMEOUT_DEFAULT));
       this.session = 0;
       this.readPoints = new Hashtable();
       this.readTriggers = new Hashtable();
@@ -561,8 +560,8 @@ public final class Source {
       this.operStatus = OperationalStatus.UNKNOWN;
 
       operStatusAlarmControl = new TTOperationalStatusAlarmControl(name
-				+ "_OperStatusAlarmControl", false, AlarmLevel.ERROR, 0,
-				OperationalStatus.ANY, OperationalStatus.ANY);
+              + "_OperStatusAlarmControl", false, AlarmLevel.ERROR, 0,
+              OperationalStatus.ANY, OperationalStatus.ANY);
 
    }
 
@@ -571,16 +570,26 @@ public final class Source {
     * 
     * @return properties instance
     */
-   private static Properties getProperties() {
-      if (properties == null) {
-         properties = new Properties();
+   private static XMLConfiguration getProperties() {
+      return getProperties(PROPERTIES_FILE);
+   }
+
+   /**
+    * Singleton implementation of properties file accessor.
+    * 
+    * @return properties instance
+    */
+   private static XMLConfiguration getProperties(final String propFile) {
+      if (configuration == null) {
+         // properties
+         configuration = new XMLConfiguration();
          try {
-            properties.load(new FileInputStream(propFile));
-         } catch (IOException e) {
+            configuration.load(propFile);
+         } catch (ConfigurationException e) {
             log.error("Could not find properties file: " + propFile);
          }
       }
-      return properties;
+      return configuration;
    }
 
    /**

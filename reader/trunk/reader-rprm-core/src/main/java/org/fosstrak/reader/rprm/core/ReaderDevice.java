@@ -27,7 +27,6 @@ import java.net.SocketException;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.Vector;
 
 import org.accada.reader.hal.HardwareAbstraction;
@@ -51,9 +50,11 @@ import org.accada.reader.rprm.core.msg.MessageLayer;
 import org.accada.reader.rprm.core.msg.MessagingConstants;
 import org.accada.reader.rprm.core.triggers.IOEdgeTriggerPortManager;
 import org.accada.reader.rprm.core.triggers.IOValueTriggerPortManager;
-import org.apache.commons.configuration.Configuration;
+
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
+import org.apache.commons.configuration.SubnodeConfiguration;
+
 import org.apache.log4j.Logger;
 
 
@@ -377,7 +378,7 @@ public class ReaderDevice {
    /**
     * The constructor of the ReaderDevice.
     * @param propFile
-    *           The location of the property fiel
+    *           The location of the property file
     * @throws ReaderProtocolException
     *            "Reader not found", "Failed to read ReaderDevice.properties",
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
@@ -1082,6 +1083,7 @@ public class ReaderDevice {
 
    }
 
+//TODO: adjust for new ReaderDevice.properties
    /**
     * Resets all internal state variables of the reader to a default
     * configuration. The documentation of the reader shall provide a definition
@@ -1096,8 +1098,8 @@ public class ReaderDevice {
     */
    public final void resetToDefaultSettings(final String propFile)
          throws ReaderProtocolException {
-	  // operational status is DOWN before resetting
-	  setOperStatus(OperationalStatus.DOWN);
+      // operational status is DOWN before resetting
+	   setOperStatus(OperationalStatus.DOWN);
 
       //init lists
       sources = new Hashtable();
@@ -1139,73 +1141,61 @@ public class ReaderDevice {
       setMaxTriggerNumber(conf.getInt("maxTriggerNumber"));
 
       // get readers
-      Configuration readerConf = conf.subset("readers");
-      Iterator readerIterator = readerConf.getKeys();
-      while (readerIterator.hasNext()) {
-         String key = (String) readerIterator.next();
-         //System.out.println(key);
+      SubnodeConfiguration readerConf = conf.configurationAt("readers");
+      for (int i = 0; i <= readerConf.getMaxIndex("reader"); i++) {
+         // key to current reader
+         String key = "reader(" + i + ")";
 
          // reader's name
-         String readerName = key.substring(0, key.indexOf("."));
+         String readerName = readerConf.getString(key + ".name");
          //System.out.println(readerName);
 
          // get reader
          if (!readers.containsKey(readerName)) {
-            if (key.endsWith("class")) {
-               // reflection
-               String rClass = readerConf.getString(key);
-               String prop = readerConf.getString(key.substring(0, key
-                     .indexOf("."))
-                     + ".properties");
-               try {
-                  Class cls = Class.forName(rClass);
-                  Class[] partypes = new Class[] {String.class};
-                  Constructor ct = cls.getConstructor(partypes);
-                  Class[] cl = ct.getParameterTypes();
-                  Object[] arglist = new Object[] {prop};
-                  HardwareAbstraction ha = (HardwareAbstraction) ct
-                        .newInstance(arglist);
-                  readers.put(readerName, ha);
+            // reflection
+            String rClass = readerConf.getString(key + ".class");
+            String prop = readerConf.getString(key + ".properties");
+            try {
+               Class cls = Class.forName(rClass);
+               Class[] partypes = new Class[] {String.class};
+               Constructor ct = cls.getConstructor(partypes);
+               Class[] cl = ct.getParameterTypes();
+               Object[] arglist = new Object[] {prop};
+               HardwareAbstraction ha = (HardwareAbstraction) ct
+                     .newInstance(arglist);
+               readers.put(readerName, ha);
 
-               } catch (Exception e) {
-                  throw new ReaderProtocolException("Reader not found",
-                        MessagingConstants.ERROR_UNKNOWN);
-               }
+            } catch (Exception e) {
+               throw new ReaderProtocolException("Reader not found",
+                     MessagingConstants.ERROR_UNKNOWN);
             }
          }
       }
 
       // configure readpoints
-      Configuration rpConf = conf.subset("readers");
-      Iterator rpIterator = rpConf.getKeys();
-      String key;
-      while (rpIterator.hasNext()) {
-         key = (String) rpIterator.next();
+      SubnodeConfiguration rpConf = conf.configurationAt("readers");
+      for (int i = 0; i <= rpConf.getMaxIndex("reader"); i++) {
+         // key to current reader
+         String key = "reader(" + i + ")";
          // name of the reader
-         String readerName = key.substring(0, key.indexOf("."));
+         String readerName = rpConf.getString(key + ".name");
          // get reader
          HardwareAbstraction tempHardwareAbstraction =
                (HardwareAbstraction) readers.get(readerName);
          // get readpoints
-         if (key.endsWith("readpoint")) {
-            Configuration rPconf = conf.subset("readers."
-                  + key.substring(0, key.lastIndexOf(".")));
-            String[] rps = rPconf.getStringArray("readpoint");
-            for (int i = 0; i < rps.length; i++) {
-               // System.out.println(" "+rps[i]);
-               AntennaReadPoint.create(rps[i], this, tempHardwareAbstraction);
-            }
-
+         for (int j = 0; j <= rpConf.getMaxIndex(key + ".readpoint"); j++) {
+            String rp = rpConf.getString(key + ".readpoint(" + j + ")");
+            // System.out.println(" "+rps[j]);
+            AntennaReadPoint.create(rp, this, tempHardwareAbstraction);
          }
       }
 
       // configure sources
-      Configuration sourceConf = conf.subset("sources");
-      Iterator sourceIterator = sourceConf.getKeys();
-      while (sourceIterator.hasNext()) {
-         key = (String) sourceIterator.next();
+      SubnodeConfiguration sourceConf = conf.configurationAt("sources");
+      for (int i = 0; i <= sourceConf.getMaxIndex("source"); i++) {
+         String key = "source(" + i + ")";
          // name of the source
-         String sourceName = key.substring(0, key.indexOf("."));
+         String sourceName = sourceConf.getString(key + ".name");
          // get source
          Source tempSource;
          if (!sources.containsKey(sourceName)) {
@@ -1213,23 +1203,17 @@ public class ReaderDevice {
          } else {
             tempSource = getSource(sourceName);
          }
-         if (key.endsWith("fixed")) {
-            // fixed
-            if (sourceConf.getString(key).equals("true")) {
-               tempSource.setFixed(true);
-            } else {
-               tempSource.setFixed(false);
-            }
-         } else if (key.endsWith("readpoint")) {
-            // reader's readpoints
-            Configuration rPconf = conf.subset("sources."
-                  + key.substring(0, key.lastIndexOf(".")));
-            String[] rps = rPconf.getStringArray("readpoint");
-            for (int i = 0; i < rps.length; i++) {
-               // System.out.println(" "+rps[i]);
-               tempSource
-                     .addReadPoints(new ReadPoint[] {getReadPoint(rps[i])});
-            }
+         // fixed
+         if (sourceConf.getString(key + ".fixed").equals("true")) {
+            tempSource.setFixed(true);
+         } else {
+            tempSource.setFixed(false);
+         }
+         // reader's readpoints
+         for (int j = 0; j <= sourceConf.getMaxIndex(key + ".readpoint"); j++) {
+            String rp = sourceConf.getString(key + ".readpoint(" + j + ")");
+            // System.out.println(" "+rp);
+            tempSource.addReadPoints(new ReadPoint[] {getReadPoint(rp)});
          }
       }
 
@@ -1272,50 +1256,28 @@ public class ReaderDevice {
       }
 
       // configure alarm channels
-      Configuration alarmChanConf = conf.subset("alarmChannels");
-      Iterator alarmChanIterator = alarmChanConf.getKeys();
+      SubnodeConfiguration alarmChanConf = conf.configurationAt("alarmChannels");
       String host = "";
       int port = -1;
-      while (alarmChanIterator.hasNext()) {
-         key = (String) alarmChanIterator.next();
+      for (int i = 0; i <= alarmChanConf.getMaxIndex("alarmChannel"); i++) {
+         String key = "alarmChannel(" + i + ")";
          // name of the alarm channel
-         String alarmChanName = key.substring(0, key.indexOf("."));
+         String alarmChanName = alarmChanConf.getString(key + ".name");
          // get alarm channel
          try {
-            Configuration curAlarmChanConf = alarmChanConf.subset(alarmChanName);
-            Iterator curAlarmChanIterator = curAlarmChanConf.getKeys();
-            while (curAlarmChanIterator.hasNext()) {
-            	key = (String) curAlarmChanIterator.next();
-            	if (key.endsWith("host")) {
-                	host = curAlarmChanConf.getString(key);
-                    if (port != -1) {
-                    	try {
-                    		AlarmChannel.create(alarmChanName, new Address("udp://" + host + ":" + port), this);
-                    	} catch (MalformedURLException mfue) {
-                    		log.error(alarmChanName + ": invalid address");
-                    	}
-                    	host = "";
-                    	port = -1;
-                    }
-                 } else if (key.endsWith("port")) {
-                    port = curAlarmChanConf.getInt(key);
-                    if (!host.equals("")) {
-                    	try {
-                    		AlarmChannel.create(alarmChanName, new Address("udp://" + host + ":" + port), this);
-                    	} catch (MalformedURLException mfue) {
-                    		log.error(alarmChanName + ": invalid address");
-                    	}
-                    	host = "";
-                    	port = -1;
-                    }
-                 }
+            host = alarmChanConf.getString(key + ".host");
+            port = alarmChanConf.getInt(key + ".port");
+            try {
+               AlarmChannel.create(alarmChanName, new Address("udp://" + host + ":" + port), this);
+            } catch (MalformedURLException mfue) {
+               log.error(alarmChanName + ": invalid address");
             }
+            host = "";
+            port = -1;
          } catch (ReaderProtocolException rpe) {
             // next
          }
       }
-
-//      Trigger.create("mytrigger", TriggerType.TIMER, "ms=2500", this);
 
       // operational status is UP after resetting
 	  setOperStatus(OperationalStatus.UP);
@@ -1362,13 +1324,11 @@ public class ReaderDevice {
    private void getIoTriggers(final XMLConfiguration conf)
          throws ReaderProtocolException {
       // get io value triggers
-      Configuration valueTriggerConf = conf
-            .subset("IOValueTriggerPortManager");
-      Iterator iter = valueTriggerConf.getKeys();
+      SubnodeConfiguration valueTriggerConf = conf
+            .configurationAt("IOValueTriggerPortManager");
       String port;
-      while (iter.hasNext()) {
-         port = (String) iter.next();
-
+      for (int i = 0; i <= valueTriggerConf.getMaxIndex("port"); i++) {
+         port = valueTriggerConf.getString("port(" + i + ")");
          try {
             Class cls = Class.forName(valueTriggerConf.getString(port));
             Class[] partypes = new Class[] {};
@@ -1387,11 +1347,10 @@ public class ReaderDevice {
       }
 
       // get io edge triggers
-      Configuration edgeTriggerConf = conf.subset("IOEdgeTriggerPortManager");
-      iter = edgeTriggerConf.getKeys();
-      while (iter.hasNext()) {
-         port = (String) iter.next();
-
+      SubnodeConfiguration edgeTriggerConf = conf
+            .configurationAt("IOEdgeTriggerPortManager");
+      for (int i = 0; i <= valueTriggerConf.getMaxIndex("port"); i++) {
+         port = edgeTriggerConf.getString("port(" + i + ")");
          try {
             Class cls = Class.forName(edgeTriggerConf.getString(port));
             Class[] partypes = new Class[] {};
