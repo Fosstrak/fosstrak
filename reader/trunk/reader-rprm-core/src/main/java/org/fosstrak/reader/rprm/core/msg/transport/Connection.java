@@ -151,7 +151,7 @@ public abstract class Connection {
 	}
 
 	/**
-	 * Returnes format of the sender message
+	 * Returns format of the sender message
 	 * 
 	 * @return format of the message which arrived or <code>null</code> if not
 	 *         defined.
