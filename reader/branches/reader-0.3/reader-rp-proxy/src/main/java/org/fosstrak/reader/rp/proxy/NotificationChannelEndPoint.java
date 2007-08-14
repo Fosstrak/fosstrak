@@ -75,6 +75,13 @@ public class NotificationChannelEndPoint implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 		
+		try {
+         context = JAXBContext
+               .newInstance("org.accada.reader.rprm.core.msg.notification");
+         unmarshaller = context.createUnmarshaller();
+      } catch (JAXBException e) {
+         // failed, try at notifyListeners(...) call
+      }
 	}
 	
 	/**
@@ -122,7 +129,7 @@ public class NotificationChannelEndPoint implements Runnable {
 						line = reader.readLine();
 						data.append(line);
 					};
-					log.debug("Incoming notification: " + data);
+					log.debug("Incoming notification: " + data.substring(data.indexOf("<?xml")));
 					notifyListeners(data);
 				}
 			}
@@ -173,6 +180,12 @@ public class NotificationChannelEndPoint implements Runnable {
 	// private
 	//
 	
+   /** the msg notification JAXBContext **/
+   private JAXBContext context = null;
+   
+   /** the msg notification Unmarshaller **/
+   private Unmarshaller unmarshaller = null;
+   
 	/**
 	 * This method parses a received notification message and notifies all
 	 * subscribers.
@@ -183,8 +196,13 @@ public class NotificationChannelEndPoint implements Runnable {
 		
 		Notification notification = null;
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance("org.accada.reader.rprm.core.msg.notification");
-			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+         if (context == null) {
+            context = JAXBContext
+                  .newInstance("org.accada.reader.rprm.core.msg.notification");
+         }
+         if (unmarshaller == null) {
+            unmarshaller = context.createUnmarshaller();
+         }
 			notification = (Notification)unmarshaller.unmarshal(new ByteArrayInputStream(data.substring(data.indexOf("<?xml")).getBytes()));
 			
 			Iterator listenerIt = listeners.iterator();

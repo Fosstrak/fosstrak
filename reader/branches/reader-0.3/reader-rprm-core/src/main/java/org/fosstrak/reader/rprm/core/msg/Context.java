@@ -45,13 +45,22 @@ public class Context {
 	public static final Context NOTIFICATION = new Context(NOTIFICATION_CONTEXT);
 
 	private final int context;
+	private JAXBContext jaxbcontext = null;
 
 	private Context(final int context) {
 		this.context = context;
+		try {
+         JAXBContext.newInstance(JAXB_PACKAGES[context]);
+      } catch (JAXBException e) {
+         // failed, try at getJAXBContext() call
+      }
 	}
 	
 	public JAXBContext getJAXBContext() throws JAXBException {
-		return JAXBContext.newInstance(JAXB_PACKAGES[context]);
+      if (jaxbcontext == null) {
+         jaxbcontext = JAXBContext.newInstance(JAXB_PACKAGES[context]);
+      }
+		return jaxbcontext;
 	}
 	
 }
