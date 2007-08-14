@@ -1083,7 +1083,6 @@ public class ReaderDevice {
 
    }
 
-//TODO: adjust for new ReaderDevice.properties
    /**
     * Resets all internal state variables of the reader to a default
     * configuration. The documentation of the reader shall provide a definition

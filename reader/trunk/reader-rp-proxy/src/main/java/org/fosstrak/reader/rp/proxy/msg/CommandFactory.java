@@ -1266,6 +1266,12 @@ public class CommandFactory {
 	// private methods
 	//
 	
+	/** the msg command JAXBContext **/
+	private static JAXBContext context = null;
+	
+	/** the msg command Marshaller **/
+	private static Marshaller marshaller = null;
+	
 	/**
 	 * This method serialize a command.
 	 * 
@@ -1275,10 +1281,16 @@ public class CommandFactory {
 	private static String serializeCommand(Command cmd) {
 		
 		try {
-			JAXBContext ctx = JAXBContext.newInstance("org.accada.reader.rprm.core.msg.command");
-			Marshaller marshaller = ctx.createMarshaller();
-	        marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE );
-	        StringWriter sw = new StringWriter();
+			if (context == null) {
+			   context = JAXBContext
+			         .newInstance("org.accada.reader.rprm.core.msg.command");
+			}
+			if (marshaller == null) {
+			   marshaller = context.createMarshaller();
+			   marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT,
+			         Boolean.TRUE );
+			}
+			StringWriter sw = new StringWriter();
 			try {
 				marshaller.marshal(cmd,sw);
 			} catch (JAXBException e) {

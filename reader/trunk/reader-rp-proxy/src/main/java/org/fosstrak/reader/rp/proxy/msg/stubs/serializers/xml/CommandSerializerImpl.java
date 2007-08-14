@@ -65,9 +65,24 @@ public class CommandSerializerImpl implements CommandSerializer {
 	/** the command */
 	protected Command command = null;
 
+	/** the msg command JAXBContext **/
+	private static JAXBContext context = null;
+	
+	/** the msg command Marshaller **/
+	private static Marshaller marshaller = null;
+
 	private CommandSerializerImpl() {
 		cmdFactory = new ObjectFactory();
 		command = cmdFactory.createCommand();
+		try {
+         context = JAXBContext
+               .newInstance("org.accada.reader.rprm.core.msg.command");
+         marshaller = context.createMarshaller();
+         marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT,
+               Boolean.TRUE );
+      } catch (JAXBException e) {
+         // failed, try at serializeCommand() call
+      }
 	}
 
 	public CommandSerializerImpl(String targetName) {
@@ -111,12 +126,15 @@ public class CommandSerializerImpl implements CommandSerializer {
 		try {
 			command.setTargetName(targetName);
 			command.setId(Integer.toString(id));
-
-			JAXBContext ctx = JAXBContext
-					.newInstance("org.accada.reader.rprm.core.msg.command");
-			Marshaller marshaller = ctx.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
-					Boolean.TRUE);
+         if (context == null) {
+            context = JAXBContext
+                  .newInstance("org.accada.reader.rprm.core.msg.command");
+         }
+         if (marshaller == null) {
+            marshaller = context.createMarshaller();
+            marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT,
+                  Boolean.TRUE );
+         }
 			StringWriter sw = new StringWriter();
 			try {
 				marshaller.marshal(command, sw);

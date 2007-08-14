@@ -29,6 +29,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.DataInputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -133,8 +135,9 @@ public class EventSinkUI extends JFrame implements ActionListener {
 			ServerSocket ss = new ServerSocket(port);
 			while(true) {
 				Socket s = ss.accept();
-				DataInputStream in = new DataInputStream( s.getInputStream());
-				
+//				DataInputStream in = new DataInputStream( s.getInputStream());
+				BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+
 				String data = in.readLine();
 				while(data != null) {
 					inText.append(data + "\n");
