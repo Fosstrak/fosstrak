@@ -93,19 +93,19 @@ public final class FieldName {
    public static final String TAG_TYPE = "tagType";
 
    /**
-    * tagId.
+    * tagID.
     */
-   public static final String TAG_ID = "tagId";
+   public static final String TAG_ID = "tagID";
 
    /**
-    * tagIdAsPureURI.
+    * tagIDasPureURI.
     */
-   public static final String TAG_ID_AS_PURE_URI = "tagIdAsPureURI";
+   public static final String TAG_ID_AS_PURE_URI = "tagIDasPureURI";
 
    /**
-    * tagIdAsTagUri.
+    * tagIDasTagUri.
     */
-   public static final String TAG_ID_AS_TAG_URI = "tagIdAsTagUri";
+   public static final String TAG_ID_AS_TAG_URI = "tagIDasTagURI";
 
    /**
     * sourceName.
@@ -145,7 +145,7 @@ public final class FieldName {
    /**
     * allRag.
     */
-   public static final String ALL_TAG = "allRag";
+   public static final String ALL_TAG = "allTag";
 
    /**
     * allSource.
