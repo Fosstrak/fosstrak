@@ -10,171 +10,174 @@ Reader RP/RM Core Module: Getting Started
 * Installing the Accada Reader RP/RM Core
 
    The following instructions show how to install the Accada Reader:
-   
+
    * Download the reader binaries with the dependencies included from the {{{../download.html}download}} section of the website.
-  
+
    * Unzip the downloaded file
-   
+
    * Make sure a JRE 1.5 or higher is installed and it is added to the path variable.
-   
-   
-   
-   
+
+
+
+
 * First Steps
 
-   * Start the reader instance by invoking the executable jar 
-   
+   * Start the reader instance by invoking the executable jar
+
    The reader is now listening for incoming http requests on port 8000, incoming tcp requests on port 5566, and incoming snmp requests on port 161. To communicate with the reader instance, you might want to consider using the Accada Reader RP Proxy and Accada Reader RP Client or a SNMP Manager such as MIB Explorer.
    For more information, on how to use theses tools, please {{{../index.html}click}} here
-   
+
    You might also want to consider unpacking the jar and adjusting the settings in the ReaderDevice.properties file (see below).
-   
+
 
 * Configure Reader
 
-  The reader can be configured by setting properties in the two property files messaging.properties and ReaderDevice.properties.
-  Properties of the messaging layer of the reader are set in the file  
-  {{{example/messaging.properties} messaging.properties}} (see below). The properties tcpServerConnection and tcpPort specify 
+  The reader can be configured by setting properties in the property files ReaderDevice.properties.
+  Properties of the messaging layer of the reader are set in the 'Information about the messaging' section of the configuration file. The properties tcpServerConnection and tcpPort specify
   if the command channel via TCP is active and which port the reader is listening for incoming TCP connections. Likewise, the properties
-  httpServerConnection and httpPort define if the HTPP command channel is active and which port is used. The property 
+  httpServerConnection and httpPort define if the HTPP command channel is active and which port is used. The property
   notificationListenTimeout sets the time in ms a notification connection waits in listen mode. The properties threadPoolSize,
   startPattern and stopPattern must not be changed to ensure correct operation of the reader.
 
-+---
-
-# ----- TCP Properties -----
-tcpServerConnection = true
-tcpPort = 5566
-
-# ----- HTTP Properties -----
-httpServerConnection = true
-httpPort = 8000
-
-# Time in ms a notification connection waits in listen mode
-# A timeout of zero is interpreted as an infinite timeout. 
-notificationListenTimeout = 30000
-
-# ----- Message Properties -----
-startPattern = <command xmlns="urn:epcglobal:rp:xsd:1">
-stopPattern =  </command>
-
-# ----- Thread Pool -----
-threadPoolSize = 16
-
-+---
-
-  The reader specific properties such as readpoints, sources, triggers, and reader management information can be set
-  in the file {{{example/ReaderDevice.properties} ReaderDevice.properties}} (see below). 
+  The reader specific properties such as readpoints, sources, triggers, and reader management information can also be set
+  in the file {{{example/ReaderDevice.properties} ReaderDevice.properties}} (see below).
   The information about the reader are properties describing the reader including the epc, name and manufacturer
   of the reader. The properties maxSourceNumber, maxTagSelectorNumber and maxTriggerNumber set a limit for the number
   of sources, tag selectors and triggers which a client can define. In the reader section the different instances
-  of the hardware abstraction layer with their read points are given. In this case the SimulatorController is used 
-  with the four read points Shelf1, Shelf2, Shelf3 and Shelf4 which correspond with four antennas of the 
+  of the hardware abstraction layer with their read points are given. In this case the SimulatorController is used
+  with the four read points Shelf1, Shelf2, Shelf3 and Shelf4 which correspond with four antennas of the
   simulated reader. The sources of the reader are specified by their name and the read points through which they
   acquire the RFID data. In our example the reader has four sources wheras each source has one read point that
   has the same name as the source. In another reader setting one source could have more than one read point.
-  If the reader provides IO edge triggers or IO value triggers the classes that implement the functionalities to 
+  If the reader provides IO edge triggers or IO value triggers the classes that implement the functionalities to
   access the IO ports are specified by the two properties IOEdgeTriggerPortManager and IOValueTriggerPortManager.
-  
+
   The remaining properties define the information used for the reader management of the reader. The properties
   description, locationDescription, contact and serialNumber specify additional information about the reader.
   The SNMP agent is specified by the properties mgmtAgentType, mgmtAgentAddress, mgmtAgentPort, macAddress and
   mgmtSimulatorStart. Alarm channels can be defined using the properties alarmChannels.
-  
+
 +---
 
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
-	<!-- Information about the reader -->
-	   	<epc>ReaderEPC</epc>
-	   	<name>MyReader</name>
-	   	<manufacturer>ReaderManufacturer</manufacturer>
-	   	<manufacturerDescription>ReaderManufacturerDescription</manufacturerDescription>
-	   	<model>ReaderModel</model>
-	   	<handle>0</handle>
-	   	<role>ReaderRole</role>
-   	<!-- End -->  
+
+   <!-- Information about the reader -->
+      <epc>ReaderEPC</epc>
+      <name>MyReader</name>
+      <manufacturer>ReaderManufacturer</manufacturer>
+      <manufacturerDescription>ReaderManufacturerDescription</manufacturerDescription>
+      <model>ReaderModel</model>
+      <handle>0</handle>
+      <role>ReaderRole</role>
+   <!-- End -->
 
 
-    <!-- More Information -->
-	   	<maxSourceNumber>10</maxSourceNumber>
-	   	<maxTagSelectorNumber>10</maxTagSelectorNumber>
-	  	<maxTriggerNumber>10</maxTriggerNumber>
-    <!-- End -->  
-  
-    
-	<!-- All readers (HardwareAbstractions) used -->
-		<readers>
-			<SimulatorController>
-				<class>org.accada.reader.hal.impl.sim.SimulatorController</class>
-				<properties>SimulatorController</properties>
-				<readpoint>Shelf1</readpoint>
-				<readpoint>Shelf2</readpoint>
-				<readpoint>Shelf3</readpoint>
-				<readpoint>Shelf4</readpoint>
-			</SimulatorController>
-		</readers>
-	<!-- End -->  
-	
-	
-	<!-- List of all sources -->
-		<currentSource>Shelf1</currentSource>  
-		<sources>
-		   	<Shelf1>
-				<fixed>true</fixed>
-		   		<readpoint>Shelf1</readpoint>
-			</Shelf1>
-			<Shelf2>
-				<fixed>true</fixed>
-		   		<readpoint>Shelf2</readpoint> 
-			</Shelf2>
-			<Shelf3>
-				<fixed>true</fixed>
-		   		<readpoint>Shelf3</readpoint> 
-			</Shelf3>
-			<Shelf4>
-				<fixed>true</fixed>
-		   		<readpoint>Shelf4</readpoint> 
-			</Shelf4>
-		</sources>
-	<!-- End -->  
-	
-		   
-	<!-- The io trigger classes -->
-		<IOEdgeTriggerPortManager>
-		<port1>org.accada.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager</port1>
-		</IOEdgeTriggerPortManager>
-		<IOValueTriggerPortManager>
-		</IOValueTriggerPortManager>
-	<!-- End -->
+   <!-- More Information -->
+      <maxSourceNumber>10</maxSourceNumber>
+      <maxTagSelectorNumber>10</maxTagSelectorNumber>
+      <maxTriggerNumber>10</maxTriggerNumber>
+   <!-- End -->
 
 
-	<!-- Information used for the reader management implementation -->
-	   	<description>Description</description>
-	   	<locationDescription>LocationDescription</locationDescription>
-	   	<contact>Contact</contact>
-	   	<serialNumber>SerialNumber</serialNumber>
-	   	
-	   	<mgmtAgentType>SNMP</mgmtAgentType>
-	   	<mgmtAgentAddress>localhost</mgmtAgentAddress>
-	   	<mgmtAgentPort>161</mgmtAgentPort>
-	   	<macAddress>00-14-A4-2F-2D-73</macAddress>
-	   	<mgmtSimulatorStart>false</mgmtSimulatorStart>
-   	<!-- End -->
-   
-   
-   	<!-- List of all alarm channels --> 
-		<alarmChannels>
-		   	<alarmChannel1>
-				<host>localhost</host>
-		   		<port>162</port>
-			</alarmChannel1>
-		</alarmChannels>
-	<!-- End -->  
-	 
+   <!-- All readers (HardwareAbstractions) used -->
+      <readers>
+         <reader>
+            <name>SimulatorController</name>
+            <class>org.accada.reader.hal.impl.sim.SimulatorController</class>
+            <properties>SimulatorController</properties>
+            <readpoint>Shelf1</readpoint>
+            <readpoint>Shelf2</readpoint>
+            <readpoint>Shelf3</readpoint>
+            <readpoint>Shelf4</readpoint>
+         </reader>
+      </readers>
+   <!-- End -->
+
+
+   <!-- List of all sources -->
+      <currentSource>Shelf1</currentSource>
+      <sources>
+            <source>
+               <name>Shelf1</name>
+            <fixed>true</fixed>
+               <readpoint>Shelf1</readpoint>
+         </source>
+         <source>
+            <name>Shelf2</name>
+            <fixed>true</fixed>
+               <readpoint>Shelf2</readpoint>
+         </source>
+         <source>
+            <name>Shelf3</name>
+            <fixed>true</fixed>
+               <readpoint>Shelf3</readpoint>
+         </source>
+         <source>
+            <name>Shelf4</name>
+            <fixed>true</fixed>
+               <readpoint>Shelf4</readpoint>
+         </source>
+      </sources>
+   <!-- End -->
+
+
+   <!-- The io trigger classes -->
+      <IOEdgeTriggerPortManager>
+         <port>org.accada.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager</port>
+      </IOEdgeTriggerPortManager>
+      <IOValueTriggerPortManager>
+      </IOValueTriggerPortManager>
+   <!-- End -->
+
+
+   <!-- Information used for the reader management implementation -->
+      <description>Description</description>
+      <locationDescription>LocationDescription</locationDescription>
+      <contact>Contact</contact>
+      <serialNumber>SerialNumber</serialNumber>
+
+      <mgmtAgentType>SNMP</mgmtAgentType>
+      <mgmtAgentAddress>localhost</mgmtAgentAddress>
+      <mgmtAgentPort>161</mgmtAgentPort>
+      <macAddress>00-14-A4-2F-2D-73</macAddress>
+      <mgmtSimulatorStart>false</mgmtSimulatorStart>
+   <!-- End -->
+
+
+   <!-- List of all alarm channels -->
+      <alarmChannels>
+            <alarmChannel>
+               <name>alarmChannel1</name>
+            <host>localhost</host>
+               <port>162</port>
+         </alarmChannel>
+      </alarmChannels>
+   <!-- End -->
+
+
+   <!-- Information about the messaging -->
+      <tcpServerConnection>true</tcpServerConnection>
+      <tcpPort>5566</tcpPort>
+      <httpServerConnection>true</httpServerConnection>
+      <httpPort>8000</httpPort>
+      <notificationListenTimeout>30000</notificationListenTimeout>
+      <threadPoolSize>16</threadPoolSize>
+   <!-- End -->
+
+
+   <!-- Information about the source defaults -->
+      <isFixed>false</isFixed>
+      <glimpsedTimeout>2000</glimpsedTimeout>
+      <observedThreshold>0</observedThreshold>
+      <observedTimeout>1000</observedTimeout>
+      <lostTimeout>0</lostTimeout>
+      <readCyclesPerTrigger>1</readCyclesPerTrigger>
+      <maxReadDutyCycles>100</maxReadDutyCycles>
+      <readTimeout>0</readTimeout>
+   <!-- End -->
+
 </properties>
-
 
 +---
 
- 
