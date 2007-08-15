@@ -121,9 +121,9 @@ public enum FieldName {
     @XmlEnumValue("tagID")
     TAG_ID("tagID"),
     @XmlEnumValue("tagIDasPureURI")
-    TAG_I_DAS_PURE_URI("tagIDasPureURI"),
+    TAG_ID_AS_PURE_URI("tagIDasPureURI"),
     @XmlEnumValue("tagIDasTagURI")
-    TAG_I_DAS_TAG_URI("tagIDasTagURI"),
+    TAG_ID_AS_TAG_URI("tagIDasTagURI"),
     @XmlEnumValue("tagType")
     TAG_TYPE("tagType");
     private final String value;

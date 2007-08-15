@@ -265,15 +265,15 @@ public class ReaderConfigurator {
 		for (Object element : elements) {
 			if (element instanceof EventFilters) {
 				for (EventFilter eventFilter : ((EventFilters)element).getEventFilter()) {
-					events.add(eventFilter.name());
+					events.add(eventFilter.value());
 				}
 			} else if (element instanceof FieldNames) {
 				for (FieldName fieldName : ((FieldNames)element).getFieldName()) {
-					fieldNames.add(fieldName.name());
+					fieldNames.add(fieldName.value());
 				} 
 			} else if (element instanceof TagFields) {
 				for (TagField tagField : ((TagFields)element).getTagField()) {
-					tagFields.add(tagField.name());
+					tagFields.add(tagField.value());
 				}
 			}
 		}
