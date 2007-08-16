@@ -205,10 +205,16 @@ public class HttpConnection extends Connection implements Runnable {
 	}
 
 	/**
+	 * Returns the Socket this HttpConnection uses.
+	 */
+	public Socket getSocket() {
+		return clientSocket;
+	}
+	
+	/**
 	 * Reads new messages from stream. It creates new incoming message and
 	 * notifies all added listeners.
 	 */
-
 	public void run() {
 		String message = null;
 		boolean isNewConnection = true;
