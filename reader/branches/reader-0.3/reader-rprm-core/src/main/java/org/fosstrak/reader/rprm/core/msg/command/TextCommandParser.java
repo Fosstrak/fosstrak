@@ -195,9 +195,9 @@ public TextCommandParser(ParserSharedInputState state) {
 			helper.setObject(TAGSELECTOR);
 			break;
 		}
-		case RF:
+		case TS:
 		{
-			match(RF);
+			match(TS);
 			helper.setObject(TAGSELECTOR);
 			break;
 		}
@@ -2071,9 +2071,9 @@ public TextCommandParser(ParserSharedInputState state) {
 			match(TAGSELECTOR);
 			break;
 		}
-		case RF:
+		case TS:
 		{
-			match(RF);
+			match(TS);
 			break;
 		}
 		case DATASELECTOR:
@@ -3363,7 +3363,7 @@ public TextCommandParser(ParserSharedInputState state) {
 		"\"ReadPoint\"",
 		"\"RP\"",
 		"\"TagSelector\"",
-		"\"RF\"",
+		"\"TS\"",
 		"\"DataSelector\"",
 		"\"DS\"",
 		"\"NotificationChannel\"",

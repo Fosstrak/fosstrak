@@ -262,7 +262,7 @@ public TextLexer(LexerSharedInputState state) {
 	literals.put(new ANTLRHashString("getValue", this), new Integer(193));
 	literals.put(new ANTLRHashString("rrid", this), new Integer(161));
 	literals.put(new ANTLRHashString("sRTO", this), new Integer(183));
-	literals.put(new ANTLRHashString("RF", this), new Integer(11));
+	literals.put(new ANTLRHashString("TS", this), new Integer(11));
 	literals.put(new ANTLRHashString("goodbye", this), new Integer(116));
 	literals.put(new ANTLRHashString("getAllNotificationTriggers", this), new Integer(219));
 	literals.put(new ANTLRHashString("getNotificationChannel", this), new Integer(84));
