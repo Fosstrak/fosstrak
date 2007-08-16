@@ -32,7 +32,7 @@ public interface TextCommandParserTokenTypes {
 	int READPOINT = 8;
 	int RP = 9;
 	int TAGSELECTOR = 10;
-	int RF = 11;
+	int TS = 11;
 	int DATASELECTOR = 12;
 	int DS = 13;
 	int NOTIFICATIONCHANNEL = 14;

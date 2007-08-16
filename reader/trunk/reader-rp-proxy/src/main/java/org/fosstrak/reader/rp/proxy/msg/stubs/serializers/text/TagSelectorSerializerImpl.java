@@ -61,7 +61,7 @@ public class TagSelectorSerializerImpl extends CommandSerializerImpl implements
 
 	private void init() {
 		if (shortMode) {
-			setObjectTypeName(TextTokens.TAGSELECTOR); //TODO: abbrev. for TagSelector???
+			setObjectTypeName(TextTokens.TS);
 		} else {
 			setObjectTypeName(TextTokens.TAGSELECTOR);
 		}

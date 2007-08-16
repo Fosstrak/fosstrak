@@ -32,7 +32,7 @@ public interface TextTokens {
 	public static final String READPOINT = "ReadPoint";
 	public static final String RP = "RP";
 	public static final String TAGSELECTOR = "TagSelector";
-	public static final String RF = "RF";
+	public static final String TS = "TS";
 	public static final String DATASELECTOR = "DataSelector";
 	public static final String DS = "DS";
 	public static final String NOTIFICATIONCHANNEL = "NotificationChannel";
