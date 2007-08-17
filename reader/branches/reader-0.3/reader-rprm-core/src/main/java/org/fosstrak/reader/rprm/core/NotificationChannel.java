@@ -111,10 +111,7 @@ public final class NotificationChannel {
    /**
     * The thread for continuous triggers.
     */
-   // As the ContinuousNotificationThread had problems,
-   // we use a Timer thread for now
-   //private ContinuousNotificationThread continuousThread
-   private Timer continuousThread;
+   private ContinuousNotificationThread continuousThread;
 
    /**
     * The threads for timer triggers (of type Timer).
@@ -423,14 +420,8 @@ public final class NotificationChannel {
             if (cur.getType().equals(TriggerType.CONTINUOUS)) {
                // continuous trigger
                if (continuousThread == null && timerThreads.size() == 0) {
-            	  // ContinuousNotificationThread takes up significant system resources right now
-            	  // as it runs without any delay. We'll use a Timer thread with a low latency instead.
-            	  //continuousThread = new ContinuousNotificationThread(this, cur);
-            	  //continuousThread.start();
-                  continuousThread = new Timer();
-                  final int delay = 50;
-                  continuousThread.schedule(
-                          new TimerNotificationThread(this, cur), 0, delay);
+                  continuousThread = new ContinuousNotificationThread(this, cur);
+                  continuousThread.start();
                }
             } else if (cur.getType().equals(TriggerType.TIMER)) {
                // timer trigger
@@ -511,8 +502,7 @@ public final class NotificationChannel {
          if (notificationTriggers.containsKey(cur.getName())) {
             if (cur.getType().equals(TriggerType.CONTINUOUS)) {
                // continuous trigger
-               //continuousThread.stop();
-               continuousThread.cancel();
+               continuousThread.stop();
                continuousThread = null;
             } else if (cur.getType().equals(TriggerType.TIMER)) {
                // timer trigger
@@ -611,15 +601,20 @@ public final class NotificationChannel {
     */
    public ReadReport readQueuedData(final boolean clearBuffer) {
 
-      if (clearBuffer) {
-         Hashtable tempReport;
+      Hashtable tempReport;
+      synchronized(this) {
+         if (report.isEmpty()) {
+            try {
+               wait();
+            } catch (InterruptedException e) {}
+         }
          tempReport = report;
-         report = new Hashtable();
-         return generateReadReport(tempReport, dataSelector, null);
-      } else {
-         return generateReadReport(report, dataSelector, null);
+         if (clearBuffer) {
+            report = new Hashtable();
+         }
+         notify();
       }
-
+      return generateReadReport(tempReport, dataSelector, null);
    }
 
    /**
@@ -636,15 +631,20 @@ public final class NotificationChannel {
    public ReadReport readQueuedData(final boolean clearBuffer,
          final Trigger trigger) {
 
-      if (clearBuffer) {
-         Hashtable tempReport;
+      Hashtable tempReport;
+      synchronized(this) {
+         if (report.isEmpty()) {
+            try {
+               wait();
+            } catch (InterruptedException e) {}
+         }
          tempReport = report;
-         report = new Hashtable();
-         return generateReadReport(tempReport, dataSelector, trigger);
-      } else {
-         return generateReadReport(report, dataSelector, trigger);
+         if (clearBuffer) {
+            report = new Hashtable();
+         }
+         notify();
       }
-
+      return generateReadReport(tempReport, dataSelector, trigger);
    }
 
    /**
@@ -659,164 +659,167 @@ public final class NotificationChannel {
     	  		"Source Report is not added to notification channel");
          return;
       }
-      SourceReport tempReport;
-
       
-      if (!report.containsKey(sourceReport.getSourceInfo().getSourceName())) {
-    	  // if there is no source report from this source 
-    	  // currently stored for this notification channel, 
-    	  // add an empty report with the source name only to the report hashmap
-         tempReport = new SourceReport();
-         SourceInfoType tempSourceInfo = new SourceInfoType();
-         tempSourceInfo.setSourceName(sourceReport.getSourceInfo()
-               .getSourceName());
-         tempReport.setSourceInfo(tempSourceInfo);
-         report.put(sourceReport.getSourceInfo().getSourceName(), tempReport);
-      } else {
-    	  // there is already a source report from this source stored, 
-    	  // get the corresponding source report 
-         tempReport = (SourceReport) report.get(sourceReport.getSourceInfo()
-               .getSourceName());
-      }
-
-      Hashtable fieldNames = dataSelector.getFieldNames();
-
-      // SOURCE_NAME
-      if (fieldNames.containsKey(FieldName.SOURCE_NAME)
-            || fieldNames.containsKey(FieldName.ALL_SOURCE)
-            || fieldNames.containsKey(FieldName.ALL)) {
-         tempReport.getSourceInfo().setSourceName(
-               sourceReport.getSourceInfo().getSourceName());
-      } else {
-         tempReport.getSourceInfo().setSourceName(null);
-      }  
-      log.debug("Setting source name in notification source report to " +
-     		 tempReport.getSourceInfo().getSourceName());
-      
-      // SOURCE_FREQUENCY
-      if (fieldNames.containsKey(FieldName.SOURCE_FREQUENCY)
-            || fieldNames.containsKey(FieldName.ALL_SOURCE)
-            || fieldNames.containsKey(FieldName.ALL)) {
-         tempReport.getSourceInfo().setSourceFrequency(
-               sourceReport.getSourceInfo().getSourceFrequency());
-      } else {
-         tempReport.getSourceInfo().setSourceFrequency(-1);
-      }   
-      log.debug("Setting source frequency in notification source report to " +
-     		 tempReport.getSourceInfo().getSourceFrequency());
-      
-      // SOURCE_PROTOCOL
-      if (fieldNames.containsKey(FieldName.SOURCE_PROTOCOL)
-            || fieldNames.containsKey(FieldName.ALL_SOURCE)
-            || fieldNames.containsKey(FieldName.ALL)) {
-         // Not supported in HardwareAbstraction
-         tempReport.getSourceInfo().setSourceProtocol("not supported");
-      } else {
-         tempReport.getSourceInfo().setSourceProtocol(null);
-      }
-      log.debug("Setting source Protocol in notification source report to " +
-      		 tempReport.getSourceInfo().getSourceProtocol());
-      
-      // tags
-      Enumeration tagIterator = sourceReport.getAllTags().elements();
-      TagType curTag;
-      while (tagIterator.hasMoreElements()) {
-         curTag = (TagType) tagIterator.nextElement();
-         TagType tag;
-         if (tempReport.getTag(curTag.getId()) == null) {
-            tag = new TagType();
-            tag.setId(curTag.getId());
-            tempReport.addTag(tag);
+      synchronized(this) {
+         SourceReport tempReport;
+   
+         if (!report.containsKey(sourceReport.getSourceInfo().getSourceName())) {
+       	  // if there is no source report from this source 
+       	  // currently stored for this notification channel, 
+       	  // add an empty report with the source name only to the report hashmap
+            tempReport = new SourceReport();
+            SourceInfoType tempSourceInfo = new SourceInfoType();
+            tempSourceInfo.setSourceName(sourceReport.getSourceInfo()
+                  .getSourceName());
+            tempReport.setSourceInfo(tempSourceInfo);
+            report.put(sourceReport.getSourceInfo().getSourceName(), tempReport);
          } else {
-            tag = tempReport.getTag(curTag.getId());
+       	  // there is already a source report from this source stored, 
+       	  // get the corresponding source report 
+            tempReport = (SourceReport) report.get(sourceReport.getSourceInfo()
+                  .getSourceName());
          }
-
-         // TAG_TYPE
-         if (fieldNames.containsKey(FieldName.TAG_TYPE)
-               || fieldNames.containsKey(FieldName.ALL_TAG)
+   
+         Hashtable fieldNames = dataSelector.getFieldNames();
+   
+         // SOURCE_NAME
+         if (fieldNames.containsKey(FieldName.SOURCE_NAME)
+               || fieldNames.containsKey(FieldName.ALL_SOURCE)
+               || fieldNames.containsKey(FieldName.ALL)) {
+            tempReport.getSourceInfo().setSourceName(
+                  sourceReport.getSourceInfo().getSourceName());
+         } else {
+            tempReport.getSourceInfo().setSourceName(null);
+         }  
+         log.debug("Setting source name in notification source report to " +
+        		 tempReport.getSourceInfo().getSourceName());
+         
+         // SOURCE_FREQUENCY
+         if (fieldNames.containsKey(FieldName.SOURCE_FREQUENCY)
+               || fieldNames.containsKey(FieldName.ALL_SOURCE)
+               || fieldNames.containsKey(FieldName.ALL)) {
+            tempReport.getSourceInfo().setSourceFrequency(
+                  sourceReport.getSourceInfo().getSourceFrequency());
+         } else {
+            tempReport.getSourceInfo().setSourceFrequency(-1);
+         }   
+         log.debug("Setting source frequency in notification source report to " +
+        		 tempReport.getSourceInfo().getSourceFrequency());
+         
+         // SOURCE_PROTOCOL
+         if (fieldNames.containsKey(FieldName.SOURCE_PROTOCOL)
+               || fieldNames.containsKey(FieldName.ALL_SOURCE)
                || fieldNames.containsKey(FieldName.ALL)) {
             // Not supported in HardwareAbstraction
-            tag.setTagType("not supported");
+            tempReport.getSourceInfo().setSourceProtocol("not supported");
          } else {
-            tag.setTagType(null);
+            tempReport.getSourceInfo().setSourceProtocol(null);
          }
-         // TAG_ID_AS_PURE_URI
-         if (fieldNames.containsKey(FieldName.TAG_ID_AS_PURE_URI)
-               || fieldNames.containsKey(FieldName.ALL_TAG)
-               || fieldNames.containsKey(FieldName.ALL)) {
-            // Only for non-EPC tags
-            final int num = 4;
-            int numOfBits = num * tag.getId().length();
-            tag.setIdAsPureURI("urn:epc:raw:" + numOfBits + ".x"
-                  + tag.getId());
-         } else {
-            tag.setIdAsPureURI(null);
-         }
-         // TAG_ID_AS_TAG_URI
-         if (fieldNames.containsKey(FieldName.TAG_ID_AS_TAG_URI)
-               || fieldNames.containsKey(FieldName.ALL_TAG)
-               || fieldNames.containsKey(FieldName.ALL)) {
-            // Only for non-EPC tags
-            final int num = 4;
-            int numOfBits = num * tag.getId().length();
-            tag.setIdAsTagURI("urn:epc:raw:" + numOfBits + ".x"
-                        + tag.getId());
-         } else {
-            tag.setIdAsTagURI(null);
-         }
-         // tag fields
-         Enumeration tfnIterator = dataSelector.getTagFieldNames().elements();
-         String curTfn;
-         while (tfnIterator.hasMoreElements()) {
-            curTfn = (String) tfnIterator.nextElement();
-            tag.addTagField(curTag.getTagField(curTfn));
-         }
-         // events
-         Enumeration eventIterator = curTag.getAllTagEvents().elements();
-         TagEventType curEvent;
-         while (eventIterator.hasMoreElements()) {
-            curEvent = (TagEventType) eventIterator.nextElement();
-
-            // EVENTS
-            if (fieldNames.containsKey(FieldName.EVENT_TIME_TICK)
-                  || fieldNames.containsKey(FieldName.EVENT_TIME_UTC)
-                  || fieldNames.containsKey(FieldName.EVENT_TRIGGERS)
-                  || fieldNames.containsKey(FieldName.EVENT_TYPE)
-                  || fieldNames.containsKey(FieldName.ALL_EVENT)
-                  || fieldNames.containsKey(FieldName.ALL)) {
-               if (dataSelector.getEventTypes().size() <= 0) {
-                  tempReport.removeTag(curTag.getId());
-               } else if (dataSelector.getEventTypes().containsKey(
-                     curEvent.getEventType())) {
-                  TagEventType tempEvent = new TagEventType();
-                  tempEvent.setEventType(curEvent.getEventType());
-                  if (fieldNames.containsKey(FieldName.EVENT_TIME_TICK)
-                        || fieldNames.containsKey(FieldName.ALL_EVENT)
-                        || fieldNames.containsKey(FieldName.ALL)) {
-                     tempEvent.setTimeTick(curEvent.getTimeTick());
-                  }
-                  if (fieldNames.containsKey(FieldName.EVENT_TIME_UTC)
-                        || fieldNames.containsKey(FieldName.ALL_EVENT)
-                        || fieldNames.containsKey(FieldName.ALL)) {
-                     tempEvent.setTimeUTC(curEvent.getTimeUTC());
-                  }
-                  if (fieldNames.containsKey(FieldName.EVENT_TRIGGERS)
-                        || fieldNames.containsKey(FieldName.ALL_EVENT)
-                        || fieldNames.containsKey(FieldName.ALL)) {
-                     tempEvent.setEventTriggers(curEvent.getEventTriggers());
-                  }
-                  tag.addTagEvent(tempEvent);
-               }
+         log.debug("Setting source Protocol in notification source report to " +
+         		 tempReport.getSourceInfo().getSourceProtocol());
+         
+         // tags
+         Enumeration tagIterator = sourceReport.getAllTags().elements();
+         TagType curTag;
+         while (tagIterator.hasMoreElements()) {
+            curTag = (TagType) tagIterator.nextElement();
+            TagType tag;
+            if (tempReport.getTag(curTag.getId()) == null) {
+               tag = new TagType();
+               tag.setId(curTag.getId());
+               tempReport.addTag(tag);
+            } else {
+               tag = tempReport.getTag(curTag.getId());
             }
-
+   
+            // TAG_TYPE
+            if (fieldNames.containsKey(FieldName.TAG_TYPE)
+                  || fieldNames.containsKey(FieldName.ALL_TAG)
+                  || fieldNames.containsKey(FieldName.ALL)) {
+               // Not supported in HardwareAbstraction
+               tag.setTagType("not supported");
+            } else {
+               tag.setTagType(null);
+            }
+            // TAG_ID_AS_PURE_URI
+            if (fieldNames.containsKey(FieldName.TAG_ID_AS_PURE_URI)
+                  || fieldNames.containsKey(FieldName.ALL_TAG)
+                  || fieldNames.containsKey(FieldName.ALL)) {
+               // Only for non-EPC tags
+               final int num = 4;
+               int numOfBits = num * tag.getId().length();
+               tag.setIdAsPureURI("urn:epc:raw:" + numOfBits + ".x"
+                     + tag.getId());
+            } else {
+               tag.setIdAsPureURI(null);
+            }
+            // TAG_ID_AS_TAG_URI
+            if (fieldNames.containsKey(FieldName.TAG_ID_AS_TAG_URI)
+                  || fieldNames.containsKey(FieldName.ALL_TAG)
+                  || fieldNames.containsKey(FieldName.ALL)) {
+               // Only for non-EPC tags
+               final int num = 4;
+               int numOfBits = num * tag.getId().length();
+               tag.setIdAsTagURI("urn:epc:raw:" + numOfBits + ".x"
+                           + tag.getId());
+            } else {
+               tag.setIdAsTagURI(null);
+            }
+            // tag fields
+            Enumeration tfnIterator = dataSelector.getTagFieldNames().elements();
+            String curTfn;
+            while (tfnIterator.hasMoreElements()) {
+               curTfn = (String) tfnIterator.nextElement();
+               tag.addTagField(curTag.getTagField(curTfn));
+            }
+            // events
+            Enumeration eventIterator = curTag.getAllTagEvents().elements();
+            TagEventType curEvent;
+            while (eventIterator.hasMoreElements()) {
+               curEvent = (TagEventType) eventIterator.nextElement();
+   
+               // EVENTS
+               if (fieldNames.containsKey(FieldName.EVENT_TIME_TICK)
+                     || fieldNames.containsKey(FieldName.EVENT_TIME_UTC)
+                     || fieldNames.containsKey(FieldName.EVENT_TRIGGERS)
+                     || fieldNames.containsKey(FieldName.EVENT_TYPE)
+                     || fieldNames.containsKey(FieldName.ALL_EVENT)
+                     || fieldNames.containsKey(FieldName.ALL)) {
+                  if (dataSelector.getEventTypes().size() <= 0) {
+                     tempReport.removeTag(curTag.getId());
+                  } else if (dataSelector.getEventTypes().containsKey(
+                        curEvent.getEventType())) {
+                     TagEventType tempEvent = new TagEventType();
+                     tempEvent.setEventType(curEvent.getEventType());
+                     if (fieldNames.containsKey(FieldName.EVENT_TIME_TICK)
+                           || fieldNames.containsKey(FieldName.ALL_EVENT)
+                           || fieldNames.containsKey(FieldName.ALL)) {
+                        tempEvent.setTimeTick(curEvent.getTimeTick());
+                     }
+                     if (fieldNames.containsKey(FieldName.EVENT_TIME_UTC)
+                           || fieldNames.containsKey(FieldName.ALL_EVENT)
+                           || fieldNames.containsKey(FieldName.ALL)) {
+                        tempEvent.setTimeUTC(curEvent.getTimeUTC());
+                     }
+                     if (fieldNames.containsKey(FieldName.EVENT_TRIGGERS)
+                           || fieldNames.containsKey(FieldName.ALL_EVENT)
+                           || fieldNames.containsKey(FieldName.ALL)) {
+                        tempEvent.setEventTriggers(curEvent.getEventTriggers());
+                     }
+                     tag.addTagEvent(tempEvent);
+                  }
+               }
+   
+            }
+   
          }
-
-      }
-
-      if (tempReport.getAllTags().size() <= 0) {
-         report.remove(sourceReport.getSourceInfo().getSourceName());
-         log.debug("No tags in source report just put together - removing it.");
-      }
+   
+         if (tempReport.getAllTags().size() <= 0) {
+            report.remove(sourceReport.getSourceInfo().getSourceName());
+            log.debug("No tags in source report just put together - removing it.");
+         }
+         notify();
+      } // end synchronized
 
    }
 
