@@ -29,19 +29,67 @@ public class UnsupportedOperationException extends HardwareException {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default constructor.
+	 * Constructor.
+	 * 
+	 * @param serviceCode
+	 *            The service code
+	 * @param readPointName
+	 *            The name of the read point
+	 * @param halName
+	 *            The name of the HAL
 	 */
-	public UnsupportedOperationException() {
-		super();
+	public UnsupportedOperationException(int serviceCode, String readPointName, String halName) {
+		super(serviceCode, readPointName, halName);
 	}
 
 	/**
-	 * The constructor using a message.
+	 * Constructor specifying a message.
 	 * 
-	 * @param message The message
+	 * @param serviceCode
+	 *            The service code
+	 * @param readPointName
+	 *            The name of the read point
+	 * @param halName
+	 *            The name of the HAL
+	 * @param message
+	 *            The message
 	 */
-	public UnsupportedOperationException(String message) {
-		super(message);
+	public UnsupportedOperationException(int serviceCode, String readPointName, String halName, String message) {
+		super(serviceCode, readPointName, halName, message);
+	}
+
+	/**
+	 * Constructor specifying a message and a cause.
+	 * 
+	 * @param serviceCode
+	 *            The service code
+	 * @param readPointName
+	 *            The name of the read point
+	 * @param halName
+	 *            The name of the HAL
+	 * @param message
+	 *            The message
+	 * @param cause
+	 *            The cause
+	 */
+	public UnsupportedOperationException(int serviceCode, String readPointName, String halName, String message, Throwable cause) {
+		super(serviceCode, readPointName, halName, message, cause);
+	}
+
+	/**
+	 * Constructor using a cause.
+	 * 
+	 * @param serviceCode
+	 *            The service code
+	 * @param readPointName
+	 *            The name of the read point
+	 * @param halName
+	 *            The name of the HAL
+	 * @param cause
+	 *            The cause
+	 */
+	public UnsupportedOperationException(int serviceCode, String readPointName, String halName, Throwable cause) {
+		super(serviceCode, readPointName, halName, cause);
 	}
 	
 }

@@ -51,6 +51,7 @@ import org.accada.reader.hal.UnsupportedOperationException;
  */
 public interface HardwareAbstraction {
 	
+	
 	//--------- Identify
 
 	/**

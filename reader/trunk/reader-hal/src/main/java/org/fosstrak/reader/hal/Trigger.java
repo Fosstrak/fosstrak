@@ -23,7 +23,8 @@ package org.accada.reader.hal;
 
 /**
  * A trigger in the HAL is used to trigger identify commands of the reader
- * hardware while a HAL controller instance is performing an asynchronous identify.
+ * hardware while a HAL controller instance is performing an asynchronous 
+ * identify.
  * 
  * Different trigger types exists:
  * 		CONTINUOUS - continuous identify commands are performed 

@@ -28,9 +28,8 @@ import java.io.UnsupportedEncodingException;
  * Since Java does not support unsigned byte arrays this class can be used to 
  * send or receive bytes from hardware devices such as RFID readers.
  * 
- * In addition, the class provides several static byte array support
- * functions, which allow the usage of UnsignedByteArray without creating
- * objects of the class.
+ * In addition, the class provides several static byte array support functions,
+ * which allow the usage of UnsignedByteArray without creating objects of the class.
  * 
  * @author 	Matthias Lampe, lampe@acm.org
  */
