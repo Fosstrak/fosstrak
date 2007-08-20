@@ -47,7 +47,7 @@ public class Observation {
 	/**
 	 * The name of the HAL controller instance where the tags were identified
 	 */	
-	private String halName;
+	private String halName = null;
 	
 	/**
 	 * Name of the read point where the tags were identified
@@ -60,9 +60,15 @@ public class Observation {
 	private long timestamp;
 	
 	/**
-	 * The IDs of identified tags.
+	 * The IDs of detected tags.
 	 */
 	private String[] ids = null;
+	
+	/**
+	 * The types of IDs of the detected tags
+	 */
+	private String[] idTypes = null;
+	
 	
 	/**
 	 * Flag the indicates whether the identify operation has been performed successfully or not.
@@ -168,6 +174,23 @@ public class Observation {
 		this.ids = ids;
 	}
 	
+	/**
+	 * Gets the types of IDs of the detected tags.
+	 * 
+	 * @return The types of IDs of the detected tags
+	 */
+	public String[] getIdTypes() {
+		return idTypes;
+	}
+
+	/**
+	 * Sets the types of IDs of the detected tags.
+	 * 
+	 * @param ids the types of IDs of the detected tags
+	 */
+	public void setIdTypes(String[] idTypes) {
+		this.idTypes = idTypes;
+	}
 	
 	/**
 	 * gets the successful flag.

@@ -23,6 +23,7 @@ package org.accada.reader.hal;
 import org.accada.reader.hal.Observation;
 import org.accada.reader.hal.UnsignedByteArray;
 import org.accada.reader.hal.Trigger;
+import org.accada.reader.hal.MemoryBankDescriptor;
 import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.UnsupportedOperationException;
 
@@ -31,20 +32,36 @@ import org.accada.reader.hal.UnsupportedOperationException;
  * The standardized interface defines an abstraction of the underlaying reader hardware. The HardwareAbstraction interface defines 
  * a set of methods that can be implemented by any so called HAL controller class. A class that implements 
  * the interface agrees to implement all the methods defined in the interface, thereby agreeing to certain behavior.
- * <p>
+ * 
  * The functionality provided by the interface is kept as generally as possible in order not to exclude certain
  * readers. The hardware itself has to comply with the following minimal requirements in order to be supported by the framework.
  * 
  * The minimal assumption about the proprietary RFID systems is that the reader allows the identification of tags by a unique serial number.
- * 
- * The tag's identifiers have to be specified as a String representing a hexadecimal number. The hexadecimal digits are the 
- * ordinary, base-10 digits '0' through '9' plus the letters 'A' through 'F'. In the hexadecimal system, these digits represent 
+ * The tag's unique serial number, i.e. identifier, has to be specified as a String representing a hexadecimal number. The hexadecimal digits
+ * are the ordinary, base-10 digits '0' through '9' plus the letters 'A' through 'F'. In the hexadecimal system, these digits represent 
  * the values 0 through 15, respectively. A hexadecimal integer is a sequence of hexadecimal digits, such as 34A7, FF8, 174204. Depending
  * on the concrete hardware this String will be converted into a convenient format, for example a byte array.
  *
  * In the HAL model, the memory is devided into memory banks that can be addressed. In each memory bank the memory can be accessed
  * in block units, whereas the blocksize has to be specified in a corresponding properties file. Despite the block size, memory is
- * specified in bytes.
+ * specified in bytes. Since Java does not support unsigned bytes as basic types the class <code>UnsignedByteArray</code> is used to represent
+ * array of bytes. In general, a HAL controller instance can offer it's own memory bank model, i.e. the number of memory banks and
+ * the content of certain memory banks such as EPCs, Tag IDs, or Passwords. To avoid confusion the following memory model is suggested
+ * which is given in the EPCglobal Class 1 Generation 2 specification:
+ * 		memory bank 0: protected
+ * 		memory bank 1: EPC (Electronic Product Code or other object IDs, read only)
+ * 		memory bank 2: Tag ID (factory programmed ID, read only)
+ * 		memory bank 3: user memory (read/write)
+ * In addition, more memory banks could be used for user memory or to retrieve values of sensors mounted on a tag. Even if the underlaying
+ * reader hardware does not support EPCs, the memory bank model could be implemented using the provided memory of the reader hardware.
+ * 
+ * The HAL controller implementation has to decide which of the IDs should be the master ID of the tag that is returned when
+ * performing an <code>identify</code> command. In an <code>Observation</code> the type of ID has to be specified.
+ * 
+ * HAL controller implementations have to take the memory block size of  the underlaying reader hardware into account. When performing a 
+ * read operation only the requested number of bytes should be returned to the client even if more bytes have to be read to satisfy the 
+ * block size constraints. When writing data to tag memory a preceding read operation might be necessary to avoid overwriting of memory
+ * with empty data used to fit the block size.
  *
  * @author Matthias Lampe, lampe@acm.org
  * @author Christian Floerkemeier, floerkem@mit.edu
@@ -68,9 +85,11 @@ public interface HardwareAbstraction {
 	 * @param readPointNames Array that contains the names of all read points to be scanned
 	 * 
 	 * @return An array that contains for each read point an <code>Observation</code> object
+	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
 	 * @throws HardwareException, if the operation can not be performed.
 	 */
-	Observation[] identify(String[] readPointNames) throws HardwareException;
+	Observation[] identify(String[] readPointNames) throws ReadPointNotFoundException, HardwareException;
 	
 
 	
@@ -85,10 +104,11 @@ public interface HardwareAbstraction {
 	 * @param readPointNames Assay that contains the names of all read points to be scanned
 	 * @param trigger The trigger that indicates the type of asynchronous identify
 	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	void startAsynchronousIdentify(String[] readPointNames, Trigger trigger) throws HardwareException, UnsupportedOperationException;
+	void startAsynchronousIdentify(String[] readPointNames, Trigger trigger) throws ReadPointNotFoundException, HardwareException, UnsupportedOperationException;
 	
 	
 	/**
@@ -117,7 +137,7 @@ public interface HardwareAbstraction {
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	public void addAsynchronousIdentifyListener(AsynchronousIdentifyListener listener) throws HardwareException, UnsupportedOperationException;
+	void addAsynchronousIdentifyListener(AsynchronousIdentifyListener listener) throws HardwareException, UnsupportedOperationException;
 	
 	
 	/**
@@ -126,7 +146,7 @@ public interface HardwareAbstraction {
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	public void removeAsynchronousIdentifyListener(AsynchronousIdentifyListener listener) throws HardwareException, UnsupportedOperationException;
+	void removeAsynchronousIdentifyListener(AsynchronousIdentifyListener listener) throws HardwareException, UnsupportedOperationException;
 	
 	
 	/**
@@ -141,7 +161,7 @@ public interface HardwareAbstraction {
 	
 
 
-	//--------- Read and Write
+	//--------- Read and Write / Memory Banks
 
 	/**
 	 * Reads data from a specified tag, if in range. The transponder id should be a
@@ -161,10 +181,13 @@ public interface HardwareAbstraction {
 	 * 
 	 * @return The data that has been read from the tag
 	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
+	 * @throws OutOfBoundsException, if memoryBank, offset or length exceeds the allowed number. 
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	UnsignedByteArray readBytes(String readPointName, String id, int memoryBank, int offset, int length, String[] passwords) throws HardwareException, UnsupportedOperationException;
+	UnsignedByteArray readBytes(String readPointName, String id, int memoryBank, int offset, int length, String[] passwords) 
+						throws ReadPointNotFoundException, OutOfBoundsException, HardwareException, UnsupportedOperationException;
 	
 	/**
 	 * Checks whether this HAL controller implementation supports the <code>readBytes()</code> method.
@@ -184,11 +207,14 @@ public interface HardwareAbstraction {
 	 * @param offset The offset of the data in bytes
 	 * @param data The byte data to be written to the tag
 	 * @param passwords An optional list of one or more passwords (or lock code)
-
+	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
+	 * @throws OutOfBoundsException, if memoryBank, offset or length exceeds the allowed number. 
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	void writeBytes(String readPointName, String id, int memoryBank, int offset, UnsignedByteArray data, String[] passwords) throws HardwareException, UnsupportedOperationException;
+	void writeBytes(String readPointName, String id, int memoryBank, int offset, UnsignedByteArray data, String[] passwords)
+				throws ReadPointNotFoundException, OutOfBoundsException, HardwareException, UnsupportedOperationException;
 	
 	/**
 	 * Checks whether this HAL controller implementation supports the <code>writeBytes()</code> method.
@@ -198,6 +224,41 @@ public interface HardwareAbstraction {
 	boolean supportsWriteBytes();
 	
 
+	/**
+	 * Gets the number of memory banks supported by the HAL controller instance.
+	 * 
+	 * @return the number of memory banks.
+	 * 
+	 * @throws HardwareException, if the operation can not be performed.
+	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
+	 */
+	int getNumberOfMemoryBanks() throws HardwareException, UnsupportedOperationException;
+	
+	/**
+	 * Checks whether this HAL controller implementation supports the <code>supportsGetNumberOfMemoryBanks()</code> method.
+	 * 
+	 * @return true, if method is supported, false otherwise
+	 */
+	boolean supportsGetNumberOfMemoryBanks();
+
+	/**
+	 * Gets the descriptions of the memory banks such as size and read/write access.
+	 * 
+	 * @return an array of memory bank descriptors. The array index corresponds to the number of the memory bank.
+	 * 
+	 * @throws HardwareException, if the operation can not be performed.
+	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
+	 */
+	MemoryBankDescriptor[] getMemoryBankDescriptors() throws HardwareException, UnsupportedOperationException;
+
+	/**
+	 * Checks whether this HAL controller implementation supports the <code>supportsGetMemoryBankDescriptors()</code> method.
+	 * 
+	 * @return true, if method is supported, false otherwise
+	 */
+	boolean supportsGetMemoryBankDescriptors();
+
+
 	
 	//--------- Kill and ProgramID
 
@@ -205,13 +266,15 @@ public interface HardwareAbstraction {
 	 * Kills the specified tag, if in range. A killed tag doesn't respond to
 	 * requests any longer.
 	 * 
+	 * @param readPointName the name of the read point on which the kill attempt will be done
 	 * @param id id of the tag that will be killed
 	 * @param passwords an optional list of one or more passwords (or lock code) 
 	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	void kill(String id, String[] passwords) throws HardwareException, UnsupportedOperationException;	
+	void kill(String readPointName, String id, String[] passwords) throws ReadPointNotFoundException, HardwareException, UnsupportedOperationException;	
 	
 	/**
 	 * Checks whether this HAL controller implementation supports the <code>kill()</code> method.
@@ -222,24 +285,26 @@ public interface HardwareAbstraction {
 
 	
 	/**
-	 * Programs a tag with the given ID and the optionally specified passwords.
+	 * Writes the given ID onto a tag. 
 	 * If the physical environment supports the setting of a new tag ID this
 	 * method can be used to access the appropriate blocks within the memory.
 	 * 
+	 * @param readPointName The name of the read point on which the write attempt will be done
 	 * @param id the new ID for the tag
 	 * @param passwords an optional list of one or more passwords (or lock code)
 	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	void programId(String id, String[] passwords) throws HardwareException, UnsupportedOperationException;
+	void writeId(String readPointName, String id, String[] passwords) throws ReadPointNotFoundException, HardwareException, UnsupportedOperationException;
 	
 	/**
-	 * Checks whether this HAL controller implementation supports the <code>programId()</code> method.
+	 * Checks whether this HAL controller implementation supports the <code>writeId()</code> method.
 	 * 
 	 * @return true, if method is supported, false otherwise
 	 */
-	boolean supportsProgramId();
+	boolean supportsWriteId();
 
 	
 
@@ -327,45 +392,47 @@ public interface HardwareAbstraction {
 
 	
 	/**
-	 * Returns the current transmit power level of an antenna.
+	 * Returns the current transmit power level of a certain read point.
 	 * 
 	 * @param readPointName The name of the read point
 	 * @param normalize Specifies whether the power level should be returned in a normalized form (i.e. in a range from 0 to 255)
-	 * @return The current transmit power level of the antenna
+	 * @return The current transmit power level of the read point
 	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	int getAntennaPowerLevel(String readPointName, boolean normalize) throws HardwareException, UnsupportedOperationException;
+	int getReadPointPowerLevel(String readPointName, boolean normalize) throws ReadPointNotFoundException, HardwareException, UnsupportedOperationException;
 	
 	/**
-	 * Checks whether this HAL controller implementation supports the <code>getAntennaPowerLevel()</code> method.
+	 * Checks whether this HAL controller implementation supports the <code>getReadPointPowerLevel()</code> method.
 	 * 
 	 * @return true, if method is supported, false otherwise
 	 */
-	boolean supportsGetAntennaPowerLevel();
+	boolean supportsGetReadPointPowerLevel();
 
 	
 	/**
-	 * Returns the current noise level observed at an antenna.
+	 * Returns the current noise level observed at a certain read point.
 	 * 
 	 * @param readPointName The name of the read point
 	 * @param normalize Specifies whether the noise level should be returned in a
 	 *                  normalized form (i.e. in a range from 0 to 255)
 	 *                  
-	 * @return The current noise level observed at the antenna
+	 * @return The current noise level observed at the read point
 	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	int getAntennaNoiseLevel(String readPointName, boolean normalize) throws HardwareException, UnsupportedOperationException;
+	int getReadPointNoiseLevel(String readPointName, boolean normalize) throws ReadPointNotFoundException, HardwareException, UnsupportedOperationException;
 	
 	/**
-	 * Checks whether this HAL controller implementation supports the <code>getAntennaNoiseLevel()</code> method.
+	 * Checks whether this HAL controller implementation supports the <code>getReadPointNoiseLevel()</code> method.
 	 * 
 	 * @return true, if method is supported, false otherwise
 	 */
-	boolean supportsGetAntennaNoiseLevel();
+	boolean supportsGetReadPointNoiseLevel();
 
 	
 	/**
@@ -373,10 +440,11 @@ public interface HardwareAbstraction {
 	 * 
 	 * @param readPointName The name of the read point
 	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	void startUpReadPoint(String readPointName) throws HardwareException, UnsupportedOperationException;
+	void startUpReadPoint(String readPointName) throws ReadPointNotFoundException, HardwareException, UnsupportedOperationException;
 	
 	/**
 	 * Checks whether this HAL controller implementation supports the <code>startUpReadPoint()</code> method.
@@ -391,10 +459,11 @@ public interface HardwareAbstraction {
 	 * 
 	 * @param readPointName The name of the read point
 	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	void shutDownReadPoint(String readPointName) throws HardwareException, UnsupportedOperationException;
+	void shutDownReadPoint(String readPointName) throws ReadPointNotFoundException, HardwareException, UnsupportedOperationException;
 	
 	/**
 	 * Checks whether this HAL controller implementation supports the <code>shutDownReadPoint()</code> method.
@@ -407,15 +476,16 @@ public interface HardwareAbstraction {
 	/**
 	 * Checks whether a read point is ready (i.e. it has been started up).
 	 * 
-	 * @param readPointName
-	 *            The name of the read point
+	 * @param readPointName The name of the read point
+	 * 
 	 * @return <code>true</code> it the antenna is ready,
 	 *         <code>false</code> otherwise
 	 * 
+	 * @throws ReadPointNotFoundException, if the read point can not be found.
 	 * @throws HardwareException, if the operation can not be performed.
 	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
 	 */
-	boolean isReadPointReady(String readPointName) throws HardwareException, UnsupportedOperationException;
+	boolean isReadPointReady(String readPointName) throws ReadPointNotFoundException, HardwareException, UnsupportedOperationException;
 	
 	/**
 	 * Checks whether this HAL controller implementation supports the <code>isReadPointReady()</code> method.
