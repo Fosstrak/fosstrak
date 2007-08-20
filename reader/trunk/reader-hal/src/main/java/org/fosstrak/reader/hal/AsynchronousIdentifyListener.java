@@ -23,14 +23,16 @@ package org.accada.reader.hal;
 /**
  * This interface should be implemented in order to be able to receive tag
  * identification observations asynchronously.
+ * 
+ * @author Matthias Lampe, lampe@acm.org
+ * @author Christian Floerkemeier, floerkem@mit.edu
  */
 public interface AsynchronousIdentifyListener {
 	
 	/**
-	 * This callback method is called whenever a tag has been identified.
+	 * This callback method is called whenever an asynchronous identify has been performed.
 	 * 
-	 * @param observation
-	 *            Contains the information about the tag identification.
+	 * @param observation Contains the information about the tag identification.
 	 */
 	void asynchronousIdentifyPerformed(Observation observation);
 

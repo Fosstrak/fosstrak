@@ -35,6 +35,9 @@ import java.util.Vector;
  * </p>
  * Every Observation is associated to a read point. Thereby the term read point
  * refers to a reader's antenna.
+ * 
+ * @author Matthias Lampe, lampe@acm.org
+ * @author Christian Floerkemeier, floerkem@mit.edu
  */
 public class Observation {
 	
@@ -42,18 +45,17 @@ public class Observation {
 	//-------------------fields---------------------------------------------------
 
 	/**
-	 * The name of the HAL
+	 * The name of the HAL controller instance where the tags were identified
 	 */	
 	private String halName;
 	
 	/**
-	 * <code>readPointName</code> is to distinguish between several
-	 * antennas/channels of a reader.
+	 * Name of the read point where the tags were identified
 	 */
 	private String readPointName = null;
 	
 	/**
-	 * The timestamp.
+	 * The timestamp when the tags where identified
 	 */
 	private long timestamp;
 	
@@ -63,20 +65,70 @@ public class Observation {
 	private String[] ids = null;
 	
 	/**
-	 * Specifies whether the accordant operation has been performed successfully
-	 * or not.
+	 * Flag the indicates whether the identify operation has been performed successfully or not.
 	 */
 	public boolean successful = true;
-		
+
 	
-	//	----------------constructor-----------------------------------------------
+	//	---------------- Constructor(s) -----------------------------------------------
 	
 	/**
-	 * Constructor.
+	 * creates an empty Observation.
 	 */
 	public Observation() { }
 
-	//-------------------method declarations ------------------------------------------
+	
+	/**
+	 * creates an Observation with the given parameters.
+	 */
+	public Observation(String halName, String readPointName, long timestamp, String[] ids, boolean successful) {
+		setHalName(halName);
+		setReadPointName(readPointName);
+		setTimestamp(timestamp);
+		setIds(ids);
+		setSuccessful(successful);
+	}
+
+	//------------------- Getter/Setter Methods ------------------------------------------
+
+	/**
+	 * Returns the name of the HAL.
+	 * 
+	 * @return The name of the HAL
+	 */
+	public String getHalName() {
+		return halName;
+	}
+	
+	/**
+	 * Sets the HAL controller instance name.
+	 * 
+	 * @param halName the HAL controller instance name to set
+	 */
+	public void setHalName(String halName) {
+		this.halName = halName;
+	}
+
+	
+	/**
+	 * Gets the name of the read point involved in the identification.
+	 * 
+	 * @return The name of the read point
+	 */
+	public String getReadPointName() {
+		return readPointName;
+	}
+
+	/**
+	 * Sets the name of the read point involved in the identification.
+	 * 
+	 * @param readPointName
+	 *            The name of read point to set
+	 */
+	public void setReadPointName(String readPointName) {
+		this.readPointName = readPointName;
+	}
+
 
 	/**
 	 * Gets the timestamp.
@@ -97,98 +149,64 @@ public class Observation {
 		this.timestamp = timestamp;
 	}
 
-	/**
-	 * Returns the name of the HAL.
-	 * 
-	 * @return The name of the HAL
-	 */
-	public String getHalName() {
-		return halName;
-	}
-	
-	/**
-	 * Sets the HAL name.
-	 * 
-	 * @param halName
-	 *            The HAL name to set
-	 */
-	public void setHalName(String halName) {
-		this.halName = halName;
-	}
 
 	/**
-	 * Gets the name of the read point involved in the identification.
-	 * 
-	 * @return The name of the read point
-	 */
-	public String getReadPointName() {
-		return readPointName;
-	}
-
-
-	/**
-	 * Sets the name of the read point involved in the identification.
-	 * 
-	 * @param readPointName
-	 *            The name of read point to set
-	 */
-	public void setReadPointName(String readPointName) {
-		this.readPointName = readPointName;
-	}
-
-
-	/**
-	 * Gets the identified tags. Depending on the underlaying physical reader
-	 * and the identification mechanisms used an Observation contains one ore
-	 * more tag IDs.
+	 * Gets the identified tags.
 	 * 
 	 * @return The tag IDs
 	 */
-	public String[] getTagIds() {
+	public String[] getIds() {
 		return ids;
 	}
 
+	/**
+	 * Sets the IDs of the identified tags.
+	 * 
+	 * @param ids the tag IDs
+	 */
+	public void setIds(String[] ids) {
+		this.ids = ids;
+	}
+	
+	
+	/**
+	 * gets the successful flag.
+	 */
+	public boolean getSuccessful() {
+		return successful;
+	}
 
 	/**
-	 * Sets the IDs of the identified tags. Depending on the underlaying
-	 * physical reader and the identification mechanisms used an Observation
-	 * contains one ore more tag IDs.
-	 * 
-	 * @param idVector
-	 *            The tagIDs
+	 * sets the successful flag.
 	 */
-	public void setTagIds(Vector idVector) {
-		int length = idVector.size();
-		ids = new String[length];
-		for (int i = 0; i < length; i++){
-			ids[i] = (String) (idVector.elementAt(i));
-		}
+	public void setSuccessful(boolean successful) {
+		this.successful = successful;
 	}
 	
 	
-	/**
-	 * Checks if the observation contains a specific ID.
-	 * 
-	 * @param id
-	 *            The ID
-	 * @return <code>true</code> it the ID has been found, <code>false</code>
-	 *         otherwise
-	 */
-	public boolean containsId(String id){
-		for (int i = 0; i < ids.length; i++){
-			if (ids[i].equals(id)){
-				return true;
-			}
-		}
-		return false;
-	}
+	//------------------- Method declarations ------------------------------------------
+	
+//	/**
+//	 * Checks if the observation contains a specific ID.
+//	 * 
+//	 * @param id the 
+//	 * @return <code>true</code> it the ID has been found, <code>false</code>
+//	 *         otherwise
+//	 */
+//	public boolean containsId(String id){
+//		for (int i = 0; i < ids.length; i++){
+//			if (ids[i].equals(id)){
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 	
 	
 	/**
-	 * Returns a <code>String</code> containing all the observation
-	 * information.
+	 * Returns a <code>String</code> containing all the observation information.
 	 * 
-	 * @return The information <code>String</code>
+	 * @return The observation as string
 	 */
 	public String toString(){
 		String string = null;

@@ -24,7 +24,7 @@
 package org.accada.reader.hal.impl.sim;
 
 /**
- * A simulator within the Simulator Framework must implement this interface.
+ * A simulator implementation within the Simulator Framework must implement this interface.
  * 
  * @author Roland Schneider
  * @author Anna Wojtas, Marcel Bihr, Lukas Blunschi

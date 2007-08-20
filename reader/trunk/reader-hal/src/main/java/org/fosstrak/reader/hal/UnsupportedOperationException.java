@@ -24,7 +24,7 @@ package org.accada.reader.hal;
  * This exception is thrown if the called method is not supported by the current
  * hardware abstraction implementation.
  */
-public class UnsupportedOperationException extends Exception {
+public class UnsupportedOperationException extends HardwareException {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -38,8 +38,7 @@ public class UnsupportedOperationException extends Exception {
 	/**
 	 * The constructor using a message.
 	 * 
-	 * @param message
-	 *            The message
+	 * @param message The message
 	 */
 	public UnsupportedOperationException(String message) {
 		super(message);

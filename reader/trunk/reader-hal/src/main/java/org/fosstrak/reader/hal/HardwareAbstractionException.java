@@ -27,21 +27,24 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * Signals that a command failed on the hardware abstraction layer. This
- * exception is thrown by objects within the hardware abstraction layer if the
+ * This exception is the root exception for all exeption that
+ * are thrown in the hardware abstraction layer.
+ * 
+ * This exception is thrown by HAL controller methods of a objects within the hardware abstraction layer if the
  * attempt to execute a command failed. The idea is to propagate just a single
  * kind of error to the layers above. This simplifies the error handling for
- * other layers. <n> The error itself can be specified in more detail by using
- * the following codes: </n>
- * <ul>
- * <li><b><code>serviceCode</code>: </b> Indicates the kind of service,
- * which caused the exception
- * <li><b><code>readerProtocolErrorCode</code>: </b> The RP conform error
- * code..
- * </ul>
+ * other layers.
+ * 
+ * The error itself can be specified in more detail by using the following codes:
+ * 
+ * <code>serviceCode</code>: Indicates the kind of service, which caused the exception
+
+ * <code>readerProtocolErrorCode</code> The RP conform error code..
+ * 
+ * @author Matthias Lampe, lampe@acm.org
  */
 
-public class HardwareException extends Exception {
+public class HardwareAbstractionException extends Exception {
 	
 	//----------------------constants--------------------------------
 	
@@ -87,7 +90,7 @@ public class HardwareException extends Exception {
 	/**
 	 * The logger.
 	 */
-	protected static Log log = LogFactory.getLog(HardwareException.class); 	
+	protected static Log log = LogFactory.getLog(HardwareAbstractionException.class); 	
 	
 	//----------------------constructors----------------------------
 	
@@ -101,7 +104,7 @@ public class HardwareException extends Exception {
 	 * @param halName
 	 *            The name of the HAL
 	 */
-	public HardwareException(int serviceCode, String readPointName, String halName) {
+	public HardwareAbstractionException(int serviceCode, String readPointName, String halName) {
 		super();
 		this.serviceCode = serviceCode;
 		this.readPointName = readPointName;
@@ -120,7 +123,7 @@ public class HardwareException extends Exception {
 	 * @param message
 	 *            The message
 	 */
-	public HardwareException(int serviceCode, String readPointName, String halName, String message) {
+	public HardwareAbstractionException(int serviceCode, String readPointName, String halName, String message) {
 		super(message);
 		this.serviceCode = serviceCode;
 		this.readPointName = readPointName;
@@ -141,7 +144,7 @@ public class HardwareException extends Exception {
 	 * @param cause
 	 *            The cause
 	 */
-	public HardwareException(int serviceCode, String readPointName, String halName, String message, Throwable cause) {
+	public HardwareAbstractionException(int serviceCode, String readPointName, String halName, String message, Throwable cause) {
 		super(message, cause);
 		this.serviceCode = serviceCode;
 		this.readPointName = readPointName;
@@ -160,7 +163,7 @@ public class HardwareException extends Exception {
 	 * @param cause
 	 *            The cause
 	 */
-	public HardwareException(int serviceCode, String readPointName, String halName, Throwable cause) {
+	public HardwareAbstractionException(int serviceCode, String readPointName, String halName, Throwable cause) {
 		super(cause);
 		this.serviceCode = serviceCode;
 		this.readPointName = readPointName;

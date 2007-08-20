@@ -42,9 +42,12 @@ import org.apache.log4j.PropertyConfigurator;
 
 
 /**
- * From the RFID Stacks point of view the SimulatorController supports 
+ * The SimulatorController is a HAL controller that enables the implementation
+ * of different kinds of RFID reader simulators/emulators.
+ * 
+ * From the HAL point of view the SimulatorController supports 
  * the same functionality as hardware controllers. Additionally it 
- * provides methods that allow a Simulator (SimulatorEngine) to 
+ * provides methods that allow a Simulator (i.e. SimulatorEngine) to 
  * (virtually) add and remove RFID tags. 
  * 
  * @author Roland Schneider
