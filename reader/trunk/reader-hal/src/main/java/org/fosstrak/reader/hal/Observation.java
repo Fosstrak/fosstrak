@@ -65,9 +65,9 @@ public class Observation {
 	private String[] ids = null;
 	
 	/**
-	 * The types of IDs of the detected tags
+	 * The tag descriptor of the  detected tags
 	 */
-	private String[] idTypes = null;
+	private TagDescriptor[] tagDescriptors = null;
 	
 	
 	/**
@@ -175,21 +175,21 @@ public class Observation {
 	}
 	
 	/**
-	 * Gets the types of IDs of the detected tags.
+	 * Gets the tag descriptor of the  detected tags.
 	 * 
-	 * @return The types of IDs of the detected tags
+	 * @return The tag descriptors of the detected tags
 	 */
-	public String[] getIdTypes() {
-		return idTypes;
+	public TagDescriptor[] getTagDescriptors() {
+		return tagDescriptors;
 	}
 
 	/**
-	 * Sets the types of IDs of the detected tags.
+	 * Sets The tag descriptors of the detected tags.
 	 * 
-	 * @param ids the types of IDs of the detected tags
+	 * @param tagDescriptors the tag descriptord of the detected tags
 	 */
-	public void setIdTypes(String[] idTypes) {
-		this.idTypes = idTypes;
+	public void setTagDescriptors(TagDescriptor[] tagDescriptors) {
+		this.tagDescriptors = tagDescriptors;
 	}
 	
 	/**
@@ -205,7 +205,7 @@ public class Observation {
 	public void setSuccessful(boolean successful) {
 		this.successful = successful;
 	}
-	
+
 	
 	//------------------- Method declarations ------------------------------------------
 	

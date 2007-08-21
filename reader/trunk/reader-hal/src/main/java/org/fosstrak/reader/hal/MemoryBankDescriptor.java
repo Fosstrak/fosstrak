@@ -69,30 +69,12 @@ public class MemoryBankDescriptor {
 	}
 
 	/**
-	 * Sets the size of the memory bank in number of bytes.
-	 * 
-	 * @param size the size of the memory bank in number of bytes
-	 */
-	public void setSize(int size) {
-		this.size = size;
-	}
-
-	/**
 	 * gets the flag that indicates if read access is allowed.
 	 * 
 	 * @return the flag that indicates if read access is allowed
 	 */
 	public boolean isReadAccess() {
 		return readAccess;
-	}
-
-	/**
-	 * Sets the flag that indicates if read access is allowed.
-	 * 
-	 * @param readAccess flag that indicates if read access is allowed
-	 */
-	public void setReadAccess(boolean readAccess) {
-		this.readAccess = readAccess;
 	}
 
 
@@ -105,13 +87,4 @@ public class MemoryBankDescriptor {
 		return writeAccess;
 	}
 
-	/**
-	 * Sets the flag that indicates if write access is allowed.
-	 * 
-	 * @param writeAccess flag that indicates if write access is allowed
-	 */
-	public void setWriteAccess(boolean writeAccess) {
-		this.writeAccess = writeAccess;
-	}
-	
 }

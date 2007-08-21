@@ -161,7 +161,7 @@ public interface HardwareAbstraction {
 	
 
 
-	//--------- Read and Write / Memory Banks
+	//--------- Read and Write
 
 	/**
 	 * Reads data from a specified tag, if in range. The transponder id should be a
@@ -222,43 +222,8 @@ public interface HardwareAbstraction {
 	 * @return true, if method is supported, false otherwise
 	 */
 	boolean supportsWriteBytes();
+
 	
-
-	/**
-	 * Gets the number of memory banks supported by the HAL controller instance.
-	 * 
-	 * @return the number of memory banks.
-	 * 
-	 * @throws HardwareException, if the operation can not be performed.
-	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
-	 */
-	int getNumberOfMemoryBanks() throws HardwareException, UnsupportedOperationException;
-	
-	/**
-	 * Checks whether this HAL controller implementation supports the <code>supportsGetNumberOfMemoryBanks()</code> method.
-	 * 
-	 * @return true, if method is supported, false otherwise
-	 */
-	boolean supportsGetNumberOfMemoryBanks();
-
-	/**
-	 * Gets the descriptions of the memory banks such as size and read/write access.
-	 * 
-	 * @return an array of memory bank descriptors. The array index corresponds to the number of the memory bank.
-	 * 
-	 * @throws HardwareException, if the operation can not be performed.
-	 * @throws UnsupportedOperationException, if the operation is not supported by the controller implementation.
-	 */
-	MemoryBankDescriptor[] getMemoryBankDescriptors() throws HardwareException, UnsupportedOperationException;
-
-	/**
-	 * Checks whether this HAL controller implementation supports the <code>supportsGetMemoryBankDescriptors()</code> method.
-	 * 
-	 * @return true, if method is supported, false otherwise
-	 */
-	boolean supportsGetMemoryBankDescriptors();
-
-
 	
 	//--------- Kill and ProgramID
 
