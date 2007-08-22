@@ -163,9 +163,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 			props.setProperty("WindowWidth", new Integer(2 * getProperty("FramePadding") + getProperty("TagWidth") + getProperty("HorizontalPadding") + getProperty("AntennasPerRow") * (getProperty("AntennaWidth") + getProperty("HorizontalInterAntennaPadding")) - getProperty("HorizontalInterAntennaPadding")).toString());
 		}
 		if(!props.containsKey("WindowHeight")) {
-			try {
-				props.setProperty("WindowHeight", new Integer(2 * getProperty("FramePadding") + getProperty("ReaderHeight") + getProperty("VerticalPadding") + (controller.getReadPointNames().length / getProperty("AntennasPerRow") + (controller.getReadPointNames().length % getProperty("AntennasPerRow") > 0 ? 1 : 0)) * (getProperty("AntennaHeight") + getProperty("VerticalInterAntennaPadding")) - getProperty("VerticalInterAntennaPadding") + 50).toString());
-			} catch (HardwareException ignored) { }
+			props.setProperty("WindowHeight", new Integer(2 * getProperty("FramePadding") + getProperty("ReaderHeight") + getProperty("VerticalPadding") + (controller.getReadPointNames().length / getProperty("AntennasPerRow") + (controller.getReadPointNames().length % getProperty("AntennasPerRow") > 0 ? 1 : 0)) * (getProperty("AntennaHeight") + getProperty("VerticalInterAntennaPadding")) - getProperty("VerticalInterAntennaPadding") + 50).toString());
 		}
 		if(!props.containsKey("AntennaPaneX")) {
 			props.setProperty("AntennaPaneX", new Integer(getProperty("FramePadding") + getProperty("TagWidth") + getProperty("HorizontalPadding")).toString());
@@ -309,9 +307,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 
 			// add antennas
 			String[] antennaIds = null;
-			try {
-				antennaIds = controller.getReadPointNames();
-			} catch (HardwareException ignored) { }
+			antennaIds = controller.getReadPointNames();
 			for (int i = 0; i < antennaIds.length; i++) {
 				createNewAntenna(antennaIds[i]);
 			}
@@ -532,9 +528,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 */
 	private void createNewAntenna(String id) {
 		if("".equals(id)) {
-			try {
-				id = controller.getReadPointNames()[antennas.size()];
-			} catch (HardwareException ignored) { }
+			id = controller.getReadPointNames()[antennas.size()];
 		}
 		int x = (antennas.size() % getProperty("AntennasPerRow")) * (getProperty("AntennaWidth") + getProperty("HorizontalInterAntennaPadding")) + getProperty("AntennaPaneX");
 		int y = (antennas.size() / getProperty("AntennasPerRow")) * (getProperty("AntennaHeight") + getProperty("VerticalInterAntennaPadding")) + (getProperty("AntennaPaneY"));

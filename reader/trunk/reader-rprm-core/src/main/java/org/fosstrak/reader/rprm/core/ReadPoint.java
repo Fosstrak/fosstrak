@@ -21,6 +21,9 @@
 package org.accada.reader.rprm.core;
 
 import org.accada.reader.hal.HardwareAbstraction;
+import org.accada.reader.hal.HardwareException;
+import org.accada.reader.hal.ReadPointNotFoundException;
+import org.accada.reader.hal.UnsupportedOperationException;
 import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
 import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
@@ -192,10 +195,18 @@ public class ReadPoint {
 	   adminStatus = administrativeStatus;
 	   switch (administrativeStatus) {
   		case UP:
-  			reader.startUpReadPoint(name);
+  			try {
+				reader.startUpReadPoint(name);
+			} catch (HardwareException e) {
+				// TODO Auto-generated catch block
+			}
   			break;
   		case DOWN:
-  			reader.shutDownReadPoint(name);
+  			try {
+				reader.shutDownReadPoint(name);
+			} catch (HardwareException e) {
+				// TODO Auto-generated catch block
+			}
   			break;
 	   }
    }
@@ -206,7 +217,13 @@ public class ReadPoint {
     * @return The operational status of the <code>ReadPoint</code>
     */
    public OperationalStatus getOperStatus() {
-	   if (reader.isReadPointReady(name)) {
+	   boolean ready = false;
+	   try {
+		   ready = reader.isReadPointReady(name);
+	   } catch (HardwareException e) {
+		   // TODO Auto-generated catch block
+	   }
+	   if (ready) {
 		   setOperStatus(OperationalStatus.UP);
 		   return operStatus;
 	   } else {

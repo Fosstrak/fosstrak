@@ -109,9 +109,7 @@ public class CmdLineSim implements SimulatorEngine, Runnable {
 		}
 		else if (cmd.equalsIgnoreCase("sourceids")){
 			String[] sourceIds = null;
-			try {
-				sourceIds = controller.getReadPointNames();
-			} catch (HardwareException ignored) { }
+			sourceIds = controller.getReadPointNames();
 			for (int i = 0 ; i<sourceIds.length; i++){
 				System.out.println(sourceIds[i]);
 			}

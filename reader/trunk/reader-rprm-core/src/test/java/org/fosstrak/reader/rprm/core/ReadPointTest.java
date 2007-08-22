@@ -2,6 +2,9 @@ package org.accada.reader.rprm.core;
 
 import junit.framework.TestCase;
 
+import org.accada.reader.hal.HardwareException;
+import org.accada.reader.hal.ReadPointNotFoundException;
+import org.accada.reader.hal.UnsupportedOperationException;
 import org.accada.reader.rprm.core.ReadPoint;
 import org.accada.reader.rprm.core.ReaderDevice;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
@@ -47,7 +50,13 @@ public class ReadPointTest extends TestCase {
 	 * Tests the <code>getOperStatus()</code> method.
 	 */
 	public final void testGetOperStatus() {
-		if (readPoint.getReader().isReadPointReady(readPoint.name)) {
+		boolean ready = false;
+		try {
+			readPoint.getReader().isReadPointReady(readPoint.name);
+		} catch (HardwareException e) {
+			// TODO Auto-generated catch block
+		}
+		if (ready) {
 			assertEquals(OperationalStatus.UP, readPoint.getOperStatus());
 		} else {
 			assertEquals(OperationalStatus.DOWN, readPoint.getOperStatus());

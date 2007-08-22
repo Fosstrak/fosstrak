@@ -23,6 +23,9 @@ package org.accada.reader.rprm.core;
 import java.util.Date;
 
 import org.accada.reader.hal.HardwareAbstraction;
+import org.accada.reader.hal.HardwareException;
+import org.accada.reader.hal.ReadPointNotFoundException;
+import org.accada.reader.hal.UnsupportedOperationException;
 import org.accada.reader.rprm.core.mgmt.alarm.AlarmControl;
 import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
 import org.accada.reader.rprm.core.mgmt.alarm.FailedEraseAlarm;
@@ -536,7 +539,11 @@ public class AntennaReadPoint extends ReadPoint {
 	 *         <code>AntennaReadPoint</code>
 	 */
 	public int getPowerLevel() {
-		powerLevel = reader.getAntennaPowerLevel(name, true);
+		try {
+			powerLevel = reader.getReadPointPowerLevel(name, true);
+		} catch (HardwareException e) {
+			// return last power level
+		}
 		return powerLevel;
 	}
 
@@ -548,7 +555,11 @@ public class AntennaReadPoint extends ReadPoint {
 	 *         <code>AntennaReadPoint</code>
 	 */
 	public int getNoiseLevel() {
-		noiseLevel = reader.getAntennaNoiseLevel(name, true);
+		try {
+			noiseLevel = reader.getReadPointNoiseLevel(name, true);
+		} catch (HardwareException e) {
+			// return last noise level
+		}
 		return noiseLevel;
 	}
 	

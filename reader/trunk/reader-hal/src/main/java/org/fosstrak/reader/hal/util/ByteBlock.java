@@ -193,6 +193,30 @@ public class ByteBlock {
 		return sb.toString();
 	}
 
+	/**
+	 * returns a string with the byte of the input array in hexadecimal
+	 * representation trimed/padded to a specific length.
+	 * 
+	 * If length is less than the length of the input array, the most
+	 * significant bits (low array indices) are cut.
+	 * 
+	 * If length is greater than the length of the input array, "00"
+	 * bytes are added in front of the resulting string.
+	 * 
+	 * @param byteArray
+	 * @param length
+	 * @return
+	 */
+	static public String byteArrayToHexString(byte[] byteArray, int length) {
+		byte[] data = new byte[length];
+		int pad = length - byteArray.length;
+		if (pad > 0) {
+			System.arraycopy(byteArray, 0, data, pad, byteArray.length);
+		} else {
+			System.arraycopy(byteArray, -pad, data, 0, length);
+		}
+		return byteArrayToHexString(data);
+	}
 
 	/**
 	 * converts a String of hex bytes to a byte array.
@@ -218,7 +242,57 @@ public class ByteBlock {
 		return byteArray;
 	}
 	
+	/**
+	 * converts a String of hex byte to a byte array of a specific length.
+	 * 
+	 * If length is less than the converted String, the most significant
+	 * bits (low array indices) are cut.
+	 * 
+	 * If length is greater than the converted String, the resulting array
+	 * is padded with 0 bytes at the beginning (low array indices).
+	 * 
+	 * @param hexString
+	 * @param length
+	 * @return
+	 */
+	static public byte[] hexStringToByteArray(String hexString, int length) {
+		byte[] data = new byte[length];
+		
+		int pad = length-hexString.length();
+		byte[] byteArray = hexStringToByteArray(hexString);
+		if (pad > 0) {
+			System.arraycopy(byteArray, 0, data, pad, byteArray.length);
+		} else {
+			System.arraycopy(byteArray, -pad, data, 0, length);
+		}
+		
+		return data;
+	}
 	
+	/**
+	 * converts an unsigned byte value to a (signed) integer.
+	 * 
+	 * @param b
+	 *            Unsigned byte value
+	 * @return Signed integer
+	 */
+	public static int byteToNumber(byte b) {
+		return (int) b & 0xFF;
+	}
+	
+	/**
+	 * converts an unsigned byte array to a (signed) integer.
+	 * 
+	 * @param b
+	 * @return
+	 */
+	public static int bytesToNumber(byte[] b) {
+		int val = 0;
+		for (int i = 0; i < 4; i++) {
+			val += byteToNumber(b[i]) << (8 * (4 - b.length - i));
+		}
+		return val;
+	}
 	
 	/**
 	 * creates a byte array out of the given number. The numbering

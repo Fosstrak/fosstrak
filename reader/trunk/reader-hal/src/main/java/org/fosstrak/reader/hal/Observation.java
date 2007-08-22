@@ -209,21 +209,21 @@ public class Observation {
 	
 	//------------------- Method declarations ------------------------------------------
 	
-//	/**
-//	 * Checks if the observation contains a specific ID.
-//	 * 
-//	 * @param id the 
-//	 * @return <code>true</code> it the ID has been found, <code>false</code>
-//	 *         otherwise
-//	 */
-//	public boolean containsId(String id){
-//		for (int i = 0; i < ids.length; i++){
-//			if (ids[i].equals(id)){
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
+	/**
+	 * Checks if the observation contains a specific ID.
+	 * 
+	 * @param id the 
+	 * @return <code>true</code> it the ID has been found, <code>false</code>
+	 *         otherwise
+	 */
+	public boolean containsId(String id){
+		for (int i = 0; i < ids.length; i++){
+			if (ids[i].equals(id)){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	
 	/**

@@ -34,6 +34,7 @@ import java.util.Timer;
 import java.util.Vector;
 
 import org.accada.reader.hal.HardwareAbstraction;
+import org.accada.reader.hal.UnsignedByteArray;
 import org.accada.reader.hal.UnsupportedOperationException;
 import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.Observation;
@@ -1124,10 +1125,10 @@ public final class Source {
       while (observationIterator.hasMoreElements()) {
          curObservation = (Observation) observationIterator.nextElement();
 
-         for (int i = 0; i < curObservation.getTagIds().length; i++) {
+         for (int i = 0; i < curObservation.getIds().length; i++) {
             try {
-               if (!sourceReport.containsTag(curObservation.getTagIds()[i])) {
-                  addTagToReport(curObservation.getTagIds()[i], sourceReport,
+               if (!sourceReport.containsTag(curObservation.getIds()[i])) {
+                  addTagToReport(curObservation.getIds()[i], sourceReport,
                         dataSelector, closure, null);
                }
             } catch (Exception e) {
@@ -1229,12 +1230,12 @@ public final class Source {
          curObservation = (Observation) observationIterator.nextElement();
 
          // tags
-         for (int i = 0; i < curObservation.getTagIds().length; i++) {
+         for (int i = 0; i < curObservation.getIds().length; i++) {
             try {
-               if (!sourceReport.containsTag(curObservation.getTagIds()[i])) {
-                  if (isRelevantTag(curObservation.getTagIds()[i],
+               if (!sourceReport.containsTag(curObservation.getIds()[i])) {
+                  if (isRelevantTag(curObservation.getIds()[i],
                         tagSelectors, closure)) {
-                     addTagToReport(curObservation.getTagIds()[i],
+                     addTagToReport(curObservation.getIds()[i],
                            sourceReport, dataSelector, closure, null);
                   }
                }
@@ -1370,10 +1371,10 @@ public final class Source {
          curObservation = (Observation) observationIterator.nextElement();
 
          // tags
-         for (int i = 0; i < curObservation.getTagIds().length; i++) {
+         for (int i = 0; i < curObservation.getIds().length; i++) {
             // update last read timestamp
-        	tagsEverDetected.add(curObservation.getTagIds()[i]);
-            updateLastReadTimestamp(curObservation.getTagIds()[i],
+        	tagsEverDetected.add(curObservation.getIds()[i]);
+            updateLastReadTimestamp(curObservation.getIds()[i],
                   (new Date()).getTime());
 
          }
@@ -1467,8 +1468,21 @@ public final class Source {
 		   try {
 			   HardwareAbstraction reader = curClosure.getReader();
 
-			   // Program ID
-			   reader.programId(newID, passwords);
+			   // write ID
+			   String[] readPoints = curClosure.getAllReadPointsAsArray();
+			   HardwareException ex;
+			   int failcount = 0;
+			   for (int i = 0; i < readPoints.length; i++) {
+				   try {
+					   reader.writeId(readPoints[i], newID, passwords);
+				   } catch (HardwareException he) {
+					   failcount++;
+					   ex = he;
+				   }
+			   }
+			   if (failcount == readPoints.length) {
+				   throw new ReaderProtocolException("ERROR_UNKNOWN", MessagingConstants.ERROR_UNKNOWN);
+			   }
 
 			   // Where is the tag?
 			   Observation[] observations = reader.identify(curClosure.getAllReadPointsAsArray());
@@ -1495,8 +1509,6 @@ public final class Source {
 			   		throw new ReaderProtocolException("ERROR_NO_TAG", errorCode);
 			   }
 			   throw new ReaderProtocolException("ERROR_UNKNOWN", MessagingConstants.ERROR_UNKNOWN);
-		   } catch (UnsupportedOperationException uoe) {
-			   log.error("Reader \"" + curClosure.getReader().getHalName() + "\" does not support programID operations");
 		   }
 	   }
    }
@@ -1574,7 +1586,7 @@ public final class Source {
             					   curTag.getId(),
             					   curTagFieldValue.getTagField().getMemoryBank(),
             					   curTagFieldValue.getTagField().getOffset(),
-            					   curTagFieldValue.getValue().getBytes(),
+            					   new UnsignedByteArray(curTagFieldValue.getValue().getBytes()),
             					   passwords);
             			   increaseAntennaReadPointWriteCount(readPointNames[i]);
             		   } catch (HardwareException he) {
@@ -1582,8 +1594,6 @@ public final class Source {
             			   if (readPoint instanceof AntennaReadPoint) {
             				   ((AntennaReadPoint) readPoint).writeFailureOccurred();
             			   }
-            		   } catch (UnsupportedOperationException uoe) {
-            			   log.error("Reader \"" + curClosure.getReader().getHalName() + "\" does not support write operations");
             		   }
             	   }
                }
@@ -1671,7 +1681,7 @@ public final class Source {
     			   }
 
     			   // Kill
-            	   curHardwareAbstraction.kill(curTag.getId(), passwords);
+            	   curHardwareAbstraction.kill(readPointName, curTag.getId(), passwords);
 
             	   // Increase the counter
             	   if (readPointName != null) {
@@ -1690,8 +1700,6 @@ public final class Source {
     			   		throw new ReaderProtocolException("ERROR_NO_TAG", errorCode);
     			   }
     			   throw new ReaderProtocolException("ERROR_UNKNOWN", MessagingConstants.ERROR_UNKNOWN);
-    		   } catch (UnsupportedOperationException uoe) {
-    			   log.error("Reader \"" + curHardwareAbstraction.getHalName() + "\" does not support kill operations");
     		   }
 
             }
@@ -2425,7 +2433,7 @@ public final class Source {
         				 tagField.getMemoryBank(),
         				 tagField.getOffset(),
         				 tagField.getLength(),
-        				 new String[] { });
+        				 new String[] { }).toByteArray();
         		 increaseAntennaReadPointMemReadCount(readPointNames[i]);
         		 return (new String(temp)).toString();
         	 } catch (HardwareException he) {
@@ -2433,8 +2441,6 @@ public final class Source {
         		 if (readPoint instanceof AntennaReadPoint) {
         			 ((AntennaReadPoint) readPoint).memReadFailureOccurred();
         		 }
-        	 } catch (UnsupportedOperationException uoe) {
-        		 log.error("Reader \"" + curClosure.getReader().getHalName() + "\" does not support read operations");
         	 }
          }
       }
@@ -2689,7 +2695,7 @@ public final class Source {
 	   HardwareAbstraction curHardwareAbstraction;
 	   while (readerIterator.hasMoreElements()) {
 		   curHardwareAbstraction = ((ReaderAndReadPoints) readerIterator.nextElement()).getReader();
-		   if (curHardwareAbstraction.supportsWriteBytes() || curHardwareAbstraction.supportsProgramId()) {
+		   if (curHardwareAbstraction.supportsWriteBytes() || curHardwareAbstraction.supportsWriteId()) {
 			   return true;
 		   }
 	   }
@@ -2771,7 +2777,7 @@ public final class Source {
        while (observationIter.hasMoreElements()) {
       	 Observation curObservation = (Observation)observationIter.nextElement();
       	 ReadPoint curReadPoint = (ReadPoint)readPoints.get(curObservation.getReadPointName());
-      	 String[] ids = curObservation.getTagIds();
+      	 String[] ids = curObservation.getIds();
       	 if (curReadPoint instanceof AntennaReadPoint) {
       		 AntennaReadPoint curAntReadPoint = (AntennaReadPoint)curReadPoint;
       		 for (int tagIndex = 0; tagIndex < ids.length; tagIndex++) {

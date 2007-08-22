@@ -34,6 +34,9 @@ import org.accada.reader.hal.ControllerProperties;
 import org.accada.reader.hal.HardwareAbstraction;
 import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.Observation;
+import org.accada.reader.hal.ReadPointNotFoundException;
+import org.accada.reader.hal.Trigger;
+import org.accada.reader.hal.UnsignedByteArray;
 import org.accada.reader.hal.UnsupportedOperationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -322,7 +325,7 @@ public class SimulatorController implements HardwareAbstraction {
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#getHalName()
 	 */
-	public String getHalName() {
+	public String getHALName() {
 		return halName;
 	}
 	
@@ -349,12 +352,15 @@ public class SimulatorController implements HardwareAbstraction {
 				v.add(t.getTagID());
 			}
 			
-			observations[i].setTagIds(v);
+         int len = v.size();
+         String v_arr[] = new String[len];
+         v_arr = v.toArray(v_arr);
+			observations[i].setIds(v_arr);
 			observations[i].setTimestamp(System.currentTimeMillis());
 			
 			if (!readyReadPoints.contains(readPointNames[i])) {
 				log.error("Read point \"" + readPointNames[i] + "\" is not ready.");
-				observations[i].setTagIds(new Vector());
+				observations[i].setIds(new String[0]);
 				observations[i].successful = false;
 			} else if (continuousIdentifyErrors.contains(readPointNames[i])) {
 				observations[i].successful = false;
@@ -375,17 +381,16 @@ public class SimulatorController implements HardwareAbstraction {
 	 * @see org.accada.reader.hal.HardwareAbstraction#startAsynchronousIdentify(java.lang.String[], org.accada.reader.hal.AsynchronousIdentifyListener, java.lang.String, java.lang.String)
 	 */
 	public void startAsynchronousIdentify(String[] readPointNames,
-			AsynchronousIdentifyListener listener, String triggerType,
-			String triggerValue) throws HardwareException,
+			Trigger trigger) throws HardwareException,
 			UnsupportedOperationException {
-		throw new UnsupportedOperationException();
+		throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
 	}
 	
 	
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#stopAsynchronousIdentify(org.accada.reader.hal.AsynchronousIdentifyListener)
 	 */
-	public void stopAsynchronousIdentify(AsynchronousIdentifyListener listener)
+	public void stopAsynchronousIdentify()
 			throws HardwareException, UnsupportedOperationException {
 		throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
 	}
@@ -394,17 +399,42 @@ public class SimulatorController implements HardwareAbstraction {
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#isAsynchronousIdentifyRunning(org.accada.reader.hal.AsynchronousIdentifyListener)
 	 */
-	public boolean isAsynchronousIdentifyRunning(
-			AsynchronousIdentifyListener listener) throws HardwareException,
+	public boolean isAsynchronousIdentifyRunning() throws HardwareException,
 			UnsupportedOperationException {
 		throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
 	}
 
-	
+
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#addAsynchronousIdentifyListener(org.accada.reader.hal.AsynchronousIdentifyListener)
+    */
+	public void addAsynchronousIdentifyListener(AsynchronousIdentifyListener listener)
+         throws HardwareException, UnsupportedOperationException {
+	   throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+	}
+
+
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#removeAsynchronousIdentifyListener(org.accada.reader.hal.AsynchronousIdentifyListener)
+    */
+	public void removeAsynchronousIdentifyListener(AsynchronousIdentifyListener listener)
+         throws HardwareException, UnsupportedOperationException {
+	   throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+	}
+
+
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#supportsAsynchronousIdentify()
+    */
+	public boolean supportsAsynchronousIdentify() {
+	   return false;
+	}
+
+
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#readBytes(java.lang.String, java.lang.String, int, int, int, java.lang.String[])
 	 */
-	public byte[] readBytes(String readPointName, String id, int memoryBank,
+	public UnsignedByteArray readBytes(String readPointName, String id, int memoryBank,
 			int offset, int length, String[] passwords)
 			throws HardwareException, UnsupportedOperationException {
 		if (readyReadPoints.contains(readPointName)) {
@@ -416,7 +446,7 @@ public class SimulatorController implements HardwareAbstraction {
 				throw new HardwareException(HardwareException.SERVICECODE_READ, readPointName, halName);
 			}
 			
-			byte[] byteData;
+			UnsignedByteArray byteData;
 			Tag tag = null;
 			if (contains(readPointName, id)) {
 				Iterator it = ((HashSet)reader.get(readPointName)).iterator();
@@ -430,7 +460,7 @@ public class SimulatorController implements HardwareAbstraction {
 			}
 			
 			if(tag != null){
-				byteData = tag.readData(memoryBank, offset, length);
+				byteData = new UnsignedByteArray(tag.readData(memoryBank, offset, length));
 			}
 			else{
 				String message="Specified tag not in range";
@@ -448,7 +478,7 @@ public class SimulatorController implements HardwareAbstraction {
 	 * @see org.accada.reader.hal.HardwareAbstraction#writeBytes(java.lang.String, java.lang.String, int, int, byte[], java.lang.String[])
 	 */
 	public void writeBytes(String readPointName, String id, int memoryBank,
-			int offset, byte[] data, String[] passwords)
+			int offset, UnsignedByteArray data, String[] passwords)
 			throws HardwareException, UnsupportedOperationException {
 		if (readyReadPoints.contains(readPointName)) {
 			
@@ -472,7 +502,7 @@ public class SimulatorController implements HardwareAbstraction {
 			}
 			
 			if(tag != null){
-				tag.writeData(data, memoryBank, offset);
+				tag.writeData(data.toByteArray(), memoryBank, offset);
 			}
 			else{
 				String message="Specified tag not in range";
@@ -482,12 +512,31 @@ public class SimulatorController implements HardwareAbstraction {
 			throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, readPointName, halName, "Read point is not ready.");
 		}
 	}
+
 	
+	/* (non-Javadoc)
+	 * @see org.accada.reader.hal.HardwareAbstraction#writeId(java.lang.String, java.lang.String, java.lang.String[])
+	 */
+	public void writeId(String readPointName, String id, String[] passwords)
+			throws ReadPointNotFoundException, HardwareException,
+			UnsupportedOperationException {
+		throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+		// TODO: implement
+	}
+
+	
+	/* (non-Javadoc)
+	 * @see org.accada.reader.hal.HardwareAbstraction#supportsWriteId()
+	 */
+	public boolean supportsWriteId() {
+		return false;
+	}
+
 	
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#getReadPointNames()
 	 */
-	public String[] getReadPointNames() throws HardwareException {
+	public String[] getReadPointNames() {
 		return readPointNames;
 	}
 	
@@ -530,12 +579,20 @@ public class SimulatorController implements HardwareAbstraction {
 	}
 	
 	
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#supportsParameters()
+    */
+   public boolean supportsParameters() {
+      return true;
+   }
+
+
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#programId(java.lang.String, java.lang.String[])
 	 */
 	public void programId(String id, String[] passwords)
 			throws HardwareException, UnsupportedOperationException {
-		throw new UnsupportedOperationException();
+	   throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
 		// TODO: implement
 	}
 	
@@ -551,9 +608,9 @@ public class SimulatorController implements HardwareAbstraction {
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#kill(java.lang.String, java.lang.String[])
 	 */
-	public void kill(String id, String[] passwords) throws HardwareException,
+	public void kill(String readPointName, String id, String[] passwords) throws HardwareException,
 			UnsupportedOperationException {
-		throw new UnsupportedOperationException();
+	   throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
 		// TODO: implement
 	}
 	
@@ -580,32 +637,56 @@ public class SimulatorController implements HardwareAbstraction {
 	}
 	
 	
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#supportsKill()
+    */
+   public boolean supportsKill() {
+      return false;
+   }
+   
+   
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#supportsReset()
+    */
+   public boolean supportsReset() {
+      return false;
+   }
+   
+   
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#supportsKill()
+	 * @see org.accada.reader.hal.HardwareAbstraction#getReadPointPowerLevel(java.lang.String, boolean)
 	 */
-	public boolean supportsKill() {
-		return false;
-	}
-	
-	
-	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#getAntennaPowerLevel(java.lang.String, boolean)
-	 */
-	public int getAntennaPowerLevel(String readPointName, boolean normalize) {
+	public int getReadPointPowerLevel(String readPointName, boolean normalize) {
 		// TODO: implement
 		return 0;
 	}
 	
 	
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#supportsGetReadPointPowerLevel()
+    */
+   public boolean supportsGetReadPointPowerLevel() {
+      return false;
+   }
+   
+   
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#getAntennaNoiseLevel(java.lang.String, boolean)
+	 * @see org.accada.reader.hal.HardwareAbstraction#getReadPointNoiseLevel(java.lang.String, boolean)
 	 */
-	public int getAntennaNoiseLevel(String readPointName, boolean normalize) {
+	public int getReadPointNoiseLevel(String readPointName, boolean normalize) {
 		// TODO: implement
 		return 0;
 	}
 	
 	
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#supportsGetReadPointNoiseLevel()
+    */
+   public boolean supportsGetReadPointNoiseLevel() {
+      return false;
+   }
+   
+   
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#startUpReadPoint(java.lang.String)
 	 */
@@ -616,6 +697,14 @@ public class SimulatorController implements HardwareAbstraction {
 	}
 	
 	
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#supportsStartUpReadPoint()
+    */
+   public boolean supportsStartUpReadPoint() {
+      return true;
+   }
+   
+   
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#shutDownReadPoint(java.lang.String)
 	 */
@@ -626,6 +715,14 @@ public class SimulatorController implements HardwareAbstraction {
 	}
 	
 	
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#supportsShutDownReadPoint()
+    */
+   public boolean supportsShutDownReadPoint() {
+      return true;
+   }
+   
+   
 	/* (non-Javadoc)
 	 * @see org.accada.reader.hal.HardwareAbstraction#isReadPointReady(java.lang.String)
 	 */
@@ -634,6 +731,14 @@ public class SimulatorController implements HardwareAbstraction {
 	}
 	
 	
+   /* (non-Javadoc)
+    * @see org.accada.reader.hal.HardwareAbstraction#supportsIsReadPointReady()
+    */
+   public boolean supportsIsReadPointReady() {
+      return true;
+   }
+   
+   
 	/**
 	 * For debugging.
 	 * 

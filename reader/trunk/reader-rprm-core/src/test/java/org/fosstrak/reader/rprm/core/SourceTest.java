@@ -137,7 +137,7 @@ public class SourceTest extends TestCase {
 			HardwareAbstraction curHardwareAbstraction;
 			while (readerIterator.hasMoreElements()) {
 				curHardwareAbstraction = ((ReaderAndReadPoints) readerIterator.nextElement()).getReader();
-				if (curHardwareAbstraction.supportsWriteBytes() || curHardwareAbstraction.supportsProgramId()) {
+				if (curHardwareAbstraction.supportsWriteBytes() || curHardwareAbstraction.supportsWriteId()) {
 					assertTrue(source.supportsWriteOperations());
 					return;
 				}

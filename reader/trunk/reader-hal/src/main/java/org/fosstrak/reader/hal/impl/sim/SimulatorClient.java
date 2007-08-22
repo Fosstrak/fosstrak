@@ -171,11 +171,9 @@ public class SimulatorClient extends Thread implements SimulatorEngine {
 	}
 	
 	private boolean register() {
-		String readerId = controller.getHalName();
+		String readerId = controller.getHALName();
 		String[] antennaIds = null;
-		try {
-			antennaIds = controller.getReadPointNames();
-		} catch (HardwareException ignored) { }
+		antennaIds = controller.getReadPointNames();
 		try {
 			out.write((readerId + SimulatorServerTokens.EOH).getBytes());
 			for (int i = 0; i < antennaIds.length; i++) {
