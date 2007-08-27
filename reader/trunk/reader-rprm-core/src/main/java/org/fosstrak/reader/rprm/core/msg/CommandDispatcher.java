@@ -1816,10 +1816,13 @@ public class CommandDispatcher {
 
 					int port = createNotificationChannelConnection(addr, name,
 							senderHandshake, receiverHandshake);
-					addr.setPort(port);
+					if (addr.getMode() != null
+			            && addr.getMode().equals(Address.MODE_LISTEN)) {
+					   addr.setPort(port);
+					}
 
-					NotificationChannel channel = NotificationChannel.create(
-							name, addr.toString(), readerDevice);
+               NotificationChannel channel = NotificationChannel.create(
+                     name, addr.toString(), readerDevice);
 
 					NotificationChannelReturnType notificationChannelReturn = replyFactory
 							.createNotificationChannelReturnType();
