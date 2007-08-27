@@ -118,6 +118,13 @@ public final class Trigger {
             throw new ReaderProtocolException("ERROR_PARAMETER_MISSING",
                   MessagingConstants.ERROR_PARAMETER_MISSING);
          }
+         // check if 'ms=' not forgotten for timer trigger value
+         if (type.toUpperCase().equals(TriggerType.TIMER)) {
+            if (!value.substring(0, 3).equals("ms=")) {
+               throw new ReaderProtocolException("ERROR_PARAMETER_INVALID_FORMAT",
+                     MessagingConstants.ERROR_PARAMETER_INVALID_FORMAT);
+            }
+         }
       }
 
       // check if Trigger with the same name exists
