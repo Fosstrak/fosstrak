@@ -334,7 +334,7 @@ public class SimulatorController implements HardwareAbstraction {
 	 * @see org.accada.reader.hal.HardwareAbstraction#identify(java.lang.String[])
 	 */
 	public Observation[] identify(String[] readPointNames)
-			throws HardwareException {
+         throws HardwareException {
 		// Each read point gets its own Observation
 		Observation[] observations = new Observation[readPointNames.length];
 		
@@ -383,7 +383,7 @@ public class SimulatorController implements HardwareAbstraction {
 	public void startAsynchronousIdentify(String[] readPointNames,
 			Trigger trigger) throws HardwareException,
 			UnsupportedOperationException {
-		throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+		throw new HardwareException("HAL not ready.");
 	}
 	
 	
@@ -392,7 +392,7 @@ public class SimulatorController implements HardwareAbstraction {
 	 */
 	public void stopAsynchronousIdentify()
 			throws HardwareException, UnsupportedOperationException {
-		throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+		throw new HardwareException("HAL not ready.");
 	}
 	
 	
@@ -401,7 +401,7 @@ public class SimulatorController implements HardwareAbstraction {
 	 */
 	public boolean isAsynchronousIdentifyRunning() throws HardwareException,
 			UnsupportedOperationException {
-		throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+		throw new HardwareException("HAL not ready.");
 	}
 
 
@@ -410,7 +410,7 @@ public class SimulatorController implements HardwareAbstraction {
     */
 	public void addAsynchronousIdentifyListener(AsynchronousIdentifyListener listener)
          throws HardwareException, UnsupportedOperationException {
-	   throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+	   throw new HardwareException("HAL not ready.");
 	}
 
 
@@ -419,7 +419,7 @@ public class SimulatorController implements HardwareAbstraction {
     */
 	public void removeAsynchronousIdentifyListener(AsynchronousIdentifyListener listener)
          throws HardwareException, UnsupportedOperationException {
-	   throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+	   throw new HardwareException("HAL not ready.");
 	}
 
 
@@ -440,10 +440,10 @@ public class SimulatorController implements HardwareAbstraction {
 		if (readyReadPoints.contains(readPointName)) {
 			
 			if (continuousReadErrors.contains(readPointName)) {
-				throw new HardwareException(HardwareException.SERVICECODE_READ, readPointName, halName);
+				throw new HardwareException();
 			} else if (readError.contains(readPointName)) {
 				readError.remove(readPointName);
-				throw new HardwareException(HardwareException.SERVICECODE_READ, readPointName, halName);
+				throw new HardwareException();
 			}
 			
 			UnsignedByteArray byteData;
@@ -464,12 +464,12 @@ public class SimulatorController implements HardwareAbstraction {
 			}
 			else{
 				String message="Specified tag not in range";
-				throw new HardwareException(HardwareException.SERVICECODE_READ, readPointName, halName, message);	
+				throw new HardwareException(message);	
 			}
 			
 			return byteData;
 		} else {
-			throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, readPointName, halName, "Read point is not ready.");
+			throw new HardwareException("Read point is not ready.");
 		}
 	}
 	
@@ -483,10 +483,10 @@ public class SimulatorController implements HardwareAbstraction {
 		if (readyReadPoints.contains(readPointName)) {
 			
 			if (continuousWriteErrors.contains(readPointName)) {
-				throw new HardwareException(HardwareException.SERVICECODE_WRITE, readPointName, halName);
+				throw new HardwareException();
 			} else if (writeError.contains(readPointName)) {
 				writeError.remove(readPointName);
-				throw new HardwareException(HardwareException.SERVICECODE_WRITE, readPointName, halName);
+				throw new HardwareException();
 			}
 			
 			Tag tag = null;
@@ -506,10 +506,10 @@ public class SimulatorController implements HardwareAbstraction {
 			}
 			else{
 				String message="Specified tag not in range";
-				throw new HardwareException(HardwareException.SERVICECODE_WRITE, readPointName, halName, message);	
+				throw new HardwareException(message);	
 			}
 		} else {
-			throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, readPointName, halName, "Read point is not ready.");
+			throw new HardwareException("Read point is not ready.");
 		}
 	}
 
@@ -520,7 +520,7 @@ public class SimulatorController implements HardwareAbstraction {
 	public void writeId(String readPointName, String id, String[] passwords)
 			throws ReadPointNotFoundException, HardwareException,
 			UnsupportedOperationException {
-		throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+		throw new HardwareException("HAL not ready.");
 		// TODO: implement
 	}
 
@@ -559,7 +559,7 @@ public class SimulatorController implements HardwareAbstraction {
 			return this.props.getParameterNames();
 		}
 		catch (Exception e){
-			throw new HardwareException(HardwareException.SERVICECODE_IDENTIFY, null, halName, e.getMessage());
+			throw new HardwareException(e.getMessage());
 		}
 	}
 	
@@ -574,7 +574,7 @@ public class SimulatorController implements HardwareAbstraction {
 		}
 		catch (Exception e){
 			e.printStackTrace();
-			throw new HardwareException(HardwareException.SERVICECODE_IDENTIFY, null, halName, e.getMessage());
+			throw new HardwareException(e.getMessage());
 		}
 	}
 	
@@ -592,7 +592,7 @@ public class SimulatorController implements HardwareAbstraction {
 	 */
 	public void programId(String id, String[] passwords)
 			throws HardwareException, UnsupportedOperationException {
-	   throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+	   throw new HardwareException("HAL not ready.");
 		// TODO: implement
 	}
 	
@@ -610,7 +610,7 @@ public class SimulatorController implements HardwareAbstraction {
 	 */
 	public void kill(String readPointName, String id, String[] passwords) throws HardwareException,
 			UnsupportedOperationException {
-	   throw new HardwareException(HardwareException.SERVICECODE_INITIALIZE, HardwareException.UNDEFINED_READ_POINT_NAME, halName, "HAL not ready.");
+	   throw new HardwareException("HAL not ready.");
 		// TODO: implement
 	}
 	

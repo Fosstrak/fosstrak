@@ -30,66 +30,41 @@ public class UnsupportedOperationException extends HardwareException {
 
 	/**
 	 * Constructor.
-	 * 
-	 * @param serviceCode
-	 *            The service code
-	 * @param readPointName
-	 *            The name of the read point
-	 * @param halName
-	 *            The name of the HAL
 	 */
-	public UnsupportedOperationException(int serviceCode, String readPointName, String halName) {
-		super(serviceCode, readPointName, halName);
+	public UnsupportedOperationException() {
+		super();
 	}
 
 	/**
 	 * Constructor specifying a message.
 	 * 
-	 * @param serviceCode
-	 *            The service code
-	 * @param readPointName
-	 *            The name of the read point
-	 * @param halName
-	 *            The name of the HAL
 	 * @param message
 	 *            The message
 	 */
-	public UnsupportedOperationException(int serviceCode, String readPointName, String halName, String message) {
-		super(serviceCode, readPointName, halName, message);
-	}
-
-	/**
-	 * Constructor specifying a message and a cause.
-	 * 
-	 * @param serviceCode
-	 *            The service code
-	 * @param readPointName
-	 *            The name of the read point
-	 * @param halName
-	 *            The name of the HAL
-	 * @param message
-	 *            The message
-	 * @param cause
-	 *            The cause
-	 */
-	public UnsupportedOperationException(int serviceCode, String readPointName, String halName, String message, Throwable cause) {
-		super(serviceCode, readPointName, halName, message, cause);
+	public UnsupportedOperationException(String message) {
+		super(message);
 	}
 
 	/**
 	 * Constructor using a cause.
 	 * 
-	 * @param serviceCode
-	 *            The service code
-	 * @param readPointName
-	 *            The name of the read point
-	 * @param halName
-	 *            The name of the HAL
 	 * @param cause
 	 *            The cause
 	 */
-	public UnsupportedOperationException(int serviceCode, String readPointName, String halName, Throwable cause) {
-		super(serviceCode, readPointName, halName, cause);
+	public UnsupportedOperationException(Throwable cause) {
+		super(cause);
 	}
 	
+	/**
+	 * Constructor specifying a message and a cause.
+	 * 
+	 * @param message
+	 *            The message
+	 * @param cause
+	 *            The cause
+	 */
+	public UnsupportedOperationException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
 }

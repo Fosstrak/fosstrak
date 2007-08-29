@@ -1497,6 +1497,11 @@ public final class Source {
 				   increaseAntennaReadPointWriteCount(readPointName);
 			   }
 		   } catch (HardwareException he) {
+            ReadPoint readPoint = (ReadPoint) readPoints.get(he.getMessage());
+            if ((readPoint != null) && (readPoint instanceof AntennaReadPoint)) {
+               ((AntennaReadPoint) readPoint).writeFailureOccurred();
+            }
+			   /*
 			   ReadPoint readPoint = (ReadPoint) readPoints.get(he.getReadPointName());
 			   if (readPoint instanceof AntennaReadPoint) {
 				   ((AntennaReadPoint) readPoint).writeFailureOccurred();
@@ -1508,6 +1513,7 @@ public final class Source {
 			   	case MessagingConstants.ERROR_NO_TAG:
 			   		throw new ReaderProtocolException("ERROR_NO_TAG", errorCode);
 			   }
+			   */
 			   throw new ReaderProtocolException("ERROR_UNKNOWN", MessagingConstants.ERROR_UNKNOWN);
 		   }
 	   }
@@ -1674,13 +1680,13 @@ public final class Source {
                try {
             	   // Where is the tag?
             	   Observation[] observations = curHardwareAbstraction.identify(curClosure.getAllReadPointsAsArray());
-    			   String readPointName = null;
-    			   for (int i = 0; i < observations.length; i++) {
-    				   if (observations[i].containsId(curTag.getId())) readPointName = observations[i].getReadPointName();
-    				   break;
-    			   }
+            	   String readPointName = null;
+            	   for (int i = 0; i < observations.length; i++) {
+            	      if (observations[i].containsId(curTag.getId())) readPointName = observations[i].getReadPointName();
+            	      break;
+            	   }
 
-    			   // Kill
+            	   // Kill
             	   curHardwareAbstraction.kill(readPointName, curTag.getId(), passwords);
 
             	   // Increase the counter
@@ -1688,19 +1694,24 @@ public final class Source {
             		   increaseAntennaReadPointKillCount(readPointName);
             	   }
                } catch (HardwareException he) {
-    			   ReadPoint readPoint = (ReadPoint) readPoints.get(he.getReadPointName());
-    			   if (readPoint instanceof AntennaReadPoint) {
-    				   ((AntennaReadPoint) readPoint).killFailureOccurred();
-    			   }
-    			   int errorCode = he.getReaderProtocolErrorCode();
-    			   switch(errorCode) {
-    			   	case MessagingConstants.ERROR_MULTIPLE_TAGS:
-    			   		throw new ReaderProtocolException("ERROR_MULTIPLE_TAGS", errorCode);
-    			   	case MessagingConstants.ERROR_NO_TAG:
-    			   		throw new ReaderProtocolException("ERROR_NO_TAG", errorCode);
-    			   }
-    			   throw new ReaderProtocolException("ERROR_UNKNOWN", MessagingConstants.ERROR_UNKNOWN);
-    		   }
+                  ReadPoint readPoint = (ReadPoint) readPoints.get(he.getMessage());
+                  if ((readPoint != null) && (readPoint instanceof AntennaReadPoint)) {
+                     ((AntennaReadPoint) readPoint).killFailureOccurred();
+                  }
+                  /*
+                  ReadPoint readPoint = (ReadPoint) readPoints.get(he.getReadPointName());
+                  if (readPoint instanceof AntennaReadPoint) {
+                     ((AntennaReadPoint) readPoint).killFailureOccurred();
+                  }
+                  int errorCode = he.getReaderProtocolErrorCode();
+                  switch(errorCode) {
+    			   	   case MessagingConstants.ERROR_MULTIPLE_TAGS:
+    			   	      throw new ReaderProtocolException("ERROR_MULTIPLE_TAGS", errorCode);
+    			   	   case MessagingConstants.ERROR_NO_TAG:
+    			   	      throw new ReaderProtocolException("ERROR_NO_TAG", errorCode);
+                  }*/
+                  throw new ReaderProtocolException("ERROR_UNKNOWN", MessagingConstants.ERROR_UNKNOWN);
+               }
 
             }
 
