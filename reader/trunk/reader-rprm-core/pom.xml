@@ -37,7 +37,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>org.accada.reader.rprm.core.msg.MessageLayer</mainClass>
+              <mainClass>org.accada.reader.rprm.core.ReaderDevice</mainClass>
               <addClasspath>true</addClasspath>
               <classpathPrefix>./lib</classpathPrefix>
             </manifest>

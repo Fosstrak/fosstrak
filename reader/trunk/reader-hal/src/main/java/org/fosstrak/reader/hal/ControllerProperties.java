@@ -20,11 +20,19 @@
 
 package org.accada.reader.hal;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Properties;
 
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -51,13 +59,15 @@ public class ControllerProperties {
 	/** the logger */
 	static private Log log = LogFactory.getLog(ControllerProperties.class); 
 	/** the name of the properties file */
-	private String propsFile = null;
+	private String propFile = null;
+	/** the configuration */
+	private XMLConfiguration conf = null;
 	
 //-------------------------------------------constructors--------------------------------------//	
 	
-	public ControllerProperties(String readerId){
-		this.propsFile = readerId + "Properties.properties";
-		log.debug("PropertiesFile:  "+propsFile);
+	public ControllerProperties(String propFile){
+		this.propFile = propFile;
+		log.debug("PropertiesFile:  "+propFile);
 		
 	}
 	
@@ -72,30 +82,19 @@ public class ControllerProperties {
 	 */
 	public String getParameter(String param) throws Exception{
 		String value = null;
-		InputStream in;
-		Properties props = new Properties();
-		log.debug("Trying to get Parameter "+param+" from file "+propsFile);
-		
-		//possible Errors are propageted and further processed as HardwareExceptions
-		in = this.getClass().getResourceAsStream("/props/" + propsFile);
-		if (in == null) {
-			log.debug("Properties-File not found.");
-			throw new IOException("Properties file not found.");		
+		if (conf == null) {
+         loadConfig(propFile);
 		}
-		//possible Errors are propageted and further processed as HardwareExceptions		
-		props.load(in);
-		in.close();
-		
-		if(props.containsKey(param)) {
-			value=props.getProperty(param);
-			log.debug("Property found: " + param + " = " + value);
-			return value; 
-		}
-		else{
-			String message = "Property not found: " +param;
-			log.debug(message);
-			throw new Exception(message);			
-		}
+		log.debug("Trying to get Parameter " + param + " from file " + propFile);
+      value = conf.getString(param);
+      if (value != null) {
+         log.debug("Property found: " + param + " = " + value);
+      } else {
+         String message = "Property not found: " + param;
+         log.debug(message);
+         throw new Exception(message);
+      }
+      return value;
 	}
 
 	
@@ -106,7 +105,8 @@ public class ControllerProperties {
 	 * @param value The new value for the parameter.
 	 */
 	public void setParameter(String param, String value){
-		/* Mit dieser Implemetation werden alle Kommentare im File überschrieben.
+		/* Mit dieser Implemetation wurden alle Kommentare im File überschrieben.
+		 * Properties file has changed from java properties to xml!
 		 
 		Properties propertyFile = new Properties();
 		InputStream input = null;
@@ -143,24 +143,71 @@ public class ControllerProperties {
 	 * @throws Exception
 	 */
 	public String[] getParameterNames() throws Exception{
-		String[] names = null;
-		InputStream in;
-		Properties props = new Properties();
+		String[] names = new String[] {""};
+
+      if (conf == null) {
+         loadConfig(propFile);
+      }
 		log.debug("Trying to get Parameters");
-	
-		//possible Errors are propageted and further processed as HardwareExceptions
-		in = this.getClass().getResourceAsStream("/props/"+propsFile);
-		//possible Errors are propageted and further processed as HardwareExceptions
-		props.load(in);
-		in.close();
-		Enumeration propNames = props.propertyNames();
-		names=new String[props.size()];
-		int i=0;
-		while (propNames.hasMoreElements()){
-			names[i] = (String)propNames.nextElement();
-			i++;
+		Iterator keyiterator = conf.getKeys();
+		ArrayList<String> arraylist = new ArrayList<String>();
+		String element = null;
+		Object object = null;
+		Class stringclass = Class.forName("java.lang.String");
+		while (keyiterator.hasNext()) {
+		   object = keyiterator.next();
+		   if (stringclass.isInstance(object)) {
+		      element = (String) object;
+		      arraylist.add(element);
+		   }
 		}
+		names = arraylist.toArray(names);
+
 		return names;		
 	}
+   
+   /**
+    * Loads the configuration file
+    * 
+    * @param propFile The name of the configuration file
+    * @throws IOException
+    */
+   private void loadConfig(String propFile) throws IOException {
+      conf = new XMLConfiguration();
+      try {
+         // load resource from where this class is located
+         String codesourcelocation = this.getClass().getProtectionDomain()
+            .getCodeSource().getLocation().toString();
+         String urlstring;
+         URL fileurl;
+         if (codesourcelocation.endsWith("jar")) {
+            String configoutside = codesourcelocation.substring(0, codesourcelocation
+               .lastIndexOf("/") + 1) + propFile;
+            boolean exists;
+            try {
+               exists = (new File((new URL(configoutside)).toURI())).exists(); 
+            } catch (URISyntaxException use) {
+               exists = false;
+            } catch (MalformedURLException mue) {
+               exists = false;
+            }
+            if (exists) {
+               urlstring = configoutside;
+            } else {
+               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
+            }
+         } else {
+            urlstring = codesourcelocation + propFile;
+         }
+         fileurl = new URL(urlstring);
+         conf.load(fileurl);
+      } catch (ConfigurationException e) {
+         log.error("Could not find properties file: " + propFile);
+         throw new IOException("Properties file not found.");     
+      } catch (MalformedURLException mue) {
+         log.error("Could not find properties file: " + propFile);
+         throw new IOException("Properties file not found.");
+      }
+   }
 }
 

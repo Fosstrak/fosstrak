@@ -29,6 +29,10 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -90,8 +94,36 @@ public class Tag extends JPanel implements Comparable {
 		addMouseMotionListener(dragListener);
 		addComponentListener(simulator.getTranslationListener());
 		
-		String filename = simulator.getProperties().getProperty("TagImage");
-		icon = new ImageIcon(this.getClass().getResource(filename));
+		String filename = simulator.getProperties().getString("TagImage");
+//		icon = new ImageIcon(this.getClass().getResource(filename));
+      // load resource from where this class is located
+      String codesourcelocation = this.getClass().getProtectionDomain()
+         .getCodeSource().getLocation().toString();
+      String urlstring;
+      URL fileurl = null;
+      if (codesourcelocation.endsWith("jar")) {
+         String configoutside = codesourcelocation.substring(0, codesourcelocation
+            .lastIndexOf("/") + 1) + filename;
+         boolean exists;
+         try {
+            exists = (new File((new URL(configoutside)).toURI())).exists(); 
+         } catch (URISyntaxException use) {
+            exists = false;
+         } catch (MalformedURLException mue) {
+            exists = false;
+         }
+         if (exists) {
+            urlstring = configoutside;
+         } else {
+            urlstring = "jar:" + codesourcelocation + "!/" + filename;
+         }
+      } else {
+         urlstring = codesourcelocation + filename;
+      }
+      try {
+         fileurl = new URL(urlstring);
+      } catch (MalformedURLException mue) {}
+      icon = new ImageIcon(fileurl);
 		
 		// initialize context menus
 		singleTagContextMenu = new JPopupMenu();
@@ -358,7 +390,7 @@ public class Tag extends JPanel implements Comparable {
 	protected void paintComponent(Graphics g) {
 		icon.paintIcon(this, g, (simulator.getProperty("TagWidth") - icon.getIconWidth()) / 2, 0);
 		g.setColor(isSelected() ? Color.RED : Color.BLACK);
-		g.setFont(new Font(simulator.getProperties().getProperty("TagLabelFont"), 0, simulator.getProperty("TagLabelSize")));
+		g.setFont(new Font(simulator.getProperties().getString("TagLabelFont"), 0, simulator.getProperty("TagLabelSize")));
 		g.drawString(id, (getWidth() / 2) - (id.length() / 2) * 7 - (id.length() % 2 == 1 ? 3 : 0), simulator.getProperty("TagHeight"));
 	}
 	

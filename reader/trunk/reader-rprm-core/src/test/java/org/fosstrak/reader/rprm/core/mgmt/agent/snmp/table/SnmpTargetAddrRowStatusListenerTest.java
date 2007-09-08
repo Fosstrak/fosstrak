@@ -13,7 +13,7 @@ import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTargetAddrRowStatus
 import org.accada.reader.rprm.core.mgmt.alarm.AlarmChannel;
 import org.accada.reader.rprm.core.msg.Address;
 import org.accada.reader.rprm.core.msg.MessageLayer;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.mo.DefaultMOTable;
 import org.snmp4j.agent.mo.MOTableRow;
 import org.snmp4j.agent.mo.snmp.RowStatus;
@@ -36,7 +36,7 @@ public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 	protected final void setUp() throws Exception {
 		super.setUp();
 
-		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+		DOMConfigurator.configure("./target/classes/props/log4j.xml");
 
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });

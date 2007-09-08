@@ -56,6 +56,9 @@ public class CmdLineSim implements SimulatorEngine, Runnable {
 	 */
 	private SimulatorController controller;
 	
+	/** the properties file */
+	private String propFile;
+	
 	private Thread consoleThread;
 
 	/*
@@ -70,8 +73,9 @@ public class CmdLineSim implements SimulatorEngine, Runnable {
      * @param controller
      * @param file (not used)
      */
-	public void initialize(SimulatorController controller) {
+	public void initialize(SimulatorController controller, String propFile) {
 		this.controller = controller;
+		this.propFile = propFile;
 		
 		consoleThread= new Thread(this);
 		consoleThread.start();

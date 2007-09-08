@@ -23,8 +23,14 @@
       <directory>src/main/resources/props</directory>
       <outputDirectory>/props</outputDirectory>
       <includes>
-        <include>log4j.properties</include>
-        <include>messaging.properties</include>
+        <include>log4j.xml</include>
+        <include>ReaderDevice.xml</include>
+        <include>SimulatorController.xml</include>
+        <include>GraphicSimulator.xml</include>
+        <include>GUIText_en.xml</include>
+        <include>GUIText_de.xml</include>
+        <include>FeigCOMController.xml</include>
+        <include>FeigMultiplex.xml</include>
       </includes>
     </fileSet>
     <fileSet>

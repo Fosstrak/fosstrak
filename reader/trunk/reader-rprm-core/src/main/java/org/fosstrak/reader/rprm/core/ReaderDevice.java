@@ -20,10 +20,13 @@
 
 package org.accada.reader.rprm.core;
 
+import java.io.File;
 import java.lang.reflect.Constructor;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.SocketException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -73,6 +76,11 @@ public class ReaderDevice {
     * The logger.
     */
    private static Logger log = Logger.getLogger(ReaderDevice.class);
+
+   /**
+    * The path of the property file.
+    */
+   public static final String PROPERTIES_FILE = "props/ReaderDevice.xml";
 
    /**
     * The current data selector.
@@ -349,9 +357,9 @@ public class ReaderDevice {
 
    /**
     * The constructor of the ReaderDevice. This method takes
-    * "props/ReaderDevice.properties" as the location of the property file.
+    * the value of PROPERTIES_FILE as the location of the property file.
     * @throws ReaderProtocolException
-    *            "Reader not found", "Failed to read ReaderDevice.properties",
+    *            "Reader not found", "Failed to read properties file",
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
@@ -372,7 +380,7 @@ public class ReaderDevice {
       } catch (SocketException se) {
     	  log.error(se.getMessage());
       }
-      reboot("props/ReaderDevice.properties");
+      reboot(PROPERTIES_FILE);
    }
 
    /**
@@ -380,7 +388,7 @@ public class ReaderDevice {
     * @param propFile
     *           The location of the property file
     * @throws ReaderProtocolException
-    *            "Reader not found", "Failed to read ReaderDevice.properties",
+    *            "Reader not found", "Failed to read properties file",
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
@@ -852,7 +860,7 @@ public class ReaderDevice {
     *           The name of the NotificationChannel
     * @return The instance of the NotificationChannel
     * @throws ReaderProtocolException
-    *            "Reader not found", "Failed to read ReaderDevice.properties",
+    *            "Reader not found", "Failed to read properties file",
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
@@ -1073,13 +1081,13 @@ public class ReaderDevice {
     * configuration. The documentation of the reader shall provide a definition
     * what the default settings are
     * @throws ReaderProtocolException
-    *            "Reader not found", "Failed to read ReaderDevice.properties",
+    *            "Reader not found", "Failed to read properties file",
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
    public final void resetToDefaultSettings() throws ReaderProtocolException {
 
-      resetToDefaultSettings("props/ReaderDevice.properties");
+      resetToDefaultSettings(PROPERTIES_FILE);
 
    }
 
@@ -1089,9 +1097,8 @@ public class ReaderDevice {
     * what the default settings are
     * @param propFile
     *           The location of the property file
-    *           ("props/ReaderDevice.properties")
     * @throws ReaderProtocolException
-    *            "Reader not found", "Failed to read ReaderDevice.properties",
+    *            "Reader not found", "Failed to read properties file",
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
@@ -1118,11 +1125,41 @@ public class ReaderDevice {
       // properties
       XMLConfiguration conf;
       try {
-         conf = new XMLConfiguration(propFile);
+         // load resource from where this class is located
+         String codesourcelocation = this.getClass().getProtectionDomain()
+            .getCodeSource().getLocation().toString();
+         String urlstring;
+         URL fileurl;
+         if (codesourcelocation.endsWith("jar")) {
+            String configoutside = codesourcelocation.substring(0, codesourcelocation
+               .lastIndexOf("/") + 1) + propFile;
+            boolean exists;
+            try {
+               exists = (new File((new URL(configoutside)).toURI())).exists();
+            } catch (URISyntaxException use) {
+               exists = false;
+            } catch (MalformedURLException mue) {
+               exists = false;
+            }
+            if (exists) {
+               urlstring = configoutside;
+            } else {
+               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
+            }
+         } else {
+            urlstring = codesourcelocation + propFile;
+         }
+         fileurl = new URL(urlstring);
+         conf = new XMLConfiguration(fileurl);
       } catch (ConfigurationException e) {
          System.out.println(e.getMessage());
          throw new ReaderProtocolException(
-               "Failed to read ReaderDevice.properties",
+               "Failed to read properties file (" + propFile + ")",
+               MessagingConstants.ERROR_UNKNOWN);
+      } catch (MalformedURLException mue) {
+         System.out.println(mue.getMessage());
+         throw new ReaderProtocolException(
+               "Failed to read properties file (" + propFile + ")",
                MessagingConstants.ERROR_UNKNOWN);
       }
 
@@ -1153,13 +1190,13 @@ public class ReaderDevice {
          if (!readers.containsKey(readerName)) {
             // reflection
             String rClass = readerConf.getString(key + ".class");
-            String prop = readerConf.getString(key + ".properties");
+            String prefix = PROPERTIES_FILE.substring(0, PROPERTIES_FILE.lastIndexOf("/") + 1);
+            String prop = prefix + readerConf.getString(key + ".properties");
             try {
                Class cls = Class.forName(rClass);
-               Class[] partypes = new Class[] {String.class};
+               Class[] partypes = new Class[] {String.class, String.class};
                Constructor ct = cls.getConstructor(partypes);
-               Class[] cl = ct.getParameterTypes();
-               Object[] arglist = new Object[] {prop};
+               Object[] arglist = new Object[] {readerName, prop};
                HardwareAbstraction ha = (HardwareAbstraction) ct
                      .newInstance(arglist);
                readers.put(readerName, ha);
@@ -1374,9 +1411,8 @@ public class ReaderDevice {
     * initialization functions it normally performs on power up.
     * @param propFile
     *           The location of the property file
-    *           ("props/ReaderDevice.properties")
     * @throws ReaderProtocolException
-    *            "Reader not found", "Failed to read ReaderDevice.properties",
+    *            "Reader not found", "Failed to read properties file",
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
@@ -1392,15 +1428,14 @@ public class ReaderDevice {
     * Reinitializee all variables to its power up state and execute any
     * initialization functions it normally performs on power up.
     * @throws ReaderProtocolException
-    *            "Reader not found", "Failed to read ReaderDevice.properties",
+    *            "Reader not found", "Failed to read properties file",
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
-   // TODO: Properties file nicht hardcoden
    public final void reboot() throws ReaderProtocolException {
 
       initialDate = new Date();
-      resetToDefaultSettings("props/ReaderDevice.properties");
+      resetToDefaultSettings(PROPERTIES_FILE);
 
    }
 

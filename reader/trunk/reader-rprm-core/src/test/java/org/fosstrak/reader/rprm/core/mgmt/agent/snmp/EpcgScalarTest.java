@@ -15,7 +15,7 @@ import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum
 import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
 import org.accada.reader.rprm.core.mgmt.util.SnmpUtil;
 import org.accada.reader.rprm.core.msg.MessageLayer;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.mo.MOAccessImpl;
 import org.snmp4j.smi.Counter32;
 import org.snmp4j.smi.Integer32;
@@ -83,7 +83,7 @@ public class EpcgScalarTest extends TestCase {
 	protected final void setUp() throws Exception {
 		super.setUp();
 
-		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+		DOMConfigurator.configure("./target/classes/props/log4j.xml");
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });
 		}

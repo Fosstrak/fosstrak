@@ -25,6 +25,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,6 +36,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
+import org.accada.reader.hal.HardwareException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -72,8 +77,38 @@ public class Antenna extends JComponent {
 		// set properties
 		this.id = id;
 		this.simulator = simulator;
-		String filename = simulator.getProperties().getProperty("AntennaImage");
-		icon = new ImageIcon(this.getClass().getResource(filename));
+		String filename = simulator.getProperties().getString("AntennaImage");
+//		icon = new ImageIcon(this.getClass().getResource(filename));
+      // load resource from where this class is located
+      String codesourcelocation = this.getClass().getProtectionDomain()
+         .getCodeSource().getLocation().toString();
+      String urlstring;
+      URL fileurl = null;
+      if (codesourcelocation.endsWith("jar")) {
+         String configoutside = codesourcelocation.substring(0, codesourcelocation
+            .lastIndexOf("/") + 1) + filename;
+         boolean exists;
+         try {
+            exists = (new File((new URL(configoutside)).toURI())).exists(); 
+         } catch (URISyntaxException use) {
+            exists = false;
+         } catch (MalformedURLException mue) {
+            exists = false;
+         }
+         if (exists) {
+            urlstring = configoutside;
+         } else {
+            urlstring = "jar:" + codesourcelocation + "!/" + filename;
+         }
+      } else {
+         urlstring = codesourcelocation + filename;
+      }
+      try {
+         fileurl = new URL(urlstring);
+      } catch (MalformedURLException mue) {
+         log.error("Configuration file not found.");
+      }
+      icon = new ImageIcon(fileurl);
 	}
 
 	public void setPosition(Point pos) {
@@ -91,7 +126,7 @@ public class Antenna extends JComponent {
 	protected void paintComponent(Graphics g) {
 		icon.paintIcon(this, g, 0, 0);
 		g.setColor(Color.BLACK);
-		g.setFont(new Font(simulator.getProperties().getProperty("AntennaLabelFont"), 0, simulator.getProperty("AntennaLabelSize")));
+		g.setFont(new Font(simulator.getProperties().getString("AntennaLabelFont"), 0, simulator.getProperty("AntennaLabelSize")));
 		g.drawString(id, (15 - id.length()) * 7 / 2, simulator.getProperty("AntennaHeight"));
 	}
 	

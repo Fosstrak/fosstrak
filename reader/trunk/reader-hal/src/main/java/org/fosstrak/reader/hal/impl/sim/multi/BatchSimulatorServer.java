@@ -24,9 +24,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Properties;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 import org.accada.reader.hal.impl.sim.BatchSimulatorTokens;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -41,7 +45,9 @@ public class BatchSimulatorServer extends Thread implements SimulatorServerEngin
 	/** the logger */
 	private static final Log LOG = LogFactory.getLog(GraphicSimulatorServer.class);
 	/** properties file path */
-	private static final String PROPERTIES_FILE_LOCATION = "/props/BatchSimulatorServer.properties";
+//	private static final String PROPERTIES_FILE_LOCATION = "/props/BatchSimulatorServer.properties";
+	/** properties file */
+	private static String propFile;
 
 	/** the simulator controller */
 	private SimulatorServerController controller;
@@ -56,17 +62,44 @@ public class BatchSimulatorServer extends Thread implements SimulatorServerEngin
 	 * <li>check and load properties from properties file PROPERTIES_FILE_LOCATION</li>
 	 * <li>check the batch file location</li></ul>
 	 */
-	public void initialize(SimulatorServerController controller) throws SimulatorServerException {
+	public void initialize(SimulatorServerController controller, String propFile) throws SimulatorServerException {
 		this.controller = controller;
 
-		// load properties from properties file
-		Properties props = new Properties();
-		try {
-			props.load(this.getClass().getResourceAsStream(PROPERTIES_FILE_LOCATION));
-		} catch (Exception e) {
-			throw new SimulatorServerException("Could not load the properties from properties file.");
-		}
-
+      // load properties
+		XMLConfiguration props;
+      try {
+         // load resource from where this class is located
+         String codesourcelocation = this.getClass().getProtectionDomain()
+            .getCodeSource().getLocation().toString();
+         String urlstring;
+         URL fileurl;
+         if (codesourcelocation.endsWith("jar")) {
+            String configoutside = codesourcelocation.substring(0, codesourcelocation
+               .lastIndexOf("/") + 1) + propFile;
+            boolean exists;
+            try {
+               exists = (new File((new URL(configoutside)).toURI())).exists(); 
+            } catch (URISyntaxException use) {
+               exists = false;
+            } catch (MalformedURLException mue) {
+               exists = false;
+            }
+            if (exists) {
+               urlstring = configoutside;
+            } else {
+               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
+            }
+         } else {
+            urlstring = codesourcelocation + propFile.substring(1);
+         }
+         fileurl = new URL(urlstring);
+         props = new XMLConfiguration(fileurl);
+      } catch (ConfigurationException ce) {
+         throw new SimulatorServerException("Could not load the properties file.");
+      } catch (MalformedURLException mue) {
+         throw new SimulatorServerException("Could not load the properties file.");
+      }
+      
 		// check properties
 		if (!props.containsKey("batchfile")) {
 			throw new SimulatorServerException("Property 'batchfile' not found.");
@@ -76,9 +109,9 @@ public class BatchSimulatorServer extends Thread implements SimulatorServerEngin
 		}
 
 		// get properties
-		batchFile = props.getProperty("batchfile");
+		batchFile = props.getString("batchfile");
 		try {
-			iterations = Integer.parseInt(props.getProperty("iterations"));
+			iterations = props.getInt("iterations");
 		} catch (NumberFormatException e) {
 			throw new SimulatorServerException("Property 'iterations' must be a number");
 		}

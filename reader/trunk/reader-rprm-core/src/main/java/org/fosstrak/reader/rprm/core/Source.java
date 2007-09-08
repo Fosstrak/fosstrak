@@ -20,7 +20,11 @@
 
 package org.accada.reader.rprm.core;
 
+import java.io.File;
 import java.math.BigInteger;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Enumeration;
@@ -35,7 +39,6 @@ import java.util.Vector;
 
 import org.accada.reader.hal.HardwareAbstraction;
 import org.accada.reader.hal.UnsignedByteArray;
-import org.accada.reader.hal.UnsupportedOperationException;
 import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.Observation;
 import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
@@ -301,7 +304,7 @@ public final class Source {
    /**
     * The path of the property file.
     */
-   private static final String PROPERTIES_FILE = "props/ReaderDevice.properties";
+   private static final String sourcePropFile = ReaderDevice.PROPERTIES_FILE;
 
    /**
     * Key for the isFixed property.
@@ -572,7 +575,7 @@ public final class Source {
     * @return properties instance
     */
    private static XMLConfiguration getProperties() {
-      return getProperties(PROPERTIES_FILE);
+      return getProperties(sourcePropFile);
    }
 
    /**
@@ -585,8 +588,40 @@ public final class Source {
          // properties
          configuration = new XMLConfiguration();
          try {
-            configuration.load(propFile);
+            // load resource from where this class is located
+            Exception ex = new Exception();
+            StackTraceElement[] sTrace = ex.getStackTrace();
+            String className = sTrace[0].getClassName();
+            String codesourcelocation = Class.forName(className).getProtectionDomain()
+               .getCodeSource().getLocation().toString();
+            String urlstring;
+            URL fileurl;
+            if (codesourcelocation.endsWith("jar")) {
+               String configoutside = codesourcelocation.substring(0, codesourcelocation
+                  .lastIndexOf("/") + 1) + propFile;
+               boolean exists;
+               try {
+                  exists = (new File((new URL(configoutside)).toURI())).exists();
+               } catch (URISyntaxException use) {
+                  exists = false;
+               } catch (MalformedURLException mue) {
+                  exists = false;
+               }
+               if (exists) {
+                  urlstring = configoutside;
+               } else {
+                  urlstring = "jar:" + codesourcelocation + "!/" + propFile;
+               }
+            } else {
+               urlstring = codesourcelocation + propFile;
+            }
+            fileurl = new URL(urlstring);
+            configuration.load(fileurl);
          } catch (ConfigurationException e) {
+            log.error("Could not find properties file: " + propFile);
+         } catch (MalformedURLException mue) {
+            log.error("Could not find properties file: " + propFile);
+         } catch (ClassNotFoundException cnfe) {
             log.error("Could not find properties file: " + propFile);
          }
       }

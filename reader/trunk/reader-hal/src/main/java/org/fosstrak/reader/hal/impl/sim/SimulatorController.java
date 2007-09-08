@@ -40,7 +40,7 @@ import org.accada.reader.hal.UnsignedByteArray;
 import org.accada.reader.hal.UnsupportedOperationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 
 
 
@@ -65,11 +65,16 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	//------ Controller fields --------
 	
-	/**
-	 * The name of the HAL.
-	 */
-	private String halName;	
-	
+   /**
+    * The name of the HAL.
+    */
+   private String halName; 
+   
+   /**
+    * The properties file.
+    */
+   private String propFile; 
+   
 	/**
 	 * The names of all available read points connected to this reader.
 	 */
@@ -95,6 +100,11 @@ public class SimulatorController implements HardwareAbstraction {
 	 * Java type of simulator to be loaded.
 	 */
 	private String simType;
+	
+	/**
+	 * Properties file for simulator to be loaded.
+	 */
+	private String simTypePropFile;
 	
 	/**
 	 * The Simulator.
@@ -165,8 +175,9 @@ public class SimulatorController implements HardwareAbstraction {
 	public Vector<String> continuousKillErrors = new Vector<String>();
 	
 	
-	public SimulatorController(String halName) {
+	public SimulatorController(String halName, String propFile) {
 		this.halName = halName;
+		this.propFile = propFile;
 		this.initialize();
 		
 		log.debug("Simulator: " + simType);
@@ -185,7 +196,7 @@ public class SimulatorController implements HardwareAbstraction {
 			java.lang.reflect.Constructor co = clazz.getConstructor(new Class[] {});
 			//3.) Create new instance with the argument's values
 			simulator = (SimulatorEngine) co.newInstance(null);
-			simulator.initialize(this);	
+			simulator.initialize(this, simTypePropFile);	
 		}
 		catch(ClassNotFoundException cnfe){
 			cnfe.printStackTrace();
@@ -202,11 +213,13 @@ public class SimulatorController implements HardwareAbstraction {
 	 */
 	public void initialize(){
 		
-		this.props = new ControllerProperties(halName);
+		this.props = new ControllerProperties(propFile);
 		
 		//sets the parameters according to the properties file
 		try{
 			simType = props.getParameter("simType");
+         String prefix = propFile.substring(0, propFile.lastIndexOf("/") + 1);
+			simTypePropFile = prefix + props.getParameter("simTypePropFile");
 			
 			nOfReadPoints = Integer.parseInt(props.getParameter("numberOfReadPoints"));
 			readPointNames = new String[nOfReadPoints];
@@ -746,7 +759,7 @@ public class SimulatorController implements HardwareAbstraction {
 	 *            No arguments
 	 */
 	public static void main (String[] args) {
-		PropertyConfigurator.configure("./props/log4j.properties");
-		new SimulatorController("SimulatorController");
+		DOMConfigurator.configure("./props/log4j.xml");
+		new SimulatorController("SimulatorController", "./props/SimulatorController.xml");
 	}
 }

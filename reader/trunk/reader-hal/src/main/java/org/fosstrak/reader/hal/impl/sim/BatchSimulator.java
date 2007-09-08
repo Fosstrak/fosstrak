@@ -86,6 +86,9 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
 	/** properties file */
 	private static final String PROPERTIES_FILE_LOCATION = "/props/BatchSimulator.properties";
 
+	/** properties file */
+	private String propFile = null;
+	
     /** RFID tag entered antenna range event. */
     public static final int TAG_ENTERED = 1;
 
@@ -134,8 +137,9 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
      * @param controller 
      * @throws RFIDException
      */
-    public void initialize(SimulatorController controller){
+    public void initialize(SimulatorController controller, String propFile){
 		this.controller = controller;
+		this.propFile = propFile;
 		try {
 			initSimulator();
 		} catch (SimulatorException e) {
@@ -150,6 +154,7 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
      * @throws SimulatorException if the event input file could not be opened.
      */
      private void initSimulator() throws SimulatorException {
+        // TODO: adjust to xml properties file
         // load properties from properties file
         Properties props = new Properties();
         try {

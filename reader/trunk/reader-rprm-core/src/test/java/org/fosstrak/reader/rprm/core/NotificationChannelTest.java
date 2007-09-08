@@ -11,7 +11,7 @@ import org.accada.reader.rprm.core.ReaderDevice;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
 import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
 import org.accada.reader.rprm.core.msg.MessageLayer;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 
 /**
  * Tests for the class <code>org.accada.reader.NotificationChannel</code>.
@@ -29,7 +29,7 @@ public class NotificationChannelTest extends TestCase {
 	protected final void setUp() throws Exception {
 		super.setUp();
 
-		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+		DOMConfigurator.configure("./target/classes/props/log4j.xml");
 
 		if (SnmpAgent.getInstance() == null) {
 			MessageLayer.main(new String[] { });

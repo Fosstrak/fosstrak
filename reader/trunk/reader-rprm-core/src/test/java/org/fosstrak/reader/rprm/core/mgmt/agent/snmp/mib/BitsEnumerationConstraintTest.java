@@ -3,7 +3,7 @@ package org.accada.reader.rprm.core.mgmt.agent.snmp.mib;
 import junit.framework.TestCase;
 
 import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.BitsEnumerationConstraint;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.PDU;
 import org.snmp4j.smi.Integer32;
 import org.snmp4j.smi.OctetString;
@@ -23,7 +23,7 @@ public class BitsEnumerationConstraintTest extends TestCase {
 	protected final void setUp() throws Exception {
 		super.setUp();
 
-		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+		DOMConfigurator.configure("./target/classes/props/log4j.xml");
 
 		bitsEnumerationConstraint = new BitsEnumerationConstraint();
 	}

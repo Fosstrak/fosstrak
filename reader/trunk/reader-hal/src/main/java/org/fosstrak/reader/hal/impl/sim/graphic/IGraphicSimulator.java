@@ -25,6 +25,8 @@ import java.util.ResourceBundle;
 
 import javax.swing.JPopupMenu;
 
+import org.apache.commons.configuration.XMLConfiguration;
+
 
 public interface IGraphicSimulator {
 
@@ -50,18 +52,18 @@ public interface IGraphicSimulator {
 	TranslationListener getTranslationListener();
 
 	/**
-	 * returns the gui text resource bundle
+	 * returns the localized gui text configuration
 	 *
 	 * @return gui text resource bundle
 	 */
-	ResourceBundle getGuiText();
+	XMLConfiguration getGuiText();
 
 	/**
-	 * returns the simulator properties
+	 * returns the simulator property configuration
 	 * 
 	 * @return properties
 	 */
-	Properties getProperties();
+	XMLConfiguration getProperties();
 
 	/**
 	 * gets a property value as integer

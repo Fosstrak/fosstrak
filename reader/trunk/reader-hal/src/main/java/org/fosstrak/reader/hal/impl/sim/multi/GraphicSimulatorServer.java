@@ -28,7 +28,11 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Locale;
@@ -57,6 +61,8 @@ import org.accada.reader.hal.impl.sim.graphic.Reader;
 import org.accada.reader.hal.impl.sim.graphic.SelectionComponent;
 import org.accada.reader.hal.impl.sim.graphic.Tag;
 import org.accada.reader.hal.impl.sim.graphic.TranslationListener;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -71,14 +77,20 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	/** language settings */
 	private static final Locale LOCALE = Locale.ENGLISH;
 	/** the properties file location and name */
-	private static final String PROPERTIES_FILE_LOCATION = "/props/GraphicSimulatorServer.properties";
+//	private static final String PROPERTIES_FILE_LOCATION = "/props/GraphicSimulatorServer.properties";
+	/** the properties file */
+	private String propFile;
 	/** the logger */
 	private static final Log LOG = LogFactory.getLog(GraphicSimulatorServer.class);
 	
 	/** the resource bundle */
-	private static ResourceBundle guiText; 
+//	private static ResourceBundle guiText;
+	/** the localized gui text configuration */
+	private static XMLConfiguration guiTextConfig;
 	/** the properties */
-	private static Properties props;
+//	private static Properties props;
+	/** the property configuration */
+	private static XMLConfiguration propsConfig;
 
 	/** a hash map containing all the readers */
 	private final TreeMap readers = new TreeMap();
@@ -112,24 +124,90 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
      * @param controller 
 	 * @throws SimulatorServerException 
 	 */
-	public void initialize(SimulatorServerController controller) throws SimulatorServerException {
+	public void initialize(SimulatorServerController controller, String propFile) throws SimulatorServerException {
 		this.controller = controller;
+		this.propFile = propFile;
 
-		// load gui text
-		String guiTextFileName = "/props/GUIText_" + LOCALE.getLanguage() + ".properties";
-		try {
-			guiText = new PropertyResourceBundle(this.getClass().getResourceAsStream(guiTextFileName));
-		} catch (IOException e) {
-			throw new SimulatorServerException("Could not load gui text file.");
-		}
+      // load language
+      String prefix = propFile.substring(0, propFile.lastIndexOf("/") + 1) + "GUIText_";
+      String postfix = ".xml";
+      String language = null;
+      guiTextConfig = new XMLConfiguration();
+      boolean loaded = false;
+      
+      // try default language
+      if (!loaded) {
+         language = LOCALE.getLanguage();
+         String langFile = prefix + language + postfix;
+         try {
+            // load resource from where this class is located
+            String codesourcelocation = this.getClass().getProtectionDomain()
+               .getCodeSource().getLocation().toString();
+            String urlstring;
+            URL fileurl;
+            if (codesourcelocation.endsWith("jar")) {
+               String configoutside = codesourcelocation.substring(0, codesourcelocation
+                  .lastIndexOf("/") + 1) + langFile;
+               boolean exists;
+               try {
+                  exists = (new File((new URL(configoutside)).toURI())).exists(); 
+               } catch (URISyntaxException use) {
+                  exists = false;
+               } catch (MalformedURLException mue) {
+                  exists = false;
+               }
+               if (exists) {
+                  urlstring = configoutside;
+               } else {
+                  urlstring = "jar:" + codesourcelocation + "!/" + langFile;
+               }
+            } else {
+               urlstring = codesourcelocation + langFile;
+            }
+            fileurl = new URL(urlstring);
+            guiTextConfig.load();
+            loaded = true;
+         } catch (ConfigurationException ce) {
+            throw new SimulatorServerException("Graphic simulator server language file not found.");
+         } catch (MalformedURLException mue) {
+            throw new SimulatorServerException("Graphic simulator server language file not found.");
+         }
+      }
 
 		// load properties
 		try {
-			props = new Properties();
-			props.load(this.getClass().getResourceAsStream(PROPERTIES_FILE_LOCATION));
-		} catch (IOException e) {
-			throw new SimulatorServerException("Could not load properties from properties file.");
-		}
+		   propsConfig = new XMLConfiguration();
+         // load resource from where this class is located
+         String codesourcelocation = this.getClass().getProtectionDomain()
+            .getCodeSource().getLocation().toString();
+         String urlstring;
+         URL fileurl;
+         if (codesourcelocation.endsWith("jar")) {
+            String configoutside = codesourcelocation.substring(0, codesourcelocation
+               .lastIndexOf("/") + 1) + propFile;
+            boolean exists;
+            try {
+               exists = (new File((new URL(configoutside)).toURI())).exists(); 
+            } catch (URISyntaxException use) {
+               exists = false;
+            } catch (MalformedURLException mue) {
+               exists = false;
+            }
+            if (exists) {
+               urlstring = configoutside;
+            } else {
+               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
+            }
+         } else {
+            urlstring = codesourcelocation + propFile;
+         }
+         fileurl = new URL(urlstring);
+		   propsConfig.load(fileurl);
+		} catch (ConfigurationException ce) {
+		   throw new SimulatorServerException("Could not load properties file."); 
+		} catch (MalformedURLException mue) {
+         throw new SimulatorServerException("Could not load properties file.");
+      }
 		
 		// initialize GUI
 		initializeGUI();
@@ -146,7 +224,7 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 		this.setLayeredPane(getJLayeredPane());
 		this.setJMenuBar(getJJMenuBar());
 		
-		this.setTitle(guiText.getString("ApplicationTitle"));
+		this.setTitle(guiTextConfig.getString("ApplicationTitle"));
 		this.setVisible(true);
 		
 		this.setSize(getProperty("WindowWidth"), getProperty("WindowHeight"));
@@ -164,17 +242,42 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 			maxNbrOfAntennas = Math.max(controller.getAntennaIds(((String)readerIt.next())).size(), maxNbrOfAntennas);
 		}
 		
-		// window size
-		props.setProperty("WindowWidth", new Integer(2 * getProperty("FramePadding") + getProperty("TagWidth") + 2 * getProperty("HorizontalPadding") + getProperty("ReaderWidth") + maxNbrOfAntennas * (getProperty("AntennaWidth") + getProperty("HorizontalInterAntennaPadding")) - getProperty("HorizontalInterAntennaPadding")).toString());
-		props.setProperty("WindowHeight", new Integer(Math.max(getProperty("MinimumWindowHeight"), 2 * getProperty("FramePadding") + (nbrOfReader * (getProperty("ReaderHeight") + getProperty("InterReaderPadding")) - getProperty("InterReaderPadding")) + 50)).toString());
+		// window size, reader pane and antenna pane
 
-		// reader pane
-		props.setProperty("ReaderPaneX", new Integer(getProperty("FramePadding") + getProperty("TagWidth") + getProperty("HorizontalPadding")).toString());
-		props.setProperty("ReaderPaneY", new Integer(getProperty("FramePadding")).toString());
-		
-		// antenna pane
-		props.setProperty("AntennaPaneX", new Integer(getProperty("ReaderPaneX") + getProperty("ReaderWidth") + getProperty("HorizontalPadding")).toString());
-		props.setProperty("AntennaPaneY", new Integer(getProperty("FramePadding")).toString());
+	    String value;
+      if(!propsConfig.containsKey("WindowWidth")) {
+         value = new Integer(2 * getProperty("FramePadding")
+               + getProperty("TagWidth") + 2 * getProperty("HorizontalPadding")
+               + getProperty("ReaderWidth") + maxNbrOfAntennas * (getProperty("AntennaWidth")
+                     + getProperty("HorizontalInterAntennaPadding"))
+                     - getProperty("HorizontalInterAntennaPadding")).toString();
+         propsConfig.addProperty("WindowWidth", value);
+      }
+      if(!propsConfig.containsKey("WindowHeight")) {
+         value = new Integer(Math.max(getProperty("MinimumWindowHeight"),
+               2 * getProperty("FramePadding") + (nbrOfReader * (getProperty("ReaderHeight")
+                     + getProperty("InterReaderPadding"))
+                     - getProperty("InterReaderPadding")) + 50)).toString();
+         propsConfig.addProperty("WindowHeight", value);
+      }
+      if(!propsConfig.containsKey("ReaderPaneX")) {
+         value = new Integer(getProperty("FramePadding") + getProperty("TagWidth")
+               + getProperty("HorizontalPadding")).toString();
+         propsConfig.addProperty("ReaderPaneX", value);
+      }
+      if(!propsConfig.containsKey("ReaderPaneY")) {
+         value = new Integer(getProperty("FramePadding")).toString();
+         propsConfig.addProperty("ReaderPaneY", value);
+      }
+      if(!propsConfig.containsKey("AntennaPaneX")) {
+         value = new Integer(getProperty("ReaderPaneX") + getProperty("ReaderWidth")
+               + getProperty("HorizontalPadding")).toString();
+         propsConfig.addProperty("AntennaPaneX", value);
+      }
+      if(!propsConfig.containsKey("AntennaPaneY")) {
+         value = new Integer(getProperty("FramePadding")).toString();
+         propsConfig.addProperty("AntennaPaneY", value);
+      }
 	}
 	
 	/**
@@ -199,11 +302,11 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	 * @return file menu
 	 */
 	private JMenu getFileMenu() {
-		JMenu fileMenu = new JMenu(guiText.getString("FileMenuItem"));
+		JMenu fileMenu = new JMenu(guiTextConfig.getString("FileMenuItem"));
 		
 		// exit
 		JMenuItem exitMenuItem = new JMenuItem();
-		exitMenuItem.setText(guiText.getString("QuitMenuItem"));
+		exitMenuItem.setText(guiTextConfig.getString("QuitMenuItem"));
 		exitMenuItem.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				System.exit(0);
@@ -219,11 +322,11 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	 * @return view menu
 	 */
 	private JMenu getViewMenu() {
-		JMenu viewMenu = new JMenu(guiText.getString("ViewMenuItem"));
+		JMenu viewMenu = new JMenu(guiTextConfig.getString("ViewMenuItem"));
 		
 		// exit
 		JMenuItem refreshMenuItem = new JMenuItem();
-		refreshMenuItem.setText(guiText.getString("RefreshMenuItem"));
+		refreshMenuItem.setText(guiTextConfig.getString("RefreshMenuItem"));
 		refreshMenuItem.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				updateGUI();
@@ -239,11 +342,11 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	 * @return tag menu
 	 */
 	private JMenu getTagMenu() {
-		JMenu tagMenu = new JMenu(guiText.getString("TagMenuItem"));
+		JMenu tagMenu = new JMenu(guiTextConfig.getString("TagMenuItem"));
 		
 		// new tag
 		JMenuItem newTagMenuItem = new JMenuItem();
-		newTagMenuItem.setText(guiText.getString("AddNewTagMenuItem"));
+		newTagMenuItem.setText(guiTextConfig.getString("AddNewTagMenuItem"));
 		newTagMenuItem.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				showAddTagDialog();
@@ -260,21 +363,21 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	 * @return help menu
 	 */
 	private JMenu getHelpMenu() {
-		JMenu helpMenu = new JMenu(guiText.getString("HelpMenuItem"));
+		JMenu helpMenu = new JMenu(guiTextConfig.getString("HelpMenuItem"));
 
 		// about
 		JMenuItem aboutMenuItem = new JMenuItem();
-		aboutMenuItem.setText(guiText.getString("AboutMenuItem"));
+		aboutMenuItem.setText(guiTextConfig.getString("AboutMenuItem"));
 		aboutMenuItem.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
-				JDialog aboutDialog = new JDialog(GraphicSimulatorServer.this, guiText.getString("AboutDialogTitle"), true);
+				JDialog aboutDialog = new JDialog(GraphicSimulatorServer.this, guiTextConfig.getString("AboutDialogTitle"), true);
 				Point pos = new Point();
 				pos.x = jLayeredPane.getLocationOnScreen().x + (jLayeredPane.getWidth() - getProperty("DialogWindowWidth")) / 2;
 				pos.y = jLayeredPane.getLocationOnScreen().y + (jLayeredPane.getHeight() - getProperty("DialogWindowHeight")) / 2;
 				aboutDialog.setLocation(pos);
 				aboutDialog.setSize(getProperty("DialogWindowWidth"), getProperty("DialogWindowHeight"));
-				aboutDialog.setTitle(guiText.getString("AboutDialogTitle"));
-				JLabel text = new JLabel(guiText.getString("AboutDialogContent"));
+				aboutDialog.setTitle(guiTextConfig.getString("AboutDialogTitle"));
+				JLabel text = new JLabel(guiTextConfig.getString("AboutDialogContent"));
 				text.setHorizontalAlignment(JLabel.CENTER);
 				aboutDialog.add(text);
 				aboutDialog.setVisible(true);
@@ -384,7 +487,7 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 			contextMenu = new JPopupMenu();
 			
 			// add new tag item 
-			JMenuItem newTagContextMenuItem = new JMenuItem(guiText.getString("AddNewTagMenuItem"));
+			JMenuItem newTagContextMenuItem = new JMenuItem(guiTextConfig.getString("AddNewTagMenuItem"));
 			newTagContextMenuItem.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					showAddTagDialog();
@@ -418,19 +521,19 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 		
 		// create tag dialog if it does not already exists
 		if(newTagDialog == null) {
-			newTagDialog = new JDialog(this, guiText.getString("AddNewTagDialogTitle"), true);
+			newTagDialog = new JDialog(this, guiTextConfig.getString("AddNewTagDialogTitle"), true);
 			newTagDialog.setSize(getProperty("DialogWindowWidth"), getProperty("DialogWindowHeight"));
 			newTagDialog.setLayout(new BorderLayout());
 			
 			// input fields panel
-			JLabel epcLabel = new JLabel(guiText.getString("TagIdLabel") + ": ");
+			JLabel epcLabel = new JLabel(guiTextConfig.getString("TagIdLabel") + ": ");
 			JPanel inputFields = new JPanel();
 			inputFields.setLayout(new GridLayout(2, 2));
 			inputFields.add(epcLabel);
 			inputFields.add(tagIdField);
 			
 			// cancel button
-			JButton cancelButton = new JButton(guiText.getString("CancelButton"));
+			JButton cancelButton = new JButton(guiTextConfig.getString("CancelButton"));
 			cancelButton.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					newTagDialog.setVisible(false);
@@ -438,7 +541,7 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 			});
 			
 			// add button
-			JButton addButton = new JButton(guiText.getString("AddButton"));
+			JButton addButton = new JButton(guiTextConfig.getString("AddButton"));
 			addButton.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					newTagDialog.setVisible(false);
@@ -628,8 +731,8 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	 *
 	 * @return gui text resource bundle
 	 */
-	public ResourceBundle getGuiText() {
-		return guiText;
+	public XMLConfiguration getGuiText() {
+		return guiTextConfig;
 	}
 
 	/**
@@ -637,8 +740,8 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	 * 
 	 * @return properties
 	 */
-	public Properties getProperties() {
-		return props;
+	public XMLConfiguration getProperties() {
+		return propsConfig;
 	}
 	
 	/**
@@ -676,18 +779,17 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	 * @return property as integer value
 	 */
 	public int getProperty(String key) {
-		String error;
-		String value = props.getProperty(key);
-		if(value == null) {
-			error =  "Value '" + key + "' not found in properties !";
-		} else {
-			try {
-				return Integer.parseInt(value.trim());
-			} catch (Exception e) {
-				error = "Value '" + key + "' is not an integer !";
-			}
-		}
-		throw new NumberFormatException(error);
+      String error;
+      if(!propsConfig.containsKey(key)) {
+         error =  "Value '" + key + "' not found in properties !";
+      } else {
+         try {
+            return propsConfig.getInt(key);
+         } catch (Exception e) {
+            error = "Value '" + key + "' is not an integer !";
+         }
+      }
+      throw new NumberFormatException(error);
 	}
 
 	/**

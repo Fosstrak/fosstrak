@@ -36,7 +36,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 
 
 public class MgmtSimDialog extends JDialog {
@@ -100,8 +100,10 @@ public class MgmtSimDialog extends JDialog {
 	 *            No arguments
 	 */
 	public static void main(String[] args) {
-		PropertyConfigurator.configure("./props/log4j.properties");
-		MgmtSimDialog mgmtSimDialog = new MgmtSimDialog("TestReadPoint", new SimulatorController("SimulatorController"));
+		DOMConfigurator.configure("./props/log4j.xml");
+		MgmtSimDialog mgmtSimDialog = new MgmtSimDialog("TestReadPoint",
+		      new SimulatorController("SimulatorController",
+		            "./props/SimulatorController.xml"));
 		mgmtSimDialog.setVisible(true);
 	}
 	

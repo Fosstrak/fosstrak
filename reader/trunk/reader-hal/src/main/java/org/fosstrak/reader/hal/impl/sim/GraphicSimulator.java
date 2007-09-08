@@ -29,8 +29,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Locale;
@@ -59,6 +63,8 @@ import org.accada.reader.hal.impl.sim.graphic.Reader;
 import org.accada.reader.hal.impl.sim.graphic.SelectionComponent;
 import org.accada.reader.hal.impl.sim.graphic.Tag;
 import org.accada.reader.hal.impl.sim.graphic.TranslationListener;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -75,14 +81,20 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	/** the default language (if language is not defined in property file and system default language does not exists) */
 	private static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
 	/** the properties file location and name */
-	private static final String PROPERTIES_FILE_LOCATION = "/props/GraphicSimulator.properties";
+//	private static final String PROPERTIES_FILE_LOCATION = "/props/GraphicSimulator.properties";
+	/** the properties file */
+	private String propFile;
 	/** the logger */
 	private static final Log LOG = LogFactory.getLog(GraphicSimulator.class);
 	
 	/** the resource bundle */
-	private static ResourceBundle guiText; 
+//	private static ResourceBundle guiText;
+	/** the localize gui text configuration */
+	private static XMLConfiguration guiTextConfig;
 	/** the properties */
-	private static Properties props;
+//	private static Properties props;
+	/** the properties configuration */
+	private static XMLConfiguration propsConfig;
 
 	/** a hash set containing all the tags */
 	private final HashSet tags = new HashSet();
@@ -123,33 +135,163 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
      * @param file is only required for BatchSimulator
 	 * @throws IOException 
 	 */
-	public void initialize(SimulatorController controller) throws IOException {
+	public void initialize(SimulatorController controller, String propFile) throws IOException {
 		this.controller = controller;
+		this.propFile = propFile;
 		mgmtSimDialogs = new Hashtable<String, MgmtSimDialog>();
 
-		// load propterties
-		props = new Properties();
-		props.load(this.getClass().getResourceAsStream(PROPERTIES_FILE_LOCATION));
-		
-		// load text
-		InputStream languageStream = null;
-		
-		// try to get language form property file
-		if (props.containsKey("Language")) {
-			languageStream = this.getClass().getResourceAsStream("/props/GUIText_" + props.getProperty("Language") + ".properties");
-		}
-		
-		// try system default language
-		if (languageStream == null) {
-			languageStream = this.getClass().getResourceAsStream("/props/GUIText_" + SYSTEM_DEFAULT_LOCALE.getLanguage() + ".properties");
-		}
-		
-		// try default language
-		if (languageStream == null) {
-			languageStream = this.getClass().getResourceAsStream("/props/GUIText_" + DEFAULT_LOCALE.getLanguage() + ".properties");
-		}
-		guiText = new PropertyResourceBundle(languageStream);
-		
+		// load properties
+	   try {
+         // load resource from where this class is located
+         String codesourcelocation = this.getClass().getProtectionDomain()
+            .getCodeSource().getLocation().toString();
+         String urlstring;
+         URL fileurl;
+         if (codesourcelocation.endsWith("jar")) {
+            String configoutside = codesourcelocation.substring(0, codesourcelocation
+               .lastIndexOf("/") + 1) + propFile;
+            boolean exists;
+            try {
+               exists = (new File((new URL(configoutside)).toURI())).exists(); 
+            } catch (URISyntaxException use) {
+               exists = false;
+            } catch (MalformedURLException mue) {
+               exists = false;
+            }
+            if (exists) {
+               urlstring = configoutside;
+            } else {
+               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
+            }
+         } else {
+            urlstring = codesourcelocation + propFile;
+         }
+         fileurl = new URL(urlstring);
+         propsConfig = new XMLConfiguration(fileurl);
+      } catch (ConfigurationException ce) {
+         throw new IOException("Graphic simulator configuration file not found.", ce);
+      } catch (MalformedURLException mue) {
+         throw new IOException("Graphic simulator configuration file not found.", mue);
+      }
+      
+      // load language
+      String prefix = propFile.substring(0, propFile.lastIndexOf("/") + 1) + "GUIText_";
+	   String postfix = ".xml";
+	   String language = null;
+	   guiTextConfig = new XMLConfiguration();
+	   boolean loaded = false;
+	   
+	   // try to get language from property file
+	   if (propsConfig.containsKey("Language")) {
+	      language = propsConfig.getString("Language");
+         String langFile = prefix + language + postfix;
+	      try {
+            // load resource from where this class is located
+            String codesourcelocation = this.getClass().getProtectionDomain()
+               .getCodeSource().getLocation().toString();
+            String urlstring;
+            URL fileurl;
+            if (codesourcelocation.endsWith("jar")) {
+               String configoutside = codesourcelocation.substring(0, codesourcelocation
+                  .lastIndexOf("/") + 1) + langFile;
+               boolean exists;
+               try {
+                  exists = (new File((new URL(configoutside)).toURI())).exists(); 
+               } catch (URISyntaxException use) {
+                  exists = false;
+               } catch (MalformedURLException mue) {
+                  exists = false;
+               }
+               if (exists) {
+                  urlstring = configoutside;
+               } else {
+                  urlstring = "jar:" + codesourcelocation + "!/" + langFile;
+               }
+            } else {
+               urlstring = codesourcelocation + langFile;
+            }
+            fileurl = new URL(urlstring);
+	         guiTextConfig.load(fileurl);
+	         loaded = true;
+	      } catch (ConfigurationException ce) {  
+         } catch (MalformedURLException mue) {}
+	   }
+	   
+	   // try system default language
+	   if (!loaded) {
+	      language = SYSTEM_DEFAULT_LOCALE.getLanguage();
+         String langFile = prefix + language + postfix;
+         try {
+            // load resource from where this class is located
+            String codesourcelocation = this.getClass().getProtectionDomain()
+               .getCodeSource().getLocation().toString();
+            String urlstring;
+            URL fileurl;
+            if (codesourcelocation.endsWith("jar")) {
+               String configoutside = codesourcelocation.substring(0, codesourcelocation
+                  .lastIndexOf("/") + 1) + langFile;
+               boolean exists;
+               try {
+                  exists = (new File((new URL(configoutside)).toURI())).exists(); 
+               } catch (URISyntaxException use) {
+                  exists = false;
+               } catch (MalformedURLException mue) {
+                  exists = false;
+               }
+               if (exists) {
+                  urlstring = configoutside;
+               } else {
+                  urlstring = "jar:" + codesourcelocation + "!/" + langFile;
+               }
+            } else {
+               urlstring = codesourcelocation + langFile;
+            }
+            fileurl = new URL(urlstring);
+            guiTextConfig.load(fileurl);
+            loaded = true;
+         } catch (ConfigurationException ce) {  
+         } catch (MalformedURLException mue) {}
+	   }
+	   
+	   // try default language
+      if (!loaded) {
+         language = DEFAULT_LOCALE.getLanguage();
+         String langFile = prefix + language + postfix;
+         try {
+            // load resource from where this class is located
+            String codesourcelocation = this.getClass().getProtectionDomain()
+               .getCodeSource().getLocation().toString();
+            String urlstring;
+            URL fileurl;
+            if (codesourcelocation.endsWith("jar")) {
+               String configoutside = codesourcelocation.substring(0, codesourcelocation
+                  .lastIndexOf("/") + 1) + langFile;
+               boolean exists;
+               try {
+                  exists = (new File((new URL(configoutside)).toURI())).exists(); 
+               } catch (URISyntaxException use) {
+                  exists = false;
+               } catch (MalformedURLException mue) {
+                  exists = false;
+               }
+               if (exists) {
+                  urlstring = configoutside;
+               } else {
+                  urlstring = "jar:" + codesourcelocation + "!/" + langFile;
+               }
+            } else {
+               urlstring = codesourcelocation + langFile;
+            }
+            fileurl = new URL(urlstring);
+            guiTextConfig.load(fileurl);
+            loaded = true;
+         } catch (ConfigurationException ce) {
+            throw new IOException("Graphic simulator language file not found.", ce);
+         } catch (MalformedURLException mue) {
+            throw new IOException("Graphic simulator language file not found.", mue);
+         }
+      }
+
 		// initialize GUI
 		initializeGUI();
 		LOG.info("GraphicSimulator started");
@@ -159,30 +301,51 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 *	initialize the graphic user interface
 	 */
 	private void initializeGUI() {
-		if(!props.containsKey("WindowWidth")) {
-			props.setProperty("WindowWidth", new Integer(2 * getProperty("FramePadding") + getProperty("TagWidth") + getProperty("HorizontalPadding") + getProperty("AntennasPerRow") * (getProperty("AntennaWidth") + getProperty("HorizontalInterAntennaPadding")) - getProperty("HorizontalInterAntennaPadding")).toString());
+	   String value;
+		if(!propsConfig.containsKey("WindowWidth")) {
+		   value = new Integer(2 * getProperty("FramePadding")
+		         + getProperty("TagWidth") + getProperty("HorizontalPadding")
+		         + getProperty("AntennasPerRow") * (getProperty("AntennaWidth")
+		               + getProperty("HorizontalInterAntennaPadding"))
+		               - getProperty("HorizontalInterAntennaPadding")).toString();
+		   propsConfig.addProperty("WindowWidth", value);
 		}
-		if(!props.containsKey("WindowHeight")) {
-			props.setProperty("WindowHeight", new Integer(2 * getProperty("FramePadding") + getProperty("ReaderHeight") + getProperty("VerticalPadding") + (controller.getReadPointNames().length / getProperty("AntennasPerRow") + (controller.getReadPointNames().length % getProperty("AntennasPerRow") > 0 ? 1 : 0)) * (getProperty("AntennaHeight") + getProperty("VerticalInterAntennaPadding")) - getProperty("VerticalInterAntennaPadding") + 50).toString());
+		if(!propsConfig.containsKey("WindowHeight")) {
+		   value = new Integer(2 * getProperty("FramePadding")
+		         + getProperty("ReaderHeight") + getProperty("VerticalPadding")
+		         + (controller.getReadPointNames().length
+		               / getProperty("AntennasPerRow")
+		               + (controller.getReadPointNames().length % getProperty("AntennasPerRow") > 0 ? 1 : 0))
+		               * (getProperty("AntennaHeight") + getProperty("VerticalInterAntennaPadding"))
+		               - getProperty("VerticalInterAntennaPadding") + 50).toString();
+		   propsConfig.addProperty("WindowHeight", value);
 		}
-		if(!props.containsKey("AntennaPaneX")) {
-			props.setProperty("AntennaPaneX", new Integer(getProperty("FramePadding") + getProperty("TagWidth") + getProperty("HorizontalPadding")).toString());
+		if(!propsConfig.containsKey("AntennaPaneX")) {
+		   value = new Integer(getProperty("FramePadding") + getProperty("TagWidth")
+		         + getProperty("HorizontalPadding")).toString();
+		   propsConfig.addProperty("AntennaPaneX", value);
 		}
-		if(!props.containsKey("AntennaPaneY")) {
-			props.setProperty("AntennaPaneY", new Integer(getProperty("FramePadding") + getProperty("ReaderHeight") + getProperty("VerticalPadding")).toString());
+		if(!propsConfig.containsKey("AntennaPaneY")) {
+		   value = new Integer(getProperty("FramePadding") + getProperty("ReaderHeight")
+		         + getProperty("VerticalPadding")).toString();
+		   propsConfig.addProperty("AntennaPaneY", value);
 		}
-		if(!props.containsKey("AntennaPaneWidth")) {
-			props.setProperty("AntennaPaneWidth", new Integer(getProperty("WindowWidth") - getProperty("AntennaPaneX") - getProperty("FramePadding")).toString());
+		if(!propsConfig.containsKey("AntennaPaneWidth")) {
+		   value = new Integer(getProperty("WindowWidth") - getProperty("AntennaPaneX")
+		         - getProperty("FramePadding")).toString();
+		   propsConfig.addProperty("AntennaPaneWidth", value);
 		}
-		if(!props.containsKey("AntennaPaneHeight")) {
-			props.setProperty("AntennaPaneHeight", new Integer(getProperty("WindowHeight") - getProperty("AntennaPaneY") - getProperty("FramePadding")).toString());
+		if(!propsConfig.containsKey("AntennaPaneHeight")) {
+		   value = new Integer(getProperty("WindowHeight") - getProperty("AntennaPaneY")
+		         - getProperty("FramePadding")).toString();
+		   propsConfig.addProperty("AntennaPaneHeight", value);
 		}
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(getProperty("WindowWidth"), getProperty("WindowHeight"));
 		this.setLayeredPane(getJLayeredPane());
 		this.setJMenuBar(getJJMenuBar());
 		
-		this.setTitle(guiText.getString("ApplicationTitle"));
+		this.setTitle(guiTextConfig.getString("ApplicationTitle"));
 		this.setVisible(true);
 	}
 	
@@ -208,11 +371,11 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 * @return file menu
 	 */
 	private JMenu getFileMenu() {
-		JMenu fileMenu = new JMenu(guiText.getString("FileMenuItem"));
+		JMenu fileMenu = new JMenu(guiTextConfig.getString("FileMenuItem"));
 		
 		// exit
 		JMenuItem exitMenuItem = new JMenuItem();
-		exitMenuItem.setText(guiText.getString("QuitMenuItem"));
+		exitMenuItem.setText(guiTextConfig.getString("QuitMenuItem"));
 		exitMenuItem.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				System.exit(0);
@@ -228,11 +391,11 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 * @return antenna menu
 	 */
 	private JMenu getAntennaMenu() {
-		JMenu antennaMenu = new JMenu(guiText.getString("AntennaMenuItem"));
+		JMenu antennaMenu = new JMenu(guiTextConfig.getString("AntennaMenuItem"));
 		
 		// new antenna
 		JMenuItem newAntennaMenuItem = new JMenuItem();
-		newAntennaMenuItem.setText(guiText.getString("AddNewAntennaMenuItem"));
+		newAntennaMenuItem.setText(guiTextConfig.getString("AddNewAntennaMenuItem"));
 		newAntennaMenuItem.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				showAddAntennaDialog();
@@ -248,11 +411,11 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 * @return tag menu
 	 */
 	private JMenu getTagMenu() {
-		JMenu tagMenu = new JMenu(guiText.getString("TagMenuItem"));
+		JMenu tagMenu = new JMenu(guiTextConfig.getString("TagMenuItem"));
 		
 		// new tag
 		JMenuItem newTagMenuItem = new JMenuItem();
-		newTagMenuItem.setText(guiText.getString("AddNewTagMenuItem"));
+		newTagMenuItem.setText(guiTextConfig.getString("AddNewTagMenuItem"));
 		newTagMenuItem.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				showAddTagDialog();
@@ -268,21 +431,21 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 * @return help menu
 	 */
 	private JMenu getHelpMenu() {
-		JMenu helpMenu = new JMenu(guiText.getString("HelpMenuItem"));
+		JMenu helpMenu = new JMenu(guiTextConfig.getString("HelpMenuItem"));
 
 		// about
 		JMenuItem aboutMenuItem = new JMenuItem();
-		aboutMenuItem.setText(guiText.getString("AboutMenuItem"));
+		aboutMenuItem.setText(guiTextConfig.getString("AboutMenuItem"));
 		aboutMenuItem.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
-				JDialog aboutDialog = new JDialog(GraphicSimulator.this, guiText.getString("AboutDialogTitle"), true);
+				JDialog aboutDialog = new JDialog(GraphicSimulator.this, guiTextConfig.getString("AboutDialogTitle"), true);
 				Point pos = new Point();
 				pos.x = jLayeredPane.getLocationOnScreen().x + (jLayeredPane.getWidth() - getProperty("DialogWindowWidth")) / 2;
 				pos.y = jLayeredPane.getLocationOnScreen().y + (jLayeredPane.getHeight() - getProperty("DialogWindowHeight")) / 2;
 				aboutDialog.setLocation(pos);
 				aboutDialog.setSize(getProperty("DialogWindowWidth"), getProperty("DialogWindowHeight"));
-				aboutDialog.setTitle(guiText.getString("AboutDialogTitle"));
-				JLabel text = new JLabel(guiText.getString("AboutDialogContent"));
+				aboutDialog.setTitle(guiTextConfig.getString("AboutDialogTitle"));
+				JLabel text = new JLabel(guiTextConfig.getString("AboutDialogContent"));
 				text.setHorizontalAlignment(JLabel.CENTER);
 				aboutDialog.add(text);
 				aboutDialog.setVisible(true);
@@ -365,8 +528,36 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 */
 	private Component getReader() {
 		JLabel  reader = new JLabel();
-		String filename = props.getProperty("ReaderImage");
-		reader.setIcon(new ImageIcon(this.getClass().getResource(filename)));
+		String filename = propsConfig.getString("ReaderImage");
+//    reader.setIcon(new ImageIcon(this.getClass().getResource(filename)));
+      // load resource from where this class is located
+      String codesourcelocation = this.getClass().getProtectionDomain()
+         .getCodeSource().getLocation().toString();
+      String urlstring;
+      URL fileurl = null;
+      if (codesourcelocation.endsWith("jar")) {
+         String configoutside = codesourcelocation.substring(0, codesourcelocation
+            .lastIndexOf("/") + 1) + filename;
+         boolean exists;
+         try {
+            exists = (new File((new URL(configoutside)).toURI())).exists(); 
+         } catch (URISyntaxException use) {
+            exists = false;
+         } catch (MalformedURLException mue) {
+            exists = false;
+         }
+         if (exists) {
+            urlstring = configoutside;
+         } else {
+            urlstring = "jar:" + codesourcelocation + "!/" + filename;
+         }
+      } else {
+         urlstring = codesourcelocation + filename;
+      }
+      try {
+         fileurl = new URL(urlstring);
+      } catch (MalformedURLException mue) {}
+		reader.setIcon(new ImageIcon(fileurl));
 		reader.setBounds(getProperty("AntennaPaneX") + (getProperty("AntennaPaneWidth") - getProperty("ReaderWidth")) / 2, getProperty("FramePadding"), getProperty("ReaderWidth"), getProperty("ReaderHeight"));
 		return reader;
 	}
@@ -381,7 +572,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 			contextMenu = new JPopupMenu();
 			
 			// add new antenna item
-			JMenuItem newAntennaContextMenuItem = new JMenuItem(guiText.getString("AddNewAntennaMenuItem"));
+			JMenuItem newAntennaContextMenuItem = new JMenuItem(guiTextConfig.getString("AddNewAntennaMenuItem"));
 			newAntennaContextMenuItem.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					showAddAntennaDialog();
@@ -391,7 +582,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 			//contextMenu.add(newAntennaContextMenuItem);
 			
 			// add new tag item 
-			JMenuItem newTagContextMenuItem = new JMenuItem(guiText.getString("AddNewTagMenuItem"));
+			JMenuItem newTagContextMenuItem = new JMenuItem(guiTextConfig.getString("AddNewTagMenuItem"));
 			newTagContextMenuItem.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					showAddTagDialog();
@@ -412,12 +603,12 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 		pos.y = jLayeredPane.getLocationOnScreen().y + (jLayeredPane.getHeight() - getProperty("DialogWindowHeight")) / 2;
 		
 		if(newAntennaDialog == null) {
-			newAntennaDialog = new JDialog(this, guiText.getString("AddNewAntennaDialogTitle"), true);
+			newAntennaDialog = new JDialog(this, guiTextConfig.getString("AddNewAntennaDialogTitle"), true);
 			newAntennaDialog.setSize(getProperty("DialogWindowWidth"), getProperty("DialogWindowHeight"));
 			newAntennaDialog.setLayout(new BorderLayout());
 			
 			// input fields
-			JLabel idLabel = new JLabel(guiText.getString("AntennaIdLabel") + ": ");
+			JLabel idLabel = new JLabel(guiTextConfig.getString("AntennaIdLabel") + ": ");
 			final JTextField idField = new JTextField();
 			JPanel inputFields = new JPanel();
 			inputFields.setLayout(new GridLayout(2, 2));
@@ -425,7 +616,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 			inputFields.add(idField);
 			
 			// cancel button
-			JButton cancelButton = new JButton(guiText.getString("CancelButton"));
+			JButton cancelButton = new JButton(guiTextConfig.getString("CancelButton"));
 			cancelButton.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					newAntennaDialog.setVisible(false);
@@ -434,7 +625,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 			});
 			
 			// add button
-			JButton addButton = new JButton(guiText.getString("AddButton"));
+			JButton addButton = new JButton(guiTextConfig.getString("AddButton"));
 			addButton.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					newAntennaDialog.setVisible(false);
@@ -466,7 +657,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 		pos.y = jLayeredPane.getLocationOnScreen().y + (jLayeredPane.getHeight() - getProperty("DialogWindowHeight")) / 2;
 		
 		// set default id
-		String id = props.getProperty("TagPrefix");
+		String id = propsConfig.getString("TagPrefix");
 		for(int i = 0; i < 4 - new Integer(tags.size()).toString().length(); i++) {
 			id += "0";
 		}
@@ -478,19 +669,19 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 		
 		// create tag dialog if it does not already exists
 		if(newTagDialog == null) {
-			newTagDialog = new JDialog(this, guiText.getString("AddNewTagDialogTitle"), true);
+			newTagDialog = new JDialog(this, guiTextConfig.getString("AddNewTagDialogTitle"), true);
 			newTagDialog.setSize(getProperty("DialogWindowWidth"), getProperty("DialogWindowHeight"));
 			newTagDialog.setLayout(new BorderLayout());
 			
 			// input fields panel
-			JLabel epcLabel = new JLabel(guiText.getString("TagIdLabel") + ": ");
+			JLabel epcLabel = new JLabel(guiTextConfig.getString("TagIdLabel") + ": ");
 			JPanel inputFields = new JPanel();
 			inputFields.setLayout(new GridLayout(2, 2));
 			inputFields.add(epcLabel);
 			inputFields.add(tagIdField);
 			
 			// cancel button
-			JButton cancelButton = new JButton(guiText.getString("CancelButton"));
+			JButton cancelButton = new JButton(guiTextConfig.getString("CancelButton"));
 			cancelButton.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					newTagDialog.setVisible(false);
@@ -498,7 +689,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 			});
 			
 			// add button
-			JButton addButton = new JButton(guiText.getString("AddButton"));
+			JButton addButton = new JButton(guiTextConfig.getString("AddButton"));
 			addButton.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					newTagDialog.setVisible(false);
@@ -618,8 +809,8 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 *
 	 * @return gui text resource bundle
 	 */
-	public ResourceBundle getGuiText() {
-		return guiText;
+	public XMLConfiguration getGuiText() {
+		return guiTextConfig;
 	}
 
 	/**
@@ -627,8 +818,8 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 * 
 	 * @return properties
 	 */
-	public Properties getProperties() {
-		return props;
+	public XMLConfiguration getProperties() {
+		return propsConfig;
 	}
 	
 	/**
@@ -659,12 +850,11 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 */
 	public int getProperty(String key) {
 		String error;
-		String value = props.getProperty(key);
-		if(value == null) {
+		if(!propsConfig.containsKey(key)) {
 			error =  "Value '" + key + "' not found in properties !";
 		} else {
 			try {
-				return Integer.parseInt(value.trim());
+				return propsConfig.getInt(key);
 			} catch (Exception e) {
 				error = "Value '" + key + "' is not an integer !";
 			}
@@ -717,7 +907,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 			mgmtSimMenu.add(newMgmtContextMenuItem);
 			
 			// add new tag item
-			JMenuItem newTagContextMenuItem = new JMenuItem(guiText.getString("AddNewTagMenuItem"));
+			JMenuItem newTagContextMenuItem = new JMenuItem(guiTextConfig.getString("AddNewTagMenuItem"));
 			newTagContextMenuItem.addMouseListener(new MouseAdapter() {
 				public void mouseReleased(MouseEvent e) {
 					showAddTagDialog();

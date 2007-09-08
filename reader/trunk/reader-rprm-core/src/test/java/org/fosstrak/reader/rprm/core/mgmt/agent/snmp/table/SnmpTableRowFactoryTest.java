@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgReaderServerTableRow;
 import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTableRowFactory;
 import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.mo.MOTableRow;
 import org.snmp4j.smi.Integer32;
 import org.snmp4j.smi.OID;
@@ -30,7 +30,7 @@ public class SnmpTableRowFactoryTest extends TestCase {
 	protected final void setUp() throws Exception {
 		super.setUp();
 
-		PropertyConfigurator.configure("./target/classes/props/log4j.properties");
+		DOMConfigurator.configure("./target/classes/props/log4j.xml");
 
 		type = TableTypeEnum.EPCG_READER_SERVER_TABLE;
 
