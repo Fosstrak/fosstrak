@@ -27,21 +27,26 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.SocketException;
 
+import org.apache.log4j.xml.DOMConfigurator;
+
 
 public abstract class ClientConnection {
 	protected Socket socket = null;
 	protected OutputStreamWriter out = null;
 	protected DataInputStream in = null;
-	
+
 	protected Handshake handshake = null;
-		
+
 	protected Client client;
 	protected Thread listenerThread = null;
-	
+
 	protected String host;
 	private int port;
-	
+
 	public ClientConnection(Client target) {
+      // initialize log4j
+      DOMConfigurator.configure("./props/log4j.xml");
+
 		this.client = target;
 	}
 
@@ -69,13 +74,14 @@ public abstract class ClientConnection {
 	public void setPort(int port) {
 		this.port = port;
 	}
-	
+
 	public boolean connect() {
 		try {
 			socket = new Socket(host, port);
-		
+
 			out = new OutputStreamWriter(socket.getOutputStream());
 			in = new DataInputStream( socket.getInputStream());
+			sendHandshake();
 			StreamListener listener = new StreamListener(in);
 			listenerThread = new Thread(listener);
 			listenerThread.start();
@@ -88,7 +94,7 @@ public abstract class ClientConnection {
 			return false;
 		}
 	}
-	
+
 	public void disconnect() {
 		try {
 			socket.shutdownInput();
@@ -98,7 +104,7 @@ public abstract class ClientConnection {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 	public abstract void sendHandshake();
 	public abstract void sendMessage(String message);
@@ -114,15 +120,15 @@ public abstract class ClientConnection {
 	public void setHandshake(Handshake handshake) {
 		this.handshake = handshake;
 	}
-	
-	
+
+
 	private class StreamListener implements Runnable {
 		private DataInputStream inStream;
-		
+
 		public StreamListener(DataInputStream in) {
 			this.inStream = in;
 		}
-		
+
 		public void run() {
 			try {
 				String line = inStream.readUTF();
@@ -131,10 +137,10 @@ public abstract class ClientConnection {
 					line = inStream.readUTF();
 				}
 			} catch (EOFException e) {
-				
+
 			} catch (SocketException e) {
 				client.printInput(e.getMessage());
-			
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -42,9 +42,11 @@ public abstract class ReceiverHandshakeMessage {
 
 	public static final String RECEIVER_SIGNATURE = "RPR1";
 
-	public static final String SPEC_VERSION_RESPONSE = "10";
+	public static final String SPEC_VERSION_RESPONSE = "11";
 
 	public static final String RESPONSE_NO = "NO";
+   
+   public static final String RESPONSE_OK = "OK";
 
 	protected String receiverSignature;
 

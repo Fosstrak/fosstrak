@@ -33,7 +33,7 @@ import org.accada.reader.rp.proxy.msg.TcpClientConnection;
 public class ConnectAction extends AbstractAction {
 
 	private TestClient parent;
-	
+
 	public ConnectAction(TestClient parent) {
 		super("Connect");
 		this.parent = parent;
@@ -48,12 +48,11 @@ public class ConnectAction extends AbstractAction {
 		conn.setPort(parent.getPort());
 		conn.setHost(parent.getHost());
 		parent.setConn(conn);
+		conn.setHandshake(parent.getHandshake());
 		boolean connected = conn.connect();
 		if (connected) {
 			parent.setMainPanelEnabled(true);
 			parent.setConnectPanelEnabled(false);
-			conn.setHandshake(parent.getHandshake());
-			conn.sendHandshake();
 		}
 	}
 

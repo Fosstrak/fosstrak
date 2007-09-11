@@ -144,20 +144,16 @@ public class TCPConnection extends Connection implements Runnable {
 			if (handshake.isValid()) {
 				BufferedWriter writer = new BufferedWriter(
 						new OutputStreamWriter(clientSocket.getOutputStream()));
-				writer.write(handshake.getReceiverSignature());
-				writer.write(handshake.getResponse());
-				writer.write(handshake.getSpecVersionResponse());
-				writer.write(handshake.getSenderFormatResponse());
-				writer.write(handshake.getReceiverFormatResponse());
-				writer.write(handshake.getAckNakResponse());
-				writer.write(handshake.getReceiverReserved());
-				writer.write(handshake.getTrailer());
+            String message = handshake.getReceiverSignature() + handshake.getResponse()
+               + handshake.getSpecVersionResponse() + handshake.getSenderFormatResponse()
+               + handshake.getReceiverFormatResponse() + handshake.getAckNakResponse()
+               + handshake.getReceiverReserved() + handshake.getTrailer();
+				writer.write(message);
 				writer.flush();
-				writer.close();
-				log.debug("Receiver handshake sent.");
+				//writer.close(); // do not close the connection after handshake!
+				log.debug("Receiver handshake sent: " + message);
 			} else {
-				log
-						.error("Could not send the receiver handshake. The handshake message is invalid.");
+				log.error("Could not send the receiver handshake. The handshake message is invalid.");
 			}
 		} catch (IOException e) {
 			log.warn(e.getMessage());
@@ -197,8 +193,12 @@ public class TCPConnection extends Connection implements Runnable {
 						+ clientSocket.getRemoteSocketAddress().toString()
 						+ " to the clients.");
 
-				// TODO: In the case that the sender expects an ack of the handshake,
-				// still send this, if everything is OK
+            // Send back receiver handshake
+            TcpReceiverHandshakeMessage receiverHandshake = new TcpReceiverHandshakeMessage();
+            receiverHandshake.init(senderHandshake);
+            receiverHandshake.setResponse(ReceiverHandshakeMessage.RESPONSE_OK);
+            receiverHandshake.setAckNakResponse(!senderHandshake.getAckNakEnabled());
+            sendHandshake(receiverHandshake);
 			}
 
 			/* Read the messages */
