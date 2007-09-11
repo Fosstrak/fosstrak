@@ -76,6 +76,7 @@ public abstract class ClientConnection {
 		
 			out = new OutputStreamWriter(socket.getOutputStream());
 			in = new DataInputStream( socket.getInputStream());
+			sendHandshake();
 			StreamListener listener = new StreamListener(in);
 			listenerThread = new Thread(listener);
 			listenerThread.start();

@@ -90,9 +90,8 @@ public class ProxyConnection implements Client {
 		}
 		conn.setHost(host);
 		conn.setPort(port);
+		conn.setHandshake(handshake);
 		if(conn.connect()) {;
-			conn.setHandshake(handshake);
-			conn.sendHandshake();
 			connected = true;
 			return true;
 		}

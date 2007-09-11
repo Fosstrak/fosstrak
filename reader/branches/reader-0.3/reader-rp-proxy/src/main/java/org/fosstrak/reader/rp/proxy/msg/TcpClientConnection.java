@@ -37,6 +37,23 @@ public class TcpClientConnection extends ClientConnection {
 			out.write(handshake.serializeTcp());
 			LOG.info("Handshake: " + handshake.serializeTcp());
 			out.flush();
+
+			// Receive answer (receiver handshake)
+			boolean handshakeComplete = false;
+			int offset = 0;
+			byte[] buffer = new byte[TcpReceiverHandshakeMessage.LENGTH];
+			while (!handshakeComplete) {
+				int r = in.read(buffer, offset,
+						TcpReceiverHandshakeMessage.LENGTH - offset);
+				offset += r;
+				if (r == -1 && offset != TcpReceiverHandshakeMessage.LENGTH) {
+					return;
+				} else if (r != -1 && offset == TcpReceiverHandshakeMessage.LENGTH) {
+					handshakeComplete = true;
+				}
+			}
+			String receiverhandshake = new String(buffer);
+			LOG.info("Received Handshake: " + receiverhandshake);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

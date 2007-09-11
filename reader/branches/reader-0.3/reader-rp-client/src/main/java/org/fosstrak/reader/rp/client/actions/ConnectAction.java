@@ -48,12 +48,11 @@ public class ConnectAction extends AbstractAction {
 		conn.setPort(parent.getPort());
 		conn.setHost(parent.getHost());
 		parent.setConn(conn);
+		conn.setHandshake(parent.getHandshake());
 		boolean connected = conn.connect();
 		if (connected) {
 			parent.setMainPanelEnabled(true);
 			parent.setConnectPanelEnabled(false);
-			conn.setHandshake(parent.getHandshake());
-			conn.sendHandshake();
 		}
 	}
 

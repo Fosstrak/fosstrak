@@ -153,7 +153,6 @@ public class TCPConnection extends Connection implements Runnable {
 				writer.write(handshake.getReceiverReserved());
 				writer.write(handshake.getTrailer());
 				writer.flush();
-				writer.close();
 				log.debug("Receiver handshake sent.");
 			} else {
 				log
@@ -197,8 +196,12 @@ public class TCPConnection extends Connection implements Runnable {
 						+ clientSocket.getRemoteSocketAddress().toString()
 						+ " to the clients.");
 
-				// TODO: In the case that the sender expects an ack of the handshake,
-				// still send this, if everything is OK
+				// Send back receiver handshake
+				TcpReceiverHandshakeMessage receiverHandshake = new TcpReceiverHandshakeMessage();
+				receiverHandshake.init(senderHandshake);
+				receiverHandshake.setResponse(ReceiverHandshakeMessage.RESPONSE_OK);
+				receiverHandshake.setAckNakResponse(!senderHandshake.getAckNakEnabled());
+				sendHandshake(receiverHandshake);
 			}
 
 			/* Read the messages */
