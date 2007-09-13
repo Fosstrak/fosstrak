@@ -25,9 +25,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -84,10 +90,10 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
 	//	-------- Fields -----------------------------------------------------
 
 	/** properties file */
-	private static final String PROPERTIES_FILE_LOCATION = "/props/BatchSimulator.properties";
+	private static final String CONFIG_FILE_LOCATION = "props/BatchSimulator.xml";
 
 	/** properties file */
-	private String propFile = null;
+	private String configFile = null;
 	
     /** RFID tag entered antenna range event. */
     public static final int TAG_ENTERED = 1;
@@ -137,9 +143,9 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
      * @param controller 
      * @throws RFIDException
      */
-    public void initialize(SimulatorController controller, String propFile){
+    public void initialize(SimulatorController controller, String configFile){
 		this.controller = controller;
-		this.propFile = propFile;
+		this.configFile = configFile;
 		try {
 			initSimulator();
 		} catch (SimulatorException e) {
@@ -154,28 +160,80 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
      * @throws SimulatorException if the event input file could not be opened.
      */
      private void initSimulator() throws SimulatorException {
-        // TODO: adjust to xml properties file
-        // load properties from properties file
-        Properties props = new Properties();
+        // load properties from config file
+        configFile = CONFIG_FILE_LOCATION;
+        XMLConfiguration config = new XMLConfiguration();
+        // load resource from where this class is located
+        String codesourcelocation = this.getClass().getProtectionDomain()
+           .getCodeSource().getLocation().toString();
+        String urlstring;
+        URL fileurl;
+        if (codesourcelocation.endsWith("jar")) {
+           String configoutside = codesourcelocation.substring(0, codesourcelocation
+              .lastIndexOf("/") + 1) + configFile;
+           boolean exists;
+           try {
+              exists = (new File((new URL(configoutside)).toURI())).exists();
+           } catch (URISyntaxException use) {
+              exists = false;
+           } catch (MalformedURLException mue) {
+              exists = false;
+           }
+           if (exists) {
+              urlstring = configoutside;
+           } else {
+              urlstring = "jar:" + codesourcelocation + "!/" + configFile;
+           }
+        } else {
+           urlstring = codesourcelocation + configFile;
+        }
         try {
-			props.load(this.getClass().getResourceAsStream(PROPERTIES_FILE_LOCATION));
-        } catch (IOException e) {
-			throw new SimulatorException("Could not load the properties from properties file.");
-		}
-		
-		// check properties
-		if (!props.containsKey("batchfile")) {
-			throw new SimulatorException("Property 'batchfile' not found.");
-		}
-		if (!props.containsKey("iterations")) {
-			throw new SimulatorException("Property 'iterations' not found.");
-		}
+           fileurl = new URL(urlstring);
+           config.load(fileurl);
+        } catch (MalformedURLException mue) {
+           throw new SimulatorException("Can not construct config file URL: " + mue);
+        } catch (ConfigurationException ce) {
+           throw new SimulatorException("Can not load config file '" + urlstring + "'.");
+        }
 		
 		// get properties
-		String file = props.getProperty("batchfile");
-		cycles = Long.parseLong(props.getProperty("iterations"));
+      String file = config.getString("batchfile");
+      cycles = config.getLong("iterations");
 		
-		eventFile = new File(file);
+      // find batchfile
+      String uristring;
+      URI fileuri;
+      if (file.startsWith("file:/")) {
+         uristring = file;
+      } else {
+         codesourcelocation = this.getClass().getProtectionDomain()
+               .getCodeSource().getLocation().toString();
+         String prefix = configFile.substring(0, configFile.lastIndexOf("/") + 1);
+         if (codesourcelocation.endsWith("jar")) {
+            String configoutside = codesourcelocation.substring(0, codesourcelocation
+               .lastIndexOf("/") + 1) + prefix + file;
+            boolean exists;
+            try {
+               exists = (new File(new URI(configoutside))).exists();
+            } catch (URISyntaxException use) {
+               exists = false;
+            }
+            if (exists) {
+               uristring = configoutside;
+            } else {
+               uristring = "jar:" + codesourcelocation + "!/" + prefix + file;
+            }
+         } else {
+            uristring = codesourcelocation + prefix + file;
+         }
+      }
+      try {
+         fileuri = new URI(uristring);
+      } catch (URISyntaxException use) {
+         throw new SimulatorException("Can not construct batch file URI: " + use);
+      }
+
+		eventFile = new File(fileuri);
 		rfidThread = null;
 		threadRunning = false;
 		stopRequested = false;
@@ -274,7 +332,7 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
                  data = st.nextToken().trim();
 
                  //-- create RFID tag
-                 if (!data.equals("null")) {
+                 if (data.equals("null")) {
                     tag = new Tag(serial);
                  } else {
                     tag = new Tag(serial, data.getBytes());
