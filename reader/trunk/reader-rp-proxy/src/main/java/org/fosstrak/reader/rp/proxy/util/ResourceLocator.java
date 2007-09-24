@@ -10,11 +10,18 @@ import java.io.File;
 import java.net.URI;
 import java.net.URL;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author hallerj
  *
  */
 public final class ResourceLocator {
+
+   /**
+    * The logger.
+    */
+   private static Logger log = Logger.getLogger(ResourceLocator.class);
 
    /**
     * Suffix for default resource file name if no name given.
@@ -80,6 +87,13 @@ public final class ResourceLocator {
       // try standard locate of default config
       if (url == null) {
          url = locate(defaultResourceFileName, loader, caller);
+      }
+
+      if (url != null) {
+         log.debug("Resource URL is: " + url.toString());
+      } else {
+         log.debug("Resource '" + resourceFileName + "' and '"
+            + defaultResourceFileName + "' not found.");
       }
 
       return url;
