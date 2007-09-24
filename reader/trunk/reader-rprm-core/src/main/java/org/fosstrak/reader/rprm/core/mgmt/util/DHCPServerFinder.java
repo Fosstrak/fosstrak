@@ -74,7 +74,19 @@ public class DHCPServerFinder {
 	public DHCPServerFinder(byte[] macAddress) throws SocketException {
 		this.macAddress = macAddress;
 		
-		socket = new DatagramSocket(68);
+      try {
+         socket = new DatagramSocket(68);
+      } catch (SocketException se) {
+         log.error("SocketException:\n-> A DHCP Server Finder is allready "
+            + "running on port 68 (probably an other instance of the reader)."
+            + "\n-> Will take an arbitrary port for this reader.\n-> This "
+            + "will cause a java.net.BindException and the EPCglobal Reader "
+            + "Management will not work.\n-> But the rest of the reader "
+            + "should run as usual.");
+         socket = new DatagramSocket();
+         log.info("Port " + socket.getLocalPort()
+            + " chosen for DHCP Server Finder.");
+      }
 		socket.setSoTimeout(socketTimeout);
 	}
 	
