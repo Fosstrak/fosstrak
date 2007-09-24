@@ -61,6 +61,7 @@ import org.accada.reader.hal.impl.sim.graphic.Reader;
 import org.accada.reader.hal.impl.sim.graphic.SelectionComponent;
 import org.accada.reader.hal.impl.sim.graphic.Tag;
 import org.accada.reader.hal.impl.sim.graphic.TranslationListener;
+import org.accada.reader.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -124,12 +125,13 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
      * @param controller 
 	 * @throws SimulatorServerException 
 	 */
-	public void initialize(SimulatorServerController controller, String propFile) throws SimulatorServerException {
+	public void initialize(SimulatorServerController controller, String propFile,
+         String defaultPropFile) throws SimulatorServerException {
 		this.controller = controller;
 		this.propFile = propFile;
 
       // load language
-      String prefix = propFile.substring(0, propFile.lastIndexOf("/") + 1) + "GUIText_";
+      String prefix = propFile.substring(0, propFile.lastIndexOf("/")) + "/GUIText_";
       String postfix = ".xml";
       String language = null;
       guiTextConfig = new XMLConfiguration();
@@ -139,37 +141,11 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
       if (!loaded) {
          language = LOCALE.getLanguage();
          String langFile = prefix + language + postfix;
+         URL fileurl = ResourceLocator.getURL(langFile, langFile, this.getClass());
          try {
-            // load resource from where this class is located
-            String codesourcelocation = this.getClass().getProtectionDomain()
-               .getCodeSource().getLocation().toString();
-            String urlstring;
-            URL fileurl;
-            if (codesourcelocation.endsWith("jar")) {
-               String configoutside = codesourcelocation.substring(0, codesourcelocation
-                  .lastIndexOf("/") + 1) + langFile;
-               boolean exists;
-               try {
-                  exists = (new File((new URL(configoutside)).toURI())).exists(); 
-               } catch (URISyntaxException use) {
-                  exists = false;
-               } catch (MalformedURLException mue) {
-                  exists = false;
-               }
-               if (exists) {
-                  urlstring = configoutside;
-               } else {
-                  urlstring = "jar:" + codesourcelocation + "!/" + langFile;
-               }
-            } else {
-               urlstring = codesourcelocation + langFile;
-            }
-            fileurl = new URL(urlstring);
-            guiTextConfig.load();
+            guiTextConfig.load(fileurl);
             loaded = true;
          } catch (ConfigurationException ce) {
-            throw new SimulatorServerException("Graphic simulator server language file not found.");
-         } catch (MalformedURLException mue) {
             throw new SimulatorServerException("Graphic simulator server language file not found.");
          }
       }
@@ -177,37 +153,11 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 		// load properties
 		try {
 		   propsConfig = new XMLConfiguration();
-         // load resource from where this class is located
-         String codesourcelocation = this.getClass().getProtectionDomain()
-            .getCodeSource().getLocation().toString();
-         String urlstring;
-         URL fileurl;
-         if (codesourcelocation.endsWith("jar")) {
-            String configoutside = codesourcelocation.substring(0, codesourcelocation
-               .lastIndexOf("/") + 1) + propFile;
-            boolean exists;
-            try {
-               exists = (new File((new URL(configoutside)).toURI())).exists(); 
-            } catch (URISyntaxException use) {
-               exists = false;
-            } catch (MalformedURLException mue) {
-               exists = false;
-            }
-            if (exists) {
-               urlstring = configoutside;
-            } else {
-               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
-            }
-         } else {
-            urlstring = codesourcelocation + propFile;
-         }
-         fileurl = new URL(urlstring);
+         URL fileurl = ResourceLocator.getURL(propFile, defaultPropFile, this.getClass());
 		   propsConfig.load(fileurl);
 		} catch (ConfigurationException ce) {
 		   throw new SimulatorServerException("Could not load properties file."); 
-		} catch (MalformedURLException mue) {
-         throw new SimulatorServerException("Could not load properties file.");
-      }
+		}
 		
 		// initialize GUI
 		initializeGUI();

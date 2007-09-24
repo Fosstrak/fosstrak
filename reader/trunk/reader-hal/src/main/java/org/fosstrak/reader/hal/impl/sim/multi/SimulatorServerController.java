@@ -20,20 +20,17 @@
 
 package org.accada.reader.hal.impl.sim.multi;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Properties;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.accada.reader.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -44,10 +41,6 @@ import org.apache.commons.logging.LogFactory;
  */
 public class SimulatorServerController {
 
-	/** properties file location */
-	private static final String PROPERTIES_FILE_LOCATION = "./props/SimulatorServerControllerProperties.properties";
-	/** properties file */
-	private static String propFile;
 	/** the logger */
 	private static Log LOG = LogFactory.getLog(SimulatorServerController.class);
 
@@ -59,46 +52,20 @@ public class SimulatorServerController {
 	private int port;
 	private RegisterSocket registerSocket;
 
-	public SimulatorServerController(String propFile) throws SimulatorServerException {
-	   this.propFile = propFile;
-
+	public SimulatorServerController(String propFile, String defaultPropFile)
+         throws SimulatorServerException {
       // load properties
       try {
-         // load resource from where this class is located
-         String codesourcelocation = this.getClass().getProtectionDomain()
-            .getCodeSource().getLocation().toString();
-         String urlstring;
-         URL fileurl;
-         if (codesourcelocation.endsWith("jar")) {
-            String configoutside = codesourcelocation.substring(0, codesourcelocation
-               .lastIndexOf("/") + 1) + propFile;
-            boolean exists;
-            try {
-               exists = (new File((new URL(configoutside)).toURI())).exists(); 
-            } catch (URISyntaxException use) {
-               exists = false;
-            } catch (MalformedURLException mue) {
-               exists = false;
-            }
-            if (exists) {
-               urlstring = configoutside;
-            } else {
-               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
-            }
-         } else {
-            urlstring = codesourcelocation + propFile;
-         }
-         fileurl = new URL(urlstring);
+         URL fileurl = ResourceLocator.getURL(propFile, defaultPropFile, this.getClass());
          propsConfig = new XMLConfiguration(fileurl);
       } catch (ConfigurationException ce) {
-         throw new SimulatorServerException("Could not load property file.");
-      } catch (MalformedURLException mue) {
          throw new SimulatorServerException("Could not load property file.");
       }
       
 		// get properties
 		simType = propsConfig.getString("simType");
 		String simTypePropFile = propsConfig.getString("simTypePropFile");
+      String simTypeDefaultPropFile = propsConfig.getString("simTypeDefaultPropFile");
 		port = propsConfig.getInt("port");
 
 		// try to open server socket
@@ -117,7 +84,7 @@ public class SimulatorServerController {
 		try {
 			Class simClass = Class.forName(simType);
 			SimulatorServerEngine simulator = (SimulatorServerEngine)simClass.getConstructor(new Class[0]).newInstance(new Object[0]);
-			simulator.initialize(this, simTypePropFile);
+			simulator.initialize(this, simTypePropFile, simTypeDefaultPropFile);
 		} catch (ClassNotFoundException e) {
 			throw new SimulatorServerException(e.getMessage());
 		} catch (IllegalArgumentException e) {
@@ -231,6 +198,7 @@ public class SimulatorServerController {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new SimulatorServerController(PROPERTIES_FILE_LOCATION);
+		new SimulatorServerController("/props/SimulatorServerController.xml",
+         "/props/SimulatorServerController_default.xml");
 	}
 }

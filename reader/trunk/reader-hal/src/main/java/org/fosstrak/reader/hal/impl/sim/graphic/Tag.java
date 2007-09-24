@@ -29,9 +29,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.TreeSet;
@@ -44,6 +41,8 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+
+import org.accada.reader.hal.util.ResourceLocator;
 
 /**
  * @author regli
@@ -95,34 +94,8 @@ public class Tag extends JPanel implements Comparable {
 		addComponentListener(simulator.getTranslationListener());
 		
 		String filename = simulator.getProperties().getString("TagImage");
-//		icon = new ImageIcon(this.getClass().getResource(filename));
-      // load resource from where this class is located
-      String codesourcelocation = this.getClass().getProtectionDomain()
-         .getCodeSource().getLocation().toString();
-      String urlstring;
-      URL fileurl = null;
-      if (codesourcelocation.endsWith("jar")) {
-         String configoutside = codesourcelocation.substring(0, codesourcelocation
-            .lastIndexOf("/") + 1) + filename;
-         boolean exists;
-         try {
-            exists = (new File((new URL(configoutside)).toURI())).exists(); 
-         } catch (URISyntaxException use) {
-            exists = false;
-         } catch (MalformedURLException mue) {
-            exists = false;
-         }
-         if (exists) {
-            urlstring = configoutside;
-         } else {
-            urlstring = "jar:" + codesourcelocation + "!/" + filename;
-         }
-      } else {
-         urlstring = codesourcelocation + filename;
-      }
-      try {
-         fileurl = new URL(urlstring);
-      } catch (MalformedURLException mue) {}
+      String defaultfilename = simulator.getProperties().getString("TagDefaultImage");
+      URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
       icon = new ImageIcon(fileurl);
 		
 		// initialize context menus

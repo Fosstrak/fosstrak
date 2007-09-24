@@ -5,7 +5,8 @@
    <Language>en</Language>
 
    <!-- rfid reader -->
-   <ReaderImage>images/rfid-reader.png</ReaderImage>
+   <ReaderImage>/images/rfid-reader.png</ReaderImage>
+   <ReaderDefaultImage>/images/rfid-reader_default.png</ReaderDefaultImage>
    <ReaderWidth>141</ReaderWidth>
    <ReaderHeight>100</ReaderHeight>
    <ReaderLabelSize>10</ReaderLabelSize>
@@ -13,9 +14,10 @@
 
    <!-- rfid antenna -->
    <AntennasPerRow>4</AntennasPerRow>
-   <AntennaImage>images/rfid-antenna_0.png</AntennaImage>
+   <AntennaImage>/images/rfid-antenna_0.png</AntennaImage>
    <!-- <AntennaImage>/images/rfid-antenna_1.png</AntennaImage> -->
    <!-- <AntennaImage>/images/rfid-antenna_2.png</AntennaImage> -->
+   <AntennaDefaultImage>/images/rfid-antenna_default.png</AntennaDefaultImage>
    <AntennaLabelFont>Verdana</AntennaLabelFont>
    <AntennaLabelSize>10</AntennaLabelSize>
    <AntennaWidth>100</AntennaWidth>
@@ -24,7 +26,8 @@
    <VerticalInterAntennaPadding>60</VerticalInterAntennaPadding>
 
    <!-- rfid tag -->
-   <TagImage>images/rfid-tag.png</TagImage>
+   <TagImage>/images/rfid-tag.png</TagImage>
+   <TagDefaultImage>/images/rfid-tag_default.png</TagDefaultImage>
    <TagLabelFont>Verdana</TagLabelFont>
    <TagLabelSize>10</TagLabelSize>
    <TagWidth>100</TagWidth>

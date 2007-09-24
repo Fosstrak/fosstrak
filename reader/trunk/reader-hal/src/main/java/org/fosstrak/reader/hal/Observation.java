@@ -87,11 +87,13 @@ public class Observation {
 	/**
 	 * creates an Observation with the given parameters.
 	 */
-	public Observation(String halName, String readPointName, long timestamp, String[] ids, boolean successful) {
+	public Observation(String halName, String readPointName, long timestamp,
+         String[] ids, TagDescriptor[] tagDescriptors, boolean successful) {
 		setHalName(halName);
 		setReadPointName(readPointName);
 		setTimestamp(timestamp);
 		setIds(ids);
+      setTagDescriptors(tagDescriptors);
 		setSuccessful(successful);
 	}
 

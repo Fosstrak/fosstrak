@@ -103,7 +103,8 @@ public class MgmtSimDialog extends JDialog {
 		DOMConfigurator.configure("./props/log4j.xml");
 		MgmtSimDialog mgmtSimDialog = new MgmtSimDialog("TestReadPoint",
 		      new SimulatorController("SimulatorController",
-		            "./props/SimulatorController.xml"));
+		            "/props/SimulatorController.xml",
+                  "/props/SimulatorController_default.xml"));
 		mgmtSimDialog.setVisible(true);
 	}
 	

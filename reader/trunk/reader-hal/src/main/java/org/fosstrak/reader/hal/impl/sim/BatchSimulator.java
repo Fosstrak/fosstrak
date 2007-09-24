@@ -32,6 +32,7 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
+import org.accada.reader.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -89,11 +90,9 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
 
 	//	-------- Fields -----------------------------------------------------
 
-	/** properties file */
-	private static final String CONFIG_FILE_LOCATION = "props/BatchSimulator.xml";
-
-	/** properties file */
+	/** config file */
 	private String configFile = null;
+   private String defaultConfigFile = null;
 	
     /** RFID tag entered antenna range event. */
     public static final int TAG_ENTERED = 1;
@@ -143,9 +142,11 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
      * @param controller 
      * @throws RFIDException
      */
-    public void initialize(SimulatorController controller, String configFile){
+    public void initialize(SimulatorController controller, String configFile,
+          String defaultConfigFile){
 		this.controller = controller;
 		this.configFile = configFile;
+      this.defaultConfigFile = defaultConfigFile;
 		try {
 			initSimulator();
 		} catch (SimulatorException e) {
@@ -161,39 +162,13 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
      */
      private void initSimulator() throws SimulatorException {
         // load properties from config file
-        configFile = CONFIG_FILE_LOCATION;
         XMLConfiguration config = new XMLConfiguration();
-        // load resource from where this class is located
-        String codesourcelocation = this.getClass().getProtectionDomain()
-           .getCodeSource().getLocation().toString();
-        String urlstring;
-        URL fileurl;
-        if (codesourcelocation.endsWith("jar")) {
-           String configoutside = codesourcelocation.substring(0, codesourcelocation
-              .lastIndexOf("/") + 1) + configFile;
-           boolean exists;
-           try {
-              exists = (new File((new URL(configoutside)).toURI())).exists();
-           } catch (URISyntaxException use) {
-              exists = false;
-           } catch (MalformedURLException mue) {
-              exists = false;
-           }
-           if (exists) {
-              urlstring = configoutside;
-           } else {
-              urlstring = "jar:" + codesourcelocation + "!/" + configFile;
-           }
-        } else {
-           urlstring = codesourcelocation + configFile;
-        }
+        URL fileurl = ResourceLocator.getURL(configFile, defaultConfigFile,
+           this.getClass());
         try {
-           fileurl = new URL(urlstring);
            config.load(fileurl);
-        } catch (MalformedURLException mue) {
-           throw new SimulatorException("Can not construct config file URL: " + mue);
         } catch (ConfigurationException ce) {
-           throw new SimulatorException("Can not load config file '" + urlstring + "'.");
+           throw new SimulatorException("Can not load config file '" + configFile + "'.");
         }
 		
 		// get properties
@@ -201,39 +176,13 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
       cycles = config.getLong("iterations");
 		
       // find batchfile
-      String uristring;
-      URI fileuri;
-      if (file.startsWith("file:/")) {
-         uristring = file;
-      } else {
-         codesourcelocation = this.getClass().getProtectionDomain()
-               .getCodeSource().getLocation().toString();
-         String prefix = configFile.substring(0, configFile.lastIndexOf("/") + 1);
-         if (codesourcelocation.endsWith("jar")) {
-            String configoutside = codesourcelocation.substring(0, codesourcelocation
-               .lastIndexOf("/") + 1) + prefix + file;
-            boolean exists;
-            try {
-               exists = (new File(new URI(configoutside))).exists();
-            } catch (URISyntaxException use) {
-               exists = false;
-            }
-            if (exists) {
-               uristring = configoutside;
-            } else {
-               uristring = "jar:" + codesourcelocation + "!/" + prefix + file;
-            }
-         } else {
-            uristring = codesourcelocation + prefix + file;
-         }
-      }
-      try {
-         fileuri = new URI(uristring);
-      } catch (URISyntaxException use) {
-         throw new SimulatorException("Can not construct batch file URI: " + use);
-      }
+      URL batchfileurl = ResourceLocator.getURL(file, file, this.getClass());
 
-		eventFile = new File(fileuri);
+		try {
+         eventFile = new File(batchfileurl.toURI());
+      } catch (URISyntaxException e1) {
+         throw new SimulatorException("Can not creat URI of batchfile '" + file + "'.");
+      }
 		rfidThread = null;
 		threadRunning = false;
 		stopRequested = false;

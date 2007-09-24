@@ -44,6 +44,7 @@ public class SimulatorClient extends Thread implements SimulatorEngine {
 
 	private static final String PROPERTIES_FILE_LOCATION = "/props/SimulatorClient.properties";
 	private String propFile;
+   private String defaultPropFile;
 	
 	private final String host;
 	private final int port;
@@ -91,10 +92,12 @@ public class SimulatorClient extends Thread implements SimulatorEngine {
 		}
 	}
 	
-	public void initialize(SimulatorController controller, String propFile) throws SimulatorServerException {
+	public void initialize(SimulatorController controller, String propFile,
+         String defaultPropFile) throws SimulatorServerException {
 	   // TODO: adjust to xml properties file, move configuration from constructor to initialization.
 	   this.controller = controller;
 		this.propFile = propFile;
+      this.defaultPropFile = defaultPropFile;
 		tryToConnect();
 	}
 	

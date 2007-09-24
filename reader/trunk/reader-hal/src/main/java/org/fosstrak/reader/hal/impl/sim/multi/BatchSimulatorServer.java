@@ -29,6 +29,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.accada.reader.hal.impl.sim.BatchSimulatorTokens;
+import org.accada.reader.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -62,41 +63,16 @@ public class BatchSimulatorServer extends Thread implements SimulatorServerEngin
 	 * <li>check and load properties from properties file PROPERTIES_FILE_LOCATION</li>
 	 * <li>check the batch file location</li></ul>
 	 */
-	public void initialize(SimulatorServerController controller, String propFile) throws SimulatorServerException {
+	public void initialize(SimulatorServerController controller, String propFile,
+         String defaultPropFile) throws SimulatorServerException {
 		this.controller = controller;
 
       // load properties
 		XMLConfiguration props;
+      URL fileurl = ResourceLocator.getURL(propFile, defaultPropFile, this.getClass());
       try {
-         // load resource from where this class is located
-         String codesourcelocation = this.getClass().getProtectionDomain()
-            .getCodeSource().getLocation().toString();
-         String urlstring;
-         URL fileurl;
-         if (codesourcelocation.endsWith("jar")) {
-            String configoutside = codesourcelocation.substring(0, codesourcelocation
-               .lastIndexOf("/") + 1) + propFile;
-            boolean exists;
-            try {
-               exists = (new File((new URL(configoutside)).toURI())).exists(); 
-            } catch (URISyntaxException use) {
-               exists = false;
-            } catch (MalformedURLException mue) {
-               exists = false;
-            }
-            if (exists) {
-               urlstring = configoutside;
-            } else {
-               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
-            }
-         } else {
-            urlstring = codesourcelocation + propFile.substring(1);
-         }
-         fileurl = new URL(urlstring);
          props = new XMLConfiguration(fileurl);
       } catch (ConfigurationException ce) {
-         throw new SimulatorServerException("Could not load the properties file.");
-      } catch (MalformedURLException mue) {
          throw new SimulatorServerException("Could not load the properties file.");
       }
       
