@@ -22,8 +22,6 @@ package org.accada.reader.rprm.core.msg;
 
 
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -39,6 +37,7 @@ import org.accada.reader.rprm.core.mgmt.alarm.AlarmChannel;
 import org.accada.reader.rprm.core.mgmt.simulator.MgmtSimulator;
 import org.accada.reader.rprm.core.msg.transport.ConnectionThreadPool;
 import org.accada.reader.rprm.core.msg.transport.ServerConnection;
+import org.accada.reader.rprm.core.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
@@ -100,6 +99,7 @@ public class MessageLayer {
 
 	/** The management agent's properties file */
 	private static final String mgmtAgentPropFile = ReaderDevice.PROPERTIES_FILE;
+   private static final String mgmtAgentDefaultPropFile = ReaderDevice.DEFAULT_PROPERTIES_FILE;
 
 	/** The agent type enum */
 	public enum AgentType {
@@ -144,7 +144,8 @@ public class MessageLayer {
 		log.debug("* MessageLayer is beeing initialized *");
 		log.debug("**************************************");
 
-		readMgmtAgentProperties(MessageLayer.mgmtAgentPropFile);
+		readMgmtAgentProperties(MessageLayer.mgmtAgentPropFile,
+         MessageLayer.mgmtAgentDefaultPropFile);
 
 		switch (MessageLayer.mgmtAgentType) {
 
@@ -347,34 +348,10 @@ public class MessageLayer {
 	 *            The properties file
 	 * @throws ReaderProtocolException
 	 */
-	private void readMgmtAgentProperties(String propFile) {
+	private void readMgmtAgentProperties(String propFile, String defaultPropFile) {
 		XMLConfiguration conf;
+      URL fileurl = ResourceLocator.getURL(propFile, defaultPropFile, this.getClass());
 		try {
-         // load resource from where this class is located
-         String codesourcelocation = this.getClass().getProtectionDomain()
-            .getCodeSource().getLocation().toString();
-         String urlstring;
-         URL fileurl;
-         if (codesourcelocation.endsWith("jar")) {
-            String configoutside = codesourcelocation.substring(0, codesourcelocation
-               .lastIndexOf("/") + 1) + propFile;
-            boolean exists;
-            try {
-               exists = (new File((new URL(configoutside)).toURI())).exists();
-            } catch (URISyntaxException use) {
-               exists = false;
-            } catch (MalformedURLException mue) {
-               exists = false;
-            }
-            if (exists) {
-               urlstring = configoutside;
-            } else {
-               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
-            }
-         } else {
-            urlstring = codesourcelocation + propFile;
-         }
-         fileurl = new URL(urlstring);
 			conf = new XMLConfiguration(fileurl);
 			MessageLayer.mgmtAgentType = AgentType.valueOf(conf.getString(
 					"mgmtAgentType").toUpperCase());
@@ -385,11 +362,7 @@ public class MessageLayer {
 			log.error("Failed to read the management agent information from "
 					+ propFile + "\n -> Start default SNMP agent.");
 			MessageLayer.mgmtAgentType = AgentType.SNMP;
-		} catch (MalformedURLException mue) {
-         log.error("Failed to read the management agent information from "
-               + propFile + "\n -> Start default SNMP agent.");
-         MessageLayer.mgmtAgentType = AgentType.SNMP;
-      }
+		}
 	}
 
 }

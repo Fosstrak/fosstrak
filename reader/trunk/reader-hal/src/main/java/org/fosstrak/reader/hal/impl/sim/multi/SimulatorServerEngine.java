@@ -25,6 +25,7 @@ package org.accada.reader.hal.impl.sim.multi;
  */
 public interface SimulatorServerEngine {
 	
-	public void initialize(SimulatorServerController controller, String propFile) throws SimulatorServerException;
+	public void initialize(SimulatorServerController controller, String propFile,
+         String defaultPropFile) throws SimulatorServerException;
 
 }

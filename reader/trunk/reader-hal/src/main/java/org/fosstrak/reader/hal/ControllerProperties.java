@@ -31,6 +31,7 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Properties;
 
+import org.accada.reader.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -58,16 +59,18 @@ public class ControllerProperties {
 //-------------------------------------------fields------------------------------------------//
 	/** the logger */
 	static private Log log = LogFactory.getLog(ControllerProperties.class); 
-	/** the name of the properties file */
-	private String propFile = null;
+	/** the name of the configuration file */
+	private String configFile = null;
+   private String defaultConfigFile = null;
 	/** the configuration */
 	private XMLConfiguration conf = null;
 	
 //-------------------------------------------constructors--------------------------------------//	
 	
-	public ControllerProperties(String propFile){
-		this.propFile = propFile;
-		log.debug("PropertiesFile:  "+propFile);
+	public ControllerProperties(String configFile, String defaultConfigFile){
+		this.configFile = configFile;
+      this.defaultConfigFile = defaultConfigFile;
+		log.debug("PropertiesFile: " + configFile + " and " + defaultConfigFile);
 		
 	}
 	
@@ -83,9 +86,9 @@ public class ControllerProperties {
 	public String getParameter(String param) throws Exception{
 		String value = null;
 		if (conf == null) {
-         loadConfig(propFile);
+         loadConfig();
 		}
-		log.debug("Trying to get Parameter " + param + " from file " + propFile);
+		log.debug("Trying to get Parameter " + param);
       value = conf.getString(param);
       if (value != null) {
          log.debug("Property found: " + param + " = " + value);
@@ -146,7 +149,7 @@ public class ControllerProperties {
 		String[] names = new String[] {""};
 
       if (conf == null) {
-         loadConfig(propFile);
+         loadConfig();
       }
 		log.debug("Trying to get Parameters");
 		Iterator keyiterator = conf.getKeys();
@@ -172,41 +175,14 @@ public class ControllerProperties {
     * @param propFile The name of the configuration file
     * @throws IOException
     */
-   private void loadConfig(String propFile) throws IOException {
+   private void loadConfig() throws IOException {
       conf = new XMLConfiguration();
+      URL url = ResourceLocator.getURL(configFile, defaultConfigFile, this.getClass());
       try {
-         // load resource from where this class is located
-         String codesourcelocation = this.getClass().getProtectionDomain()
-            .getCodeSource().getLocation().toString();
-         String urlstring;
-         URL fileurl;
-         if (codesourcelocation.endsWith("jar")) {
-            String configoutside = codesourcelocation.substring(0, codesourcelocation
-               .lastIndexOf("/") + 1) + propFile;
-            boolean exists;
-            try {
-               exists = (new File((new URL(configoutside)).toURI())).exists(); 
-            } catch (URISyntaxException use) {
-               exists = false;
-            } catch (MalformedURLException mue) {
-               exists = false;
-            }
-            if (exists) {
-               urlstring = configoutside;
-            } else {
-               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
-            }
-         } else {
-            urlstring = codesourcelocation + propFile;
-         }
-         fileurl = new URL(urlstring);
-         conf.load(fileurl);
+         conf.load(url);
       } catch (ConfigurationException e) {
-         log.error("Could not find properties file: " + propFile);
+         log.error("Could not find properties file: " + configFile);
          throw new IOException("Properties file not found.");     
-      } catch (MalformedURLException mue) {
-         log.error("Could not find properties file: " + propFile);
-         throw new IOException("Properties file not found.");
       }
    }
 }

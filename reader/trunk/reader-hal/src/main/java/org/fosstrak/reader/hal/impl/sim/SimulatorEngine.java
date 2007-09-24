@@ -38,6 +38,6 @@ public interface SimulatorEngine {
 	 * 
 	 * @param controller The reference to the caller
 	 */
-	public void initialize(SimulatorController controller, String propFile) throws Exception;
+	public void initialize(SimulatorController controller, String propFile, String defaultPropFile) throws Exception;
 
 }

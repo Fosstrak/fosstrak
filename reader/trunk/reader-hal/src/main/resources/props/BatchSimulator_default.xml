@@ -4,9 +4,9 @@
 
    <!-- Absolute file path or name of the batch file -->
    <!-- Value: file URL or name -->
-   <!-- Example: file:/C:/project/props/batchfile.txt -->
-   <!-- Example: batchfile.txt -->
-   <batchfile>batchfile.txt</batchfile>
+   <!-- Example: C:\project\props\batchfile.txt -->
+   <!-- Example: /props/batchfile.txt -->
+   <batchfile>/props/batchfile.txt</batchfile>
 
    <!-- Number of iterations to execute -->
    <!-- Value: iterations (long) -->

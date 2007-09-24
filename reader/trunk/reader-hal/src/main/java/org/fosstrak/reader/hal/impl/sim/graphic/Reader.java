@@ -25,9 +25,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
@@ -37,6 +34,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 import org.accada.reader.hal.impl.sim.multi.GraphicSimulatorServer;
+import org.accada.reader.hal.util.ResourceLocator;
 import org.apache.commons.configuration.XMLConfiguration;
 
 
@@ -69,35 +67,9 @@ public class Reader extends JComponent {
 		this.id = id;
 		this.simulator = simulator;
 		this.properties = simulator.getProperties();
-		String filename = simulator.getProperties().getString("ReaderImage");
-//		icon = new ImageIcon(this.getClass().getResource(filename));
-      // load resource from where this class is located
-      String codesourcelocation = this.getClass().getProtectionDomain()
-         .getCodeSource().getLocation().toString();
-      String urlstring;
-      URL fileurl = null;
-      if (codesourcelocation.endsWith("jar")) {
-         String configoutside = codesourcelocation.substring(0, codesourcelocation
-            .lastIndexOf("/") + 1) + filename;
-         boolean exists;
-         try {
-            exists = (new File((new URL(configoutside)).toURI())).exists(); 
-         } catch (URISyntaxException use) {
-            exists = false;
-         } catch (MalformedURLException mue) {
-            exists = false;
-         }
-         if (exists) {
-            urlstring = configoutside;
-         } else {
-            urlstring = "jar:" + codesourcelocation + "!/" + filename;
-         }
-      } else {
-         urlstring = codesourcelocation + filename;
-      }
-      try {
-         fileurl = new URL(urlstring);
-      } catch (MalformedURLException mue) {}
+		String filename = properties.getString("ReaderImage");
+      String defaultfilename = properties.getString("ReaderDefaultImage");
+      URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
       icon = new ImageIcon(fileurl);
 		
 		// listener

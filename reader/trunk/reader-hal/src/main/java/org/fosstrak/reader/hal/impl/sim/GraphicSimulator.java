@@ -63,6 +63,7 @@ import org.accada.reader.hal.impl.sim.graphic.Reader;
 import org.accada.reader.hal.impl.sim.graphic.SelectionComponent;
 import org.accada.reader.hal.impl.sim.graphic.Tag;
 import org.accada.reader.hal.impl.sim.graphic.TranslationListener;
+import org.accada.reader.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -135,47 +136,22 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
      * @param file is only required for BatchSimulator
 	 * @throws IOException 
 	 */
-	public void initialize(SimulatorController controller, String propFile) throws IOException {
+	public void initialize(SimulatorController controller, String propFile,
+         String defaultPropFile) throws IOException {
 		this.controller = controller;
 		this.propFile = propFile;
 		mgmtSimDialogs = new Hashtable<String, MgmtSimDialog>();
 
 		// load properties
-	   try {
-         // load resource from where this class is located
-         String codesourcelocation = this.getClass().getProtectionDomain()
-            .getCodeSource().getLocation().toString();
-         String urlstring;
-         URL fileurl;
-         if (codesourcelocation.endsWith("jar")) {
-            String configoutside = codesourcelocation.substring(0, codesourcelocation
-               .lastIndexOf("/") + 1) + propFile;
-            boolean exists;
-            try {
-               exists = (new File((new URL(configoutside)).toURI())).exists(); 
-            } catch (URISyntaxException use) {
-               exists = false;
-            } catch (MalformedURLException mue) {
-               exists = false;
-            }
-            if (exists) {
-               urlstring = configoutside;
-            } else {
-               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
-            }
-         } else {
-            urlstring = codesourcelocation + propFile;
-         }
-         fileurl = new URL(urlstring);
-         propsConfig = new XMLConfiguration(fileurl);
+      URL url = ResourceLocator.getURL(propFile, defaultPropFile, this.getClass());
+      try {
+         propsConfig = new XMLConfiguration(url);
       } catch (ConfigurationException ce) {
          throw new IOException("Graphic simulator configuration file not found.", ce);
-      } catch (MalformedURLException mue) {
-         throw new IOException("Graphic simulator configuration file not found.", mue);
       }
       
       // load language
-      String prefix = propFile.substring(0, propFile.lastIndexOf("/") + 1) + "GUIText_";
+      String prefix = propFile.substring(0, propFile.lastIndexOf("/")) + "/GUIText_";
 	   String postfix = ".xml";
 	   String language = null;
 	   guiTextConfig = new XMLConfiguration();
@@ -185,110 +161,34 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	   if (propsConfig.containsKey("Language")) {
 	      language = propsConfig.getString("Language");
          String langFile = prefix + language + postfix;
-	      try {
-            // load resource from where this class is located
-            String codesourcelocation = this.getClass().getProtectionDomain()
-               .getCodeSource().getLocation().toString();
-            String urlstring;
-            URL fileurl;
-            if (codesourcelocation.endsWith("jar")) {
-               String configoutside = codesourcelocation.substring(0, codesourcelocation
-                  .lastIndexOf("/") + 1) + langFile;
-               boolean exists;
-               try {
-                  exists = (new File((new URL(configoutside)).toURI())).exists(); 
-               } catch (URISyntaxException use) {
-                  exists = false;
-               } catch (MalformedURLException mue) {
-                  exists = false;
-               }
-               if (exists) {
-                  urlstring = configoutside;
-               } else {
-                  urlstring = "jar:" + codesourcelocation + "!/" + langFile;
-               }
-            } else {
-               urlstring = codesourcelocation + langFile;
-            }
-            fileurl = new URL(urlstring);
-	         guiTextConfig.load(fileurl);
-	         loaded = true;
-	      } catch (ConfigurationException ce) {  
-         } catch (MalformedURLException mue) {}
+         URL fileurl = ResourceLocator.getURL(langFile, langFile, this.getClass());
+         try {
+            guiTextConfig.load(fileurl);
+            loaded = true;
+	      } catch (ConfigurationException ce) {}
 	   }
 	   
 	   // try system default language
 	   if (!loaded) {
 	      language = SYSTEM_DEFAULT_LOCALE.getLanguage();
          String langFile = prefix + language + postfix;
+         URL fileurl = ResourceLocator.getURL(langFile, langFile, this.getClass());
          try {
-            // load resource from where this class is located
-            String codesourcelocation = this.getClass().getProtectionDomain()
-               .getCodeSource().getLocation().toString();
-            String urlstring;
-            URL fileurl;
-            if (codesourcelocation.endsWith("jar")) {
-               String configoutside = codesourcelocation.substring(0, codesourcelocation
-                  .lastIndexOf("/") + 1) + langFile;
-               boolean exists;
-               try {
-                  exists = (new File((new URL(configoutside)).toURI())).exists(); 
-               } catch (URISyntaxException use) {
-                  exists = false;
-               } catch (MalformedURLException mue) {
-                  exists = false;
-               }
-               if (exists) {
-                  urlstring = configoutside;
-               } else {
-                  urlstring = "jar:" + codesourcelocation + "!/" + langFile;
-               }
-            } else {
-               urlstring = codesourcelocation + langFile;
-            }
-            fileurl = new URL(urlstring);
             guiTextConfig.load(fileurl);
             loaded = true;
-         } catch (ConfigurationException ce) {  
-         } catch (MalformedURLException mue) {}
+         } catch (ConfigurationException ce) {}
 	   }
 	   
 	   // try default language
       if (!loaded) {
          language = DEFAULT_LOCALE.getLanguage();
          String langFile = prefix + language + postfix;
+         URL fileurl = ResourceLocator.getURL(langFile, langFile, this.getClass());
          try {
-            // load resource from where this class is located
-            String codesourcelocation = this.getClass().getProtectionDomain()
-               .getCodeSource().getLocation().toString();
-            String urlstring;
-            URL fileurl;
-            if (codesourcelocation.endsWith("jar")) {
-               String configoutside = codesourcelocation.substring(0, codesourcelocation
-                  .lastIndexOf("/") + 1) + langFile;
-               boolean exists;
-               try {
-                  exists = (new File((new URL(configoutside)).toURI())).exists(); 
-               } catch (URISyntaxException use) {
-                  exists = false;
-               } catch (MalformedURLException mue) {
-                  exists = false;
-               }
-               if (exists) {
-                  urlstring = configoutside;
-               } else {
-                  urlstring = "jar:" + codesourcelocation + "!/" + langFile;
-               }
-            } else {
-               urlstring = codesourcelocation + langFile;
-            }
-            fileurl = new URL(urlstring);
             guiTextConfig.load(fileurl);
             loaded = true;
          } catch (ConfigurationException ce) {
             throw new IOException("Graphic simulator language file not found.", ce);
-         } catch (MalformedURLException mue) {
-            throw new IOException("Graphic simulator language file not found.", mue);
          }
       }
 
@@ -529,34 +429,8 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	private Component getReader() {
 		JLabel  reader = new JLabel();
 		String filename = propsConfig.getString("ReaderImage");
-//    reader.setIcon(new ImageIcon(this.getClass().getResource(filename)));
-      // load resource from where this class is located
-      String codesourcelocation = this.getClass().getProtectionDomain()
-         .getCodeSource().getLocation().toString();
-      String urlstring;
-      URL fileurl = null;
-      if (codesourcelocation.endsWith("jar")) {
-         String configoutside = codesourcelocation.substring(0, codesourcelocation
-            .lastIndexOf("/") + 1) + filename;
-         boolean exists;
-         try {
-            exists = (new File((new URL(configoutside)).toURI())).exists(); 
-         } catch (URISyntaxException use) {
-            exists = false;
-         } catch (MalformedURLException mue) {
-            exists = false;
-         }
-         if (exists) {
-            urlstring = configoutside;
-         } else {
-            urlstring = "jar:" + codesourcelocation + "!/" + filename;
-         }
-      } else {
-         urlstring = codesourcelocation + filename;
-      }
-      try {
-         fileurl = new URL(urlstring);
-      } catch (MalformedURLException mue) {}
+      String defaultfilename = propsConfig.getString("ReaderDefaultImage");
+      URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
 		reader.setIcon(new ImageIcon(fileurl));
 		reader.setBounds(getProperty("AntennaPaneX") + (getProperty("AntennaPaneWidth") - getProperty("ReaderWidth")) / 2, getProperty("FramePadding"), getProperty("ReaderWidth"), getProperty("ReaderHeight"));
 		return reader;

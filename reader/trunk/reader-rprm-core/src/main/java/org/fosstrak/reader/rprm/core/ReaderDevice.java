@@ -20,12 +20,10 @@
 
 package org.accada.reader.rprm.core;
 
-import java.io.File;
 import java.lang.reflect.Constructor;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.SocketException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Enumeration;
@@ -53,6 +51,7 @@ import org.accada.reader.rprm.core.msg.MessageLayer;
 import org.accada.reader.rprm.core.msg.MessagingConstants;
 import org.accada.reader.rprm.core.triggers.IOEdgeTriggerPortManager;
 import org.accada.reader.rprm.core.triggers.IOValueTriggerPortManager;
+import org.accada.reader.rprm.core.util.ResourceLocator;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
@@ -80,7 +79,8 @@ public class ReaderDevice {
    /**
     * The path of the property file.
     */
-   public static final String PROPERTIES_FILE = "props/ReaderDevice.xml";
+   public static final String PROPERTIES_FILE = "/props/ReaderDevice.xml";
+   public static final String DEFAULT_PROPERTIES_FILE = "/props/ReaderDevice_default.xml";
 
    /**
     * The current data selector.
@@ -380,7 +380,7 @@ public class ReaderDevice {
       } catch (SocketException se) {
     	  log.error(se.getMessage());
       }
-      reboot(PROPERTIES_FILE);
+      reboot(PROPERTIES_FILE, DEFAULT_PROPERTIES_FILE);
    }
 
    /**
@@ -392,7 +392,8 @@ public class ReaderDevice {
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
-   public ReaderDevice(final String propFile) throws ReaderProtocolException {
+   public ReaderDevice(final String propFile, final String defaultPropFile)
+         throws ReaderProtocolException {
 	  switch (MessageLayer.mgmtAgentType) {
          case SNMP:
             mgmtAgent = SnmpAgent.getInstance();
@@ -409,7 +410,7 @@ public class ReaderDevice {
       } catch (SocketException se) {
     	  log.error(se.getMessage());
       }
-      reboot(propFile);
+      reboot(propFile, defaultPropFile);
    }
 
    /**
@@ -1087,7 +1088,7 @@ public class ReaderDevice {
     */
    public final void resetToDefaultSettings() throws ReaderProtocolException {
 
-      resetToDefaultSettings(PROPERTIES_FILE);
+      resetToDefaultSettings(PROPERTIES_FILE, DEFAULT_PROPERTIES_FILE);
 
    }
 
@@ -1102,8 +1103,8 @@ public class ReaderDevice {
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
-   public final void resetToDefaultSettings(final String propFile)
-         throws ReaderProtocolException {
+   public final void resetToDefaultSettings(final String propFile,
+         final String defaultPropFile) throws ReaderProtocolException {
       // operational status is DOWN before resetting
 	   setOperStatus(OperationalStatus.DOWN);
 
@@ -1124,40 +1125,11 @@ public class ReaderDevice {
 
       // properties
       XMLConfiguration conf;
+      URL fileurl = ResourceLocator.getURL(propFile, defaultPropFile, this.getClass());
       try {
-         // load resource from where this class is located
-         String codesourcelocation = this.getClass().getProtectionDomain()
-            .getCodeSource().getLocation().toString();
-         String urlstring;
-         URL fileurl;
-         if (codesourcelocation.endsWith("jar")) {
-            String configoutside = codesourcelocation.substring(0, codesourcelocation
-               .lastIndexOf("/") + 1) + propFile;
-            boolean exists;
-            try {
-               exists = (new File((new URL(configoutside)).toURI())).exists();
-            } catch (URISyntaxException use) {
-               exists = false;
-            } catch (MalformedURLException mue) {
-               exists = false;
-            }
-            if (exists) {
-               urlstring = configoutside;
-            } else {
-               urlstring = "jar:" + codesourcelocation + "!/" + propFile;
-            }
-         } else {
-            urlstring = codesourcelocation + propFile;
-         }
-         fileurl = new URL(urlstring);
          conf = new XMLConfiguration(fileurl);
       } catch (ConfigurationException e) {
          System.out.println(e.getMessage());
-         throw new ReaderProtocolException(
-               "Failed to read properties file (" + propFile + ")",
-               MessagingConstants.ERROR_UNKNOWN);
-      } catch (MalformedURLException mue) {
-         System.out.println(mue.getMessage());
          throw new ReaderProtocolException(
                "Failed to read properties file (" + propFile + ")",
                MessagingConstants.ERROR_UNKNOWN);
@@ -1190,18 +1162,19 @@ public class ReaderDevice {
          if (!readers.containsKey(readerName)) {
             // reflection
             String rClass = readerConf.getString(key + ".class");
-            String prefix = PROPERTIES_FILE.substring(0, PROPERTIES_FILE.lastIndexOf("/") + 1);
-            String prop = prefix + readerConf.getString(key + ".properties");
+            String prop = readerConf.getString(key + ".properties");
+            String defaultprop = readerConf.getString(key + ".defaultProperties"); 
             try {
                Class cls = Class.forName(rClass);
-               Class[] partypes = new Class[] {String.class, String.class};
+               Class[] partypes = new Class[] {String.class, String.class, String.class};
                Constructor ct = cls.getConstructor(partypes);
-               Object[] arglist = new Object[] {readerName, prop};
+               Object[] arglist = new Object[] {readerName, prop, defaultprop};
                HardwareAbstraction ha = (HardwareAbstraction) ct
                      .newInstance(arglist);
                readers.put(readerName, ha);
 
             } catch (Exception e) {
+               log.error(e.getMessage() + "|" + e.getCause());
                throw new ReaderProtocolException("Reader not found",
                      MessagingConstants.ERROR_UNKNOWN);
             }
@@ -1416,11 +1389,11 @@ public class ReaderDevice {
     *            "wrong valueTrigger in property file", "wrong edgeTrigger in
     *            property file"
     */
-   public final void reboot(final String propFile)
+   public final void reboot(final String propFile, final String defaultPropFile)
          throws ReaderProtocolException {
 
       initialDate = new Date();
-      resetToDefaultSettings(propFile);
+      resetToDefaultSettings(propFile, defaultPropFile);
 
    }
 
@@ -1435,7 +1408,7 @@ public class ReaderDevice {
    public final void reboot() throws ReaderProtocolException {
 
       initialDate = new Date();
-      resetToDefaultSettings(PROPERTIES_FILE);
+      resetToDefaultSettings(PROPERTIES_FILE, DEFAULT_PROPERTIES_FILE);
 
    }
 

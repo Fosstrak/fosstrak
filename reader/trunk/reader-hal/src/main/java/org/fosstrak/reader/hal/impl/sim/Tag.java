@@ -25,6 +25,7 @@ package org.accada.reader.hal.impl.sim;
 
 import java.util.Random;
 
+import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.util.ByteBlock;
 
 
@@ -75,6 +76,8 @@ public class Tag implements Cloneable {
 	 */
 	public Tag(String snr, byte[] userMemory){
 		this.snr = snr;
+      memory = new ByteBlock[4];
+      
 		memory[0] = new ByteBlock(new byte[] { }); // no passwords
 		setTagID(snr); // EPC
 		String tid = Integer.toHexString((new Random()).nextInt()); // random TID
@@ -107,8 +110,15 @@ public class Tag implements Cloneable {
 	 * Reads some data.
 	 * 
 	 * @return The data
+    * @throws HardwareException
+    *            If memory bank shorter than offset + length
 	 */
-	public byte[] readData(int memoryBank, int offset, int length) {
+	public byte[] readData(int memoryBank, int offset, int length)
+         throws HardwareException {
+      if (memory[memoryBank].getInternalByteArray().length < (offset + length)) {
+         throw new HardwareException("Can not read, memory bank shorter than "
+               + "offset + length.");
+      }
 		return ByteBlock.getRegion(memory[memoryBank].toByteArray(), offset, length);
 	}
 	
@@ -117,11 +127,28 @@ public class Tag implements Cloneable {
 	 * 
 	 * @param data
 	 *            The data
+    * @throws HardwareException
+    *            If memory bank shorter than offset + length
 	 */
-	public void writeData(byte[] data, int memoryBank, int offset) {
+	public void writeData(byte[] data, int memoryBank, int offset)
+         throws HardwareException {
+      if (memory[memoryBank].getInternalByteArray().length < (offset + data.length)) {
+         throw new HardwareException("Can not write, memory bank shorter than "
+               + "offset + length.");
+      }
 		ByteBlock.replaceRegion(memory[memoryBank].getInternalByteArray(), offset, data);
 	}
 	
+   /**
+    * SWrites some data.
+    * 
+    * @param data
+    *            The data
+    */
+   public void setData(byte[] data, int memoryBank) {
+      memory[memoryBank] = new ByteBlock(data);
+   }
+   
 	/**
 	 * Clones the tag.
 	 *
@@ -131,7 +158,7 @@ public class Tag implements Cloneable {
 	 public Object clone() {
 	 	Tag tagCopy = new Tag( this.snr );
 	 	for (int i = 0; i < memory.length; i++) {
-	 		tagCopy.writeData(memory[i].toByteArray(), i, 0);
+	 		tagCopy.setData(memory[i].toByteArray(), i);
 	 	}
 	    return tagCopy;
 	  }

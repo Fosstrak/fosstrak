@@ -73,7 +73,8 @@ public class SimulatorController implements HardwareAbstraction {
    /**
     * The properties file.
     */
-   private String propFile; 
+   private String propFile;
+   private String defaultPropFile;
    
 	/**
 	 * The names of all available read points connected to this reader.
@@ -105,6 +106,7 @@ public class SimulatorController implements HardwareAbstraction {
 	 * Properties file for simulator to be loaded.
 	 */
 	private String simTypePropFile;
+   private String simTypeDefaultPropFile;
 	
 	/**
 	 * The Simulator.
@@ -175,9 +177,11 @@ public class SimulatorController implements HardwareAbstraction {
 	public Vector<String> continuousKillErrors = new Vector<String>();
 	
 	
-	public SimulatorController(String halName, String propFile) {
+	public SimulatorController(String halName, String propFile,
+         String defaultPropFile) {
 		this.halName = halName;
 		this.propFile = propFile;
+      this.defaultPropFile = defaultPropFile;
 		this.initialize();
 		
 		log.debug("Simulator: " + simType);
@@ -196,7 +200,7 @@ public class SimulatorController implements HardwareAbstraction {
 			java.lang.reflect.Constructor co = clazz.getConstructor(new Class[] {});
 			//3.) Create new instance with the argument's values
 			simulator = (SimulatorEngine) co.newInstance(null);
-			simulator.initialize(this, simTypePropFile);	
+			simulator.initialize(this, simTypePropFile, simTypeDefaultPropFile);	
 		}
 		catch(ClassNotFoundException cnfe){
 			cnfe.printStackTrace();
@@ -213,13 +217,13 @@ public class SimulatorController implements HardwareAbstraction {
 	 */
 	public void initialize(){
 		
-		this.props = new ControllerProperties(propFile);
+		this.props = new ControllerProperties(propFile, defaultPropFile);
 		
 		//sets the parameters according to the properties file
 		try{
 			simType = props.getParameter("simType");
-         String prefix = propFile.substring(0, propFile.lastIndexOf("/") + 1);
-			simTypePropFile = prefix + props.getParameter("simTypePropFile");
+			simTypePropFile = props.getParameter("simTypePropFile");
+         simTypeDefaultPropFile = props.getParameter("simTypeDefaultPropFile");
 			
 			nOfReadPoints = Integer.parseInt(props.getParameter("numberOfReadPoints"));
 			readPointNames = new String[nOfReadPoints];
@@ -760,6 +764,7 @@ public class SimulatorController implements HardwareAbstraction {
 	 */
 	public static void main (String[] args) {
 		DOMConfigurator.configure("./props/log4j.xml");
-		new SimulatorController("SimulatorController", "./props/SimulatorController.xml");
+		new SimulatorController("SimulatorController", "/props/SimulatorController.xml",
+            "/props/SimulatorController_default.xml");
 	}
 }

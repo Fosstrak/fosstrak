@@ -21,16 +21,12 @@
 package org.accada.reader.rp.proxy;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringReader;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Properties;
 
 import org.accada.reader.rp.proxy.msg.Handshake;
+import org.accada.reader.rp.proxy.util.ResourceLocator;
 import org.accada.reader.rprm.core.msg.Context;
 import org.accada.reader.rprm.core.msg.MessageFactory;
 import org.accada.reader.rprm.core.msg.MessageFormat;
@@ -55,7 +51,8 @@ public class Result {
 	private static final Logger LOG = Logger.getLogger(Result.class);
 	
 	/** path to the properties file */
-	private static final String PROPERTIES_FILE = "props/RPProxy.xml";
+	private static final String PROPERTIES_FILE = "/props/RPProxy.xml";
+   private static final String DEFAULT_PROPERTIES_FILE = "/props/RPProxy_default.xml";
 	
 	/** the handshake stores message format and transport protocol */
 	private final Handshake handshake;
@@ -94,32 +91,8 @@ public class Result {
 		this.handshake = handshake;
 		
       XMLConfiguration conf;
+      URL fileurl = ResourceLocator.getURL(PROPERTIES_FILE, DEFAULT_PROPERTIES_FILE, this.getClass());
       try {
-         // load resource from where this class is located
-         String codesourcelocation = this.getClass().getProtectionDomain()
-            .getCodeSource().getLocation().toString();
-         String urlstring;
-         URL fileurl;
-         if (codesourcelocation.endsWith("jar")) {
-            String configoutside = codesourcelocation.substring(0, codesourcelocation
-               .lastIndexOf("/") + 1) + PROPERTIES_FILE;
-            boolean exists;
-            try {
-               exists = (new File((new URL(configoutside)).toURI())).exists();
-            } catch (URISyntaxException use) {
-               exists = false;
-            } catch (MalformedURLException mue) {
-               exists = false;
-            }
-            if (exists) {
-               urlstring = configoutside;
-            } else {
-               urlstring = "jar:" + codesourcelocation + "!/" + PROPERTIES_FILE;
-            }
-         } else {
-            urlstring = codesourcelocation + PROPERTIES_FILE;
-         }
-         fileurl = new URL(urlstring);
          conf = new XMLConfiguration(fileurl);
          timeout = conf.getInt("timeout");
       } catch (Exception e) {
