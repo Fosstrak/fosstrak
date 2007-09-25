@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- SimulatorType to be loaded dynamically -->
+   <!-- currently only org.accada.reader.hal.impl.sim.GraphicSimulator is supported -->
+   <simType>org.accada.reader.hal.impl.sim.multi.GraphicSimulatorServer</simType>
+   <!-- <simType>org.accada.reader.hal.impl.sim.multi.BatchSimulatorServer</simType> -->
+   <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
+   <simTypeDefaultPropFile>/props/GraphicSimulator_default.xml</simTypeDefaultPropFile>
+
+   <!-- the port to listen to -->
+   <port>8800</port>
+
+</properties>

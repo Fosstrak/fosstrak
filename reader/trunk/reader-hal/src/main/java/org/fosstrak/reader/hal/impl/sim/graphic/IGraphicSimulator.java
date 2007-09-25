@@ -20,9 +20,6 @@
 
 package org.accada.reader.hal.impl.sim.graphic;
 
-import java.util.Properties;
-import java.util.ResourceBundle;
-
 import javax.swing.JPopupMenu;
 
 import org.apache.commons.configuration.XMLConfiguration;

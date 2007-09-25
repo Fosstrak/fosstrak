@@ -28,17 +28,10 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Locale;
-import java.util.Properties;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -77,10 +70,6 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	private static final long serialVersionUID = 1L;
 	/** language settings */
 	private static final Locale LOCALE = Locale.ENGLISH;
-	/** the properties file location and name */
-//	private static final String PROPERTIES_FILE_LOCATION = "/props/GraphicSimulatorServer.properties";
-	/** the properties file */
-	private String propFile;
 	/** the logger */
 	private static final Log LOG = LogFactory.getLog(GraphicSimulatorServer.class);
 	
@@ -128,7 +117,6 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	public void initialize(SimulatorServerController controller, String propFile,
          String defaultPropFile) throws SimulatorServerException {
 		this.controller = controller;
-		this.propFile = propFile;
 
       // load language
       String prefix = propFile.substring(0, propFile.lastIndexOf("/")) + "/GUIText_";

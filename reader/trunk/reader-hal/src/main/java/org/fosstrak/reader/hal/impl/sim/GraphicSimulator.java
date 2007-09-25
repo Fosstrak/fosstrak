@@ -29,18 +29,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Locale;
-import java.util.Properties;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -55,7 +48,6 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
-import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.impl.sim.graphic.Antenna;
 import org.accada.reader.hal.impl.sim.graphic.Cable;
 import org.accada.reader.hal.impl.sim.graphic.IGraphicSimulator;
@@ -81,10 +73,6 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	private static final Locale SYSTEM_DEFAULT_LOCALE = Locale.getDefault();
 	/** the default language (if language is not defined in property file and system default language does not exists) */
 	private static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
-	/** the properties file location and name */
-//	private static final String PROPERTIES_FILE_LOCATION = "/props/GraphicSimulator.properties";
-	/** the properties file */
-	private String propFile;
 	/** the logger */
 	private static final Log LOG = LogFactory.getLog(GraphicSimulator.class);
 	
@@ -139,7 +127,6 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	public void initialize(SimulatorController controller, String propFile,
          String defaultPropFile) throws IOException {
 		this.controller = controller;
-		this.propFile = propFile;
 		mgmtSimDialogs = new Hashtable<String, MgmtSimDialog>();
 
 		// load properties
