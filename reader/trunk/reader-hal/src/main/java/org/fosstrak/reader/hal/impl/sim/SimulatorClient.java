@@ -24,12 +24,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.URL;
 import java.net.UnknownHostException;
-import java.util.Properties;
 
-import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.impl.sim.multi.SimulatorServerException;
 import org.accada.reader.hal.impl.sim.multi.SimulatorServerTokens;
+import org.accada.reader.hal.util.ResourceLocator;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -42,63 +44,70 @@ public class SimulatorClient extends Thread implements SimulatorEngine {
 	/** the logger */
 	private static final Log LOG = LogFactory.getLog(SimulatorClient.class);
 
-	private static final String PROPERTIES_FILE_LOCATION = "/props/SimulatorClient.properties";
-	private String propFile;
-   private String defaultPropFile;
-	
-	private final String host;
-	private final int port;
-	private final int timeout;
-	private final int waittime;
+	private String host;
+	private int port;
+	private int timeout;
+	private int waittime;
 	
 	private SimulatorController controller;
+   private XMLConfiguration config;
 	private OutputStream out;
 	private InputStream in;
 	private boolean unkownHost;
 	private boolean connected;
 
-	public SimulatorClient() throws SimulatorServerException {
-		// load properties from properties file
-		Properties props;
-		try {
-			props = new Properties();
-			props.load(this.getClass().getResourceAsStream(PROPERTIES_FILE_LOCATION));
-		} catch (IOException e) {
-			throw new SimulatorServerException("Could not load property file.");
-		}
-		
-		// check properties
-		if (!props.containsKey("host")) {
-			throw new SimulatorServerException("Property 'host' not found.");
-		}
-		if (!props.containsKey("port")) {
-			throw new SimulatorServerException("Property 'port' not found.");
-		}
-		if (!props.containsKey("timeout")) {
-			throw new SimulatorServerException("Property 'timeout' not found.");
-		}
-		if (!props.containsKey("waittime")) {
-			throw new SimulatorServerException("Property 'waittime' not found.");
-		}
-		
-		// get properties
-		host = props.getProperty("host");
-		try {
-			port = Integer.parseInt(props.getProperty("port"));
-			timeout = Integer.parseInt(props.getProperty("timeout"));
-			waittime = Integer.parseInt(props.getProperty("waittime"));
-		} catch (NumberFormatException e) {
-			throw new SimulatorServerException("Properties 'port', 'timeout' and 'waittime' must be numbers");
-		}
-	}
+	public SimulatorClient() {}
 	
+   /**
+    * implements the initialize method of the SimulatorEngine
+    * 
+    * @param controller 
+    *          the SimulatorController
+    * @param propFile
+    *          the path and name of the configuration file
+    * @param defaultPropFile
+    *          the path and name of the default configuration file
+    * @throws SimulatorServerException
+    */
 	public void initialize(SimulatorController controller, String propFile,
          String defaultPropFile) throws SimulatorServerException {
 	   // TODO: adjust to xml properties file, move configuration from constructor to initialization.
 	   this.controller = controller;
-		this.propFile = propFile;
-      this.defaultPropFile = defaultPropFile;
-		tryToConnect();
+
+      // load properties
+      URL url = ResourceLocator.getURL(propFile, defaultPropFile, this.getClass());
+      try {
+         config = new XMLConfiguration(url);
+      } catch (ConfigurationException ce) {
+         throw new SimulatorServerException("SimulatorClient configuration file not found.");
+      }
+
+      // check properties
+      if (!config.containsKey("host")) {
+         throw new SimulatorServerException("Property 'host' not found.");
+      }
+      if (!config.containsKey("port")) {
+         throw new SimulatorServerException("Property 'port' not found.");
+      }
+      if (!config.containsKey("timeout")) {
+         throw new SimulatorServerException("Property 'timeout' not found.");
+      }
+      if (!config.containsKey("waittime")) {
+         throw new SimulatorServerException("Property 'waittime' not found.");
+      }
+      
+      // get properties
+      host = config.getString("host");
+      config.getInt("a");
+      try {
+         port = config.getInt("port");
+         timeout = config.getInt("timeout");
+         waittime = config.getInt("waittime");
+      } catch (NumberFormatException e) {
+         throw new SimulatorServerException("Properties 'port', 'timeout' and 'waittime' must be numbers");
+      }
+      
+      tryToConnect();
 	}
 	
 	public void run() {

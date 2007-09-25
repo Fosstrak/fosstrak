@@ -45,10 +45,6 @@ public class BatchSimulatorServer extends Thread implements SimulatorServerEngin
 
 	/** the logger */
 	private static final Log LOG = LogFactory.getLog(GraphicSimulatorServer.class);
-	/** properties file path */
-//	private static final String PROPERTIES_FILE_LOCATION = "/props/BatchSimulatorServer.properties";
-	/** properties file */
-	private static String propFile;
 
 	/** the simulator controller */
 	private SimulatorServerController controller;

@@ -79,7 +79,7 @@ public class SimulatorServerController {
 		registerSocket = new RegisterSocket();
 		registerSocket.start();
 
-		// try to initialize the MutliSimulatorEngine (GraphicSimulatorServer of BatchSimulatorServer)
+		// try to initialize the MutliSimulatorEngine (GraphicSimulatorServer or BatchSimulatorServer)
 		LOG.info("SimulatorServerEngine: " + simType);
 		try {
 			Class simClass = Class.forName(simType);
