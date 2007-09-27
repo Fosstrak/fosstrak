@@ -98,7 +98,6 @@ public class SimulatorClient extends Thread implements SimulatorEngine {
       
       // get properties
       host = config.getString("host");
-      config.getInt("a");
       try {
          port = config.getInt("port");
          timeout = config.getInt("timeout");

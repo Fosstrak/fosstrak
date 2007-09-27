@@ -11,6 +11,7 @@
    <ReaderHeight>100</ReaderHeight>
    <ReaderLabelSize>10</ReaderLabelSize>
    <ReaderLabelFont>Verdana</ReaderLabelFont>
+   <InterReaderPadding>200</InterReaderPadding>
 
    <!-- rfid antenna -->
    <AntennasPerRow>4</AntennasPerRow>
@@ -40,6 +41,10 @@
    <FramePadding>50</FramePadding>
    <HorizontalPadding>50</HorizontalPadding>
    <VerticalPadding>50</VerticalPadding>
+   
+   <!-- window -->
+   <MinimumWindowWidth>800</MinimumWindowWidth>
+   <MinimumWindowHeight>400</MinimumWindowHeight>
 
    <!-- dialog windows -->
    <DialogWindowWidth>800</DialogWindowWidth>
