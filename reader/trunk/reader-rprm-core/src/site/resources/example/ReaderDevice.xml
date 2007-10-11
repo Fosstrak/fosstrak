@@ -11,20 +11,19 @@
       <role>ReaderRole</role>
    <!-- End -->
 
-
    <!-- More Information -->
       <maxSourceNumber>10</maxSourceNumber>
       <maxTagSelectorNumber>10</maxTagSelectorNumber>
       <maxTriggerNumber>10</maxTriggerNumber>
    <!-- End -->
 
-
    <!-- All readers (HardwareAbstractions) used -->
       <readers>
          <reader>
             <name>SimulatorController</name>
             <class>org.accada.reader.hal.impl.sim.SimulatorController</class>
-            <properties>SimulatorController</properties>
+            <properties>/props/SimulatorController.xml</properties>
+            <defaultProperties>/props/SimulatorController_default.xml</defaultProperties>
             <readpoint>Shelf1</readpoint>
             <readpoint>Shelf2</readpoint>
             <readpoint>Shelf3</readpoint>
@@ -33,33 +32,31 @@
       </readers>
    <!-- End -->
 
-
    <!-- List of all sources -->
       <currentSource>Shelf1</currentSource>
       <sources>
-            <source>
-               <name>Shelf1</name>
+         <source>
+            <name>Shelf1</name>
             <fixed>true</fixed>
-               <readpoint>Shelf1</readpoint>
+            <readpoint>Shelf1</readpoint>
          </source>
          <source>
             <name>Shelf2</name>
             <fixed>true</fixed>
-               <readpoint>Shelf2</readpoint>
+            <readpoint>Shelf2</readpoint>
          </source>
          <source>
             <name>Shelf3</name>
             <fixed>true</fixed>
-               <readpoint>Shelf3</readpoint>
+            <readpoint>Shelf3</readpoint>
          </source>
          <source>
             <name>Shelf4</name>
             <fixed>true</fixed>
-               <readpoint>Shelf4</readpoint>
+            <readpoint>Shelf4</readpoint>
          </source>
       </sources>
    <!-- End -->
-
 
    <!-- The io trigger classes -->
       <IOEdgeTriggerPortManager>
@@ -69,13 +66,11 @@
       </IOValueTriggerPortManager>
    <!-- End -->
 
-
    <!-- Information used for the reader management implementation -->
       <description>Description</description>
       <locationDescription>LocationDescription</locationDescription>
       <contact>Contact</contact>
       <serialNumber>SerialNumber</serialNumber>
-
       <mgmtAgentType>SNMP</mgmtAgentType>
       <mgmtAgentAddress>localhost</mgmtAgentAddress>
       <mgmtAgentPort>161</mgmtAgentPort>
@@ -83,17 +78,15 @@
       <mgmtSimulatorStart>false</mgmtSimulatorStart>
    <!-- End -->
 
-
    <!-- List of all alarm channels -->
       <alarmChannels>
-            <alarmChannel>
-               <name>alarmChannel1</name>
+         <alarmChannel>
+            <name>alarmChannel1</name>
             <host>localhost</host>
-               <port>162</port>
+            <port>162</port>
          </alarmChannel>
       </alarmChannels>
    <!-- End -->
-
 
    <!-- Information about the messaging -->
       <tcpServerConnection>true</tcpServerConnection>
@@ -103,7 +96,6 @@
       <notificationListenTimeout>30000</notificationListenTimeout>
       <threadPoolSize>16</threadPoolSize>
    <!-- End -->
-
 
    <!-- Information about the source defaults -->
       <isFixed>false</isFixed>
