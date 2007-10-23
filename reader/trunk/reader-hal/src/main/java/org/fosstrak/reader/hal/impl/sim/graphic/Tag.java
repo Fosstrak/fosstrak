@@ -25,6 +25,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
@@ -41,7 +42,10 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 
+import org.accada.reader.hal.HardwareException;
+import org.accada.reader.hal.util.ByteBlock;
 import org.accada.reader.hal.util.ResourceLocator;
 
 /**
@@ -49,8 +53,10 @@ import org.accada.reader.hal.util.ResourceLocator;
  */
 public class Tag extends JPanel implements Comparable {
 	
-	/** the electronic product code of the rfid tag */
-	private final String id;
+   /** the serial version uid for serialization */
+   private static final long serialVersionUID = 1L;
+   /** the sim tag implementation */
+   private org.accada.reader.hal.impl.sim.Tag tag; 
 	/** the image icon of the rfid tag */ 
 	private final Icon icon;
 	/** the drag listener */
@@ -65,6 +71,8 @@ public class Tag extends JPanel implements Comparable {
 	private JPopupMenu groupedTagsContextMenu;
 	/** this antenna */
 	private final Tag thisTag = this;
+   /** the user memory field */
+   private JTextField userMemoryField;
 
 	/** the hash set with the selected tags */
 	private TreeSet selectedTags = new TreeSet();
@@ -83,7 +91,7 @@ public class Tag extends JPanel implements Comparable {
 	public Tag(String epc, Point pos, final IGraphicSimulator simulator) {
 		super();
 		
-		this.id = epc;
+      this.tag = new org.accada.reader.hal.impl.sim.Tag(epc);
 		this.simulator = simulator;
 		
 		setBounds(new Rectangle(pos, new Dimension(simulator.getProperty("TagWidth"), simulator.getProperty("TagHeight"))));
@@ -113,6 +121,16 @@ public class Tag extends JPanel implements Comparable {
 		});
 		singleTagContextMenu.add(removeTagContextMenuItem);
 		
+      // change user memory menu item
+      JMenuItem changeMemoryContextMenuItem = new JMenuItem(simulator.getGuiText().getString("ChangeMemoryMenuItem"));
+      changeMemoryContextMenuItem.addMouseListener(new MouseAdapter() {
+         public void mouseReleased(MouseEvent e) {
+            showChangeMemoryDialog(getLocationOnScreen().x + e.getPoint().x, getLocationOnScreen().y + e.getPoint().y);
+            simulator.hideActiveContextMenu();
+         }
+      });
+      singleTagContextMenu.add(changeMemoryContextMenuItem);
+      
 		// remove tags menu item
 		JMenuItem removeTagsContextMenuItem = new JMenuItem(simulator.getGuiText().getString("RemoveTagsMenuItem"));
 		removeTagsContextMenuItem.addMouseListener(new MouseAdapter() {
@@ -268,12 +286,14 @@ public class Tag extends JPanel implements Comparable {
 	 */
 	private void showRemoveTagDialog(int x, int y) {
 		final JDialog removeTagDialog = new JDialog();
-		removeTagDialog.setName(simulator.getGuiText().getString("RemoveTagDialogTitle"));
+      removeTagDialog.setName(simulator.getGuiText().getString("RemoveTagDialogTitle"));
+      removeTagDialog.setTitle(simulator.getGuiText().getString("RemoveTagDialogTitle"));
 		removeTagDialog.setSize(simulator.getProperty("DialogWindowWidth"), simulator.getProperty("DialogWindowHeight"));
 		removeTagDialog.setLayout(new BorderLayout());
 		
 		// label
-		JLabel label = new JLabel(simulator.getGuiText().getString("RemoveTagLabel") + " '" + id + "' ?");
+		JLabel label = new JLabel(simulator.getGuiText().getString("RemoveTagLabel")
+		   + " '" + tag.getTagID() + "' ?");
 		label.setHorizontalAlignment(JLabel.CENTER);
 
 		// cancel button
@@ -306,6 +326,73 @@ public class Tag extends JPanel implements Comparable {
 		removeTagDialog.setVisible(true);
 	}
 	
+   /**
+    * shows the change memory dialog window
+    * 
+    * @param x the horizontal position of the dialog window
+    * @param y the vertical position of the dialog window
+    */
+   private void showChangeMemoryDialog(int x, int y) {
+      final JDialog changeMemoryDialog = new JDialog();
+      changeMemoryDialog.setName(simulator.getGuiText().getString("ChangeMemoryDialogTitle"));
+      changeMemoryDialog.setTitle(simulator.getGuiText().getString("ChangeMemoryDialogTitle"));
+      changeMemoryDialog.setSize(simulator.getProperty("DialogWindowWidth"), simulator.getProperty("DialogWindowHeight"));
+      changeMemoryDialog.setLayout(new BorderLayout());
+      
+      if(userMemoryField == null) {
+         userMemoryField = new JTextField();
+      }
+      byte[] data;
+      try {
+         data = tag.readData(3, 0, 0);
+      } catch (HardwareException he) {
+         data = new byte[] {};
+      }
+      userMemoryField.setText(ByteBlock.byteArrayToHexString(data));
+
+      // user memory input field
+      JLabel userMemoryLabel = new JLabel(simulator.getGuiText().getString(
+         "ChangeUserMemoryLabel") + " :");
+      JPanel inputFields = new JPanel();
+      inputFields.setLayout(new GridLayout(2, 2));
+      inputFields.add(userMemoryLabel);
+      inputFields.add(userMemoryField);
+
+      // cancel button
+      JButton cancelButton = new JButton(simulator.getGuiText().getString("CancelButton"));
+      cancelButton.addMouseListener(new MouseAdapter() {
+         public void mouseReleased(MouseEvent e) {
+            changeMemoryDialog.setVisible(false);
+         }
+      });
+      
+      // ok button
+      JButton okButton = new JButton(simulator.getGuiText().getString("OkButton"));
+      okButton.addMouseListener(new MouseAdapter() {
+         public void mouseReleased(MouseEvent e) {
+            changeMemoryDialog.setVisible(false);
+            if (userMemoryField.getText().length() % 2 != 0) {
+               userMemoryField.setText("0" + userMemoryField.getText());
+            }
+            try {
+               tag.setData(ByteBlock.hexStringToByteArray(userMemoryField.getText()), 3);
+            } catch (NumberFormatException nfe) {}
+         }
+      });
+      
+      // buttons panel
+      JPanel buttons = new JPanel();
+      buttons.add(okButton);
+      buttons.add(cancelButton);
+      
+      // add elements
+      changeMemoryDialog.add(inputFields, BorderLayout.CENTER);
+      changeMemoryDialog.add(buttons, BorderLayout.SOUTH);
+      changeMemoryDialog.getRootPane().setDefaultButton(okButton);
+      changeMemoryDialog.setLocation(x, y);
+      changeMemoryDialog.setVisible(true);
+   }
+   
 	/**
 	 * shows the remove tags dialog window
 	 * 
@@ -314,7 +401,8 @@ public class Tag extends JPanel implements Comparable {
 	 */
 	private void showRemoveTagsDialog(int x, int y) {
 		final JDialog removeTagsDialog = new JDialog();
-		removeTagsDialog.setName(simulator.getGuiText().getString("RemoveTagsDialogTitle"));
+      removeTagsDialog.setName(simulator.getGuiText().getString("RemoveTagsDialogTitle"));
+      removeTagsDialog.setTitle(simulator.getGuiText().getString("RemoveTagsDialogTitle"));
 		removeTagsDialog.setSize(simulator.getProperty("DialogWindowWidth"), simulator.getProperty("DialogWindowHeight"));
 		removeTagsDialog.setLayout(new BorderLayout());
 		
@@ -364,7 +452,7 @@ public class Tag extends JPanel implements Comparable {
 		icon.paintIcon(this, g, (simulator.getProperty("TagWidth") - icon.getIconWidth()) / 2, 0);
 		g.setColor(isSelected() ? Color.RED : Color.BLACK);
 		g.setFont(new Font(simulator.getProperties().getString("TagLabelFont"), 0, simulator.getProperty("TagLabelSize")));
-		g.drawString(id, (getWidth() / 2) - (id.length() / 2) * 7 - (id.length() % 2 == 1 ? 3 : 0), simulator.getProperty("TagHeight"));
+		g.drawString(tag.getTagID(), (getWidth() / 2) - (tag.getTagID().length() / 2) * 7 - (tag.getTagID().length() % 2 == 1 ? 3 : 0), simulator.getProperty("TagHeight"));
 	}
 	
 	/**
@@ -414,15 +502,24 @@ public class Tag extends JPanel implements Comparable {
 		return groupedTags;
 	}
 	
-	/**
-	 * returns the electronic product code of the rfid tag
-	 * 
-	 * @return epc
-	 */
-	public String getId() {
-		return id;
-	}
-	
+   /**
+    * returns the electronic product code of the rfid tag
+    * 
+    * @return epc
+    */
+   public String getId() {
+      return tag.getTagID();
+   }
+   
+   /**
+    * returns the sim.Tag
+    * 
+    * @return sim.Tag
+    */
+   public org.accada.reader.hal.impl.sim.Tag getSimTag() {
+      return tag;
+   }
+   
 	/**
 	 * returns the drag listener
 	 * 
@@ -438,7 +535,7 @@ public class Tag extends JPanel implements Comparable {
 	 * @return string representation
 	 */
 	public String toString() {
-		return id;
+		return tag.getTagID();
 	}
 	
 	/**
@@ -452,7 +549,7 @@ public class Tag extends JPanel implements Comparable {
 
 	public int compareTo(Object obj) {
 		if(obj instanceof Tag) {
-			return id.compareTo(((Tag)obj).getId());
+			return tag.getTagID().compareTo(((Tag)obj).getId());
 		} else {
 			throw new ClassCastException("Can not compare Tag with " + obj.getClass());
 		}

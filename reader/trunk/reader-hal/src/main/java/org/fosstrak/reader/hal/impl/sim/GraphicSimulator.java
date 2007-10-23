@@ -683,26 +683,48 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 		return propsConfig;
 	}
 	
-	/**
-	 * adds an enter event to the simulator controller
-	 * 
-	 * @param antennaId 
-	 * @param epc of the tag
-	 */
-	public void enterEvent(String readerId, String antennaId, String epc) {
-		controller.add(antennaId, epc);
-	}
+   /**
+    * adds an enter event to the simulator controller
+    * 
+    * @param antennaId 
+    * @param epc of the tag
+    */
+   public void enterEvent(String readerId, String antennaId, String epc) {
+      controller.add(antennaId, epc);
+   }
 
-	/**
-	 * adds an exit event to the simulator controller
-	 * 
-	 * @param antennaId
-	 * @param epc of the tag
-	 */
-	public void exitEvent(String readerId, String antennaId, String epc) {
-		controller.remove(antennaId, epc);
-	}
-	
+   /**
+    * adds an enter event to the simulator controller
+    * 
+    * @param antennaId 
+    * @param tag  the sim.Tag
+    */
+   public void enterEvent(String readerId, String antennaId,
+         org.accada.reader.hal.impl.sim.Tag tag) {
+      controller.add(antennaId, tag);
+   }
+
+   /**
+    * adds an exit event to the simulator controller
+    * 
+    * @param antennaId
+    * @param epc of the tag
+    */
+   public void exitEvent(String readerId, String antennaId, String epc) {
+      controller.remove(antennaId, epc);
+   }
+   
+   /**
+    * adds an exit event to the simulator controller
+    * 
+    * @param antennaId
+    * @param tag  the sim.Tag
+    */
+   public void exitEvent(String readerId, String antennaId,
+         org.accada.reader.hal.impl.sim.Tag tag) {
+      controller.remove(antennaId, tag);
+   }
+   
 	/**
 	 * gets a property value as integer
 	 * 

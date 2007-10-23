@@ -696,15 +696,45 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 		}
 	}
 
+   /**
+    * adds an enter event to the simulator controller
+    * 
+    * @param antennaId 
+    * @param tag  the sim.Tag
+    */
+   public void enterEvent(String readerId, String antennaId,
+         org.accada.reader.hal.impl.sim.Tag tag) {
+      try {
+         controller.add(readerId, antennaId, tag.getTagID());
+      } catch (SimulatorServerException e) {
+         e.printStackTrace();
+      }
+   }
+
+   /**
+    * adds an exit event to the simulator controller
+    * 
+    * @param antennaId
+    * @param epc of the tag
+    */
+   public void exitEvent(String readerId, String antennaId, String epc) {
+      try {
+         controller.remove(readerId, antennaId, epc);
+      } catch (SimulatorServerException e) {
+         e.printStackTrace();
+      }
+   }
+   
 	/**
 	 * adds an exit event to the simulator controller
 	 * 
 	 * @param antennaId
-	 * @param epc of the tag
+	 * @param tag the sim.Tag
 	 */
-	public void exitEvent(String readerId, String antennaId, String epc) {
+	public void exitEvent(String readerId, String antennaId,
+         org.accada.reader.hal.impl.sim.Tag tag) {
 		try {
-			controller.remove(readerId, antennaId, epc);
+			controller.remove(readerId, antennaId, tag.getTagID());
 		} catch (SimulatorServerException e) {
 			e.printStackTrace();
 		}

@@ -107,12 +107,14 @@ public class Antenna extends JComponent {
 	public void checkTag(Tag tag, Reader reader) {
 		if (getBounds().intersects(tag.getBounds())) {
 			if (tags.add(tag)) {
-				simulator.enterEvent(reader.getId(), getId(), tag.getId());
+//            simulator.enterEvent(reader.getId(), getId(), tag.getId());
+            simulator.enterEvent(reader.getId(), getId(), tag.getSimTag());
 				log.info("'" + tag.getId() + "' ENTER the range of antenna '" + id + "' of reader '" + reader.getId() + "'");
 			}
 		} else {
 			if (tags.remove(tag)) {
-				simulator.exitEvent(reader.getId(), getId(), tag.getId());
+//            simulator.exitEvent(reader.getId(), getId(), tag.getId());
+            simulator.exitEvent(reader.getId(), getId(), tag.getSimTag());
 				log.info("'" + tag.getId() + "' EXIT the range of antenna '" + id + "' of reader '" + reader.getId() + "'");
 			}
 		}
@@ -127,12 +129,14 @@ public class Antenna extends JComponent {
 		if (getBounds().intersects(tag.getBounds())) {
 			if (tags.add(tag)) {
 				log.info("'" + tag.getId() + "' ENTER the range of antenna '" + id + "'");
-				simulator.enterEvent(null, getId(), tag.getId());
+//            simulator.enterEvent(null, getId(), tag.getId());
+            simulator.enterEvent(null, getId(), tag.getSimTag());
 			}
 		} else {
 			if (tags.remove(tag)) {
 				log.info("'" + tag.getId() + "' EXIT the range of antenna '" + id + "'");
-				simulator.exitEvent(null, getId(), tag.getId());
+//            simulator.exitEvent(null, getId(), tag.getId());
+            simulator.exitEvent(null, getId(), tag.getSimTag());
 			}
 		}
 	}

@@ -96,13 +96,33 @@ public interface IGraphicSimulator {
 	 */
 	void enterEvent(String readerId, String antennaId, String tagId);
 
+   /**
+    * adds an enter event to the simulator controller
+    * 
+    * @param readerId
+    * @param antennaId 
+    * @param tag  the sim.Tag
+    */
+   void enterEvent(String readerId, String antennaId,
+         org.accada.reader.hal.impl.sim.Tag tag);
+
+   /**
+    * adds an exit event to the simulator controller
+    * 
+    * @param readerId
+    * @param antennaId 
+    * @param tagId
+    */
+   void exitEvent(String readerId, String antennaId, String tagId);
+
 	/**
 	 * adds an exit event to the simulator controller
 	 * 
 	 * @param readerId
 	 * @param antennaId 
-	 * @param tagId
+	 * @param tag the sim.Tag
 	 */
-	void exitEvent(String readerId, String antennaId, String tagId);
+	void exitEvent(String readerId, String antennaId,
+         org.accada.reader.hal.impl.sim.Tag tag);
 
 }

@@ -16,6 +16,7 @@
    <AddNewTagMenuItem>Neue Etikette hinzufügen</AddNewTagMenuItem>
    <AboutMenuItem>Über</AboutMenuItem>
    <RemoveAntennaMenuItem>Antenne entfernen</RemoveAntennaMenuItem>
+   <ChangeMemoryMenuItem>Speicher ändern</ChangeMemoryMenuItem>
    <RemoveTagMenuItem>Etikette entfernen</RemoveTagMenuItem>
    <RemoveTagsMenuItem>Etiketten entfernen</RemoveTagsMenuItem>
    <GroupTagsMenuItem>Etiketten gruppieren</GroupTagsMenuItem>
@@ -35,12 +36,16 @@
    <AddNewTagDialogTitle>Neue Etikette hinzufügen</AddNewTagDialogTitle>
    <TagIdLabel>Etiketten Identifikation</TagIdLabel>
 
+   <ChangeMemoryDialogTitle>Speicher ändern</ChangeMemoryDialogTitle>
+   <ChangeUserMemoryLabel>Benutzerspeicher</ChangeUserMemoryLabel>
+
    <RemoveTagDialogTitle>Etikette entfernen</RemoveTagDialogTitle>
    <RemoveTagsDialogTitle>Etiketten entfernen</RemoveTagsDialogTitle>
    <RemoveTagLabel>Entferne Etikette</RemoveTagLabel>
    <RemoveTagsLabel>Selektierte Etiketten entfernen ?</RemoveTagsLabel>
 
    <AddButton>hinzufügen</AddButton>
+   <OkButton>ok</OkButton>
    <CancelButton>abbrechen</CancelButton>
    <YesButton>ja</YesButton>
    <NoButton>nein</NoButton>

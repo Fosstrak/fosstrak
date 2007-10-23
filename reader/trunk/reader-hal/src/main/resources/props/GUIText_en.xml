@@ -16,6 +16,7 @@
    <AddNewTagMenuItem>Add new Tag</AddNewTagMenuItem>
    <AboutMenuItem>About</AboutMenuItem>
    <RemoveAntennaMenuItem>Remove Antenna</RemoveAntennaMenuItem>
+   <ChangeMemoryMenuItem>Change Memory</ChangeMemoryMenuItem>
    <RemoveTagMenuItem>Remove Tag</RemoveTagMenuItem>
    <RemoveTagsMenuItem>Remove Tags</RemoveTagsMenuItem>
    <GroupTagsMenuItem>Group Tags</GroupTagsMenuItem>
@@ -35,12 +36,16 @@
    <AddNewTagDialogTitle>Add new Tag</AddNewTagDialogTitle>
    <TagIdLabel>Tag Identification</TagIdLabel>
 
+   <ChangeMemoryDialogTitle>Change Memory</ChangeMemoryDialogTitle>
+   <ChangeUserMemoryLabel>User Memory</ChangeUserMemoryLabel>
+
    <RemoveTagDialogTitle>Remove Tag</RemoveTagDialogTitle>
    <RemoveTagsDialogTitle>Remove Tags</RemoveTagsDialogTitle>
    <RemoveTagLabel>Remove Tag</RemoveTagLabel>
    <RemoveTagsLabel>Remove the selected Tags ?</RemoveTagsLabel>
 
    <AddButton>add</AddButton>
+   <OkButton>ok</OkButton>
    <CancelButton>cancel</CancelButton>
    <YesButton>yes</YesButton>
    <NoButton>no</NoButton>
