@@ -1355,20 +1355,22 @@ public final class Source {
          curClosure = (ReaderAndReadPoints) closureIterator.nextElement();
 
          try {
-        	 tempObservations = curClosure.getReader().identify(curClosure.getAllReadPointsAsArray());
-        	 for (int i = 0; i < tempObservations.length; i++) {
-        		 Observation observation = tempObservations[i];
-        		 if (observation.successful) {
-        			 allObservations.add(tempObservations[i]);
-        		 } else {
-        			 ReadPoint readPoint = (ReadPoint) readPoints.get(observation.getReadPointName());
-        			 if (readPoint instanceof AntennaReadPoint) {
-        				 ((AntennaReadPoint) readPoint).increaseFailedIdentificationCount();
-        			 }
-        		 }
-        	 }
+            String[] arpaa = curClosure.getAllReadPointsAsArray();
+            HardwareAbstraction rd = curClosure.getReader();
+            tempObservations = rd.identify(arpaa);
+            for (int i = 0; i < tempObservations.length; i++) {
+               Observation observation = tempObservations[i];
+               if (observation.successful) {
+                  allObservations.add(tempObservations[i]);
+               } else {
+                  ReadPoint readPoint = (ReadPoint) readPoints.get(observation.getReadPointName());
+                  if (readPoint instanceof AntennaReadPoint) {
+                     ((AntennaReadPoint) readPoint).increaseFailedIdentificationCount();
+                  }
+               }
+            }
          } catch (HardwareException he) {
-        	 log.error(he.getMessage());
+            log.error(he.getMessage());
          }
 
       }

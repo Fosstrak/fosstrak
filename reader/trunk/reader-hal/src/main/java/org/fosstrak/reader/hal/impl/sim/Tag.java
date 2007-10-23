@@ -109,12 +109,21 @@ public class Tag implements Cloneable {
 	/**
 	 * Reads some data.
 	 * 
-	 * @return The data
+    * @param memoryBank
+    *          number of the memory bank
+    * @param offset
+    *          beginning of data to read in memory bank
+    * @param length
+    *          length of data to read, read to end of memory if 0
+	 * @return the data
     * @throws HardwareException
-    *            If memory bank shorter than offset + length
+    *          If memory bank shorter than offset + length
 	 */
 	public byte[] readData(int memoryBank, int offset, int length)
          throws HardwareException {
+      if (length == 0) {
+         length = memory[memoryBank].getInternalByteArray().length - offset;
+      }
       if (memory[memoryBank].getInternalByteArray().length < (offset + length)) {
          throw new HardwareException("Can not read, memory bank shorter than "
                + "offset + length.");
