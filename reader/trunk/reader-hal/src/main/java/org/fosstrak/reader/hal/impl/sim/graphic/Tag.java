@@ -102,7 +102,8 @@ public class Tag extends JPanel implements Comparable {
 		addComponentListener(simulator.getTranslationListener());
 		
 		String filename = simulator.getProperties().getString("TagImage");
-      String defaultfilename = simulator.getProperties().getString("TagDefaultImage");
+      String defaultfilename = simulator.getProperties().getString(
+            "TagDefaultImage", null);
       URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
       icon = new ImageIcon(fileurl);
 		

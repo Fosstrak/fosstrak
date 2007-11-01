@@ -281,15 +281,20 @@ public class ByteBlock {
 	}
 	
 	/**
-	 * converts an unsigned byte array to a (signed) integer.
+	 * converts an unsigned byte array (MSB first, max first four bytes) to a
+    * (signed) integer.
 	 * 
 	 * @param b
 	 * @return
 	 */
 	public static int bytesToNumber(byte[] b) {
 		int val = 0;
-		for (int i = 0; i < 4; i++) {
-			val += byteToNumber(b[i]) << (8 * (4 - b.length - i));
+      int len = b.length;
+      if (len > 4) {
+         len = 4;
+      }
+		for (int i = 0; i < len; i++) {
+			val |= byteToNumber(b[i]) << (8 * (len - i - 1));
 		}
 		return val;
 	}

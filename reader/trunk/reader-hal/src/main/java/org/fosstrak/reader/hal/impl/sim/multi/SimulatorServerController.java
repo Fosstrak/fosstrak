@@ -65,7 +65,8 @@ public class SimulatorServerController {
 		// get properties
 		simType = propsConfig.getString("simType");
 		String simTypePropFile = propsConfig.getString("simTypePropFile");
-      String simTypeDefaultPropFile = propsConfig.getString("simTypeDefaultPropFile");
+      String simTypeDefaultPropFile = propsConfig.getString(
+            "simTypeDefaultPropFile", null);
 		port = propsConfig.getInt("port");
 
 		// try to open server socket

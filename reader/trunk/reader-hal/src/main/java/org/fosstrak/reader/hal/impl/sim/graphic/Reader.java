@@ -68,7 +68,7 @@ public class Reader extends JComponent {
 		this.simulator = simulator;
 		this.properties = simulator.getProperties();
 		String filename = properties.getString("ReaderImage");
-      String defaultfilename = properties.getString("ReaderDefaultImage");
+      String defaultfilename = properties.getString("ReaderDefaultImage", null);
       URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
       icon = new ImageIcon(fileurl);
 		

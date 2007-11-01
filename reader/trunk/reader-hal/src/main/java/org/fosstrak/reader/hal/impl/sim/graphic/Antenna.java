@@ -75,7 +75,8 @@ public class Antenna extends JComponent {
 		this.id = id;
 		this.simulator = simulator;
 		String filename = simulator.getProperties().getString("AntennaImage");
-      String defaultfilename = simulator.getProperties().getString("AntennaDefaultImage");
+      String defaultfilename = simulator.getProperties().getString(
+            "AntennaDefaultImage", null);
       URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
       icon = new ImageIcon(fileurl);
 	}
