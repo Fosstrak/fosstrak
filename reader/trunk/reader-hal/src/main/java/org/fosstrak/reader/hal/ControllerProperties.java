@@ -74,22 +74,20 @@ public class ControllerProperties {
 	 * Gets the parameter with the specified name from the appropriate properties file.
 	 * 
 	 * @param param parameter name.
-	 * @return the value of the parameter.
+	 * @return the value of the parameter or null if parameter not available.
 	 * @throws Exception.
 	 */
-	public String getParameter(String param) throws Exception{
+	public String getParameter(String param) throws Exception {
 		String value = null;
 		if (conf == null) {
          loadConfig();
 		}
 		log.debug("Trying to get Parameter " + param);
-      value = conf.getString(param);
+      value = conf.getString(param, null);
       if (value != null) {
          log.debug("Property found: " + param + " = " + value);
       } else {
-         String message = "Property not found: " + param;
-         log.debug(message);
-         throw new Exception(message);
+         log.debug("Property '" + param + "' not found, returning null.");
       }
       return value;
 	}

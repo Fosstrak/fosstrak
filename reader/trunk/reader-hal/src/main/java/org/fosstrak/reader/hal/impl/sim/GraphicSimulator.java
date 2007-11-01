@@ -416,7 +416,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	private Component getReader() {
 		JLabel  reader = new JLabel();
 		String filename = propsConfig.getString("ReaderImage");
-      String defaultfilename = propsConfig.getString("ReaderDefaultImage");
+      String defaultfilename = propsConfig.getString("ReaderDefaultImage", null);
       URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
 		reader.setIcon(new ImageIcon(fileurl));
 		reader.setBounds(getProperty("AntennaPaneX") + (getProperty("AntennaPaneWidth") - getProperty("ReaderWidth")) / 2, getProperty("FramePadding"), getProperty("ReaderWidth"), getProperty("ReaderHeight"));

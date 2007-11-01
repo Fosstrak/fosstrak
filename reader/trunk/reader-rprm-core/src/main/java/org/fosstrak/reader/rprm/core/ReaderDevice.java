@@ -1163,7 +1163,8 @@ public class ReaderDevice {
             // reflection
             String rClass = readerConf.getString(key + ".class");
             String prop = readerConf.getString(key + ".properties");
-            String defaultprop = readerConf.getString(key + ".defaultProperties"); 
+            String defaultprop = readerConf.getString(key +
+                  ".defaultProperties", null); 
             try {
                Class cls = Class.forName(rClass);
                Class[] partypes = new Class[] {String.class, String.class, String.class};
