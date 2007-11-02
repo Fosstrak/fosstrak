@@ -519,7 +519,7 @@ public class SimulatorController implements HardwareAbstraction {
 			}
 			
 			if(tag != null){
-				tag.writeData(data.toByteArray(), memoryBank, offset);
+				tag.writeData(memoryBank, offset, data.toByteArray());
 			}
 			else{
 				String message="Specified tag not in range";

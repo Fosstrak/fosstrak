@@ -16,7 +16,7 @@
    <AddNewTagMenuItem>Add new Tag</AddNewTagMenuItem>
    <AboutMenuItem>About</AboutMenuItem>
    <RemoveAntennaMenuItem>Remove Antenna</RemoveAntennaMenuItem>
-   <ChangeMemoryMenuItem>Change Memory</ChangeMemoryMenuItem>
+   <MemoryBanksMenuItem>Memory Banks</MemoryBanksMenuItem>
    <RemoveTagMenuItem>Remove Tag</RemoveTagMenuItem>
    <RemoveTagsMenuItem>Remove Tags</RemoveTagsMenuItem>
    <GroupTagsMenuItem>Group Tags</GroupTagsMenuItem>
@@ -36,8 +36,11 @@
    <AddNewTagDialogTitle>Add new Tag</AddNewTagDialogTitle>
    <TagIdLabel>Tag Identification</TagIdLabel>
 
-   <ChangeMemoryDialogTitle>Change Memory</ChangeMemoryDialogTitle>
-   <ChangeUserMemoryLabel>User Memory</ChangeUserMemoryLabel>
+   <MemoryBanksDialogTitle>Memory Banks</MemoryBanksDialogTitle>
+   <ReservedMemoryLabel>Reserved Memory</ReservedMemoryLabel>
+   <EPCMemoryLabel>EPC Memory</EPCMemoryLabel>
+   <TIDMemoryLabel>TID Memory</TIDMemoryLabel>
+   <UserMemoryLabel>User Memory</UserMemoryLabel>
 
    <RemoveTagDialogTitle>Remove Tag</RemoveTagDialogTitle>
    <RemoveTagsDialogTitle>Remove Tags</RemoveTagsDialogTitle>
