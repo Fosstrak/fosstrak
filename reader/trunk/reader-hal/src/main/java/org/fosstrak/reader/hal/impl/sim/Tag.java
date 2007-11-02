@@ -27,6 +27,7 @@ import java.util.Random;
 
 import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.util.ByteBlock;
+import org.accada.reader.hal.util.CRC16;
 
 
 /**
@@ -38,6 +39,27 @@ import org.accada.reader.hal.util.ByteBlock;
  *
  */
 public class Tag implements Cloneable {
+   
+   /**
+    * The TID (without S/N) of simulated Tags.
+    * This number consists of 8-bit ISO/IEC 15963 allocation class identifier,
+    * 12-bit Tag mask-designer identifier and 12-bit Tag model number.
+    * 'E2' for EPCglobal, 'FFF' for (hopefully) unused Tag mask-designer and
+    * '000' for Tag model number.
+    */
+   private static final String TID = "E2FFF000";
+   
+   /**
+    * Readable status of the memory banks.
+    */
+   private static final boolean[] READ = new boolean[] { false, true, true,
+      true };
+   
+   /**
+    * Writeable status of the memory banks.
+    */
+   private static final boolean[] WRITE = new boolean[] { false, true, false,
+      true };
 	
 	/**
 	 * The ID.
@@ -47,41 +69,53 @@ public class Tag implements Cloneable {
 	/**
 	 * The memory banks.
 	 */
-	ByteBlock[] memory;
+	private ByteBlock[] memory;
 
 	/**
 	 * Constructor without user memory.
 	 * 
-	 * @param snr
-	 *            The ID
+	 * @param epc
+	 *            The ID (EPC)
 	 */
-	public Tag(String snr){
-		this.snr = snr;
+	public Tag(String epc){
 		memory = new ByteBlock[4];
 		
-		memory[0] = new ByteBlock(new byte[] { }); // no passwords
-		setTagID(snr); // EPC
-		String tid = Integer.toHexString((new Random()).nextInt()); // random TID
-		memory[2] = new ByteBlock((tid.length() % 2 != 0) ? (0 + tid) : tid);
+      // Reserved (passwords)
+		memory[0] = new ByteBlock(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00 });
+      
+      // EPC
+		setTagID(epc);
+      
+      // TID
+		setTID();
+      
+      // User
 		memory[3] = new ByteBlock(new byte[] { }); // no user memory
 	}
 	
 	/**
 	 * Constructor with user memory
 	 * 
-	 * @param snr
-	 *            The ID
+	 * @param epc
+	 *            The ID (EPC)
 	 * @param userMemory
 	 *            The user memory
 	 */
-	public Tag(String snr, byte[] userMemory){
-		this.snr = snr;
+	public Tag(String epc, byte[] userMemory){
       memory = new ByteBlock[4];
       
-		memory[0] = new ByteBlock(new byte[] { }); // no passwords
-		setTagID(snr); // EPC
-		String tid = Integer.toHexString((new Random()).nextInt()); // random TID
-		memory[2] = new ByteBlock((tid.length() % 2 != 0) ? (0 + tid) : tid);
+      // Reserved (passwords)
+		memory[0] = new ByteBlock(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00 });
+      
+      // EPC
+		setTagID(epc); // EPC
+      
+      // TID
+      setTID();
+      
+      // User
 		memory[3] = new ByteBlock(userMemory); // user memory
 	}
 	
@@ -94,33 +128,98 @@ public class Tag implements Cloneable {
 		return snr;
 	}
 	
+   /**
+    * Sets the tag's ID (snr and EPC memory bank).
+    * 
+    * @param aID
+    *            The ID to be set
+    */
+   public void setTagID(String aID){
+      if (aID == null) {
+         aID = "";
+      }
+      aID = ((aID.length() % 2 != 0) ? (aID + "0") : aID);
+      aID = ((aID.length() % 4 != 0) ? (aID + "00") : aID);
+      if (aID.length() > 124) {
+         // maximum length of PC+EPC is 32 words
+         aID = aID.substring(0, 124);
+      }
+      this.snr = aID;
+      byte[] epcbytes = ByteBlock.hexStringToByteArray(aID);
+      byte[] pcepcbytes = new byte[epcbytes.length + 2];
+      int lenbits = (epcbytes.length / 2) << 11;
+      pcepcbytes[0] = (byte) ((lenbits >> 8) & 0xFF);
+      pcepcbytes[1] = (byte) (lenbits & 0xFF);
+      System.arraycopy(epcbytes, 0, pcepcbytes, 2, epcbytes.length);
+      int crcint = crc16(pcepcbytes);
+      byte[] crc = new byte[2];
+      crc[0] = (byte) ((crcint >> 8) & 0xFF);
+      crc[1] = (byte) (crcint & 0xFF);
+      byte[] epcmemory = new byte[pcepcbytes.length + 2];
+      epcmemory[0] = crc[0];
+      epcmemory[1] = crc[1];
+      System.arraycopy(pcepcbytes, 0, epcmemory, 2, pcepcbytes.length);
+      memory[1] = new ByteBlock(epcmemory);
+   }
+   
+   /**
+    * Computes the CRC-16 precurser and ones-complement it.
+    * 
+    * @param data
+    *          the data to compute the CRC16 from
+    * @return
+    *          the CRC16 of the data
+    */
+   private int crc16 (byte[] data) {
+      int crc = 0xFFFF;
+      int polynomial = 0x1021;   // 0001 0000 0010 0001  (0, 5, 12) 
+
+      for (byte b : data) {
+          for (int i = 0; i < 8; i++) {
+              boolean bit = ((b   >> (7-i) & 1) == 1);
+              boolean c15 = ((crc >> 15    & 1) == 1);
+              crc <<= 1;
+              if (c15 ^ bit) crc ^= polynomial;
+           }
+      }
+      
+      crc ^= 0xFFFF; // ones-complement
+      crc &= 0xFFFF; // mask lower two bytes
+      
+      return crc;
+   }
+   
 	/**
-	 * Sets the tag's ID.
-	 * 
-	 * @param newID
-	 *            The ID to be set
+	 * Sets the tag's TID memory bank.
 	 */
-	public void setTagID(String newID){
-		String id = ((newID.length() % 2 != 0) ? (0 + newID) : newID);
-		memory[1] = new ByteBlock(id); // EPC
-		this.snr = newID;
+	public void setTID(){
+      // random 32-bit S/N
+      byte[] snbytes = new byte[4];
+      Random rnd = new Random();
+      rnd.nextBytes(snbytes);
+      String tid = TID + ByteBlock.byteArrayToHexString(snbytes);
+      memory[2] = new ByteBlock(tid);
 	}
 	
 	/**
 	 * Reads some data.
 	 * 
     * @param memoryBank
-    *          number of the memory bank
+    *          number of the memory bank (0-3)
     * @param offset
     *          beginning of data to read in memory bank
     * @param length
     *          length of data to read, read to end of memory if 0
 	 * @return the data
     * @throws HardwareException
-    *          If memory bank shorter than offset + length
+    *          If memory bank shorter than offset + length or memoryBank
+    *          not readable
 	 */
 	public byte[] readData(int memoryBank, int offset, int length)
          throws HardwareException {
+      if (!READ[memoryBank]) {
+         throw new HardwareException("Memory bank not readable.");
+      }
       if (length == 0) {
          length = memory[memoryBank].getInternalByteArray().length - offset;
       }
@@ -134,13 +233,21 @@ public class Tag implements Cloneable {
 	/**
 	 * Writes some data.
 	 * 
+    * @param memoryBank
+    *          number of the memory bank (0-3)
+    * @param offset
+    *          beginning of data to read in memory bank
 	 * @param data
-	 *            The data
+	 *          The data
     * @throws HardwareException
-    *            If memory bank shorter than offset + length
+    *          If memory bank shorter than offset + length or memoryBank not
+    *          writeable
 	 */
-	public void writeData(byte[] data, int memoryBank, int offset)
+	public void writeData(int memoryBank, int offset, byte[] data)
          throws HardwareException {
+      if (!WRITE[memoryBank]) {
+         throw new HardwareException("Memory bank not writeable.");
+      }
       if (memory[memoryBank].getInternalByteArray().length < (offset + data.length)) {
          throw new HardwareException("Can not write, memory bank shorter than "
                + "offset + length.");
@@ -149,7 +256,7 @@ public class Tag implements Cloneable {
 	}
 	
    /**
-    * SWrites some data.
+    * Writes some data.
     * 
     * @param data
     *            The data

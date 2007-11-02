@@ -16,7 +16,7 @@
    <AddNewTagMenuItem>Neue Etikette hinzufügen</AddNewTagMenuItem>
    <AboutMenuItem>Über</AboutMenuItem>
    <RemoveAntennaMenuItem>Antenne entfernen</RemoveAntennaMenuItem>
-   <ChangeMemoryMenuItem>Speicher ändern</ChangeMemoryMenuItem>
+   <MemoryBanksMenuItem>Speicher-Bänke</MemoryBanksMenuItem>
    <RemoveTagMenuItem>Etikette entfernen</RemoveTagMenuItem>
    <RemoveTagsMenuItem>Etiketten entfernen</RemoveTagsMenuItem>
    <GroupTagsMenuItem>Etiketten gruppieren</GroupTagsMenuItem>
@@ -37,7 +37,10 @@
    <TagIdLabel>Etiketten Identifikation</TagIdLabel>
 
    <ChangeMemoryDialogTitle>Speicher ändern</ChangeMemoryDialogTitle>
-   <ChangeUserMemoryLabel>Benutzerspeicher</ChangeUserMemoryLabel>
+   <ReservedMemoryLabel>Reservierter Speicher</ReservedMemoryLabel>
+   <EPCMemoryLabel>EPC-Speicher</EPCMemoryLabel>
+   <TIDMemoryLabel>TID-Speicher</TIDMemoryLabel>
+   <UserMemoryLabel>Benutzer-Speicher</UserMemoryLabel>
 
    <RemoveTagDialogTitle>Etikette entfernen</RemoveTagDialogTitle>
    <RemoveTagsDialogTitle>Etiketten entfernen</RemoveTagsDialogTitle>

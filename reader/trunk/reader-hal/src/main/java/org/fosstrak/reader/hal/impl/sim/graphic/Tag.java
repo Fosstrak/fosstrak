@@ -34,15 +34,20 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.TreeSet;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
 
 import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.util.ByteBlock;
@@ -71,8 +76,10 @@ public class Tag extends JPanel implements Comparable {
 	private JPopupMenu groupedTagsContextMenu;
 	/** this antenna */
 	private final Tag thisTag = this;
-   /** the user memory field */
-   private JTextField userMemoryField;
+   /** the text fields representing memory banks */
+   private JTextField epcInputField;
+   private JTextField userInputField;
+
 
 	/** the hash set with the selected tags */
 	private TreeSet selectedTags = new TreeSet();
@@ -122,11 +129,11 @@ public class Tag extends JPanel implements Comparable {
 		});
 		singleTagContextMenu.add(removeTagContextMenuItem);
 		
-      // change user memory menu item
-      JMenuItem changeMemoryContextMenuItem = new JMenuItem(simulator.getGuiText().getString("ChangeMemoryMenuItem"));
+      // memory banks menu item
+      JMenuItem changeMemoryContextMenuItem = new JMenuItem(simulator.getGuiText().getString("MemoryBanksMenuItem"));
       changeMemoryContextMenuItem.addMouseListener(new MouseAdapter() {
          public void mouseReleased(MouseEvent e) {
-            showChangeMemoryDialog(getLocationOnScreen().x + e.getPoint().x, getLocationOnScreen().y + e.getPoint().y);
+            showMemoryBanksDialog(getLocationOnScreen().x + e.getPoint().x, getLocationOnScreen().y + e.getPoint().y);
             simulator.hideActiveContextMenu();
          }
       });
@@ -328,42 +335,155 @@ public class Tag extends JPanel implements Comparable {
 	}
 	
    /**
-    * shows the change memory dialog window
+    * shows the memory banks dialog window
     * 
     * @param x the horizontal position of the dialog window
     * @param y the vertical position of the dialog window
     */
-   private void showChangeMemoryDialog(int x, int y) {
-      final JDialog changeMemoryDialog = new JDialog();
-      changeMemoryDialog.setName(simulator.getGuiText().getString("ChangeMemoryDialogTitle"));
-      changeMemoryDialog.setTitle(simulator.getGuiText().getString("ChangeMemoryDialogTitle"));
-      changeMemoryDialog.setSize(simulator.getProperty("DialogWindowWidth"), simulator.getProperty("DialogWindowHeight"));
-      changeMemoryDialog.setLayout(new BorderLayout());
+   private void showMemoryBanksDialog(int x, int y) {
+      final JDialog memoryBanksDialog = new JDialog();
+      memoryBanksDialog.setName(simulator.getGuiText().getString("MemoryBanksDialogTitle"));
+      memoryBanksDialog.setTitle(simulator.getGuiText().getString("MemoryBanksDialogTitle"));
+      memoryBanksDialog.setSize(simulator.getProperty("DialogWindowWidth"),
+            simulator.getProperty("DialogWindowHeight") * 3 / 2);
+      memoryBanksDialog.setLayout(new BorderLayout());
       
-      if(userMemoryField == null) {
-         userMemoryField = new JTextField();
+      // create memory fields if not existent yet
+      JTextField reservedInputField = new JTextField();
+      JTextField crcpcInputField = new JTextField();
+      JTextField tidInputField = new JTextField();
+      if(epcInputField == null) {
+         epcInputField = new JTextField();
       }
+      if(userInputField == null) {
+         userInputField = new JTextField();
+      }
+      
+      // set text
       byte[] data;
+      reservedInputField.setText("read protected");
+      reservedInputField.setEditable(false);
+      try {
+         data = tag.readData(1, 0, 0);
+         if (data.length < 4) {
+            throw new HardwareException("epc memory bank too short");
+         }
+         byte[] crcpc = new byte[4];
+         System.arraycopy(data, 0, crcpc, 0, crcpc.length);
+         crcpcInputField.setText(ByteBlock.byteArrayToHexString(crcpc));
+         crcpcInputField.setEditable(false);
+         byte[] epc = new byte[data.length - 4];
+         System.arraycopy(data, 4, epc, 0, epc.length);
+         epcInputField.setText(ByteBlock.byteArrayToHexString(epc));
+      } catch (HardwareException he) {
+         crcpcInputField.setEditable(false);
+         epcInputField.setText("read failed");
+      }
+      try {
+         data = tag.readData(2, 0, 0);
+         tidInputField.setText(ByteBlock.byteArrayToHexString(data));
+         tidInputField.setEditable(false);
+      } catch (HardwareException he) {
+         tidInputField.setText("read failed");
+         tidInputField.setEditable(false);
+      }
       try {
          data = tag.readData(3, 0, 0);
+         userInputField.setText(ByteBlock.byteArrayToHexString(data));
       } catch (HardwareException he) {
-         data = new byte[] {};
+         userInputField.setText("read failed");
       }
-      userMemoryField.setText(ByteBlock.byteArrayToHexString(data));
 
-      // user memory input field
-      JLabel userMemoryLabel = new JLabel(simulator.getGuiText().getString(
-         "ChangeUserMemoryLabel") + " :");
+      // memory banks input fields
+      final int FIELDS_HEIGHT = 25;
+      final Dimension LABEL_DIMENSION = new Dimension(120, 25);
       JPanel inputFields = new JPanel();
-      inputFields.setLayout(new GridLayout(2, 2));
-      inputFields.add(userMemoryLabel);
-      inputFields.add(userMemoryField);
+      inputFields.setLayout(new BoxLayout(inputFields, BoxLayout.Y_AXIS));
 
+      inputFields.add(Box.createGlue());
+      
+      JPanel reservedFields = new JPanel();
+      reservedFields.setLayout(new BoxLayout(reservedFields, BoxLayout.X_AXIS));
+      reservedFields.setMaximumSize(new Dimension(simulator.getProperty("DialogWindowWidth") - 20, FIELDS_HEIGHT));
+      JPanel reservedLabelBox = new JPanel();
+      reservedLabelBox.setLayout(new BoxLayout(reservedLabelBox, BoxLayout.X_AXIS));
+      reservedLabelBox.setPreferredSize(LABEL_DIMENSION);
+      JLabel reservedMemoryLabel = new JLabel(simulator.getGuiText().getString(
+         "ReservedMemoryLabel"));
+      reservedLabelBox.add(reservedMemoryLabel);
+      reservedFields.add(reservedLabelBox);
+      JPanel reservedInputBox = new JPanel();
+      reservedInputBox.setLayout(new BoxLayout(reservedInputBox, BoxLayout.X_AXIS));
+      reservedInputBox.add(reservedInputField);
+      reservedFields.add(reservedInputBox);
+      inputFields.add(reservedFields);
+      
+      inputFields.add(Box.createGlue());
+      
+      JPanel epcFields = new JPanel();
+      epcFields.setLayout(new BoxLayout(epcFields, BoxLayout.X_AXIS));
+      epcFields.setMaximumSize(new Dimension(simulator.getProperty("DialogWindowWidth") - 20, FIELDS_HEIGHT));
+      JPanel epcLabelBox = new JPanel();
+      epcLabelBox.setLayout(new BoxLayout(epcLabelBox, BoxLayout.X_AXIS));
+      epcLabelBox.setPreferredSize(LABEL_DIMENSION);
+      JLabel epcMemoryLabel = new JLabel(simulator.getGuiText().getString(
+         "EPCMemoryLabel"));
+      epcLabelBox.add(epcMemoryLabel);
+      epcFields.add(epcLabelBox);
+      JPanel epcInputBox = new JPanel();
+      epcInputBox.setLayout(new BoxLayout(epcInputBox, BoxLayout.X_AXIS));
+      JPanel crcpcInputBox = new JPanel();
+      crcpcInputBox.setLayout(new BoxLayout(crcpcInputBox, BoxLayout.X_AXIS));
+      crcpcInputBox.setMaximumSize(new Dimension(FIELDS_HEIGHT * 4, FIELDS_HEIGHT));
+      crcpcInputBox.add(crcpcInputField);
+      epcInputBox.add(crcpcInputBox);
+      epcInputBox.add(epcInputField);
+      epcFields.add(epcInputBox);
+      inputFields.add(epcFields);
+      
+      inputFields.add(Box.createGlue());
+      
+      JPanel tidFields = new JPanel();
+      tidFields.setLayout(new BoxLayout(tidFields, BoxLayout.X_AXIS));
+      tidFields.setMaximumSize(new Dimension(simulator.getProperty("DialogWindowWidth") - 20, FIELDS_HEIGHT));
+      JPanel tidLabelBox = new JPanel();
+      tidLabelBox.setLayout(new BoxLayout(tidLabelBox, BoxLayout.X_AXIS));
+      tidLabelBox.setPreferredSize(LABEL_DIMENSION);
+      JLabel tidMemoryLabel = new JLabel(simulator.getGuiText().getString(
+         "TIDMemoryLabel"));
+      tidLabelBox.add(tidMemoryLabel);
+      tidFields.add(tidLabelBox);
+      JPanel tidInputBox = new JPanel();
+      tidInputBox.setLayout(new BoxLayout(tidInputBox, BoxLayout.X_AXIS));
+      tidInputBox.add(tidInputField);
+      tidFields.add(tidInputBox);
+      inputFields.add(tidFields);
+      
+      inputFields.add(Box.createGlue());
+      
+      JPanel userFields = new JPanel();
+      userFields.setLayout(new BoxLayout(userFields, BoxLayout.X_AXIS));
+      userFields.setMaximumSize(new Dimension(simulator.getProperty("DialogWindowWidth") - 20, FIELDS_HEIGHT));
+      JPanel userLabelBox = new JPanel();
+      userLabelBox.setLayout(new BoxLayout(userLabelBox, BoxLayout.X_AXIS));
+      userLabelBox.setPreferredSize(LABEL_DIMENSION);
+      JLabel userMemoryLabel = new JLabel(simulator.getGuiText().getString(
+         "UserMemoryLabel"));
+      userLabelBox.add(userMemoryLabel);
+      userFields.add(userLabelBox);
+      JPanel userInputBox = new JPanel();
+      userInputBox.setLayout(new BoxLayout(userInputBox, BoxLayout.X_AXIS));
+      userInputBox.add(userInputField);
+      userFields.add(userInputBox);
+      inputFields.add(userFields);
+      
+      inputFields.add(Box.createGlue());
+      
       // cancel button
       JButton cancelButton = new JButton(simulator.getGuiText().getString("CancelButton"));
       cancelButton.addMouseListener(new MouseAdapter() {
          public void mouseReleased(MouseEvent e) {
-            changeMemoryDialog.setVisible(false);
+            memoryBanksDialog.setVisible(false);
          }
       });
       
@@ -371,12 +491,13 @@ public class Tag extends JPanel implements Comparable {
       JButton okButton = new JButton(simulator.getGuiText().getString("OkButton"));
       okButton.addMouseListener(new MouseAdapter() {
          public void mouseReleased(MouseEvent e) {
-            changeMemoryDialog.setVisible(false);
-            if (userMemoryField.getText().length() % 2 != 0) {
-               userMemoryField.setText("0" + userMemoryField.getText());
+            memoryBanksDialog.setVisible(false);
+            tag.setTagID(epcInputField.getText());
+            if (userInputField.getText().length() % 2 != 0) {
+               userInputField.setText("0" + userInputField.getText());
             }
             try {
-               tag.setData(ByteBlock.hexStringToByteArray(userMemoryField.getText()), 3);
+               tag.setData(ByteBlock.hexStringToByteArray(userInputField.getText()), 3);
             } catch (NumberFormatException nfe) {}
          }
       });
@@ -387,11 +508,11 @@ public class Tag extends JPanel implements Comparable {
       buttons.add(cancelButton);
       
       // add elements
-      changeMemoryDialog.add(inputFields, BorderLayout.CENTER);
-      changeMemoryDialog.add(buttons, BorderLayout.SOUTH);
-      changeMemoryDialog.getRootPane().setDefaultButton(okButton);
-      changeMemoryDialog.setLocation(x, y);
-      changeMemoryDialog.setVisible(true);
+      memoryBanksDialog.add(inputFields, BorderLayout.CENTER);
+      memoryBanksDialog.add(buttons, BorderLayout.SOUTH);
+      memoryBanksDialog.getRootPane().setDefaultButton(okButton);
+      memoryBanksDialog.setLocation(x, y);
+      memoryBanksDialog.setVisible(true);
    }
    
 	/**
