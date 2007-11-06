@@ -44,6 +44,7 @@ import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
 import org.accada.reader.rprm.core.mgmt.alarm.SourceOperStatusAlarm;
 import org.accada.reader.rprm.core.mgmt.alarm.TTOperationalStatusAlarmControl;
 import org.accada.reader.rprm.core.msg.MessagingConstants;
+import org.accada.reader.rprm.core.msg.util.HexUtil;
 import org.accada.reader.rprm.core.readreport.ReadReport;
 import org.accada.reader.rprm.core.readreport.ReaderInfoType;
 import org.accada.reader.rprm.core.readreport.SourceInfoType;
@@ -2027,7 +2028,7 @@ public final class Source {
       // OTHER_FIELDS
 
       // tag field names
-      Enumeration tagFieldNameIterator = fieldNames.elements();
+      Enumeration tagFieldNameIterator = dataSelector.getTagFieldNames().elements();
       String curTagFieldName;
       String curTagFieldValue;
 
@@ -2435,9 +2436,9 @@ public final class Source {
    private String readTagField(final String tagId, final Vector closure,
          final TagField tagField) {
 
-      if (tagField.getMemoryBank() == 2) {
-         return tagId;
-      }
+//      if (tagField.getMemoryBank() == 2) {
+//         return tagId;
+//      }
 
       // closure
       Enumeration closureIterator = closure.elements();
@@ -2459,7 +2460,8 @@ public final class Source {
         				 tagField.getLength(),
         				 new String[] { }).toByteArray();
         		 increaseAntennaReadPointMemReadCount(readPointNames[i]);
-        		 return (new String(temp)).toString();
+//        		 return (new String(temp)).toString();
+             return HexUtil.byteArrayToHexString(temp);
         	 } catch (HardwareException he) {
         		 ReadPoint readPoint = (ReadPoint) readPoints.get(readPointNames[i]);
         		 if (readPoint instanceof AntennaReadPoint) {
