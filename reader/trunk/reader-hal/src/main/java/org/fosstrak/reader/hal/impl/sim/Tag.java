@@ -27,7 +27,6 @@ import java.util.Random;
 
 import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.util.ByteBlock;
-import org.accada.reader.hal.util.CRC16;
 
 
 /**
@@ -60,6 +59,16 @@ public class Tag implements Cloneable {
     */
    private static final boolean[] WRITE = new boolean[] { false, true, false,
       true };
+   
+   /**
+    * EPC memory size in bytes.
+    */
+   private static final int EPC_MEMORY_SIZE = 32;
+   
+   /**
+    * User memory size in bytes.
+    */
+   private static final int USER_MEMORY_SIZE = 32;
 	
 	/**
 	 * The ID.
@@ -85,13 +94,14 @@ public class Tag implements Cloneable {
             0x00, 0x00, 0x00 });
       
       // EPC
+      memory[1] = new ByteBlock(new byte[EPC_MEMORY_SIZE]);
 		setTagID(epc);
       
       // TID
 		setTID();
       
       // User
-		memory[3] = new ByteBlock(new byte[] { }); // no user memory
+		memory[3] = new ByteBlock(new byte[USER_MEMORY_SIZE]);
 	}
 	
 	/**
@@ -106,17 +116,26 @@ public class Tag implements Cloneable {
       memory = new ByteBlock[4];
       
       // Reserved (passwords)
-		memory[0] = new ByteBlock(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00,
+      memory[0] = new ByteBlock(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00,
             0x00, 0x00, 0x00 });
       
       // EPC
-		setTagID(epc); // EPC
+      memory[1] = new ByteBlock(new byte[EPC_MEMORY_SIZE]);
+      setTagID(epc);
       
       // TID
       setTID();
       
       // User
-		memory[3] = new ByteBlock(userMemory); // user memory
+      memory[3] = new ByteBlock(new byte[USER_MEMORY_SIZE]);
+      if (userMemory.length > USER_MEMORY_SIZE) {
+         byte[] user = new byte[USER_MEMORY_SIZE];
+         System.arraycopy(userMemory, 0, user, 0, user.length);
+         userMemory = user;
+      }
+      try {
+         writeData(3, 0, userMemory);
+      } catch (HardwareException e) {}
 	}
 	
 	/**
@@ -144,6 +163,10 @@ public class Tag implements Cloneable {
          // maximum length of PC+EPC is 32 words
          aID = aID.substring(0, 124);
       }
+      if (aID.length() > ((EPC_MEMORY_SIZE - 4) * 2)) {
+         // fit into EPC memory block
+         aID = aID.substring(0, ((EPC_MEMORY_SIZE - 4) * 2));
+      }
       this.snr = aID;
       byte[] epcbytes = ByteBlock.hexStringToByteArray(aID);
       byte[] pcepcbytes = new byte[epcbytes.length + 2];
@@ -152,14 +175,13 @@ public class Tag implements Cloneable {
       pcepcbytes[1] = (byte) (lenbits & 0xFF);
       System.arraycopy(epcbytes, 0, pcepcbytes, 2, epcbytes.length);
       int crcint = crc16(pcepcbytes);
-      byte[] crc = new byte[2];
-      crc[0] = (byte) ((crcint >> 8) & 0xFF);
-      crc[1] = (byte) (crcint & 0xFF);
       byte[] epcmemory = new byte[pcepcbytes.length + 2];
-      epcmemory[0] = crc[0];
-      epcmemory[1] = crc[1];
+      epcmemory[0] = (byte) ((crcint >> 8) & 0xFF);
+      epcmemory[1] = (byte) (crcint & 0xFF);
       System.arraycopy(pcepcbytes, 0, epcmemory, 2, pcepcbytes.length);
-      memory[1] = new ByteBlock(epcmemory);
+      try {
+         writeData(1, 0, epcmemory);
+      } catch (HardwareException e) {}
    }
    
    /**

@@ -20,14 +20,13 @@
 
 package org.accada.reader.rprm.core.msg.util;
 
-import java.math.BigInteger;
-
 import org.apache.log4j.Logger;
 
 /**
- * Utilities used for hexadecimal calculations.
+ * Utilities used for hexadecimal to byte[] and vice versa conversion and for
+ * bitarray manipulation.
  * 
- * @author Andreas Fürer, ETH Zurich Switzerland, Winter 2005/06
+ * @author Jonas Haller
  */
 public class HexUtil {
 	
@@ -35,15 +34,31 @@ public class HexUtil {
 	/**
 	 * Converts a hexadecimal value represented as String into
 	 * an array of bytes.
-	 * @param hexString The hex string
-	 * @return the representing byte array
+    * 
+	 * @param hexString
+    *          the hexadecimal string to convert
+	 * @return
+    *          the representing byte array
 	 */
 	public static byte[] hexToByteArray(String hexString) {
 		try {
 			LOG.debug("Convert HexString: " + hexString);
-			byte[] b = new BigInteger(hexString, 16).toByteArray();
-			LOG.debug("Result: " + b);
-			return b;
+
+         byte[] byteArray;
+
+         if (hexString.length() % 2 != 0) {
+            hexString = new String("0" + hexString);
+         }
+         int len = hexString.length();
+         byteArray = new byte[len/2];
+         for (int i = 0; i < len/2; i++){
+            String byteString = hexString.substring(i*2, i*2+2);
+            Integer intValue = new Integer(Integer.parseInt(byteString, 16));
+            byte byteValue = intValue.byteValue();
+            byteArray[i] = byteValue;
+         }
+
+         return byteArray;
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			return null;
@@ -51,15 +66,95 @@ public class HexUtil {
 	}
 	
 	/**
-	 * This method converts a byte array into a hexadecimal string.
+	 * Converts a byte array into a hexadecimal string.
 	 * 
-	 * @param byteArray to convert
-	 * @return hexadecimal string
+	 * @param byteArray
+    *          the byte array to convert
+	 * @return
+    *          the representing hexadecimal string
 	 */
 	public static String byteArrayToHexString(byte[] byteArray) {
 		
-		return new BigInteger(byteArray).toString(16).toUpperCase();
-				
+      StringBuffer sb = new StringBuffer();
+      String h = "0123456789ABCDEF";
+      int byteint;
+      String bytestring;
+
+      for (int i = 0; i < byteArray.length; i++) {
+         byteint = ((int) byteArray[i]) & 0xFF;
+         bytestring = "" + h.charAt((byteint & 0xF0) >> 4) +
+            h.charAt(byteint & 0x0F);
+         sb.append(bytestring);
+      }
+
+      return sb.toString();
 	}
 	
+   /**
+    * Shifts data bits left and fills insignificant bits between data bits and
+    * next byte boundaries with data from given first and last byte. This
+    * method is intended to substitute a burst of bits in a bit string.
+    * 
+    * Example:
+    *  (in bitstring "555555", replace bits 6 - 19 with ones)
+    *  data: "1FFF" = 00011111 11111111, length: 13,
+    *  shift: 5 (last bit (#19) is 5 bits from next byte boundary (#24),
+    *  first: 01010101, last: 01010101 (original bytes at start and end of
+    *     shifted data bit string).
+    *  - shift data 5 bits left: 00000011 11111111 11100000
+    *  - replace insignificant bits (the zeros in this example) with bits of
+    *       original bytes: 010101|11 11111111 111|10101 (| marks boundary
+    *       between original bits and data bits)
+    * 
+    * @param data
+    *          the bit array as hexadecimal encoded string (padded with
+    *          zero-bits before the most significant bit)
+    * @param length
+    *          the number of significant bits in the data
+    * @param shift
+    *          the amount of bits the data needs to be shifted left (0 - 7)
+    * @param first
+    *          the first original byte to fill insignificant data bits
+    * @param last
+    *          the last original byte to fill insignificant data bits
+    * @return
+    *          the shifted and filled data as byte[]
+    */
+   public static byte[] bitarrayShiftAndFill(String data, int length,
+         int shift, byte first, byte last) {
+      
+      byte[] result;
+      
+      // padding data to whole bytes
+      if ((data.length() % 2) != 0) {
+         data = "0" + data;
+      }
+      
+      // padding one more byte if shift greater than insignificant bits
+      if (shift > ((data.length() * 4) - length)) {
+         data = "00" + data;
+      }
+      
+      // get databytes and shift significant bits
+      result = hexToByteArray(data);
+      int leftmask = (0xFF << shift) & 0xFF;
+      int rightmask = leftmask ^ 0xFF;
+      for (int i = 0; i < (result.length - 1); i++) {
+         result[i] = (byte) ((((((int) result[i]) << shift) & leftmask) |
+            ((((int) result[i + 1]) >> (8 - shift)) & rightmask)) & 0xFF);
+      }
+      result[result.length - 1] = (byte) ((((int) result[result.length - 1]) <<
+            shift) & leftmask);
+      
+      // fill insignificant bits with original data
+      int leftbits = (8 - ((shift + length) % 8)) % 8;
+      int firstleftmask = (0xFF << (8 - leftbits)) & 0xFF; // new left mask
+      int inverseleftmask = firstleftmask ^ 0xFF;
+      result[0] = (byte) (((int) result[0] & inverseleftmask) |
+            ((int) first & firstleftmask));
+      result[result.length - 1] = (byte) (((int) result[result.length - 1] &
+            leftmask) | ((int) last & rightmask));
+      
+      return result;
+   }
 }

@@ -25,7 +25,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
@@ -34,20 +33,17 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
-import javax.swing.border.BevelBorder;
 
 import org.accada.reader.hal.HardwareException;
 import org.accada.reader.hal.util.ByteBlock;
@@ -78,7 +74,9 @@ public class Tag extends JPanel implements Comparable {
 	private final Tag thisTag = this;
    /** the text fields representing memory banks */
    private JTextField epcInputField;
+   private String epcInputFieldBefore;
    private JTextField userInputField;
+   private String userInputFieldBefore;
 
 
 	/** the hash set with the selected tags */
@@ -370,15 +368,20 @@ public class Tag extends JPanel implements Comparable {
          }
          byte[] crcpc = new byte[4];
          System.arraycopy(data, 0, crcpc, 0, crcpc.length);
+         int epclen = ((((int) crcpc[2]) & 0xFF) >> 3) * 2;
          crcpcInputField.setText(ByteBlock.byteArrayToHexString(crcpc));
          crcpcInputField.setEditable(false);
-         byte[] epc = new byte[data.length - 4];
+         if (epclen > (data.length - 4)) {
+            throw new HardwareException("epc shorter than declared in PC bits");
+         }
+         byte[] epc = new byte[epclen];
          System.arraycopy(data, 4, epc, 0, epc.length);
          epcInputField.setText(ByteBlock.byteArrayToHexString(epc));
       } catch (HardwareException he) {
          crcpcInputField.setEditable(false);
          epcInputField.setText("read failed");
       }
+      epcInputFieldBefore = epcInputField.getText();
       try {
          data = tag.readData(2, 0, 0);
          tidInputField.setText(ByteBlock.byteArrayToHexString(data));
@@ -393,15 +396,16 @@ public class Tag extends JPanel implements Comparable {
       } catch (HardwareException he) {
          userInputField.setText("read failed");
       }
+      userInputFieldBefore = userInputField.getText();
 
       // memory banks input fields
       final int FIELDS_HEIGHT = 25;
       final Dimension LABEL_DIMENSION = new Dimension(120, 25);
       JPanel inputFields = new JPanel();
       inputFields.setLayout(new BoxLayout(inputFields, BoxLayout.Y_AXIS));
-
+      // glue
       inputFields.add(Box.createGlue());
-      
+      // reserved memory
       JPanel reservedFields = new JPanel();
       reservedFields.setLayout(new BoxLayout(reservedFields, BoxLayout.X_AXIS));
       reservedFields.setMaximumSize(new Dimension(simulator.getProperty("DialogWindowWidth") - 20, FIELDS_HEIGHT));
@@ -417,9 +421,9 @@ public class Tag extends JPanel implements Comparable {
       reservedInputBox.add(reservedInputField);
       reservedFields.add(reservedInputBox);
       inputFields.add(reservedFields);
-      
+      // glue
       inputFields.add(Box.createGlue());
-      
+      // epc memory
       JPanel epcFields = new JPanel();
       epcFields.setLayout(new BoxLayout(epcFields, BoxLayout.X_AXIS));
       epcFields.setMaximumSize(new Dimension(simulator.getProperty("DialogWindowWidth") - 20, FIELDS_HEIGHT));
@@ -440,9 +444,9 @@ public class Tag extends JPanel implements Comparable {
       epcInputBox.add(epcInputField);
       epcFields.add(epcInputBox);
       inputFields.add(epcFields);
-      
+      // glue
       inputFields.add(Box.createGlue());
-      
+      // tid memory
       JPanel tidFields = new JPanel();
       tidFields.setLayout(new BoxLayout(tidFields, BoxLayout.X_AXIS));
       tidFields.setMaximumSize(new Dimension(simulator.getProperty("DialogWindowWidth") - 20, FIELDS_HEIGHT));
@@ -458,9 +462,9 @@ public class Tag extends JPanel implements Comparable {
       tidInputBox.add(tidInputField);
       tidFields.add(tidInputBox);
       inputFields.add(tidFields);
-      
+      // glue
       inputFields.add(Box.createGlue());
-      
+      // user memory
       JPanel userFields = new JPanel();
       userFields.setLayout(new BoxLayout(userFields, BoxLayout.X_AXIS));
       userFields.setMaximumSize(new Dimension(simulator.getProperty("DialogWindowWidth") - 20, FIELDS_HEIGHT));
@@ -476,7 +480,7 @@ public class Tag extends JPanel implements Comparable {
       userInputBox.add(userInputField);
       userFields.add(userInputBox);
       inputFields.add(userFields);
-      
+      // glue
       inputFields.add(Box.createGlue());
       
       // cancel button
@@ -492,13 +496,17 @@ public class Tag extends JPanel implements Comparable {
       okButton.addMouseListener(new MouseAdapter() {
          public void mouseReleased(MouseEvent e) {
             memoryBanksDialog.setVisible(false);
-            tag.setTagID(epcInputField.getText());
+            if (!epcInputField.getText().equals(epcInputFieldBefore)) {
+               tag.setTagID(epcInputField.getText());
+            }
             if (userInputField.getText().length() % 2 != 0) {
                userInputField.setText("0" + userInputField.getText());
             }
-            try {
-               tag.setData(ByteBlock.hexStringToByteArray(userInputField.getText()), 3);
-            } catch (NumberFormatException nfe) {}
+            if (!userInputField.getText().equals(userInputFieldBefore)) {
+               try {
+                  tag.setData(ByteBlock.hexStringToByteArray(userInputField.getText()), 3);
+               } catch (NumberFormatException nfe) {}
+            }
          }
       });
       
