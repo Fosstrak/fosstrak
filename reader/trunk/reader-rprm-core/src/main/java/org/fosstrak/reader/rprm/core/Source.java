@@ -1601,13 +1601,38 @@ public final class Source {
             	   while (tagFieldIterator.hasMoreElements()) {
             		   curTagFieldValue = (TagFieldValue) tagFieldIterator.nextElement();
             		   try {
-            			   reader.writeBytes(
-            					   readPointNames[i],
-            					   curTag.getId(),
-            					   curTagFieldValue.getTagField().getMemoryBank(),
-            					   curTagFieldValue.getTagField().getOffset(),
-            					   new UnsignedByteArray(curTagFieldValue.getValue().getBytes()),
-            					   passwords);
+                        // assemble byte array to write
+                        String readPointName = readPointNames[i];
+                        String id = curTag.getId();
+                        int memoryBank = curTagFieldValue.getTagField().getMemoryBank();
+                        int offset = curTagFieldValue.getTagField().getOffset();
+                        int length = curTagFieldValue.getTagField().getLength();
+                        String data = curTagFieldValue.getValue();
+                        int byteoffset = offset / 8;
+                        int bytelength = ((offset % 8) + length + 7) / 8;
+                        int shift = (8 - ((offset + length) % 8)) % 8;
+                        byte first;
+                        if ((offset % 8) == 0) {
+                           first = 0x00;
+                        } else {
+                           first = reader.readBytes(readPointName, id,
+                                 memoryBank, byteoffset, 1, passwords)
+                                 .toByteArray()[0];
+                        }
+                        byte last;
+                        if (shift == 0) {
+                           last = 0x00;
+                        } else if (bytelength == 1) {
+                           last = first;
+                        } else {
+                           last = reader.readBytes(readPointName, id,
+                                 memoryBank, (byteoffset + bytelength - 1), 1,
+                                 passwords).toByteArray()[0];
+                        }
+                        byte[] bytes = HexUtil.bitarrayShiftAndFill(data,
+                              length, shift, first, last);
+            			   reader.writeBytes(readPointName, id, memoryBank,
+                              byteoffset, new UnsignedByteArray(bytes), passwords);
             			   increaseAntennaReadPointWriteCount(readPointNames[i]);
             		   } catch (HardwareException he) {
             			   ReadPoint readPoint = (ReadPoint) readPoints.get(readPointNames[i]);

@@ -3020,8 +3020,8 @@ public class CommandDispatcher {
 			org.accada.reader.rprm.core.msg.command.TagFieldValueParamType tfvPair = (org.accada.reader.rprm.core.msg.command.TagFieldValueParamType) it
 					.next();
 			TagField tf = readerDevice.getTagField(tfvPair.getTagFieldName());
-			TagFieldValue tfvItem = new TagFieldValue(tf, new String(tfvPair
-					.getTagFieldValue()));
+			TagFieldValue tfvItem = new TagFieldValue(tf, HexUtil.
+               byteArrayToHexString(tfvPair.getTagFieldValue()));
 			tfvArray[index] = tfvItem;
 			index++;
 		}
