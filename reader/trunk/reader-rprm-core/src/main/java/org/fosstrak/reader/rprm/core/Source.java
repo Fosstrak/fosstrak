@@ -1607,7 +1607,8 @@ public final class Source {
                         int memoryBank = curTagFieldValue.getTagField().getMemoryBank();
                         int offset = curTagFieldValue.getTagField().getOffset();
                         int length = curTagFieldValue.getTagField().getLength();
-                        String data = curTagFieldValue.getValue();
+                        byte[] data = HexUtil.hexToByteArray(curTagFieldValue.
+                              getValue());
                         int byteoffset = offset / 8;
                         int bytelength = ((offset % 8) + length + 7) / 8;
                         int shift = (8 - ((offset + length) % 8)) % 8;
@@ -2461,10 +2462,6 @@ public final class Source {
    private String readTagField(final String tagId, final Vector closure,
          final TagField tagField) {
 
-//      if (tagField.getMemoryBank() == 2) {
-//         return tagId;
-//      }
-
       // closure
       Enumeration closureIterator = closure.elements();
       ReaderAndReadPoints curClosure;
@@ -2476,17 +2473,37 @@ public final class Source {
          String[] readPointNames = curClosure.getAllReadPointsAsArray();
          for (int i = 0; i < readPointNames.length; i++) {
         	 try {
-        		 byte[] temp;
-        		 temp = reader.readBytes(
+        		 byte[] memory;
+             // calculate byte borders
+             int offset = tagField.getOffset();
+             int length = tagField.getLength();
+             int byteoffset = offset / 8;
+             int bytelength = ((offset % 8) + length + 7) / 8;
+             // read
+             memory = reader.readBytes(
         				 readPointNames[i],
         				 tagId,
         				 tagField.getMemoryBank(),
-        				 tagField.getOffset(),
-        				 tagField.getLength(),
+        				 byteoffset,
+        				 bytelength,
         				 new String[] { }).toByteArray();
         		 increaseAntennaReadPointMemReadCount(readPointNames[i]);
-//        		 return (new String(temp)).toString();
-             return HexUtil.byteArrayToHexString(temp);
+        		 // extract requested bits
+             int shift = (offset + length) % 8;
+             byte[] cutmemory;
+             if (shift != 0) {
+                int shiftlength = bytelength * 8 - (offset % 8);
+                byte[] shiftedmemory = HexUtil.bitarrayShiftAndFill(memory,
+                      shiftlength, shift, (byte) 0x00, (byte) 0x00);
+                cutmemory = new byte[shiftedmemory.length - 1];
+                System.arraycopy(shiftedmemory, 0, cutmemory, 0, cutmemory.length);
+             } else {
+                cutmemory = memory;
+                int leftmask = 0xFF >> ((8 - (length % 8)) % 8);
+                cutmemory[0] &= leftmask; 
+             }
+             // create string representation
+             return HexUtil.byteArrayToHexString(cutmemory);
         	 } catch (HardwareException he) {
         		 ReadPoint readPoint = (ReadPoint) readPoints.get(readPointNames[i]);
         		 if (readPoint instanceof AntennaReadPoint) {
