@@ -96,8 +96,8 @@ public class HexUtil {
     * method is intended to substitute a burst of bits in a bit string.
     * 
     * Example:
-    *  (in bitstring "555555", replace bits 6 - 19 with ones)
-    *  data: "1FFF" = 00011111 11111111, length: 13,
+    *  (in bitstring 0x555555, replace bits 6 - 19 with ones)
+    *  data: 0x1FFF = 00011111 11111111, length: 13,
     *  shift: 5 (last bit (#19) is 5 bits from next byte boundary (#24),
     *  first: 01010101, last: 01010101 (original bytes at start and end of
     *     shifted data bit string).
@@ -106,9 +106,33 @@ public class HexUtil {
     *       original bytes: 010101|11 11111111 111|10101 (| marks boundary
     *       between original bits and data bits)
     * 
+    * Example preparation code to get shift value and if necessary first and
+    * last byte from a byte array with given bit offset and bit length:
+    *  int byteoffset = offset / 8;
+    *  int bytelength = ((offset % 8) + length + 7) / 8;
+    *  int shift = (8 - ((offset + length) % 8)) % 8;
+    *  byte first;
+    *  if ((offset % 8) == 0) {
+    *     first = 0x00;
+    *  } else {
+    *     first = reader.readBytes(readPointName, id,
+    *           memoryBank, byteoffset, 1, passwords)
+    *           .toByteArray()[0];
+    *  }
+    *  byte last;
+    *  if (shift == 0) {
+    *     last = 0x00;
+    *  } else if (bytelength == 1) {
+    *     last = first;
+    *  } else {
+    *     last = reader.readBytes(readPointName, id,
+    *           memoryBank, (byteoffset + bytelength - 1), 1,
+    *           passwords).toByteArray()[0];
+    *  }
+    * 
     * @param data
-    *          the bit array as hexadecimal encoded string (padded with
-    *          zero-bits before the most significant bit)
+    *          the bit array as byte array (padded with zero-bits before the
+    *          most significant bit)
     * @param length
     *          the number of significant bits in the data
     * @param shift
@@ -120,23 +144,22 @@ public class HexUtil {
     * @return
     *          the shifted and filled data as byte[]
     */
-   public static byte[] bitarrayShiftAndFill(String data, int length,
+   public static byte[] bitarrayShiftAndFill(byte[] data, int length,
          int shift, byte first, byte last) {
       
       byte[] result;
       
-      // padding data to whole bytes
-      if ((data.length() % 2) != 0) {
-         data = "0" + data;
-      }
-      
-      // padding one more byte if shift greater than insignificant bits
-      if (shift > ((data.length() * 4) - length)) {
-         data = "00" + data;
+      if (shift > ((data.length * 8) - length)) {
+         // padding one more byte if shift greater than insignificant bits
+         result = new byte[data.length + 1];
+         result[0] = (byte) 0x00;
+         System.arraycopy(data, 0, result, 1, data.length);
+      } else {
+         result = new byte[data.length];
+         System.arraycopy(data, 0, result, 0, data.length);
       }
       
       // get databytes and shift significant bits
-      result = hexToByteArray(data);
       int leftmask = (0xFF << shift) & 0xFF;
       int rightmask = leftmask ^ 0xFF;
       for (int i = 0; i < (result.length - 1); i++) {
