@@ -65,7 +65,9 @@ public final class ResourceLocator {
       }
 
       // try standard locate
-      url = locate(resourceFileName, loader, caller);
+      if (url == null) {
+         url = locate(resourceFileName, loader, caller);
+      }
 
       // try absolute file path
       if (url == null) {
@@ -266,10 +268,18 @@ public final class ResourceLocator {
          }
          if (url == null) {
             urlstring = "jar:" + codesourcelocation + "!" + defaultResourceFileName;
+            boolean exists;
             try {
-               url = new URL(urlstring);
+               exists = (new File(new URI(urlstring))).exists();
             } catch (Exception e) {
-               url = null;
+               exists = false;
+            }
+            if (exists) {
+               try {
+                  url = new URL(urlstring);
+               } catch (Exception e) {
+                  url = null;
+               }
             }
          }
       } else {
