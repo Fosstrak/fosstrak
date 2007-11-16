@@ -33,11 +33,16 @@ import org.accada.reader.hal.AsynchronousIdentifyListener;
 import org.accada.reader.hal.ControllerProperties;
 import org.accada.reader.hal.HardwareAbstraction;
 import org.accada.reader.hal.HardwareException;
+import org.accada.reader.hal.MemoryBankDescriptor;
+import org.accada.reader.hal.MemoryDescriptor;
 import org.accada.reader.hal.Observation;
 import org.accada.reader.hal.ReadPointNotFoundException;
+import org.accada.reader.hal.TagDescriptor;
 import org.accada.reader.hal.Trigger;
 import org.accada.reader.hal.UnsignedByteArray;
 import org.accada.reader.hal.UnsupportedOperationException;
+import org.accada.reader.hal.transponder.EPCTransponderModel;
+import org.accada.reader.hal.util.ByteBlock;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -103,11 +108,12 @@ public class SimulatorController implements HardwareAbstraction {
 	private String simType;
 	
 	/**
-	 * Properties file for simulator to be loaded.
+	 * Properties file for simulator to be loaded and transponder models.
 	 */
 	private String simTypePropFile;
    private String simTypeDefaultPropFile;
-	
+   private String epcTransponderModelsConfig;
+
 	/**
 	 * The Simulator.
 	 * 
@@ -224,6 +230,8 @@ public class SimulatorController implements HardwareAbstraction {
 			simType = props.getParameter("simType");
 			simTypePropFile = props.getParameter("simTypePropFile");
          simTypeDefaultPropFile = props.getParameter("simTypeDefaultPropFile");
+         epcTransponderModelsConfig = props.getParameter(
+         "epcTransponderModelsConfig");
 			
 			nOfReadPoints = Integer.parseInt(props.getParameter("numberOfReadPoints"));
 			readPointNames = new String[nOfReadPoints];
@@ -372,12 +380,39 @@ public class SimulatorController implements HardwareAbstraction {
          int len = v.size();
          String v_arr[] = new String[len];
          v_arr = v.toArray(v_arr);
+         TagDescriptor[] td_arr = new TagDescriptor[v_arr.length];
+         for (int j = 0; j < td_arr.length; j++) {
+            // TODO exact id type string for epc tags?
+            String idType = "EPC";
+            byte[] accada_sim_tid_bytes = ByteBlock.hexStringToByteArray("E2FFF000");
+            EPCTransponderModel tagModel = EPCTransponderModel.getEpcTrasponderModel(
+                  accada_sim_tid_bytes, epcTransponderModelsConfig);
+            MemoryBankDescriptor[] memoryBankDescriptors =
+               new MemoryBankDescriptor[4];
+            memoryBankDescriptors[0] = new MemoryBankDescriptor(
+               tagModel.getReservedSize(), tagModel.getReservedReadable(),
+               tagModel.getReservedWriteable());
+            memoryBankDescriptors[1] = new MemoryBankDescriptor(
+                  tagModel.getEpcSize(), tagModel.getEpcReadable(),
+                  tagModel.getEpcWriteable());
+            memoryBankDescriptors[2] = new MemoryBankDescriptor(
+                  tagModel.getTidSize(), tagModel.getTidReadable(),
+                  tagModel.getTidWriteable());
+            memoryBankDescriptors[3] = new MemoryBankDescriptor(
+                  tagModel.getUserSize(), tagModel.getUserReadable(),
+                  tagModel.getUserWriteable());
+            MemoryDescriptor memoryDescriptor = new MemoryDescriptor(
+                  memoryBankDescriptors); 
+            td_arr[j] = new TagDescriptor(idType, memoryDescriptor);
+         }
+         observations[i].setTagDescriptors(td_arr);
 			observations[i].setIds(v_arr);
 			observations[i].setTimestamp(System.currentTimeMillis());
 			
 			if (!readyReadPoints.contains(readPointNames[i])) {
 				log.error("Read point \"" + readPointNames[i] + "\" is not ready.");
 				observations[i].setIds(new String[0]);
+            observations[i].setTagDescriptors(new TagDescriptor[0]);
 				observations[i].successful = false;
 			} else if (continuousIdentifyErrors.contains(readPointNames[i])) {
 				observations[i].successful = false;

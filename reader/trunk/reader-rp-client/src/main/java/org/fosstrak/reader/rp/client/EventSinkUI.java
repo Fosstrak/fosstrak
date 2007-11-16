@@ -30,6 +30,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.DataInputStream;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -131,24 +132,31 @@ public class EventSinkUI extends JFrame implements ActionListener {
 	}
 	
 	public void run() {
-		try {
-			ServerSocket ss = new ServerSocket(port);
-			while(true) {
-				Socket s = ss.accept();
-//				DataInputStream in = new DataInputStream( s.getInputStream());
-				BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-
-				String data = in.readLine();
-				while(data != null) {
-					inText.append(data + "\n");
-					data = in.readLine();
-					inText.setCaretPosition(inText.getText().length());
-				}
-			}
-		} catch (Exception e) {
-			inText.append("\nERROR: " + e.getMessage());
-			System.out.println(e.getMessage());
-		}
+		ServerSocket ss = null;
+      try {
+         ss = new ServerSocket(port);
+   		while(true) {
+            try {
+   				Socket s = ss.accept();
+//             DataInputStream in = new DataInputStream( s.getInputStream());
+   				BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+   
+   				String data = in.readLine();
+   				while(data != null) {
+   					inText.append(data + "\n");
+   					data = in.readLine();
+   					inText.setCaretPosition(inText.getText().length());
+   				}
+            } catch (Exception e) {
+               inText.append("\nERROR: " + e.getMessage());
+               System.out.println(e.getMessage());
+            }
+   		}
+      } catch (IOException e1) {
+         inText.append("\nERROR: creating ServerSocket on Port " + port +
+               " failed.");
+         System.out.println(e1.getMessage());
+      }
 	}
 	
 	//---------- EVENT HANDLERS -------------
