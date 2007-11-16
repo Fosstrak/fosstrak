@@ -9,6 +9,7 @@
    <!-- <simType>org.accada.reader.hal.impl.sim.SimulatorClient</simType> -->
    <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
    <simTypeDefaultPropFile>/props/GraphicSimulator_default.xml</simTypeDefaultPropFile>
+   <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
 
    <!-- Read point definition -->
    <numberOfReadPoints>4</numberOfReadPoints>
