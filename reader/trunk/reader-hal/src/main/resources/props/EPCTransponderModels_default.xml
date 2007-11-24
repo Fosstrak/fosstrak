@@ -10,6 +10,7 @@
       <type>EPCclass1Gen2</type>
       <manufacturer>Impinj</manufacturer>
       <modelName>Monza</modelName>
+      <modelID>0x040</modelID>
       <modelID>0x050</modelID>
       <modelID>0x070</modelID>
       <modelID>0x071</modelID>
@@ -112,7 +113,8 @@
       <type>EPCclass1Gen2</type>
       <manufacturer>NXP</manufacturer>
       <modelName>UCODE_EPC_G2</modelName>
-      <modelID>0x??1</modelID>
+      <modelID>0x001</modelID>
+      <modelID>0x002</modelID>
       <reservedSize>8</reservedSize>
       <reservedRead>false</reservedRead>
       <reservedWrite>false</reservedWrite>
@@ -132,7 +134,7 @@
       <type>EPCclass1Gen2</type>
       <manufacturer>NXP</manufacturer>
       <modelName>UCODE_G2XM</modelName>
-      <modelID>0x??2</modelID>
+      <modelID>0x003</modelID>
       <reservedSize>8</reservedSize>
       <reservedRead>false</reservedRead>
       <reservedWrite>false</reservedWrite>
@@ -152,7 +154,7 @@
       <type>EPCclass1Gen2</type>
       <manufacturer>NXP</manufacturer>
       <modelName>UCODE_G2XL</modelName>
-      <modelID>0x??3</modelID>
+      <modelID>0x004</modelID>
       <reservedSize>8</reservedSize>
       <reservedRead>false</reservedRead>
       <reservedWrite>false</reservedWrite>
@@ -256,8 +258,8 @@
 
    <manufacturer>
       <name>NXP</name>
-      <classIdentifier>0x??</classIdentifier>
-      <maskDesignerIdentifier>0x???</maskDesignerIdentifier>
+      <classIdentifier>0xE2</classIdentifier>
+      <maskDesignerIdentifier>0x006</maskDesignerIdentifier>
    </manufacturer>
 
    <manufacturer>
