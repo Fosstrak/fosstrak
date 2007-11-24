@@ -31,8 +31,8 @@ public enum TransponderType {
 	public int dataSize() { return dataSize; }
 	
 	public static TransponderType getType(byte trType) {
-		int typeno = ByteBlock.byteToNumber(trType) & 0x3f;
-		for(TransponderType t : TransponderType.values()) {
+      int typeno = ByteBlock.byteToNumber(trType) & 0xff;
+      for(TransponderType t : TransponderType.values()) {
 			if (t.code == typeno)
 				return t;
 		}
