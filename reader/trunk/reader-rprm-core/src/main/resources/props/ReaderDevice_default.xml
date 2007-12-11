@@ -21,7 +21,7 @@
       <readers>
          <reader>
             <name>SimulatorController</name>
-            <class>org.accada.reader.hal.impl.sim.SimulatorController</class>
+            <class>org.accada.hal.impl.sim.SimulatorController</class>
             <properties>/props/SimulatorController.xml</properties>
             <defaultProperties>/props/SimulatorController_default.xml</defaultProperties>
             <readpoint>Shelf1</readpoint>

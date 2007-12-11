@@ -17,7 +17,6 @@
   <!-- =========================================================== -->
 
   <modules>
-    <module>reader-hal</module>
     <module>reader-rprm-core</module>
     <module>reader-rp-proxy</module>
     <module>reader-rp-client</module>

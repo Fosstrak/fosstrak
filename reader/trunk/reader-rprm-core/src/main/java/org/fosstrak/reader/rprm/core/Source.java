@@ -34,10 +34,10 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.Vector;
 
-import org.accada.reader.hal.HardwareAbstraction;
-import org.accada.reader.hal.UnsignedByteArray;
-import org.accada.reader.hal.HardwareException;
-import org.accada.reader.hal.Observation;
+import org.accada.hal.HardwareAbstraction;
+import org.accada.hal.UnsignedByteArray;
+import org.accada.hal.HardwareException;
+import org.accada.hal.Observation;
 import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
 import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;

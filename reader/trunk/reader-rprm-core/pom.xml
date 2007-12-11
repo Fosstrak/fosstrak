@@ -72,8 +72,23 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.accada.reader</groupId>
-      <artifactId>reader-hal</artifactId>
+      <groupId>org.accada.hal</groupId>
+      <artifactId>hal-commons</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.accada.hal</groupId>
+      <artifactId>hal-impl-sim</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.accada.hal</groupId>
+      <artifactId>hal-impl-impinj</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.accada.hal</groupId>
+      <artifactId>hal-impl-feig</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

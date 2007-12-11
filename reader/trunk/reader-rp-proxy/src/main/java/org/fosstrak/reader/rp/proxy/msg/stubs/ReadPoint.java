@@ -22,7 +22,7 @@ package org.accada.reader.rp.proxy.msg.stubs;
 
 import org.accada.reader.rprm.core.ReaderDevice;
 import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.hal.HardwareAbstraction;
+import org.accada.hal.HardwareAbstraction;
 
 /**
  * This class represents a readpoint. This means a single antenna, a barcode
