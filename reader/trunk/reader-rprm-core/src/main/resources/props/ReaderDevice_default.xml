@@ -23,7 +23,6 @@
             <name>SimulatorController</name>
             <class>org.accada.hal.impl.sim.SimulatorController</class>
             <properties>/props/SimulatorController.xml</properties>
-            <defaultProperties>/props/SimulatorController_default.xml</defaultProperties>
             <readpoint>Shelf1</readpoint>
             <readpoint>Shelf2</readpoint>
             <readpoint>Shelf3</readpoint>

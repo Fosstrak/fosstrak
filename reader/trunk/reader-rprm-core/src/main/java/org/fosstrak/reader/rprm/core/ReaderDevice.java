@@ -77,10 +77,10 @@ public class ReaderDevice {
    private static Logger log = Logger.getLogger(ReaderDevice.class);
 
    /**
-    * The path of the property file.
+    * The path of the default configuration file.
     */
-   public static final String PROPERTIES_FILE = "/props/ReaderDevice.xml";
    public static final String DEFAULT_PROPERTIES_FILE = "/props/ReaderDevice_default.xml";
+   public static String PROPERTIES_FILE = "/props/ReaderDevice.xml";
 
    /**
     * The current data selector.
@@ -1163,13 +1163,11 @@ public class ReaderDevice {
             // reflection
             String rClass = readerConf.getString(key + ".class");
             String prop = readerConf.getString(key + ".properties");
-            String defaultprop = readerConf.getString(key +
-                  ".defaultProperties", null); 
             try {
                Class cls = Class.forName(rClass);
-               Class[] partypes = new Class[] {String.class, String.class, String.class};
+               Class[] partypes = new Class[] {String.class, String.class};
                Constructor ct = cls.getConstructor(partypes);
-               Object[] arglist = new Object[] {readerName, prop, defaultprop};
+               Object[] arglist = new Object[] {readerName, prop};
                HardwareAbstraction ha = (HardwareAbstraction) ct
                      .newInstance(arglist);
                readers.put(readerName, ha);
@@ -2096,6 +2094,9 @@ public class ReaderDevice {
 	 *            Not used
 	 */
 	public static void main(String[] args) {
+		if (args.length == 1) {
+			PROPERTIES_FILE = args[0];
+		}
 		MessageLayer m = new MessageLayer();
 	}
 }
