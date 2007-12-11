@@ -6,7 +6,7 @@
   <!-- =========================================================== -->
 
   <groupId>org.accada.hal</groupId>
-  <artifactId>hal-commons</artifactId>
+  <artifactId>hal-impl-feig</artifactId>
   <version>0.4.0-SNAPSHOT</version>
   <parent>
     <artifactId>hal</artifactId>
@@ -15,7 +15,7 @@
   </parent>
   <packaging>jar</packaging>
   <modelVersion>4.0.0</modelVersion>
-  <name>hal-commons</name>
+  <name>hal-impl-feig</name>
 
 
   <!-- =========================================================== -->
@@ -85,6 +85,11 @@
       <groupId>commons-configuration</groupId>
       <artifactId>commons-configuration</artifactId>
       <version>1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.accada.hal</groupId>
+      <artifactId>hal-commons</artifactId>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
 

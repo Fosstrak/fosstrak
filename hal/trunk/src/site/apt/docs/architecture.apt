@@ -1,0 +1,65 @@
+              -------------------
+              Architecture
+              -------------------
+              Jonas Haller, TODO
+              -------------------
+              11.12.2007
+              -------------------
+
+
+Architecture
+
+  The following sections describe the technical specification of Accada's HAL
+  interface and implementation. It is intended as an introduction to future
+  developers.
+
+
+* Contents
+
+  [[1]] {{{#Introduction}Introduction}}
+
+  [[1]] {{{#Architectural%20Overview}Architectural Overview}}
+
+  [[1]] {{{#HAL%20Interface}HAL Interface}}
+
+
+* {Introduction}
+
+  The goal of EPCIS is to enable applications to incorporate EPC-related data
+  into their businesses. It provides means to store EPC data persistently and
+  offers a framework to add data to a repository as well as query it. The EPCIS
+  specification describes a standard interface for accessing EPC-related
+  information and thus leverages an EPC-related data sharing accross
+  applications.
+
+  Accada's EPCIS implementation is not intended to provide a reference
+  implementation but an entry point to allow rapid prototyping. Our software
+  has evolved over several semester and lab projects at the Distributed
+  Systems Group {{{#[2]}[2]}} at ETH Zurich and is under continous development.
+
+
+* {Architectural Overview}
+
+  The following figure gives an overview of the EPCIS architecture.
+
+[../images/epcis_architecture.png] architectural overview
+
+  The architectural style is client server. A client is either an EPCIS Capture
+  Application or an EPCIS Query Application or both. The server is an EPCIS
+  Repository providing several interfaces to which clients may connect. The
+  Repository parses client requests and processes them by accessing the
+  relational database. The transport protocols used are XML over HTTP and SOAP
+  over HTTP.
+
+  In the following sections we describe the Repository and the Client
+  Applications in detail.
+
+
+* {HAL Interface}
+
+  ...
+
+
+* References
+
+  {[1]} <Distributed Systems Groups, ETH Zurich>, {{http://www.vs.inf.ethz.ch/}}
