@@ -2,9 +2,9 @@ package org.accada.reader.rprm.core;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.hal.HardwareException;
-import org.accada.reader.hal.ReadPointNotFoundException;
-import org.accada.reader.hal.UnsupportedOperationException;
+import org.accada.hal.HardwareException;
+import org.accada.hal.ReadPointNotFoundException;
+import org.accada.hal.UnsupportedOperationException;
 import org.accada.reader.rprm.core.ReadPoint;
 import org.accada.reader.rprm.core.ReaderDevice;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;

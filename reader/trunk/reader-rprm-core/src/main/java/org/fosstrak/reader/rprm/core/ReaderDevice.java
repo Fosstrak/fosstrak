@@ -30,7 +30,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.accada.reader.hal.HardwareAbstraction;
+import org.accada.hal.HardwareAbstraction;
 import org.accada.reader.rprm.core.mgmt.IOPort;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
 import org.accada.reader.rprm.core.mgmt.agent.MgmtAgent;

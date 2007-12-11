@@ -11,7 +11,7 @@ import org.accada.reader.rprm.core.ReaderDevice;
 import org.accada.reader.rprm.core.ReaderProtocolException;
 import org.accada.reader.rprm.core.Source;
 import org.accada.reader.rprm.core.Source.ReaderAndReadPoints;
-import org.accada.reader.hal.HardwareAbstraction;
+import org.accada.hal.HardwareAbstraction;
 import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
 import org.accada.reader.rprm.core.mgmt.OperationalStatus;
 import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
