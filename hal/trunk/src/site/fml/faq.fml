@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<faqs title="Accada HAL - Frequently Asked Questions">
+
+<part id="about">
+
+<faq>
+<question>What is HAL?</question>
+<answer>HAL is a software layer to abstract different reader hardware to a common interface.</answer>
+</faq>
+
+<faq>
+<question>Can I contribute to this project even, if I am not part of the Auto-ID Labs?</question>
+<answer>Yes. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.</answer>
+</faq>
+
+</part>
+</faqs>

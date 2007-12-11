@@ -18,14 +18,13 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal;
+package org.accada.hal;
 
-import org.accada.reader.hal.Observation;
-import org.accada.reader.hal.UnsignedByteArray;
-import org.accada.reader.hal.Trigger;
-import org.accada.reader.hal.MemoryBankDescriptor;
-import org.accada.reader.hal.HardwareException;
-import org.accada.reader.hal.UnsupportedOperationException;
+import org.accada.hal.Observation;
+import org.accada.hal.UnsignedByteArray;
+import org.accada.hal.Trigger;
+import org.accada.hal.HardwareException;
+import org.accada.hal.UnsupportedOperationException;
 
 
 /**

@@ -22,7 +22,7 @@ In order to work on the Accada HAL module using Eclipse, please follow these ins
       mvn -Declipse.workspace=<path-to-eclipse-workspace> eclipse:add-maven-repo
 
 
-2. In the "reader" directory, run the following command:
+2. In the "hal" directory, run the following command:
 
       mvn eclipse:eclipse
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Properties file for Feig i-scan UHF readers using a TCP/IP connection -->
+<!-- Reader: Feig Long Range Reader OBID i-scan ID ISC.LRU1000 (TCP/IP) -->
+<properties>
+
+   <!-- Address of the reader -->
+   <!-- Value: address (string) -->
+   <address>129.132.75.246</address>
+
+   <!-- The port the reader is listening -->
+   <!-- Value: port number between 0 and 65525 -->
+   <port>10001</port>
+
+   <!-- The communication timeout in milliseconds -->
+   <!-- Value: timeout (integer value) -->
+   <timeout>5000</timeout>
+
+   <!-- Configuration file with the transponder model configuration -->
+   <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
+
+   <!-- List of readpoints that represent specific antennas
+        The name of the readpoint can be chosen arbitrary but it must be unique.
+        The connector of the readpoint is the number of the channel the antenna is connected to.
+        The connector number is an integer in the range 1 to 4. -->
+   <readpoint>
+      <name>Antenna</name>
+      <connector>1</connector>
+   </readpoint>
+
+</properties>

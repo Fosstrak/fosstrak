@@ -1,0 +1,246 @@
+              -------------------
+              Simulator Configuration and Usage
+              -------------------
+              Jonas Haller
+              -------------------
+              30.11.2007
+              -------------------
+
+Simulator Configuration and Usage
+
+* Simulator Types
+
+  The simulator controller manages four simulator types, each with different configuration. The following sections describe the configuration of the simulator controller and each simulator type with usage instructions:
+
+  * {{{#Simulator%20Controller}Simulator Controller}} (common to all simulator
+    types)
+  []
+
+  * {{{#Graphic%20Simulator}Graphic Simulator}}
+  []
+
+  * {{{#Batch%20Simulator}Batch Simulator}}
+  []
+
+  * {{{#Command%20Line%20Simulator}Command Line Simulator}}
+  []
+
+  * {{{#Multi%20Simulator}Multi Simulator}} (client / server)
+  []
+
+
+* Simulator Controller
+
+  This is an example of a configuration file for the simulator controller. All options
+  with their comments should be self-explanatory.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- SimulatorType to be loaded dynamically -->
+   <simType>org.accada.reader.hal.impl.sim.GraphicSimulator</simType>
+   <!-- <simType>org.accada.reader.hal.impl.sim.BatchSimulator</simType> -->
+   <!-- <simType>org.accada.reader.hal.impl.sim.CmdLineSim</simType> -->
+   <!-- <simType>org.accada.reader.hal.impl.sim.SimulatorClient</simType> -->
+   <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
+
+   <!-- Configuration file with all the transponder models --> <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
+
+   <!-- Read point definition -->
+   <numberOfReadPoints>4</numberOfReadPoints>
+   <!-- readpoints numebred readPoint_1 ... readPoint_n (at the moment) -->
+   <!-- the client has to use these names to address this read points -->
+   <!-- example: <readPoint_1>Antenna1</readPoint_1> -->
+   <readPoint_1>Shelf1</readPoint_1>
+   <readPoint_2>Shelf2</readPoint_2>
+   <readPoint_3>Shelf3</readPoint_3>
+   <readPoint_4>Shelf4</readPoint_4>
+
+</properties>
++-----------------------------------------------------------------------------+
+
+
+* Graphic Simulator
+
+** Configuration File Example
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- language -->
+   <Language>en</Language>
+
+   <!-- rfid reader -->
+   <ReaderImage>/images/rfid-reader.png</ReaderImage>
+   <ReaderDefaultImage>/images/rfid-reader_default.png</ReaderDefaultImage>
+   <ReaderWidth>141</ReaderWidth>
+   <ReaderHeight>100</ReaderHeight>
+   <ReaderLabelSize>10</ReaderLabelSize>
+   <ReaderLabelFont>Verdana</ReaderLabelFont>
+   <InterReaderPadding>200</InterReaderPadding>
+
+   <!-- rfid antenna -->
+   <AntennasPerRow>4</AntennasPerRow>
+   <AntennaImage>/images/rfid-antenna_0.png</AntennaImage>
+   <AntennaDefaultImage>/images/rfid-antenna_default.png</AntennaDefaultImage>
+   <AntennaLabelFont>Verdana</AntennaLabelFont>
+   <AntennaLabelSize>10</AntennaLabelSize>
+   <AntennaWidth>100</AntennaWidth>
+   <AntennaHeight>110</AntennaHeight>
+   <HorizontalInterAntennaPadding>120</HorizontalInterAntennaPadding>
+   <VerticalInterAntennaPadding>60</VerticalInterAntennaPadding>
+
+   <!-- rfid tag -->
+   <TagImage>/images/rfid-tag.png</TagImage>
+   <TagDefaultImage>/images/rfid-tag_default.png</TagDefaultImage>
+   <TagLabelFont>Verdana</TagLabelFont>
+   <TagLabelSize>10</TagLabelSize>
+   <TagWidth>100</TagWidth>
+   <TagHeight>20</TagHeight>
+   <InterTagPadding>10</InterTagPadding>
+   <TagPrefix>9204F0004B0</TagPrefix>
+
+   <!-- paddings -->
+   <FramePadding>50</FramePadding>
+   <HorizontalPadding>50</HorizontalPadding>
+   <VerticalPadding>50</VerticalPadding>
+
+   <!-- window -->
+   <MinimumWindowWidth>800</MinimumWindowWidth>
+   <MinimumWindowHeight>400</MinimumWindowHeight>
+
+   <!-- dialog windows -->
+   <DialogWindowWidth>800</DialogWindowWidth>
+   <DialogWindowHeight>120</DialogWindowHeight>
+
+</properties>
++-----------------------------------------------------------------------------+
+
+** Usage
+
+   Handling of the graphic simulater is very intuitive. Tags can be created via
+   the 'Tag' - 'Add new Tag' menu item or the context menu. Drag tags over an
+   antenna to read them. The memory of a tag can be accessed and changed by hand
+   through its context menu.
+
+
+* Batch Simulator
+
+** Configuration File Example
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Properties file for BatchSimulator -->
+<properties>
+
+   <!-- Absolute file path or name of the batch file -->
+   <!-- Value: file URL or name -->
+   <!-- Example: C:\project\props\batchfile.txt -->
+   <!-- Example: /props/batchfile.txt -->
+   <batchfile>/props/batchfile.txt</batchfile>
+
+   <!-- Number of iterations to execute -->
+   <!-- Value: iterations (long) -->
+   <iterations>3</iterations>
+
+</properties>
++-----------------------------------------------------------------------------+
+
+** Usage
+
+  Example batch file with comments:
+
++-----------------------------------------------------------------------------+
+# Example batch file for Accada BatchSimulator
+# Author: Jonas Haller
+#
+# Lines beginning wich '#' are not processed (comments)
+# An event line has the following form:
+#  <time>;<eventTypeName>;<sourceID>;<serial>;<userMemoryData>
+# Where the values have following meaning:
+#  <time>: Time after last event in milliseconds, must fit into a long
+#  <eventTypeName>: Type of the event, 'EN' for enter, 'EX' for exit
+#  <sourceID>: ID of the source (read point name)
+#  <serial>: Serial number of the tag triggering the event
+#  <userMemoryData>: String containing the user memory data of the tag or 'null' if none
+# Example of an event line:
+#  1000;EN;Antenna;9204F0004B00001;0123456789ABCDEF
+500;EN;Shelf1;9204F0004B00001;null
+500;EX;Shelf1;9204F0004B00001;null
++-----------------------------------------------------------------------------+
+
+  With this batch file a tag enters the range of antenna 'Shelf1' 500 milliseconds
+  after starting the simulator. An other 500 ms later the tag leaves the read
+  range of the antenna.
+
+
+* Command Line Simulator
+
+** Configuration
+
+  The command line simulator needs no configuration.
+
+** Usage
+
+  After starting the command line simulator, a prompt is shown in the console and awaits one of the following commands:
+  
+  [sourceids]: Lists all available source IDs
+  
+  [add]: Asks for a source ID and a tag ID and adds the tag to this source
+  
+  [remove]: Asks for a source ID and a tag ID and removes the tag from this source
+  
+  [contains]: Asks for a source ID and a tag ID and returnes 'Yes' if the source contains this tag
+  
+  [getall]: Asks for a source ID and lists all tags contained by this source
+  
+  [exit]: to exit the command line simulator
+
+
+* Multi Simulator
+
+** Configuration File Example
+
+  Simulator client:
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- the host to connect to -->
+   <host>localhost</host>
+
+   <!-- the port to connect to -->
+   <port>8800</port>
+
+   <!-- the waittime between connection attempts in ms -->
+   <waittime>500</waittime>
+
+   <!-- the timeout for connection attempt in ms-->
+   <timeout>3000</timeout>
+
+</properties>
++-----------------------------------------------------------------------------+
+
+  Simulator server controller:
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- SimulatorType to be loaded dynamically -->
+   <simType>org.accada.reader.hal.impl.sim.multi.GraphicSimulatorServer</simType>
+   <!-- <simType>org.accada.reader.hal.impl.sim.multi.BatchSimulatorServer</simType> -->
+   <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
+
+   <!-- the port to listen to -->
+   <port>8800</port>
+
+</properties>
++-----------------------------------------------------------------------------+
+
+** Usage
+
+  See simulator type configured in simulator server controller configuration file.

@@ -18,11 +18,10 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal;
+package org.accada.hal;
 
 
 import java.util.Date;
-import java.util.Vector;
 
 
 
