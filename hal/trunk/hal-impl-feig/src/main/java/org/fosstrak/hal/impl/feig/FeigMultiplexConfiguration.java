@@ -30,7 +30,7 @@ class FeigMultiplexConfiguration {
 	 *
 	 */
 	private String configurationName;
-   private String defaultConfigurationName;
+   private String defaultConfigurationName = "/props/FeigMultiplex_default.xml";
 
 	/**
 	 * Number of read points
@@ -51,7 +51,9 @@ class FeigMultiplexConfiguration {
 			String configurationName, String defaultConfigurationName) {
 		this.controller = controller;
 		this.configurationName = configurationName;
-      this.defaultConfigurationName = defaultConfigurationName;
+		if (defaultConfigurationName != null) {
+			this.defaultConfigurationName = defaultConfigurationName;
+		}
       log.debug("Configuration file: " + configurationName);
 	}
 

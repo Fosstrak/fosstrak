@@ -21,7 +21,7 @@
 /*
  * Created on 2005
  */
-package org.accada.reader.hal.impl.sim;
+package org.accada.hal.impl.sim;
 
 /**
  * A simulator implementation within the Simulator Framework must implement this interface.
@@ -38,6 +38,6 @@ public interface SimulatorEngine {
 	 * 
 	 * @param controller The reference to the caller
 	 */
-	public void initialize(SimulatorController controller, String propFile, String defaultPropFile) throws Exception;
+	public void initialize(SimulatorController controller, String propFile) throws Exception;
 
 }

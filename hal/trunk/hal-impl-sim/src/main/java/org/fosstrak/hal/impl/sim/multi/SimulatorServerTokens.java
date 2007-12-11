@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.multi;
+package org.accada.hal.impl.sim.multi;
 
 public interface SimulatorServerTokens {
 

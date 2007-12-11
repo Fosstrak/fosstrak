@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.graphic;
+package org.accada.hal.impl.sim.graphic;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -45,9 +45,9 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
-import org.accada.reader.hal.HardwareException;
-import org.accada.reader.hal.util.ByteBlock;
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.HardwareException;
+import org.accada.hal.util.ByteBlock;
+import org.accada.hal.util.ResourceLocator;
 
 /**
  * @author regli
@@ -56,8 +56,11 @@ public class Tag extends JPanel implements Comparable {
 	
    /** the serial version uid for serialization */
    private static final long serialVersionUID = 1L;
+   
+   private String defaultfilename = "/images/rfid-tag_default.png";
+   
    /** the sim tag implementation */
-   private org.accada.reader.hal.impl.sim.Tag tag; 
+   private org.accada.hal.impl.sim.Tag tag; 
 	/** the image icon of the rfid tag */ 
 	private final Icon icon;
 	/** the drag listener */
@@ -96,7 +99,7 @@ public class Tag extends JPanel implements Comparable {
 	public Tag(String epc, Point pos, final IGraphicSimulator simulator) {
 		super();
 		
-      this.tag = new org.accada.reader.hal.impl.sim.Tag(epc);
+      this.tag = new org.accada.hal.impl.sim.Tag(epc);
 		this.simulator = simulator;
 		
 		setBounds(new Rectangle(pos, new Dimension(simulator.getProperty("TagWidth"), simulator.getProperty("TagHeight"))));
@@ -107,8 +110,6 @@ public class Tag extends JPanel implements Comparable {
 		addComponentListener(simulator.getTranslationListener());
 		
 		String filename = simulator.getProperties().getString("TagImage");
-      String defaultfilename = simulator.getProperties().getString(
-            "TagDefaultImage", null);
       URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
       icon = new ImageIcon(fileurl);
 		
@@ -646,7 +647,7 @@ public class Tag extends JPanel implements Comparable {
     * 
     * @return sim.Tag
     */
-   public org.accada.reader.hal.impl.sim.Tag getSimTag() {
+   public org.accada.hal.impl.sim.Tag getSimTag() {
       return tag;
    }
    

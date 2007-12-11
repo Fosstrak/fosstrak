@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.multi;
+package org.accada.hal.impl.sim.multi;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,8 +28,8 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import org.accada.reader.hal.impl.sim.BatchSimulatorTokens;
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.impl.sim.BatchSimulatorTokens;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;

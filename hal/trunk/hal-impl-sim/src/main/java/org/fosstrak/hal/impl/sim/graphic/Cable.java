@@ -18,14 +18,14 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.graphic;
+package org.accada.hal.impl.sim.graphic;
 
 import java.awt.Graphics;
 import java.awt.Point;
 
 import javax.swing.JLabel;
 
-import org.accada.reader.hal.impl.sim.multi.GraphicSimulatorServer;
+import org.accada.hal.impl.sim.multi.GraphicSimulatorServer;
 
 
 /**

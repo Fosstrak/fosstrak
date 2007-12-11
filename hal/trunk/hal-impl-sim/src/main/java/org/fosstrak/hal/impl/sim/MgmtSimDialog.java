@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim;
+package org.accada.hal.impl.sim;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -103,8 +103,7 @@ public class MgmtSimDialog extends JDialog {
 		DOMConfigurator.configure("./props/log4j.xml");
 		MgmtSimDialog mgmtSimDialog = new MgmtSimDialog("TestReadPoint",
 		      new SimulatorController("SimulatorController",
-		            "/props/SimulatorController.xml",
-                  "/props/SimulatorController_default.xml"));
+		            "/props/SimulatorController.xml"));
 		mgmtSimDialog.setVisible(true);
 	}
 	

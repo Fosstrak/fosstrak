@@ -21,7 +21,7 @@
 /*
  * Created on 2005
  */
-package org.accada.reader.hal.impl.sim;
+package org.accada.hal.impl.sim;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import org.accada.reader.hal.HardwareException;
+import org.accada.hal.HardwareException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -58,7 +58,7 @@ public class CmdLineSim implements SimulatorEngine, Runnable {
 	
 	/** the properties file */
 	private String propFile;
-   private String defaultPropFile;
+   private String defaultPropFile = "/props/CmdLineSim_default.xml";
 	
 	private Thread consoleThread;
 
@@ -74,11 +74,9 @@ public class CmdLineSim implements SimulatorEngine, Runnable {
      * @param controller
      * @param file (not used)
      */
-	public void initialize(SimulatorController controller, String propFile,
-         String defaultPropFile) {
+	public void initialize(SimulatorController controller, String propFile) {
 		this.controller = controller;
 		this.propFile = propFile;
-      this.defaultPropFile = defaultPropFile;
 		
 		consoleThread= new Thread(this);
 		consoleThread.start();

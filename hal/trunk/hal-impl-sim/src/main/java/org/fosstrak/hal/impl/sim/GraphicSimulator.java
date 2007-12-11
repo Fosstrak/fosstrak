@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim;
+package org.accada.hal.impl.sim;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -48,14 +48,14 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
-import org.accada.reader.hal.impl.sim.graphic.Antenna;
-import org.accada.reader.hal.impl.sim.graphic.Cable;
-import org.accada.reader.hal.impl.sim.graphic.IGraphicSimulator;
-import org.accada.reader.hal.impl.sim.graphic.Reader;
-import org.accada.reader.hal.impl.sim.graphic.SelectionComponent;
-import org.accada.reader.hal.impl.sim.graphic.Tag;
-import org.accada.reader.hal.impl.sim.graphic.TranslationListener;
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.impl.sim.graphic.Antenna;
+import org.accada.hal.impl.sim.graphic.Cable;
+import org.accada.hal.impl.sim.graphic.IGraphicSimulator;
+import org.accada.hal.impl.sim.graphic.Reader;
+import org.accada.hal.impl.sim.graphic.SelectionComponent;
+import org.accada.hal.impl.sim.graphic.Tag;
+import org.accada.hal.impl.sim.graphic.TranslationListener;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -75,6 +75,9 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	private static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
 	/** the logger */
 	private static final Log LOG = LogFactory.getLog(GraphicSimulator.class);
+	
+	private String defaultPropFile = "/props/GraphicSimulator_default.xml";
+	private String defaultfilename = "/images/rfid-reader_default.png";
 	
 	/** the resource bundle */
 //	private static ResourceBundle guiText;
@@ -124,8 +127,8 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
      * @param file is only required for BatchSimulator
 	 * @throws IOException 
 	 */
-	public void initialize(SimulatorController controller, String propFile,
-         String defaultPropFile) throws IOException {
+	public void initialize(SimulatorController controller, String propFile
+          ) throws IOException {
 		this.controller = controller;
 		mgmtSimDialogs = new Hashtable<String, MgmtSimDialog>();
 
@@ -416,7 +419,6 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	private Component getReader() {
 		JLabel  reader = new JLabel();
 		String filename = propsConfig.getString("ReaderImage");
-      String defaultfilename = propsConfig.getString("ReaderDefaultImage", null);
       URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
 		reader.setIcon(new ImageIcon(fileurl));
 		reader.setBounds(getProperty("AntennaPaneX") + (getProperty("AntennaPaneWidth") - getProperty("ReaderWidth")) / 2, getProperty("FramePadding"), getProperty("ReaderWidth"), getProperty("ReaderHeight"));
@@ -700,7 +702,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
     * @param tag  the sim.Tag
     */
    public void enterEvent(String readerId, String antennaId,
-         org.accada.reader.hal.impl.sim.Tag tag) {
+         org.accada.hal.impl.sim.Tag tag) {
       controller.add(antennaId, tag);
    }
 
@@ -721,7 +723,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
     * @param tag  the sim.Tag
     */
    public void exitEvent(String readerId, String antennaId,
-         org.accada.reader.hal.impl.sim.Tag tag) {
+         org.accada.hal.impl.sim.Tag tag) {
       controller.remove(antennaId, tag);
    }
    

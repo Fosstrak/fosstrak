@@ -21,7 +21,7 @@
 /*
  * Created on 2005
  */
-package org.accada.reader.hal.impl.sim;
+package org.accada.hal.impl.sim;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,20 +29,20 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
-import org.accada.reader.hal.AsynchronousIdentifyListener;
-import org.accada.reader.hal.ControllerProperties;
-import org.accada.reader.hal.HardwareAbstraction;
-import org.accada.reader.hal.HardwareException;
-import org.accada.reader.hal.MemoryBankDescriptor;
-import org.accada.reader.hal.MemoryDescriptor;
-import org.accada.reader.hal.Observation;
-import org.accada.reader.hal.ReadPointNotFoundException;
-import org.accada.reader.hal.TagDescriptor;
-import org.accada.reader.hal.Trigger;
-import org.accada.reader.hal.UnsignedByteArray;
-import org.accada.reader.hal.UnsupportedOperationException;
-import org.accada.reader.hal.transponder.EPCTransponderModel;
-import org.accada.reader.hal.util.ByteBlock;
+import org.accada.hal.AsynchronousIdentifyListener;
+import org.accada.hal.ControllerProperties;
+import org.accada.hal.HardwareAbstraction;
+import org.accada.hal.HardwareException;
+import org.accada.hal.MemoryBankDescriptor;
+import org.accada.hal.MemoryDescriptor;
+import org.accada.hal.Observation;
+import org.accada.hal.ReadPointNotFoundException;
+import org.accada.hal.TagDescriptor;
+import org.accada.hal.Trigger;
+import org.accada.hal.UnsignedByteArray;
+import org.accada.hal.UnsupportedOperationException;
+import org.accada.hal.transponder.EPCTransponderModel;
+import org.accada.hal.util.ByteBlock;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -78,8 +78,8 @@ public class SimulatorController implements HardwareAbstraction {
    /**
     * The properties file.
     */
+   private String defaultPropFile = "/props/SimulatorController_default.xml";
    private String propFile;
-   private String defaultPropFile;
    
 	/**
 	 * The names of all available read points connected to this reader.
@@ -111,7 +111,6 @@ public class SimulatorController implements HardwareAbstraction {
 	 * Properties file for simulator to be loaded and transponder models.
 	 */
 	private String simTypePropFile;
-   private String simTypeDefaultPropFile;
    private String epcTransponderModelsConfig;
 
 	/**
@@ -183,11 +182,9 @@ public class SimulatorController implements HardwareAbstraction {
 	public Vector<String> continuousKillErrors = new Vector<String>();
 	
 	
-	public SimulatorController(String halName, String propFile,
-         String defaultPropFile) {
+	public SimulatorController(String halName, String propFile) {
 		this.halName = halName;
 		this.propFile = propFile;
-      this.defaultPropFile = defaultPropFile;
 		this.initialize();
 		
 		log.debug("Simulator: " + simType);
@@ -206,7 +203,7 @@ public class SimulatorController implements HardwareAbstraction {
 			java.lang.reflect.Constructor co = clazz.getConstructor(new Class[] {});
 			//3.) Create new instance with the argument's values
 			simulator = (SimulatorEngine) co.newInstance(null);
-			simulator.initialize(this, simTypePropFile, simTypeDefaultPropFile);	
+			simulator.initialize(this, simTypePropFile);	
 		}
 		catch(ClassNotFoundException cnfe){
 			cnfe.printStackTrace();
@@ -229,7 +226,6 @@ public class SimulatorController implements HardwareAbstraction {
 		try{
 			simType = props.getParameter("simType");
 			simTypePropFile = props.getParameter("simTypePropFile");
-         simTypeDefaultPropFile = props.getParameter("simTypeDefaultPropFile");
          epcTransponderModelsConfig = props.getParameter(
          "epcTransponderModelsConfig");
 			
@@ -348,7 +344,7 @@ public class SimulatorController implements HardwareAbstraction {
 	//-------------------- HAL interface methods  ------------------------------------
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#getHalName()
+	 * @see org.accada.hal.HardwareAbstraction#getHalName()
 	 */
 	public String getHALName() {
 		return halName;
@@ -356,7 +352,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#identify(java.lang.String[])
+	 * @see org.accada.hal.HardwareAbstraction#identify(java.lang.String[])
 	 */
 	public Observation[] identify(String[] readPointNames)
          throws HardwareException {
@@ -430,7 +426,7 @@ public class SimulatorController implements HardwareAbstraction {
 		
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#startAsynchronousIdentify(java.lang.String[], org.accada.reader.hal.AsynchronousIdentifyListener, java.lang.String, java.lang.String)
+	 * @see org.accada.hal.HardwareAbstraction#startAsynchronousIdentify(java.lang.String[], org.accada.hal.AsynchronousIdentifyListener, java.lang.String, java.lang.String)
 	 */
 	public void startAsynchronousIdentify(String[] readPointNames,
 			Trigger trigger) throws HardwareException,
@@ -440,7 +436,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#stopAsynchronousIdentify(org.accada.reader.hal.AsynchronousIdentifyListener)
+	 * @see org.accada.hal.HardwareAbstraction#stopAsynchronousIdentify(org.accada.hal.AsynchronousIdentifyListener)
 	 */
 	public void stopAsynchronousIdentify()
 			throws HardwareException, UnsupportedOperationException {
@@ -449,7 +445,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#isAsynchronousIdentifyRunning(org.accada.reader.hal.AsynchronousIdentifyListener)
+	 * @see org.accada.hal.HardwareAbstraction#isAsynchronousIdentifyRunning(org.accada.hal.AsynchronousIdentifyListener)
 	 */
 	public boolean isAsynchronousIdentifyRunning() throws HardwareException,
 			UnsupportedOperationException {
@@ -458,7 +454,7 @@ public class SimulatorController implements HardwareAbstraction {
 
 
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#addAsynchronousIdentifyListener(org.accada.reader.hal.AsynchronousIdentifyListener)
+    * @see org.accada.hal.HardwareAbstraction#addAsynchronousIdentifyListener(org.accada.hal.AsynchronousIdentifyListener)
     */
 	public void addAsynchronousIdentifyListener(AsynchronousIdentifyListener listener)
          throws HardwareException, UnsupportedOperationException {
@@ -467,7 +463,7 @@ public class SimulatorController implements HardwareAbstraction {
 
 
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#removeAsynchronousIdentifyListener(org.accada.reader.hal.AsynchronousIdentifyListener)
+    * @see org.accada.hal.HardwareAbstraction#removeAsynchronousIdentifyListener(org.accada.hal.AsynchronousIdentifyListener)
     */
 	public void removeAsynchronousIdentifyListener(AsynchronousIdentifyListener listener)
          throws HardwareException, UnsupportedOperationException {
@@ -476,7 +472,7 @@ public class SimulatorController implements HardwareAbstraction {
 
 
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#supportsAsynchronousIdentify()
+    * @see org.accada.hal.HardwareAbstraction#supportsAsynchronousIdentify()
     */
 	public boolean supportsAsynchronousIdentify() {
 	   return false;
@@ -484,7 +480,7 @@ public class SimulatorController implements HardwareAbstraction {
 
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#readBytes(java.lang.String, java.lang.String, int, int, int, java.lang.String[])
+	 * @see org.accada.hal.HardwareAbstraction#readBytes(java.lang.String, java.lang.String, int, int, int, java.lang.String[])
 	 */
 	public UnsignedByteArray readBytes(String readPointName, String id, int memoryBank,
 			int offset, int length, String[] passwords)
@@ -527,7 +523,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#writeBytes(java.lang.String, java.lang.String, int, int, byte[], java.lang.String[])
+	 * @see org.accada.hal.HardwareAbstraction#writeBytes(java.lang.String, java.lang.String, int, int, byte[], java.lang.String[])
 	 */
 	public void writeBytes(String readPointName, String id, int memoryBank,
 			int offset, UnsignedByteArray data, String[] passwords)
@@ -567,7 +563,7 @@ public class SimulatorController implements HardwareAbstraction {
 
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#writeId(java.lang.String, java.lang.String, java.lang.String[])
+	 * @see org.accada.hal.HardwareAbstraction#writeId(java.lang.String, java.lang.String, java.lang.String[])
 	 */
 	public void writeId(String readPointName, String id, String[] passwords)
 			throws ReadPointNotFoundException, HardwareException,
@@ -578,7 +574,7 @@ public class SimulatorController implements HardwareAbstraction {
 
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#supportsWriteId()
+	 * @see org.accada.hal.HardwareAbstraction#supportsWriteId()
 	 */
 	public boolean supportsWriteId() {
 		return false;
@@ -586,7 +582,7 @@ public class SimulatorController implements HardwareAbstraction {
 
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#getReadPointNames()
+	 * @see org.accada.hal.HardwareAbstraction#getReadPointNames()
 	 */
 	public String[] getReadPointNames() {
 		return readPointNames;
@@ -594,7 +590,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#setParameter(java.lang.String, java.lang.String)
+	 * @see org.accada.hal.HardwareAbstraction#setParameter(java.lang.String, java.lang.String)
 	 */
 	public void setParameter(String param, String value)
 			throws HardwareException, UnsupportedOperationException {
@@ -603,7 +599,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#getAllParameterNames()
+	 * @see org.accada.hal.HardwareAbstraction#getAllParameterNames()
 	 */
 	public String[] getAllParameterNames() throws HardwareException,
 			UnsupportedOperationException {
@@ -617,7 +613,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#getParameter(java.lang.String)
+	 * @see org.accada.hal.HardwareAbstraction#getParameter(java.lang.String)
 	 */
 	public String getParameter(String param) throws HardwareException,
 			UnsupportedOperationException {
@@ -632,7 +628,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#supportsParameters()
+    * @see org.accada.hal.HardwareAbstraction#supportsParameters()
     */
    public boolean supportsParameters() {
       return true;
@@ -640,7 +636,7 @@ public class SimulatorController implements HardwareAbstraction {
 
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#programId(java.lang.String, java.lang.String[])
+	 * @see org.accada.hal.HardwareAbstraction#programId(java.lang.String, java.lang.String[])
 	 */
 	public void programId(String id, String[] passwords)
 			throws HardwareException, UnsupportedOperationException {
@@ -650,7 +646,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#reset()
+	 * @see org.accada.hal.HardwareAbstraction#reset()
 	 */
 	public void reset() throws HardwareException {
 		// TODO: implement
@@ -658,7 +654,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#kill(java.lang.String, java.lang.String[])
+	 * @see org.accada.hal.HardwareAbstraction#kill(java.lang.String, java.lang.String[])
 	 */
 	public void kill(String readPointName, String id, String[] passwords) throws HardwareException,
 			UnsupportedOperationException {
@@ -668,21 +664,21 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#supportsReadBytes()
+	 * @see org.accada.hal.HardwareAbstraction#supportsReadBytes()
 	 */
 	public boolean supportsReadBytes() {
 		return true;
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#supportsWriteBytes()
+	 * @see org.accada.hal.HardwareAbstraction#supportsWriteBytes()
 	 */
 	public boolean supportsWriteBytes() {
 		return true;
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#supportsProgramId()
+	 * @see org.accada.hal.HardwareAbstraction#supportsProgramId()
 	 */
 	public boolean supportsProgramId() {
 		return false;
@@ -690,7 +686,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#supportsKill()
+    * @see org.accada.hal.HardwareAbstraction#supportsKill()
     */
    public boolean supportsKill() {
       return false;
@@ -698,7 +694,7 @@ public class SimulatorController implements HardwareAbstraction {
    
    
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#supportsReset()
+    * @see org.accada.hal.HardwareAbstraction#supportsReset()
     */
    public boolean supportsReset() {
       return false;
@@ -706,7 +702,7 @@ public class SimulatorController implements HardwareAbstraction {
    
    
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#getReadPointPowerLevel(java.lang.String, boolean)
+	 * @see org.accada.hal.HardwareAbstraction#getReadPointPowerLevel(java.lang.String, boolean)
 	 */
 	public int getReadPointPowerLevel(String readPointName, boolean normalize) {
 		// TODO: implement
@@ -715,7 +711,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#supportsGetReadPointPowerLevel()
+    * @see org.accada.hal.HardwareAbstraction#supportsGetReadPointPowerLevel()
     */
    public boolean supportsGetReadPointPowerLevel() {
       return false;
@@ -723,7 +719,7 @@ public class SimulatorController implements HardwareAbstraction {
    
    
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#getReadPointNoiseLevel(java.lang.String, boolean)
+	 * @see org.accada.hal.HardwareAbstraction#getReadPointNoiseLevel(java.lang.String, boolean)
 	 */
 	public int getReadPointNoiseLevel(String readPointName, boolean normalize) {
 		// TODO: implement
@@ -732,7 +728,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#supportsGetReadPointNoiseLevel()
+    * @see org.accada.hal.HardwareAbstraction#supportsGetReadPointNoiseLevel()
     */
    public boolean supportsGetReadPointNoiseLevel() {
       return false;
@@ -740,7 +736,7 @@ public class SimulatorController implements HardwareAbstraction {
    
    
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#startUpReadPoint(java.lang.String)
+	 * @see org.accada.hal.HardwareAbstraction#startUpReadPoint(java.lang.String)
 	 */
 	public void startUpReadPoint(String readPointName) {
 		if (!readyReadPoints.contains(readPointName)) {
@@ -750,7 +746,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#supportsStartUpReadPoint()
+    * @see org.accada.hal.HardwareAbstraction#supportsStartUpReadPoint()
     */
    public boolean supportsStartUpReadPoint() {
       return true;
@@ -758,7 +754,7 @@ public class SimulatorController implements HardwareAbstraction {
    
    
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#shutDownReadPoint(java.lang.String)
+	 * @see org.accada.hal.HardwareAbstraction#shutDownReadPoint(java.lang.String)
 	 */
 	public void shutDownReadPoint(String readPointName) {
 		if (readyReadPoints.contains(readPointName)) {
@@ -768,7 +764,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#supportsShutDownReadPoint()
+    * @see org.accada.hal.HardwareAbstraction#supportsShutDownReadPoint()
     */
    public boolean supportsShutDownReadPoint() {
       return true;
@@ -776,7 +772,7 @@ public class SimulatorController implements HardwareAbstraction {
    
    
 	/* (non-Javadoc)
-	 * @see org.accada.reader.hal.HardwareAbstraction#isReadPointReady(java.lang.String)
+	 * @see org.accada.hal.HardwareAbstraction#isReadPointReady(java.lang.String)
 	 */
 	public boolean isReadPointReady(String readPointName) {
 		return readyReadPoints.contains(readPointName);
@@ -784,7 +780,7 @@ public class SimulatorController implements HardwareAbstraction {
 	
 	
    /* (non-Javadoc)
-    * @see org.accada.reader.hal.HardwareAbstraction#supportsIsReadPointReady()
+    * @see org.accada.hal.HardwareAbstraction#supportsIsReadPointReady()
     */
    public boolean supportsIsReadPointReady() {
       return true;
@@ -799,7 +795,6 @@ public class SimulatorController implements HardwareAbstraction {
 	 */
 	public static void main (String[] args) {
 		DOMConfigurator.configure("./props/log4j.xml");
-		new SimulatorController("SimulatorController", "/props/SimulatorController.xml",
-            "/props/SimulatorController_default.xml");
+		new SimulatorController("SimulatorController", "/props/SimulatorController.xml");
 	}
 }

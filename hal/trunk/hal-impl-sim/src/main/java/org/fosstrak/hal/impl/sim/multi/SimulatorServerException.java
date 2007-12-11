@@ -18,9 +18,9 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.multi;
+package org.accada.hal.impl.sim.multi;
 
-import org.accada.reader.hal.impl.sim.SimulatorException;
+import org.accada.hal.impl.sim.SimulatorException;
 
 public class SimulatorServerException extends SimulatorException {
 

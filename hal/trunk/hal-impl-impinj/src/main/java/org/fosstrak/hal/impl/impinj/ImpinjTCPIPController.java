@@ -66,8 +66,8 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    /**
     * The configuration files
     */
+   private String defaultConfigFile = "/props/ImpinjTCPIPController_default.xml";
    private String configFile;
-   private String defaultConfigFile;
    private String epcTransponderModelsConfig;
 
    /**
@@ -117,11 +117,9 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	 *
 	 * @param halName
 	 */
-	public ImpinjTCPIPController(String halName, String configFile,
-         String defaultConfigFile) {
+	public ImpinjTCPIPController(String halName, String configFile) {
 		this.halName = halName;
 		this.configFile = configFile;
-      this.defaultConfigFile = defaultConfigFile;
 		try {
 			log.debug("trying to initialize " + getHALName());
 			this.initialize();

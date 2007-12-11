@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.multi;
+package org.accada.hal.impl.sim.multi;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +30,7 @@ import java.net.URL;
 import java.util.Set;
 import java.util.TreeMap;
 
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -43,6 +43,8 @@ public class SimulatorServerController {
 
 	/** the logger */
 	private static Log LOG = LogFactory.getLog(SimulatorServerController.class);
+
+	private String simTypeDefaultPropFile = "/props/GraphicSimulator_default.xml";
 
 	private final ServerSocket serverSocket;
 	private final TreeMap readerSimulators = new TreeMap();
@@ -65,8 +67,6 @@ public class SimulatorServerController {
 		// get properties
 		simType = propsConfig.getString("simType");
 		String simTypePropFile = propsConfig.getString("simTypePropFile");
-      String simTypeDefaultPropFile = propsConfig.getString(
-            "simTypeDefaultPropFile", null);
 		port = propsConfig.getInt("port");
 
 		// try to open server socket
