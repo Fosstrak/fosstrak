@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim;
+package org.accada.hal.impl.sim;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,7 +28,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.StringTokenizer;
 
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -88,7 +88,7 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
 
 	/** config file */
 	private String configFile = null;
-   private String defaultConfigFile = null;
+   private String defaultConfigFile = "/props/BatchSimulator_default.xml";
 	
     /** RFID tag entered antenna range event. */
     public static final int TAG_ENTERED = 1;
@@ -138,11 +138,9 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
      * @param controller 
      * @throws RFIDException
      */
-    public void initialize(SimulatorController controller, String configFile,
-          String defaultConfigFile){
+    public void initialize(SimulatorController controller, String configFile){
 		this.controller = controller;
 		this.configFile = configFile;
-      this.defaultConfigFile = defaultConfigFile;
 		try {
 			initSimulator();
 		} catch (SimulatorException e) {

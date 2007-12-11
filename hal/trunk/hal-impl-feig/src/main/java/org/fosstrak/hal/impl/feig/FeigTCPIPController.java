@@ -58,8 +58,8 @@ public class FeigTCPIPController implements HardwareAbstraction {
    /**
     * The configuration files
     */
+   private String defaultConfigFile = "/props/FeigTCPIPController_default.xml";
    private String configFile;
-   private String defaultConfigFile;
    private String epcTransponderModelsConfig;
 
    /**
@@ -102,11 +102,9 @@ public class FeigTCPIPController implements HardwareAbstraction {
 	 *
 	 * @param halName
 	 */
-	public FeigTCPIPController(String halName, String configFile,
-         String defaultConfigFile) {
+	public FeigTCPIPController(String halName, String configFile) {
 		this.halName = halName;
 		this.configFile = configFile;
-      this.defaultConfigFile = defaultConfigFile;
 		try {
 			log.debug("trying to initialize " + getHALName());
 			this.initialize();

@@ -6,7 +6,7 @@
          <param name="ConversionPattern" value="%-4r [%t] %-5p %c %x - %m%n"/>
       </layout>
    </appender>
-   <logger name="org.accada.reader.hal">
+   <logger name="org.accada.hal">
       <level value="debug"/>
    </logger>
    <root>

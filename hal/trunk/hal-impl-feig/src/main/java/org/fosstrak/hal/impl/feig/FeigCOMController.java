@@ -71,8 +71,8 @@ public class FeigCOMController implements FeigController {
    /**
     * The properties file
     */
+   private String defaultPropFile = "/props/FeigCOMController_default.xml";
    private String propFile;
-   private String defaultPropFile;
 
 	/**
 	 * Transponder model used.
@@ -101,11 +101,9 @@ public class FeigCOMController implements FeigController {
 	 *
 	 * @param halName
 	 */
-	public FeigCOMController(String halName, String propFile,
-         String defaultPropFile) {
+	public FeigCOMController(String halName, String propFile) {
 		this.halName = halName;
 		this.propFile = propFile;
-      this.defaultPropFile = defaultPropFile;
 		try {
 			log.debug("trying to initialize " + getHALName());
 			this.initialize();
@@ -132,14 +130,12 @@ public class FeigCOMController implements FeigController {
 
 			// Initialize multiplexer configuration
 			String multiplexerConfig = this.props.getParameter("multiplexerConfig");
-         String multiplexerDefaultConfig = this.props.getParameter(
-               "multiplexerDefaultConfig");
-         if ((multiplexerConfig == null) && (multiplexerDefaultConfig == null)) {
+         if ((multiplexerConfig == null)) {
             multiplexConfig = new FeigMultiplexConfiguration(this,
                   propFile, defaultPropFile);
          } else {
             multiplexConfig = new FeigMultiplexConfiguration(this,
-                  multiplexerConfig, multiplexerDefaultConfig);
+                  multiplexerConfig, null);
          }
 			multiplexConfig.initialize();
 			transponderModel = TransponderModel.getTransponderSpec(this.props.getParameter("transponderModel"));

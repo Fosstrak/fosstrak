@@ -21,12 +21,12 @@
 /*
  * Created on 2005
  */
-package org.accada.reader.hal.impl.sim;
+package org.accada.hal.impl.sim;
 
 import java.util.Random;
 
-import org.accada.reader.hal.HardwareException;
-import org.accada.reader.hal.util.ByteBlock;
+import org.accada.hal.HardwareException;
+import org.accada.hal.util.ByteBlock;
 
 
 /**

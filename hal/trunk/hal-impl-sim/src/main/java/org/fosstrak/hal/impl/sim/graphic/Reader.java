@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.graphic;
+package org.accada.hal.impl.sim.graphic;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -33,8 +33,8 @@ import java.util.TreeMap;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
-import org.accada.reader.hal.impl.sim.multi.GraphicSimulatorServer;
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.impl.sim.multi.GraphicSimulatorServer;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.configuration.XMLConfiguration;
 
 
@@ -45,6 +45,8 @@ public class Reader extends JComponent {
 	
 	/** the serial version uid */
 	private static final long serialVersionUID = 1L;
+	
+	private String defaultfilename = "/images/rfid-reader_default.png";
 	
 	private final String id;
 	private final GraphicSimulatorServer simulator;
@@ -68,7 +70,6 @@ public class Reader extends JComponent {
 		this.simulator = simulator;
 		this.properties = simulator.getProperties();
 		String filename = properties.getString("ReaderImage");
-      String defaultfilename = properties.getString("ReaderDefaultImage", null);
       URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
       icon = new ImageIcon(fileurl);
 		

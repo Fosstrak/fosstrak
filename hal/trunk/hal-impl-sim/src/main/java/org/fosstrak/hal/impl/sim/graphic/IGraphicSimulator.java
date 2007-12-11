@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.graphic;
+package org.accada.hal.impl.sim.graphic;
 
 import javax.swing.JPopupMenu;
 
@@ -104,7 +104,7 @@ public interface IGraphicSimulator {
     * @param tag  the sim.Tag
     */
    void enterEvent(String readerId, String antennaId,
-         org.accada.reader.hal.impl.sim.Tag tag);
+         org.accada.hal.impl.sim.Tag tag);
 
    /**
     * adds an exit event to the simulator controller
@@ -123,6 +123,6 @@ public interface IGraphicSimulator {
 	 * @param tag the sim.Tag
 	 */
 	void exitEvent(String readerId, String antennaId,
-         org.accada.reader.hal.impl.sim.Tag tag);
+         org.accada.hal.impl.sim.Tag tag);
 
 }

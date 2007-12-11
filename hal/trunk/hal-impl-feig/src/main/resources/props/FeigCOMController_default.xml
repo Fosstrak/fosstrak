@@ -31,9 +31,8 @@
    <!-- Note: Multiplexer configuration is setup in a separate properties file. For single antenna configurations comment the multiplexerConfig and multiplexerDefaultConfig elements out and define readpoint name in this file or define the single readpoint in the multiplexer configuration. -->
    <!-- Value: multiplexer configuration file name -->
    <multiplexerConfig>/props/FeigMultiplex.xml</multiplexerConfig>
-   <multiplexerDefaultConfig>/props/FeigMultiplex_default.xml</multiplexerDefaultConfig>
 
-   <!-- If no multiplexer configuration file defined, you can declare one single readpoint name here. This parameter is omitted if a multiplexerConfig or multiplexerDefaultConfig element exists above.
+   <!-- If no multiplexer configuration file defined, you can declare one single readpoint name here. This parameter is omitted if a multiplexerConfig element exists above.
         The name of the readpoint can be chosen arbitrary but it must be unique. -->
    <!--readpoint>
       <name>Antenna</name>

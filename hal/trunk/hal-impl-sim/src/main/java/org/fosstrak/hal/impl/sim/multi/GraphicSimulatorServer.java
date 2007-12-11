@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.multi;
+package org.accada.hal.impl.sim.multi;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -48,13 +48,13 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
-import org.accada.reader.hal.impl.sim.graphic.Antenna;
-import org.accada.reader.hal.impl.sim.graphic.IGraphicSimulator;
-import org.accada.reader.hal.impl.sim.graphic.Reader;
-import org.accada.reader.hal.impl.sim.graphic.SelectionComponent;
-import org.accada.reader.hal.impl.sim.graphic.Tag;
-import org.accada.reader.hal.impl.sim.graphic.TranslationListener;
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.impl.sim.graphic.Antenna;
+import org.accada.hal.impl.sim.graphic.IGraphicSimulator;
+import org.accada.hal.impl.sim.graphic.Reader;
+import org.accada.hal.impl.sim.graphic.SelectionComponent;
+import org.accada.hal.impl.sim.graphic.Tag;
+import org.accada.hal.impl.sim.graphic.TranslationListener;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -703,7 +703,7 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
     * @param tag  the sim.Tag
     */
    public void enterEvent(String readerId, String antennaId,
-         org.accada.reader.hal.impl.sim.Tag tag) {
+         org.accada.hal.impl.sim.Tag tag) {
       try {
          controller.add(readerId, antennaId, tag.getTagID());
       } catch (SimulatorServerException e) {
@@ -732,7 +732,7 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	 * @param tag the sim.Tag
 	 */
 	public void exitEvent(String readerId, String antennaId,
-         org.accada.reader.hal.impl.sim.Tag tag) {
+         org.accada.hal.impl.sim.Tag tag) {
 		try {
 			controller.remove(readerId, antennaId, tag.getTagID());
 		} catch (SimulatorServerException e) {

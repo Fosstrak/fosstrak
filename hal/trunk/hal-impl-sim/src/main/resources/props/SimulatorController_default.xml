@@ -2,13 +2,12 @@
 <properties>
 
    <!-- SimulatorType to be loaded dynamically -->
-   <!-- currently only org.accada.reader.hal.impl.sim.GraphicSimulator is supported -->
-   <simType>org.accada.reader.hal.impl.sim.GraphicSimulator</simType>
-   <!-- <simType>org.accada.reader.hal.impl.sim.BatchSimulator</simType> -->
-   <!-- <simType>org.accada.reader.hal.impl.sim.CmdLineSim</simType> -->
-   <!-- <simType>org.accada.reader.hal.impl.sim.SimulatorClient</simType> -->
+   <!-- currently only org.accada.hal.impl.sim.GraphicSimulator is supported -->
+   <simType>org.accada.hal.impl.sim.GraphicSimulator</simType>
+   <!-- <simType>org.accada.hal.impl.sim.BatchSimulator</simType> -->
+   <!-- <simType>org.accada.hal.impl.sim.CmdLineSim</simType> -->
+   <!-- <simType>org.accada.hal.impl.sim.SimulatorClient</simType> -->
    <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
-   <simTypeDefaultPropFile>/props/GraphicSimulator_default.xml</simTypeDefaultPropFile>
    <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
 
    <!-- Read point definition -->

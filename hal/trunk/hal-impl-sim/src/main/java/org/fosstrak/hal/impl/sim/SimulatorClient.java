@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim;
+package org.accada.hal.impl.sim;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,9 +27,9 @@ import java.net.Socket;
 import java.net.URL;
 import java.net.UnknownHostException;
 
-import org.accada.reader.hal.impl.sim.multi.SimulatorServerException;
-import org.accada.reader.hal.impl.sim.multi.SimulatorServerTokens;
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.impl.sim.multi.SimulatorServerException;
+import org.accada.hal.impl.sim.multi.SimulatorServerTokens;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
@@ -44,6 +44,8 @@ public class SimulatorClient extends Thread implements SimulatorEngine {
 	/** the logger */
 	private static final Log LOG = LogFactory.getLog(SimulatorClient.class);
 
+	private String defaultPropFile = "/props/SimulatorClient_default.xml";
+	
 	private String host;
 	private int port;
 	private int timeout;
@@ -69,8 +71,8 @@ public class SimulatorClient extends Thread implements SimulatorEngine {
     *          the path and name of the default configuration file
     * @throws SimulatorServerException
     */
-	public void initialize(SimulatorController controller, String propFile,
-         String defaultPropFile) throws SimulatorServerException {
+	public void initialize(SimulatorController controller, String propFile
+         ) throws SimulatorServerException {
 	   // TODO: adjust to xml properties file, move configuration from constructor to initialization.
 	   this.controller = controller;
 

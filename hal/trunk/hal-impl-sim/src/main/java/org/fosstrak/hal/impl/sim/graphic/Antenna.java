@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.impl.sim.graphic;
+package org.accada.hal.impl.sim.graphic;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -33,7 +33,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -48,6 +48,8 @@ public class Antenna extends JComponent {
 	
 	/** the logger */
 	private static Log log = LogFactory.getLog(Antenna.class);
+	
+	private String defaultfilename = "/images/rfid-antenna_default.png";
 	
 	/** the id of the rfid antenna */
 	private final String id;
@@ -75,8 +77,6 @@ public class Antenna extends JComponent {
 		this.id = id;
 		this.simulator = simulator;
 		String filename = simulator.getProperties().getString("AntennaImage");
-      String defaultfilename = simulator.getProperties().getString(
-            "AntennaDefaultImage", null);
       URL fileurl = ResourceLocator.getURL(filename, defaultfilename, this.getClass());
       icon = new ImageIcon(fileurl);
 	}
