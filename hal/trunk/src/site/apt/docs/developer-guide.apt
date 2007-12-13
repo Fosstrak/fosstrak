@@ -93,27 +93,21 @@ Developer Guide
 |
 +-- src/
 |   |
-|   +-- config/                         -> top-level configuration files, like checkstyle configs
-|   |
 |   `-- site/                           -> project documentation
 |
-+-- epcis-captureclient/
++-- hal-commons/
 |   ¦
 |   '
 |
-+-- epcis-commons/
++-- hal-impl-impinj/
 |   ¦
 |   '
 |
-+-- epcis-interop-test/
++-- hal-impl-feig/
 |   ¦
 |   '
 |
-+-- epcis-queryclient/
-|   ¦
-|   '
-|
-+-- epcis-repository/
++-- hal-impl-sim/
 |   |
 |   +-- pom.xml                                    -> module POM file
 |   |
@@ -123,25 +117,9 @@ Developer Guide
 |       |   |
 |       |   +-- java/                              -> java source files
 |       |   |
-|       |   +-- resources/                         -> wsdl and xsd schema files
+|       |   +-- resources/                         -> configuration files and images
 |       |   |
-|       |   +-- sql/                               -> database scripts
-|       |   |
-|       |   `-- webapp/
-|       |       |
-|       |       +-- META-INF/
-|       |       |   |
-|       |       |   +-- application.properties     -> application properties
-|       |       |   |
-|       |       |   +-- context.xml                -> tomcat context properties
-|       |       |   |
-|       |       |   `-- log4j.properties           -> log4j properties
-|       |       |
-|       |       `-- WEB-INF/
-|       |           |
-|       |           +-- server-config.wsdd         -> axis web service deployment descriptor
-|       |           |
-|       |           `-- web.xml                    -> tomcat deployment descriptor
+|       |   `-- assembly/                          -> packaging information
 |       |
 |       +-- site/                                  -> module documentation
 |       |
@@ -155,9 +133,7 @@ Developer Guide
 
 * {Using} Maven
 
-  Using Maven as our build tool has several advantages (such as the easy integration
-  of handy plugins). We use the Tomcat plugin for deployment, the Eclipse plugin for
-  generating the Eclipse project, and a handfull of reporting plugins.
+  We use Maven as our build tool for the Accada HAL project.
 
 ** Building
 
@@ -165,32 +141,6 @@ Developer Guide
 
 ---------------------------------------------------------------------------
 mvn compile
----------------------------------------------------------------------------
-
-** Deployment
-
-   For deploying/undeploying the repository to/from Tomcat, we use the Maven Tomcat
-   plugin. This plugin communicates with the Tomcat Manager. You therefore need
-   to specify the username and password to access your Tomcat's Manager application
-   by adding the following block to your <<<$M2_HOME/conf/settings.xml>>> file:
-
----------------------------------------------------------------------------
-<server>
-  <id>tomcat-manager</id>
-  <username>admin</username>
-  <password>1234</password>
-</server>
----------------------------------------------------------------------------
-
-   You can use the the following commands deploy or undeploy the EPCIS repository.
-   Make sure you run these commands from the <<<epcis-repository>>> directory.
-   Otherwise, Maven will fail as the tomcat-plugin is only available to the
-   epcis-repository module.
-
----------------------------------------------------------------------------
-mvn tomcat:deploy
-
-mvn tomcat:undeploy
 ---------------------------------------------------------------------------
 
 ** Eclipse Integration
@@ -206,19 +156,15 @@ mvn tomcat:undeploy
 mvn -Declipse.workspace=<path-to-eclipse-workspace> eclipse:add-maven-repo
 ---------------------------------------------------------------------------
 
-   [[1]] In order to generate the <<<.project>>> and <<<.classpath>>> files used by
+   [[2]] In order to generate the <<<.project>>> and <<<.classpath>>> files used by
          Eclipse, execute the following command from the directory containing
          the Accada EPCIS source code:
 
 ---------------------------------------------------------------------------
-mvn -Dwtpversion=1.0 eclipse:eclipse
+mvn eclipse:eclipse
 ---------------------------------------------------------------------------
 
-         Make sure you indicate the correct version of the Web Tools Project
-         (WTP) you use in your Eclipse installation. <<<wtpversion=1.0>>> will
-         work fine with WTP 1.5.x and even works well for Eclipse without WTP.
-
-   [[1]] Inside Eclipse, import all the sub-modules (from the menu bar, select
+   [[3]] Inside Eclipse, import all the sub-modules (from the menu bar, select
          File > Import > Existing Projects into Workspace).
 
 ** Site Generation

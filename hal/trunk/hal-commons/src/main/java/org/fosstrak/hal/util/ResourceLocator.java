@@ -3,7 +3,7 @@
  * It searches for user resources in the user directory (current application
  * directory) and for default resources in the library if no user resources found.
  */
-package org.accada.reader.hal.util;
+package org.accada.hal.util;
 
 import java.io.File;
 import java.net.URI;

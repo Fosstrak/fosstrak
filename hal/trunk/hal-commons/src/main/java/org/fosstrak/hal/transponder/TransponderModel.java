@@ -1,4 +1,4 @@
-package org.accada.reader.hal.transponder;
+package org.accada.hal.transponder;
 
 
 public enum TransponderModel {

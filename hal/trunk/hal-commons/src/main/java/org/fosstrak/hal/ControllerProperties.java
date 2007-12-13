@@ -18,14 +18,14 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal;
+package org.accada.hal;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;

@@ -127,7 +127,7 @@ public class TCPIPProtocol {
       try {
          responseFrame = new Frame(response);
       } catch (FrameException e) {
-         throw new IOException(e.getMessage(), e);
+         throw new IOException(e.getMessage());
       }
 
       return responseFrame;
@@ -190,7 +190,7 @@ public class TCPIPProtocol {
       try {
          notificationFrame = new Frame(notification);
       } catch (FrameException e) {
-         throw new IOException(e.getMessage(), e);
+         throw new IOException(e.getMessage());
       }
 
       return notificationFrame;
@@ -284,7 +284,7 @@ public class TCPIPProtocol {
       try {
          notificationFrame = new Frame(notification);
       } catch (FrameException e) {
-         throw new IOException(e.getMessage(), e);
+         throw new IOException(e.getMessage());
       }
 
       return notificationFrame;

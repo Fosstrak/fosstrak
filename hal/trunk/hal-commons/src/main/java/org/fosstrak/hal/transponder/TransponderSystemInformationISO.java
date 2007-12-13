@@ -1,8 +1,6 @@
-package org.accada.reader.hal.transponder;
+package org.accada.hal.transponder;
 
-import java.util.Arrays;
-
-import org.accada.reader.hal.util.ByteBlock;
+import org.accada.hal.util.ByteBlock;
 
 public class TransponderSystemInformationISO {
 	
@@ -45,11 +43,26 @@ public class TransponderSystemInformationISO {
 			throw new IllegalArgumentException("Data has unexpected size");
 		
 		dsfid = data[0];
-		uid = ByteBlock.byteArrayToHexString(Arrays.copyOfRange(data, 1, 9));
+		uid = ByteBlock.byteArrayToHexString(copyOfRange(data, 1, 9));
 		afi = data[9];
-		memSize = ByteBlock.bytesToNumber(Arrays.copyOfRange(data, 10, 12));
+		memSize = ByteBlock.bytesToNumber(copyOfRange(data, 10, 12));
 		icReference = data[12];
 		isSupported = true;
+	}
+	
+	private byte[] copyOfRange(byte[] data, int from, int to) {
+		if (to < from) {
+			return null;
+		}
+		byte[] res = new byte[to - from];
+		for (int i = 0; i < res.length; i++) {
+			if ((from + i) < data.length) {
+				res[i] = data[from + i];
+			} else {
+				res[i] = (byte) 0x00;
+			}
+		}
+		return res;
 	}
 	
 	public String toString() {

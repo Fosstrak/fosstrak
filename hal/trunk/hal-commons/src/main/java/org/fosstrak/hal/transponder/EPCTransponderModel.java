@@ -1,10 +1,10 @@
-package org.accada.reader.hal.transponder;
+package org.accada.hal.transponder;
 
 import java.net.URL;
 import java.util.HashMap;
 
-import org.accada.reader.hal.util.ByteBlock;
-import org.accada.reader.hal.util.ResourceLocator;
+import org.accada.hal.util.ByteBlock;
+import org.accada.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 

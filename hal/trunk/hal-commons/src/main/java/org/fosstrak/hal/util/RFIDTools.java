@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.util;
+package org.accada.hal.util;
 /**
  * This class is an abstraction for the RFID tags.
  * A tag has a serial number and depending on the application data memory.

@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.util;
+package org.accada.hal.util;
 
 
 import java.util.Hashtable;

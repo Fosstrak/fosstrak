@@ -1,5 +1,7 @@
 package org.accada.hal.transponder;
 
+import org.accada.hal.transponder.EPCTransponderModel;
+
 
 public class InventoryItem {
 	/**

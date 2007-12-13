@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal;
+package org.accada.hal;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
