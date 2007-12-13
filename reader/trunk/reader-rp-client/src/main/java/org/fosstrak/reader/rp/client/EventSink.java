@@ -26,7 +26,14 @@ import java.net.Socket;
 
 public class EventSink {
 	public static void main(String[] args) throws Exception {
-		ServerSocket ss = new ServerSocket(9000);
+        int port;
+        // check if args[0] is tcp-port
+        if (args.length == 1){
+        	port = Integer.parseInt(args[0]);
+        } else {
+        	port = 9000;
+        }
+		ServerSocket ss = new ServerSocket(port);
 		while(true) {
 			Socket s = ss.accept();
 			InputStream in = s.getInputStream();
@@ -37,6 +44,6 @@ public class EventSink {
 			} while (data != -1);
 		}
 	}
-	
-	
+
+
 }
