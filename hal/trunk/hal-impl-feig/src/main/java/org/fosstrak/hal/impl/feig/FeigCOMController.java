@@ -12,7 +12,10 @@ import javax.comm.UnsupportedCommOperationException;
 import org.accada.hal.AsynchronousIdentifyListener;
 import org.accada.hal.ControllerProperties;
 import org.accada.hal.HardwareException;
+import org.accada.hal.MemoryBankDescriptor;
+import org.accada.hal.MemoryDescriptor;
 import org.accada.hal.Observation;
+import org.accada.hal.TagDescriptor;
 import org.accada.hal.Trigger;
 import org.accada.hal.UnsignedByteArray;
 import org.accada.hal.UnsupportedOperationException;
@@ -21,6 +24,7 @@ import org.accada.hal.impl.feig.comm.RequestRecord;
 import org.accada.hal.impl.feig.comm.ResponseRecord;
 import org.accada.hal.impl.feig.util.ISOTransponderResponseErrorCode;
 import org.accada.hal.impl.feig.util.StatusByte;
+import org.accada.hal.transponder.EPCTransponderModel;
 import org.accada.hal.transponder.InventoryItem;
 import org.accada.hal.transponder.RFTechnology;
 import org.accada.hal.transponder.TransponderModel;
@@ -181,6 +185,7 @@ public class FeigCOMController implements FeigController {
 			}
 
 			Vector<String> ids = new Vector<String>();
+	         Vector<TagDescriptor> tds = new Vector<TagDescriptor>();
 			Vector<InventoryItem> items = this.getInventory();
 
 			for (InventoryItem item : items) {
@@ -191,6 +196,18 @@ public class FeigCOMController implements FeigController {
 					id = item.id;
 				}
 
+				int memSize = detectTransponderBlockSize(id)* transponderModel.getBlocks();
+                // TODO exact id type string for epc tags?
+                String idType = "EPC";
+                MemoryBankDescriptor[] memoryBankDescriptors =
+                   new MemoryBankDescriptor[1];
+                memoryBankDescriptors[0] = new MemoryBankDescriptor(memSize,
+                	true, false);
+                MemoryDescriptor memoryDescriptor = new MemoryDescriptor(
+                      memoryBankDescriptors);
+                TagDescriptor td = new TagDescriptor(idType, memoryDescriptor);
+                tds.add(td);
+
 				item.readPoint = readPointNames[i];
 				ids.add(id);
 				currentInventory.put(id, item);
@@ -199,6 +216,11 @@ public class FeigCOMController implements FeigController {
 			int len = ids.size();
 			String ids_arr[] = new String[len];
 			ids_arr = ids.toArray(ids_arr);
+	         if (tds.size() == len) {
+	             TagDescriptor[] tds_arr = new TagDescriptor[len];
+	             tds_arr = tds.toArray(tds_arr);
+	             observations[i].setTagDescriptors(tds_arr);
+	          }
 			observations[i].setIds(ids_arr);
 			observations[i].setTimestamp(System.currentTimeMillis());
 		}
@@ -734,18 +756,16 @@ public class FeigCOMController implements FeigController {
 				item.rfTechnology = RFTechnology.getType(trType);
 
 				if (item.transponderType == TransponderType.ICodeEPC) {
-					item.id = ByteBlock.byteArrayToHexString(Arrays
-							.copyOfRange(data, 1, item.transponderType
-									.dataSize()));
+					item.id = ByteBlock.byteArrayToHexString(copyOfRange(data,
+							1, item.transponderType.dataSize()));
 				} else if (item.transponderType == TransponderType.ICodeUID) {
 					item.id =
-						ByteBlock.byteArrayToHexString(Arrays.copyOfRange(data,
+						ByteBlock.byteArrayToHexString(copyOfRange(data,
 						1, item.transponderType.dataSize()));
 				} else {
 					item.dsfid = data[1];
-					item.id = ByteBlock.byteArrayToHexString(Arrays
-							.copyOfRange(data, 2, item.transponderType
-									.dataSize()));
+					item.id = ByteBlock.byteArrayToHexString(copyOfRange(data,
+							2, item.transponderType.dataSize()));
 				}
 				inventory.add(item);
 			}
@@ -754,6 +774,21 @@ public class FeigCOMController implements FeigController {
 		return inventory;
 	}
 
+	private byte[] copyOfRange(byte[] data, int from, int to) {
+		if (to < from) {
+			return null;
+		}
+		byte[] res = new byte[to - from];
+		for (int i = 0; i < res.length; i++) {
+			if ((from + i) < data.length) {
+				res[i] = data[from + i];
+			} else {
+				res[i] = (byte) 0x00;
+			}
+		}
+		return res;
+	}
+	
 	int resolveSourceId(String readPointName) {
 		int index = 0;
 

@@ -1,6 +1,6 @@
-package org.accada.reader.hal.transponder;
+package org.accada.hal.transponder;
 
-import org.accada.reader.hal.util.ByteBlock;
+import org.accada.hal.util.ByteBlock;
 
 public enum TransponderType {
 	// TODO Check data sizes for ICode tags

@@ -1911,16 +1911,20 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	   return false;
 	}
 
-	public int getReadPointNoiseLevel(String readPointName, boolean normalize) {
-		return -1;
+	public int getReadPointNoiseLevel(String readPointName, boolean normalize)
+			throws UnsupportedOperationException {
+
+		throw new UnsupportedOperationException("Not implemented.");
 	}
 
 	public boolean supportsGetReadPointNoiseLevel() {
 	   return false;
 	}
 
-	public int getReadPointPowerLevel(String readPointName, boolean normalize) {
-		return -1;
+	public int getReadPointPowerLevel(String readPointName, boolean normalize)
+			throws UnsupportedOperationException {
+
+		throw new UnsupportedOperationException("Not implemented.");
 	}
 
 	public boolean supportsGetReadPointPowerLevel() {

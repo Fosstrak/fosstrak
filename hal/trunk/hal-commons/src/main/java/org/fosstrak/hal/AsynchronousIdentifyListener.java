@@ -18,7 +18,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal;
+package org.accada.hal;
 
 /**
  * This interface should be implemented in order to be able to receive tag

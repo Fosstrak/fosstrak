@@ -18,9 +18,9 @@
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.hal.util;
+package org.accada.hal.util;
 
-import org.accada.reader.hal.util.ByteBlock;
+import org.accada.hal.util.ByteBlock;
 
 /**
  * CRC16 calculates the CRC16 checksum with polynom 0x8408 and preset 0xFFFF.

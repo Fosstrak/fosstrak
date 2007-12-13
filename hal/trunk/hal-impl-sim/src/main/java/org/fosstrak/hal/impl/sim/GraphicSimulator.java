@@ -137,7 +137,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
       try {
          propsConfig = new XMLConfiguration(url);
       } catch (ConfigurationException ce) {
-         throw new IOException("Graphic simulator configuration file not found.", ce);
+         throw new IOException("Graphic simulator configuration file not found.");
       }
       
       // load language
@@ -178,7 +178,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
             guiTextConfig.load(fileurl);
             loaded = true;
          } catch (ConfigurationException ce) {
-            throw new IOException("Graphic simulator language file not found.", ce);
+            throw new IOException("Graphic simulator language file not found.");
          }
       }
 
