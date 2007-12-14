@@ -23,6 +23,7 @@ import org.accada.hal.impl.impinj.comm.FrameException;
 import org.accada.hal.impl.impinj.comm.FrameParameters;
 import org.accada.hal.impl.impinj.comm.FrameParametersSpec;
 import org.accada.hal.impl.impinj.comm.TCPIPProtocol;
+import org.accada.hal.transponder.IDType;
 import org.accada.hal.transponder.InventoryItem;
 import org.accada.hal.transponder.EPCTransponderModel;
 import org.accada.hal.transponder.RFTechnology;
@@ -235,8 +236,8 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    		ids_arr = ids_vec_arr[i].toArray(ids_arr);
          TagDescriptor[] td_arr = new TagDescriptor[ids_arr.length];
          for (int j = 0; j < td_arr.length; j++) {
-            // TODO exact id type string for epc tags?
-            String idType = "EPC";
+				IDType idType = IDType.getIdType("EPC",
+						config.getString("idTypesConfig"));
             EPCTransponderModel tagModel = currentInventory.get(ids_arr[j]).
                epcTransponderModel;
             MemoryBankDescriptor[] memoryBankDescriptors =
@@ -1598,8 +1599,8 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
                ids_arr = ids_vec_arr[i].toArray(ids_arr);
                TagDescriptor[] td_arr = new TagDescriptor[ids_arr.length];
                for (int j = 0; j < td_arr.length; j++) {
-                  // TODO exact id type string for epc tags?
-                  String idType = "EPC";
+   					IDType idType = IDType.getIdType("EPC",
+   							config.getString("idTypesConfig"));
                   EPCTransponderModel tagModel = currentInventory.get(ids_arr[j]).
                      epcTransponderModel;
                   MemoryBankDescriptor[] memoryBankDescriptors =

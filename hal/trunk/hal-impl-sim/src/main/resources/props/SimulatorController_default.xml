@@ -8,7 +8,12 @@
    <!-- <simType>org.accada.hal.impl.sim.CmdLineSim</simType> -->
    <!-- <simType>org.accada.hal.impl.sim.SimulatorClient</simType> -->
    <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
+   
+   <!-- The EPC transponder models configuration file -->
    <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
+   <!-- The IdTypes configuration file -->
+   <idTypesConfig>/props/IDTypes_default.xml</idTypesConfig>
+
 
    <!-- Read point definition -->
    <numberOfReadPoints>4</numberOfReadPoints>

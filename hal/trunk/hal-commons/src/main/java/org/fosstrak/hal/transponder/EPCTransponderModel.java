@@ -11,6 +11,9 @@ import org.apache.commons.configuration.XMLConfiguration;
 
 public class EPCTransponderModel {
 
+	// default configuration file
+	private static String defaultConfigFile = "/props/EPCTransponderModels_default.xml";
+
    // the configuration
    private static XMLConfiguration config = null;
    
@@ -179,7 +182,7 @@ public class EPCTransponderModel {
          StackTraceElement[] sTrace = ex.getStackTrace();
          String className = sTrace[0].getClassName();
          Class c = Class.forName(className);
-         URL fileurl = ResourceLocator.getURL(configFile, null, c);
+         URL fileurl = ResourceLocator.getURL(configFile, defaultConfigFile, c);
          config.load(fileurl);
          // create index to map names to class- and mask designer identifier
          HashMap<String, String> name2CiMdi = new HashMap<String, String>();

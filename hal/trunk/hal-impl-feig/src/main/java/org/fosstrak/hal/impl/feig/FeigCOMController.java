@@ -25,6 +25,7 @@ import org.accada.hal.impl.feig.comm.ResponseRecord;
 import org.accada.hal.impl.feig.util.ISOTransponderResponseErrorCode;
 import org.accada.hal.impl.feig.util.StatusByte;
 import org.accada.hal.transponder.EPCTransponderModel;
+import org.accada.hal.transponder.IDType;
 import org.accada.hal.transponder.InventoryItem;
 import org.accada.hal.transponder.RFTechnology;
 import org.accada.hal.transponder.TransponderModel;
@@ -197,8 +198,17 @@ public class FeigCOMController implements FeigController {
 				}
 
 				int memSize = detectTransponderBlockSize(id)* transponderModel.getBlocks();
-                // TODO exact id type string for epc tags?
-                String idType = "EPC";
+ 					 TransponderType trt = transponderModel.getType();
+ 					 IDType idType = null;
+					 if (trt == TransponderType.ISO15693) {
+	                idType = IDType.getIdType("ISO15693", null);
+					 } else if (trt == TransponderType.ICode1) {
+						 idType = IDType.getIdType("ICode1", null);
+					 } else if (trt == TransponderType.ICodeUID) {
+						 idType = IDType.getIdType("ICodeUID", null);
+					 } else {
+						 idType = IDType.getIdType("Unknown", null);
+					 }
                 MemoryBankDescriptor[] memoryBankDescriptors =
                    new MemoryBankDescriptor[1];
                 memoryBankDescriptors[0] = new MemoryBankDescriptor(memSize,
