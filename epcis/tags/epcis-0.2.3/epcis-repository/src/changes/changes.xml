@@ -1,0 +1,59 @@
+<document>
+  <properties>
+    <title>Changes epcis-repository</title>
+  </properties>
+  <body>
+    <release version="0.2.3" date="2007-12-14">
+      <action dev="steybem" type="fix" issue="1789785" due-to="Sean Wellington">
+        Made CaptureOperationsModule more thread-safe and made sure that database
+        resources are released under all circumstances.
+      </action>
+      <action dev="steybem" type="add" due-to="Sean Wellington">
+        Extracted Tomcat-specific initialization logic from CaptureOperationsModule
+        into a new class CaptureOperationsServlet, such that CaptureOperationsModule
+        can be used in other application servers.
+      </action>
+      <action dev="steybem" type="fix" issue="1844046">
+        MATCH_anyEPC query did not match against URIs in the parentID field of
+        Transaction- and AggregationEvents.
+      </action>
+      <action dev="steybem" type="fix" issue="1844041">
+        parentID field of TransactionEvents was ignored in
+        CaptureOperationsModule.
+      </action>
+      <action dev="steybem" type="fix" issue="1789796">
+        Fixed storing and retrieving of time values to/from repository. Time
+        zone offset does not need to be subtracted/added from event time or
+        record time.
+      </action>
+      <action dev="steybem" type="fix">
+        Fixed QuerySchedule to correctly handle leap years.
+      </action>
+    </release>
+    <release version="0.2.2" date="2007-08-31">
+      <action dev="steybem" type="fix" issue="1781884">
+        HTTP Capture Interface in 0.2.1 was not EPCIS compliant. Fixed 
+        capture operation which now expects the EPCISDocument as payload
+        in the HTTP POST request.
+      </action>
+      <action dev="steybem" type="fix" issue="1781885">
+        Fixed Null pointer exception.
+      </action>
+    </release>
+    <release version="0.2.1" date="2007-08-10">
+      <action dev="steybem" type="fix" issue="1725569">
+        Scheduled queries were not restored properly after a service restart.
+      </action>
+      <action dev="roduner" type="update">
+        Changed demo database to make all examples shown in Query Client work.
+      </action>
+      <action dev="steybem" type="update">
+        Changed build environment: Added profiles (dev, prod) to the build
+        environment with specific settings for a development and a
+        productive environment (you can activate a profile by adding e.g.
+        "-Denv=dev" to your mvn build command).
+      </action>
+    </release>
+    <release version="0.2.0" date="2007-04-27" description="first release" />
+  </body>
+</document>
