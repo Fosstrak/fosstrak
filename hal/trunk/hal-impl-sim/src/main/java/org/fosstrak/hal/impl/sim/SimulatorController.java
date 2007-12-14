@@ -42,6 +42,7 @@ import org.accada.hal.Trigger;
 import org.accada.hal.UnsignedByteArray;
 import org.accada.hal.UnsupportedOperationException;
 import org.accada.hal.transponder.EPCTransponderModel;
+import org.accada.hal.transponder.IDType;
 import org.accada.hal.util.ByteBlock;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -377,9 +378,14 @@ public class SimulatorController implements HardwareAbstraction {
          String v_arr[] = new String[len];
          v_arr = v.toArray(v_arr);
          TagDescriptor[] td_arr = new TagDescriptor[v_arr.length];
+         String idTConf;
+			try {
+				idTConf = props.getParameter("idTypesConfig");
+			} catch (Exception e) {
+				idTConf = null;
+			}
          for (int j = 0; j < td_arr.length; j++) {
-            // TODO exact id type string for epc tags?
-            String idType = "EPC";
+				IDType idType = IDType.getIdType("EPC", idTConf);
             byte[] accada_sim_tid_bytes = ByteBlock.hexStringToByteArray("E2FFF000");
             EPCTransponderModel tagModel = EPCTransponderModel.getEpcTrasponderModel(
                   accada_sim_tid_bytes, epcTransponderModelsConfig);

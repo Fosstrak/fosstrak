@@ -18,6 +18,9 @@
    <!-- Configuration file with the transponder model configuration -->
    <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
 
+   <!-- The IdTypes configuration file -->
+   <idTypesConfig>/props/IDTypes_default.xml</idTypesConfig>
+
    <!-- The regulatory region for the reader according to 'Impinj Speedway Reference Design / Mach1 API Specification, Operating Command Set version 2.8.0, chapter 2.3.9 SetRegulatoryRegion' -->
    <!-- Values: 0 (FCC part 15.247, US / North America), 1 (ETSI EN 300-220), 2 (ETSI EN 302-208 with LBT), 3 (Hong Kong 920-925 MHz), 4 (Taiwan 922-928 MHz), 5 (Japan 952-954 MHz), 6 (Japan 952-955 MHz, 10mW max power), 7 (ETSI EN 302-208 without LBT), 8 (Korea 910-914 MHz) -->
    <!-- Note: Not every reader hardware implementation supports all regulatory regions! -->

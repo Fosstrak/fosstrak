@@ -22,6 +22,7 @@ import org.accada.hal.impl.feig.comm.ResponseRecord;
 import org.accada.hal.impl.feig.comm.TCPIPProtocol;
 import org.accada.hal.impl.feig.util.StatusByte;
 import org.accada.hal.transponder.EPCTransponderModel;
+import org.accada.hal.transponder.IDType;
 import org.accada.hal.transponder.InventoryItem;
 import org.accada.hal.transponder.RFTechnology;
 import org.accada.hal.transponder.TransponderType;
@@ -206,8 +207,8 @@ public class FeigTCPIPController implements HardwareAbstraction {
    			String id = item.id;
 
             if (item.transponderType == TransponderType.EPCclass1Gen2) {
-               // TODO exact id type string for epc tags?
-               String idType = "EPC";
+					IDType idType = IDType.getIdType("EPC",
+							config.getString("idTypesConfig"));
                EPCTransponderModel tagModel = item.epcTransponderModel;
                MemoryBankDescriptor[] memoryBankDescriptors =
                   new MemoryBankDescriptor[4];

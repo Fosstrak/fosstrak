@@ -20,6 +20,8 @@
 
 package org.accada.hal;
 
+import org.accada.hal.transponder.IDType;
+
 /**
  * The class is a data structure to store information that describes a tag
  * such as tag id type and memory structure.
@@ -34,8 +36,8 @@ public class TagDescriptor {
 	protected MemoryDescriptor memoryDescriptor;
 
 	/** The type of the ID of the tag */
-	private String idType = null;
-
+	private IDType idType = null;
+	
 
 	//---- Constructor(s) ---------------------------------------------------
 
@@ -45,7 +47,7 @@ public class TagDescriptor {
 	 * @param idType the type of the ID of the tag
 	 * @param memoryDescriptor the description of the memory 
 	 */
-	public TagDescriptor(String idType, MemoryDescriptor memoryDescriptor) {
+	public TagDescriptor(IDType idType, MemoryDescriptor memoryDescriptor) {
 		this.idType = idType;
 		this.memoryDescriptor = memoryDescriptor;
 	}
@@ -67,7 +69,8 @@ public class TagDescriptor {
 	 * 
 	 * @return The type of the ID of the tag
 	 */
-	String getIdType() {
+	IDType getIdType() {
 		return idType;
 	}
+
 }
