@@ -91,10 +91,9 @@ public class Tag extends JPanel implements Comparable {
 	/**
 	 * the constructor creates a new graphical representation of a rfid tag  
 	 * 
-	 * @param name of the new rfid tag
 	 * @param epc of the new rfid tag
 	 * @param pos on the pane of the new rfid tag
-	 * @param translationListener which listen to the tranlation of the rfid tag
+	 * @param simulator the tag belongs to
 	 */
 	public Tag(String epc, Point pos, final IGraphicSimulator simulator) {
 		super();
@@ -577,7 +576,7 @@ public class Tag extends JPanel implements Comparable {
 	/**
 	 * paints the rfid tag
 	 * 
-	 * @param the graphic representation of the component
+	 * @param g the graphic representation of the component
 	 */
 	protected void paintComponent(Graphics g) {
 		icon.paintIcon(this, g, (simulator.getProperty("TagWidth") - icon.getIconWidth()) / 2, 0);
@@ -672,7 +671,7 @@ public class Tag extends JPanel implements Comparable {
 	/**
 	 * returns the graphic simulator this tag belongs to
 	 * 
-	 * @ return graphic simulator
+	 * @return graphic simulator
 	 */
 	public IGraphicSimulator getSimulator() {
 		return simulator;

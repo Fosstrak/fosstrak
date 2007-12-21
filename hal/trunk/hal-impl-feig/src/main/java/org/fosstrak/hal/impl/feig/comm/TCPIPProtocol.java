@@ -30,16 +30,16 @@ import org.accada.hal.util.CRC16;
 import org.apache.log4j.Logger;
 
 /**
- * ISOProtocol is an interface to the ISO 15693 compliant RFID-Reader FEIG ID
- * ISC.MR100. It allows to send a request to the reader. The sendRequest method
+ * TCPIPProtocol is an interface to the RFID-Reader FEIG ID ISC.LRU1000. It
+ * allows to send a request to the reader. The sendRequest method
  * then locks until a response from the reader has arrived or a timeout occured.
  * A request consists of a comAdr, which is the bus-address of the reader, a
  * control byte, which specifies the command that the reader should execute and
  * some data-bytes, which state more precisely, what's asked for. When
- * terminating the session with the reader one should close the serial-port with
- * the closePort method.
+ * terminating the session with the reader one should close the connection with
+ * the close method.
  *
- * @author Simon Keel, skeel@student.ethz.ch
+ * @author hallerj
  * @version 1.0
  */
 public class TCPIPProtocol {

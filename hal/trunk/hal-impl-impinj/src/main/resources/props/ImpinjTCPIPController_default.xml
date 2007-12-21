@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Properties file for Feig i-scan UHF readers using a TCP/IP connection -->
-<!-- Reader: Feig Long Range Reader OBID i-scan ID ISC.LRU1000 (TCP/IP) -->
+<!-- Properties file for Impinj Speedway reader using a TCP/IP connection -->
 <properties>
 
    <!-- Address of the reader -->

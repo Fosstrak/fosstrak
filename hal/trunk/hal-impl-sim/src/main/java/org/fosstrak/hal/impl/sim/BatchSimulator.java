@@ -327,7 +327,9 @@ public class BatchSimulator  implements SimulatorEngine, Runnable {
     /**
      * notifies the controller about a RFIDEvent.
      *
-     * @param event the RFIDEvent.
+     * @param source the source that generated the event.
+     * @param tag the tag that triggered the event.
+     * @param id the RFIDEvent.
      */
      public void notify(String source, Tag tag, int id) {
      	switch(id) {

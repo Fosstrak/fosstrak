@@ -34,7 +34,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author altery
+ * @author hallerj
  *
  */
 public class FeigTCPIPController implements HardwareAbstraction {
@@ -358,7 +358,7 @@ public class FeigTCPIPController implements HardwareAbstraction {
 	 * (non-Javadoc)
 	 *
 	 * @see org.accada.hal.HardwareAbstraction#readBytes(java.lang.String,
-	 *      java.lang.String, int, int, java.lang.String[])
+	 *      java.lang.String, int, int, int, java.lang.String[])
 	 */
 	public UnsignedByteArray readBytes(String readPointName, String id,
          int memoryBank, int offset, int length, String[] passwords)
@@ -492,7 +492,7 @@ public class FeigTCPIPController implements HardwareAbstraction {
 	 * (non-Javadoc)
 	 *
 	 * @see org.accada.hal.HardwareAbstraction#writeBytes(java.lang.String,
-	 *      java.lang.String, int, int, byte[], java.lang.String[])
+	 *      java.lang.String, int, int, UnsignedByteArray, java.lang.String[])
 	 */
 	public void writeBytes(String readPointName, String id, int memoryBank,
 			int offset, UnsignedByteArray data, String[] passwords)
@@ -651,8 +651,8 @@ public class FeigTCPIPController implements HardwareAbstraction {
 	/** TODO: implement
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#programTagId(java.lang.String,
-	 *      java.lang.String[])
+	 * @see org.accada.hal.HardwareAbstraction#writeId(java.lang.String,
+	 *      java.lang.String, java.lang.String[])
 	 */
 	public void writeId(String readPointName, String id, String[] passwords)
 			throws HardwareException, UnsupportedOperationException {
@@ -748,7 +748,7 @@ public class FeigTCPIPController implements HardwareAbstraction {
    /**
     * (non-Javadoc)
     *
-    * @see org.accada.hal.HardwareAbstraction#supportParameters()
+    * @see org.accada.hal.HardwareAbstraction#supportsParameters()
     */
    public boolean supportsParameters() {
       return true;
@@ -784,7 +784,7 @@ public class FeigTCPIPController implements HardwareAbstraction {
 	 * Throws RFIDException if error occurs. (returns empty Vector if error
 	 * occurs!)
 	 *
-	 * @return
+	 * @return a vector with all the inventory items
 	 */
 	synchronized protected Vector<InventoryItem> getInventory()
 			throws HardwareException {

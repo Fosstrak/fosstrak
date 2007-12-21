@@ -10,7 +10,7 @@
 Architecture
 
   The following sections describe the technical specification of Accada's HAL
-  interface and implementation. It is intended as an introduction to future
+  interface and implementations. It is intended as an introduction to future
   developers.
 
 
@@ -18,48 +18,133 @@ Architecture
 
   [[1]] {{{#Introduction}Introduction}}
 
-  [[1]] {{{#Architectural%20Overview}Architectural Overview}}
+  [[2]] {{{#Architectural}Architectural Overview}}
 
-  [[1]] {{{#HAL%20Interface}HAL Interface}}
+  [[3]] {{{#HAL}HAL Interface}}
 
 
 * {Introduction}
 
-  The goal of EPCIS is to enable applications to incorporate EPC-related data
-  into their businesses. It provides means to store EPC data persistently and
-  offers a framework to add data to a repository as well as query it. The EPCIS
-  specification describes a standard interface for accessing EPC-related
-  information and thus leverages an EPC-related data sharing accross
-  applications.
+  The goal of Accada HAL is to provide a common interface and wrappers
+  implementing it to uniformly access various RFID readers.
 
-  Accada's EPCIS implementation is not intended to provide a reference
-  implementation but an entry point to allow rapid prototyping. Our software
-  has evolved over several semester and lab projects at the Distributed
-  Systems Group {{{#[2]}[2]}} at ETH Zurich and is under continous development.
+  Each reader has to be accessed through its own proprietary protocol. This is
+  very inflexible. If you access the reader directly and want to exchange it
+  with an other model, you have to adjust your application to control the
+  reader through a different protocol.
 
+  Accada HAL solves this problem by providing one single interface to access
+  all the implemented readers. With this the code specific to the reader is
+  moved from the application to the hardware abstraction layer. The application
+  does not need to adjust to a specific reader but simply use the
+  <<<HardwareAbstraction>>> interface to access all readers.
 
-* {Architectural Overview}
+  New readers not currently implemented in the Accada HAL project can easily be
+  added as a new module. The controller must implement the
+  <<<HardwareAbstraction>>> interface and communicate with the reader over the
+  corresponding protocol.
 
-  The following figure gives an overview of the EPCIS architecture.
-
-[../images/epcis_architecture.png] architectural overview
-
-  The architectural style is client server. A client is either an EPCIS Capture
-  Application or an EPCIS Query Application or both. The server is an EPCIS
-  Repository providing several interfaces to which clients may connect. The
-  Repository parses client requests and processes them by accessing the
-  relational database. The transport protocols used are XML over HTTP and SOAP
-  over HTTP.
-
-  In the following sections we describe the Repository and the Client
-  Applications in detail.
+  The Accada HAL project includes a simulator framework. There are several
+  simulator controllers, each implementing the <<<HardwareAbstraction>>>
+  interface. This allows to access the simulators in exactly the same way
+  as HAL implementations for hardware readers.
 
 
-* {HAL Interface}
+* {Architectural} Overview
 
-  ...
+  The following figure gives an overview of the HAL architecture.
+
+[../images/hal_architecture.png] architectural overview
+
+  The <<<HardwareAbstraction>>> defines the interface between the HAL and the
+  Accada Reader or any other applitacion using the Accada HAL. It standardises
+  access to various readers and simulators of readers. This allows uniform
+  usage. The readers and simulators become interchangeable because the code
+  specific to the reader is part of the HAL and not of the application.
+  
+  The implementations of the <<<HardwareAbstraction>>> interface are divided
+  into multiple modules. One for the simulators and one for each reader
+  manufacturer. A module can contain one or multiple reader controllers.
 
 
-* References
+* {HAL} Interface
 
-  {[1]} <Distributed Systems Groups, ETH Zurich>, {{http://www.vs.inf.ethz.ch/}}
+  For exlanation of the <<<HardwareAbstraction>>> interface, the methods are
+  divided into following groups:
+  
+  * {{{#Identify}Identify}}
+  
+  * {{{#Asynchronous}Asynchronous Identify}}
+  
+  * {{{#Read}Read and Write}}
+  
+  * {{{#Kill}Kill and WriteId}}
+  
+  * {{{#Controller}Controller Management}}
+  
+  []
+  
+  The exact description of each methods arguments, functionality and return
+  types can be looked up in the {{{../apidocs/index.html}JavaDoc}}.
+  
+** {Identify}
+
+   The <<<identify>>> method is mandantory and identifies the tags in the range
+   of the read points given as arguments.
+   
+   The return type is an array containig an <<<Observation>>> for each readpoint
+   given in the argument array. Each <<<Observation>>> contains the name of the
+   HAL controller and the read point where the tags were identified, a timestamp
+   when the identification happened, an array uf IDs, a corresponding array of
+   <<<TagDescriptor>>>s and a boolean set to false if the identification failed.
+
+** {Asynchronous} Identify
+
+   The methods <<<startAsynchronousIdentify>>>, <<<stopAsynchronousIdentify>>>,
+   <<<isAsynchronousIdentifyRunning>>>, <<<addAsynchronousIdentifyListener>>>,
+   <<<removeAsynchronousIdentifyListener>>> and <<<supportsAsynchronousIdentify>>>
+   serve to identify the tags in the range of the given read points in a
+   continuous way that operates asynchronously. Listeners can be added and
+   removed arbitrarily during operation. Implementation of the asynchronous
+   identification is optional.
+
+** {Read} and Write
+
+   Implementing the <<<readBytes>>> and <<<writeBytes>>> methods is facultative.
+   If implemented and supported by the tag, data can be read from or written to
+   a specified tag in range. The transponder ID should be a result of a previous
+   <<<identify>>>.
+
+** {Kill} and WriteId
+
+   Kills the specified tag if in range. A killed tag does not respond to
+   requests any longer.
+   
+   Writes a new ID onto a tag independent of its position in memory. The
+   actual position of the ID depends on the type of tag used. This method may
+   fail even if the addressed tag is in read range because a write operation
+   needs higher power to succeed.
+   
+   Both methods are optional to implement and additionally may depend on the
+   capabilities of the tag.
+
+** {Controller} Management
+
+   The <<getHALName>> and <<getReadPointNames>> methods are
+   mandantory to implement. They deliver essential information about the HAL.
+   
+   All further methods described below are optional to implement.
+   
+   The <<parameter>> methods can be used to get parameters set in the
+   configuration file. Depending on the controller implementation, parameters
+   of the reader can be read and set through these methods. Examples of reader
+   parameters are reader information, transmission power, listen before talk
+   parameters, receiver or anti-collision configuration. Available parameters
+   should be declared in the configuration file of the controller or can be
+   requested with the <<<getAllParameterNames>>> method.
+   
+   The <<reset>> method reinitialises the controller including the unlocking of
+   all previously locked / muted tags.
+   
+   The <<ReadPoint>> methods allow to control the individual read points and
+   get information about them.

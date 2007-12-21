@@ -138,7 +138,7 @@
     <site>
       <id>accada-website</id>
       <name>Accada website</name>
-      <url>sftp://www.accada.org/local/home/accadaweb/public_html/reader</url>
+      <url>sftp://www.accada.org/local/home/accadaweb/public_html/hal</url>
     </site>
   </distributionManagement>
   <issueManagement>

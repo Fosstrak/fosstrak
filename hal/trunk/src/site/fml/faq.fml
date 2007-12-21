@@ -9,6 +9,11 @@
 </faq>
 
 <faq>
+<question>Immediately after reading a tag with the FEIG HF reader, it is lost again. Where is the problem?</question>
+<answer>This behavior is caused by a misconfiguration of the reader. Start the OBID ISOstart software shipped with the reader and connect to the reader. Click on the 'Configuration' icon on the left side and choose 'CFG5: Anticollision' from the list. Push the 'Read' button on the right side to read the actual values stored on the reader. If the field labeled 'ONT' is set to the value '1: only new selected transponders will be sent to the host', this caused the problem. Change the value to '0: all transponders in field will be sent to the host'. Write and save the new value to the EEPROM and RAM to change it persistently.</answer>
+</faq>
+
+<faq>
 <question>Can I contribute to this project even, if I am not part of the Auto-ID Labs?</question>
 <answer>Yes. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.</answer>
 </faq>

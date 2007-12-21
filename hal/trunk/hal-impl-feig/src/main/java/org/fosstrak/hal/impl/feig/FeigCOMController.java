@@ -1,7 +1,6 @@
 package org.accada.hal.impl.feig;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -24,7 +23,6 @@ import org.accada.hal.impl.feig.comm.RequestRecord;
 import org.accada.hal.impl.feig.comm.ResponseRecord;
 import org.accada.hal.impl.feig.util.ISOTransponderResponseErrorCode;
 import org.accada.hal.impl.feig.util.StatusByte;
-import org.accada.hal.transponder.EPCTransponderModel;
 import org.accada.hal.transponder.IDType;
 import org.accada.hal.transponder.InventoryItem;
 import org.accada.hal.transponder.RFTechnology;
@@ -94,11 +92,6 @@ public class FeigCOMController implements FeigController {
 	 * ISOProtocol used for reader communication
 	 */
 	private ISOProtocol ip;
-
-	/**
-	 * The currently selected readpoint
-	 */
-	private String selectedReadPoint = "";
 
 	private HashMap<String, InventoryItem> currentInventory = new HashMap<String, InventoryItem>();
 
@@ -281,7 +274,7 @@ public class FeigCOMController implements FeigController {
 	 * (non-Javadoc)
 	 *
 	 * @see org.accada.hal.HardwareAbstraction#readBytes(java.lang.String,
-	 *      java.lang.String, int, int, java.lang.String[])
+	 *      java.lang.String, int, int, int, java.lang.String[])
 	 */
 	public UnsignedByteArray readBytes(String readPointName, String id, int memoryBank,
 			int offset, int length, String[] passwords)
@@ -382,7 +375,7 @@ public class FeigCOMController implements FeigController {
 	 * (non-Javadoc)
 	 *
 	 * @see org.accada.hal.HardwareAbstraction#writeBytes(java.lang.String,
-	 *      java.lang.String, int, int, byte[], java.lang.String[])
+	 *      java.lang.String, int, int, UnsignedByteArray, java.lang.String[])
 	 */
 	public void writeBytes(String readPointName, String id, int memoryBank,
 			int offset, UnsignedByteArray data, String[] passwords)
@@ -527,8 +520,8 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#programTagId(java.lang.String,
-	 *      java.lang.String[])
+	 * @see org.accada.hal.HardwareAbstraction#writeId(java.lang.String,
+	 *      java.lang.String, java.lang.String[])
 	 */
 	public void writeId(String readPointName, String id, String[] passwords)
 			throws HardwareException, UnsupportedOperationException {
@@ -624,7 +617,7 @@ public class FeigCOMController implements FeigController {
    /**
     * (non-Javadoc)
     *
-    * @see org.accada.hal.HardwareAbstraction#supportParameters()
+    * @see org.accada.hal.HardwareAbstraction#supportsParameters()
     */
    public boolean supportsParameters() {
       return true;
@@ -700,7 +693,7 @@ public class FeigCOMController implements FeigController {
 	 * Throws RFIDException if error occurs. (returns empty Vector if error
 	 * occurs!)
 	 *
-	 * @return
+	 * @return a vector with all inventory items
 	 */
 	synchronized protected Vector<InventoryItem> getInventory()
 			throws HardwareException {
@@ -1101,11 +1094,6 @@ public class FeigCOMController implements FeigController {
 
 	public boolean selectReadpoint(String readPointName) {
 		boolean selected = multiplexConfig.selectReadPoint(readPointName);
-		if (selected) {
-			selectedReadPoint = readPointName;
-		} else {
-			selectedReadPoint = "";
-		}
 
 		return selected;
 	}

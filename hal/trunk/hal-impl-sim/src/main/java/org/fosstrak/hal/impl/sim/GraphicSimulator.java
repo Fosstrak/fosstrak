@@ -124,7 +124,7 @@ public class GraphicSimulator extends JFrame implements SimulatorEngine, IGraphi
 	 * implements the initialize method of the SimulatorEngine
      * 
      * @param controller 
-     * @param file is only required for BatchSimulator
+     * @param propFile
 	 * @throws IOException 
 	 */
 	public void initialize(SimulatorController controller, String propFile

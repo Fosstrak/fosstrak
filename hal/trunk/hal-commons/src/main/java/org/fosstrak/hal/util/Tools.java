@@ -38,8 +38,6 @@ import java.io.IOException;
 *
 * @author Matthias Lampe, lampe@lampe.net
 * @version 1.0, 08/99
-*
-* @modified
 */
 
 public class Tools
@@ -289,7 +287,7 @@ public class Tools
 	* converts HTML to a string.
 	* The <BR> and <P> tags are replaced with newline.
 	*
-	* @param html the html text to be converted
+	* @param text the html text to be converted
 	*
 	* @return the converted string
 	*/

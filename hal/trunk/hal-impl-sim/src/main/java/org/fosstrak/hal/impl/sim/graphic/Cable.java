@@ -76,7 +76,7 @@ public class Cable extends JLabel{
 	/**
 	 * paints the cable
 	 * 
-	 * @param the graphic representation of the component
+	 * @param g the graphic representation of the component
 	 */
 	protected void paintComponent(Graphics g) {
 		if(readerPaneX < 0) {
