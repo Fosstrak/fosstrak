@@ -12,8 +12,7 @@ Impinj Speedway Configuration
 
 +-----------------------------------------------------------------------------+
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Properties file for Feig i-scan UHF readers using a TCP/IP connection -->
-<!-- Reader: Feig Long Range Reader OBID i-scan ID ISC.LRU1000 (TCP/IP) -->
+<!-- Properties file for Impinj Speedway reader using a TCP/IP connection -->
 <properties>
 
    <!-- Address of the reader -->
@@ -31,7 +30,12 @@ Impinj Speedway Configuration
    <!-- Configuration file with the transponder model configuration -->
    <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
 
-   <!-- The regulatory region for the reader according to 'Impinj Speedway Reference Design / Mach1 API Specification, Operating Command Set version 2.8.0, chapter 2.3.9 SetRegulatoryRegion' -->
+   <!-- The IdTypes configuration file -->
+   <idTypesConfig>/props/IDTypes_default.xml</idTypesConfig>
+
+   <!-- The regulatory region for the reader according to Impinj Speedway Reference
+      Design / Mach1 API Specification, Operating Command Set version 2.8.0,
+      chapter 2.3.9 SetRegulatoryRegion' -->
    <!-- Values:
         0 (FCC part 15.247, US / North America),
         1 (ETSI EN 300-220),
@@ -57,8 +61,12 @@ Impinj Speedway Configuration
 
    <!-- Parameters from the reader. -->
    <!-- The default settings partly depend on the regulatory region setting -->
-   <!-- These parameters can not be configured here. The values can be requested with the getParameter() and set with the setParameter() method of the HAL -->
-   <!-- The values in this configuration file are informational only, please do not edit them. R means this parameter is read only (getParameter returns value, setParameter throws Exception), R/W means this parameter is read write (getParameter returns current value, setParameter sets new value -->
+   <!-- These parameters can not be configured here. The values can be requested
+      with the getParameter() and set with the setParameter() method of the HAL -->
+   <!-- The values in this configuration file are informational only, please do
+      not edit them. R means this parameter is read only (getParameter returns
+      value, setParameter throws Exception), R/W means this parameter is readable
+      and writeable (getParameter returns current value, setParameter sets new value -->
    <!-- Example: getParameter("reader.ReaderInfo"), setParameter("reader.TxPower") -->
    <reader>
       <ReaderInfo>R</ReaderInfo>

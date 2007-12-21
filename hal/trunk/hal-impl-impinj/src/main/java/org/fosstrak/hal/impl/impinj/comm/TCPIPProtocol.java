@@ -477,7 +477,7 @@ public class TCPIPProtocol {
    /**
     * Handles frames that are not used otherwise (logging).
     *
-    * @param frame
+    * @param framebytes
     *          the frame to handle
     */
    public void handleUnusedFrame(byte[] framebytes) {

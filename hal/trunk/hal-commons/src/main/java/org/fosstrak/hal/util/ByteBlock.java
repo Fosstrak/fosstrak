@@ -205,7 +205,8 @@ public class ByteBlock {
 	 * 
 	 * @param byteArray
 	 * @param length
-	 * @return
+	 * @return a string with the bytes of the input array in hexadecimal
+	 *          representation.
 	 */
 	static public String byteArrayToHexString(byte[] byteArray, int length) {
 		byte[] data = new byte[length];
@@ -253,7 +254,7 @@ public class ByteBlock {
 	 * 
 	 * @param hexString
 	 * @param length
-	 * @return
+	 * @return a byte array derived from the hexadecimal representation given
 	 */
 	static public byte[] hexStringToByteArray(String hexString, int length) {
 		byte[] data = new byte[length];
@@ -285,7 +286,7 @@ public class ByteBlock {
     * (signed) integer.
 	 * 
 	 * @param b
-	 * @return
+	 * @return the value representated by the input byte array
 	 */
 	public static int bytesToNumber(byte[] b) {
 		int val = 0;

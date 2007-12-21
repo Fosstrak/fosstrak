@@ -271,8 +271,6 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
     *
     * @param readpointName
     *          the name of the read point
-    * @return
-    *          true if read point selected
     * @throws HardwareException
     *          if read point not available or selecting antenna connectors failed
     */
@@ -289,8 +287,6 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
     *
     * @param readpointNames
     *          the names of the read points
-    * @return
-    *          true if read point selected
     * @throws HardwareException
     *          if read point not available or selecting antenna connectors failed
     */
@@ -318,10 +314,6 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    /**
     * Select read points
     *
-    * @param readpointNames
-    *          the names of the read points
-    * @return
-    *          true if read point selected
     * @throws HardwareException
     *          if selecting antenna connectors failed
     */
@@ -406,7 +398,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	 * (non-Javadoc)
 	 *
 	 * @see org.accada.hal.HardwareAbstraction#readBytes(java.lang.String,
-	 *      java.lang.String, int, int, java.lang.String[])
+	 *      java.lang.String, int, int, int, java.lang.String[])
 	 */
 	public UnsignedByteArray readBytes(String readPointName, String id,
          int memoryBank, int offset, int length, String[] passwords)
@@ -526,7 +518,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	 * (non-Javadoc)
 	 *
 	 * @see org.accada.hal.HardwareAbstraction#writeBytes(java.lang.String,
-	 *      java.lang.String, int, int, byte[], java.lang.String[])
+	 *      java.lang.String, int, int, UnsignedByteArray, java.lang.String[])
 	 */
 	public void writeBytes(String readPointName, String id, int memoryBank,
 			int offset, UnsignedByteArray data, String[] passwords)
@@ -679,8 +671,8 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    /**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#programTagId(java.lang.String,
-	 *      java.lang.String[])
+	 * @see org.accada.hal.HardwareAbstraction#writeId(java.lang.String,
+	 *      java.lang.String, java.lang.String[])
 	 */
 	public void writeId(String readPointName, String id, String[] passwords)
 			throws ReadPointNotFoundException, HardwareException,
@@ -985,7 +977,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    /**
     * (non-Javadoc)
     *
-    * @see org.accada.hal.HardwareAbstraction#supportParameters()
+    * @see org.accada.hal.HardwareAbstraction#supportsParameters()
     */
    public boolean supportsParameters() {
       return true;

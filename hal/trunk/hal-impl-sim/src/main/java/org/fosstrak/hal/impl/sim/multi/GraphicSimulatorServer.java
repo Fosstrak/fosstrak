@@ -610,7 +610,7 @@ public class GraphicSimulatorServer extends JFrame implements SimulatorServerEng
 	/**
 	 * deletes an antenna and removes it from the layered pane
 	 * 
-	 * @param id of the antenna
+	 * @param antenna
 	 * @param reader which contains the antenna
 	 */
 	public void removeAntenna(Antenna antenna, Reader reader) {

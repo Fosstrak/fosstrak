@@ -67,8 +67,6 @@ public class SimulatorClient extends Thread implements SimulatorEngine {
     *          the SimulatorController
     * @param propFile
     *          the path and name of the configuration file
-    * @param defaultPropFile
-    *          the path and name of the default configuration file
     * @throws SimulatorServerException
     */
 	public void initialize(SimulatorController controller, String propFile

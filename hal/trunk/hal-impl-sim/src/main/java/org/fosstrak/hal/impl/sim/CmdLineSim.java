@@ -72,7 +72,7 @@ public class CmdLineSim implements SimulatorEngine, Runnable {
      * implements the initialize method of the SimulatorEngine
      * 
      * @param controller
-     * @param file (not used)
+     * @param propFile (not used)
      */
 	public void initialize(SimulatorController controller, String propFile) {
 		this.controller = controller;

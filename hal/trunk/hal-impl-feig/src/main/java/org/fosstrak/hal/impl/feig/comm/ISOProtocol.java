@@ -245,7 +245,7 @@ public class ISOProtocol implements SerialPortEventListener {
 	 * attached to the reader.
 	 *
 	 * @param requestRecord
-	 * @return
+	 * @return the response
 	 * @throws IOException
 	 */
 	public synchronized ResponseRecord sendFunctionUnitRequest(

@@ -59,7 +59,7 @@ public class Reader extends JComponent {
 	 * the constructor creates a new graphical representation of a reader
 	 * 
 	 * @param id of the reader
-	 * @param pos on the pane of the reader
+	 * @param antennas set of antennas
 	 * @param simulator graphic simulator to which this reader belongs to
 	 */
 	public Reader(String id, Set antennas, final GraphicSimulatorServer simulator) {
@@ -143,7 +143,7 @@ public class Reader extends JComponent {
 	/**
 	 * paints the reader
 	 * 
-	 * @param the graphic representation of the component
+	 * @param g the graphic representation of the component
 	 */
 	protected void paintComponent(Graphics g) {
 		icon.paintIcon(this, g, 0, 0);

@@ -65,9 +65,7 @@ public class Antenna extends JComponent {
 	/**
 	 * the constructor creates a new graphical representation of a rfid antenna 
 	 * 
-	 * @param name of the new rfid antenna
 	 * @param id of the new rfid antenna
-	 * @param pos on the pane of the new rfid antenna
 	 * @param simulator graphic simulator to which this rfid antenna belongs to
 	 */
 	public Antenna(String id, final IGraphicSimulator simulator) {
@@ -91,7 +89,7 @@ public class Antenna extends JComponent {
 	/**
 	 * paints the rfid antenna
 	 * 
-	 * @param the graphic representation of the component
+	 * @param g the graphic representation of the component
 	 */
 	protected void paintComponent(Graphics g) {
 		icon.paintIcon(this, g, 0, 0);

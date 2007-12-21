@@ -85,8 +85,6 @@ public final class Trigger {
    /**
     * creates a TIMER trigger.
     * 
-    * @param interval the time interval for the TIMER trigger in milliseconds
-    * 
     * @return the TIMER trigger.
     */
    public static Trigger createContinuousTrigger() {

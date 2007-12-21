@@ -103,7 +103,7 @@ public class SelectionComponent extends JComponent {
 	/**
 	 * paints the selection rectangle
 	 * 
-	 * @param the graphic representation of the selection
+	 * @param g the graphic representation of the selection
 	 */
 	protected void paintComponent(Graphics g) {
 		g.setColor(Color.YELLOW);

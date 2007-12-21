@@ -10,26 +10,23 @@ Simulator Configuration and Usage
 
 * Simulator Types
 
-  The simulator controller manages four simulator types, each with different configuration. The following sections describe the configuration of the simulator controller and each simulator type with usage instructions:
+  The simulator controller manages four simulator types, each with different
+  configuration. The following sections describe the configuration of the
+  simulator controller and each simulator type including usage instructions:
 
-  * {{{#Simulator%20Controller}Simulator Controller}} (common to all simulator
+  * {{{#Simulator}Simulator Controller}} (common to all simulator
     types)
-  []
 
-  * {{{#Graphic%20Simulator}Graphic Simulator}}
-  []
+  * {{{#Graphic}Graphic Simulator}}
 
-  * {{{#Batch%20Simulator}Batch Simulator}}
-  []
+  * {{{#Batch}Batch Simulator}}
 
-  * {{{#Command%20Line%20Simulator}Command Line Simulator}}
-  []
+  * {{{#Command}Command Line Simulator}}
 
-  * {{{#Multi%20Simulator}Multi Simulator}} (client / server)
-  []
+  * {{{#Multi}Multi Simulator}} (client / server)
 
 
-* Simulator Controller
+* {Simulator} Controller
 
   This is an example of a configuration file for the simulator controller. All options
   with their comments should be self-explanatory.
@@ -40,12 +37,12 @@ Simulator Configuration and Usage
 
    <!-- SimulatorType to be loaded dynamically -->
    <simType>org.accada.reader.hal.impl.sim.GraphicSimulator</simType>
-   <!-- <simType>org.accada.reader.hal.impl.sim.BatchSimulator</simType> -->
-   <!-- <simType>org.accada.reader.hal.impl.sim.CmdLineSim</simType> -->
-   <!-- <simType>org.accada.reader.hal.impl.sim.SimulatorClient</simType> -->
    <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
 
-   <!-- Configuration file with all the transponder models --> <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
+   <!-- Configuration file with all the transponder models -->
+   <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
+   <!-- The IdTypes configuration file -->
+   <idTypesConfig>/props/IDTypes_default.xml</idTypesConfig>
 
    <!-- Read point definition -->
    <numberOfReadPoints>4</numberOfReadPoints>
@@ -61,7 +58,7 @@ Simulator Configuration and Usage
 +-----------------------------------------------------------------------------+
 
 
-* Graphic Simulator
+* {Graphic} Simulator
 
 ** Configuration File Example
 
@@ -73,8 +70,7 @@ Simulator Configuration and Usage
    <Language>en</Language>
 
    <!-- rfid reader -->
-   <ReaderImage>/images/rfid-reader.png</ReaderImage>
-   <ReaderDefaultImage>/images/rfid-reader_default.png</ReaderDefaultImage>
+   <ReaderImage>/images/rfid-reader_default.png</ReaderImage>
    <ReaderWidth>141</ReaderWidth>
    <ReaderHeight>100</ReaderHeight>
    <ReaderLabelSize>10</ReaderLabelSize>
@@ -83,8 +79,7 @@ Simulator Configuration and Usage
 
    <!-- rfid antenna -->
    <AntennasPerRow>4</AntennasPerRow>
-   <AntennaImage>/images/rfid-antenna_0.png</AntennaImage>
-   <AntennaDefaultImage>/images/rfid-antenna_default.png</AntennaDefaultImage>
+   <AntennaImage>/images/rfid-antenna_default.png</AntennaImage>
    <AntennaLabelFont>Verdana</AntennaLabelFont>
    <AntennaLabelSize>10</AntennaLabelSize>
    <AntennaWidth>100</AntennaWidth>
@@ -93,8 +88,7 @@ Simulator Configuration and Usage
    <VerticalInterAntennaPadding>60</VerticalInterAntennaPadding>
 
    <!-- rfid tag -->
-   <TagImage>/images/rfid-tag.png</TagImage>
-   <TagDefaultImage>/images/rfid-tag_default.png</TagDefaultImage>
+   <TagImage>/images/rfid-tag_default.png</TagImage>
    <TagLabelFont>Verdana</TagLabelFont>
    <TagLabelSize>10</TagLabelSize>
    <TagWidth>100</TagWidth>
@@ -126,7 +120,7 @@ Simulator Configuration and Usage
    through its context menu.
 
 
-* Batch Simulator
+* {Batch} Simulator
 
 ** Configuration File Example
 
@@ -159,7 +153,7 @@ Simulator Configuration and Usage
 # Lines beginning wich '#' are not processed (comments)
 # An event line has the following form:
 #  <time>;<eventTypeName>;<sourceID>;<serial>;<userMemoryData>
-# Where the values have following meaning:
+# The values have following meaning:
 #  <time>: Time after last event in milliseconds, must fit into a long
 #  <eventTypeName>: Type of the event, 'EN' for enter, 'EX' for exit
 #  <sourceID>: ID of the source (read point name)
@@ -176,30 +170,31 @@ Simulator Configuration and Usage
   range of the antenna.
 
 
-* Command Line Simulator
+* {Command} Line Simulator
 
 ** Configuration
 
-  The command line simulator needs no configuration.
+  The command line simulator does not need any configuration.
 
 ** Usage
 
-  After starting the command line simulator, a prompt is shown in the console and awaits one of the following commands:
-  
-  [sourceids]: Lists all available source IDs
-  
-  [add]: Asks for a source ID and a tag ID and adds the tag to this source
-  
-  [remove]: Asks for a source ID and a tag ID and removes the tag from this source
-  
-  [contains]: Asks for a source ID and a tag ID and returnes 'Yes' if the source contains this tag
-  
-  [getall]: Asks for a source ID and lists all tags contained by this source
-  
-  [exit]: to exit the command line simulator
+  After starting the command line simulator, a prompt is shown in the console
+  and awaits one of the following commands:
+
+  * sourceids : Lists all available source IDs
+
+  * add : Asks for a source ID and a tag ID and adds the tag to this source
+
+  * remove : Asks for a source ID and a tag ID and removes the tag from this source
+
+  * contains : Asks for a source ID and a tag ID and returnes 'Yes' if the source contains this tag
+
+  * getall : Asks for a source ID and lists all tags contained by this source
+
+  * exit : Exit the command line simulator
 
 
-* Multi Simulator
+* {Multi} Simulator
 
 ** Configuration File Example
 
@@ -232,7 +227,6 @@ Simulator Configuration and Usage
 
    <!-- SimulatorType to be loaded dynamically -->
    <simType>org.accada.reader.hal.impl.sim.multi.GraphicSimulatorServer</simType>
-   <!-- <simType>org.accada.reader.hal.impl.sim.multi.BatchSimulatorServer</simType> -->
    <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
 
    <!-- the port to listen to -->
@@ -243,4 +237,5 @@ Simulator Configuration and Usage
 
 ** Usage
 
-  See simulator type configured in simulator server controller configuration file.
+  See user guide of the simulator type configured in simulator server controller
+  configuration file.

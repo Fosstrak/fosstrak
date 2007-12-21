@@ -34,7 +34,7 @@ public class SimulatorException extends Exception {
 	}
 
 	/**
-	 * @param string
+	 * @param description
 	 */
 	public SimulatorException(String description) {
 		super(description);
