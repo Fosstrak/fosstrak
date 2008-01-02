@@ -1,7 +1,7 @@
               -------------------
               Architecture
               -------------------
-              Jonas Haller, TODO
+              Jonas Haller
               -------------------
               11.12.2007
               -------------------
@@ -61,7 +61,7 @@ Architecture
   access to various readers and simulators of readers. This allows uniform
   usage. The readers and simulators become interchangeable because the code
   specific to the reader is part of the HAL and not of the application.
-  
+
   The implementations of the <<<HardwareAbstraction>>> interface are divided
   into multiple modules. One for the simulators and one for each reader
   manufacturer. A module can contain one or multiple reader controllers.
@@ -71,27 +71,27 @@ Architecture
 
   For exlanation of the <<<HardwareAbstraction>>> interface, the methods are
   divided into following groups:
-  
+
   * {{{#Identify}Identify}}
-  
+
   * {{{#Asynchronous}Asynchronous Identify}}
-  
+
   * {{{#Read}Read and Write}}
-  
+
   * {{{#Kill}Kill and WriteId}}
-  
+
   * {{{#Controller}Controller Management}}
-  
+
   []
-  
+
   The exact description of each methods arguments, functionality and return
   types can be looked up in the {{{../apidocs/index.html}JavaDoc}}.
-  
+
 ** {Identify}
 
    The <<<identify>>> method is mandantory and identifies the tags in the range
    of the read points given as arguments.
-   
+
    The return type is an array containig an <<<Observation>>> for each readpoint
    given in the argument array. Each <<<Observation>>> contains the name of the
    HAL controller and the read point where the tags were identified, a timestamp
@@ -119,12 +119,12 @@ Architecture
 
    Kills the specified tag if in range. A killed tag does not respond to
    requests any longer.
-   
+
    Writes a new ID onto a tag independent of its position in memory. The
    actual position of the ID depends on the type of tag used. This method may
    fail even if the addressed tag is in read range because a write operation
    needs higher power to succeed.
-   
+
    Both methods are optional to implement and additionally may depend on the
    capabilities of the tag.
 
@@ -132,9 +132,9 @@ Architecture
 
    The <<getHALName>> and <<getReadPointNames>> methods are
    mandantory to implement. They deliver essential information about the HAL.
-   
+
    All further methods described below are optional to implement.
-   
+
    The <<parameter>> methods can be used to get parameters set in the
    configuration file. Depending on the controller implementation, parameters
    of the reader can be read and set through these methods. Examples of reader
@@ -142,9 +142,9 @@ Architecture
    parameters, receiver or anti-collision configuration. Available parameters
    should be declared in the configuration file of the controller or can be
    requested with the <<<getAllParameterNames>>> method.
-   
+
    The <<reset>> method reinitialises the controller including the unlocking of
    all previously locked / muted tags.
-   
+
    The <<ReadPoint>> methods allow to control the individual read points and
    get information about them.

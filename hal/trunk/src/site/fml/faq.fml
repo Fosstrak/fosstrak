@@ -14,6 +14,16 @@
 </faq>
 
 <faq>
+<question>I have a reader, but Accada does not support its proprietary protocol.</question>
+<answer>Implement a wrapper and contribute your implementation to our project. As a benefit you will get all the filtering, event generation, messaging and tool support we already implemented for free.</answer>
+</faq>
+
+<faq>
+<question>How can I contribute to this project?</question>
+<answer>There are a number of ways you can contribute. For example, we currently support only a limited number of RFID readers. If you implement a wrapper for your reader, we would like you to contribute your implementation to this project.</answer>
+</faq>
+
+<faq>
 <question>Can I contribute to this project even, if I am not part of the Auto-ID Labs?</question>
 <answer>Yes. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.</answer>
 </faq>
