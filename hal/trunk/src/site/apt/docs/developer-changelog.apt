@@ -10,30 +10,34 @@ Developer Change Log
 
 * Changes
 
-   * {{{#HardwareAbstraction}HardwareAbstraction Interface}}
+   * {{{#0.4.0}Release 0.4.0}}
+   
+      * {{{#HardwareAbstraction}HardwareAbstraction Interface}}
 
-   * {{{#Own}Own Project}}
+      * {{{#Own}Own Project}}
 
-   * {{{#Impinj}Impinj Speedway}}
+      * {{{#Impinj}Impinj Speedway}}
 
-   * {{{#MR}FEIG MR101-A}}
+      * {{{#MR}FEIG MR101-A}}
 
-   * {{{#LRU}FEIG LRU1000}}
+      * {{{#LRU}FEIG LRU1000}}
 
-   * {{{#XML}XML Configuration Files}}
+      * {{{#XML}XML Configuration Files}}
 
-   * {{{#Resource}Resource Loading}}
+      * {{{#Resource}Resource Loading}}
 
-   * {{{#Simulated}Simulated Tag Memory}}
+      * {{{#Simulated}Simulated Tag Memory}}
 
-   * {{{#EPCclass1Gen2}EPC class1 Gen2 Tag Models}}
+      * {{{#EPCclass1Gen2}EPC class1 Gen2 Tag Models}}
 
-   * {{{#Graphic}Graphic Simulator Memory Access}}
+      * {{{#Graphic}Graphic Simulator Memory Access}}
 
-   * {{{#Tag}Tag Descriptor}}
+      * {{{#Tag}Tag Descriptor}}
 
 
-* {HardwareAbstraction} Interface
+* Release {0.4.0}
+
+** {HardwareAbstraction} Interface
 
   Changed <<<HardwareAbstraction>>> interface to remove inconsistencies and add
   new features. Most methods are affected. The changes can be divided into
@@ -74,7 +78,7 @@ Developer Change Log
     and removed with separat methods independent of start and stop.
 
 
-* {Own} Project
+** {Own} Project
 
   The HAL has moved from a module of Accada Reader to an own project. It is
   subdivided into a module containing the <<<HardwareAbstraction>>> interface
@@ -83,7 +87,7 @@ Developer Change Log
   manufacturer or the simulator.
 
 
-* {Impinj} SPeedway
+** {Impinj} SPeedway
 
   A <<<HardwareAbstraction>>> implementation for the Impinj Speedway reader has
   been added. The controller implements nearly all methods of the interface:
@@ -109,7 +113,7 @@ Developer Change Log
   and format of the parameters.
 
 
-* FEIG {MR}101-A
+** FEIG {MR}101-A
 
   A <<<HardwareAbstraction>>> implementation for FEIG OBID i-scan ID ISC.MR101-A
   has been added. The controller implements <<<identify>>> (mandantory),
@@ -120,21 +124,21 @@ Developer Change Log
   of 512 antennas on a single reader.
 
 
-* FEIG {LRU}1000
+** FEIG {LRU}1000
 
   A <<<HardwareAbstraction>>> implementation for FEIG OBID i-scan ID ISC.LRU1000
   has been added. The controller implements <<<identify>>> (mandantory),
   <<<readBytes>>>, <<<writeBytes>>>, <<<reset>>> and <<<kill>>> commands.
 
 
-* {XML} Configuration Files
+** {XML} Configuration Files
 
   All configuration files have been changed to XML format instead of a mix of
   XML and properties. This increases consistency and XML allows a hierarchical
   structures which is more readable for complex configurations.
 
 
-* {Resource} Loading
+** {Resource} Loading
 
   Resource loading has been completely redesigned. This fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1547832&group_id=170795&atid=855583}1547832}}.
 
@@ -168,7 +172,7 @@ Developer Change Log
     extract the Java archive to customize resources such as configuration files.
 
 
-* {Simulated} Tag Memory
+** {Simulated} Tag Memory
 
   Changed the tag memory layout of the simulated tag to match the EPCclass1Gen2
   standard. The simulated tag now has 64 bit reserved memory, 256 bit EPC memory
@@ -176,7 +180,7 @@ Developer Change Log
   and 256 bit of user memory.
 
 
-* {EPCclass1Gen2} Tag Models
+** {EPCclass1Gen2} Tag Models
 
   An <<<EPCTransponderModel>>> class has been added to represent many different
   EPCclass1Gen2 tags in software. It provides memory layout information for
@@ -206,7 +210,7 @@ Developer Change Log
   controllers using the <<<EPCTransponderModel>>>.
 
 
-* {Graphic} Simulator Memory Access
+** {Graphic} Simulator Memory Access
 
   The user interface of the graphic simulator has been extended with the
   possibility to read and write the memory banks of a simulated tag.
@@ -218,7 +222,8 @@ Developer Change Log
 
 [../images/memory_menu.png] memory banks access through the context menu
 
-* {Tag} Descriptor
+
+** {Tag} Descriptor
 
   With the changed <<<HardwareAbstraction>>> interface, the <<<Observation>>>
   returned by the <<<identify>>> method can contain a <<<TagDescriptor>>> for
