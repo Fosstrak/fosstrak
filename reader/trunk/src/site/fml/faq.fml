@@ -8,13 +8,9 @@
 </faq>
 <faq>
 <question>I would like to communicate with a reader that implements the EPCglobal Reader Protocol Version 1.1. How can I use your software?</question>
-<answer>You can use the <a href="reader-rp-proxy/index.html">Reader RP Proxy</a>, if you want to write your own Java code and you are looking for a 
-easy-to-use library that abstracts from the message and transport bindings. 
+<answer>You can use the <a href="reader-rp-proxy/index.html">Reader RP Proxy</a>, if you want to write your own Java code and you are looking for a
+easy-to-use library that abstracts from the message and transport bindings.
 If you are just looking for a graphical user interface to generate some Reader Protocol commands, you might want to consider our <a href="reader-rp-client/index.html">ReaderTestClient</a>.</answer>
-</faq>
-<faq>
-<question>I have a reader, but Accada does not support its proprietary protocol.</question>
-<answer>Implement a wrapper and contribute your implementation to our project. As a benefit you will get all the filtering, event generation, messaging and tool support we already implemented for free.</answer>
 </faq>
 <faq>
 <question>I don't have a reader, but I would like to check out the reader protocol features anyway.</question>
@@ -23,14 +19,14 @@ If you are just looking for a graphical user interface to generate some Reader P
 <faq>
 <question>Do you support the reader management protocol?</question>
 <answer>Yes. We support the SNMP binding in the Reader RP/RM Core. You will need a SNMP Manager such as MIB Explorer to communicate with an Reader RP/RM COre instance</answer>
-</faq>												
+</faq>
 <faq>
 <question>Can I contribute to this project even, if I am not part of the Auto-ID Labs or EPCglobal?</question>
 <answer>Yes. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.</answer>
 </faq>
 <faq>
 <question>How can I contribute to this project?</question>
-<answer>There are a number of ways you can contribute. <a href="howtohelp.html">See here </a> for details. We currently support only a limited number of RFID readers. If you implement a wrapper for your reader, we would like you to contribute your implementation to this effort.</answer>
+<answer>There are a number of ways you can contribute. <a href="howtohelp.html">See here </a> for details.</answer>
 </faq>
 <faq>
 <question>Do I have to publish any modifications and extension I make as open source?</question>
@@ -48,5 +44,5 @@ If you are just looking for a graphical user interface to generate some Reader P
 <question>Will you support the EPCglobal LLRP protocol?</question>
 <answer>This is currently work in progress. If you are interest in contributing, let us know. </answer>
 </faq>
-</part>								     
-</faqs>								      
+</part>
+</faqs>

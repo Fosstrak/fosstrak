@@ -1,0 +1,77 @@
+              -------------------
+              Developer Guide
+              -------------------
+              Jonas Haller, TODO
+              -------------------
+              11.12.2007
+              -------------------
+
+
+Architecture
+
+  The following sections describe the architecture of Accada's Reader project
+  and the relations among its modules. It is intended as an introduction to
+  future developers.
+
+
+* Contents
+
+  [[1]] {{{#Introduction}Introduction}}
+
+  [[2]] {{{#Architectural}Architectural Overview}}
+
+  [[3]] {{{#Relations}Module Relations}}
+
+
+* {Introduction}
+
+  The goal of Accada HAL is to provide a common interface and wrappers
+  implementing it to uniformly access various RFID readers.
+
+  Each reader has to be accessed through its own proprietary protocol. This is
+  very inflexible. If you access the reader directly and want to exchange it
+  with an other model, you have to adjust your application to control the
+  reader through a different protocol.
+
+  Accada HAL solves this problem by providing one single interface to access
+  all the implemented readers. With this the code specific to the reader is
+  moved from the application to the hardware abstraction layer. The application
+  does not need to adjust to a specific reader but simply use the
+  <<<HardwareAbstraction>>> interface to access all readers.
+
+  New readers not currently implemented in the Accada HAL project can easily be
+  added as a new module. The controller must implement the
+  <<<HardwareAbstraction>>> interface and communicate with the reader over the
+  corresponding protocol.
+
+  The Accada HAL project includes a simulator framework. There are several
+  simulator controllers, each implementing the <<<HardwareAbstraction>>>
+  interface. This allows to access the simulators in exactly the same way
+  as HAL implementations for hardware readers.
+
+
+* {Architectural} Overview
+
+  The following figure gives an overview of the HAL architecture.
+
+[../images/hal_architecture.png] architectural overview
+
+  The <<<HardwareAbstraction>>> defines the interface between the HAL and the
+  Accada Reader or any other applitacion using the Accada HAL. It standardises
+  access to various readers and simulators of readers. This allows uniform
+  usage. The readers and simulators become interchangeable because the code
+  specific to the reader is part of the HAL and not of the application.
+
+  The implementations of the <<<HardwareAbstraction>>> interface are divided
+  into multiple modules. One for the simulators and one for each reader
+  manufacturer. A module can contain one or multiple reader controllers.
+
+
+* Module {Relations}
+
+  For exlanation of the <<<HardwareAbstraction>>> interface, the methods are
+  divided into following groups:
+
+  * {{{#Identify}Identify}}
+
+  []

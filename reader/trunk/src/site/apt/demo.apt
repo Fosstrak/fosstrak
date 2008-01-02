@@ -1,7 +1,10 @@
-       ------
-                                    Demo
-                                    ------
-                                    ------
+              -------------------
+              Demo
+              -------------------
+              Jonas Haller
+              -------------------
+              27.12.2007
+              -------------------
 
 
 Demo
@@ -18,19 +21,45 @@ Demo
 
 [images/ReaderSimulatorScreenshot70.png]
 
-*   Reader Proxy Example 
+*   Reader Proxy Example
 
 +----
-     
-	// get reader device proxy
-        Handshake handshake = new Handshake();
-        handshake.setMessageFormat(Handshake.FORMAT_XML);
-        handshake.setTransportProtocol(Handshake.HTTP);
-        readerDevice = ReaderDeviceFactory.getReaderDevice(COMMAND_CHANNEL_HOST, 
-        			Integer.parseInt(COMMAND_CHANNEL_PORT), handshake);
-        log.info("Connection established with reader device " + readerDevice.getName()
-				+ " at address " + COMMAND_CHANNEL_HOST + ":" + COMMAND_CHANNEL_PORT);
+   // get reader device proxy
+   Handshake handshake = new Handshake();
+   handshake.setMessageFormat(Handshake.FORMAT_XML);
+   handshake.setTransportProtocol(Handshake.HTTP);
+   readerDevice = ReaderDeviceFactory.getReaderDevice(COMMAND_CHANNEL_HOST,
+      COMMAND_CHANNEL_PORT, handshake);
+   log.info("Connection established with reader device " +
+      readerDevice.getName() + " at address " + COMMAND_CHANNEL_HOST + ":" +
+      COMMAND_CHANNEL_PORT);
 
+   // create notification channel
+   NotificationChannelFactory.createNotificationChannel("nc",
+      NOTIFICATION_ADDRESS, readerDevice);
+   NotificationChannel notificationChannel = readerDevice.
+      getNotificationChannel("nc");
+
+   // get source proxies
+   Source shelf1 = readerDevice.getSource("Shelf1");
+
+   // add sources to notification channel
+   notificationChannel.addSources(new Source[] {shelf1});
+
+   // create read trigger
+   TriggerFactory.createTrigger("rt", RTTYPE, RTVALUE, readerDevice);
+   Trigger readTrigger = readerDevice.getTrigger("rt");
+
+   // add read trigger to sources
+   shelf1.addReadTriggers(new Trigger[] {readTrigger});
+
+   // create notification trigger
+   TriggerFactory.createTrigger("nt", NTTYPE, NTVALUE, readerDevice);
+   Trigger notificationTrigger = readerDevice.getTrigger("nt");
+
+   // add notification trigger to notification channel
+   notificationChannel.addNotificationTriggers(
+      new Trigger[] {notificationTrigger});
 +----
 
 
@@ -42,20 +71,18 @@ Demo
 
 
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 
- 
 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
