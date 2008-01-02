@@ -1,123 +1,84 @@
-       ------
-                                    Features
-                                    ------
-                                    ------
+              -------------------
+              Features
+              -------------------
+              Jonas Haller
+              -------------------
+              28.12.2007
+              -------------------
 
 
 Features
 
-    The Reader Project comprises four separate modules:
+  The Reader Project comprises three separate modules:
 
-        *   the Reader RP/RM Core that implements the EPCglobal Reader Protocol and Reader Management Specification 
-       
-        *   the Reader RP Proxy (host) 
-        
-        *   the Reader RP Client 
-        
-        *   the Reader HAL - an abstraction layer that implements a reader simulator and wrappers for proprietary reader interfaces
-	
-   
-    
-*   Reader Protocol Features Implemented
+  * the Reader RP/RM Core that implements the EPCglobal Reader Protocol and
+    Reader Management Specification
 
-    The three modules implement all SHALLs and the vast majority of CANs of the reader protocol. This includes:
-    
-        *   Transport Binding: TCP and HTTP
- 
-        *   Message Binding: XML and Text
-    	
-        *   Synchronous and Asynchronous Messaging (Notification Channels)
-    	
-        *   Triggers
-    	
-        *   Data Selectors
-    	
-*   Reader Management Features Implemented
-    	
-   
-   The Reader RP/RM Core implements the SNMP part of the EPCglobal Reader Management including nearly all optional features. The proxy and the client do not support the reader management standard.
-   
-   
+  * the Reader RP Proxy (host)
 
-*   Reader HAL Features
+  * the Reader RP Client
 
-    The Reader module currently supports readers from the following manufacturers as a surrogate (or in reader protocol terms as a concentrator).
 
-	*   Feig
-	
-	*   Hitachi
-	
-	*   Softronica
-	
-    These are not part of the current release. We will make these available upon request.	
-	
-    There is also support for a graphical RFID reader simulator and an extensive simulation framework.
-    
+* Reader Protocol Features Implemented
 
-*   Reader RP Proxy Features
+  The three modules implement all SHALLs and the vast majority of CANs of the
+  reader protocol. This includes:
 
-    The Reader RP Proxy module facilitates RFID application development. It features:
+  * Transport Binding: TCP and HTTP
 
-	*   a Java interface hides communication with a reader instance - 
-	
-	    no need to get your hands dirty with low-level details such as TCP/text transport message bindings. The Reader Proxy provides you with a local instance of the reader instance.
-	
-	[]
-	*   a configuration engine that allows the developer to specify a reader configuration in a configuration file - 
-	
-	    no need for the developer to go through the tedious process of configuring sources, triggers, and notification channels by producing lines of code.
-	
-	[]
+  * Message Binding: XML and Text
 
-    Java Example code:	
-    
+  * Synchronous and Asynchronous Messaging (Notification Channels)
+
+  * Triggers
+
+  * Data Selectors
+
+
+* Reader Management Features Implemented
+
+  The Reader RP/RM Core implements the SNMP part of the EPCglobal Reader
+  Management including nearly all optional features. The proxy and the client
+  do not support the reader management standard.
+
+
+* Reader RP Proxy Features
+
+  The Reader RP Proxy module facilitates RFID application development.
+  It features:
+
+  * a Java interface hides communication with a reader instance -
+
+	no need to get your hands dirty with low-level details such as TCP/text
+	transport message bindings. The Reader Proxy provides you with a local
+	instance of the reader instance.
+
+  * a configuration engine that allows the developer to specify a reader
+    configuration in a configuration file -
+
+    no need for the developer to go through the tedious process of configuring
+    sources, triggers, and notification channels by producing lines of code.
+
+  Java Example code:
+
 +----
-     
+
 	// get reader device proxy
         Handshake handshake = new Handshake();
         handshake.setMessageFormat(Handshake.FORMAT_XML);
         handshake.setTransportProtocol(Handshake.HTTP);
-        readerDevice = ReaderDeviceFactory.getReaderDevice(COMMAND_CHANNEL_HOST, 
+        readerDevice = ReaderDeviceFactory.getReaderDevice(COMMAND_CHANNEL_HOST,
         			Integer.parseInt(COMMAND_CHANNEL_PORT), handshake);
         log.info("Connection established with reader device " + readerDevice.getName()
 				+ " at address " + COMMAND_CHANNEL_HOST + ":" + COMMAND_CHANNEL_PORT);
 
-+----	
++----
 
 
-*   Reader RP Client Features
+* Reader RP Client Features
 
-    The Reader Test Client provides an intuitive graphical user interface to test a reader instance. It supports all of the reader protocol features mentioned above.
+  The Reader Test Client provides an intuitive graphical user interface to test
+  a reader instance. It supports all of the reader protocol features mentioned
+  above.
 
 [images/ReaderTestClientScreenshot.png] Reader Test Client Screenshot
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
- 
-
- 
- 
- 
- 
