@@ -1,35 +1,56 @@
               -------------------
               User Changelog
               -------------------
-              Jonas Haller, TODO
+              Jonas Haller
               -------------------
-              04.12.2007
+              05.01.2008
               -------------------
 
 User Changelog
 
 * Release 0.4.0
 
-*-----------+-------------+---------------------------------------------------+
-| <<Type>>  | <<Changes>> | <<By>> |
-*-----------+-------------+---------------------------------------------------+
-| feature | Major changes in HardwareAbstraction interface | mlampe
-*-----------+-------------+---------------------------------------------------+
-| feature | Moved HAL from module of Accada Reader to own project | mlampe
-*-----------+-------------+---------------------------------------------------+
-| feature | Added HardwareAbstraction implementation for FEIG OBID i-scan ID ISC.MR101-A (COM, HF), ID ISC.LRU1000 (TCP/IP, UHF) and Impinj Speedway (TCP/IP, UHF) | {{{http://sourceforge.net/users/jhaller/}jhaller}}
-*-----------+-------------+---------------------------------------------------+
-| feature | Changed all configuration files to XML (were mixed XML and properties until now) | {{{http://sourceforge.net/users/jhaller/}jhaller}}
-*-----------+-------------+---------------------------------------------------+
-| bugfix | Resource loading redesigned. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1547832&group_id=170795&atid=855583}1547832}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
-*-----------+-------------+---------------------------------------------------+
-| feature | Changed simulated tag to EPCclass1Gen2 tag memory layout (with password memory, TID with random serial number, EPC with CRC and PC bits and user memory) | {{{http://sourceforge.net/users/jhaller/}jhaller}}
-*-----------+-------------+---------------------------------------------------+
-| feature | Added EPCTransponderModel class: All EPCclass1Gen2 readers work with many different RFID tags and new tags can simply be added to a configuration file | {{{http://sourceforge.net/users/jhaller/}jhaller}}
-*-----------+-------------+---------------------------------------------------+
-| feature | Added IDType class: The ID type of tags can be defined in a configuration file | {{{http://sourceforge.net/users/jhaller/}jhaller}}
-*-----------+-------------+---------------------------------------------------+
-| feature | Added possibility to read and write memory banks of a simulated tag in the GUI of the graphic simulator | {{{http://sourceforge.net/users/jhaller/}jhaller}}
-*-----------+-------------+---------------------------------------------------+
-| feature | Simulator and other reader implementations add a tag descriptor to each tag during inventory | {{{http://sourceforge.net/users/jhaller/}jhaller}}
-*-----------+-------------+---------------------------------------------------+
+  Reader Modules that can be affected are Reader Core (R), Proxy (P) and
+  Client (C).
+
+*-----------+------------+-------------+--------------------------------------+
+| <<Type>>  | <<Module>> | <<Changes>> | <<By>> |
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Start reader from ReaderDevice class. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1605109&group_id=170795&atid=855583}1605109}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | RPC | Cleaned up properties files. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1547804&group_id=170795&atid=855583}1547804}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Source properties added to ReaderDevice.xml. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1524549&group_id=170795&atid=855583}1524549}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Removed spinlock, redesigned continuous notification trigger with wait/notify. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1760340&group_id=170795&atid=855583}1760340}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Send notifications as HTTP posts. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1524548&group_id=170795&atid=855583}1524548}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | P | Search for '\<?xml' instead of '\<' only to identify start of XML in notification. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1519656&group_id=170795&atid=855583}1519656}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | RP | JAXB context and marshaller stored static and initialized only once. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1770773&group_id=170795&atid=855583}1770773}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | P | Added configuration file for the proxy. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1547776&group_id=170795&atid=855583}1547776}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | RP | Fixed field name, event and tag field values for custom data selector. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1773821&group_id=170795&atid=855583}1773821}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | RP | Renamed TagSelector shorthand from RF to TS. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1723152&group_id=170795&atid=855583}1723152}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Return error if 'ms=' missing in timer trigger value. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1782301&group_id=170795&atid=855583}1782301}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Return notification channel port number correctly. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1782482&group_id=170795&atid=855583}1782482}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | RPC | Redesigned resource loading. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1547832&group_id=170795&atid=855583}1547832}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | RPC | Send and receive handshake in core and proxy/client. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1783839&group_id=170795&atid=855583}1783839}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Added possibility to start multiple readers on a single computer (only first one with reader management functionality). Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1800577&group_id=170795&atid=855583}1800577}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | No default configuration files defined in other configuration files. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1823580&group_id=170795&atid=855583}1823580}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Iterate over tag field names instead of field names when adding tags to a report in the source. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1826817&group_id=170795&atid=855583}1826817}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Rewritten byte array to hexadecimal formatted string converter function in the HexUtil class. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1827468&group_id=170795&atid=855583}1827468}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | R | Interprete offset and length of a tag field as bits, added bit manipulation code to cope with correct interpretation. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1827498&group_id=170795&atid=855583}1827498}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
