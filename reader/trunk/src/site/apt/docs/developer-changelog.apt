@@ -10,224 +10,364 @@ Developer Change Log
 
 * Changes
 
-   * {{{#0.4.0}Release 0.4.0}}
+  * {{{#0.4.0}Release 0.4.0}}
 
-      * {{{#HardwareAbstraction}HardwareAbstraction Interface}}
+    * {{{#1605109}Bugfix 1605109}}: Start reader from ReaderDevice class
 
-      * {{{#Own}Own Project}}
+    * {{{#1547804}Bugfix 1547804}}: Cleaned up properties files
 
-      * {{{#Impinj}Impinj Speedway}}
+    * {{{#1524549}Bugfix 1524549}}: Source properties added to ReaderDevice.xml
 
-      * {{{#MR}FEIG MR101-A}}
+    * {{{#1760340}Bugfix 1760340}}: Removed spinlock and redesigned continuous
+      notification trigger with wait/notify
 
-      * {{{#LRU}FEIG LRU1000}}
+    * {{{#1524548}Bugfix 1524548}}: Send notifications as HTTP posts
 
-      * {{{#XML}XML Configuration Files}}
+    * {{{#1519656}Bugfix 1519656}}: Search for '\<?xml' instead of '\<' only to
+      identify start of XML in notification
 
-      * {{{#Resource}Resource Loading}}
+    * {{{#1770773}Bugfix 1770773}}: JAXB context and marshaller stored static
+      and initialized only once
 
-      * {{{#Simulated}Simulated Tag Memory}}
+    * {{{#1547776}Bugfix 1547776}}: Added configuration file for the proxy
 
-      * {{{#EPCclass1Gen2}EPC class1 Gen2 Tag Models}}
+    * {{{#1773821}Bugfix 1773821}}: Fixed field name, event and tag field
+      values for custom data selector
 
-      * {{{#Graphic}Graphic Simulator Memory Access}}
+    * {{{#1723152}Bugfix 1723152}}: Renamed TagSelector shorthand from RF to TS
 
-      * {{{#Tag}Tag Descriptor}}
+    * {{{#1782301}Bugfix 1782301}}: Return error if 'ms=' missing in timer
+      trigger value
+
+    * {{{#1782482}Bugfix 1782482}}: Return notification channel port number
+      correctly
+
+    * {{{#1547832}Bugfix 1547832}}: Redesigned resource loading
+
+    * {{{#1783839}Bugfix 1783839}}: Send and receive handshake in core and
+      proxy/client
+
+    * {{{#1800577}Bugfix 1800577}}: Added possibility to start multiple readers
+      on a single computer
+
+    * {{{#1823580}Bugfix 1823580}}: No default configuration files defined in
+      other configuration files
+
+    * {{{#1826817}Bugfix 1826817}}: Iterate over tag field names instead of
+      field names when adding tags to a report in the source
+
+    * {{{#1827468}Bugfix 1827468}}: Rewritten byte array to hexadecimal
+      formatted string converter function in the HexUtil class
+
+    * {{{#1827498}Bugfix 1827498}}: Interprete offset and length of a tag
+      field as bits
+
 
 
 * Release {0.4.0}
 
-** {HardwareAbstraction} Interface
-
-  Changed <<<HardwareAbstraction>>> interface to remove inconsistencies and add
-  new features. Most methods are affected. The changes can be divided into
-  following categories:
-
-  * The <<<Observation>>> returned by the <<<identify>>> method can contain a
-    <<<TagDescriptor>>> for each tag observed with information about the tag
-    type and memory layout.
-
-  * The data of the <<<readBytes>>> and <<<writeBytes>>> methods is stored in a
-    <<<UnsignedByteArray>>> instead of a (signed) <<<byte\[\]>>>.
-
-  * Error reporting has been improved with adding additional declarations for
-    exceptions that can arise in the method implementation. Most notably parameter
-    check can return a specific <<<ReadPointNotFoundException>>> or
-    <<<OutOfBoundsException>>> if it fails.
-
-  * A (mandantory) <<<getReadPointNames>>> method has been added.
-
-  * Every method that is not required to be implemented provides an additional
-    'supports'-method. If an optional method is implemented, the associated
-    'supports'-method returns true. If an optional method is not implemented and
-    returns an <<<UnsupportedOperationException>>>, the associated
-    'supports'-method returns false.
-
-  * The <<<kill>>> method takes a <<<readPointName>>> argument to be consistent
-    with <<<readBytes>>> and <<<writeBytes>>> methods.
-
-  * Some methods have been renamed. The method <<<programId>>> is now called
-    <<<writeId>>>. Furthermore <<<getAntennaPowerLevel>>> and
-    <<<getAntennaNoiseLevel>>> have been renamed to <<<getReadPointPowerLevel>>>
-    and <<<getReadPointNoiseLevel>>> respectively to be consistent with the
-    <<<startUpReadPoint>>>, <<<shutDownReadPoint>>> and <<<isReadPointReady>>>
-    methods.
-
-  * The methods for asynchronous identify have been changed to allow multiple
-    listeners. Starting and stopping does not require a listener. These are added
-    and removed with separat methods independent of start and stop.
-
-
-** {Own} Project
-
-  The HAL has moved from a module of Accada Reader to an own project. It is
-  subdivided into a module containing the <<<HardwareAbstraction>>> interface
-  with common utilities and modules with implementations of the interface.
-  Each implementation module contains one or more reader controller of a reader
-  manufacturer or the simulator.
-
-
-** {Impinj} SPeedway
-
-  A <<<HardwareAbstraction>>> implementation for the Impinj Speedway reader has
-  been added. The controller implements nearly all methods of the interface:
-  <<<identify>>> (mandantory), <<<readBytes>>>, <<<writeBytes>>>, <<<writeId>>>,
-  <<<reset>>>, <<<kill>>>, asynchronous identify and parameters. Not supported
-  is shutting down and starting up a read point and getting read point noise
-  level. Some parameters of the reader can be read and set using the
-  <<<getParameter>>> and <<<setParameter>>> methods:
-
-  * <<<ReaderInfo>>> (read only)
-
-  * <<<TxPower>>>
-
-  * <<<SupportedGen2Params>>> (read only)
-
-  * <<<Gen2Params>>>
-
-  * <<<LBTParams>>>
-
-  * <<<RxConfig>>>
-
-  See Impinj Mach1 protocol specification for information about functionality
-  and format of the parameters.
-
-
-** FEIG {MR}101-A
-
-  A <<<HardwareAbstraction>>> implementation for FEIG OBID i-scan ID ISC.MR101-A
-  has been added. The controller implements <<<identify>>> (mandantory),
-  <<<readBytes>>>, <<<writeBytes>>>, <<<reset>>> and <<<kill>>> commands.
-
-  The implementation supports the FEIG OBID i-scan ID ISC.ANT.MUX multiplexer with
-  8 ports. Multiplexers can be cascaded to a depth of three. This allows a maximum
-  of 512 antennas on a single reader.
-
-
-** FEIG {LRU}1000
-
-  A <<<HardwareAbstraction>>> implementation for FEIG OBID i-scan ID ISC.LRU1000
-  has been added. The controller implements <<<identify>>> (mandantory),
-  <<<readBytes>>>, <<<writeBytes>>>, <<<reset>>> and <<<kill>>> commands.
-
-
-** {XML} Configuration Files
-
-  All configuration files have been changed to XML format instead of a mix of
-  XML and properties. This increases consistency and XML allows a hierarchical
-  structures which is more readable for complex configurations.
-
-
-** {Resource} Loading
-
-  Resource loading has been completely redesigned. This fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1547832&group_id=170795&atid=855583}1547832}}.
-
-  There were several issues with the previous implementation of resource loading:
-
-  * Resource loading was not done uniformly. Sometimes <<<FileInputStream>>> was
-    used, elsewere <<<Class.getResourceAsStream>>> or <<<Class.getResource>>>.
-    Each of these works at bit different, looks for the file at its own places
-    and needs more or less path adjustments to load a file that is packaged in
-    a Java archive.
-
-  * A path and postfix of the file name was hardcoded sometimes which made it
-    difficult to name the file correctly and extract the corresponding prefix.
-
-  * To adjust a configuration file to its own needs, the Java archive had to be
-    extracted and started in a console by hand instead of just clicking on the
-    executable jar file.
-
-  The new implementation fixes these issues in the following way:
-
-  * Locating the resource files is done in a dedicated helper class for all
-    resources.
-
-  * The location search algorithm is sophisticated and works for relativ paths
-    with or without leading slash, files in or outsite Java archives, path
-    relative to various places or absolute and the possibility to give a default
-    file name in case a custom file can not be found.
-
-  * The resource locator first searches for the custom file. If no custom file
-    can be found, the algorithm takes the default file. It is not necessary to
-    extract the Java archive to customize resources such as configuration files.
-
-
-** {Simulated} Tag Memory
-
-  Changed the tag memory layout of the simulated tag to match the EPCclass1Gen2
-  standard. The simulated tag now has 64 bit reserved memory, 256 bit EPC memory
-  including CRC and PC bits, 64 bit TID memory with random 32 bit serial number
-  and 256 bit of user memory.
-
-
-** {EPCclass1Gen2} Tag Models
-
-  An <<<EPCTransponderModel>>> class has been added to represent many different
-  EPCclass1Gen2 tags in software. It provides memory layout information for
-  following tag chips:
-
-  * Impinj Monza
-
-  * Impinj Monaco
-
-  * STMicroelectronics XRAG2
-
-  * TexasInstruments Gen2
-
-  * NXP UCODE EPC G2
-
-  * NXP UCODE G2XM
-
-  * NXP UCODE G2XL
-
-  * Alien H2
-
-  * and the Accada Simulator tag with EPCclass1Gen2 compliant memory layout
-
-  These are the most common tag chips also used in tags from other manufacturers.
-  New tag chips can simply be added by writing their TID and memory information
-  to a configuration file. Thereafter they are fully accessible by all reader
-  controllers using the <<<EPCTransponderModel>>>.
-
-
-** {Graphic} Simulator Memory Access
-
-  The user interface of the graphic simulator has been extended with the
-  possibility to read and write the memory banks of a simulated tag.
-
-[../images/memory_banks.png] memory banks in the graphic simulator
-
-  The memory banks can be easily accessed through the context menu of a
-  simulated tag.
-
-[../images/memory_menu.png] memory banks access through the context menu
-
-
-** {Tag} Descriptor
-
-  With the changed <<<HardwareAbstraction>>> interface, the <<<Observation>>>
-  returned by the <<<identify>>> method can contain a <<<TagDescriptor>>> for
-  each tag observed. It contains information about the ID type and memory layout
-  of the tag. All current implementations (Impinj and FEIG readers) including
-  the simulator add a <<<TagDescriptor>>> with accordant information to the
-  <<<Observation>>>.
+** Bugfix {1605109}: Start reader from ReaderDevice class
+
+  The Accada Reader had its main method in the message layer although the
+  <<<ReaderDevice>>> class is the 'center' of the reader and should contain the
+  main method.
+
+  A new main method was added to the <<<ReaderDevice>>> class. Additionally
+  the new main method can take an argument containing path and name of a
+  configuration file instead of allways using a hardcoded configuration file
+  name.
+
+** Bugfix {1524549}: Source properties added to ReaderDevice.xml
+
+  The <<<Source>>> class was initialised with hard coded properties.
+
+  All the adjustable values have been written in a properties file and loaded
+  in the initialisation routine of the <<<Source>>>. The properties than have
+  been integrated into the ReaderDevice configuration file (see
+  {{{#1547804}1547804}}).
+
+** Bugfix {1547804}: Cleaned up properties files
+
+  There were a number of different properties files. It was unclear which of
+  them were currently in use.
+
+  All the properties files were in use but their organisation was unclear. The
+  configuration files had been cleaned up. In the ReaderDevice configuration
+  file, which was formatted in XML, some values were hidden in element names.
+  These values have been moved into elements and given expressive names. The
+  messaging.properties and source.properties have been converted from
+  properties to XML format and merged into the ReaderDevice configuration file.
+
+** Bugfix {1760340}: Removed spinlock and redesigned continuous notification
+  trigger with wait/notify
+
+  The continuous notification thread caused a spin lock which unnecessarily
+  used a significant amount of system resources. It checked nonstop whether
+  there are new notifications to be sent in the buffer. System resources were
+  not even released between two checks to give another thread the possibility
+  to receive and add a new notification to the buffer.
+
+  To eliminate this spin lock, a simple observer design pattern with the
+  built-in wait and notify thread functionality of Java is used. The continuous
+  notification thread blocks (wait) until the notification channel received
+  a new notification to be sent and awakes (notifiy) the trigger thread.
+
+** Bugfix {1524548}: Send notifications as HTTP posts
+
+  Delivering notifications over the HTTP protocol was done using the same
+  methods as when responding to commands on the command channel. For this
+  reason the notifications were sent as HTTP responses, nota bene without
+  a preceding HTTP request. This is obviously wrong and an application server
+  receiving the notification is unable to handle it, because it can not send
+  a response to a response.
+
+  The outgoing message dispatcher has been adjusted to handle notifications
+  separately. It gets the target address from the socket and sends the
+  notification as HTTP post.
+
+** Bugfix {1519656}: Search for '\<?xml' instead of '\<' only to identify start
+  of XML in notification
+
+  Sometimes the parser in the notification channel end point of the proxy was
+  not able to parse a notification and throwed an exception. The reason was
+  that the detection of the beginnig of the XML code failed an an invalid XML
+  document was given to the parser.
+
+  A small number of other characters prefix the XML notification data. As the
+  beginning of the XML data, the first '\<' character was taken. This failed
+  if one of the preceding characters coincidentally was a '\<' character. To
+  circumvent this problem the data received is searched for the string '\<?xml'
+  to find the correct beginning of the XML data.
+
+** Bugfix {1770773}: JAXB context and marshaller stored static and initialized
+  only once
+
+*** Situation before fixing
+
+  Every time the context was used a new instance was created. So every time a
+  command or notification was marshalled or unmarshalled the whole Java XML
+  Binding was recreated. This was very time consuming and not necessary. The
+  following table shows a simple reader configuration with about ten commands
+  and the amount of time used for the Java XML Binding.
+  
+  Three methods use the JAXB context:
+  
+  [sC] <<<serializeCommand()>>> in the <<<CommandSerializerImpl>>> class of the
+    proxy. Total includes marshalling.
+  
+  [gJC] <<<getJAXBContext()>>> in the <<<Context>>> class of the core. Totel is
+    the same as creating JAXB context.
+  
+  [nL] <<<notifyListeners()>>> in the <<<NotificationChannelEndPoint>>> class
+    of the proxy. Total includes mashalling.
+
++------------+---------------------------+--------------------------------+
+| <<method>> | <<creating JAXB context>> | <<total>> |
++------------+---------------------------+--------------------------------+
+| sC | 1280ms | 1311ms |
++------------+---------------------------+--------------------------------+
+| gJC | 562ms | 562ms |
++------------+---------------------------+--------------------------------+
+| sC | 156ms | 156ms |
++------------+---------------------------+--------------------------------+
+| gJC | 125ms | 125ms |
++------------+---------------------------+--------------------------------+
+| sC | 141ms | 141ms |
++------------+---------------------------+--------------------------------+
+| gJC | 78ms | 78ms |
++------------+---------------------------+--------------------------------+
+| sC | 203ms | 203ms |
++------------+---------------------------+--------------------------------+
+| gJC | 47ms | 47ms |
++------------+---------------------------+--------------------------------+
+| sC | 125ms | 125ms |
++------------+---------------------------+--------------------------------+
+| gJC | 94ms | 94ms |
++------------+---------------------------+--------------------------------+
+| sC | 157ms | 157ms |
++------------+---------------------------+--------------------------------+
+| gJC | 63ms | 63ms |
++------------+---------------------------+--------------------------------+
+| sC | 140ms | 140ms |
++------------+---------------------------+--------------------------------+
+| gJC | 94ms | 94ms |
++------------+---------------------------+--------------------------------+
+| sC | 125ms | 125ms |
++------------+---------------------------+--------------------------------+
+| gJC | 156ms | 156ms |
++------------+---------------------------+--------------------------------+
+| sC | 78ms | 78ms |
++------------+---------------------------+--------------------------------+
+| gJC | 47ms | 47ms |
++------------+---------------------------+--------------------------------+
+| sC | 109ms | 109ms |
++------------+---------------------------+--------------------------------+
+| gJC | 46ms | 46ms |
++------------+---------------------------+--------------------------------+
+| nL | 344ms | 344ms |
++------------+---------------------------+--------------------------------+
+| nL | 31ms | 31ms |
++------------+---------------------------+--------------------------------+
+| nL | 47ms | 47ms |
++------------+---------------------------+--------------------------------+
+| nL | 47ms | 47ms |
++------------+---------------------------+--------------------------------+
+| nL | 62ms | 62ms |
++------------+---------------------------+--------------------------------+
+| nL | 62ms | 62ms |
++------------+---------------------------+--------------------------------+
+| nL | 47ms | 47ms |
++------------+---------------------------+--------------------------------+
+| nL | 78ms | 78ms |
++------------+---------------------------+--------------------------------+
+| nL | 78ms | 78ms |
++------------+---------------------------+--------------------------------+
+| nL | 156ms | 156ms |
++------------+---------------------------+--------------------------------+
+| nL | 63ms | 63ms |
++------------+---------------------------+--------------------------------+
+| gJC | 94ms | 94ms |
++------------+---------------------------+--------------------------------+
+| <<Total>> | 4935ms | 4966ms |
++------------+---------------------------+--------------------------------+
+JAXB context creating and marshalling time before fixing.
+
+  As you can see the nearly all the time for marshalling is used to create and
+  particularly recreate the JAXB context. These ten simple commands last almost
+  five seconds only for marshalling and unmarshalling.
+
+*** Situation after fixing
+
+  In the <<<CommandSerializerImpl>>>, <<<NotificationChannelEndPoint>>> and
+  <<<CommandFactory>>> class of the proxy and the <<<Context>>> class of the
+  core, the context and marshaller are now stored statically and initialised
+  only the first time they are used. This reduces the time needed for
+  marshalling and unmarshalling significantly. The following table shows the
+  same reader configuration with the same methods as above.
+
++------------+---------------------------+--------------------------------+
+| <<method>> | <<creating JAXB context>> | <<total>> |
++------------+---------------------------+--------------------------------+
+| sC | 1279ms | 1326ms |
++------------+---------------------------+--------------------------------+
+| gJC | 640ms | 640ms |
++------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| sC | 15ms | 15ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| nL | 312ms | 312ms |
++------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
++------------+---------------------------+--------------------------------+
+| <<Total>> | 2246ms | 2293ms |
++------------+---------------------------+--------------------------------+
+JAXB context creating and marshalling time after fixing.
+
+  The time for most marshalling and unmarshalling has reduced to less than one
+  millisecond. Although the amount of time needed to create the JAXB context
+  for the first time, the total time needed for these ten commands is less than
+  half as much as with the previous version. And the gain increases for every
+  following command and notification which will need less than one millisecond
+  to marshal and unmarshal.
+
+** Bugfix {1547776}: Added configuration file for the proxy
+
+
+
+** Bugfix {1773821}: Fixed field name, event and tag field values for custom
+  data selector
+
+
+
+** Bugfix {1723152}: Renamed TagSelector shorthand from RF to TS
+
+
+
+** Bugfix {1782301}: Return error if 'ms=' missing in timer trigger value
+
+
+
+** Bugfix {1782482}: Return notification channel port number correctly
+
+
+
+** Bugfix {1547832}: Redesigned resource loading
+
+
+
+** Bugfix {1783839}: Send and receive handshake in core and proxy/client
+
+
+
+** Bugfix {1800577}: Added possibility to start multiple readers on a single
+  computer
+
+
+
+** Bugfix {1823580}: No default configuration files defined in other
+  configuration files
+
+
+
+** Bugfix {1826817}: Iterate over tag field names instead of field names when
+  adding tags to a report in the source
+
+
+
+** Bugfix {1827468}: Rewritten byte array to hexadecimal formatted string
+  converter function in the HexUtil class
+
+
+
+** Bugfix {1827498}: Interprete offset and length of a tag field as bits

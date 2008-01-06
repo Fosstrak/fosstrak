@@ -14,15 +14,15 @@ User Guide Reader RP Client
 
   [[1]] {{{#Features}Features}}
 
-  [[1]] {{{#Application}Field of Application}}
+  [[2]] {{{#Application}Field of Application}}
 
-  [[2]] {{{#Installing}Installing the Accada RP Client}}
+  [[3]] {{{#Installing}Installing the Accada RP Client}}
 
-  [[3]] {{{#First}First Steps}}
+  [[4]] {{{#First}First Steps}}
 
-  [[4]] {{{#Display}Display Notification Messages}}
+  [[5]] {{{#Display}Display Notification Messages}}
 
-  [[5]] {{{#Configuration}Simple Reader Configuration}}
+  [[6]] {{{#Configuration}Simple Reader Configuration}}
 
 
 * {Features}
@@ -58,7 +58,7 @@ User Guide Reader RP Client
 
   * Communicate with a reader via the EPCglobal Reader Protocol Version 1.1
     using a graphical front end to create and send commands.
-    
+
   * Receive and display notification messages from a reader.
 
 [../images/ReaderClient_architecture.png]
@@ -71,7 +71,7 @@ User Guide Reader RP Client
   * Download the Reader RP Client binaries with the dependencies included from
     the {{{../download.html}download}} section of the website.
 
-  * Unzip the downloaded file
+  * Unzip the downloaded file.
 
   * Make sure a JRE 1.5 or higher is installed and it is added to the path
     variable.
@@ -82,7 +82,7 @@ User Guide Reader RP Client
   * Start the Reader RP Client instance in one of the following ways:
 
     * Invoke the executable jar
-    
+
     * In a console execute
 
 ---------------------------------------------------------------------------
@@ -136,27 +136,27 @@ java -cp \<path-to\>/reader-rp-client-\<version\>.jar org.accada.reader.rp.clien
 
   This section shows an example reader configuration procedure using the Reader
   RP Client.
-  
+
   The setup consists of an EventSinkUI listening on port 9999 and an Accada
   Reader using the graphic simulator. Both are runnning on the same computer
   as the Reader RP Client. The simulator has a source with the name 'Shelf1'.
-  
+
   [[1]] Start the Reader, EventSinkUI and Reader RP Client. See the documentation
     of the {{{user_core.html}Reader}}, {{{#Display}EventSinkUI}} and
     {{{#First}Client}} for instructions on how to do this.
-    
+
   [[2]] Connect to the reader on localhost port 8000 with transport binding HTTP
     and format XML.
-    
+
   [[3]] Create a read trigger:
-  
+
     * Select 'Trigger' in the Object drop-down list.
-    
+
     * Select 'create' in the Command drop-down list.
-    
+
     * Add a String parameter 'rt' (name), 'TIMER' (type) and 'ms=2000' (timer
       value) to the parameter list.
-    
+
     * Hit the 'Create Command' button. The command in the Request text field
       should look like this:
 
@@ -201,14 +201,14 @@ Content-Length: 269
 +--------------------------------------------------------------------------
 
   [[4]] Create a notification trigger:
-  
+
     * Select 'Trigger' in the Object drop-down list.
-    
+
     * Select 'create' in the Command drop-down list.
-    
+
     * Add a String parameter 'nt' (name), 'TIMER' (type) and 'ms=2000' (timer
       value) to the parameter list.
-    
+
     * Hit the 'Create Command' button. The command in the Request text field
       should look like this:
 
@@ -244,14 +244,14 @@ Content-Length: 269
 +--------------------------------------------------------------------------
 
   [[5]] Create a notification channel:
-  
+
     * Select 'NotificationChannel' in the Object drop-down list.
-    
+
     * Select 'create' in the Command drop-down list.
-    
-    * Add a String parameter 'nc' (name) and 'http://localhost:9999?mode=connect'
+
+    * Add a String parameter 'nc' (name) and 'tcp://localhost:9999?mode=connect'
       (address) to the parameter list.
-    
+
     * Hit the 'Create Command' button. The command in the Request text field
       should look like this:
 
@@ -286,15 +286,15 @@ Content-Length: 269
 +--------------------------------------------------------------------------
 
   [[6]] Add the notification trigger to the notification channel:
-  
+
     * Select 'NotificationChannel' in the Object drop-down list.
-    
+
     * Select 'addNotificationTriggers' in the Command drop-down list.
-    
+
     * Write 'nc' as the target name in the Target text field.
-    
+
     * Add an Array parameter 'nt' (trigger name) to the parameter list.
-    
+
     * Hit the 'Create Command' button. The command in the Request text field
       should look like this:
 
@@ -330,15 +330,15 @@ Content-Length: 269
 +--------------------------------------------------------------------------
 
   [[7]] Add the source to the notification channel:
-  
+
     * Select 'NotificationChannel' in the Object drop-down list.
-    
+
     * Select 'addSources' in the Command drop-down list.
-    
+
     * Write 'nc' as the target name in the Target text field.
-    
+
     * Add an Array parameter 'Shelf1' (source name) to the parameter list.
-    
+
     * Hit the 'Create Command' button. The command in the Request text field
       should look like this:
 
@@ -374,15 +374,15 @@ Content-Length: 269
 +--------------------------------------------------------------------------
 
   [[8]] Add the read trigger to the source:
-  
+
     * Select 'Source' in the Object drop-down list.
-    
+
     * Select 'addReadTriggers' in the Command drop-down list.
-    
+
     * Write 'Shelf1' as the target name in the Target text field.
-    
+
     * Add an Array parameter 'rt' (read trigger name) to the parameter list.
-    
+
     * Hit the 'Create Command' button. The command in the Request text field
       should look like this:
 
