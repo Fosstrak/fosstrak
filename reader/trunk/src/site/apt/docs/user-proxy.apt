@@ -55,6 +55,8 @@ User Guide Reader RP Proxy
   * Implement the <<<NotificationChannelListener>>> interface to receive
     notifications from the reader in your Java application.
 
+  []
+
 [../images/ReaderProxy_architecture.png]
 
 

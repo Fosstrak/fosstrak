@@ -1,17 +1,13 @@
               -------------------
-              Developer Guide
+              Developer Index
               -------------------
-              Jonas Haller, TODO
+              Jonas Haller
               -------------------
-              11.12.2007
+              08.01.2008
               -------------------
 
 
-Architecture
-
-  The following sections describe the architecture of Accada's Reader project
-  and the relations among its modules. It is intended as an introduction to
-  future developers.
+Developer Index
 
 
 * Contents
@@ -20,58 +16,50 @@ Architecture
 
   [[2]] {{{#Architectural}Architectural Overview}}
 
-  [[3]] {{{#Relations}Module Relations}}
-
 
 * {Introduction}
 
-  The goal of Accada HAL is to provide a common interface and wrappers
-  implementing it to uniformly access various RFID readers.
-
-  Each reader has to be accessed through its own proprietary protocol. This is
-  very inflexible. If you access the reader directly and want to exchange it
-  with an other model, you have to adjust your application to control the
-  reader through a different protocol.
-
-  Accada HAL solves this problem by providing one single interface to access
-  all the implemented readers. With this the code specific to the reader is
-  moved from the application to the hardware abstraction layer. The application
-  does not need to adjust to a specific reader but simply use the
-  <<<HardwareAbstraction>>> interface to access all readers.
-
-  New readers not currently implemented in the Accada HAL project can easily be
-  added as a new module. The controller must implement the
-  <<<HardwareAbstraction>>> interface and communicate with the reader over the
-  corresponding protocol.
-
-  The Accada HAL project includes a simulator framework. There are several
-  simulator controllers, each implementing the <<<HardwareAbstraction>>>
-  interface. This allows to access the simulators in exactly the same way
-  as HAL implementations for hardware readers.
+  The goal of Accada Reader is to provide an example implementation of the
+  EPCglobal Reader Protocol that supports rapid prototyping. It is not a
+  reference implementation. The reader further supports the EPCglobal Reader
+  Management. Accada Reader uses the Accada HAL project as a backend. This
+  means that the simulators and every reader with an implementation of the
+  <<<HardwareAbstraction>>> interface can be controlled over the Reader
+  Protocol.
+  
+  Beside the <<<reader-rprm-core>>> module containing the reader implementation
+  the Accada Reader project consists of two further modules with interfaces to
+  control a Reader Protocol compliant reader. The <<<reader-rp-proxy>>> module
+  contains a library to control a reader from within a Java application over
+  the Reader Protocol and an interface to receive notifications from a reader.
+  The <<<reader-rp-client>>> module provides a graphical client to configure a
+  reader over the Reader Protocol and two versions of an event sink that
+  display information about events reported by the reader over a notification
+  channel.
+  
+  For a project overview and getting started for developers have a look at the
+  {{{developer-guide.html}Developer Guide}}.
 
 
 * {Architectural} Overview
 
-  The following figure gives an overview of the HAL architecture.
+  The following figure gives an overview of the Reader architecture.
 
-[../images/hal_architecture.png] architectural overview
+[../images/ReaderArchitecture.png] architectural overview
 
-  The <<<HardwareAbstraction>>> defines the interface between the HAL and the
-  Accada Reader or any other applitacion using the Accada HAL. It standardises
-  access to various readers and simulators of readers. This allows uniform
-  usage. The readers and simulators become interchangeable because the code
-  specific to the reader is part of the HAL and not of the application.
-
-  The implementations of the <<<HardwareAbstraction>>> interface are divided
-  into multiple modules. One for the simulators and one for each reader
-  manufacturer. A module can contain one or multiple reader controllers.
-
-
-* Module {Relations}
-
-  For exlanation of the <<<HardwareAbstraction>>> interface, the methods are
-  divided into following groups:
-
-  * {{{#Identify}Identify}}
-
-  []
+  The Accada Reader Core uses the Accada HAL as a backend and can be controlled
+  and used like any other Reader Protocol compliant reader. That means it can
+  be controlled using the Reader Proxy, Reader Client or any other application
+  that supports the Reader Protocol. Additionally the Reader Core implements
+  the SNMP part of the EPCglobal Reader Management so it can be monitored and
+  managed with any management software that supports SNMP.
+  
+  The Reader Proxy can be used by any Java application as a library to be able
+  to easily control a reader over the EPCglobal Reader Protocol. This module
+  shares code located in the Reader Core module. The proxy does not support
+  Reader Management over SNMP.
+  
+  The Reader Client is a stand-alone application to control any Reader Protocol
+  compliant reader. It provides a graphical user interface to generate and send
+  commands to the reader and receive the responses. Reader Management over SNMP
+  is not supported either.
