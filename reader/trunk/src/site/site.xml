@@ -52,9 +52,7 @@
     </menu>
 
     <menu name="Guides &amp;amp; Documentation" inherit="top">
-      <item name="Architecture" href="docs/architecture.html"/>
       <item name="User" href="docs/user-index.html" collapsed="false">
-         <item name="User Guide" href="docs/user-guide.html"/>
          <item name="Core" href="docs/user-core.html"/>
          <item name="Proxy" href="docs/user-proxy.html"/>
          <item name="Client" href="docs/user-client.html"/>
