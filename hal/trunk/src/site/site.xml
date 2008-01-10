@@ -50,9 +50,7 @@
     </menu>
 
     <menu name="Guides &amp;amp; Documentation" inherit="top">
-      <item name="Architecture" href="docs/architecture.html"/>
-      <item name="User" href="docs/user-index.html" collapsed="false">
-         <item name="User Guide" href="docs/user-guide.html"/>
+      <item name="User" href="docs/user-guide.html" collapsed="false">
          <item name="Simulator" href="docs/user-simulator.html"/>
          <item name="Impinj" href="docs/user-impinj.html"/>
          <item name="Feig" href="docs/user-feig.html"/>
@@ -65,7 +63,7 @@
       <item name="JavaDoc" href="apidocs/index.html"/>
     </menu>
 
-    <menu name="HAL Project Module" inherit="none">
+    <menu name="HAL Project Modules" inherit="none">
       <item name="HAL Commons" href="hal-commons/project-reports.html" collapse="true">
         <item name="dummy"/>
       </item>

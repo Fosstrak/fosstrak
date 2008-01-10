@@ -11,7 +11,7 @@ Developer Change Log
 * Changes
 
    * {{{#0.4.0}Release 0.4.0}}
-   
+
       * {{{#HardwareAbstraction}HardwareAbstraction Interface}}
 
       * {{{#Own}Own Project}}
@@ -51,8 +51,8 @@ Developer Change Log
     <<<UnsignedByteArray>>> instead of a (signed) <<<byte\[\]>>>.
 
   * Error reporting has been improved with adding additional declarations for
-    exceptions that can arise in the method implementation. Most notably parameter
-    check can return a specific <<<ReadPointNotFoundException>>> or
+    exceptions that can arise in the method implementation. Most notably a
+    parameter check can return a specific <<<ReadPointNotFoundException>>> or
     <<<OutOfBoundsException>>> if it fails.
 
   * A (mandantory) <<<getReadPointNames>>> method has been added.
@@ -83,8 +83,8 @@ Developer Change Log
   The HAL has moved from a module of Accada Reader to an own project. It is
   subdivided into a module containing the <<<HardwareAbstraction>>> interface
   with common utilities and modules with implementations of the interface.
-  Each implementation module contains one or more reader controller of a reader
-  manufacturer or the simulator.
+  Each implementation module contains one or more reader controllers of a
+  reader manufacturer or the simulator.
 
 
 ** {Impinj} SPeedway
@@ -108,8 +108,10 @@ Developer Change Log
   * <<<LBTParams>>>
 
   * <<<RxConfig>>>
+  
+  []
 
-  See Impinj Mach1 protocol specification for information about functionality
+  See th Impinj Mach1 protocol specification for information about functionality
   and format of the parameters.
 
 
@@ -120,8 +122,8 @@ Developer Change Log
   <<<readBytes>>>, <<<writeBytes>>>, <<<reset>>> and <<<kill>>> commands.
 
   The implementation supports the FEIG OBID i-scan ID ISC.ANT.MUX multiplexer with
-  8 ports. Multiplexers can be cascaded to a depth of three. This allows a maximum
-  of 512 antennas on a single reader.
+  8 ports. Multiplexers can be cascaded up to a depth of three. This allows a
+  maximum of 512 antennas on a single reader.
 
 
 ** FEIG {LRU}1000
@@ -157,6 +159,8 @@ Developer Change Log
     extracted and started in a console by hand instead of just clicking on the
     executable jar file.
 
+  []
+
   The new implementation fixes these issues in the following way:
 
   * Locating the resource files is done in a dedicated helper class for all
@@ -170,6 +174,12 @@ Developer Change Log
   * The resource locator first searches for the custom file. If no custom file
     can be found, the algorithm takes the default file. It is not necessary to
     extract the Java archive to customize resources such as configuration files.
+  
+  []
+  
+  See the {{{../../reader/docs/developer-changelog.html#1547832}Accada Reader
+  Developer Changlog}} for a more detailed explanation of the new implementation
+  of the resource loading.
 
 
 ** {Simulated} Tag Memory
@@ -177,7 +187,7 @@ Developer Change Log
   Changed the tag memory layout of the simulated tag to match the EPCclass1Gen2
   standard. The simulated tag now has 64 bit reserved memory, 256 bit EPC memory
   including CRC and PC bits, 64 bit TID memory with random 32 bit serial number
-  and 256 bit of user memory.
+  and 256 bit user memory.
 
 
 ** {EPCclass1Gen2} Tag Models
@@ -203,6 +213,8 @@ Developer Change Log
   * Alien H2
 
   * and the Accada Simulator tag with EPCclass1Gen2 compliant memory layout
+  
+  []
 
   These are the most common tag chips also used in tags from other manufacturers.
   New tag chips can simply be added by writing their TID and memory information
@@ -229,5 +241,5 @@ Developer Change Log
   returned by the <<<identify>>> method can contain a <<<TagDescriptor>>> for
   each tag observed. It contains information about the ID type and memory layout
   of the tag. All current implementations (Impinj and FEIG readers) including
-  the simulator add a <<<TagDescriptor>>> with accordant information to the
+  the simulator add a <<<TagDescriptor>>> with according information to the
   <<<Observation>>>.

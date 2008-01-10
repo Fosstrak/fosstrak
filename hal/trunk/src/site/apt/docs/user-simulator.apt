@@ -28,15 +28,52 @@ Simulator Configuration and Usage
 
 * {Simulator} Controller
 
-  This is an example of a configuration file for the simulator controller. All options
-  with their comments should be self-explanatory.
+** Configuration of the Accada Reader
+
+  The following XML code is an example on how to configure the Accada Reader to
+  use the HAL implementation of the simulator controller. The name can be
+  chosen arbitrary but must be unique if multiple readers are configured. The
+  class implementing the <<<HardwareAbstraction>>> interface for the simulator
+  controller is <<<org.accada.hal.impl.sim.SimulatorController>>>. The
+  properties element contains the path to the configuration file. For
+  information about this see the configuration file example below.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- ... other configuration elements ... -->
+
+   <!-- All readers (HardwareAbstractions) used -->
+      <readers>
+         <reader>
+            <name>SimulatorController</name>
+            <class>org.accada.hal.impl.sim.SimulatorController</class>
+            <properties>/props/SimulatorController.xml</properties>
+            <readpoint>Shelf1</readpoint>
+            <readpoint>Shelf2</readpoint>
+            <readpoint>Shelf3</readpoint>
+            <readpoint>Shelf4</readpoint>
+         </reader>
+      </readers>
+   <!-- End -->
+
+   <!-- ... other configuration elements ... -->
+
+</properties>
++-----------------------------------------------------------------------------+
+
+** Configuration File Example
+
+  This is an example of a configuration file for the simulator controller. All
+  options with their comments should be self-explanatory.
 
 +-----------------------------------------------------------------------------+
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
 
    <!-- SimulatorType to be loaded dynamically -->
-   <simType>org.accada.reader.hal.impl.sim.GraphicSimulator</simType>
+   <simType>org.accada.hal.impl.sim.GraphicSimulator</simType>
    <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
 
    <!-- Configuration file with all the transponder models -->
@@ -47,7 +84,7 @@ Simulator Configuration and Usage
    <!-- Read point definition -->
    <numberOfReadPoints>4</numberOfReadPoints>
    <!-- readpoints numebred readPoint_1 ... readPoint_n (at the moment) -->
-   <!-- the client has to use these names to address this read points -->
+   <!-- the client has to use these names to address these read points -->
    <!-- example: <readPoint_1>Antenna1</readPoint_1> -->
    <readPoint_1>Shelf1</readPoint_1>
    <readPoint_2>Shelf2</readPoint_2>
@@ -59,6 +96,28 @@ Simulator Configuration and Usage
 
 
 * {Graphic} Simulator
+
+** Configuration of the Simulator Controller
+
+  The following XML code is an example on how to configure the Simulator
+  Controller to use this simulator. The class implementing the
+  <<<SimulatorEngine>>> interface for the graphic simulator is
+  <<<org.accada.hal.impl.sim.GraphicSimulator>>>. The simTypePropFile element
+  contains the path to the configuration file. For information about this see
+  the configuration file example below.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- SimulatorType to be loaded dynamically -->
+   <simType>org.accada.reader.hal.impl.sim.GraphicSimulator</simType>
+   <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
+
+   <!-- ... other configuration elements ... -->
+
+</properties>
++-----------------------------------------------------------------------------+
 
 ** Configuration File Example
 
@@ -116,11 +175,39 @@ Simulator Configuration and Usage
 
    Handling of the graphic simulater is very intuitive. Tags can be created via
    the 'Tag' - 'Add new Tag' menu item or the context menu. Drag tags over an
-   antenna to read them. The memory of a tag can be accessed and changed by hand
-   through its context menu.
+   antenna to read them.
+   
+[../images/sim_tags.png]Graphic Simulator User Interface
+   
+   The memory of a tag can be accessed and changed by hand through its context
+   menu.
+
+[../images/memory_banks.png]Memory Access
 
 
 * {Batch} Simulator
+
+** Configuration of the Simulator Controller
+
+  The following XML code is an example on how to configure the Simulator
+  Controller to use this simulator. The class implementing the
+  <<<SimulatorEngine>>> interface for the batch simulator is
+  <<<org.accada.hal.impl.sim.BatchSimulator>>>. The simTypePropFile element
+  contains the path to the configuration file. For information about this see
+  the configuration file example below.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- SimulatorType to be loaded dynamically -->
+   <simType>org.accada.reader.hal.impl.sim.BatchSimulator</simType>
+   <simTypePropFile>/props/BatchSimulator.xml</simTypePropFile>
+
+   <!-- ... other configuration elements ... -->
+
+</properties>
++-----------------------------------------------------------------------------+
 
 ** Configuration File Example
 
@@ -150,7 +237,7 @@ Simulator Configuration and Usage
 # Example batch file for Accada BatchSimulator
 # Author: Jonas Haller
 #
-# Lines beginning wich '#' are not processed (comments)
+# Lines beginning with '#' are not processed (comments)
 # An event line has the following form:
 #  <time>;<eventTypeName>;<sourceID>;<serial>;<userMemoryData>
 # The values have following meaning:
@@ -171,6 +258,27 @@ Simulator Configuration and Usage
 
 
 * {Command} Line Simulator
+
+** Configuration of the Simulator Controller
+
+  The following XML code is an example on how to configure the Simulator
+  Controller to use this simulator. The class implementing the
+  <<<SimulatorEngine>>> interface for the command line simulator is
+  <<<org.accada.hal.impl.sim.CmdLineSim>>>. The simTypePropFile element can be
+  left empty as this simulator does not need any configuration.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- SimulatorType to be loaded dynamically -->
+   <simType>org.accada.reader.hal.impl.sim.CmdLineSim</simType>
+   <simTypePropFile></simTypePropFile>
+
+   <!-- ... other configuration elements ... -->
+
+</properties>
++-----------------------------------------------------------------------------+
 
 ** Configuration
 
@@ -196,6 +304,28 @@ Simulator Configuration and Usage
 
 * {Multi} Simulator
 
+** Configuration of the Simulator Controller
+
+  The following XML code is an example on how to configure the Simulator
+  Controller to use this simulator. The class implementing the
+  <<<SimulatorEngine>>> interface for the multi simulator is
+  <<<org.accada.hal.impl.sim.SimulatorClient>>>. The simTypePropFile element
+  contains the path to the configuration file of the simulator client. For
+  information about this see the configuration file example below.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- SimulatorType to be loaded dynamically -->
+   <simType>org.accada.reader.hal.impl.sim.SimulatorClient</simType>
+   <simTypePropFile>/props/SimulatorClient.xml</simTypePropFile>
+
+   <!-- ... other configuration elements ... -->
+
+</properties>
++-----------------------------------------------------------------------------+
+
 ** Configuration File Example
 
   Simulator client:
@@ -219,7 +349,7 @@ Simulator Configuration and Usage
 </properties>
 +-----------------------------------------------------------------------------+
 
-  Simulator server controller:
+  Simulator server controller (SimulatorServerController.xml):
 
 +-----------------------------------------------------------------------------+
 <?xml version="1.0" encoding="UTF-8"?>
@@ -237,5 +367,15 @@ Simulator Configuration and Usage
 
 ** Usage
 
-  See user guide of the simulator type configured in simulator server controller
-  configuration file.
+  The multi simulator consists of a client implementing the
+  <<<SimulatorEngine>>> interface and connecting to a server through TCP/IP.
+  The server can run on an other computer and starts a graphic, batch or
+  command line simulator. The events generated by the simulator on the server
+  are sent to the client.
+  
+  Executing the main method of the class
+  <<<org.accada.hal.impl.sim.multi.SimulatorServerController>>> starts the
+  simulator server.
+
+  See the user guide of the simulator type configured in the simulator server
+  controller configuration file.

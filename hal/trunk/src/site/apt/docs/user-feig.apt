@@ -17,12 +17,45 @@ FEIG Configuration
 
   * {{{#MR}ID ISC.MR101-A}} (RS232/485, COM)
 
-  The implementations are tested on above reader models but may work for other
-  readers with the same interface and protocol: ID ISC.M02-B, ID ISC.PRH101-A,
-  ID ISC.PR101-A.
+  The implementations are tested on the reader models mentioned above but may
+  work for other readers with the same interface and protocol: e.g.
+  ID ISC.M02-B, ID ISC.PRH101-A, ID ISC.PR101-A.
 
 
 * ID ISC.{LRU}1000
+
+** Configuration of the Accada Reader
+
+  The following XML code is an example on how to configure the Accada Reader to
+  use this readers HAL implementation. The name can be chosen arbitrary but
+  must be unique if multiple readers are configured. The class implementing the
+  <<<HardwareAbstraction>>> interface for this reader type is
+  <<<org.accada.hal.impl.feig.FeigTCPIPController>>>. The properties element
+  contains the path to the configuration file. For information about this see
+  the configuration file example below.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- ... other configuration elements ... -->
+
+   <!-- All readers (HardwareAbstractions) used -->
+      <readers>
+         <reader>
+            <name>FeigTCPIPController</name>
+            <class>org.accada.hal.impl.feig.FeigTCPIPController</class>
+            <properties>/props/FeigTCPIPController.xml</properties>
+            <readpoint>Antenna1</readpoint>
+         </reader>
+      </readers>
+   <!-- End -->
+
+   <!-- ... other configuration elements ... -->
+
+</properties>
++-----------------------------------------------------------------------------+
+
 
 ** Configuration File Example
 
@@ -64,6 +97,40 @@ FEIG Configuration
 
 
 * ID ISC.{MR}101-A
+
+** Configuration of the Accada Reader
+
+  The following XML code is an example on how to configure the Accada Reader to
+  use this readers HAL implementation. The name can be chosen arbitrary but
+  must be unique if multiple readers are configured. The class implementing the
+  <<<HardwareAbstraction>>> interface for this reader type is
+  <<<org.accada.hal.impl.feig.FeigCOMController>>>. The properties element
+  contains the path to the configuration file. For information about this see
+  the configuration file example below.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- ... other configuration elements ... -->
+
+   <!-- All readers (HardwareAbstractions) used -->
+      <readers>
+         <reader>
+            <name>FeigCOMController</name>
+            <class>org.accada.hal.impl.feig.FeigCOMController</class>
+            <properties>/props/FeigCOMController.xml</properties>
+            <readpoint>Antenna1</readpoint>
+            <readpoint>Antenna2</readpoint>
+         </reader>
+      </readers>
+   <!-- End -->
+
+   <!-- ... other configuration elements ... -->
+
+</properties>
++-----------------------------------------------------------------------------+
+
 
 ** Configuration File Example
 

@@ -51,6 +51,6 @@ Welcome to the Accada HAL Project
   []
 
   The figure below gives an overview of the Accada HAL implementation. For more
-  information refer to the {{{docs/architecture.html}architecture section}}.
+  information refer to the {{{docs/developer-index.html}Developer}} section.
 
 [images/hal_architecture.png] Accada HAL architecture
