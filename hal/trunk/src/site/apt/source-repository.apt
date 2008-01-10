@@ -21,7 +21,7 @@ Source Repository Access
 
 * Web access
 
-   The following is a link to the online source repository.
+   The following is the address of the online source repository.
 
 +--
 https://svn.accada.org/repos/hal/tags/hal-0.4.0
@@ -31,7 +31,7 @@ https://svn.accada.org/repos/hal/tags/hal-0.4.0
 
 * Anonymous access
 
-   The source can be checked out anonymously fromSVN with this command:
+   The source can be checked out anonymously from SVN with this command:
 
 +--
 $ svn checkout https://svn.accada.org/repos/hal/tags/hal-0.4.0 hal

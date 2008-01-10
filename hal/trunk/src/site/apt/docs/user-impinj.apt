@@ -8,6 +8,39 @@
 
 Impinj Speedway Configuration
 
+* Configuration of the Accada Reader
+
+  The following XML code is an example on how to configure the Accada Reader to
+  use this readers HAL implementation. The name can be chosen arbitrary but
+  must be unique if multiple readers are configured. The class implementing the
+  <<<HardwareAbstraction>>> interface for this reader type is
+  <<<org.accada.hal.impl.impinj.ImpinjTCPIPController>>>. The properties
+  element contains the path to the configuration file. For information about
+  this see the configuration file example below.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- ... other configuration elements ... -->
+
+   <!-- All readers (HardwareAbstractions) used -->
+      <readers>
+         <reader>
+            <name>ImpinjTCPIPController</name>
+            <class>org.accada.hal.impl.impinj.ImpinjTCPIPController</class>
+            <properties>/props/ImpinjTCPIPController.xml</properties>
+            <readpoint>Antenna1</readpoint>
+         </reader>
+      </readers>
+   <!-- End -->
+
+   <!-- ... other configuration elements ... -->
+
+</properties>
++-----------------------------------------------------------------------------+
+
+
 * Configuration File Example
 
 +-----------------------------------------------------------------------------+

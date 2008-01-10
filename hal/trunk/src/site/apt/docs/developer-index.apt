@@ -1,5 +1,5 @@
               -------------------
-              Architecture
+              Developer Index
               -------------------
               Jonas Haller
               -------------------
@@ -7,7 +7,7 @@
               -------------------
 
 
-Architecture
+Developer Index
 
   The following sections describe the technical specification of Accada's HAL
   interface and implementations. It is intended as an introduction to future
@@ -21,6 +21,8 @@ Architecture
   [[2]] {{{#Architectural}Architectural Overview}}
 
   [[3]] {{{#HAL}HAL Interface}}
+
+  [[4]] {{{#Use}Use HAL directly}}
 
 
 * {Introduction}
@@ -36,10 +38,10 @@ Architecture
   Accada HAL solves this problem by providing one single interface to access
   all the implemented readers. With this the code specific to the reader is
   moved from the application to the hardware abstraction layer. The application
-  does not need to adjust to a specific reader but simply use the
+  does not need to adjust to a specific reader but simply uses the
   <<<HardwareAbstraction>>> interface to access all readers.
 
-  New readers not currently implemented in the Accada HAL project can easily be
+  New readers currently not implemented in the Accada HAL project can easily be
   added as a new module. The controller must implement the
   <<<HardwareAbstraction>>> interface and communicate with the reader over the
   corresponding protocol.
@@ -69,8 +71,12 @@ Architecture
 
 * {HAL} Interface
 
-  For exlanation of the <<<HardwareAbstraction>>> interface, the methods are
-  divided into following groups:
+  The following UML diagram shows the <<<HardwareAbstraction>>> interface.
+
+[../images/HardwareAbstraction.png] UML diagram of HardwareAbstraction interface
+
+  For the explanation of the interface, the methods are divided into following
+  groups:
 
   * {{{#Identify}Identify}}
 
@@ -89,13 +95,13 @@ Architecture
 
 ** {Identify}
 
-   The <<<identify>>> method is mandantory and identifies the tags in the range
-   of the read points given as arguments.
+   The <<<identify>>> method has to be implemented mandantory and identifies
+   the tags in the range of the read points given as arguments.
 
    The return type is an array containig an <<<Observation>>> for each readpoint
    given in the argument array. Each <<<Observation>>> contains the name of the
    HAL controller and the read point where the tags were identified, a timestamp
-   when the identification happened, an array uf IDs, a corresponding array of
+   when the identification happened, an array of IDs, a corresponding array of
    <<<TagDescriptor>>>s and a boolean set to false if the identification failed.
 
 ** {Asynchronous} Identify
@@ -117,25 +123,25 @@ Architecture
 
 ** {Kill} and WriteId
 
-   Kills the specified tag if in range. A killed tag does not respond to
-   requests any longer.
+   The <<<kill>>> method kills the specified tag if in range. A killed tag does
+   not respond to requests any longer.
 
-   Writes a new ID onto a tag independent of its position in memory. The
-   actual position of the ID depends on the type of tag used. This method may
-   fail even if the addressed tag is in read range because a write operation
-   needs higher power to succeed.
+   Using <<<writeId>>> writes a new ID onto a tag independent of its position
+   in memory. The actual position of the ID depends on the type of tag used.
+   This method may fail even if the addressed tag is in read range because a
+   write operation needs higher power to succeed.
 
    Both methods are optional to implement and additionally may depend on the
    capabilities of the tag.
 
 ** {Controller} Management
 
-   The <<getHALName>> and <<getReadPointNames>> methods are
+   The <<<getHALName>>> and <<<getReadPointNames>>> methods are
    mandantory to implement. They deliver essential information about the HAL.
 
    All further methods described below are optional to implement.
 
-   The <<parameter>> methods can be used to get parameters set in the
+   The <<parameter>>-methods can be used to get parameters set in the
    configuration file. Depending on the controller implementation, parameters
    of the reader can be read and set through these methods. Examples of reader
    parameters are reader information, transmission power, listen before talk
@@ -143,8 +149,24 @@ Architecture
    should be declared in the configuration file of the controller or can be
    requested with the <<<getAllParameterNames>>> method.
 
-   The <<reset>> method reinitialises the controller including the unlocking of
+   The <<<reset>>> method reinitialises the controller including the unlocking of
    all previously locked / muted tags.
 
-   The <<ReadPoint>> methods allow to control the individual read points and
+   The <<ReadPoint>>-methods allow to control the individual read points and
    get information about them.
+
+
+* {Use} HAL directly
+
+  The Accada HAL is designed to be used by Accada Reader. However a
+  <<<HardwareAbstraction>>> implementation can be used by an other application
+  without using the Accada Reader. This allows uniform access to all
+  implemented readers including the simulator and increases performance if the
+  filtering and reporting system of Accada Reader and Access over the Reader
+  Protocol is not needed.
+
+  The name of the class implementing the <<<HardwareAbstraction>>> interface
+  for each reader can be found in the corresponding user documentation. To
+  instanciate this class the constructor has to be called with two arguments of
+  type string. The first parameter is the name of the HAL, the second one is
+  the path and name of the configuration file.
