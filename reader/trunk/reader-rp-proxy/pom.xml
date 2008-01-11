@@ -7,20 +7,20 @@
 
   <groupId>org.accada.reader</groupId>
   <artifactId>reader-rp-proxy</artifactId>
-  <version>0.4.0-SNAPSHOT</version>
+  <version>0.4.0</version>
   <parent>
     <groupId>org.accada.reader</groupId>
     <artifactId>reader</artifactId>
-    <version>0.4.0-SNAPSHOT</version>
+    <version>0.4.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <name>reader-rp-proxy</name>
 
-    
+
   <!-- =========================================================== -->
   <!-- Build Plugins                                               -->
   <!-- =========================================================== -->
-  
+
   <build>
     <plugins>
       <plugin>
@@ -32,9 +32,9 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>  
+        <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <archive>  
+          <archive>
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>./lib</classpathPrefix>
@@ -62,12 +62,12 @@
       </plugin>
     </plugins>
   </build>
-  
-  
+
+
   <!-- =========================================================== -->
   <!-- Dependencies                                                -->
   <!-- =========================================================== -->
-  
+
   <dependencies>
     <dependency>
       <groupId>org.accada.reader</groupId>
@@ -107,6 +107,6 @@
       <version>1.0</version>
     </dependency>
   </dependencies>
-  
-  
+
+
 </project>

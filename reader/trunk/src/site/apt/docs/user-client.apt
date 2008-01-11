@@ -29,8 +29,8 @@ User Guide Reader RP Client
 
   The Accada Reader RP Client is a Java Swing-based graphical user interface
   to execute commands and communicate with a RFID reader that implements the
-  EPCglobal Reader Protocol Version 1.1. The RP client supports the following
-  elements of the protocol:
+  EPCglobal Reader Protocol Version 1.1. The Reader Client supports the
+  following elements of the protocol:
 
   * Transport Binding: TCP and HTTP
 
@@ -41,6 +41,8 @@ User Guide Reader RP Client
   * Triggers
 
   * Data Selectors
+  
+  []
 
   Additional to the Test Client, there are two versions of an event sink
   contained in the Reader RP Client module. The <<<EventSinkUI>>> displays a
@@ -88,13 +90,13 @@ User Guide Reader RP Client
     * In a console execute
 
 ---------------------------------------------------------------------------
-java -jar \<path-to\>/reader-rp-client-\<version\>.jar
+java -jar <path-to>/reader-rp-client-<version>.jar
 ---------------------------------------------------------------------------
 
     * In a console execute
 
 ---------------------------------------------------------------------------
-java -cp \<path-to\>/reader-rp-client-\<version\>.jar org.accada.reader.rp.client.TestClient
+java -cp <path-to>/reader-rp-client-<version>.jar org.accada.reader.rp.client.TestClient
 ---------------------------------------------------------------------------
 
     []
@@ -122,12 +124,12 @@ java -cp \<path-to\>/reader-rp-client-\<version\>.jar org.accada.reader.rp.clien
      following command:
 
 ---------------------------------------------------------------------------
-java -cp \<path-to\>/reader-rp-client-\<version\>.jar org.accada.reader.rp.client.EventSinkUI [port]
+java -cp <path-to>/reader-rp-client-<version>.jar org.accada.reader.rp.client.EventSinkUI [port]
 ---------------------------------------------------------------------------
 
    * As the port argument use the TCP port to which the reader will be sending
-     the notification messages. This port has to be specified in the definition
-     of the notification channel. The default port 9999.
+     the notification messages. This port has to be specified later when
+     defining the notification channel for the reader. The default port 9999.
 
    []
 
@@ -140,11 +142,11 @@ java -cp \<path-to\>/reader-rp-client-\<version\>.jar org.accada.reader.rp.clien
   RP Client.
 
   The setup consists of an EventSinkUI listening on port 9999 and an Accada
-  Reader using the graphic simulator. Both are runnning on the same computer
+  Reader using the graphical simulator. Both are runnning on the same computer
   as the Reader RP Client. The simulator has a source with the name 'Shelf1'.
 
   [[1]] Start the Reader, EventSinkUI and Reader RP Client. See the documentation
-    of the {{{user_core.html}Reader}}, {{{#Display}EventSinkUI}} and
+    of the {{{user-core.html}Reader}}, {{{#Display}EventSinkUI}} and
     {{{#First}Client}} for instructions on how to do this.
 
   [[2]] Connect to the reader on localhost port 8000 with transport binding HTTP

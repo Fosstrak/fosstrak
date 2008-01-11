@@ -7,7 +7,7 @@
 
   <groupId>org.accada.reader</groupId>
   <artifactId>reader</artifactId>
-  <version>0.4.0-SNAPSHOT</version>
+  <version>0.4.0</version>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
 
@@ -238,6 +238,60 @@
       <url>http://www.gnu.org/licenses/lgpl.txt</url>
     </license>
   </licenses>
-
+  <developers>
+    <developer>
+      <id>matthias-lampe</id>
+      <name>Matthias Lampe</name>
+      <email>lampe at inf.ethz.ch</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+    <developer>
+      <id>floerkem</id>
+      <name>Christian Floerkemeier</name>
+      <email>floerkem at mit.edu</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>-5</timezone>
+    </developer>
+    <developer>
+      <id>roduner</id>
+      <name>Christof Roduner</name>
+      <email>rodunerc at inf.ethz.ch</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Oliver Zweifel</name>
+      <email>zweifelo at users.sourceforge.net</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </contributor>
+    <contributor>
+      <name>Angelo Rosenfelder</name>
+      <email>nep0muk at users.sourceforge.net</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </contributor>
+    <contributor>
+      <name>Jonas Haller</name>
+      <email>hallerj at student.ethz.ch</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </contributor>
+  </contributors>
 
 </project>
