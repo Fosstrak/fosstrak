@@ -12,7 +12,6 @@
       <item name="RP Client" href="project-reports.html" collapse="false">
         <item name="Dependencies" href="dependencies.html"/>
         <item name="Dependency Convergence" href="dependency-convergence.html"/>
-        <item name="Checkstyle Report" href="checkstyle.html"/>
         <item name="PMD Report" href="pmd.html"/>
         <item name="CPD Report" href="cpd.html"/>
         <item name="JavaNCSS Report" href="javancss.html"/>

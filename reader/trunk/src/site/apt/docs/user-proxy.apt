@@ -26,25 +26,27 @@ User Guide Reader RP Proxy
 
 * {Features}
 
-  * The Accada Reader RP Proxy is a Java class library that supports the
-    communication with a reader that implements the EPCglobal Reader Protocol
-    Version 1.1.
+  The Accada Reader RP Proxy is a Java class library that supports the
+  communication with a reader that implements the EPCglobal Reader Protocol
+  Version 1.1.
 
-    Implemented elements of the protocol include:
+  Implemented elements of the protocol include:
 
-    * Transport Binding: TCP and HTTP
+  * Transport Binding: TCP and HTTP
 
-    * Message Binding: XML and Text
+  * Message Binding: XML and Text
 
-    * Synchronous and Asynchronous Messaging (Notification Channels)
+  * Synchronous and Asynchronous Messaging (Notification Channels)
 
-    * Triggers
+  * Triggers
 
-    * Data Selectors
+  * Data Selectors
 
-    The reader can be configured through a method call for each command or all
-    the settings can be written in a configuration file which is processed by
-    an automated configurator.
+  []
+
+  The reader can be configured through a method call for each command or all
+  the settings can be written into a configuration file which is processed by
+  an automated configurator.
 
 
 * Field of {Application}
@@ -96,6 +98,8 @@ User Guide Reader RP Proxy
   * COMMAND_CHANNEL_HOST
 
   * COMMAND_CHANNEL_PORT
+  
+  []
 
   You might also want to consider using our existing Java implementation of a
   {{{../index.html}reader}} which includes a simulation engine.
@@ -276,8 +280,8 @@ public class ReaderConfiguratorExample {
 }
 +---
 
-   The corresponding configuration file looks like this
-   ({{{example/ReaderDeviceConfiguration.xml} ReaderDeviceConfiguration.xml}}) :
+   The corresponding ReaderDeviceConfiguration.xml configuration file looks
+   like this:
 
 +---
 <?xml version="1.0" encoding="UTF-8"?>

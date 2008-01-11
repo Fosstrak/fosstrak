@@ -24,8 +24,8 @@ User Guide Reader RP/RM Core
 
 * {Features}
 
-  * Implements the EPCglobal Reader Protocol Version 1.1. and Reader Management
-    Version 1.0 in Java.
+  Implements the EPCglobal Reader Protocol Version 1.1. and Reader Management
+  Version 1.0 in Java.
 
   Elements of the protocol implemented include:
 
@@ -57,12 +57,14 @@ User Guide Reader RP/RM Core
 
     * FEIG ELECTRONIC OBID i-scan ID ISC.LRU1000
 
-    * Similar readers might work, but are not tested
+    []
 
-    * New modules with an implementation of the <<<HardwareAbstraction>>>
-      interface for other readers can be added to the Accada HAL Project by
-      anyone. See the {{{../../hal/index.html}Accada HAL Project}} website for
-      more information.
+    Similar readers might work, but are not tested.
+
+    New modules with an implementation of the <<<HardwareAbstraction>>>
+    interface for other readers can be added to the Accada HAL Project by
+    anyone. See the {{{../../hal/index.html}Accada HAL Project}} website for
+    more information.
 
   * Use an existing or write your own HAL wrapper for your reader and then
     leverage the filtering, event generation and messaging provided by our
@@ -99,13 +101,13 @@ User Guide Reader RP/RM Core
   * In a console execute
 
 ---------------------------------------------------------------------------
-java -jar \<path-to\>/reader-rprm-core-\<version\>.jar
+java -jar <path-to>/reader-rprm-core-<version>.jar
 ---------------------------------------------------------------------------
 
   * In a console execute
 
 ---------------------------------------------------------------------------
-java -cp \<path-to\>/reader-rprm-core-\<version\>.jar org.accada.reader.rprm.core.ReaderDevice
+java -cp <path-to>/reader-rprm-core-<version>.jar org.accada.reader.rprm.core.ReaderDevice
 ---------------------------------------------------------------------------
 
   []
@@ -113,20 +115,20 @@ java -cp \<path-to\>/reader-rprm-core-\<version\>.jar org.accada.reader.rprm.cor
   The reader is now listening for incoming http requests on port 8000, incoming
   tcp requests on port 5566, and incoming snmp requests on port 161. To
   communicate with the reader instance, you might want to consider using the
-  Accada Reader RP Proxy and Accada Reader RP Client or a SNMP Manager such as
-  MIB Explorer.
+  Accada Reader RP Proxy, Accada Reader RP Client or a SNMP Manager such as MIB
+  Explorer.
 
   For more information, on how to use theses tools, please see the
   {{{../index.html}Accada Reader}} project website.
 
-  You might also want to consider unpacking the jar and adjusting the settings
-  in the ReaderDevice.xml file (see below).
+  You might also want to consider adjusting the settings in the ReaderDevice.xml
+  file (see below).
 
 
 * {Configure} the Reader
 
-  The reader can be configured by setting properties in the
-  {{{example/ReaderDevice.xml} ReaderDevice.xml}} file (see below).
+  The reader can be configured by setting properties in the ReaderDevice.xml
+  file (see below).
 
   Properties of the messaging layer of the reader are set in the 'Information
   about the messaging' section of the configuration file. The properties
