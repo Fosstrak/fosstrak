@@ -12,10 +12,10 @@
     <links>
       <item name="Accada" href="/index.html" />
       <item name="Reader" href="reader/index.html"/>
-      <item name="HAL" href="hal/index.html"/>
       <item name="Filtering and Collection" href="fc/index.html"/>
       <item name="EPCIS" href="epcis/index.html"/>
       <item name="Tag Data Translation" href="tdt/index.html"/>
+      <item name="HAL" href="hal/index.html"/>
     </links>
 
     <menu name="About Accada" inherit="none">
@@ -35,10 +35,10 @@
 
     <menu name="Projects" inherit="none">
               <item name="Reader" href="reader/index.html"/>
-              <item name="HAL" href="hal/index.html"/>
               <item name="Filtering and Collection" href="fc/index.html" />
               <item name="EPCIS" href="epcis/index.html"/>
               <item name="Tag Data Translation" href="tdt/index.html"/>
+              <item name="HAL" href="hal/index.html"/>
     </menu>
 
     <menu name="Specifications" inherit="none">
