@@ -1,57 +1,119 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <faqs title="Accada - Frequently Asked Questions">
 
-<part id="about">
-<faq>
-<question>Is this a reference implementation of the EPC Network?</question>
-<answer>No, not at all. It is currently alpha software that is intended to facilitate rapid prototyping.</answer>
-</faq>
-<faq>
-<question>Are there other open source projects incorporating the EPC Network standards?</question>
-<answer>Yes, there are. See <a href="http://www.autoidlabs.org/opensource">www.autoidlabs.org/opensource</a> for an overview. There is in particular the MENTOR effort which provides .NET implementation of EPCIS.</answer>
-</faq><faq>
-<question>Where can I find more information about the EPC Network?</question>
-<answer>Check out the website of <a href="http://www.epcglobalinc.org">EPCglobal</a> and in particular the architecture framework document</answer>
-</faq>
-<faq>
-<question>Which components of the EPC Network have you implemented?</question>
-<answer>Have a look at the <a href="status.html">status page </a>.</answer>
-</faq>
-<faq>
-<question>Why is it called a Prototyping Platform?</question>
-<answer>The Accada software is currently alpha software to be used for prototyping and not for large scale commercial deployments</answer>
-</faq>
-<faq>
-<question>How is the offering of Accada different from the one of commercial software vendors?</question>
-<answer> Accada provides very limited support, it is alpha software, we target a different community (EPC novices, researchers, students etc.), and we provide software only: no integration services available that take the components and provide a custom solution
-</answer>
-</faq>
-<faq>
-<question>Who is EPCglobal?</question>
-<answer>EPCglobal is a subscriber-driven organisation comprised of industry leaders and organisations focused on creating global standards for the EPCglobal Network.</answer>
-</faq>
-<faq>
-<question>Why is Accada Software available under LGPL License?</question>
-<answer>The LGPL License allows software vendors to bundle Accada components in their applications and systems without the reciprocal open source requirement. And it provides all Accada users the assurance that enhancements to the Accada source code will continue to remain free and openly available. It means that the people that make changes and enhancements to the Accada source code have the obligation to LGPL their changes back when they redistribute our code.
+  <part id="about">
+    <title>General</title>
+  
+    <faq id="reference">
+      <question>
+        Is this a reference implementation of the EPC Network?
+      </question>
+      <answer>
+        No, not at all. It is currently alpha software that is intended to facilitate rapid prototyping.
+      </answer>
+    </faq>
 
-Note that this is in contrast to a BSD or Apache-style license that allows for forking and creation of commercial projects. 
-</answer>
-</faq>	
-<faq>
-<question>Do I have to publish any modifications and extension I make again as open source?</question>
-<answer>Have a look at the <a href="license.html">license </a> or at the explanation of LGPL-style licences at <a href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License"> Wikipedia.</a></answer>
-</faq>											
-<faq>
-<question>Can I contribute to this project even, if I am not part of the Auto-ID Labs or EPCglobal?</question>
-<answer>Yes. Accada is an independent, community-driven open source project initiated by the Auto-ID Lab in Switzerland with contributions from the lab at the University of Cambridge. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.</answer>
-</faq>
-<faq>
-<question>How is this Accada project different from other rfid open source efforts?</question>
-<answer>The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations. </answer>
-</faq>
-<faq>
-<question>Why are you using Maven and how can I use it?</question>
-<answer>The Accada project uses <a href="http://maven.apache.org/">Maven </a> for the build and project management. An introduction to running  maven can be found <a href="http://maven.apache.org/run-maven/index.html"> here </a>. There is also information available on the <a href="http://m2eclipse.codehaus.org/"> maven eclipse intregration </a>. </answer>
-</faq>
-</part>								     
-</faqs>								      
+    <faq id="other-projects">
+      <question>
+        Are there other open source projects incorporating the EPC Network standards?
+      </question>
+      <answer>
+        Yes, there are. See <a href="http://www.autoidlabs.org/opensource">www.autoidlabs.org/opensource</a> for an overview. There is in particular the MENTOR effort which provides .NET implementation of EPCIS.
+      </answer>
+    </faq>
+
+    <faq id="epc-information">
+      <question>
+        Where can I find more information about the EPC Network?
+      </question>
+      <answer>
+        Check out the website of <a href="http://www.epcglobalinc.org">EPCglobal</a> and in particular the architecture framework document.
+      </answer>
+    </faq>
+
+    <faq id="imlemented-components">
+      <question>
+        Which components of the EPC Network have you implemented?
+      </question>
+      <answer>
+        Have a look at the <a href="status.html">status page </a>.
+      </answer>
+    </faq>
+
+    <faq id="prototyping">
+      <question>
+        Why is it called a Prototyping Platform?
+      </question>
+      <answer>
+        The Accada software is currently alpha software to be used for prototyping and not for large scale commercial deployments.
+      </answer>
+    </faq>
+
+    <faq id="difference-commercial">
+      <question>
+        How is the offering of Accada different from the one of commercial software vendors?
+      </question>
+      <answer>
+        Accada provides very limited support, it is alpha software, we target a different community (EPC novices, researchers, students etc.), and we provide software only: no integration services available that take the components and provide a custom solution.
+      </answer>
+    </faq>
+
+    <faq id="epc-global">
+      <question>
+        Who is EPCglobal?
+      </question>
+      <answer>
+        EPCglobal is a subscriber-driven organisation comprised of industry leaders and organisations focused on creating global standards for the EPCglobal Network.
+      </answer>
+    </faq>
+
+    <faq id="license">
+      <question>
+        Why is Accada Software available under LGPL License?
+      </question>
+      <answer>
+        The LGPL License allows software vendors to bundle Accada components in their applications and systems without the reciprocal open source requirement. And it provides all Accada users the assurance that enhancements to the Accada source code will continue to remain free and openly available. It means that the people that make changes and enhancements to the Accada source code have the obligation to LGPL their changes back when they redistribute our code.
+
+        Note that this is in contrast to a BSD or Apache-style license that allows for forking and creation of commercial projects.
+      </answer>
+    </faq>
+
+    <faq id="source">
+      <question>
+        Do I have to publish any modifications and extension I make again as open source?
+      </question>
+      <answer>
+        Have a look at the <a href="license.html">license </a> or at the explanation of LGPL-style licences at <a href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License"> Wikipedia.</a>
+      </answer>
+    </faq>
+
+    <faq id="contribute">
+      <question>
+        Can I contribute to this project even, if I am not part of the Auto-ID Labs or EPCglobal?
+      </question>
+      <answer>
+        Yes. Accada is an independent, community-driven open source project initiated by the Auto-ID Lab in Switzerland with contributions from the lab at the University of Cambridge. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.
+      </answer>
+    </faq>
+
+    <faq id="other-efforts">
+      <question>
+        How is this Accada project different from other rfid open source efforts?
+      </question>
+      <answer>
+        The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations.
+      </answer>
+    </faq>
+
+    <faq id="maven">
+      <question>
+        Why are you using Maven and how can I use it?
+      </question>
+      <answer>
+        The Accada project uses <a href="http://maven.apache.org/">Maven </a> for the build and project management. An introduction to running  maven can be found <a href="http://maven.apache.org/run-maven/index.html"> here </a>. There is also information available on the <a href="http://m2eclipse.codehaus.org/"> maven eclipse intregration </a>.
+      </answer>
+    </faq>
+  </part>
+
+</faqs>
