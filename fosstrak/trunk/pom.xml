@@ -18,6 +18,7 @@
 
   <modules>
     <module>../reader</module>
+    <module>../hal</module>
     <module>../fc</module>
     <module>../epcis</module>
     <module>../tdt</module>
@@ -27,7 +28,7 @@
   <!-- =========================================================== -->
   <!-- Infrastructure                                              -->
   <!-- =========================================================== -->
-  
+
   <distributionManagement>
     <site>
       <id>accada-website</id>
