@@ -259,7 +259,7 @@ public class ByteBlock {
 	static public byte[] hexStringToByteArray(String hexString, int length) {
 		byte[] data = new byte[length];
 		
-		int pad = length-hexString.length();
+		int pad = length - hexString.length()/2;
 		byte[] byteArray = hexStringToByteArray(hexString);
 		if (pad > 0) {
 			System.arraycopy(byteArray, 0, data, pad, byteArray.length);

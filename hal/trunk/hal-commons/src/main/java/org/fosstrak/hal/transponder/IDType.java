@@ -38,6 +38,9 @@ public class IDType {
    
    public static IDType getIdType(String type, String configFile) {
 
+   	if (configFile == null) {
+   		configFile = defaultConfigFile;
+   	}
       if (config == null) {
          if (!initialize(configFile)) {
             config = null;
