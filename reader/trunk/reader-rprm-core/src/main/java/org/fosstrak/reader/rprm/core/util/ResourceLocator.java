@@ -42,6 +42,9 @@ public final class ResourceLocator {
    public static URL getURL(String resourceFileName,
          String defaultResourceFileName, final Class caller) {
       // check arguments
+   	if ((resourceFileName == null) && (defaultResourceFileName != null)) {
+   		resourceFileName = defaultResourceFileName;
+   	}
       if (!resourceFileName.startsWith("/")) {
          resourceFileName = "/" + resourceFileName;
       }
