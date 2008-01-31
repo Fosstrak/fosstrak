@@ -108,7 +108,7 @@ Developer Change Log
   * <<<LBTParams>>>
 
   * <<<RxConfig>>>
-  
+
   []
 
   See th Impinj Mach1 protocol specification for information about functionality
@@ -174,9 +174,9 @@ Developer Change Log
   * The resource locator first searches for the custom file. If no custom file
     can be found, the algorithm takes the default file. It is not necessary to
     extract the Java archive to customize resources such as configuration files.
-  
+
   []
-  
+
   See the {{{../../reader/docs/developer-changelog.html#1547832}Accada Reader
   Developer Changlog}} for a more detailed explanation of the new implementation
   of the resource loading.
@@ -213,13 +213,15 @@ Developer Change Log
   * Alien H2
 
   * and the Accada Simulator tag with EPCclass1Gen2 compliant memory layout
-  
+
   []
 
   These are the most common tag chips also used in tags from other manufacturers.
   New tag chips can simply be added by writing their TID and memory information
   to a configuration file. Thereafter they are fully accessible by all reader
-  controllers using the <<<EPCTransponderModel>>>.
+  controllers using the <<<EPCTransponderModel>>>. A default EPCTransponderModels
+  configuration file containing TID and memory description for the tags listed
+  above is shipped with the Accada HAL.
 
 
 ** {Graphic} Simulator Memory Access
