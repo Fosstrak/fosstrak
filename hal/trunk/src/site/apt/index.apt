@@ -12,8 +12,10 @@ Welcome to the Accada HAL Project
 
 * Objective
 
-  The objective of the Accada HAL Project is to define a hardware abstraction
-  interface and implement it for various reader devices and reader simulators.
+  The objective of the Accada HAL project is to define a hardware abstraction
+  interface that is used to access RFID readers and implement it for various
+  reader devices and reader simulators. Accada HAL is used by the Reader 
+  and Filtering and Collection project.
 
 
 * How can the Accada HAL Project help you?
