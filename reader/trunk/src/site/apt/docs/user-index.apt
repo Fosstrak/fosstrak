@@ -7,21 +7,21 @@
               -------------------
 
 
-Getting Started
+User Guide - Getting Started
 
 
 * Decide what you would like to do
 
   * If you have a Reader Protocol compliant reader in front of you or want to
     communicate with a reader that is online via a GUI, get started with the
-    {{{docs/user-client.html}Reader RP Client}}.
+    {{{user-client.html}Reader RP Client}}.
 
   * If you have a Reader Protocol compliant reader in front of you or want to
     communicate with a reader that is online from within your Java application,
-    get started with the {{{docs/user-proxy.html}Reader RP Proxy}}.
+    get started with the {{{user-proxy.html}Reader RP Proxy}}.
 
   * If you do not have access to a Reader Protocol compliant reader, get started
-    with the {{{docs/user-core.html}Reader RP/RM Core}}.
+    with the {{{user-core.html}Reader RP/RM Core}}.
     
   []
 
