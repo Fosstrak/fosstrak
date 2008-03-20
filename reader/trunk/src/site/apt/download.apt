@@ -1,9 +1,9 @@
               -------------------
               Download
               -------------------
-              Jonas Haller
+              Matthias Lampe
               -------------------
-              27.12.2007
+              20.03.2008
               -------------------
 
 
@@ -13,70 +13,70 @@ Download
 
 * Reader RP/RM Core
 
-*---------------------+------+------+
- Package | Binaries | Source
-*---------------------+------+------+
- Reader RP/RM Core 0.4.0 (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.4.0/reader-rprm-core-0.4.0-bin-with-dependencies.zip}reader-rprm-core-0.4.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.4.0/reader-rprm-core-0.4.0-src.zip}reader-rprm-core-0.4.0-src.zip}}
- Reader RP/RM Core 0.4.0 (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.4.0/reader-rprm-core-0.4.0-bin-with-dependencies.tar.gz}reader-rprm-core-0.4.0-bin-with-dependencies.tar.gz}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.4.0/reader-rprm-core-0.4.0-src.tar.gz}reader-rprm-core-0.4.0-src.tar.gz}}
-*---------------------+------+------+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ Reader RP/RM Core 0.4.0 with dependencies (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.4.0/reader-rprm-core-0.4.0-bin-with-dependencies.zip}reader-rprm-core-0.4.0-bin-with-dependencies.zip}}
+*--------+----------+
+ Reader RP/RM Core 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rprm-core/0.4.0/reader-rprm-core-0.4.0-bin-with-dependencies.tar.gz}reader-rprm-core-0.4.0-bin-with-dependencies.tar.gz}}
+*--------+----------+
 
 
 
 * Reader RP Proxy
 
-*---------------------+------+------+
- Package | Binaries | Source
-*---------------------+------+------+
- Reader RP Proxy 0.4.0 (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.4.0/reader-rp-proxy-0.4.0-bin-with-dependencies.zip}reader-rp-proxy-0.4.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.4.0/reader-rp-proxy-0.4.0-src.zip}reader-rp-proxy-0.4.0-src.zip}}
- Reader RP Proxy 0.4.0 (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.4.0/reader-rp-proxy-0.4.0-bin-with-dependencies.tar.gz}reader-rp-proxy-0.4.0-bin-with-dependencies.tar.gz}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.4.0/reader-rp-proxy-0.4.0-src.tar.gz}reader-rp-proxy-0.4.0-src.tar.gz}}
-*---------------------+------+------+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ Reader RP Proxy 0.4.0 with dependencies (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.4.0/reader-rp-proxy-0.4.0-bin-with-dependencies.zip}reader-rp-proxy-0.4.0-bin-with-dependencies.zip}}
+*--------+----------+
+ Reader RP Proxy 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-proxy/0.4.0/reader-rp-proxy-0.4.0-bin-with-dependencies.tar.gz}reader-rp-proxy-0.4.0-bin-with-dependencies.tar.gz}}
+*--------+----------+
 
 
 
 * Reader RP Client
 
 
-*---------------------+------+------+
- Package | Binaries | Source
-*---------------------+------+------+
- Reader RP Client 0.4.0 (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.4.0/reader-rp-client-0.4.0-bin-with-dependencies.zip}reader-rp-client-0.4.0-bin-with-dependencies.zip}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.4.0/reader-rp-client-0.4.0-src.zip}reader-rp-client-0.4.0-src.zip}}
- Reader RP Client 0.4.0 (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.4.0/reader-rp-client-0.4.0-bin-with-dependencies.tar.gz}reader-rp-client-0.4.0-bin-with-dependencies.tar.gz}} | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.4.0/reader-rp-client-0.4.0-src.tar.gz}reader-rp-client-0.4.0-src.tar.gz}}
-*---------------------+------+------+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ Reader RP Client 0.4.0 with dependencies (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.4.0/reader-rp-client-0.4.0-bin-with-dependencies.zip}reader-rp-client-0.4.0-bin-with-dependencies.zip}}
+*--------+----------+
+ Reader RP Client 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader-rp-client/0.4.0/reader-rp-client-0.4.0-bin-with-dependencies.tar.gz}reader-rp-client-0.4.0-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Source Distribution (including all submodules)
+
+*--------+----------+
+         | Sources  |
+*--------+----------+
+ Reader Source 0.4.0 (zip) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader/0.4.0/reader-0.4.0-src.zip}reader-0.4.0-src.zip}}
+*--------+----------+
+ Reader Source 0.4.0 (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/reader/reader/0.4.0/reader-0.4.0-src.tar.gz}reader-0.4.0-src.tar.gz}}
+*--------+----------+
+
+
+* Previous Releases
+
+  All previous releases of Accada Reader can be found in the {{{http://maven-repository.accada.org/releases}distribution repository}}.
+
 
 
 * System Requirements
 
-*---------------------+------+
- Java Virtual Machine | JDK 1.5
-*---------------------+------+
- Operating System | No minimum requirement. Tested on Windows XP.
-*---------------------+------+
-
+*---------------------+---------+
+ <<JDK>>              | 1.6 or above
+*---------------------+---------+
+ <<Memory>>           | No minimum requirements.
+*---------------------+---------+
+ <<Operating System>> | No minimum requirements. Tested on Windows XP.
+*---------------------+---------+
 
 
 * Installation Instructions
 
    Please see the {{{started.html}Getting Started}} page.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
