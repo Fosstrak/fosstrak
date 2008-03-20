@@ -12,7 +12,7 @@ Status
 
 * Available
 
-     The following Java software packages are available as alpha software:
+     The following Java software packages are available:
           	
           	 * Reader (implements EPCglobal Reader Protocol (RP) and Reader Management (RM))
           	 
@@ -20,7 +20,9 @@ Status
           	       
           	 * Reader Client (implements RP)
           	 
-          	 * Filtering and collection middleware that implements the ALE 1.0 interface and RP interface 
+          	 * Filtering and Collection Middleware (implements ALE 1.1 interface and RP interface)
+
+     	       * HAL (Hardware Abstraction Layer) to access existing RFID hardware
           	 
           	 * EPCIS Repository (implements EPCIS Capture and Query Interface)    
           	     
@@ -28,17 +30,10 @@ Status
           	 
           	 * Tag Data Translation Engine
           	 
-*  Work in progress:    
-                     
-          	       
-          	 * Reader Proxy and Client implementing LLRP
-          	  
-          	 * ALE 1.1   
-
       
 * Limitations  
 
-     The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments. It is alpha software.
+     The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments. It is beta software.
 
 
 
