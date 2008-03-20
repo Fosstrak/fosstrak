@@ -10,7 +10,7 @@
         Is this a reference implementation of the EPCglobal Reader Protocol Version 1.1 or the Reader Management Version 1.0?
       </question>
       <answer>
-        No, not at all. It is currently alpha software that is intended to facilitate rapid prototyping.
+        No, not at all. It is currently beta software that is intended to facilitate rapid prototyping.
       </answer>
     </faq>
 
@@ -75,7 +75,7 @@ If you are just looking for a graphical user interface to generate some Reader P
         How is this Accada project different from other rfid open source efforts?
       </question>
       <answer>
-        The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations. Remember though that this is alpha software currently. Don't expect the support you would be getting from a software vendor offering RFID middleware solutions!
+        The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations. Remember though that this is beta software currently. Don't expect the support you would be getting from a software vendor offering RFID middleware solutions!
       </answer>
     </faq>
 
