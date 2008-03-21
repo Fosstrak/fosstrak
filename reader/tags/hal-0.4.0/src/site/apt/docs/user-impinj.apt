@@ -1,0 +1,114 @@
+              -------------------
+              Impinj Configuration
+              -------------------
+              Jonas Haller
+              -------------------
+              30.11.2007
+              -------------------
+
+Impinj Speedway Configuration
+
+* Configuration of the Accada Reader
+
+  The following XML code is an example on how to configure the Accada Reader to
+  use this readers HAL implementation. The name can be chosen arbitrary but
+  must be unique if multiple readers are configured. The class implementing the
+  <<<HardwareAbstraction>>> interface for this reader type is
+  <<<org.accada.hal.impl.impinj.ImpinjTCPIPController>>>. The properties
+  element contains the path to the configuration file. For information about
+  this see the configuration file example below.
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- ... other configuration elements ... -->
+
+   <!-- All readers (HardwareAbstractions) used -->
+      <readers>
+         <reader>
+            <name>ImpinjTCPIPController</name>
+            <class>org.accada.hal.impl.impinj.ImpinjTCPIPController</class>
+            <properties>/props/ImpinjTCPIPController.xml</properties>
+            <readpoint>Antenna1</readpoint>
+         </reader>
+      </readers>
+   <!-- End -->
+
+   <!-- ... other configuration elements ... -->
+
+</properties>
++-----------------------------------------------------------------------------+
+
+
+* Configuration File Example
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Properties file for Impinj Speedway reader using a TCP/IP connection -->
+<properties>
+
+   <!-- Address of the reader -->
+   <!-- Value: address (string) -->
+   <address>129.132.75.246</address>
+
+   <!-- The port the reader is listening -->
+   <!-- Value: port number between 0 and 65525 -->
+   <port>49380</port>
+
+   <!-- The communication timeout in milliseconds -->
+   <!-- Value: timeout (integer value) -->
+   <timeout>5000</timeout>
+
+   <!-- Configuration file with the transponder model configuration -->
+   <epcTransponderModelsConfig>/props/EPCTransponderModels_default.xml</epcTransponderModelsConfig>
+
+   <!-- The IdTypes configuration file -->
+   <idTypesConfig>/props/IDTypes_default.xml</idTypesConfig>
+
+   <!-- The regulatory region for the reader according to Impinj Speedway Reference
+      Design / Mach1 API Specification, Operating Command Set version 2.8.0,
+      chapter 2.3.9 SetRegulatoryRegion' -->
+   <!-- Values:
+        0 (FCC part 15.247, US / North America),
+        1 (ETSI EN 300-220),
+        2 (ETSI EN 302-208 with LBT),
+        3 (Hong Kong 920-925 MHz),
+        4 (Taiwan 922-928 MHz),
+        5 (Japan 952-954 MHz),
+        6 (Japan 952-955 MHz, 10mW max power),
+        7 (ETSI EN 302-208 without LBT),
+        8 (Korea 910-914 MHz) -->
+   <!-- Note: Not every reader hardware implementation supports all regulatory regions! -->
+   <!-- Example: <regulatoryRegion>2</regulatoryRegion> -->
+   <regulatoryRegion>2</regulatoryRegion>
+
+   <!-- List of readpoints that represent specific antennas
+        The name of the readpoint can be chosen arbitrary but it must be unique.
+        The connector of the readpoint is the number of the channel the antenna is connected to.
+        The connector number is an integer in the range 1 to 4. -->
+   <readpoint>
+      <name>Antenna1</name>
+      <connector>1</connector>
+   </readpoint>
+
+   <!-- Parameters from the reader. -->
+   <!-- The default settings partly depend on the regulatory region setting -->
+   <!-- These parameters can not be configured here. The values can be requested
+      with the getParameter() and set with the setParameter() method of the HAL -->
+   <!-- The values in this configuration file are informational only, please do
+      not edit them. R means this parameter is read only (getParameter returns
+      value, setParameter throws Exception), R/W means this parameter is readable
+      and writeable (getParameter returns current value, setParameter sets new value -->
+   <!-- Example: getParameter("reader.ReaderInfo"), setParameter("reader.TxPower") -->
+   <reader>
+      <ReaderInfo>R</ReaderInfo>
+      <TxPower>R/W</TxPower>
+      <Gen2Params>R/W</Gen2Params>
+      <SupportedGen2Params>R</SupportedGen2Params>
+      <LBTParams>R/W</LBTParams>
+      <RxConfig>R/W</RxConfig>
+   </reader>
+
+</properties>
++-----------------------------------------------------------------------------+

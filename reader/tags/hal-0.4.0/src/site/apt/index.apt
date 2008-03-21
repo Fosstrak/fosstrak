@@ -1,0 +1,58 @@
+              -------------------
+              Overview
+              -------------------
+              Jonas Haller
+              -------------------
+              27.11.2007
+              -------------------
+
+
+Welcome to the Accada HAL Project
+
+
+* Objective
+
+  The objective of the Accada HAL project is to define a hardware abstraction
+  interface that is used to access RFID readers and implement it for various
+  reader devices and reader simulators. Accada HAL is used by the Reader 
+  and Filtering and Collection project.
+
+
+* How can the Accada HAL Project help you?
+
+  This project allows you to:
+
+  * access different readers over a uniform interface from your own application
+
+  []
+
+  * easily implement new readers for the {{{../reader/index.html}Accada Reader}}
+
+  []
+
+  * use all the implemented hardware abstractions of readers with the Accada Reader
+
+  []
+
+
+* Organization
+
+  The Accada HAL Project comprises of several modules:
+
+  * the hardware abstraction interface with common utilities
+
+  []
+
+  * a module for the hardware abstraction interface implemented with simulator
+    variants
+
+  []
+
+  * a module for each implementation of the hardware abstraction interface
+
+  []
+
+  The figure below gives an overview of the Accada HAL implementation. For more
+  information refer to the {{{docs/developer-index.html}Developer}} section.
+
+[images/hal_architecture.png] Accada HAL architecture
