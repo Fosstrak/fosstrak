@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faqs title="Accada Reader- Frequently Asked Questions" toplink="false">
+
+  <part id="about">
+    <title>General</title>
+    
+    <faq id="reference">
+      <question>
+        Is this a reference implementation of the EPCglobal Reader Protocol Version 1.1 or the Reader Management Version 1.0?
+      </question>
+      <answer>
+        No, not at all. It is currently beta software that is intended to facilitate rapid prototyping.
+      </answer>
+    </faq>
+
+    <faq id="use">
+      <question>
+        I would like to communicate with a reader that implements the EPCglobal Reader Protocol Version 1.1. How can I use your software?
+      </question>
+      <answer>
+        You can use the <a href="reader-rp-proxy/index.html">Reader RP Proxy</a>, if you want to write your own Java code and you are looking for a
+easy-to-use library that abstracts from the message and transport bindings.
+If you are just looking for a graphical user interface to generate some Reader Protocol commands, you might want to consider our <a href="reader-rp-client/index.html">ReaderTestClient</a>.
+      </answer>
+    </faq>
+
+    <faq id="simulator">
+      <question>
+        I don't have a reader, but I would like to check out the reader protocol features anyway.
+      </question>
+      <answer>
+        Use the GUI simulator built into the Reader RP/RM Core <a href="reader-rprm-core/index.html">simulator</a> and one of our tools (<a href="reader-rp-proxy/index.html">Reader RP Proxy</a> or <a href="reader-rp-client/index.html">Reader RP Client</a>).
+      </answer>
+    </faq>
+
+    <faq id="reader-management">
+      <question>
+        Do you support the reader management protocol?
+      </question>
+      <answer>
+        Yes. We support the SNMP binding in the Reader RP/RM Core. You will need a SNMP Manager such as MIB Explorer to communicate with an Reader RP/RM COre instance
+      </answer>
+    </faq>
+
+    <faq id="external">
+      <question>
+        Can I contribute to this project even, if I am not part of the Auto-ID Labs or EPCglobal?
+      </question>
+      <answer>
+        Yes. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.
+      </answer>
+    </faq>
+
+    <faq id="contribute">
+      <question>
+        How can I contribute to this project?
+      </question>
+      <answer>
+        There are a number of ways you can contribute. <a href="howtohelp.html">See here </a> for details.
+      </answer>
+    </faq>
+
+    <faq id="license">
+      <question>
+        Do I have to publish any modifications and extension I make as open source?
+      </question>
+      <answer>
+        Have a look at the <a href="license.html">license </a> or at the explanation of LGPL-style licences at <a href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License"> wikipedia.</a>
+      </answer>
+    </faq>
+
+    <faq id="difference">
+      <question>
+        How is this Accada project different from other rfid open source efforts?
+      </question>
+      <answer>
+        The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations. Remember though that this is beta software currently. Don't expect the support you would be getting from a software vendor offering RFID middleware solutions!
+      </answer>
+    </faq>
+
+    <faq id="mailing-list-archive">
+      <question>
+        I have a question which is not listed in the FAQs
+      </question>
+      <answer>
+        Visit the <a href="http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-user">Accada-reader-user Archives</a> or post a question to the user mailing list accada-reader-user at lists.sourceforge.net (you need to register first).
+      </answer>
+    </faq>
+
+    <faq id="llrp">
+      <question>
+        Will you support the EPCglobal LLRP protocol?
+      </question>
+      <answer>
+        This is currently work in progress. If you are interest in contributing, let us know.
+      </answer>
+    </faq>
+  </part>
+
+</faqs>

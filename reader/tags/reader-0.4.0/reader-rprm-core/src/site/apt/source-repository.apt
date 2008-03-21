@@ -1,0 +1,54 @@
+      ------
+      Reader RP/RM Core Module
+      ------
+      ------
+
+
+
+Source Repository Access
+
+
+
+* Overview
+
+   This project uses {{{http://subversion.tigris.org} Subversion}} to manage
+   its source code. Instructions on Subversion use can be found at
+   {{{http://svnbook.red-bean.com/} http://svnbook.red-bean.com/}} .
+
+
+
+* Web access
+
+   The following is a link to the online source repository.
+
++--
+https://svn.accada.org/repos/reader/tags/reader-0.3.1/reader-rprm-core
++--
+
+
+
+* Anonymous access
+
+   The source can be chaced out anonymously fromSVN with this command:
+
++--
+$ svn checkout https://svn.accada.org/repos/reader/tags/reader-0.3.1/reader-rprm-core reader-rprm-core
++--
+
+
+
+* Developer access
+
+   Developers with commit rights can checkout the module using the following
+   command:
+
++--
+$ svn checkout https://svn.accada.org/repos/reader/trunk/reader-rprm-core reader-rprm-core
++--
+
+   To commit changes to the repository, execute the following command (svn
+   will prompt you for your password):
+
++--
+$ svn commit --username your-username -m "A message"
++--

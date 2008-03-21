@@ -1,0 +1,195 @@
+              -------------------
+              Developer Guide
+              -------------------
+              Jonas Haller
+              -------------------
+              07.01.2008
+              -------------------
+
+Developer Guide
+
+* Contents
+
+   [[1]] {{{#About}About this Guide}}
+
+   [[2]] {{{#Getting}Getting Started}}
+
+   [[3]] {{{#Project}Project Layout}}
+
+   [[4]] {{{#Using}Using Maven}}
+
+
+* {About} this Guide
+
+  This guide is intended for developers who wish to work on Accada Reader
+  project. It outlines the steps to follow for setting up the development
+  environment and helps developers to find their way through the code.
+
+
+* {Getting} Started
+
+  This section describes the setup of the development environment we use when
+  working on Accada's Reader project. To compile the Reader, execute Maven as
+  explained below. A {{{http://java.sun.com/javase/downloads/}Java Development
+  Kit}} needs to be installed.
+
+** SVN Checkout
+
+   First thing you need to do is checking out the code from the SVN repository.
+   See {{{../source-repository.html}Source Repository}} on how to access the
+   sources.
+
+** Installing Maven
+
+   We use {{{http://maven.apache.org/}Maven 2}} as our build tool.
+   After installation you need to have the <<<M2_HOME>>> environment variable
+   set to your Maven installation directory.
+
+
+* {Project} Layout
+
+  This section helps developers to find their way through the code.
+
+** Project Modules
+
+   Accada's Reader project consists of three modules:
+
+   * <<reader-rprm-core>>
+
+     This module implements the EPCglobal Reader Protocol and Reader Management.
+     It represents a compliant reader that uses the Accada HAL with a simulator
+     or reader hardware that does not support the Reader Protocol as backend.
+
+   * <<reader-rp-proxy>>
+
+     This module is a library for communication with a Reader Protocol compliant
+     reader such as but not limited to the reader core module. The proxy depends
+     on code of the reader core even if the reader of the core module is not
+     used. An example of shared code located in the core module is the
+     marshalling and unmarshalling of Reader Protocol messages that is used on
+     both sides.
+
+   * <<reader-rp-client>>
+
+     This module provides a graphical user interface to configure a Reader
+     Protocol compliant reader and two versions of an event sink that acts as
+     a notification channel end point and displays information about events
+     reported by the reader. The client depends on code of of the reader core
+     and the proxy.
+
+** Directory Layout
+
+   We use the standard Maven directory layout as follows:
+
+---------------------------------------------------------------------------
+|
++-- pom.xml                             -> top-level POM file
+|
++-- LICENSE.txt, README.txt
+|
++-- src/
+|   |
+|   `-- site/                           -> project documentation
+|
++-- reader-rprm-core/
+|   ¦
+|   '
+|
++-- reader-rp-proxy/
+|   ¦
+|   '
+|
++-- reader-rp-client/
+|   |
+|   +-- pom.xml                         -> module POM file
+|   |
+|   `-- src/
+|       |
+|       +-- main/
+|       |   |
+|       |   +-- java/                   -> java source files
+|       |   |
+|       |   +-- resources/              -> configuration files and images
+|       |   |
+|       |   `-- assembly/               -> packaging information
+|       |
+|       +-- site/                       -> module documentation
+|       |
+|       `-- test/
+|           |
+|           `-- java/                   -> java unit test source files
+|
+`-- target/                             -> generated contents
+---------------------------------------------------------------------------
+
+
+* {Using} Maven
+
+  We use Maven as our build tool for the Accada Reader project.
+
+** Building
+
+   For building the sources, it is sufficient to run the following command:
+
+---------------------------------------------------------------------------
+mvn compile
+---------------------------------------------------------------------------
+
+** Eclipse Integration
+
+   In order to work on the Accada Reader using Eclipse, follow these
+   instructions:
+
+   [[1]] Eclipse needs to know the path to the local maven repository. Execute
+         the following command to automatically set up the corresponding
+         classpath variable <<<M2_REPO>>> accordingly:
+
+---------------------------------------------------------------------------
+mvn -Declipse.workspace=<path-to-eclipse-workspace> eclipse:add-maven-repo
+---------------------------------------------------------------------------
+
+   [[2]] In order to generate the <<<.project>>> and <<<.classpath>>> file
+         used by Eclipse, execute the following command from the directory
+         containing the Accada Reader source code:
+
+---------------------------------------------------------------------------
+mvn eclipse:eclipse
+---------------------------------------------------------------------------
+
+   [[3]] Inside Eclipse, import all the sub-modules (from the menu bar select
+         File > Import > Existing Projects into Workspace).
+
+** Generation of Binaries
+
+   The following command will generate the binaries for the modules.
+
+---------------------------------------------------------------------------
+mvn package
+---------------------------------------------------------------------------
+
+** Installing
+
+   To install Accada Reader in the local Maven repository and use it in other
+   projects, for instance an application using the reader proxy module, run the
+   following command:
+
+---------------------------------------------------------------------------
+mvn install
+---------------------------------------------------------------------------
+
+** Site Generation
+
+   The main web site (containing this documentation) can be generated by using
+   the following command:
+
+---------------------------------------------------------------------------
+mvn site -N
+---------------------------------------------------------------------------
+
+   In order to generate all module reports and to test the whole site navigation
+   before a live deploy, you can execute the following command which will
+   generate the web site under the given directory:
+
+---------------------------------------------------------------------------
+mvn site:stage -DstagingDirectory=<directory-to-deploy-site>
+---------------------------------------------------------------------------

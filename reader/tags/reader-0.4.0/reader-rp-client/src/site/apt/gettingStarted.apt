@@ -1,0 +1,56 @@
+       ------
+                                    Reader RP Client Module
+                                    ------
+                                    ------
+
+
+Reader RP Client Module: Getting Started
+
+* Installing the Accada RP Client
+
+   The following instructions show how to install the Accada Reader RP Client:
+   
+   * Download the Reader RP Client binaries with the dependencies included from the {{{../download.html}download}} section of the website.
+  
+   * Unzip the downloaded file
+   
+   * Make sure a JRE 1.5 or higher is installed and it is added to the path variable.
+   
+   
+   
+   
+* First Steps
+
+   * Start the Reader RP Client instance by invoking executable jar
+   
+   * Enter the IP address and port of a RP compatible reader
+   
+   * Select the appropriate transport and message binding 
+   
+   * Click the "Connect" Button
+   
+   * Select a sample command from the drop-down menus (e.g. ReaderDevice.GetName())
+   
+   * Generate the message by hitting the "Create Command" button
+   
+   * Transmit the command to the reader instance by clicking on the "Send" button
+   
+   []
+ 
+[../images/ReaderTestClientScreenshot.png]
+
+
+
+* Display Notification Messages
+
+   * Start the class org.accada.reader.rp.client.EventSinkUI in the jar file with the
+     following command:
+
+     java -cp reader-rp-client-VERSION.jar org.accada.reader.rp.client.EventSinkUI [port]
+
+   * As the port use the TCP port to which the reader is sending the notification messages
+     which is specified in the definition of the notification channel. The default port 9999.
+
+   []
+
+[../images/EventSinkUIScreenshot.jpg]
