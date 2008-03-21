@@ -1,0 +1,39 @@
+              -------------------
+              User Changelog
+              -------------------
+              Jonas Haller
+              -------------------
+              04.12.2007
+              -------------------
+
+User Changelog
+
+* Release 0.4.0
+
+*-----------+-------------+---------------------------------------------------+
+| <<Type>>  | <<Changes>> | <<By>> |
+*-----------+-------------+---------------------------------------------------+
+| feature | Major changes in HardwareAbstraction interface | matthias-lampe
+*-----------+-------------+---------------------------------------------------+
+| feature | Moved HAL from module of Accada Reader to own project | matthias-lampe
+*-----------+-------------+---------------------------------------------------+
+| feature | Added HardwareAbstraction implementation for FEIG OBID i-scan ID ISC.MR101-A (COM, HF), ID ISC.LRU1000 (TCP/IP, UHF) and Impinj Speedway (TCP/IP, UHF) | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+-------------+---------------------------------------------------+
+| feature | Changed all configuration files to XML (were mixed XML and properties until now) | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+-------------+---------------------------------------------------+
+| bugfix | Resource loading redesigned. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1547832&group_id=170795&atid=855583}1547832}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+-------------+---------------------------------------------------+
+| bugfix | Multiplexer configuration file optional if no multiplexer used with the FeigCOMController, readpoint can be declared in controller configuration file. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1823577&group_id=170795&atid=855583}1823577}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| bugfix | No default configuration files defined in other configuration files. Fixes {{{http://sourceforge.net/tracker/index.php?func=detail&aid=1823580&group_id=170795&atid=855583}1823580}}. | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+------------+-------------+--------------------------------------+
+| feature | Changed simulated tag to EPCclass1Gen2 tag memory layout (with password memory, TID with random serial number, EPC with CRC and PC bits and user memory) | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+-------------+---------------------------------------------------+
+| feature | Added EPCTransponderModel class: All EPCclass1Gen2 readers work with many different RFID tags and new tags can simply be added to a configuration file | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+-------------+---------------------------------------------------+
+| feature | Added IDType class: The ID type of tags can be defined in a configuration file | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+-------------+---------------------------------------------------+
+| feature | Added possibility to read and write memory banks of a simulated tag in the GUI of the graphic simulator | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+-------------+---------------------------------------------------+
+| feature | Simulator and other reader implementations add a tag descriptor to each tag during inventory | {{{http://sourceforge.net/users/jhaller/}jhaller}}
+*-----------+-------------+---------------------------------------------------+
