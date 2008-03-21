@@ -7,7 +7,7 @@
 
   <groupId>org.accada.reader</groupId>
   <artifactId>reader</artifactId>
-  <version>0.4.0</version>
+  <version>0.4.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
 
@@ -140,9 +140,9 @@
 
   <scm>
     <!-- keep empty tags here to avoid release:prepare crashes -->
-    <connection>/tags/reader-0.4.0</connection>
-    <developerConnection>scm:svn:https://svn.accada.org/repos/reader/tags/reader-0.4.0</developerConnection>
-    <url>/tags/reader-0.4.0</url>
+    <connection></connection>
+    <developerConnection>scm:svn:https://svn.accada.org/repos/reader</developerConnection>
+    <url></url>
   </scm>
   <distributionManagement>
     <repository>
