@@ -25,7 +25,7 @@
 
 
   <!-- =========================================================== -->
-  <!-- Dependencies                                          -->
+  <!-- Dependencies                                                -->
   <!-- =========================================================== -->
 
   <dependencies>
@@ -70,7 +70,7 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
           <configuration>
-            <tagBase>https://svn.accada.org/repos/reader/tags</tagBase>
+            <tagBase>https://svn.accada.org/repos/hal/tags</tagBase>
           </configuration>
         </plugin>
         <plugin>
@@ -142,7 +142,7 @@
   <scm>
     <!-- keep empty tags here to avoid release:prepare crashes -->
     <connection></connection>
-    <developerConnection>scm:svn:https://svn.accada.org/repos/reader</developerConnection>
+    <developerConnection>scm:svn:https://svn.accada.org/repos/hal</developerConnection>
     <url></url>
   </scm>
   <distributionManagement>
