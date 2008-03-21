@@ -1,0 +1,89 @@
+       ------
+                                    Reader RP/RM Core Module
+                                    ------
+                                    ------
+
+
+Reader RP/RM Core Module
+
+
+* Features  
+   
+   *  implements the EPCglobal Reader Protocol Version 1.1. and Reader Management 1.0 in Java. Elements of the protocol implemented include:
+    
+    	*   Transport Binding: TCP and HTTP
+ 
+    	*   Message Binding: XML and Text
+    	
+    	*   Synchronous and Asynchronous Messaging (Notification Channels)
+    	
+    	*   Triggers
+    	
+    	*   Data Selectors
+    	
+    	*   SNMP Binding of RM 1.0
+    	
+  
+    
+
+* Usage Scenarios
+
+   *   Enable one-of-the-above readers that do not implement the EPCglobal Reader Protocol yet by deploying this module together with the reader HAL module on a surrogate 
+   
+   *   Write your own HAL wrapper for your reader and then leverage the filtering, event generation and messaging provided by our reader implementation
+           
+   *   Simulate a single reader via a graphical user interface (using the reader HAL module)
+   
+   *   Simulate a network of hundred of readers using the simulation framework (using the reader HAL module)
+       
+   *   Embed our reader implementation in your reader 
+
+
+* User Documentation
+
+   *   {{{gettingStarted.html} Getting Started}}
+   
+   *   EPCglobal Reader Protocol Specification Version 1.1
+
+
+* Download
+
+   *   see {{{../download.html}download page}}
+   
+* System Requirements
+
+*---------------------+------+
+Java Virtual Machine | JDK 1.5 or higher
+*---------------------+------+
+Operating System | No minimum requirement. Tested on Windows XP. 
+*---------------------+------+
+  
+    	
+   
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
