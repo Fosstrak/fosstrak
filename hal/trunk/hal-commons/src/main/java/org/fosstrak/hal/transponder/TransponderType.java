@@ -1,6 +1,6 @@
-package org.accada.hal.transponder;
+package org.fosstrak.hal.transponder;
 
-import org.accada.hal.util.ByteBlock;
+import org.fosstrak.hal.util.ByteBlock;
 
 public enum TransponderType {
 	// TODO Check data sizes for ICode tags

@@ -9,49 +9,49 @@
 
 Download
 
-  The current version of Accada HAL is 0.4.0.
+  The current version of Fosstrak HAL is 0.4.0.
 
-* Accada HAL Commons
-
-*--------+----------+
-         | Binaries |
-*--------+----------+
- HAL Commons 0.4.0 with dependencies (zip) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal-commons/0.4.0/hal-commons-0.4.0-bin-with-dependencies.zip}hal-commons-0.4.0-bin-with-dependencies.zip}}
-*--------+----------+
- HAL Commons 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal-commons/0.4.0/hal-commons-0.4.0-bin-with-dependencies.tar.gz}hal-commons-0.4.0-bin-with-dependencies.tar.gz}}
-*--------+----------+
-
-
-* Accada HAL Implementation Simulator
+* Fosstrak HAL Commons
 
 *--------+----------+
          | Binaries |
 *--------+----------+
- HAL Implementation Simulator 0.4.0 with dependencies (zip) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal-impl-sim/0.4.0/hal-impl-sim-0.4.0-bin-with-dependencies.zip}hal-impl-sim-0.4.0-bin-with-dependencies.zip}}
+ HAL Commons 0.4.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-commons/0.4.0/hal-commons-0.4.0-bin-with-dependencies.zip}hal-commons-0.4.0-bin-with-dependencies.zip}}
 *--------+----------+
- HAL Implementation Simulator 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal-impl-sim/0.4.0/hal-impl-sim-0.4.0-bin-with-dependencies.tar.gz}hal-impl-sim-0.4.0-bin-with-dependencies.tar.gz}}
-*--------+----------+
-
-
-* Accada HAL Implementation Impinj
-
-*--------+----------+
-         | Binaries |
-*--------+----------+
- HAL Implementation Impinj 0.4.0 with dependencies (zip) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal-impl-impinj/0.4.0/hal-impl-impinj-0.4.0-bin-with-dependencies.zip}hal-impl-impinj-0.4.0-bin-with-dependencies.zip}}
-*--------+----------+
- HAL Implementation Impinj 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal-impl-impinj/0.4.0/hal-impl-impinj-0.4.0-bin-with-dependencies.tar.gz}hal-impl-impinj-0.4.0-bin-with-dependencies.tar.gz}}
+ HAL Commons 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-commons/0.4.0/hal-commons-0.4.0-bin-with-dependencies.tar.gz}hal-commons-0.4.0-bin-with-dependencies.tar.gz}}
 *--------+----------+
 
 
-* Accada HAL Implementation FEIG
+* Fosstrak HAL Implementation Simulator
 
 *--------+----------+
          | Binaries |
 *--------+----------+
- HAL Implementation FEIG 0.4.0 with dependencies (zip) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal-impl-feig/0.4.0/hal-impl-feig-0.4.0-bin-with-dependencies.zip}hal-impl-feig-0.4.0-bin-with-dependencies.zip}}
+ HAL Implementation Simulator 0.4.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-sim/0.4.0/hal-impl-sim-0.4.0-bin-with-dependencies.zip}hal-impl-sim-0.4.0-bin-with-dependencies.zip}}
 *--------+----------+
- HAL Implementation FEIG 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal-impl-feig/0.4.0/hal-impl-feig-0.4.0-bin-with-dependencies.tar.gz}hal-impl-feig-0.4.0-bin-with-dependencies.tar.gz}}
+ HAL Implementation Simulator 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-sim/0.4.0/hal-impl-sim-0.4.0-bin-with-dependencies.tar.gz}hal-impl-sim-0.4.0-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Fosstrak HAL Implementation Impinj
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ HAL Implementation Impinj 0.4.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-impinj/0.4.0/hal-impl-impinj-0.4.0-bin-with-dependencies.zip}hal-impl-impinj-0.4.0-bin-with-dependencies.zip}}
+*--------+----------+
+ HAL Implementation Impinj 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-impinj/0.4.0/hal-impl-impinj-0.4.0-bin-with-dependencies.tar.gz}hal-impl-impinj-0.4.0-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Fosstrak HAL Implementation FEIG
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ HAL Implementation FEIG 0.4.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-feig/0.4.0/hal-impl-feig-0.4.0-bin-with-dependencies.zip}hal-impl-feig-0.4.0-bin-with-dependencies.zip}}
+*--------+----------+
+ HAL Implementation FEIG 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-feig/0.4.0/hal-impl-feig-0.4.0-bin-with-dependencies.tar.gz}hal-impl-feig-0.4.0-bin-with-dependencies.tar.gz}}
 *--------+----------+
 
 
@@ -60,15 +60,15 @@ Download
 *--------+----------+
          | Sources  |
 *--------+----------+
- HAL Source 0.4.0 (zip) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal/0.4.0/hal-0.4.0-src.zip}hal-0.4.0-src.zip}}
+ HAL Source 0.4.0 (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal/0.4.0/hal-0.4.0-src.zip}hal-0.4.0-src.zip}}
 *--------+----------+
- HAL Source 0.4.0 (tar.gz) | {{{http://maven-repository.accada.org/releases/org/accada/hal/hal/0.4.0/hal-0.4.0-src.tar.gz}hal-0.4.0-src.tar.gz}}
+ HAL Source 0.4.0 (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal/0.4.0/hal-0.4.0-src.tar.gz}hal-0.4.0-src.tar.gz}}
 *--------+----------+
 
 
 * Previous Releases
 
-  All previous releases of Accada HAL can be found in the {{{http://maven-repository.accada.org/releases}distribution repository}}.
+  All previous releases of Fosstrak HAL can be found in the {{{http://maven-repository.fosstrak.org/releases}distribution repository}}.
 
 
 * System Requirements

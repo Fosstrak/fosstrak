@@ -1,4 +1,4 @@
-package org.accada.hal.impl.feig;
+package org.fosstrak.hal.impl.feig;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,28 +8,28 @@ import javax.comm.PortInUseException;
 import javax.comm.SerialPort;
 import javax.comm.UnsupportedCommOperationException;
 
-import org.accada.hal.AsynchronousIdentifyListener;
-import org.accada.hal.ControllerProperties;
-import org.accada.hal.HardwareException;
-import org.accada.hal.MemoryBankDescriptor;
-import org.accada.hal.MemoryDescriptor;
-import org.accada.hal.Observation;
-import org.accada.hal.TagDescriptor;
-import org.accada.hal.Trigger;
-import org.accada.hal.UnsignedByteArray;
-import org.accada.hal.UnsupportedOperationException;
-import org.accada.hal.impl.feig.comm.ISOProtocol;
-import org.accada.hal.impl.feig.comm.RequestRecord;
-import org.accada.hal.impl.feig.comm.ResponseRecord;
-import org.accada.hal.impl.feig.util.ISOTransponderResponseErrorCode;
-import org.accada.hal.impl.feig.util.StatusByte;
-import org.accada.hal.transponder.IDType;
-import org.accada.hal.transponder.InventoryItem;
-import org.accada.hal.transponder.RFTechnology;
-import org.accada.hal.transponder.TransponderModel;
-import org.accada.hal.transponder.TransponderSystemInformationISO;
-import org.accada.hal.transponder.TransponderType;
-import org.accada.hal.util.ByteBlock;
+import org.fosstrak.hal.AsynchronousIdentifyListener;
+import org.fosstrak.hal.ControllerProperties;
+import org.fosstrak.hal.HardwareException;
+import org.fosstrak.hal.MemoryBankDescriptor;
+import org.fosstrak.hal.MemoryDescriptor;
+import org.fosstrak.hal.Observation;
+import org.fosstrak.hal.TagDescriptor;
+import org.fosstrak.hal.Trigger;
+import org.fosstrak.hal.UnsignedByteArray;
+import org.fosstrak.hal.UnsupportedOperationException;
+import org.fosstrak.hal.impl.feig.comm.ISOProtocol;
+import org.fosstrak.hal.impl.feig.comm.RequestRecord;
+import org.fosstrak.hal.impl.feig.comm.ResponseRecord;
+import org.fosstrak.hal.impl.feig.util.ISOTransponderResponseErrorCode;
+import org.fosstrak.hal.impl.feig.util.StatusByte;
+import org.fosstrak.hal.transponder.IDType;
+import org.fosstrak.hal.transponder.InventoryItem;
+import org.fosstrak.hal.transponder.RFTechnology;
+import org.fosstrak.hal.transponder.TransponderModel;
+import org.fosstrak.hal.transponder.TransponderSystemInformationISO;
+import org.fosstrak.hal.transponder.TransponderType;
+import org.fosstrak.hal.util.ByteBlock;
 import org.apache.log4j.Logger;
 
 /**
@@ -161,7 +161,7 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#identify(java.lang.String[])
+	 * @see org.fosstrak.hal.HardwareAbstraction#identify(java.lang.String[])
 	 */
 	public Observation[] identify(String[] readPointNames)
 			throws HardwareException {
@@ -233,7 +233,7 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#getReadPointNames()
+	 * @see org.fosstrak.hal.HardwareAbstraction#getReadPointNames()
 	 */
 	public String[] getReadPointNames() {
 		return (String[]) this.multiplexConfig.getReadPoints();
@@ -273,7 +273,7 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#readBytes(java.lang.String,
+	 * @see org.fosstrak.hal.HardwareAbstraction#readBytes(java.lang.String,
 	 *      java.lang.String, int, int, int, java.lang.String[])
 	 */
 	public UnsignedByteArray readBytes(String readPointName, String id, int memoryBank,
@@ -374,7 +374,7 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#writeBytes(java.lang.String,
+	 * @see org.fosstrak.hal.HardwareAbstraction#writeBytes(java.lang.String,
 	 *      java.lang.String, int, int, UnsignedByteArray, java.lang.String[])
 	 */
 	public void writeBytes(String readPointName, String id, int memoryBank,
@@ -520,7 +520,7 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#writeId(java.lang.String,
+	 * @see org.fosstrak.hal.HardwareAbstraction#writeId(java.lang.String,
 	 *      java.lang.String, java.lang.String[])
 	 */
 	public void writeId(String readPointName, String id, String[] passwords)
@@ -533,7 +533,7 @@ public class FeigCOMController implements FeigController {
    /**
     * (non-Javadoc)
     *
-    * @see org.accada.hal.HardwareAbstraction#supportsWriteId()
+    * @see org.fosstrak.hal.HardwareAbstraction#supportsWriteId()
     */
    public boolean supportsWriteId() {
       return false;
@@ -542,7 +542,7 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#reset()
+	 * @see org.fosstrak.hal.HardwareAbstraction#reset()
 	 */
 	public void reset() throws HardwareException {
 		// construct request record...
@@ -576,7 +576,7 @@ public class FeigCOMController implements FeigController {
    /**
     * (non-Javadoc)
     *
-    * @see org.accada.hal.HardwareAbstraction#supportsReset()
+    * @see org.fosstrak.hal.HardwareAbstraction#supportsReset()
     */
 	public boolean supportsReset() {
 	   return true;
@@ -585,7 +585,7 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#setParameter(java.lang.String,
+	 * @see org.fosstrak.hal.HardwareAbstraction#setParameter(java.lang.String,
 	 *      java.lang.String)
 	 */
 	public void setParameter(String param, String value)
@@ -602,7 +602,7 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#getParameter(java.lang.String)
+	 * @see org.fosstrak.hal.HardwareAbstraction#getParameter(java.lang.String)
 	 */
 	public String getParameter(String param) throws HardwareException {
 
@@ -617,7 +617,7 @@ public class FeigCOMController implements FeigController {
    /**
     * (non-Javadoc)
     *
-    * @see org.accada.hal.HardwareAbstraction#supportsParameters()
+    * @see org.fosstrak.hal.HardwareAbstraction#supportsParameters()
     */
    public boolean supportsParameters() {
       return true;
@@ -626,7 +626,7 @@ public class FeigCOMController implements FeigController {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#getAllParameterNames()
+	 * @see org.fosstrak.hal.HardwareAbstraction#getAllParameterNames()
 	 */
 	public String[] getAllParameterNames() throws HardwareException,
 			UnsupportedOperationException {

@@ -15,7 +15,7 @@ User Changelog
 *-----------+-------------+---------------------------------------------------+
 | feature | Major changes in HardwareAbstraction interface | matthias-lampe
 *-----------+-------------+---------------------------------------------------+
-| feature | Moved HAL from module of Accada Reader to own project | matthias-lampe
+| feature | Moved HAL from module of Fosstrak Reader to own project | matthias-lampe
 *-----------+-------------+---------------------------------------------------+
 | feature | Added HardwareAbstraction implementation for FEIG OBID i-scan ID ISC.MR101-A (COM, HF), ID ISC.LRU1000 (TCP/IP, UHF) and Impinj Speedway (TCP/IP, UHF) | {{{http://sourceforge.net/users/jhaller/}jhaller}}
 *-----------+-------------+---------------------------------------------------+

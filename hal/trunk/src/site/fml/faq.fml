@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<faqs title="Accada HAL - Frequently Asked Questions" toplink="false">
+<faqs title="Fosstrak HAL - Frequently Asked Questions" toplink="false">
 
   <part id="about">
     <title>General</title>
@@ -16,7 +16,7 @@
 
     <faq id="reader">
       <question>
-        I have a reader, but Accada does not support its proprietary protocol.
+        I have a reader, but Fosstrak does not support its proprietary protocol.
       </question>
       <answer>
         Implement a wrapper and contribute your implementation to our project. As a benefit you will get all the filtering, event generation, messaging and tool support we already implemented for free.

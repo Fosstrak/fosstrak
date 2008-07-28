@@ -24,7 +24,7 @@ Source Repository Access
    The following is the address of the online source repository.
 
 +--
-https://svn.accada.org/repos/hal/tags/hal-0.4.0
+https://svn.fosstrak.org/repos/hal/tags/hal-0.4.0
 +--
 
 
@@ -34,7 +34,7 @@ https://svn.accada.org/repos/hal/tags/hal-0.4.0
    The source can be checked out anonymously from SVN with this command:
 
 +--
-$ svn checkout https://svn.accada.org/repos/hal/tags/hal-0.4.0 hal
+$ svn checkout https://svn.fosstrak.org/repos/hal/tags/hal-0.4.0 hal
 +--
 
 
@@ -45,7 +45,7 @@ $ svn checkout https://svn.accada.org/repos/hal/tags/hal-0.4.0 hal
    command:
 
 +--
-$ svn checkout https://svn.accada.org/repos/hal/trunk hal
+$ svn checkout https://svn.fosstrak.org/repos/hal/trunk hal
 +--
 
    To commit changes to the repository, execute the following command (svn

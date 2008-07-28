@@ -28,13 +28,13 @@ Simulator Configuration and Usage
 
 * {Simulator} Controller
 
-** Configuration of the Accada Reader
+** Configuration of the Fosstrak Reader
 
-  The following XML code is an example on how to configure the Accada Reader to
+  The following XML code is an example on how to configure the Fosstrak Reader to
   use the HAL implementation of the simulator controller. The name can be
   chosen arbitrary but must be unique if multiple readers are configured. The
   class implementing the <<<HardwareAbstraction>>> interface for the simulator
-  controller is <<<org.accada.hal.impl.sim.SimulatorController>>>. The
+  controller is <<<org.fosstrak.hal.impl.sim.SimulatorController>>>. The
   properties element contains the path to the configuration file. For
   information about this see the configuration file example below.
 
@@ -48,7 +48,7 @@ Simulator Configuration and Usage
       <readers>
          <reader>
             <name>SimulatorController</name>
-            <class>org.accada.hal.impl.sim.SimulatorController</class>
+            <class>org.fosstrak.hal.impl.sim.SimulatorController</class>
             <properties>/props/SimulatorController.xml</properties>
             <readpoint>Shelf1</readpoint>
             <readpoint>Shelf2</readpoint>
@@ -73,7 +73,7 @@ Simulator Configuration and Usage
 <properties>
 
    <!-- SimulatorType to be loaded dynamically -->
-   <simType>org.accada.hal.impl.sim.GraphicSimulator</simType>
+   <simType>org.fosstrak.hal.impl.sim.GraphicSimulator</simType>
    <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
 
    <!-- Configuration file with all the transponder models -->
@@ -102,7 +102,7 @@ Simulator Configuration and Usage
   The following XML code is an example on how to configure the Simulator
   Controller to use this simulator. The class implementing the
   <<<SimulatorEngine>>> interface for the graphic simulator is
-  <<<org.accada.hal.impl.sim.GraphicSimulator>>>. The simTypePropFile element
+  <<<org.fosstrak.hal.impl.sim.GraphicSimulator>>>. The simTypePropFile element
   contains the path to the configuration file. For information about this see
   the configuration file example below.
 
@@ -111,7 +111,7 @@ Simulator Configuration and Usage
 <properties>
 
    <!-- SimulatorType to be loaded dynamically -->
-   <simType>org.accada.reader.hal.impl.sim.GraphicSimulator</simType>
+   <simType>org.fosstrak.reader.hal.impl.sim.GraphicSimulator</simType>
    <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
 
    <!-- ... other configuration elements ... -->
@@ -192,7 +192,7 @@ Simulator Configuration and Usage
   The following XML code is an example on how to configure the Simulator
   Controller to use this simulator. The class implementing the
   <<<SimulatorEngine>>> interface for the batch simulator is
-  <<<org.accada.hal.impl.sim.BatchSimulator>>>. The simTypePropFile element
+  <<<org.fosstrak.hal.impl.sim.BatchSimulator>>>. The simTypePropFile element
   contains the path to the configuration file. For information about this see
   the configuration file example below.
 
@@ -201,7 +201,7 @@ Simulator Configuration and Usage
 <properties>
 
    <!-- SimulatorType to be loaded dynamically -->
-   <simType>org.accada.reader.hal.impl.sim.BatchSimulator</simType>
+   <simType>org.fosstrak.reader.hal.impl.sim.BatchSimulator</simType>
    <simTypePropFile>/props/BatchSimulator.xml</simTypePropFile>
 
    <!-- ... other configuration elements ... -->
@@ -234,7 +234,7 @@ Simulator Configuration and Usage
   Example batch file with comments:
 
 +-----------------------------------------------------------------------------+
-# Example batch file for Accada BatchSimulator
+# Example batch file for Fosstrak BatchSimulator
 # Author: Jonas Haller
 #
 # Lines beginning with '#' are not processed (comments)
@@ -264,7 +264,7 @@ Simulator Configuration and Usage
   The following XML code is an example on how to configure the Simulator
   Controller to use this simulator. The class implementing the
   <<<SimulatorEngine>>> interface for the command line simulator is
-  <<<org.accada.hal.impl.sim.CmdLineSim>>>. The simTypePropFile element can be
+  <<<org.fosstrak.hal.impl.sim.CmdLineSim>>>. The simTypePropFile element can be
   left empty as this simulator does not need any configuration.
 
 +-----------------------------------------------------------------------------+
@@ -272,7 +272,7 @@ Simulator Configuration and Usage
 <properties>
 
    <!-- SimulatorType to be loaded dynamically -->
-   <simType>org.accada.reader.hal.impl.sim.CmdLineSim</simType>
+   <simType>org.fosstrak.reader.hal.impl.sim.CmdLineSim</simType>
    <simTypePropFile></simTypePropFile>
 
    <!-- ... other configuration elements ... -->
@@ -309,7 +309,7 @@ Simulator Configuration and Usage
   The following XML code is an example on how to configure the Simulator
   Controller to use this simulator. The class implementing the
   <<<SimulatorEngine>>> interface for the multi simulator is
-  <<<org.accada.hal.impl.sim.SimulatorClient>>>. The simTypePropFile element
+  <<<org.fosstrak.hal.impl.sim.SimulatorClient>>>. The simTypePropFile element
   contains the path to the configuration file of the simulator client. For
   information about this see the configuration file example below.
 
@@ -318,7 +318,7 @@ Simulator Configuration and Usage
 <properties>
 
    <!-- SimulatorType to be loaded dynamically -->
-   <simType>org.accada.reader.hal.impl.sim.SimulatorClient</simType>
+   <simType>org.fosstrak.reader.hal.impl.sim.SimulatorClient</simType>
    <simTypePropFile>/props/SimulatorClient.xml</simTypePropFile>
 
    <!-- ... other configuration elements ... -->
@@ -356,7 +356,7 @@ Simulator Configuration and Usage
 <properties>
 
    <!-- SimulatorType to be loaded dynamically -->
-   <simType>org.accada.reader.hal.impl.sim.multi.GraphicSimulatorServer</simType>
+   <simType>org.fosstrak.reader.hal.impl.sim.multi.GraphicSimulatorServer</simType>
    <simTypePropFile>/props/GraphicSimulator.xml</simTypePropFile>
 
    <!-- the port to listen to -->
@@ -374,7 +374,7 @@ Simulator Configuration and Usage
   are sent to the client.
   
   Executing the main method of the class
-  <<<org.accada.hal.impl.sim.multi.SimulatorServerController>>> starts the
+  <<<org.fosstrak.hal.impl.sim.multi.SimulatorServerController>>> starts the
   simulator server.
 
   See the user guide of the simulator type configured in the simulator server

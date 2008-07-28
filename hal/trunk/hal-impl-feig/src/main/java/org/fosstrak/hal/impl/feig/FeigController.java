@@ -1,7 +1,7 @@
-package org.accada.hal.impl.feig;
+package org.fosstrak.hal.impl.feig;
 
-import org.accada.hal.HardwareAbstraction;
-import org.accada.hal.HardwareException;
+import org.fosstrak.hal.HardwareAbstraction;
+import org.fosstrak.hal.HardwareException;
 
 public interface FeigController extends HardwareAbstraction {
 

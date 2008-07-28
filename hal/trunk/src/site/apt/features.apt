@@ -8,11 +8,11 @@
 
 Features
 
-  The following outlines the features of the Accada HAL Project.
+  The following outlines the features of the Fosstrak HAL Project.
 
-* Accada HAL Modules
+* Fosstrak HAL Modules
 
-  The Accada HAL Project comprises of several modules:
+  The Fosstrak HAL Project comprises of several modules:
 
   * the hardware abstraction interface with common utilities
 
@@ -22,7 +22,7 @@ Features
     controllers implementating the hardware abstraction interface
 
 
-* Accada Hardware Abstraction Interface Features
+* Fosstrak Hardware Abstraction Interface Features
 
   The hardware abstraction standardises the interface to different readers with
   proprietary and thus incompatible interfaces. Even a simulator without any
@@ -30,7 +30,7 @@ Features
   abstraction interface can be treated eqaly and hence are rendered interchangeable.
 
 
-* Accada HAL Simulator Module
+* Fosstrak HAL Simulator Module
 
   The simulator module consists of a controller with four possible types of
   simulation:
@@ -43,7 +43,7 @@ Features
     recognised by the reader, after leaving the area of the antenna, they are not
     recognised any more.
 
-[images/sim_tags.png] Accada HAL Graphic Simulator GUI
+[images/sim_tags.png] Fosstrak HAL Graphic Simulator GUI
 
   * Batch Simulator
 
@@ -69,13 +69,13 @@ Features
 
 * Implemented Readers
 
-  Following readers are implemented in the Accada HAL:
+  Following readers are implemented in the Fosstrak HAL:
 
 *--------------+-------------------------+-------------------+
 | <<Package>>  | <<Reader Manufacturer>> | <<Reader Models>> |
 *--------------+-------------------------+-------------------+
-| accada-hal-feig | FEIG ELECTRONIC | OBID i-scan ID ISC.MR100/101 (COM)
+| fosstrak-hal-feig | FEIG ELECTRONIC | OBID i-scan ID ISC.MR100/101 (COM)
 |                 |                 | OBID i-scan ID ISC.LRU1000 (TCP/IP)
 *--------------+-------------------------+-------------------+
-| accada-hal-impinj | Impinj | Speedway (TCP/IP)
+| fosstrak-hal-impinj | Impinj | Speedway (TCP/IP)
 *--------------+-------------------------+-------------------+

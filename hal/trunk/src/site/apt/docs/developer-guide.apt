@@ -21,7 +21,7 @@ Developer Guide
 
 * {About} this Guide
 
-  This guide is intended for developers who wish to work on Accada HAL
+  This guide is intended for developers who wish to work on Fosstrak HAL
   Implementations. It outlines the steps to follow for setting up the development
   environment and helps developers to find their way through the code.
 
@@ -29,7 +29,7 @@ Developer Guide
 * {Getting} Started
 
   This section describes the setup of the development environment we use when
-  working on Accada's HAL project. To compile the HAL, simply execute Maven. A
+  working on Fosstrak's HAL project. To compile the HAL, simply execute Maven. A
   {{{http://java.sun.com/javase/downloads/}Java Development Kit}} needs to be
   installed.
 
@@ -59,7 +59,7 @@ Developer Guide
 
 ** Project Modules
 
-   Accada's HAL project consists of multiple modules. Currently, it includes four
+   Fosstrak's HAL project consists of multiple modules. Currently, it includes four
    modules:
 
    * <<hal-commons>>
@@ -164,7 +164,7 @@ Developer Guide
 
 * {Using} Maven
 
-  We use Maven as our build tool for the Accada HAL project.
+  We use Maven as our build tool for the Fosstrak HAL project.
 
 ** Building
 
@@ -176,7 +176,7 @@ mvn compile
 
 ** Eclipse Integration
 
-   In order to work on the Accada HAL using Eclipse, follow these instructions:
+   In order to work on the Fosstrak HAL using Eclipse, follow these instructions:
 
    [[1]] Eclipse needs to know the path to the local maven repository. Execute
          the following command to automatically set up the corresponding
@@ -188,7 +188,7 @@ mvn -Declipse.workspace=<path-to-eclipse-workspace> eclipse:add-maven-repo
 
    [[2]] In order to generate the <<<.project>>> and <<<.classpath>>> file
          used by Eclipse, execute the following command from the directory
-         containing the Accada HAL source code:
+         containing the Fosstrak HAL source code:
 
 ---------------------------------------------------------------------------
 mvn eclipse:eclipse
@@ -207,8 +207,8 @@ mvn package
 
 ** Installing
 
-   To install Accada HAL in the local Maven repository and use it in other
-   projects, for instance Accada Reader, run the following command:
+   To install Fosstrak HAL in the local Maven repository and use it in other
+   projects, for instance Fosstrak Reader, run the following command:
 
 ---------------------------------------------------------------------------
 mvn install

@@ -5,12 +5,12 @@
   <!-- Basics                                                      -->
   <!-- =========================================================== -->
 
-  <groupId>org.accada.hal</groupId>
+  <groupId>org.fosstrak.hal</groupId>
   <artifactId>hal-commons</artifactId>
   <version>0.4.1-SNAPSHOT</version>
   <parent>
     <artifactId>hal</artifactId>
-    <groupId>org.accada.hal</groupId>
+    <groupId>org.fosstrak.hal</groupId>
     <version>0.4.1-SNAPSHOT</version>
   </parent>
   <packaging>jar</packaging>

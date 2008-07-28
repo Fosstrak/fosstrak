@@ -80,7 +80,7 @@ Developer Change Log
 
 ** {Own} Project
 
-  The HAL has moved from a module of Accada Reader to an own project. It is
+  The HAL has moved from a module of Fosstrak Reader to an own project. It is
   subdivided into a module containing the <<<HardwareAbstraction>>> interface
   with common utilities and modules with implementations of the interface.
   Each implementation module contains one or more reader controllers of a
@@ -177,7 +177,7 @@ Developer Change Log
 
   []
 
-  See the {{{../../reader/docs/developer-changelog.html#1547832}Accada Reader
+  See the {{{../../reader/docs/developer-changelog.html#1547832}Fosstrak Reader
   Developer Changlog}} for a more detailed explanation of the new implementation
   of the resource loading.
 
@@ -212,7 +212,7 @@ Developer Change Log
 
   * Alien H2
 
-  * and the Accada Simulator tag with EPCclass1Gen2 compliant memory layout
+  * and the Fosstrak Simulator tag with EPCclass1Gen2 compliant memory layout
 
   []
 
@@ -221,7 +221,7 @@ Developer Change Log
   to a configuration file. Thereafter they are fully accessible by all reader
   controllers using the <<<EPCTransponderModel>>>. A default EPCTransponderModels
   configuration file containing TID and memory description for the tags listed
-  above is shipped with the Accada HAL.
+  above is shipped with the Fosstrak HAL.
 
 
 ** {Graphic} Simulator Memory Access

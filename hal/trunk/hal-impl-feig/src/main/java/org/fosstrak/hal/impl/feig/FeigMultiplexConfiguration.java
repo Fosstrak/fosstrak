@@ -1,10 +1,10 @@
-package org.accada.hal.impl.feig;
+package org.fosstrak.hal.impl.feig;
 
 import java.net.URL;
 import java.util.HashMap;
 
-import org.accada.hal.HardwareException;
-import org.accada.hal.util.ResourceLocator;
+import org.fosstrak.hal.HardwareException;
+import org.fosstrak.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.logging.Log;
