@@ -5,8 +5,8 @@
   <!-- Basics                                                      -->
   <!-- =========================================================== -->
 
-  <groupId>org.accada</groupId>
-  <artifactId>accada</artifactId>
+  <groupId>org.fosstrak</groupId>
+  <artifactId>fosstrak</artifactId>
   <version>0.2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
@@ -31,9 +31,9 @@
 
   <distributionManagement>
     <site>
-      <id>accada-website</id>
-      <name>Accada website</name>
-      <url>sftp://www.accada.org/local/home/accadaweb/public_html</url>
+      <id>fosstrak-website</id>
+      <name>Fosstrak website</name>
+      <url>sftp://www.fosstrak.org/local/home/fosstrakweb/public_html</url>
     </site>
   </distributionManagement>
 
@@ -42,8 +42,8 @@
   <!-- Project Information                                         -->
   <!-- =========================================================== -->
 
-  <name>accada</name>
-  <url>http://www.accada.org</url>
+  <name>fosstrak</name>
+  <url>http://www.fosstrak.org</url>
   <licenses>
     <license>
       <name>GNU Lesser General Public License (LGPL)</name>

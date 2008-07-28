@@ -4,22 +4,22 @@
                                     ------
 
 
-Welcome to Accada
+Welcome to Fosstrak
 
 
 * Project Mission
 
-    <<Accada>> is an open source RFID prototyping platform that implements the <<EPC Network>> specifications. It is intended to foster the rapid prototyping of RFID applications and to accelerate the development of an <<Internet of Things>>.
+    <<Fosstrak>> is an open source RFID prototyping platform that implements the <<EPC Network>> specifications. It is intended to foster the rapid prototyping of RFID applications and to accelerate the development of an <<Internet of Things>>.
  
 
-* How can Accada help you?
+* How can Fosstrak help you?
 
      
-     *  if you are an <<EPC Network Novice>>, use the demo apps of <<Accada>> to check out the functionality of the EPC Network. 
+     *  if you are an <<EPC Network Novice>>, use the demo apps of <<Fosstrak>> to check out the functionality of the EPC Network. 
     
     []
     
-     *  if you are an <<RFID Application Developer>>, use the Java libraries of <<Accada>> to facilitate communication with EPC Network components. 
+     *  if you are an <<RFID Application Developer>>, use the Java libraries of <<Fosstrak>> to facilitate communication with EPC Network components. 
     
     []
     
@@ -33,18 +33,18 @@ Welcome to Accada
     []
     
     
-* More information about Accada
+* More information about Fosstrak
 
 
-   *  {{{overview.html} What is Accada?}}
+   *  {{{overview.html} What is Fosstrak?}}
      
    *  {{{epcnetwork.html} What is the EPC Network?}}
      
-   *  {{{status.html} What is the current status of Accada?}}
+   *  {{{status.html} What is the current status of Fosstrak?}}
      
    *  {{{license.html} Under which license is the software available?}}  
           
-   *  {{{team.html} Who is behind Accada?}}
+   *  {{{team.html} Who is behind Fosstrak?}}
      
    *  {{{howtohelp.html} Can I contribute?}}
      

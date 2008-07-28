@@ -10,7 +10,7 @@ Background
 
 * Founders
 
-   The <<Accada>> project was initiated by {{{http://people.inf.ethz.ch/floerkem} Christian Floerkemeier}}, {{{http://people.inf.ethz.ch/mlampe} Matthias Lampe}}, and {{{http://people.inf.ethz.ch/rodunerc} Christof Roduner}} of the {{{http://www.vs.inf.ethz.ch} Distributed Systems Group}} at ETH Zurich led by {{{http://people.inf.ethz.ch/mattern} Friedemann Mattern}} and the {{{http://www.autoidlabs.ch} Auto-ID Lab }} at ETH Zurich/University of St. Gallen led by {{{http://www.item.unisg.ch/org/item/web2.nsf/c2d5250e0954edd3c12568e40027f306/c50b89b455a2b4cfc1256c41005d049e?OpenDocument} Elgar Fleisch}} .
+   The <<Fosstrak>> project was initiated by {{{http://people.inf.ethz.ch/floerkem} Christian Floerkemeier}}, {{{http://people.inf.ethz.ch/mlampe} Matthias Lampe}}, and {{{http://people.inf.ethz.ch/rodunerc} Christof Roduner}} of the {{{http://www.vs.inf.ethz.ch} Distributed Systems Group}} at ETH Zurich led by {{{http://people.inf.ethz.ch/mattern} Friedemann Mattern}} and the {{{http://www.autoidlabs.ch} Auto-ID Lab }} at ETH Zurich/University of St. Gallen led by {{{http://www.item.unisg.ch/org/item/web2.nsf/c2d5250e0954edd3c12568e40027f306/c50b89b455a2b4cfc1256c41005d049e?OpenDocument} Elgar Fleisch}} .
 
 
 [images/ethautoid.gif]
@@ -27,9 +27,9 @@ Background
 
    * EPC Network Novices can use the software and the simple demos we provide to gain hands-on experience with the EPC Network.
 
-   * RFID Application Developers will benefit from the high-level abstractions available in Accada that hide the low-level message and transport bindings. This will simplify the communication with EPC Network components and thus foster the use of the EPC Network.
+   * RFID Application Developers will benefit from the high-level abstractions available in Fosstrak that hide the low-level message and transport bindings. This will simplify the communication with EPC Network components and thus foster the use of the EPC Network.
 
-   * RFID System Integrators can deploy and configure the Accada implementations to their needs.
+   * RFID System Integrators can deploy and configure the Fosstrak implementations to their needs.
 
    * Researchers and students working on RFID do not have to implement the software components themselves, but can rely on existing modules which they can modify to evaluate novel concepts and algorithms.
 
