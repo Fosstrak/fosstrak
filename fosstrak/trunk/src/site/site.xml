@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="Accada">
+<project name="Fosstrak">
   <bannerLeft>
-    <name>Accada</name>
+    <name>Fosstrak</name>
     <src>images/banner2_left.jpg</src>
-    <href>http://www.accada.org/</href>
+    <href>http://www.fosstrak.org/</href>
   </bannerLeft>
   <bannerRight>
     <src>images/banner2_middle.jpg</src>
   </bannerRight>
   <body>
     <links>
-      <item name="Accada" href="/index.html" />
+      <item name="Fosstrak" href="/index.html" />
       <item name="Reader" href="reader/index.html"/>
       <item name="Filtering and Collection" href="fc/index.html"/>
       <item name="EPCIS" href="epcis/index.html"/>
@@ -18,7 +18,7 @@
       <item name="HAL" href="hal/index.html"/>
     </links>
 
-    <menu name="About Accada" inherit="none">
+    <menu name="About Fosstrak" inherit="none">
       <item name="Overview" href="/overview.html"/>
       <item name="Background" href="/background.html"/>
       <item name="Team" href="/team.html"/>

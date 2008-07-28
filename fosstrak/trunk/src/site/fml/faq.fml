@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<faqs title="Accada - Frequently Asked Questions">
+<faqs title="Fosstrak - Frequently Asked Questions">
 
   <part id="about">
     <title>General</title>
@@ -46,16 +46,16 @@
         Why is it called a Prototyping Platform?
       </question>
       <answer>
-        The Accada software is currently alpha software to be used for prototyping and not for large scale commercial deployments.
+        The Fosstrak software is currently alpha software to be used for prototyping and not for large scale commercial deployments.
       </answer>
     </faq>
 
     <faq id="difference-commercial">
       <question>
-        How is the offering of Accada different from the one of commercial software vendors?
+        How is the offering of Fosstrak different from the one of commercial software vendors?
       </question>
       <answer>
-        Accada provides very limited support, it is alpha software, we target a different community (EPC novices, researchers, students etc.), and we provide software only: no integration services available that take the components and provide a custom solution.
+        Fosstrak provides very limited support, it is alpha software, we target a different community (EPC novices, researchers, students etc.), and we provide software only: no integration services available that take the components and provide a custom solution.
       </answer>
     </faq>
 
@@ -70,10 +70,10 @@
 
     <faq id="license">
       <question>
-        Why is Accada Software available under LGPL License?
+        Why is Fosstrak Software available under LGPL License?
       </question>
       <answer>
-        The LGPL License allows software vendors to bundle Accada components in their applications and systems without the reciprocal open source requirement. And it provides all Accada users the assurance that enhancements to the Accada source code will continue to remain free and openly available. It means that the people that make changes and enhancements to the Accada source code have the obligation to LGPL their changes back when they redistribute our code.
+        The LGPL License allows software vendors to bundle Fosstrak components in their applications and systems without the reciprocal open source requirement. And it provides all Fosstrak users the assurance that enhancements to the Fosstrak source code will continue to remain free and openly available. It means that the people that make changes and enhancements to the Fosstrak source code have the obligation to LGPL their changes back when they redistribute our code.
 
         Note that this is in contrast to a BSD or Apache-style license that allows for forking and creation of commercial projects.
       </answer>
@@ -93,16 +93,16 @@
         Can I contribute to this project even, if I am not part of the Auto-ID Labs or EPCglobal?
       </question>
       <answer>
-        Yes. Accada is an independent, community-driven open source project initiated by the Auto-ID Lab in Switzerland with contributions from the lab at the University of Cambridge. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.
+        Yes. Fosstrak is an independent, community-driven open source project initiated by the Auto-ID Lab in Switzerland with contributions from the lab at the University of Cambridge. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.
       </answer>
     </faq>
 
     <faq id="other-efforts">
       <question>
-        How is this Accada project different from other rfid open source efforts?
+        How is this Fosstrak project different from other rfid open source efforts?
       </question>
       <answer>
-        The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations.
+        The Fosstrak project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations.
       </answer>
     </faq>
 
@@ -111,7 +111,7 @@
         Why are you using Maven and how can I use it?
       </question>
       <answer>
-        The Accada project uses <a href="http://maven.apache.org/">Maven </a> for the build and project management. An introduction to running  maven can be found <a href="http://maven.apache.org/run-maven/index.html"> here </a>. There is also information available on the <a href="http://m2eclipse.codehaus.org/"> maven eclipse intregration </a>.
+        The Fosstrak project uses <a href="http://maven.apache.org/">Maven </a> for the build and project management. An introduction to running  maven can be found <a href="http://maven.apache.org/run-maven/index.html"> here </a>. There is also information available on the <a href="http://m2eclipse.codehaus.org/"> maven eclipse intregration </a>.
       </answer>
     </faq>
   </part>
