@@ -9,7 +9,7 @@
 
 Developer Index
 
-  The following sections describe the technical specification of Accada's HAL
+  The following sections describe the technical specification of Fosstrak's HAL
   interface and implementations. It is intended as an introduction to future
   developers.
 
@@ -27,7 +27,7 @@ Developer Index
 
 * {Introduction}
 
-  The goal of Accada HAL is to provide a common interface and wrappers
+  The goal of Fosstrak HAL is to provide a common interface and wrappers
   implementing it to uniformly access various RFID readers.
 
   Each reader has to be accessed through its own proprietary protocol. This is
@@ -35,18 +35,18 @@ Developer Index
   with an other model, you have to adjust your application to control the
   reader through a different protocol.
 
-  Accada HAL solves this problem by providing one single interface to access
+  Fosstrak HAL solves this problem by providing one single interface to access
   all the implemented readers. With this the code specific to the reader is
   moved from the application to the hardware abstraction layer. The application
   does not need to adjust to a specific reader but simply uses the
   <<<HardwareAbstraction>>> interface to access all readers.
 
-  New readers currently not implemented in the Accada HAL project can easily be
+  New readers currently not implemented in the Fosstrak HAL project can easily be
   added as a new module. The controller must implement the
   <<<HardwareAbstraction>>> interface and communicate with the reader over the
   corresponding protocol.
 
-  The Accada HAL project includes a simulator framework. There are several
+  The Fosstrak HAL project includes a simulator framework. There are several
   simulator controllers, each implementing the <<<HardwareAbstraction>>>
   interface. This allows to access the simulators in exactly the same way
   as HAL implementations for hardware readers.
@@ -59,7 +59,7 @@ Developer Index
 [../images/hal_architecture.png] architectural overview
 
   The <<<HardwareAbstraction>>> defines the interface between the HAL and the
-  Accada Reader or any other applitacion using the Accada HAL. It standardises
+  Fosstrak Reader or any other applitacion using the Fosstrak HAL. It standardises
   access to various readers and simulators of readers. This allows uniform
   usage. The readers and simulators become interchangeable because the code
   specific to the reader is part of the HAL and not of the application.
@@ -174,7 +174,7 @@ Developer Index
   The <<<IDType>>> object contains the name and description of the type of ID
   of the tag. Supported types including description are defined in the IDTypes
   configuration file. The content of the default IDTypes configuration file
-  shipped with the Accada HAL is listed below:
+  shipped with the Fosstrak HAL is listed below:
   
 +-----------------------------------------------------------------------------+
 <?xml version="1.0" encoding="UTF-8"?>
@@ -304,11 +304,11 @@ Developer Index
 
 * {Use} HAL directly
 
-  The Accada HAL is designed to be used by Accada Reader. However a
+  The Fosstrak HAL is designed to be used by Fosstrak Reader. However a
   <<<HardwareAbstraction>>> implementation can be used by an other application
-  without using the Accada Reader. This allows uniform access to all
+  without using the Fosstrak Reader. This allows uniform access to all
   implemented readers including the simulator and increases performance if the
-  filtering and reporting system of Accada Reader and Access over the Reader
+  filtering and reporting system of Fosstrak Reader and Access over the Reader
   Protocol is not needed.
 
   The name of the class implementing the <<<HardwareAbstraction>>> interface

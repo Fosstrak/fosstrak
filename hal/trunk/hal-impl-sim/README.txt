@@ -1,13 +1,13 @@
-Accada Hardware Abstraction Layer Simulator Implementation
+Fosstrak Hardware Abstraction Layer Simulator Implementation
 =========================================
 
-The objective of the Accada Hardware Abstraction Layer Simulator module is to provide
+The objective of the Fosstrak Hardware Abstraction Layer Simulator module is to provide
 a HardwareAbstraction implementation without need for real hardware.
 
 
 How to use the Hardware Abstraction Layer Simulator
 =================================================
 
-The module can be included in the Accada Reader Project as a HardwareAbstraction implementation.
+The module can be included in the Fosstrak Reader Project as a HardwareAbstraction implementation.
 
-For more information,  please see http://www.accada.org/hal
+For more information,  please see http://www.fosstrak.org/hal

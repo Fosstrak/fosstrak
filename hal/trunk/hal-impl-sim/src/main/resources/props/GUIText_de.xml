@@ -2,7 +2,7 @@
 <properties>
 
    <!-- application -->
-   <ApplicationTitle>Accada Reader Simulator</ApplicationTitle>
+   <ApplicationTitle>Fosstrak Reader Simulator</ApplicationTitle>
 
    <!-- menus -->
    <FileMenuItem>Datei</FileMenuItem>
@@ -25,7 +25,7 @@
 
    <!-- dialogs -->
    <AboutDialogTitle>Über</AboutDialogTitle>
-   <AboutDialogContent>Dies ist der Accada Reader Simulator, der die EPCglobal RP and RM Spezifikation implementiert. Mehr Informationen unter http://www.accada.org.</AboutDialogContent>
+   <AboutDialogContent>Dies ist der Fosstrak Reader Simulator, der die EPCglobal RP and RM Spezifikation implementiert. Mehr Informationen unter http://www.fosstrak.org.</AboutDialogContent>
 
    <AddNewAntennaDialogTitle>Neue Antenne hinzufügen</AddNewAntennaDialogTitle>
    <AntennaIdLabel>Antennen Identifikation</AntennaIdLabel>

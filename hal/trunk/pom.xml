@@ -5,7 +5,7 @@
   <!-- Basics                                                      -->
   <!-- =========================================================== -->
 
-  <groupId>org.accada.hal</groupId>
+  <groupId>org.fosstrak.hal</groupId>
   <artifactId>hal</artifactId>
   <version>0.4.1-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -70,7 +70,7 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
           <configuration>
-            <tagBase>https://svn.accada.org/repos/hal/tags</tagBase>
+            <tagBase>https://svn.fosstrak.org/repos/hal/tags</tagBase>
           </configuration>
         </plugin>
         <plugin>
@@ -128,9 +128,9 @@
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
-      <id>accada-repository</id>
-      <name>Accada repository</name>
-      <url>http://maven-repository.accada.org/releases</url>
+      <id>fosstrak-repository</id>
+      <name>Fosstrak repository</name>
+      <url>http://maven-repository.fosstrak.org/releases</url>
       <layout>default</layout>
     </repository>
   </repositories>
@@ -143,24 +143,24 @@
   <scm>
     <!-- keep empty tags here to avoid release:prepare crashes -->
     <connection></connection>
-    <developerConnection>scm:svn:https://svn.accada.org/repos/hal</developerConnection>
+    <developerConnection>scm:svn:https://svn.fosstrak.org/repos/hal</developerConnection>
     <url></url>
   </scm>
   <distributionManagement>
     <repository>
-      <id>accada-repository</id>
-      <name>Accada repository</name>
-      <url>sftp://maven-repository.accada.org/local/home/accadarep/public_html/releases</url>
+      <id>fosstrak-repository</id>
+      <name>Fosstrak repository</name>
+      <url>sftp://maven-repository.fosstrak.org/local/home/fosstrakrep/public_html/releases</url>
     </repository>
     <snapshotRepository>
-      <id>accada-repository</id>
-      <name>Accada repository</name>
-      <url>sftp://maven-repository.accada.org/local/home/accadarep/public_html/snapshots</url>
+      <id>fosstrak-repository</id>
+      <name>Fosstrak repository</name>
+      <url>sftp://maven-repository.fosstrak.org/local/home/fosstrakrep/public_html/snapshots</url>
     </snapshotRepository>
     <site>
-      <id>accada-website</id>
-      <name>Accada website</name>
-      <url>sftp://www.accada.org/local/home/accadaweb/public_html/hal</url>
+      <id>fosstrak-website</id>
+      <name>Fosstrak website</name>
+      <url>sftp://www.fosstrak.org/local/home/fosstrakweb/public_html/hal</url>
     </site>
   </distributionManagement>
   <issueManagement>
@@ -170,17 +170,17 @@
   <mailingLists>
     <mailingList>
       <name>Reader user mailing list</name>
-      <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-user</subscribe>
-      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-user</unsubscribe>
-      <post>accada-reader-user@lists.sourceforge.net</post>
-      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-user</archive>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/fosstrak-reader-user</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/fosstrak-reader-user</unsubscribe>
+      <post>fosstrak-reader-user@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=fosstrak-reader-user</archive>
     </mailingList>
     <mailingList>
       <name>Reader developer mailing list</name>
-      <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</subscribe>
-      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</unsubscribe>
-      <post>accada-reader-developer@lists.sourceforge.net</post>
-      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-developer</archive>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/fosstrak-reader-developer</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/fosstrak-reader-developer</unsubscribe>
+      <post>fosstrak-reader-developer@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=fosstrak-reader-developer</archive>
     </mailingList>
   </mailingLists>
 
@@ -222,7 +222,7 @@
           <excludes>
             <exclude>**/*Test.java</exclude>
             <exclude>**/package-info.java</exclude>
-            <exclude>org/accada/reader/rp/proxy/configurator/*.java</exclude>
+            <exclude>org/fosstrak/reader/rp/proxy/configurator/*.java</exclude>
           </excludes>
         </configuration>
       </plugin>
@@ -254,7 +254,7 @@
   <!-- =========================================================== -->
 
   <name>hal</name>
-  <url>http://www.accada.org/hal</url>
+  <url>http://www.fosstrak.org/hal</url>
   <licenses>
     <license>
       <name>GNU Lesser General Public License (LGPL)</name>

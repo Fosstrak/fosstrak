@@ -1,6 +1,6 @@
-package org.accada.hal.transponder;
+package org.fosstrak.hal.transponder;
 
-import org.accada.hal.transponder.EPCTransponderModel;
+import org.fosstrak.hal.transponder.EPCTransponderModel;
 
 
 public class InventoryItem {

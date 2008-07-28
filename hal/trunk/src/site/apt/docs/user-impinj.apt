@@ -8,13 +8,13 @@
 
 Impinj Speedway Configuration
 
-* Configuration of the Accada Reader
+* Configuration of the Fosstrak Reader
 
-  The following XML code is an example on how to configure the Accada Reader to
+  The following XML code is an example on how to configure the Fosstrak Reader to
   use this readers HAL implementation. The name can be chosen arbitrary but
   must be unique if multiple readers are configured. The class implementing the
   <<<HardwareAbstraction>>> interface for this reader type is
-  <<<org.accada.hal.impl.impinj.ImpinjTCPIPController>>>. The properties
+  <<<org.fosstrak.hal.impl.impinj.ImpinjTCPIPController>>>. The properties
   element contains the path to the configuration file. For information about
   this see the configuration file example below.
 
@@ -28,7 +28,7 @@ Impinj Speedway Configuration
       <readers>
          <reader>
             <name>ImpinjTCPIPController</name>
-            <class>org.accada.hal.impl.impinj.ImpinjTCPIPController</class>
+            <class>org.fosstrak.hal.impl.impinj.ImpinjTCPIPController</class>
             <properties>/props/ImpinjTCPIPController.xml</properties>
             <readpoint>Antenna1</readpoint>
          </reader>

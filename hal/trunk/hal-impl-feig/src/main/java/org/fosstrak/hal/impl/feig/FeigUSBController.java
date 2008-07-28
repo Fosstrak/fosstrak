@@ -1,11 +1,11 @@
-package org.accada.hal.impl.feig;
+package org.fosstrak.hal.impl.feig;
 
-import org.accada.hal.AsynchronousIdentifyListener;
-import org.accada.hal.HardwareException;
-import org.accada.hal.Observation;
-import org.accada.hal.Trigger;
-import org.accada.hal.UnsignedByteArray;
-import org.accada.hal.UnsupportedOperationException;
+import org.fosstrak.hal.AsynchronousIdentifyListener;
+import org.fosstrak.hal.HardwareException;
+import org.fosstrak.hal.Observation;
+import org.fosstrak.hal.Trigger;
+import org.fosstrak.hal.UnsignedByteArray;
+import org.fosstrak.hal.UnsupportedOperationException;
 
 public class FeigUSBController implements FeigController {
 
@@ -60,7 +60,7 @@ public class FeigUSBController implements FeigController {
 	}
 
    /* (non-Javadoc)
-    * @see org.accada.hal.HardwareAbstraction#startAsynchronousIdentify(java.lang.String[], org.accada.hal.AsynchronousIdentifyListener, java.lang.String, java.lang.String)
+    * @see org.fosstrak.hal.HardwareAbstraction#startAsynchronousIdentify(java.lang.String[], org.fosstrak.hal.AsynchronousIdentifyListener, java.lang.String, java.lang.String)
     */
    public void startAsynchronousIdentify(String[] readPointNames,
          Trigger trigger) throws HardwareException,
@@ -69,7 +69,7 @@ public class FeigUSBController implements FeigController {
    }
 
    /* (non-Javadoc)
-    * @see org.accada.hal.HardwareAbstraction#stopAsynchronousIdentify(org.accada.hal.AsynchronousIdentifyListener)
+    * @see org.fosstrak.hal.HardwareAbstraction#stopAsynchronousIdentify(org.fosstrak.hal.AsynchronousIdentifyListener)
     */
    public void stopAsynchronousIdentify()
          throws HardwareException, UnsupportedOperationException {
@@ -78,7 +78,7 @@ public class FeigUSBController implements FeigController {
 
 
    /* (non-Javadoc)
-    * @see org.accada.hal.HardwareAbstraction#isAsynchronousIdentifyRunning(org.accada.hal.AsynchronousIdentifyListener)
+    * @see org.fosstrak.hal.HardwareAbstraction#isAsynchronousIdentifyRunning(org.fosstrak.hal.AsynchronousIdentifyListener)
     */
    public boolean isAsynchronousIdentifyRunning() throws HardwareException,
          UnsupportedOperationException {
@@ -87,7 +87,7 @@ public class FeigUSBController implements FeigController {
 
 
    /* (non-Javadoc)
-    * @see org.accada.hal.HardwareAbstraction#addAsynchronousIdentifyListener(org.accada.hal.AsynchronousIdentifyListener)
+    * @see org.fosstrak.hal.HardwareAbstraction#addAsynchronousIdentifyListener(org.fosstrak.hal.AsynchronousIdentifyListener)
     */
    public void addAsynchronousIdentifyListener(AsynchronousIdentifyListener listener)
          throws HardwareException, UnsupportedOperationException {
@@ -96,7 +96,7 @@ public class FeigUSBController implements FeigController {
 
 
    /* (non-Javadoc)
-    * @see org.accada.hal.HardwareAbstraction#removeAsynchronousIdentifyListener(org.accada.hal.AsynchronousIdentifyListener)
+    * @see org.fosstrak.hal.HardwareAbstraction#removeAsynchronousIdentifyListener(org.fosstrak.hal.AsynchronousIdentifyListener)
     */
    public void removeAsynchronousIdentifyListener(AsynchronousIdentifyListener listener)
          throws HardwareException, UnsupportedOperationException {
@@ -105,7 +105,7 @@ public class FeigUSBController implements FeigController {
 
 
    /* (non-Javadoc)
-    * @see org.accada.hal.HardwareAbstraction#supportsAsynchronousIdentify()
+    * @see org.fosstrak.hal.HardwareAbstraction#supportsAsynchronousIdentify()
     */
    public boolean supportsAsynchronousIdentify() {
       return false;

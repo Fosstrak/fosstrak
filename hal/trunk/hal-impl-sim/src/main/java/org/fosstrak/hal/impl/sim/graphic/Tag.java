@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.hal.impl.sim.graphic;
+package org.fosstrak.hal.impl.sim.graphic;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -45,9 +45,9 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
-import org.accada.hal.HardwareException;
-import org.accada.hal.util.ByteBlock;
-import org.accada.hal.util.ResourceLocator;
+import org.fosstrak.hal.HardwareException;
+import org.fosstrak.hal.util.ByteBlock;
+import org.fosstrak.hal.util.ResourceLocator;
 
 /**
  * @author regli
@@ -60,7 +60,7 @@ public class Tag extends JPanel implements Comparable {
    private String defaultfilename = "/images/rfid-tag_default.png";
    
    /** the sim tag implementation */
-   private org.accada.hal.impl.sim.Tag tag; 
+   private org.fosstrak.hal.impl.sim.Tag tag; 
 	/** the image icon of the rfid tag */ 
 	private final Icon icon;
 	/** the drag listener */
@@ -98,7 +98,7 @@ public class Tag extends JPanel implements Comparable {
 	public Tag(String epc, Point pos, final IGraphicSimulator simulator) {
 		super();
 		
-      this.tag = new org.accada.hal.impl.sim.Tag(epc);
+      this.tag = new org.fosstrak.hal.impl.sim.Tag(epc);
 		this.simulator = simulator;
 		
 		setBounds(new Rectangle(pos, new Dimension(simulator.getProperty("TagWidth"), simulator.getProperty("TagHeight"))));
@@ -646,7 +646,7 @@ public class Tag extends JPanel implements Comparable {
     * 
     * @return sim.Tag
     */
-   public org.accada.hal.impl.sim.Tag getSimTag() {
+   public org.fosstrak.hal.impl.sim.Tag getSimTag() {
       return tag;
    }
    

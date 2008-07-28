@@ -8,40 +8,40 @@
 
 User Guide
 
-* Usage of Accada HAL
+* Usage of Fosstrak HAL
 
-  * The Accada HAL is designed to be used by Accada Reader. To use it this way,
-    please refer to the {{{#Getting}Getting Started with Accada Reader}} and
-    {{{#Configuring}Configuring Accada HAL}} sections below.
+  * The Fosstrak HAL is designed to be used by Fosstrak Reader. To use it this way,
+    please refer to the {{{#Getting}Getting Started with Fosstrak Reader}} and
+    {{{#Configuring}Configuring Fosstrak HAL}} sections below.
 
-  * The Accada HAL can be used by other applications than Accada Reader for
+  * The Fosstrak HAL can be used by other applications than Fosstrak Reader for
     uniform access to readers and the simulator. This increases performance if
-    the filtering and reporting system of Accada Reader is not used. To use
-    Accada HAL this way, please refer to the {{{#Configuring} Configuring
-    Accada HAL}} section below and the {{{developer-index.html}
-    Accada HAL Developer}} section for information about the Hardware
+    the filtering and reporting system of Fosstrak Reader is not used. To use
+    Fosstrak HAL this way, please refer to the {{{#Configuring} Configuring
+    Fosstrak HAL}} section below and the {{{developer-index.html}
+    Fosstrak HAL Developer}} section for information about the Hardware
     Abstraction Interface.
 
 
-* {Getting} Started with Accada Reader
+* {Getting} Started with Fosstrak Reader
 
-  To use Accada HAL with Accada Reader, accada-hal-common and the accada-hal-
+  To use Fosstrak HAL with Fosstrak Reader, fosstrak-hal-common and the fosstrak-hal-
   \<reader\> you want to use has to be included on the class path. The Reader
   RP/RM Core binary package with dependencies allready includes the
-  accada-hal-common and implementations for the Simulator, Impinj and FEIG
+  fosstrak-hal-common and implementations for the Simulator, Impinj and FEIG
   readers.
 
-  For instructions on how to use the Accada Reader, please refer to the
-  {{{../../reader/docs/user-index.html}Accada Reader Getting Started}}.
+  For instructions on how to use the Fosstrak Reader, please refer to the
+  {{{../../reader/docs/user-index.html}Fosstrak Reader Getting Started}}.
 
 
-* {Configuring} Accada HAL
+* {Configuring} Fosstrak HAL
 
-  The Accada HAL is configured through XML files. The path to the file is given
+  The Fosstrak HAL is configured through XML files. The path to the file is given
   in the ReaderDevice configuration file of the Reader Core or as an argument
   to the constructor if the hardware abstraction is accessed directly.
 
-  The configuration of the Accada HAL depends on the reader that is used. Please
+  The configuration of the Fosstrak HAL depends on the reader that is used. Please
   refer to the configuration instructions for the reader you want to use:
 
   * {{{user-simulator.html}Simulator}} Graphic, Batch, Command Line or Multi

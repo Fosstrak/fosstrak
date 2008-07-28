@@ -1,4 +1,4 @@
-package org.accada.hal.impl.impinj;
+package org.fosstrak.hal.impl.impinj;
 
 import java.io.IOException;
 import java.net.URL;
@@ -7,29 +7,29 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
-import org.accada.hal.AsynchronousIdentifyListener;
-import org.accada.hal.HardwareAbstraction;
-import org.accada.hal.HardwareException;
-import org.accada.hal.MemoryBankDescriptor;
-import org.accada.hal.MemoryDescriptor;
-import org.accada.hal.Observation;
-import org.accada.hal.ReadPointNotFoundException;
-import org.accada.hal.TagDescriptor;
-import org.accada.hal.Trigger;
-import org.accada.hal.UnsignedByteArray;
-import org.accada.hal.UnsupportedOperationException;
-import org.accada.hal.impl.impinj.comm.Frame;
-import org.accada.hal.impl.impinj.comm.FrameException;
-import org.accada.hal.impl.impinj.comm.FrameParameters;
-import org.accada.hal.impl.impinj.comm.FrameParametersSpec;
-import org.accada.hal.impl.impinj.comm.TCPIPProtocol;
-import org.accada.hal.transponder.IDType;
-import org.accada.hal.transponder.InventoryItem;
-import org.accada.hal.transponder.EPCTransponderModel;
-import org.accada.hal.transponder.RFTechnology;
-import org.accada.hal.transponder.TransponderType;
-import org.accada.hal.util.ByteBlock;
-import org.accada.hal.util.ResourceLocator;
+import org.fosstrak.hal.AsynchronousIdentifyListener;
+import org.fosstrak.hal.HardwareAbstraction;
+import org.fosstrak.hal.HardwareException;
+import org.fosstrak.hal.MemoryBankDescriptor;
+import org.fosstrak.hal.MemoryDescriptor;
+import org.fosstrak.hal.Observation;
+import org.fosstrak.hal.ReadPointNotFoundException;
+import org.fosstrak.hal.TagDescriptor;
+import org.fosstrak.hal.Trigger;
+import org.fosstrak.hal.UnsignedByteArray;
+import org.fosstrak.hal.UnsupportedOperationException;
+import org.fosstrak.hal.impl.impinj.comm.Frame;
+import org.fosstrak.hal.impl.impinj.comm.FrameException;
+import org.fosstrak.hal.impl.impinj.comm.FrameParameters;
+import org.fosstrak.hal.impl.impinj.comm.FrameParametersSpec;
+import org.fosstrak.hal.impl.impinj.comm.TCPIPProtocol;
+import org.fosstrak.hal.transponder.IDType;
+import org.fosstrak.hal.transponder.InventoryItem;
+import org.fosstrak.hal.transponder.EPCTransponderModel;
+import org.fosstrak.hal.transponder.RFTechnology;
+import org.fosstrak.hal.transponder.TransponderType;
+import org.fosstrak.hal.util.ByteBlock;
+import org.fosstrak.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
@@ -199,7 +199,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#identify(java.lang.String[])
+	 * @see org.fosstrak.hal.HardwareAbstraction#identify(java.lang.String[])
 	 */
 	public Observation[] identify(String[] readPointNames)
 			throws HardwareException {
@@ -377,7 +377,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    /**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#getReadPointNames()
+	 * @see org.fosstrak.hal.HardwareAbstraction#getReadPointNames()
 	 */
 	public String[] getReadPointNames() {
       Set<String> keyset = readPoints.keySet();
@@ -397,7 +397,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#readBytes(java.lang.String,
+	 * @see org.fosstrak.hal.HardwareAbstraction#readBytes(java.lang.String,
 	 *      java.lang.String, int, int, int, java.lang.String[])
 	 */
 	public UnsignedByteArray readBytes(String readPointName, String id,
@@ -517,7 +517,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#writeBytes(java.lang.String,
+	 * @see org.fosstrak.hal.HardwareAbstraction#writeBytes(java.lang.String,
 	 *      java.lang.String, int, int, UnsignedByteArray, java.lang.String[])
 	 */
 	public void writeBytes(String readPointName, String id, int memoryBank,
@@ -671,7 +671,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    /**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#writeId(java.lang.String,
+	 * @see org.fosstrak.hal.HardwareAbstraction#writeId(java.lang.String,
 	 *      java.lang.String, java.lang.String[])
 	 */
 	public void writeId(String readPointName, String id, String[] passwords)
@@ -746,7 +746,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    /**
     * (non-Javadoc)
     *
-    * @see org.accada.hal.HardwareAbstraction#supportsWriteId()
+    * @see org.fosstrak.hal.HardwareAbstraction#supportsWriteId()
     */
    public boolean supportsWriteId() {
       return true;
@@ -755,7 +755,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#reset()
+	 * @see org.fosstrak.hal.HardwareAbstraction#reset()
 	 */
 	public void reset() throws HardwareException {
       try {
@@ -812,7 +812,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    /**
     * (non-Javadoc)
     *
-    * @see org.accada.hal.HardwareAbstraction#supportsReset()
+    * @see org.fosstrak.hal.HardwareAbstraction#supportsReset()
     */
 	public boolean supportsReset() {
 	   return true;
@@ -821,7 +821,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#setParameter(java.lang.String,
+	 * @see org.fosstrak.hal.HardwareAbstraction#setParameter(java.lang.String,
 	 *      java.lang.String)
 	 */
 	public void setParameter(String param, String value)
@@ -897,7 +897,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#getParameter(java.lang.String)
+	 * @see org.fosstrak.hal.HardwareAbstraction#getParameter(java.lang.String)
 	 */
 	public String getParameter(String param) throws HardwareException {
 
@@ -977,7 +977,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
    /**
     * (non-Javadoc)
     *
-    * @see org.accada.hal.HardwareAbstraction#supportsParameters()
+    * @see org.fosstrak.hal.HardwareAbstraction#supportsParameters()
     */
    public boolean supportsParameters() {
       return true;
@@ -986,7 +986,7 @@ public class ImpinjTCPIPController implements HardwareAbstraction {
 	/**
 	 * (non-Javadoc)
 	 *
-	 * @see org.accada.hal.HardwareAbstraction#getAllParameterNames()
+	 * @see org.fosstrak.hal.HardwareAbstraction#getAllParameterNames()
 	 */
 	public String[] getAllParameterNames() throws HardwareException,
 			UnsupportedOperationException {

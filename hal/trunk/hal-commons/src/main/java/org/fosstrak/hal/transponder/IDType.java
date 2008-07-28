@@ -1,9 +1,9 @@
-package org.accada.hal.transponder;
+package org.fosstrak.hal.transponder;
 
 import java.net.URL;
 import java.util.HashMap;
 
-import org.accada.hal.util.ResourceLocator;
+import org.fosstrak.hal.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 

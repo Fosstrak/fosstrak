@@ -8,10 +8,10 @@
   <moduleSets>
     <moduleSet>
       <includes>
-        <include>org.accada.hal:hal-commons</include>
-        <include>org.accada.hal:hal-impl-feig</include>
-        <include>org.accada.hal:hal-impl-impinj</include>
-        <include>org.accada.hal:hal-impl-sim</include>
+        <include>org.fosstrak.hal:hal-commons</include>
+        <include>org.fosstrak.hal:hal-impl-feig</include>
+        <include>org.fosstrak.hal:hal-impl-impinj</include>
+        <include>org.fosstrak.hal:hal-impl-sim</include>
       </includes>
       <sources>
         <fileSets>

@@ -1,4 +1,4 @@
-package org.accada.hal.transponder;
+package org.fosstrak.hal.transponder;
 
 public enum TransponderManufacturer {
 

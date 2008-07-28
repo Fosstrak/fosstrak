@@ -10,7 +10,7 @@ FEIG Configuration
 
 * Supported Reader Types
 
-  Accada HAL FEIG implementation was designed for and tested on following reader
+  Fosstrak HAL FEIG implementation was designed for and tested on following reader
   types of the FEIG OBID i-scan series:
 
   * {{{#LRU}ID ISC.LRU1000}} (Ethernet, TPC/IP)
@@ -24,13 +24,13 @@ FEIG Configuration
 
 * ID ISC.{LRU}1000
 
-** Configuration of the Accada Reader
+** Configuration of the Fosstrak Reader
 
-  The following XML code is an example on how to configure the Accada Reader to
+  The following XML code is an example on how to configure the Fosstrak Reader to
   use this readers HAL implementation. The name can be chosen arbitrary but
   must be unique if multiple readers are configured. The class implementing the
   <<<HardwareAbstraction>>> interface for this reader type is
-  <<<org.accada.hal.impl.feig.FeigTCPIPController>>>. The properties element
+  <<<org.fosstrak.hal.impl.feig.FeigTCPIPController>>>. The properties element
   contains the path to the configuration file. For information about this see
   the configuration file example below.
 
@@ -44,7 +44,7 @@ FEIG Configuration
       <readers>
          <reader>
             <name>FeigTCPIPController</name>
-            <class>org.accada.hal.impl.feig.FeigTCPIPController</class>
+            <class>org.fosstrak.hal.impl.feig.FeigTCPIPController</class>
             <properties>/props/FeigTCPIPController.xml</properties>
             <readpoint>Antenna1</readpoint>
          </reader>
@@ -98,13 +98,13 @@ FEIG Configuration
 
 * ID ISC.{MR}101-A
 
-** Configuration of the Accada Reader
+** Configuration of the Fosstrak Reader
 
-  The following XML code is an example on how to configure the Accada Reader to
+  The following XML code is an example on how to configure the Fosstrak Reader to
   use this readers HAL implementation. The name can be chosen arbitrary but
   must be unique if multiple readers are configured. The class implementing the
   <<<HardwareAbstraction>>> interface for this reader type is
-  <<<org.accada.hal.impl.feig.FeigCOMController>>>. The properties element
+  <<<org.fosstrak.hal.impl.feig.FeigCOMController>>>. The properties element
   contains the path to the configuration file. For information about this see
   the configuration file example below.
 
@@ -118,7 +118,7 @@ FEIG Configuration
       <readers>
          <reader>
             <name>FeigCOMController</name>
-            <class>org.accada.hal.impl.feig.FeigCOMController</class>
+            <class>org.fosstrak.hal.impl.feig.FeigCOMController</class>
             <properties>/props/FeigCOMController.xml</properties>
             <readpoint>Antenna1</readpoint>
             <readpoint>Antenna2</readpoint>

@@ -5,12 +5,12 @@
   <!-- Basics                                                      -->
   <!-- =========================================================== -->
 
-  <groupId>org.accada.hal</groupId>
+  <groupId>org.fosstrak.hal</groupId>
   <artifactId>hal-impl-feig</artifactId>
   <version>0.4.1-SNAPSHOT</version>
   <parent>
     <artifactId>hal</artifactId>
-    <groupId>org.accada.hal</groupId>
+    <groupId>org.fosstrak.hal</groupId>
     <version>0.4.1-SNAPSHOT</version>
   </parent>
   <packaging>jar</packaging>
@@ -92,7 +92,7 @@
       <version>2.0.3</version>
     </dependency>
     <dependency>
-      <groupId>org.accada.hal</groupId>
+      <groupId>org.fosstrak.hal</groupId>
       <artifactId>hal-commons</artifactId>
       <version>${project.version}</version>
     </dependency>

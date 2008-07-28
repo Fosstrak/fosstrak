@@ -1,9 +1,9 @@
 /**
- * This class locates resources (configuration files, images) for the accada HAL.
+ * This class locates resources (configuration files, images) for the fosstrak HAL.
  * It searches for user resources in the user directory (current application
  * directory) and for default resources in the library if no user resources found.
  */
-package org.accada.hal.util;
+package org.fosstrak.hal.util;
 
 import java.io.File;
 import java.net.URI;

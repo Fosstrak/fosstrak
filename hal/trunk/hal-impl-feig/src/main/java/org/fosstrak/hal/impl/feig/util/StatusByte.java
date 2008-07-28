@@ -1,6 +1,6 @@
-package org.accada.hal.impl.feig.util;
+package org.fosstrak.hal.impl.feig.util;
 
-import org.accada.hal.util.ByteBlock;
+import org.fosstrak.hal.util.ByteBlock;
 
 public enum StatusByte {
 	// General status

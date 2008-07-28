@@ -1,6 +1,6 @@
-package org.accada.hal.transponder;
+package org.fosstrak.hal.transponder;
 
-import org.accada.hal.util.ByteBlock;
+import org.fosstrak.hal.util.ByteBlock;
 
 public enum RFTechnology {
 	HF(0x0), UHF(0x2), UNKNOWN(0x3);
