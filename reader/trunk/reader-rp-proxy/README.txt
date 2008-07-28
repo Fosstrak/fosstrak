@@ -1,7 +1,7 @@
-Accada Reader Proxy
+Fosstrak Reader Proxy
 ===================
 
-The objective of the Accada Reader Proxy Module is to provide a Java library to
+The objective of the Fosstrak Reader Proxy Module is to provide a Java library to
 communicate with a reader via the EPCglobal Reader Protocol Version 1.1 from 
 within your Java application. The Java classes in the proxy library encapsulate
 the RP specific messaging by providing methods and data structures for the RP.
@@ -17,4 +17,4 @@ How to use the Reader Proxy
 configuration via an XML file. 
 
 For more information and different code example,  
-please see http://www.accada.org/reader/reader-rp-proxy
+please see http://www.fosstrak.org/reader/reader-rp-proxy

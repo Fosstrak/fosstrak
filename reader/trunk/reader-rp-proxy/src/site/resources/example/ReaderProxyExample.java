@@ -1,15 +1,15 @@
-import org.accada.reader.rprm.core.EventType;
-import org.accada.reader.rprm.core.FieldName;
-import org.accada.reader.rp.proxy.DataSelector;
-import org.accada.reader.rp.proxy.NotificationChannel;
-import org.accada.reader.rp.proxy.ReaderDevice;
-import org.accada.reader.rp.proxy.Source;
-import org.accada.reader.rp.proxy.Trigger;
-import org.accada.reader.rp.proxy.factories.DataSelectorFactory;
-import org.accada.reader.rp.proxy.factories.NotificationChannelFactory;
-import org.accada.reader.rp.proxy.factories.ReaderDeviceFactory;
-import org.accada.reader.rp.proxy.factories.TriggerFactory;
-import org.accada.reader.rp.proxy.msg.Handshake;
+import org.fosstrak.reader.rprm.core.EventType;
+import org.fosstrak.reader.rprm.core.FieldName;
+import org.fosstrak.reader.rp.proxy.DataSelector;
+import org.fosstrak.reader.rp.proxy.NotificationChannel;
+import org.fosstrak.reader.rp.proxy.ReaderDevice;
+import org.fosstrak.reader.rp.proxy.Source;
+import org.fosstrak.reader.rp.proxy.Trigger;
+import org.fosstrak.reader.rp.proxy.factories.DataSelectorFactory;
+import org.fosstrak.reader.rp.proxy.factories.NotificationChannelFactory;
+import org.fosstrak.reader.rp.proxy.factories.ReaderDeviceFactory;
+import org.fosstrak.reader.rp.proxy.factories.TriggerFactory;
+import org.fosstrak.reader.rp.proxy.msg.Handshake;
 
 public class ReaderProxyExample {
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- XML Schema for the reader device configuration of the Accada Reader Proxy -->
+<!-- XML Schema for the reader device configuration of the Fosstrak Reader Proxy -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:element name="configurationDocument">
 		<xs:complexType>

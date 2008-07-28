@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core.msg.command;
+package org.fosstrak.reader.rprm.core.msg.command;
 
 import java.math.BigInteger;
 import java.util.Calendar;
@@ -28,28 +28,28 @@ import java.util.Vector;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.GetDataSelector;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.GetNotificationChannel;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.GetReadPoint;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.GetSource;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.GetTagField;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.GetTagSelector;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.GetTrigger;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveDataSelectors;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveNotificationChannels;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveSources;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveTagFields;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveTagSelectors;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveTriggers;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.SetCurrentDataSelector;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.SetCurrentSource;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.SetHandle;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.SetName;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.SetRole;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand.SetTimeUTC;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.AddReadPoints;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.RemoveReadPoints;
-import org.accada.reader.rprm.core.msg.util.HexUtil;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.GetDataSelector;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.GetNotificationChannel;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.GetReadPoint;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.GetSource;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.GetTagField;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.GetTagSelector;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.GetTrigger;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveDataSelectors;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveNotificationChannels;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveSources;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveTagFields;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveTagSelectors;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.RemoveTriggers;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.SetCurrentDataSelector;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.SetCurrentSource;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.SetHandle;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.SetName;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.SetRole;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand.SetTimeUTC;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.AddReadPoints;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.RemoveReadPoints;
+import org.fosstrak.reader.rprm.core.msg.util.HexUtil;
 import org.apache.log4j.Logger;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
@@ -72,7 +72,7 @@ import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl
  * 
  * @author Andreas Fürer, ETH Zurich Switzerland, Winter 2005/06
  * 
- * @see org.accada.reader.rprm.core.msg.command.TextCommandParser
+ * @see org.fosstrak.reader.rprm.core.msg.command.TextCommandParser
  */
 public class TextCommandParserHelper {
 	

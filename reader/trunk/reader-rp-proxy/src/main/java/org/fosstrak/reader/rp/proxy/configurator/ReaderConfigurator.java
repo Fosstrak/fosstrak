@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rp.proxy.configurator;
+package org.fosstrak.reader.rp.proxy.configurator;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,22 +28,22 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.accada.reader.rp.proxy.DataSelector;
-import org.accada.reader.rp.proxy.NotificationChannel;
-import org.accada.reader.rp.proxy.RPProxyException;
-import org.accada.reader.rp.proxy.ReaderDevice;
-import org.accada.reader.rp.proxy.Source;
-import org.accada.reader.rp.proxy.Trigger;
-import org.accada.reader.rp.proxy.configurator.DataSelectorConfiguration.EventFilters;
-import org.accada.reader.rp.proxy.configurator.DataSelectorConfiguration.FieldNames;
-import org.accada.reader.rp.proxy.configurator.DataSelectorConfiguration.TagFields;
-import org.accada.reader.rp.proxy.configurator.NotificationChannelConfiguration.NotificationTriggers;
-import org.accada.reader.rp.proxy.factories.DataSelectorFactory;
-import org.accada.reader.rp.proxy.factories.NotificationChannelFactory;
-import org.accada.reader.rp.proxy.factories.ReaderDeviceFactory;
-import org.accada.reader.rp.proxy.factories.TriggerFactory;
-import org.accada.reader.rp.proxy.msg.Handshake;
-import org.accada.reader.rprm.core.TriggerType;
+import org.fosstrak.reader.rp.proxy.DataSelector;
+import org.fosstrak.reader.rp.proxy.NotificationChannel;
+import org.fosstrak.reader.rp.proxy.RPProxyException;
+import org.fosstrak.reader.rp.proxy.ReaderDevice;
+import org.fosstrak.reader.rp.proxy.Source;
+import org.fosstrak.reader.rp.proxy.Trigger;
+import org.fosstrak.reader.rp.proxy.configurator.DataSelectorConfiguration.EventFilters;
+import org.fosstrak.reader.rp.proxy.configurator.DataSelectorConfiguration.FieldNames;
+import org.fosstrak.reader.rp.proxy.configurator.DataSelectorConfiguration.TagFields;
+import org.fosstrak.reader.rp.proxy.configurator.NotificationChannelConfiguration.NotificationTriggers;
+import org.fosstrak.reader.rp.proxy.factories.DataSelectorFactory;
+import org.fosstrak.reader.rp.proxy.factories.NotificationChannelFactory;
+import org.fosstrak.reader.rp.proxy.factories.ReaderDeviceFactory;
+import org.fosstrak.reader.rp.proxy.factories.TriggerFactory;
+import org.fosstrak.reader.rp.proxy.msg.Handshake;
+import org.fosstrak.reader.rprm.core.TriggerType;
 import org.apache.log4j.Logger;
 
 /**
@@ -57,7 +57,7 @@ public class ReaderConfigurator {
 	private static final Logger LOG = Logger.getLogger(ReaderConfigurator.class);
 	
 	/** the jaxb context */
-	private static final String JAXB_CONTEXT = "org.accada.reader.rp.proxy.configurator";
+	private static final String JAXB_CONTEXT = "org.fosstrak.reader.rp.proxy.configurator";
 
 	/** the reader device to configurate */
 	private static ReaderDevice readerDevice;
@@ -219,7 +219,7 @@ public class ReaderConfigurator {
 		notificationChannel = NotificationChannelFactory.createNotificationChannel(name, address, readerDevice);
 		
 		// add sources
-		org.accada.reader.rp.proxy.configurator.NotificationChannelConfiguration.Sources sources = channelConfig.getSources();
+		org.fosstrak.reader.rp.proxy.configurator.NotificationChannelConfiguration.Sources sources = channelConfig.getSources();
 		if (sources != null) {
 			for (String sourceName : sources.getSource()) {
 				LOG.debug("Add Source '" + sourceName + "' to NotificationChannel '" + name + "'");

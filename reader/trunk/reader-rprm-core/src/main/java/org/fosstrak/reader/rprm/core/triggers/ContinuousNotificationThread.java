@@ -1,30 +1,30 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core.triggers;
+package org.fosstrak.reader.rprm.core.triggers;
 
-import org.accada.reader.rprm.core.NotificationChannel;
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.Trigger;
-import org.accada.reader.rprm.core.msg.ReadReportNotificationListener;
-import org.accada.reader.rprm.core.readreport.ReadReport;
+import org.fosstrak.reader.rprm.core.NotificationChannel;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.Trigger;
+import org.fosstrak.reader.rprm.core.msg.ReadReportNotificationListener;
+import org.fosstrak.reader.rprm.core.readreport.ReadReport;
 
 /**
  * This is the implementation of the thread used by a continuous notification

@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -21,17 +21,17 @@
 /**
  * 
  */
-package org.accada.reader.rp.proxy.msg.stubs.serializers.text;
+package org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text;
 
 import java.util.Date;
 
-import org.accada.reader.rp.proxy.msg.stubs.DataSelector;
-import org.accada.reader.rp.proxy.msg.stubs.NotificationChannel;
-import org.accada.reader.rp.proxy.msg.stubs.Source;
-import org.accada.reader.rp.proxy.msg.stubs.TagField;
-import org.accada.reader.rp.proxy.msg.stubs.TagSelector;
-import org.accada.reader.rp.proxy.msg.stubs.Trigger;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.ReaderDeviceSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.DataSelector;
+import org.fosstrak.reader.rp.proxy.msg.stubs.NotificationChannel;
+import org.fosstrak.reader.rp.proxy.msg.stubs.Source;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagField;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagSelector;
+import org.fosstrak.reader.rp.proxy.msg.stubs.Trigger;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.ReaderDeviceSerializer;
 
 /**
  * @author Andreas
@@ -79,7 +79,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getEPC()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getEPC()
 	 */
 	public String getEPC() {
 		resetCommand();
@@ -94,7 +94,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getManufacturer()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getManufacturer()
 	 */
 	public String getManufacturer() {
 		resetCommand();
@@ -109,7 +109,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getModel()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getModel()
 	 */
 	public String getModel() {
 		resetCommand();
@@ -124,7 +124,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getHandle()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getHandle()
 	 */
 	public String getHandle() {
 		resetCommand();
@@ -139,7 +139,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#setHandle(int)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#setHandle(int)
 	 */
 	public String setHandle(int pHandle) {
 		resetCommand();
@@ -155,7 +155,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getName()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getName()
 	 */
 	public String getName() {
 		resetCommand();
@@ -170,7 +170,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#setName(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#setName(java.lang.String)
 	 */
 	public String setName(String pName) {
 		resetCommand();
@@ -186,7 +186,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getRole()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getRole()
 	 */
 	public String getRole() {
 		resetCommand();
@@ -201,7 +201,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#setRole(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#setRole(java.lang.String)
 	 */
 	public String setRole(String pRole) {
 		resetCommand();
@@ -217,7 +217,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getTimeTicks()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getTimeTicks()
 	 */
 	public String getTimeTicks() {
 		resetCommand();
@@ -232,7 +232,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getTimeUTC()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getTimeUTC()
 	 */
 	public String getTimeUTC() {
 		resetCommand();
@@ -247,7 +247,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#setTimeUTC(java.util.Date)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#setTimeUTC(java.util.Date)
 	 */
 	public String setTimeUTC(Date utc) {
 		resetCommand();
@@ -263,7 +263,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getManufacturerDescription()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getManufacturerDescription()
 	 */
 	public String getManufacturerDescription() {
 		resetCommand();
@@ -278,7 +278,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getCurrentSource()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getCurrentSource()
 	 */
 	public String getCurrentSource() {
 		resetCommand();
@@ -293,7 +293,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#setCurrentSource(org.accada.reader.Source)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#setCurrentSource(org.fosstrak.reader.Source)
 	 */
 	public String setCurrentSource(Source currentSource) {
 		resetCommand();
@@ -309,7 +309,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getCurrentDataSelector()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getCurrentDataSelector()
 	 */
 	public String getCurrentDataSelector() {
 		resetCommand();
@@ -324,7 +324,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#setCurrentDataSelector(org.accada.reader.testclient.command.DataSelectorSerializer)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#setCurrentDataSelector(org.fosstrak.reader.testclient.command.DataSelectorSerializer)
 	 */
 	public String setCurrentDataSelector(DataSelector currentDataSelector) {
 		resetCommand();
@@ -340,7 +340,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeSources(org.accada.reader.Source[])
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeSources(org.fosstrak.reader.Source[])
 	 */
 	public String removeSources(Source[] pSources) {
 		resetCommand();
@@ -356,7 +356,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeAllSources()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeAllSources()
 	 */
 	public String removeAllSources() {
 		resetCommand();
@@ -371,7 +371,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getSource(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getSource(java.lang.String)
 	 */
 	public String getSource(String name) {
 		resetCommand();
@@ -387,7 +387,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getAllSources()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getAllSources()
 	 */
 	public String getAllSources() {
 		resetCommand();
@@ -402,7 +402,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeDataSelectors(org.accada.reader.testclient.command.DataSelectorSerializer[])
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeDataSelectors(org.fosstrak.reader.testclient.command.DataSelectorSerializer[])
 	 */
 	public String removeDataSelectors(DataSelector[] dataSelectors) {
 		resetCommand();
@@ -418,7 +418,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeAllDataSelectors()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeAllDataSelectors()
 	 */
 	public String removeAllDataSelectors() {
 		resetCommand();
@@ -433,7 +433,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getDataSelector(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getDataSelector(java.lang.String)
 	 */
 	public String getDataSelector(String name) {
 		resetCommand();
@@ -449,7 +449,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getAllDataSelectors()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getAllDataSelectors()
 	 */
 	public String getAllDataSelectors() {
 		resetCommand();
@@ -464,7 +464,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeNotificationChannels(org.accada.reader.NotificationChannel[])
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeNotificationChannels(org.fosstrak.reader.NotificationChannel[])
 	 */
 	public String removeNotificationChannels(
 			NotificationChannel[] notificationChannels) {
@@ -481,7 +481,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeAllNotificationChannels()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeAllNotificationChannels()
 	 */
 	public String removeAllNotificationChannels() {
 		resetCommand();
@@ -496,7 +496,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getNotificationChannel(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getNotificationChannel(java.lang.String)
 	 */
 	public String getNotificationChannel(String name) {
 		resetCommand();
@@ -512,7 +512,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getAllNotificationChannels()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getAllNotificationChannels()
 	 */
 	public String getAllNotificationChannels() {
 		resetCommand();
@@ -527,7 +527,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeTriggers(org.accada.reader.Trigger[])
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeTriggers(org.fosstrak.reader.Trigger[])
 	 */
 	public String removeTriggers(Trigger[] triggerList) {
 		resetCommand();
@@ -543,7 +543,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeAllTriggers()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeAllTriggers()
 	 */
 	public String removeAllTriggers() {
 		resetCommand();
@@ -558,7 +558,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getTrigger(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getTrigger(java.lang.String)
 	 */
 	public String getTrigger(String name) {
 		resetCommand();
@@ -574,7 +574,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getAllTriggers()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getAllTriggers()
 	 */
 	public String getAllTriggers() {
 		resetCommand();
@@ -589,7 +589,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeTagSelectors(org.accada.reader.TagSelector[])
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeTagSelectors(org.fosstrak.reader.TagSelector[])
 	 */
 	public String removeTagSelectors(TagSelector[] tagSelectors) {
 		resetCommand();
@@ -605,7 +605,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeAllTagSelectors()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeAllTagSelectors()
 	 */
 	public String removeAllTagSelectors() {
 		resetCommand();
@@ -620,7 +620,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getTagSelector(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getTagSelector(java.lang.String)
 	 */
 	public String getTagSelector(String name) {
 		resetCommand();
@@ -636,7 +636,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getAllTagSelectors()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getAllTagSelectors()
 	 */
 	public String getAllTagSelectors() {
 		resetCommand();
@@ -651,7 +651,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeTagFields(org.accada.reader.TagField[])
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeTagFields(org.fosstrak.reader.TagField[])
 	 */
 	public String removeTagFields(TagField[] tagFields) {
 		resetCommand();
@@ -667,7 +667,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#removeAllTagFields()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#removeAllTagFields()
 	 */
 	public String removeAllTagFields() {
 		resetCommand();
@@ -682,7 +682,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getTagField(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getTagField(java.lang.String)
 	 */
 	public String getTagField(String name) {
 		resetCommand();
@@ -698,7 +698,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getAllTagFields()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getAllTagFields()
 	 */
 	public String getAllTagFields() {
 		resetCommand();
@@ -713,7 +713,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#resetToDefaultSettings()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#resetToDefaultSettings()
 	 */
 	public String resetToDefaultSettings() {
 		resetCommand();
@@ -728,7 +728,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#reboot()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#reboot()
 	 */
 	public String reboot() {
 		resetCommand();
@@ -743,7 +743,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#goodbye()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#goodbye()
 	 */
 	public String goodbye() {
 		resetCommand();
@@ -758,7 +758,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getReadPoint(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getReadPoint(java.lang.String)
 	 */
 	public String getReadPoint(String name) {
 		resetCommand();
@@ -774,7 +774,7 @@ ReaderDeviceSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.ReaderDeviceSerializer#getAllReadPoints()
+	 * @see org.fosstrak.reader.testclient.command.ReaderDeviceSerializer#getAllReadPoints()
 	 */
 	public String getAllReadPoints() {
 		resetCommand();

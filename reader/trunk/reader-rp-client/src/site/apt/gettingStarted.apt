@@ -6,9 +6,9 @@
 
 Reader RP Client Module: Getting Started
 
-* Installing the Accada RP Client
+* Installing the Fosstrak RP Client
 
-   The following instructions show how to install the Accada Reader RP Client:
+   The following instructions show how to install the Fosstrak Reader RP Client:
    
    * Download the Reader RP Client binaries with the dependencies included from the {{{../download.html}download}} section of the website.
   
@@ -43,10 +43,10 @@ Reader RP Client Module: Getting Started
 
 * Display Notification Messages
 
-   * Start the class org.accada.reader.rp.client.EventSinkUI in the jar file with the
+   * Start the class org.fosstrak.reader.rp.client.EventSinkUI in the jar file with the
      following command:
 
-     java -cp reader-rp-client-VERSION.jar org.accada.reader.rp.client.EventSinkUI [port]
+     java -cp reader-rp-client-VERSION.jar org.fosstrak.reader.rp.client.EventSinkUI [port]
 
    * As the port use the TCP port to which the reader is sending the notification messages
      which is specified in the definition of the notification channel. The default port 9999.

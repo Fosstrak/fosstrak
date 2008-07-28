@@ -1,11 +1,11 @@
-package org.accada.reader.rprm.core.mgmt;
+package org.fosstrak.reader.rprm.core.mgmt;
 
-import org.accada.reader.rprm.core.mgmt.OperationalStatus;
+import org.fosstrak.reader.rprm.core.mgmt.OperationalStatus;
 
 import junit.framework.TestCase;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.OperationalStatus</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.OperationalStatus</code>.
  */
 public class OperationalStatusTest extends TestCase {
 	

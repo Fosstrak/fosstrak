@@ -1,10 +1,10 @@
-package org.accada.reader.rprm.core.mgmt.util;
+package org.fosstrak.reader.rprm.core.mgmt.util;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * All tests for package <code>org.accada.reader.mgmt.util</code> and its subpackages.
+ * All tests for package <code>org.fosstrak.reader.mgmt.util</code> and its subpackages.
  */
 public class AllTests {
 	

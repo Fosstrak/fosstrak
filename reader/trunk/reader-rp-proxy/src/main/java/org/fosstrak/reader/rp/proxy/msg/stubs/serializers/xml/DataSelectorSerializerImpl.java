@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -21,13 +21,13 @@
 /**
  * 
  */
-package org.accada.reader.rp.proxy.msg.stubs.serializers.xml;
+package org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml;
 
-import org.accada.reader.rp.proxy.msg.stubs.serializers.DataSelectorSerializer;
-import org.accada.reader.rprm.core.msg.command.DataSelectorCommand;
-import org.accada.reader.rprm.core.msg.command.EventTypeListParamType;
-import org.accada.reader.rprm.core.msg.command.FieldNameListParamType;
-import org.accada.reader.rprm.core.msg.command.StringListParamType;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.DataSelectorSerializer;
+import org.fosstrak.reader.rprm.core.msg.command.DataSelectorCommand;
+import org.fosstrak.reader.rprm.core.msg.command.EventTypeListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.FieldNameListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.StringListParamType;
 
 /**
  * @author Andreas
@@ -53,7 +53,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#create(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#create(java.lang.String)
 	 */
 	public String create(String name) {
 		resetCommand();
@@ -65,7 +65,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#getName()
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#getName()
 	 */
 	public String getName() {
 		resetCommand();
@@ -74,7 +74,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#addFieldNames(java.lang.String[])
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#addFieldNames(java.lang.String[])
 	 */
 	public String addFieldNames(String[] fieldNameList) {
 		resetCommand();
@@ -89,7 +89,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#removeFieldNames(java.lang.String[])
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#removeFieldNames(java.lang.String[])
 	 */
 	public String removeFieldNames(String[] fieldNameList) {
 		resetCommand();
@@ -104,7 +104,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#removeAllFieldNames()
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#removeAllFieldNames()
 	 */
 	public String removeAllFieldNames() {
 		resetCommand();
@@ -113,7 +113,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#getAllFieldNames()
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#getAllFieldNames()
 	 */
 	public String getAllFieldNames() {
 		resetCommand();
@@ -122,7 +122,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#addEventFilters(java.lang.String[])
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#addEventFilters(java.lang.String[])
 	 */
 	public String addEventFilters(String[] eventList) {
 		resetCommand();
@@ -137,7 +137,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#removeEventFilters(java.lang.String[])
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#removeEventFilters(java.lang.String[])
 	 */
 	public String removeEventFilters(String[] eventList) {
 		resetCommand();
@@ -152,7 +152,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#removeAllEventFilters()
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#removeAllEventFilters()
 	 */
 	public String removeAllEventFilters() {
 		resetCommand();
@@ -161,7 +161,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#getAllEventFilters()
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#getAllEventFilters()
 	 */
 	public String getAllEventFilters() {
 		resetCommand();
@@ -170,7 +170,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#addTagFieldNames(java.lang.String[])
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#addTagFieldNames(java.lang.String[])
 	 */
 	public String addTagFieldNames(String[] tagFieldNameList) {
 		resetCommand();
@@ -185,7 +185,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#removeTagFieldNames(java.lang.String[])
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#removeTagFieldNames(java.lang.String[])
 	 */
 	public String removeTagFieldNames(String[] tagFieldNameList) {
 		resetCommand();
@@ -200,7 +200,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#removeAllTagFieldNames()
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#removeAllTagFieldNames()
 	 */
 	public String removeAllTagFieldNames() {
 		resetCommand();
@@ -209,7 +209,7 @@ public class DataSelectorSerializerImpl extends CommandSerializerImpl implements
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.DataSelectorSerializer#getAllTagFieldNames()
+	 * @see org.fosstrak.reader.testclient.command.DataSelectorSerializer#getAllTagFieldNames()
 	 */
 	public String getAllTagFieldNames() {
 		resetCommand();

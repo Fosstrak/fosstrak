@@ -1,19 +1,19 @@
-package org.accada.reader.rprm.core;
+package org.fosstrak.reader.rprm.core;
 
 import junit.framework.TestCase;
 
-import org.accada.hal.HardwareException;
-import org.accada.hal.ReadPointNotFoundException;
-import org.accada.hal.UnsupportedOperationException;
-import org.accada.reader.rprm.core.ReadPoint;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.mgmt.OperationalStatus;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.hal.HardwareException;
+import org.fosstrak.hal.ReadPointNotFoundException;
+import org.fosstrak.hal.UnsupportedOperationException;
+import org.fosstrak.reader.rprm.core.ReadPoint;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.mgmt.OperationalStatus;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 
 /**
- * Tests for the class <code>org.accada.reader.ReadPoint</code>.
+ * Tests for the class <code>org.fosstrak.reader.ReadPoint</code>.
  */
 public class ReadPointTest extends TestCase {
 

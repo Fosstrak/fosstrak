@@ -21,7 +21,7 @@
       <readers>
          <reader>
             <name>SimulatorController</name>
-            <class>org.accada.hal.impl.sim.SimulatorController</class>
+            <class>org.fosstrak.hal.impl.sim.SimulatorController</class>
             <properties>/props/SimulatorController.xml</properties>
             <readpoint>Shelf1</readpoint>
             <readpoint>Shelf2</readpoint>
@@ -59,7 +59,7 @@
 
    <!-- The io trigger classes -->
       <IOEdgeTriggerPortManager>
-         <port>org.accada.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager</port>
+         <port>org.fosstrak.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager</port>
       </IOEdgeTriggerPortManager>
       <IOValueTriggerPortManager>
       </IOValueTriggerPortManager>

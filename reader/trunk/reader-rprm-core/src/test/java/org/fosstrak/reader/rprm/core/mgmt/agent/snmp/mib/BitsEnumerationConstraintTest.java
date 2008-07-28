@@ -1,8 +1,8 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.mib;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.BitsEnumerationConstraint;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.BitsEnumerationConstraint;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.PDU;
 import org.snmp4j.smi.Integer32;
@@ -10,7 +10,7 @@ import org.snmp4j.smi.OctetString;
 import org.snmp4j.smi.Variable;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.mib.BitsEnumerationConstraint</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.mib.BitsEnumerationConstraint</code>.
  */
 public class BitsEnumerationConstraintTest extends TestCase {
 

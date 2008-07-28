@@ -5,12 +5,12 @@
   <!-- Basics                                                      -->
   <!-- =========================================================== -->
 
-  <groupId>org.accada.reader</groupId>
+  <groupId>org.fosstrak.reader</groupId>
   <artifactId>reader-rp-client</artifactId>
   <version>0.4.1-SNAPSHOT</version>
   <parent>
     <artifactId>reader</artifactId>
-    <groupId>org.accada.reader</groupId>
+    <groupId>org.fosstrak.reader</groupId>
     <version>0.4.1-SNAPSHOT</version>
   </parent>
   <packaging>jar</packaging>
@@ -24,12 +24,12 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.accada.reader</groupId>
+      <groupId>org.fosstrak.reader</groupId>
       <artifactId>reader-rp-proxy</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.accada.reader</groupId>
+      <groupId>org.fosstrak.reader</groupId>
       <artifactId>reader-rprm-core</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -73,7 +73,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>org.accada.reader.rp.client.TestClient</mainClass>
+              <mainClass>org.fosstrak.reader.rp.client.TestClient</mainClass>
               <addClasspath>true</addClasspath>
               <classpathPrefix>./lib</classpathPrefix>
             </manifest>

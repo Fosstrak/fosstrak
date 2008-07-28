@@ -7,7 +7,7 @@
               -------------------
 
 
-Welcome to the Accada Reader Project
+Welcome to the Fosstrak Reader Project
 
 
 * Objective
@@ -38,20 +38,20 @@ Welcome to the Accada Reader Project
   Possible usage scenarios include the following:
 
   * Enable a reader that does not implement the EPCglobal Reader Protocol or
-    the Reader Management Standard by deploying a HAL wrapper - use the Accada
+    the Reader Management Standard by deploying a HAL wrapper - use the Fosstrak
     Reader and HAL as an adaptor.
 
-  * Simulate the deployment of hundreds of readers - use the Accada Reader with
-    the simulation framework of the Accada HAL.
+  * Simulate the deployment of hundreds of readers - use the Fosstrak Reader with
+    the simulation framework of the Fosstrak HAL.
 
   * Test your RFID application without any reader hardware attached - use the
-    Accada Reader RP/RM Core with a simulator of the Accada HAL.
+    Fosstrak Reader RP/RM Core with a simulator of the Fosstrak HAL.
 
   * Interact with a reader that implements the EPCglobal Reader Protocol
-    Version 1.1 - use the Accada Reader Client.
+    Version 1.1 - use the Fosstrak Reader Client.
 
   * Communicate with a reader via the EPCglobal Reader Protocol Version 1.1
-    from within your Java application - use the Accada Reader RP Proxy.
+    from within your Java application - use the Fosstrak Reader RP Proxy.
 
   * Embed our reader implementation in your reader - this requires a powerful
     reader platform.

@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core.msg;
+package org.fosstrak.reader.rprm.core.msg;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,99 +34,99 @@ import java.util.Vector;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.accada.reader.rprm.core.DataSelector;
-import org.accada.reader.rprm.core.EventType;
-import org.accada.reader.rprm.core.FieldName;
-import org.accada.reader.rprm.core.NotificationChannel;
-import org.accada.reader.rprm.core.ReadPoint;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.Source;
-import org.accada.reader.rprm.core.TagField;
-import org.accada.reader.rprm.core.TagFieldValue;
-import org.accada.reader.rprm.core.TagSelector;
-import org.accada.reader.rprm.core.Trigger;
-import org.accada.reader.rprm.core.TriggerType;
-import org.accada.reader.rprm.core.msg.command.Command;
-import org.accada.reader.rprm.core.msg.command.DataSelectorCommand;
-import org.accada.reader.rprm.core.msg.command.EventTypeCommand;
-import org.accada.reader.rprm.core.msg.command.FieldNameCommand;
-import org.accada.reader.rprm.core.msg.command.HexStringListType;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand;
-import org.accada.reader.rprm.core.msg.command.ReadPointCommand;
-import org.accada.reader.rprm.core.msg.command.ReaderDeviceCommand;
-import org.accada.reader.rprm.core.msg.command.SourceCommand;
-import org.accada.reader.rprm.core.msg.command.TagFieldCommand;
-import org.accada.reader.rprm.core.msg.command.TagSelectorCommand;
-import org.accada.reader.rprm.core.msg.command.TriggerCommand;
-import org.accada.reader.rprm.core.msg.command.TriggerTypeCommand;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.Kill;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.Write;
-import org.accada.reader.rprm.core.msg.reply.AddressReturnType;
-import org.accada.reader.rprm.core.msg.reply.BooleanReturnType;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorListParamType;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorListReturnType;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorReply;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorReturnType;
-import org.accada.reader.rprm.core.msg.reply.EPC;
-import org.accada.reader.rprm.core.msg.reply.EpcReturnType;
-import org.accada.reader.rprm.core.msg.reply.ErrorType;
-import org.accada.reader.rprm.core.msg.reply.EventTimeType;
-import org.accada.reader.rprm.core.msg.reply.EventTypeListParamType;
-import org.accada.reader.rprm.core.msg.reply.EventTypeListReturnValue;
-import org.accada.reader.rprm.core.msg.reply.EventTypeReply;
-import org.accada.reader.rprm.core.msg.reply.FieldNameListParamType;
-import org.accada.reader.rprm.core.msg.reply.FieldNameListReturnType;
-import org.accada.reader.rprm.core.msg.reply.FieldNameReply;
-import org.accada.reader.rprm.core.msg.reply.HexStringReturnType;
-import org.accada.reader.rprm.core.msg.reply.IntReturnType;
-import org.accada.reader.rprm.core.msg.reply.NoParamType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelListParamType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelListReturnType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReply;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadPointListParamType;
-import org.accada.reader.rprm.core.msg.reply.ReadPointListReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadPointReply;
-import org.accada.reader.rprm.core.msg.reply.ReadPointReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadReportType;
-import org.accada.reader.rprm.core.msg.reply.ReaderDeviceReply;
-import org.accada.reader.rprm.core.msg.reply.Reply;
-import org.accada.reader.rprm.core.msg.reply.SourceListParamType;
-import org.accada.reader.rprm.core.msg.reply.SourceListReturnType;
-import org.accada.reader.rprm.core.msg.reply.SourceReply;
-import org.accada.reader.rprm.core.msg.reply.SourceReturnType;
-import org.accada.reader.rprm.core.msg.reply.StringReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldListParamType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldReply;
-import org.accada.reader.rprm.core.msg.reply.TagFieldReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorListParamType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorReply;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorReturnType;
-import org.accada.reader.rprm.core.msg.reply.TimeStampReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerListParamType;
-import org.accada.reader.rprm.core.msg.reply.TriggerListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerReply;
-import org.accada.reader.rprm.core.msg.reply.TriggerReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeReply;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerValueReturnType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReply.ReadQueuedData;
-import org.accada.reader.rprm.core.msg.reply.SourceReply.RawReadIDs;
-import org.accada.reader.rprm.core.msg.reply.SourceReply.ReadIDs;
-import org.accada.reader.rprm.core.msg.reply.TagEventType.EventTriggers;
-import org.accada.reader.rprm.core.msg.transport.Connection;
-import org.accada.reader.rprm.core.msg.transport.ServerConnection;
-import org.accada.reader.rprm.core.msg.util.CompareSet;
-import org.accada.reader.rprm.core.msg.util.HexUtil;
-import org.accada.reader.rprm.core.msg.util.SocketUtil;
-import org.accada.reader.rprm.core.readreport.ReadReport;
-import org.accada.reader.rprm.core.readreport.SourceInfoType;
-import org.accada.reader.rprm.core.readreport.SourceReport;
-import org.accada.reader.rprm.core.readreport.TagFieldValueParamType;
+import org.fosstrak.reader.rprm.core.DataSelector;
+import org.fosstrak.reader.rprm.core.EventType;
+import org.fosstrak.reader.rprm.core.FieldName;
+import org.fosstrak.reader.rprm.core.NotificationChannel;
+import org.fosstrak.reader.rprm.core.ReadPoint;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.Source;
+import org.fosstrak.reader.rprm.core.TagField;
+import org.fosstrak.reader.rprm.core.TagFieldValue;
+import org.fosstrak.reader.rprm.core.TagSelector;
+import org.fosstrak.reader.rprm.core.Trigger;
+import org.fosstrak.reader.rprm.core.TriggerType;
+import org.fosstrak.reader.rprm.core.msg.command.Command;
+import org.fosstrak.reader.rprm.core.msg.command.DataSelectorCommand;
+import org.fosstrak.reader.rprm.core.msg.command.EventTypeCommand;
+import org.fosstrak.reader.rprm.core.msg.command.FieldNameCommand;
+import org.fosstrak.reader.rprm.core.msg.command.HexStringListType;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand;
+import org.fosstrak.reader.rprm.core.msg.command.ReadPointCommand;
+import org.fosstrak.reader.rprm.core.msg.command.ReaderDeviceCommand;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand;
+import org.fosstrak.reader.rprm.core.msg.command.TagFieldCommand;
+import org.fosstrak.reader.rprm.core.msg.command.TagSelectorCommand;
+import org.fosstrak.reader.rprm.core.msg.command.TriggerCommand;
+import org.fosstrak.reader.rprm.core.msg.command.TriggerTypeCommand;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.Kill;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.Write;
+import org.fosstrak.reader.rprm.core.msg.reply.AddressReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.BooleanReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReply;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.EPC;
+import org.fosstrak.reader.rprm.core.msg.reply.EpcReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ErrorType;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTimeType;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTypeListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTypeListReturnValue;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTypeReply;
+import org.fosstrak.reader.rprm.core.msg.reply.FieldNameListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.FieldNameListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.FieldNameReply;
+import org.fosstrak.reader.rprm.core.msg.reply.HexStringReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.IntReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NoParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointReply;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadReportType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReaderDeviceReply;
+import org.fosstrak.reader.rprm.core.msg.reply.Reply;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.StringReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TimeStampReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerValueReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply.ReadQueuedData;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply.RawReadIDs;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply.ReadIDs;
+import org.fosstrak.reader.rprm.core.msg.reply.TagEventType.EventTriggers;
+import org.fosstrak.reader.rprm.core.msg.transport.Connection;
+import org.fosstrak.reader.rprm.core.msg.transport.ServerConnection;
+import org.fosstrak.reader.rprm.core.msg.util.CompareSet;
+import org.fosstrak.reader.rprm.core.msg.util.HexUtil;
+import org.fosstrak.reader.rprm.core.msg.util.SocketUtil;
+import org.fosstrak.reader.rprm.core.readreport.ReadReport;
+import org.fosstrak.reader.rprm.core.readreport.SourceInfoType;
+import org.fosstrak.reader.rprm.core.readreport.SourceReport;
+import org.fosstrak.reader.rprm.core.readreport.TagFieldValueParamType;
 import org.apache.log4j.Logger;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
@@ -161,7 +161,7 @@ public class CommandDispatcher {
 	private static CommandDispatcher dispatcher;
 
 	/** The singleton factory used to create empty replies. */
-	private static org.accada.reader.rprm.core.msg.reply.ObjectFactory replyFactory;
+	private static org.fosstrak.reader.rprm.core.msg.reply.ObjectFactory replyFactory;
 
 	/** The ReaderDevice we are working on. */
 	private static ReaderDevice readerDevice;
@@ -175,7 +175,7 @@ public class CommandDispatcher {
 
 	private CommandDispatcher(final MessageLayer msgLayer) {
 		log = Logger.getLogger(getClass().getName());
-		replyFactory = new org.accada.reader.rprm.core.msg.reply.ObjectFactory();
+		replyFactory = new org.fosstrak.reader.rprm.core.msg.reply.ObjectFactory();
 		this.msgLayer = msgLayer;
 		try {
 			readerDevice = ReaderDevice.getInstance();
@@ -494,7 +494,7 @@ public class CommandDispatcher {
 
 		else if (command.getRemoveSources() != null) {
 			log.debug("Calling ReaderDevice.removeSources()");
-			org.accada.reader.rprm.core.msg.command.SourceListParamType.List valueElems = command
+			org.fosstrak.reader.rprm.core.msg.command.SourceListParamType.List valueElems = command
 					.getRemoveSources().getSources().getList();
 			Source[] rdSources = getSource(valueElems);
 			readerDevice.removeSources(rdSources);
@@ -541,7 +541,7 @@ public class CommandDispatcher {
 
 		else if (command.getRemoveDataSelectors() != null) {
 			log.debug("Calling ReaderDevice.removeDataSelectors()");
-			org.accada.reader.rprm.core.msg.command.DataSelectorListParamType.List valueElems = command
+			org.fosstrak.reader.rprm.core.msg.command.DataSelectorListParamType.List valueElems = command
 					.getRemoveDataSelectors().getDataSelectors().getList();
 			DataSelector[] rdDataSelectors = getDataSelector(valueElems);
 			readerDevice.removeDataSelectors(rdDataSelectors);
@@ -590,7 +590,7 @@ public class CommandDispatcher {
 
 		else if (command.getRemoveNotificationChannels() != null) {
 			log.debug("Calling ReaderDevice.removeNotificationChannels()");
-			org.accada.reader.rprm.core.msg.command.NotificationChannelListParamType.List valueElems = command
+			org.fosstrak.reader.rprm.core.msg.command.NotificationChannelListParamType.List valueElems = command
 					.getRemoveNotificationChannels().getChannels()
 					.getList();
 			NotificationChannel[] rdNotificationChannels = getNotificationChannels(valueElems);
@@ -645,7 +645,7 @@ public class CommandDispatcher {
 		else if (command.getRemoveTriggers() != null) {
 			log.debug("Calling ReaderDevice.removeTriggers()");
 
-			org.accada.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
+			org.fosstrak.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
 					.getRemoveTriggers().getTriggers().getList();
 			Trigger[] rdTriggers = getTriggers(valueElems);
 			// call removeTriggers on RD
@@ -692,7 +692,7 @@ public class CommandDispatcher {
 
 		else if (command.getRemoveTagSelectors() != null) {
 			log.debug("Calling ReaderDevice.removeTagSelectors()");
-			org.accada.reader.rprm.core.msg.command.TagSelectorListParamType.List valueElems = command
+			org.fosstrak.reader.rprm.core.msg.command.TagSelectorListParamType.List valueElems = command
 					.getRemoveTagSelectors().getSelectors().getList();
 			List valueList = valueElems.getValue(); // List of strings with
 			// the tag selector
@@ -761,7 +761,7 @@ public class CommandDispatcher {
 
 		else if (command.getRemoveTagFields() != null) {
 			log.debug("Calling ReaderDevice.removeTagFields()");
-			org.accada.reader.rprm.core.msg.command.TagFieldListParamType.List valueElems = command
+			org.fosstrak.reader.rprm.core.msg.command.TagFieldListParamType.List valueElems = command
 					.getRemoveTagFields().getFields().getList();
 			List valueList = valueElems.getValue(); // List of strings with
 			// the tag field names
@@ -951,7 +951,7 @@ public class CommandDispatcher {
 				else if (command.getAddReadPoints() != null) {
 					log.debug("Calling Source.addReadPoints()");
 
-					org.accada.reader.rprm.core.msg.command.ReadPointListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.ReadPointListParamType.List valueElems = command
 							.getAddReadPoints().getReadPoints().getList();
 					List valueList = valueElems.getValue(); // List of strings
 					// with the read
@@ -982,7 +982,7 @@ public class CommandDispatcher {
 				else if (command.getRemoveReadPoints() != null) {
 					log.debug("Calling Source.removeReadPoints()");
 
-					org.accada.reader.rprm.core.msg.command.ReadPointListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.ReadPointListParamType.List valueElems = command
 							.getRemoveReadPoints().getReadPoints().getList();
 					List valueList = valueElems.getValue(); // List of strings
 					// with the source
@@ -1052,7 +1052,7 @@ public class CommandDispatcher {
 				else if (command.getAddReadTriggers() != null) {
 					log.debug("Calling Source.addReadTriggers()");
 
-					org.accada.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
 							.getAddReadTriggers().getTriggers().getList();
 					List valueList = valueElems.getValue(); // List of strings
 					// with the read
@@ -1083,7 +1083,7 @@ public class CommandDispatcher {
 				else if (command.getRemoveReadTriggers() != null) {
 					log.debug("Calling Source.removeReadTriggers()");
 
-					org.accada.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
 							.getRemoveReadTriggers().getTriggers().getList();
 					List valueList = valueElems.getValue(); // List of strings
 					// with the read
@@ -1155,7 +1155,7 @@ public class CommandDispatcher {
 				else if (command.getAddTagSelectors() != null) {
 					log.debug("Calling Source.addTagSelectors()");
 
-					org.accada.reader.rprm.core.msg.command.TagSelectorListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.TagSelectorListParamType.List valueElems = command
 							.getAddTagSelectors().getSelectors().getList();
 					List valueList = valueElems.getValue(); // List of strings
 					// with the tag
@@ -1190,7 +1190,7 @@ public class CommandDispatcher {
 					reply.setRemoveTagSelectors(voidType);
 					//
 
-					org.accada.reader.rprm.core.msg.command.TagSelectorListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.TagSelectorListParamType.List valueElems = command
 							.getRemoveTagSelectors().getSelectors().getList();
 					List valueList = valueElems.getValue(); // List of strings
 					// with the tag
@@ -1599,7 +1599,7 @@ public class CommandDispatcher {
 
 		if (command.getCreate() != null) {
 			log.debug("Calling Trigger.create()");
-			org.accada.reader.rprm.core.msg.command.TriggerCommand.Create createCommand = command
+			org.fosstrak.reader.rprm.core.msg.command.TriggerCommand.Create createCommand = command
 					.getCreate();
 			String name = createCommand.getName();
 			String triggerTypeName = createCommand.getTriggerType();
@@ -1952,7 +1952,7 @@ public class CommandDispatcher {
 				else if (command.getAddSources() != null) {
 					log.debug("NotificationChannel.addSources()");
 
-					org.accada.reader.rprm.core.msg.command.SourceListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.SourceListParamType.List valueElems = command
 							.getAddSources().getSources().getList();
 					List valueList = valueElems.getValue(); // List of strings
 					// with the source
@@ -1982,7 +1982,7 @@ public class CommandDispatcher {
 				else if (command.getRemoveSources() != null) {
 					log.debug("NotificationChannel.removeSources()");
 
-					org.accada.reader.rprm.core.msg.command.SourceListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.SourceListParamType.List valueElems = command
 							.getRemoveSources().getSources().getList();
 					Source[] rdSources = getSource(valueElems);
 					// call removeSources on RD
@@ -2035,7 +2035,7 @@ public class CommandDispatcher {
 				else if (command.getAddNotificationTriggers() != null) {
 					log.debug("NotificationChannel.addNotificationTriggers()");
 
-					org.accada.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
 							.getAddNotificationTriggers().getTriggers()
 							.getList();
 					List valueList = valueElems.getValue(); // List of strings
@@ -2066,7 +2066,7 @@ public class CommandDispatcher {
 					log
 							.debug("NotificationChannel.removeNotificationTriggers()");
 
-					org.accada.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
+					org.fosstrak.reader.rprm.core.msg.command.TriggerListParamType.List valueElems = command
 							.getRemoveNotificationTriggers().getTriggers()
 							.getList();
 					List valueList = valueElems.getValue(); // List of strings
@@ -2220,7 +2220,7 @@ public class CommandDispatcher {
 				log.debug("Calling DataSelector.addFieldNames()");
 
 				// prepare parameters
-				org.accada.reader.rprm.core.msg.command.FieldNameListParamType.List valueElems = command
+				org.fosstrak.reader.rprm.core.msg.command.FieldNameListParamType.List valueElems = command
 						.getAddFieldNames().getFieldNames().getList();
 				List valueList = valueElems.getValue(); /*
 														 * List of strings
@@ -2245,7 +2245,7 @@ public class CommandDispatcher {
 				log.debug("Calling DataSelector.removeFieldNames()");
 
 				// prepare parameters
-				org.accada.reader.rprm.core.msg.command.FieldNameListParamType.List valueElems = command
+				org.fosstrak.reader.rprm.core.msg.command.FieldNameListParamType.List valueElems = command
 						.getRemoveFieldNames().getFieldNames().getList();
 				List valueList = valueElems.getValue(); /*
 														 * List of strings
@@ -2298,7 +2298,7 @@ public class CommandDispatcher {
 				log.debug("Calling DataSelector.addEventFilters()");
 
 				// prepare parameters
-				org.accada.reader.rprm.core.msg.command.EventTypeListParamType.List valueElems = command
+				org.fosstrak.reader.rprm.core.msg.command.EventTypeListParamType.List valueElems = command
 						.getAddEventFilters().getEventType().getList();
 				List valueList = valueElems.getValue(); /*
 														 * List of strings
@@ -2323,7 +2323,7 @@ public class CommandDispatcher {
 				log.debug("Calling DataSelector.removeEventFilters()");
 
 				// prepare parameters
-				org.accada.reader.rprm.core.msg.command.EventTypeListParamType.List valueElems = command
+				org.fosstrak.reader.rprm.core.msg.command.EventTypeListParamType.List valueElems = command
 						.getRemoveEventFilters().getEventType().getList();
 				List valueList = valueElems.getValue(); /*
 														 * List of strings
@@ -2376,7 +2376,7 @@ public class CommandDispatcher {
 				log.debug("Calling DataSelector.addTagFieldNames()");
 
 				// prepare parameters
-				org.accada.reader.rprm.core.msg.command.StringListParamType.List valueElems = command
+				org.fosstrak.reader.rprm.core.msg.command.StringListParamType.List valueElems = command
 						.getAddTagFieldNames().getFieldNames().getList();
 				List valueList = valueElems.getValue(); /*
 														 * List of strings
@@ -2402,7 +2402,7 @@ public class CommandDispatcher {
 				log.debug("Calling DataSelector.removeTagFieldNames()");
 
 				// prepare parameters
-				org.accada.reader.rprm.core.msg.command.StringListParamType.List valueElems = command
+				org.fosstrak.reader.rprm.core.msg.command.StringListParamType.List valueElems = command
 						.getRemoveTagFieldNames().getFieldNames().getList();
 				List valueList = valueElems.getValue(); /*
 														 * List of strings
@@ -2817,13 +2817,13 @@ public class CommandDispatcher {
 		// add the source reports
 		Iterator sourceReportIt = report.getSourceReports().values().iterator();
 		while (sourceReportIt.hasNext()) {
-			org.accada.reader.rprm.core.msg.reply.ReadReportType.SourceReport sourceReport = replyFactory
+			org.fosstrak.reader.rprm.core.msg.reply.ReadReportType.SourceReport sourceReport = replyFactory
 					.createReadReportTypeSourceReport();
 			SourceReport rdSourceReport = (SourceReport) sourceReportIt.next();
 
 			// set the source info
 			if (rdSourceReport.containsSourceInfo()) {
-				org.accada.reader.rprm.core.msg.reply.SourceInfoType sourceInfo = replyFactory
+				org.fosstrak.reader.rprm.core.msg.reply.SourceInfoType sourceInfo = replyFactory
 						.createSourceInfoType();
 				SourceInfoType rdSourceInfo = rdSourceReport.getSourceInfo();
 				if (rdSourceInfo.getSourceFrequency() != -1) {
@@ -2844,9 +2844,9 @@ public class CommandDispatcher {
 			Collection tags = report.getAllTags().values();
 			Iterator tagIt = tags.iterator();
 			while (tagIt.hasNext()) {
-				org.accada.reader.rprm.core.readreport.TagType rdTag = (org.accada.reader.rprm.core.readreport.TagType) tagIt
+				org.fosstrak.reader.rprm.core.readreport.TagType rdTag = (org.fosstrak.reader.rprm.core.readreport.TagType) tagIt
 						.next();
-				org.accada.reader.rprm.core.msg.reply.TagType tag = replyFactory
+				org.fosstrak.reader.rprm.core.msg.reply.TagType tag = replyFactory
 						.createTagType();
 				if (dataSelectorFields != null
 						&& (dataSelectorFields.contains(FieldName.TAG_ID)
@@ -2882,16 +2882,16 @@ public class CommandDispatcher {
 	 * @throws JAXBException
 	 */
 	private List getTagEvents(
-			org.accada.reader.rprm.core.msg.reply.TagType msgTag,
-			org.accada.reader.rprm.core.readreport.TagType rdTag)
+			org.fosstrak.reader.rprm.core.msg.reply.TagType msgTag,
+			org.fosstrak.reader.rprm.core.readreport.TagType rdTag)
 			throws JAXBException {
 		List eventList = msgTag.getTagEvent();
 		Collection tagEvents = rdTag.getAllTagEvents().values();
 		Iterator it = tagEvents.iterator();
 		while (it.hasNext()) {
-			org.accada.reader.rprm.core.msg.reply.TagEventType tagEvent = replyFactory
+			org.fosstrak.reader.rprm.core.msg.reply.TagEventType tagEvent = replyFactory
 					.createTagEventType();
-			org.accada.reader.rprm.core.readreport.TagEventType rdEvent = (org.accada.reader.rprm.core.readreport.TagEventType) it
+			org.fosstrak.reader.rprm.core.readreport.TagEventType rdEvent = (org.fosstrak.reader.rprm.core.readreport.TagEventType) it
 					.next();
 			tagEvent.setEventType(rdEvent.getEventType());
 
@@ -2933,8 +2933,8 @@ public class CommandDispatcher {
 	 * @throws JAXBException
 	 */
 	private List getTagFields(
-			org.accada.reader.rprm.core.msg.reply.TagType msgTag,
-			org.accada.reader.rprm.core.readreport.TagType rdTag)
+			org.fosstrak.reader.rprm.core.msg.reply.TagType msgTag,
+			org.fosstrak.reader.rprm.core.readreport.TagType rdTag)
 			throws JAXBException {
 		List fieldList = msgTag.getTagFields();
 
@@ -2943,7 +2943,7 @@ public class CommandDispatcher {
 		while (it.hasNext()) {
 			TagFieldValueParamType tfvpReader = (TagFieldValueParamType) it
 					.next();
-			org.accada.reader.rprm.core.msg.reply.TagFieldValueParamType tfvp = replyFactory
+			org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueParamType tfvp = replyFactory
 					.createTagFieldValueParamType();
 			tfvp.setTagFieldName(tfvpReader.getTagFieldName());
 			tfvp.setTagFieldValue(HexUtil.hexToByteArray(tfvpReader
@@ -2985,7 +2985,7 @@ public class CommandDispatcher {
 	 * 
 	 */
 	private TagSelector[] getTagSelector(
-			final org.accada.reader.rprm.core.msg.command.TagSelectorListParamType list)
+			final org.fosstrak.reader.rprm.core.msg.command.TagSelectorListParamType list)
 			throws ReaderProtocolException {
 		List l = list.getList().getValue();
 		TagSelector[] tsArray = new TagSelector[l.size()];
@@ -3011,13 +3011,13 @@ public class CommandDispatcher {
 	 * 
 	 */
 	private TagFieldValue[] getTagFieldValue(
-			final org.accada.reader.rprm.core.msg.command.TagFieldValueListParamType list)
+			final org.fosstrak.reader.rprm.core.msg.command.TagFieldValueListParamType list)
 			throws ReaderProtocolException {
 		List l = list.getList().getValue();
 		TagFieldValue[] tfvArray = new TagFieldValue[l.size()];
 		int index = 0;
 		for (Iterator it = l.iterator(); it.hasNext();) {
-			org.accada.reader.rprm.core.msg.command.TagFieldValueParamType tfvPair = (org.accada.reader.rprm.core.msg.command.TagFieldValueParamType) it
+			org.fosstrak.reader.rprm.core.msg.command.TagFieldValueParamType tfvPair = (org.fosstrak.reader.rprm.core.msg.command.TagFieldValueParamType) it
 					.next();
 			TagField tf = readerDevice.getTagField(tfvPair.getTagFieldName());
 			TagFieldValue tfvItem = new TagFieldValue(tf, HexUtil.
@@ -3037,7 +3037,7 @@ public class CommandDispatcher {
 	 * @return The corresponding array of <code>Source</code> objects.
 	 */
 	private Source[] getSource(
-			final org.accada.reader.rprm.core.msg.command.SourceListParamType.List valueElems) {
+			final org.fosstrak.reader.rprm.core.msg.command.SourceListParamType.List valueElems) {
 		List valueList = valueElems.getValue(); // List of strings with the
 		// source names
 		/*
@@ -3069,7 +3069,7 @@ public class CommandDispatcher {
 	 * @return The corresponding array of <code>DataSelector</code> objects.
 	 */
 	private DataSelector[] getDataSelector(
-			final org.accada.reader.rprm.core.msg.command.DataSelectorListParamType.List valueElems) {
+			final org.fosstrak.reader.rprm.core.msg.command.DataSelectorListParamType.List valueElems) {
 		List valueList = valueElems.getValue(); // List of strings with the
 		// source names
 		/*
@@ -3101,7 +3101,7 @@ public class CommandDispatcher {
 	 *         objects.
 	 */
 	private NotificationChannel[] getNotificationChannels(
-			final org.accada.reader.rprm.core.msg.command.NotificationChannelListParamType.List valueElems) {
+			final org.fosstrak.reader.rprm.core.msg.command.NotificationChannelListParamType.List valueElems) {
 		List valueList = valueElems.getValue(); // List of strings with the
 		// notification channel names
 		/*
@@ -3134,7 +3134,7 @@ public class CommandDispatcher {
 	 * @return The corresponding array of <code>Trigger</code> objects.
 	 */
 	private Trigger[] getTriggers(
-			final org.accada.reader.rprm.core.msg.command.TriggerListParamType.List valueElems) {
+			final org.fosstrak.reader.rprm.core.msg.command.TriggerListParamType.List valueElems) {
 		List valueList = valueElems.getValue(); // List of strings with the
 		// trigger names
 		/*

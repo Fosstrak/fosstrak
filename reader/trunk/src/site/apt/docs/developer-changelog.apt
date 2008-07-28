@@ -68,7 +68,7 @@ Developer Change Log
 
 ** Bugfix {1605109}: Start reader from ReaderDevice class
 
-  The Accada Reader had its main method in the message layer although the
+  The Fosstrak Reader had its main method in the message layer although the
   <<<ReaderDevice>>> class is the 'center' of the reader and should contain the
   main method.
 
@@ -467,7 +467,7 @@ URL url = ResourceLocator.getURL(configFile, defaultConfigFile, clazz);
   This procedure finds the resource in many constellations:
 
   * Relative to the application started or to the library if the module is
-    added as a library (such as the proxy or Accada HAL that uses the same
+    added as a library (such as the proxy or Fosstrak HAL that uses the same
     resource loading mechanism).
 
   * With custom or default configuration  and without the need of unpacking the

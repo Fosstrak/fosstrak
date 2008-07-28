@@ -1,10 +1,10 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * All tests for package <code>org.accada.reader.mgmt.agent.snmp.table</code> and its subpackages.
+ * All tests for package <code>org.fosstrak.reader.mgmt.agent.snmp.table</code> and its subpackages.
  */
 public class AllTests {
 	

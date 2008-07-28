@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core;
+package org.fosstrak.reader.rprm.core;
 
 import java.net.InetAddress;
 import java.net.URI;
@@ -29,23 +29,23 @@ import java.util.Hashtable;
 import java.util.Timer;
 import java.util.Vector;
 
-import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
-import org.accada.reader.rprm.core.mgmt.OperationalStatus;
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
-import org.accada.reader.rprm.core.mgmt.alarm.NotificationChannelOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.TTOperationalStatusAlarmControl;
-import org.accada.reader.rprm.core.msg.MessagingConstants;
-import org.accada.reader.rprm.core.readreport.NotificationInfoType;
-import org.accada.reader.rprm.core.readreport.ReadReport;
-import org.accada.reader.rprm.core.readreport.ReaderInfoType;
-import org.accada.reader.rprm.core.readreport.SourceInfoType;
-import org.accada.reader.rprm.core.readreport.SourceReport;
-import org.accada.reader.rprm.core.readreport.TagEventType;
-import org.accada.reader.rprm.core.readreport.TagType;
-import org.accada.reader.rprm.core.triggers.ContinuousNotificationThread;
-import org.accada.reader.rprm.core.triggers.IOEdgeTriggerPortManager;
-import org.accada.reader.rprm.core.triggers.IOValueTriggerPortManager;
-import org.accada.reader.rprm.core.triggers.TimerNotificationThread;
+import org.fosstrak.reader.rprm.core.mgmt.AdministrativeStatus;
+import org.fosstrak.reader.rprm.core.mgmt.OperationalStatus;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmLevel;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.NotificationChannelOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.TTOperationalStatusAlarmControl;
+import org.fosstrak.reader.rprm.core.msg.MessagingConstants;
+import org.fosstrak.reader.rprm.core.readreport.NotificationInfoType;
+import org.fosstrak.reader.rprm.core.readreport.ReadReport;
+import org.fosstrak.reader.rprm.core.readreport.ReaderInfoType;
+import org.fosstrak.reader.rprm.core.readreport.SourceInfoType;
+import org.fosstrak.reader.rprm.core.readreport.SourceReport;
+import org.fosstrak.reader.rprm.core.readreport.TagEventType;
+import org.fosstrak.reader.rprm.core.readreport.TagType;
+import org.fosstrak.reader.rprm.core.triggers.ContinuousNotificationThread;
+import org.fosstrak.reader.rprm.core.triggers.IOEdgeTriggerPortManager;
+import org.fosstrak.reader.rprm.core.triggers.IOValueTriggerPortManager;
+import org.fosstrak.reader.rprm.core.triggers.TimerNotificationThread;
 import org.apache.log4j.Logger;
 
 /**

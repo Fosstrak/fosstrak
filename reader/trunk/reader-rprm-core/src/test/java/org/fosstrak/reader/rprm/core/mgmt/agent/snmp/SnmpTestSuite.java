@@ -1,10 +1,10 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * Tests for package <code>org.accada.reader.mgmt.agent.snmp</code>.
+ * Tests for package <code>org.fosstrak.reader.mgmt.agent.snmp</code>.
  */
 public class SnmpTestSuite {
 	

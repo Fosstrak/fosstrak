@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core.msg;
+package org.fosstrak.reader.rprm.core.msg;
 
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
@@ -32,57 +32,57 @@ import java.util.Vector;
 import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.accada.reader.rprm.core.msg.notification.Notification;
-import org.accada.reader.rprm.core.msg.reply.AddressReturnType;
-import org.accada.reader.rprm.core.msg.reply.BooleanReturnType;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorListReturnType;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorReply;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorReturnType;
-import org.accada.reader.rprm.core.msg.reply.EpcReturnType;
-import org.accada.reader.rprm.core.msg.reply.ErrorType;
-import org.accada.reader.rprm.core.msg.reply.EventTypeListReturnValue;
-import org.accada.reader.rprm.core.msg.reply.EventTypeReply;
-import org.accada.reader.rprm.core.msg.reply.FieldNameListReturnType;
-import org.accada.reader.rprm.core.msg.reply.FieldNameReply;
-import org.accada.reader.rprm.core.msg.reply.HexStringReturnType;
-import org.accada.reader.rprm.core.msg.reply.IntReturnType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelListReturnType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReply;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadPointListReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadPointReply;
-import org.accada.reader.rprm.core.msg.reply.ReadPointReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadReportType;
-import org.accada.reader.rprm.core.msg.reply.ReaderDeviceReply;
-import org.accada.reader.rprm.core.msg.reply.Reply;
-import org.accada.reader.rprm.core.msg.reply.SourceInfoType;
-import org.accada.reader.rprm.core.msg.reply.SourceListReturnType;
-import org.accada.reader.rprm.core.msg.reply.SourceReply;
-import org.accada.reader.rprm.core.msg.reply.SourceReturnType;
-import org.accada.reader.rprm.core.msg.reply.StringListReturnType;
-import org.accada.reader.rprm.core.msg.reply.StringReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagEventType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldReply;
-import org.accada.reader.rprm.core.msg.reply.TagFieldReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldValueParamType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorReply;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagType;
-import org.accada.reader.rprm.core.msg.reply.TimeStampReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerReply;
-import org.accada.reader.rprm.core.msg.reply.TriggerReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeReply;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerValueReturnType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReply.ReadQueuedData;
-import org.accada.reader.rprm.core.msg.reply.ReadReportType.SourceReport;
-import org.accada.reader.rprm.core.msg.reply.SourceReply.RawReadIDs;
-import org.accada.reader.rprm.core.msg.reply.SourceReply.Read;
-import org.accada.reader.rprm.core.msg.reply.SourceReply.ReadIDs;
+import org.fosstrak.reader.rprm.core.msg.notification.Notification;
+import org.fosstrak.reader.rprm.core.msg.reply.AddressReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.BooleanReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReply;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.EpcReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ErrorType;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTypeListReturnValue;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTypeReply;
+import org.fosstrak.reader.rprm.core.msg.reply.FieldNameListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.FieldNameReply;
+import org.fosstrak.reader.rprm.core.msg.reply.HexStringReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.IntReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointReply;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadReportType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReaderDeviceReply;
+import org.fosstrak.reader.rprm.core.msg.reply.Reply;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceInfoType;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.StringListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.StringReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagEventType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagType;
+import org.fosstrak.reader.rprm.core.msg.reply.TimeStampReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerValueReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply.ReadQueuedData;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadReportType.SourceReport;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply.RawReadIDs;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply.Read;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply.ReadIDs;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 
@@ -471,16 +471,16 @@ public class TextMessageSerializer implements MessageSerializer {
 	 *            The ReadReport
 	 */
 	private void writeReplyLine(StringWriter writer,
-			org.accada.reader.rprm.core.msg.notification.ReadReportType report) {
+			org.fosstrak.reader.rprm.core.msg.notification.ReadReportType report) {
 
 		List srcReportList = report.getSourceReport();
 		Iterator srcReportIt = srcReportList.iterator();
 		while (srcReportIt.hasNext()) {
-			org.accada.reader.rprm.core.msg.notification.ReadReportType.SourceReport srcReport = (org.accada.reader.rprm.core.msg.notification.ReadReportType.SourceReport) srcReportIt
+			org.fosstrak.reader.rprm.core.msg.notification.ReadReportType.SourceReport srcReport = (org.fosstrak.reader.rprm.core.msg.notification.ReadReportType.SourceReport) srcReportIt
 					.next();
 			String sourceName = null;
 			if (srcReport.getSourceInfo() != null) {
-				org.accada.reader.rprm.core.msg.notification.SourceInfoType sourceInfo = srcReport
+				org.fosstrak.reader.rprm.core.msg.notification.SourceInfoType sourceInfo = srcReport
 						.getSourceInfo();
 				sourceName = sourceInfo.getSourceName();
 			}
@@ -500,7 +500,7 @@ public class TextMessageSerializer implements MessageSerializer {
 				}
 
 				// --- Add the tag properties ---
-				org.accada.reader.rprm.core.msg.notification.TagType tag = (org.accada.reader.rprm.core.msg.notification.TagType) tagListIt
+				org.fosstrak.reader.rprm.core.msg.notification.TagType tag = (org.fosstrak.reader.rprm.core.msg.notification.TagType) tagListIt
 						.next();
 				if (tag.getTagID() != null) {
 					reportAttributes.add(new String(tag.getTagID()));
@@ -519,7 +519,7 @@ public class TextMessageSerializer implements MessageSerializer {
 				if (tag.getTagEvent() != null) {
 					Iterator tagEventIt = tag.getTagEvent().iterator();
 					while (tagEventIt.hasNext()) {
-						org.accada.reader.rprm.core.msg.notification.TagEventType tagEvent = (org.accada.reader.rprm.core.msg.notification.TagEventType) tagEventIt
+						org.fosstrak.reader.rprm.core.msg.notification.TagEventType tagEvent = (org.fosstrak.reader.rprm.core.msg.notification.TagEventType) tagEventIt
 								.next();
 						if (tagEvent.getEventType() != null) {
 							reportAttributes.add(tagEvent.getEventType());
@@ -536,7 +536,7 @@ public class TextMessageSerializer implements MessageSerializer {
 						// if (tagEvent.getEventTriggers() != null &&
 						// tagEvent.getEventTriggers().getTrigger() != null) {
 						// //add all the trigger names
-						// org.accada.reader.msg.notification.EventTriggersType
+						// org.fosstrak.reader.msg.notification.EventTriggersType
 						// eventTrigger = tagEvent.getEventTriggers();
 						// Iterator eventTriggerIt =
 						// eventTrigger.getTrigger().iterator();
@@ -553,7 +553,7 @@ public class TextMessageSerializer implements MessageSerializer {
 				if (tag.getTagFields() != null) {
 					Iterator tagFieldIt = tag.getTagFields().iterator();
 					while (tagFieldIt.hasNext()) {
-						org.accada.reader.rprm.core.msg.notification.TagFieldValueParamType tfvp = (org.accada.reader.rprm.core.msg.notification.TagFieldValueParamType) tagFieldIt
+						org.fosstrak.reader.rprm.core.msg.notification.TagFieldValueParamType tfvp = (org.fosstrak.reader.rprm.core.msg.notification.TagFieldValueParamType) tagFieldIt
 								.next();
 						// TODO: How to serialize the tagfield
 						// name-value-pairs??
@@ -926,7 +926,7 @@ public class TextMessageSerializer implements MessageSerializer {
 		StringWriter writer = new StringWriter();
 		Iterator reportListIt = reportList.iterator();
 		while (reportListIt.hasNext()) {
-			org.accada.reader.rprm.core.msg.notification.ReadReportType report = (org.accada.reader.rprm.core.msg.notification.ReadReportType) reportListIt
+			org.fosstrak.reader.rprm.core.msg.notification.ReadReportType report = (org.fosstrak.reader.rprm.core.msg.notification.ReadReportType) reportListIt
 					.next();
 			writeReplyLine(writer, report);
 		}

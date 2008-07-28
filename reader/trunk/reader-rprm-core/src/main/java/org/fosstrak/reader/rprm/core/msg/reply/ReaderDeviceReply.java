@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,33 +26,33 @@
 //
 
 
-package org.accada.reader.rprm.core.msg.reply;
+package org.fosstrak.reader.rprm.core.msg.reply;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.accada.reader.rprm.core.msg.reply.DataSelectorListReturnType;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorReturnType;
-import org.accada.reader.rprm.core.msg.reply.EpcReturnType;
-import org.accada.reader.rprm.core.msg.reply.IntReturnType;
-import org.accada.reader.rprm.core.msg.reply.NoParamType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelListReturnType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadPointListReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadPointReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReaderDeviceReply;
-import org.accada.reader.rprm.core.msg.reply.SourceListReturnType;
-import org.accada.reader.rprm.core.msg.reply.SourceReturnType;
-import org.accada.reader.rprm.core.msg.reply.StringReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorReturnType;
-import org.accada.reader.rprm.core.msg.reply.TimeStampReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.EpcReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.IntReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NoParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReaderDeviceReply;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.StringReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TimeStampReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerReturnType;
 import org.w3c.dom.Element;
 
 

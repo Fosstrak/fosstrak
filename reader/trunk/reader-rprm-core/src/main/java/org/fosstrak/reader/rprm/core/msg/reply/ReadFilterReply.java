@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,7 +26,7 @@
 //
 
 
-package org.accada.reader.rprm.core.msg.reply;
+package org.fosstrak.reader.rprm.core.msg.reply;
 
 
 /**
@@ -108,90 +108,90 @@ public interface ReadFilterReply {
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.CreateType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.CreateType}
      */
-    org.accada.reader.rprm.core.msg.reply.ReadFilterReply.CreateType getCreate();
+    org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.CreateType getCreate();
 
     /**
      * reply for create Read filter
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.CreateType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.CreateType}
      */
-    void setCreate(org.accada.reader.rprm.core.msg.reply.ReadFilterReply.CreateType value);
+    void setCreate(org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.CreateType value);
 
     /**
      * reply for get Read filter value
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetValueType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetValueType}
      */
-    org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetValueType getGetValue();
+    org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetValueType getGetValue();
 
     /**
      * reply for get Read filter value
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetValueType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetValueType}
      */
-    void setGetValue(org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetValueType value);
+    void setGetValue(org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetValueType value);
 
     /**
      * reply for get max supported Read filters
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetMaxNumberSupportedType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetMaxNumberSupportedType}
      */
-    org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetMaxNumberSupportedType getGetMaxNumberSupported();
+    org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetMaxNumberSupportedType getGetMaxNumberSupported();
 
     /**
      * reply for get max supported Read filters
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetMaxNumberSupportedType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetMaxNumberSupportedType}
      */
-    void setGetMaxNumberSupported(org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetMaxNumberSupportedType value);
+    void setGetMaxNumberSupported(org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetMaxNumberSupportedType value);
 
     /**
      * reply for get Inclusive flag
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetInclusiveFlagType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetInclusiveFlagType}
      */
-    org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetInclusiveFlagType getGetInclusiveFlag();
+    org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetInclusiveFlagType getGetInclusiveFlag();
 
     /**
      * reply for get Inclusive flag
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetInclusiveFlagType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetInclusiveFlagType}
      */
-    void setGetInclusiveFlag(org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetInclusiveFlagType value);
+    void setGetInclusiveFlag(org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetInclusiveFlagType value);
 
     /**
      * reply for get Read filter mask
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetMaskType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetMaskType}
      */
-    org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetMaskType getGetMask();
+    org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetMaskType getGetMask();
 
     /**
      * reply for get Read filter mask
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetMaskType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetMaskType}
      */
-    void setGetMask(org.accada.reader.rprm.core.msg.reply.ReadFilterReply.GetMaskType value);
+    void setGetMask(org.fosstrak.reader.rprm.core.msg.reply.ReadFilterReply.GetMaskType value);
 
 
     /**

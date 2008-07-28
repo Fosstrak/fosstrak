@@ -1,4 +1,4 @@
-package org.accada.reader.rprm.core;
+package org.fosstrak.reader.rprm.core;
 
 import java.net.InetAddress;
 import java.net.URI;
@@ -6,15 +6,15 @@ import java.net.URISyntaxException;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.NotificationChannel;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.mgmt.OperationalStatus;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.NotificationChannel;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.mgmt.OperationalStatus;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 
 /**
- * Tests for the class <code>org.accada.reader.NotificationChannel</code>.
+ * Tests for the class <code>org.fosstrak.reader.NotificationChannel</code>.
  */
 public class NotificationChannelTest extends TestCase {
 

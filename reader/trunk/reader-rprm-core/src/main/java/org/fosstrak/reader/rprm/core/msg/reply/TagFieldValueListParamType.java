@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,15 +26,15 @@
 //
 
 
-package org.accada.reader.rprm.core.msg.reply;
+package org.fosstrak.reader.rprm.core.msg.reply;
 
 import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-import org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldValueParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueParamType;
 
 
 /**
@@ -72,17 +72,17 @@ import org.accada.reader.rprm.core.msg.reply.TagFieldValueParamType;
 })
 public class TagFieldValueListParamType {
 
-    protected org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType.List list;
+    protected org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType.List list;
 
     /**
      * Gets the value of the list property.
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType.List }
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType.List }
      *     
      */
-    public org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType.List getList() {
+    public org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType.List getList() {
         return list;
     }
 
@@ -91,10 +91,10 @@ public class TagFieldValueListParamType {
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType.List }
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType.List }
      *     
      */
-    public void setList(org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType.List value) {
+    public void setList(org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType.List value) {
         this.list = value;
     }
 

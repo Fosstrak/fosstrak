@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core;
+package org.fosstrak.reader.rprm.core;
 
 import java.math.BigInteger;
 import java.net.URL;
@@ -34,33 +34,33 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.Vector;
 
-import org.accada.hal.HardwareAbstraction;
-import org.accada.hal.UnsignedByteArray;
-import org.accada.hal.HardwareException;
-import org.accada.hal.Observation;
-import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
-import org.accada.reader.rprm.core.mgmt.OperationalStatus;
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
-import org.accada.reader.rprm.core.mgmt.alarm.SourceOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.TTOperationalStatusAlarmControl;
-import org.accada.reader.rprm.core.msg.MessagingConstants;
-import org.accada.reader.rprm.core.msg.util.HexUtil;
-import org.accada.reader.rprm.core.readreport.ReadReport;
-import org.accada.reader.rprm.core.readreport.ReaderInfoType;
-import org.accada.reader.rprm.core.readreport.SourceInfoType;
-import org.accada.reader.rprm.core.readreport.SourceReport;
-import org.accada.reader.rprm.core.readreport.TagFieldValueParamType;
-import org.accada.reader.rprm.core.readreport.TagType;
-import org.accada.reader.rprm.core.triggers.ContinuousReadThread;
-import org.accada.reader.rprm.core.triggers.IOEdgeTriggerPortManager;
-import org.accada.reader.rprm.core.triggers.IOValueTriggerPortManager;
-import org.accada.reader.rprm.core.triggers.TimerReadThread;
-import org.accada.reader.rprm.core.util.ResourceLocator;
+import org.fosstrak.hal.HardwareAbstraction;
+import org.fosstrak.hal.UnsignedByteArray;
+import org.fosstrak.hal.HardwareException;
+import org.fosstrak.hal.Observation;
+import org.fosstrak.reader.rprm.core.mgmt.AdministrativeStatus;
+import org.fosstrak.reader.rprm.core.mgmt.OperationalStatus;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmLevel;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.SourceOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.TTOperationalStatusAlarmControl;
+import org.fosstrak.reader.rprm.core.msg.MessagingConstants;
+import org.fosstrak.reader.rprm.core.msg.util.HexUtil;
+import org.fosstrak.reader.rprm.core.readreport.ReadReport;
+import org.fosstrak.reader.rprm.core.readreport.ReaderInfoType;
+import org.fosstrak.reader.rprm.core.readreport.SourceInfoType;
+import org.fosstrak.reader.rprm.core.readreport.SourceReport;
+import org.fosstrak.reader.rprm.core.readreport.TagFieldValueParamType;
+import org.fosstrak.reader.rprm.core.readreport.TagType;
+import org.fosstrak.reader.rprm.core.triggers.ContinuousReadThread;
+import org.fosstrak.reader.rprm.core.triggers.IOEdgeTriggerPortManager;
+import org.fosstrak.reader.rprm.core.triggers.IOValueTriggerPortManager;
+import org.fosstrak.reader.rprm.core.triggers.TimerReadThread;
+import org.fosstrak.reader.rprm.core.util.ResourceLocator;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
-import org.accada.tdt.TDTEngine;
-import org.accada.tdt.types.LevelTypeList;
+import org.fosstrak.tdt.TDTEngine;
+import org.fosstrak.tdt.types.LevelTypeList;
 
 /**
  * This class represents the Source of the object model.

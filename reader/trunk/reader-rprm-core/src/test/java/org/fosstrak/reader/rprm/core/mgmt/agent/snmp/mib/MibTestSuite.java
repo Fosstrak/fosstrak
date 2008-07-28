@@ -1,10 +1,10 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.mib;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * Tests for package <code>org.accada.reader.mgmt.agent.snmp.mib</code>.
+ * Tests for package <code>org.fosstrak.reader.mgmt.agent.snmp.mib</code>.
  */
 public class MibTestSuite {
 	

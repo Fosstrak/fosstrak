@@ -1,42 +1,42 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table ;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table ;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.AntennaReadPoint;
-import org.accada.reader.rprm.core.NotificationChannel;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.Source;
-import org.accada.reader.rprm.core.Trigger;
-import org.accada.reader.rprm.core.TriggerType;
-import org.accada.reader.rprm.core.mgmt.IOPort;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgAntReadPointTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgIoPortTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgNotifChanSrcTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgNotifTrigTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgNotificationChannelTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgRdPntSrcTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgReadPointTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgReadTrigTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgReaderServerTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgSourceTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgTriggerTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.RowObjectContainer;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow.CounterType;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgReaderServerTableRow.ServerTypeEnum;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.accada.reader.rprm.core.mgmt.util.SnmpUtil;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.AntennaReadPoint;
+import org.fosstrak.reader.rprm.core.NotificationChannel;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.Source;
+import org.fosstrak.reader.rprm.core.Trigger;
+import org.fosstrak.reader.rprm.core.TriggerType;
+import org.fosstrak.reader.rprm.core.mgmt.IOPort;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgAntReadPointTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgIoPortTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgNotifChanSrcTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgNotifTrigTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgNotificationChannelTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgRdPntSrcTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgReadPointTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgReadTrigTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgReaderServerTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgSourceTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgTriggerTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.RowObjectContainer;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow.CounterType;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgReaderServerTableRow.ServerTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.util.SnmpUtil;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.smi.OID;
 import org.snmp4j.smi.OctetString;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.SnmpTableRow</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.table.SnmpTableRow</code>.
  */
 public class SnmpTableRowTest extends TestCase {
 

@@ -1,4 +1,4 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table ;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table ;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -6,13 +6,13 @@ import java.util.Iterator;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTargetAddrRowStatusListener;
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmChannel;
-import org.accada.reader.rprm.core.msg.Address;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTargetAddrRowStatusListener;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmChannel;
+import org.fosstrak.reader.rprm.core.msg.Address;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.mo.DefaultMOTable;
 import org.snmp4j.agent.mo.MOTableRow;
@@ -21,7 +21,7 @@ import org.snmp4j.agent.mo.snmp.RowStatusEvent;
 import org.snmp4j.agent.mo.snmp.SnmpTargetMIB;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.SnmpTargetAddrRowStatusListener</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.table.SnmpTargetAddrRowStatusListener</code>.
  */
 public class SnmpTargetAddrRowStatusListenerTest extends TestCase {
 

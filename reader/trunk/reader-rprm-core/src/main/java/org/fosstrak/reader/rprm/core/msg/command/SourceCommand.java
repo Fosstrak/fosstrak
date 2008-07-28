@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,7 +26,7 @@
 //
 
 
-package org.accada.reader.rprm.core.msg.command;
+package org.fosstrak.reader.rprm.core.msg.command;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -36,37 +36,37 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import org.accada.reader.rprm.core.msg.command.HexStringListType;
-import org.accada.reader.rprm.core.msg.command.NoParamType;
-import org.accada.reader.rprm.core.msg.command.ReadPointListParamType;
-import org.accada.reader.rprm.core.msg.command.SourceCommand;
-import org.accada.reader.rprm.core.msg.command.TagFieldValueListParamType;
-import org.accada.reader.rprm.core.msg.command.TagSelectorListParamType;
-import org.accada.reader.rprm.core.msg.command.TriggerListParamType;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.AddReadPoints;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.AddReadTriggers;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.AddTagSelectors;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.Create;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.GetReadPoint;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.GetReadTrigger;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.GetTagSelector;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.Kill;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.RawReadIDs;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.Read;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.ReadIDs;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.RemoveReadPoints;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.RemoveReadTriggers;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.RemoveTagSelectors;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.SetGlimpsedTimeout;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.SetLostTimeout;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.SetMaxReadDutyCycle;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.SetObservedThreshold;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.SetObservedTimeout;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.SetReadCyclesPerTrigger;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.SetReadTimeout;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.SetSession;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.Write;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.WriteID;
+import org.fosstrak.reader.rprm.core.msg.command.HexStringListType;
+import org.fosstrak.reader.rprm.core.msg.command.NoParamType;
+import org.fosstrak.reader.rprm.core.msg.command.ReadPointListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand;
+import org.fosstrak.reader.rprm.core.msg.command.TagFieldValueListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.TagSelectorListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.TriggerListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.AddReadPoints;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.AddReadTriggers;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.AddTagSelectors;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.Create;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.GetReadPoint;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.GetReadTrigger;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.GetTagSelector;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.Kill;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.RawReadIDs;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.Read;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.ReadIDs;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.RemoveReadPoints;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.RemoveReadTriggers;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.RemoveTagSelectors;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.SetGlimpsedTimeout;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.SetLostTimeout;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.SetMaxReadDutyCycle;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.SetObservedThreshold;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.SetObservedTimeout;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.SetReadCyclesPerTrigger;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.SetReadTimeout;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.SetSession;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.Write;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.WriteID;
 import org.w3c.dom.Element;
 
 

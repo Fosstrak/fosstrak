@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -21,28 +21,28 @@
 /**
  * 
  */
-package org.accada.reader.rp.proxy.msg.stubs.serializers.xml;
+package org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml;
 
 import java.util.Hashtable;
 import java.util.Iterator;
 
 import javax.xml.bind.JAXBException;
 
-import org.accada.reader.rprm.core.msg.command.HexStringListType;
-import org.accada.reader.rprm.core.msg.command.ReadPointListParamType;
-import org.accada.reader.rprm.core.msg.command.SourceCommand;
-import org.accada.reader.rprm.core.msg.command.TagFieldValueListParamType;
-import org.accada.reader.rprm.core.msg.command.TagSelectorListParamType;
-import org.accada.reader.rprm.core.msg.command.TriggerListParamType;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.AddReadPoints;
-import org.accada.reader.rprm.core.msg.command.SourceCommand.RemoveReadPoints;
-import org.accada.reader.rprm.core.msg.util.HexUtil;
-import org.accada.reader.rp.proxy.msg.stubs.DataSelector;
-import org.accada.reader.rp.proxy.msg.stubs.ReadPoint;
-import org.accada.reader.rp.proxy.msg.stubs.TagFieldValue;
-import org.accada.reader.rp.proxy.msg.stubs.TagSelector;
-import org.accada.reader.rp.proxy.msg.stubs.Trigger;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.SourceSerializer;
+import org.fosstrak.reader.rprm.core.msg.command.HexStringListType;
+import org.fosstrak.reader.rprm.core.msg.command.ReadPointListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand;
+import org.fosstrak.reader.rprm.core.msg.command.TagFieldValueListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.TagSelectorListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.TriggerListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.AddReadPoints;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand.RemoveReadPoints;
+import org.fosstrak.reader.rprm.core.msg.util.HexUtil;
+import org.fosstrak.reader.rp.proxy.msg.stubs.DataSelector;
+import org.fosstrak.reader.rp.proxy.msg.stubs.ReadPoint;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagFieldValue;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagSelector;
+import org.fosstrak.reader.rp.proxy.msg.stubs.Trigger;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.SourceSerializer;
 
 /**
  * @author Andreas
@@ -85,7 +85,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#create(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#create(java.lang.String)
 	 */
 	public String create(String name) {
 		resetCommand();
@@ -99,7 +99,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getName()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getName()
 	 */
 	public String getName() {
 		resetCommand();
@@ -110,7 +110,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#isFixed()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#isFixed()
 	 */
 	public String isFixed() {
 		resetCommand();
@@ -121,7 +121,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#addReadPoints(org.accada.reader.ReadPoint[])
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#addReadPoints(org.fosstrak.reader.ReadPoint[])
 	 */
 	public String addReadPoints(ReadPoint[] readPoints) {
 		resetCommand();
@@ -141,7 +141,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#removeReadPoints(org.accada.reader.ReadPoint[])
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#removeReadPoints(org.fosstrak.reader.ReadPoint[])
 	 */
 	public String removeReadPoints(ReadPoint[] readPoints) {
 		resetCommand();
@@ -161,7 +161,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#removeAllReadPoints()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#removeAllReadPoints()
 	 */
 	public String removeAllReadPoints() {
 		resetCommand();
@@ -172,7 +172,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getReadPoint(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getReadPoint(java.lang.String)
 	 */
 	public String getReadPoint(String name) {
 		resetCommand();
@@ -186,7 +186,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getAllReadPoints()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getAllReadPoints()
 	 */
 	public String getAllReadPoints() {
 		resetCommand();
@@ -197,7 +197,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#addReadTriggers(org.accada.reader.Trigger[])
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#addReadTriggers(org.fosstrak.reader.Trigger[])
 	 */
 	public String addReadTriggers(Trigger[] triggers) {
 		resetCommand();
@@ -217,7 +217,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#removeReadTriggers(org.accada.reader.Trigger[])
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#removeReadTriggers(org.fosstrak.reader.Trigger[])
 	 */
 	public String removeReadTriggers(Trigger[] triggers) {
 		resetCommand();
@@ -237,7 +237,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#removeAllReadTriggers()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#removeAllReadTriggers()
 	 */
 	public String removeAllReadTriggers() {
 		resetCommand();
@@ -248,7 +248,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getReadTrigger(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getReadTrigger(java.lang.String)
 	 */
 	public String getReadTrigger(String name) {
 		resetCommand();
@@ -262,7 +262,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getAllReadTriggers()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getAllReadTriggers()
 	 */
 	public String getAllReadTriggers() {
 		resetCommand();
@@ -273,7 +273,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#addTagSelectors(org.accada.reader.TagSelector[])
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#addTagSelectors(org.fosstrak.reader.TagSelector[])
 	 */
 	public String addTagSelectors(TagSelector[] selectors) {
 		resetCommand();
@@ -293,7 +293,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#removeTagSelectors(org.accada.reader.TagSelector[])
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#removeTagSelectors(org.fosstrak.reader.TagSelector[])
 	 */
 	public String removeTagSelectors(TagSelector[] tagSelectors) {
 		resetCommand();
@@ -313,7 +313,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#removeAllTagSelectors()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#removeAllTagSelectors()
 	 */
 	public String removeAllTagSelectors() {
 		resetCommand();
@@ -324,7 +324,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getTagSelector(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getTagSelector(java.lang.String)
 	 */
 	public String getTagSelector(String name) {
 		resetCommand();
@@ -338,7 +338,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getAllTagSelectors()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getAllTagSelectors()
 	 */
 	public String getAllTagSelectors() {
 		resetCommand();
@@ -349,7 +349,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getGlimpsedTimeout()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getGlimpsedTimeout()
 	 */
 	public String getGlimpsedTimeout() {
 		resetCommand();
@@ -360,7 +360,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#setGlimpsedTimeout(int)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#setGlimpsedTimeout(int)
 	 */
 	public String setGlimpsedTimeout(int timeout) {
 		resetCommand();
@@ -374,7 +374,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getObservedThreshold()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getObservedThreshold()
 	 */
 	public String getObservedThreshold() {
 		resetCommand();
@@ -385,7 +385,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#setObservedThreshold(int)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#setObservedThreshold(int)
 	 */
 	public String setObservedThreshold(int threshold) {
 		resetCommand();
@@ -399,7 +399,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getObservedTimeout()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getObservedTimeout()
 	 */
 	public String getObservedTimeout() {
 		resetCommand();
@@ -410,7 +410,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#setObservedTimeout(int)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#setObservedTimeout(int)
 	 */
 	public String setObservedTimeout(int timeout) {
 		resetCommand();
@@ -424,7 +424,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getLostTimeout()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getLostTimeout()
 	 */
 	public String getLostTimeout() {
 		resetCommand();
@@ -435,7 +435,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#setLostTimeout(int)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#setLostTimeout(int)
 	 */
 	public String setLostTimeout(int timeout) {
 		resetCommand();
@@ -449,7 +449,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#rawReadIDs(org.accada.reader.testclient.command.DataSelectorSerializer)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#rawReadIDs(org.fosstrak.reader.testclient.command.DataSelectorSerializer)
 	 */
 	public String rawReadIDs(DataSelector dataSelector) {
 		resetCommand();
@@ -466,7 +466,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#readIDs(org.accada.reader.testclient.command.DataSelectorSerializer)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#readIDs(org.fosstrak.reader.testclient.command.DataSelectorSerializer)
 	 */
 	public String readIDs(DataSelector dataSelector) {
 		resetCommand();
@@ -483,7 +483,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#read(org.accada.reader.testclient.command.DataSelectorSerializer,
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#read(org.fosstrak.reader.testclient.command.DataSelectorSerializer,
 	 *      java.util.Hashtable)
 	 */
 	public String read(DataSelector dataSelector, Hashtable passwords) {
@@ -529,8 +529,8 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#writeID(java.lang.String,
-	 *      java.lang.String[], org.accada.reader.TagSelector[])
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#writeID(java.lang.String,
+	 *      java.lang.String[], org.fosstrak.reader.TagSelector[])
 	 */
 	public String writeID(String newID, String[] passwords,
 			TagSelector[] tagSelectors) {
@@ -568,8 +568,8 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#write(org.accada.reader.TagFieldValue[],
-	 *      java.lang.String[], org.accada.reader.TagSelector[])
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#write(org.fosstrak.reader.TagFieldValue[],
+	 *      java.lang.String[], org.fosstrak.reader.TagSelector[])
 	 */
 	public String write(TagFieldValue[] tagFieldValues, String[] passwords,
 			TagSelector[] tagSelectors) {
@@ -618,8 +618,8 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#kill(java.lang.String[],
-	 *      org.accada.reader.TagSelector[])
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#kill(java.lang.String[],
+	 *      org.fosstrak.reader.TagSelector[])
 	 */
 	public String kill(String[] passwords, TagSelector[] tagSelectors) {
 		resetCommand();
@@ -653,7 +653,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getReadCyclesPerTrigger()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getReadCyclesPerTrigger()
 	 */
 	public String getReadCyclesPerTrigger() {
 		resetCommand();
@@ -664,7 +664,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#setReadCyclesPerTrigger(int)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#setReadCyclesPerTrigger(int)
 	 */
 	public String setReadCyclesPerTrigger(int cycles) {
 		resetCommand();
@@ -678,7 +678,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getMaxReadDutyCycles()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getMaxReadDutyCycles()
 	 */
 	public String getMaxReadDutyCycles() {
 		resetCommand();
@@ -689,7 +689,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#setMaxReadDutyCycles(int)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#setMaxReadDutyCycles(int)
 	 */
 	public String setMaxReadDutyCycles(int cycles) {
 		resetCommand();
@@ -703,7 +703,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getReadTimeout()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getReadTimeout()
 	 */
 	public String getReadTimeout() {
 		resetCommand();
@@ -714,7 +714,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#setReadTimeout(int)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#setReadTimeout(int)
 	 */
 	public String setReadTimeout(int timeout) {
 		resetCommand();
@@ -728,7 +728,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#getSession()
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#getSession()
 	 */
 	public String getSession() {
 		resetCommand();
@@ -739,7 +739,7 @@ public class SourceSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.SourceSerializer#setSession(int)
+	 * @see org.fosstrak.reader.testclient.command.SourceSerializer#setSession(int)
 	 */
 	public String setSession(int session) {
 		resetCommand();

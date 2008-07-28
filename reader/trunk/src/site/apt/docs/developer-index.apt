@@ -19,16 +19,16 @@ Developer Index
 
 * {Introduction}
 
-  The goal of Accada Reader is to provide an example implementation of the
+  The goal of Fosstrak Reader is to provide an example implementation of the
   EPCglobal Reader Protocol that supports rapid prototyping. It is not a
   reference implementation. The reader further supports the EPCglobal Reader
-  Management. Accada Reader uses the Accada HAL project as a backend. This
+  Management. Fosstrak Reader uses the Fosstrak HAL project as a backend. This
   means that the simulators and every reader with an implementation of the
   <<<HardwareAbstraction>>> interface can be controlled over the Reader
   Protocol.
 
   Beside the <<<reader-rprm-core>>> module containing the reader implementation
-  the Accada Reader project consists of two further modules with interfaces to
+  the Fosstrak Reader project consists of two further modules with interfaces to
   control a Reader Protocol compliant reader. The <<<reader-rp-proxy>>> module
   contains a library to control a reader from within a Java application over
   the Reader Protocol and an interface to receive notifications from the reader.
@@ -47,7 +47,7 @@ Developer Index
 
 [../images/ReaderArchitecture.png] architectural overview
 
-  The Accada Reader Core uses the Accada HAL as a backend and can be controlled
+  The Fosstrak Reader Core uses the Fosstrak HAL as a backend and can be controlled
   and used like any other Reader Protocol compliant reader. That means it can
   be controlled using the Reader Proxy, Reader Client or any other application
   that supports the Reader Protocol. Additionally the Reader Core implements

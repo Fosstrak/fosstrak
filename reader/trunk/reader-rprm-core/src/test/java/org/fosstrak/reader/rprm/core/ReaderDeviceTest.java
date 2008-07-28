@@ -1,27 +1,27 @@
-package org.accada.reader.rprm.core;
+package org.fosstrak.reader.rprm.core;
 
 import java.net.MalformedURLException;
 import java.util.Enumeration;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.AntennaReadPoint;
-import org.accada.reader.rprm.core.NotificationChannel;
-import org.accada.reader.rprm.core.ReadPoint;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.Source;
-import org.accada.reader.rprm.core.Trigger;
-import org.accada.reader.rprm.core.TriggerType;
-import org.accada.reader.rprm.core.mgmt.IOPort;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmChannel;
-import org.accada.reader.rprm.core.msg.Address;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.AntennaReadPoint;
+import org.fosstrak.reader.rprm.core.NotificationChannel;
+import org.fosstrak.reader.rprm.core.ReadPoint;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.Source;
+import org.fosstrak.reader.rprm.core.Trigger;
+import org.fosstrak.reader.rprm.core.TriggerType;
+import org.fosstrak.reader.rprm.core.mgmt.IOPort;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmChannel;
+import org.fosstrak.reader.rprm.core.msg.Address;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 
 /**
- * Tests for the class <code>org.accada.reader.ReaderDevice</code>.
+ * Tests for the class <code>org.fosstrak.reader.ReaderDevice</code>.
  */
 public class ReaderDeviceTest extends TestCase {
 

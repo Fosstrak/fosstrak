@@ -15,7 +15,7 @@ User Guide Reader RP/RM Core
 
   [[2]] {{{#Application}Field of Application}}
 
-  [[3]] {{{#Installing}Installing the Accada RP/RM Core}}
+  [[3]] {{{#Installing}Installing the Fosstrak RP/RM Core}}
 
   [[4]] {{{#First}First Steps}}
 
@@ -45,11 +45,11 @@ User Guide Reader RP/RM Core
 * Field of {Application}
 
   * Turn a reader that does not implement the EPCglobal Reader Protocol itself
-    into a compliant reader. Deploy the appropriate Accada HAL module and this
+    into a compliant reader. Deploy the appropriate Fosstrak HAL module and this
     module as a Reader Protocol compliant proxy together with the reader.
 
     At the moment, the following readers that are not Reader Protocol compliant
-    do allready have a Accada HAL implementation:
+    do allready have a Fosstrak HAL implementation:
 
     * Impinj Speedway
 
@@ -62,26 +62,26 @@ User Guide Reader RP/RM Core
     Similar readers might work, but are not tested.
 
     New modules with an implementation of the <<<HardwareAbstraction>>>
-    interface for other readers can be added to the Accada HAL Project by
-    anyone. See the {{{../../hal/index.html}Accada HAL Project}} website for
+    interface for other readers can be added to the Fosstrak HAL Project by
+    anyone. See the {{{../../hal/index.html}Fosstrak HAL Project}} website for
     more information.
 
   * Use an existing or write your own HAL wrapper for your reader and then
     leverage the filtering, event generation and messaging provided by our
     reader implementation.
 
-  * Simulate a single reader via a graphical user interface (using the Accada
+  * Simulate a single reader via a graphical user interface (using the Fosstrak
     HAL Simulator module).
 
   * Simulate a network of hundred of readers using the simulation framework of
-    the Accada HAL project.
+    the Fosstrak HAL project.
 
   * Embed our reader implementation into your reader.
 
 
-* {Installing} the Accada Reader RP/RM Core
+* {Installing} the Fosstrak Reader RP/RM Core
 
-   The following instructions show how to install the Accada Reader:
+   The following instructions show how to install the Fosstrak Reader:
 
    * Download the reader binaries with the dependencies included from the
      {{{../download.html}download}} section of the website.
@@ -107,7 +107,7 @@ java -jar <path-to>/reader-rprm-core-<version>.jar
   * In a console execute
 
 ---------------------------------------------------------------------------
-java -cp <path-to>/reader-rprm-core-<version>.jar org.accada.reader.rprm.core.ReaderDevice
+java -cp <path-to>/reader-rprm-core-<version>.jar org.fosstrak.reader.rprm.core.ReaderDevice
 ---------------------------------------------------------------------------
 
   []
@@ -115,11 +115,11 @@ java -cp <path-to>/reader-rprm-core-<version>.jar org.accada.reader.rprm.core.Re
   The reader is now listening for incoming http requests on port 8000, incoming
   tcp requests on port 5566, and incoming snmp requests on port 161. To
   communicate with the reader instance, you might want to consider using the
-  Accada Reader RP Proxy, Accada Reader RP Client or a SNMP Manager such as MIB
+  Fosstrak Reader RP Proxy, Fosstrak Reader RP Client or a SNMP Manager such as MIB
   Explorer.
 
   For more information, on how to use theses tools, please see the
-  {{{../index.html}Accada Reader}} project website.
+  {{{../index.html}Fosstrak Reader}} project website.
 
   You might also want to consider adjusting the settings in the ReaderDevice.xml
   file (see below).
@@ -147,7 +147,7 @@ java -cp <path-to>/reader-rprm-core-<version>.jar org.accada.reader.rprm.core.Re
   maxSourceNumber, maxTagSelectorNumber and maxTriggerNumber set a limit for
   the number of sources, tag selectors and triggers which a client can define.
 
-  In the reader section the different instances of the Accada HAL with their
+  In the reader section the different instances of the Fosstrak HAL with their
   read points are given. In this case the SimulatorController is used with the
   four read points Shelf1, Shelf2, Shelf3 and Shelf4 which correspond to the
   four antennas of the simulated reader. The sources of the reader are
@@ -156,7 +156,7 @@ java -cp <path-to>/reader-rprm-core-<version>.jar org.accada.reader.rprm.core.Re
   one read point that has the same name as the source. In another reader
   setting one source could have more than one read point.
   The class name of each implemented controller can be found on the website of
-  the corresponding {{{../../hal/docs/user-guide.html#Configuring}Accada HAL
+  the corresponding {{{../../hal/docs/user-guide.html#Configuring}Fosstrak HAL
   module}}.
 
   If the reader provides IO edge triggers or IO value triggers the classes that
@@ -194,7 +194,7 @@ java -cp <path-to>/reader-rprm-core-<version>.jar org.accada.reader.rprm.core.Re
       <readers>
          <reader>
             <name>SimulatorController</name>
-            <class>org.accada.reader.hal.impl.sim.SimulatorController</class>
+            <class>org.fosstrak.reader.hal.impl.sim.SimulatorController</class>
             <properties>/props/SimulatorController.xml</properties>
             <readpoint>Shelf1</readpoint>
             <readpoint>Shelf2</readpoint>
@@ -232,7 +232,7 @@ java -cp <path-to>/reader-rprm-core-<version>.jar org.accada.reader.rprm.core.Re
 
    <!-- The io trigger classes -->
       <IOEdgeTriggerPortManager>
-         <port>org.accada.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager</port>
+         <port>org.fosstrak.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager</port>
       </IOEdgeTriggerPortManager>
       <IOValueTriggerPortManager>
       </IOValueTriggerPortManager>

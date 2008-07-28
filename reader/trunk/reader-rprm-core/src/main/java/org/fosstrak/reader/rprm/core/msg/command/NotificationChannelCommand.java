@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,7 +26,7 @@
 //
 
 
-package org.accada.reader.rprm.core.msg.command;
+package org.fosstrak.reader.rprm.core.msg.command;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,20 +34,20 @@ import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.accada.reader.rprm.core.msg.command.NoParamType;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand;
-import org.accada.reader.rprm.core.msg.command.SourceListParamType;
-import org.accada.reader.rprm.core.msg.command.TriggerListParamType;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.AddNotificationTriggers;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.AddSources;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.Create;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.GetNotificationTrigger;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.GetSource;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.ReadQueuedData;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.RemoveNotificationTriggers;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.RemoveSources;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.SetAddress;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand.SetDataSelector;
+import org.fosstrak.reader.rprm.core.msg.command.NoParamType;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand;
+import org.fosstrak.reader.rprm.core.msg.command.SourceListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.TriggerListParamType;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.AddNotificationTriggers;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.AddSources;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.Create;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.GetNotificationTrigger;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.GetSource;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.ReadQueuedData;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.RemoveNotificationTriggers;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.RemoveSources;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.SetAddress;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand.SetDataSelector;
 import org.w3c.dom.Element;
 
 

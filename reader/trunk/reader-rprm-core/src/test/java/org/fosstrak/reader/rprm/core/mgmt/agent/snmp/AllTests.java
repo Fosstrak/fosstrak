@@ -1,10 +1,10 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * All tests for package <code>org.accada.reader.mgmt.agent.snmp</code> and its subpackages.
+ * All tests for package <code>org.fosstrak.reader.mgmt.agent.snmp</code> and its subpackages.
  */
 public class AllTests {
 	
@@ -20,8 +20,8 @@ public class AllTests {
 		TestSuite suite = new TestSuite("All Tests for package <" + packageName + "> and its subpackages");
 		
 		suite.addTest(SnmpTestSuite.suite());
-		suite.addTest(org.accada.reader.rprm.core.mgmt.agent.snmp.mib.AllTests.suite());
-		suite.addTest(org.accada.reader.rprm.core.mgmt.agent.snmp.table.AllTests.suite());
+		suite.addTest(org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.AllTests.suite());
+		suite.addTest(org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.AllTests.suite());
 		
 		//
 		// Add more tests here

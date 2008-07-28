@@ -1,18 +1,18 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table ;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table ;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.TableCreator;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.TableCreator;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.DefaultMOServer;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.TableCreator</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.table.TableCreator</code>.
  */
 public class TableCreatorTest extends TestCase {
 

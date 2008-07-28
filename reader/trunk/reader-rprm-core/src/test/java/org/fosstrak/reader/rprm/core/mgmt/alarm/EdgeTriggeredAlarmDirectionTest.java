@@ -1,11 +1,11 @@
-package org.accada.reader.rprm.core.mgmt.alarm;
+package org.fosstrak.reader.rprm.core.mgmt.alarm;
 
-import org.accada.reader.rprm.core.mgmt.alarm.EdgeTriggeredAlarmDirection;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.EdgeTriggeredAlarmDirection;
 
 import junit.framework.TestCase;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.alarm.EdgeTriggeredAlarmDirection</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.alarm.EdgeTriggeredAlarmDirection</code>.
  */
 public class EdgeTriggeredAlarmDirectionTest extends TestCase {
 	

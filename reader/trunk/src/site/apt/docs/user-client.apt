@@ -16,7 +16,7 @@ User Guide Reader RP Client
 
   [[2]] {{{#Application}Field of Application}}
 
-  [[3]] {{{#Installing}Installing the Accada RP Client}}
+  [[3]] {{{#Installing}Installing the Fosstrak RP Client}}
 
   [[4]] {{{#First}First Steps}}
 
@@ -27,7 +27,7 @@ User Guide Reader RP Client
 
 * {Features}
 
-  The Accada Reader RP Client is a Java Swing-based graphical user interface
+  The Fosstrak Reader RP Client is a Java Swing-based graphical user interface
   to execute commands and communicate with a RFID reader that implements the
   EPCglobal Reader Protocol Version 1.1. The Reader Client supports the
   following elements of the protocol:
@@ -68,9 +68,9 @@ User Guide Reader RP Client
 [../images/ReaderClient_architecture.png]
 
 
-* {Installing} the Accada RP Client
+* {Installing} the Fosstrak RP Client
 
-  The following instructions show how to install the Accada Reader RP Client:
+  The following instructions show how to install the Fosstrak Reader RP Client:
 
   * Download the Reader RP Client binaries with the dependencies included from
     the {{{../download.html}download}} section of the website.
@@ -96,7 +96,7 @@ java -jar <path-to>/reader-rp-client-<version>.jar
     * In a console execute
 
 ---------------------------------------------------------------------------
-java -cp <path-to>/reader-rp-client-<version>.jar org.accada.reader.rp.client.TestClient
+java -cp <path-to>/reader-rp-client-<version>.jar org.fosstrak.reader.rp.client.TestClient
 ---------------------------------------------------------------------------
 
     []
@@ -120,11 +120,11 @@ java -cp <path-to>/reader-rp-client-<version>.jar org.accada.reader.rp.client.Te
 
 * {Display} Notification Messages
 
-   * Start the class org.accada.reader.rp.client.EventSinkUI in the jar file with the
+   * Start the class org.fosstrak.reader.rp.client.EventSinkUI in the jar file with the
      following command:
 
 ---------------------------------------------------------------------------
-java -cp <path-to>/reader-rp-client-<version>.jar org.accada.reader.rp.client.EventSinkUI [port]
+java -cp <path-to>/reader-rp-client-<version>.jar org.fosstrak.reader.rp.client.EventSinkUI [port]
 ---------------------------------------------------------------------------
 
    * As the port argument use the TCP port to which the reader will be sending
@@ -141,7 +141,7 @@ java -cp <path-to>/reader-rp-client-<version>.jar org.accada.reader.rp.client.Ev
   This section shows an example reader configuration procedure using the Reader
   RP Client.
 
-  The setup consists of an EventSinkUI listening on port 9999 and an Accada
+  The setup consists of an EventSinkUI listening on port 9999 and an Fosstrak
   Reader using the graphical simulator. Both are runnning on the same computer
   as the Reader RP Client. The simulator has a source with the name 'Shelf1'.
 
@@ -421,7 +421,7 @@ Content-Length: 269
 </ns2:reply>
 +--------------------------------------------------------------------------
 
-  [[9]] The reader is now configured. Add a new tag to the Accada Reader
+  [[9]] The reader is now configured. Add a new tag to the Fosstrak Reader
     Simulator and drag it over the Antenna with the name 'Shelf1'. The event
     sink should show a notification text formated in XML. An example of such a
     notification could look like this:

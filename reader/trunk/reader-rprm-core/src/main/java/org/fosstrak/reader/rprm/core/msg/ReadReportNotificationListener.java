@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -22,7 +22,7 @@
  * Created on 12.02.2004
  *
  */
-package org.accada.reader.rprm.core.msg;
+package org.fosstrak.reader.rprm.core.msg;
 
 import java.io.StringWriter;
 import java.util.Calendar;
@@ -38,25 +38,25 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.accada.reader.rprm.core.DataSelector;
-import org.accada.reader.rprm.core.FieldName;
-import org.accada.reader.rprm.core.NotificationChannel;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.Trigger;
-import org.accada.reader.rprm.core.msg.notification.EPC;
-import org.accada.reader.rprm.core.msg.notification.Notification;
-import org.accada.reader.rprm.core.msg.notification.ReadReportType;
-import org.accada.reader.rprm.core.msg.notification.ReaderType;
-import org.accada.reader.rprm.core.msg.notification.SourceInfoType;
-import org.accada.reader.rprm.core.msg.notification.TagFieldValueParamType;
-import org.accada.reader.rprm.core.msg.notification.TagType;
-import org.accada.reader.rprm.core.msg.notification.TagEventType.EventTriggers;
-import org.accada.reader.rprm.core.msg.util.CompareSet;
-import org.accada.reader.rprm.core.msg.util.HexUtil;
-import org.accada.reader.rprm.core.readreport.ReadReport;
-import org.accada.reader.rprm.core.readreport.ReaderInfoType;
-import org.accada.reader.rprm.core.readreport.SourceReport;
+import org.fosstrak.reader.rprm.core.DataSelector;
+import org.fosstrak.reader.rprm.core.FieldName;
+import org.fosstrak.reader.rprm.core.NotificationChannel;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.Trigger;
+import org.fosstrak.reader.rprm.core.msg.notification.EPC;
+import org.fosstrak.reader.rprm.core.msg.notification.Notification;
+import org.fosstrak.reader.rprm.core.msg.notification.ReadReportType;
+import org.fosstrak.reader.rprm.core.msg.notification.ReaderType;
+import org.fosstrak.reader.rprm.core.msg.notification.SourceInfoType;
+import org.fosstrak.reader.rprm.core.msg.notification.TagFieldValueParamType;
+import org.fosstrak.reader.rprm.core.msg.notification.TagType;
+import org.fosstrak.reader.rprm.core.msg.notification.TagEventType.EventTriggers;
+import org.fosstrak.reader.rprm.core.msg.util.CompareSet;
+import org.fosstrak.reader.rprm.core.msg.util.HexUtil;
+import org.fosstrak.reader.rprm.core.readreport.ReadReport;
+import org.fosstrak.reader.rprm.core.readreport.ReaderInfoType;
+import org.fosstrak.reader.rprm.core.readreport.SourceReport;
 import org.apache.log4j.Logger;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
@@ -84,7 +84,7 @@ public class ReadReportNotificationListener implements NotificationListener {
 	private OutgoingMessageDispatcher outMsgDispatcher;
 
 	/** The singleton factory used to create empty replies. */
-	private static org.accada.reader.rprm.core.msg.notification.ObjectFactory notificationFactory;
+	private static org.fosstrak.reader.rprm.core.msg.notification.ObjectFactory notificationFactory;
 
 	/** The message serializer. */
 	private MessageSerializer serializer = null;
@@ -101,7 +101,7 @@ public class ReadReportNotificationListener implements NotificationListener {
 	{
 		log = Logger.getLogger(getClass().getName());
 		notifyChannelConnections = NotificationChannelConnections.getInstance();
-		notificationFactory = new org.accada.reader.rprm.core.msg.notification.ObjectFactory();
+		notificationFactory = new org.fosstrak.reader.rprm.core.msg.notification.ObjectFactory();
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class ReadReportNotificationListener implements NotificationListener {
 				}
 				readerType.setReaderRole(readerInfo.getRole());
 
-				org.accada.reader.rprm.core.msg.notification.EventTimeType time = notificationFactory.createEventTimeType();
+				org.fosstrak.reader.rprm.core.msg.notification.EventTimeType time = notificationFactory.createEventTimeType();
 				if (readerInfo.getNowTick() >= 0) {
 					time.setEventTimeTick(Long.toString(readerInfo.getNowTick()));
 				}
@@ -262,15 +262,15 @@ public class ReadReportNotificationListener implements NotificationListener {
 			//add the source reports
 			Iterator sourceReportIt = report.getSourceReports().values().iterator();
 			while (sourceReportIt.hasNext()) {
-				org.accada.reader.rprm.core.msg.notification.ReadReportType.SourceReport sourceReport = notificationFactory
+				org.fosstrak.reader.rprm.core.msg.notification.ReadReportType.SourceReport sourceReport = notificationFactory
 						.createReadReportTypeSourceReport();
 				SourceReport rdSourceReport = (SourceReport) sourceReportIt.next();
 
 				//set the source info
 				if (rdSourceReport.containsSourceInfo()) {
-					org.accada.reader.rprm.core.msg.notification.SourceInfoType sourceInfo = notificationFactory
+					org.fosstrak.reader.rprm.core.msg.notification.SourceInfoType sourceInfo = notificationFactory
 							.createSourceInfoType();
-					org.accada.reader.rprm.core.readreport.SourceInfoType rdSourceInfo = rdSourceReport.getSourceInfo();
+					org.fosstrak.reader.rprm.core.readreport.SourceInfoType rdSourceInfo = rdSourceReport.getSourceInfo();
 					if (rdSourceInfo.getSourceFrequency() != -1) {
 						sourceInfo.setSourceFrequency(Integer.toString(rdSourceInfo
 								.getSourceFrequency()));
@@ -297,9 +297,9 @@ public class ReadReportNotificationListener implements NotificationListener {
 				Collection tags = rdSourceReport.getAllTags().values();
 				Iterator tagIt = tags.iterator();
 				while (tagIt.hasNext()) {
-					org.accada.reader.rprm.core.readreport.TagType rdTag = (org.accada.reader.rprm.core.readreport.TagType) tagIt
+					org.fosstrak.reader.rprm.core.readreport.TagType rdTag = (org.fosstrak.reader.rprm.core.readreport.TagType) tagIt
 							.next();
-					org.accada.reader.rprm.core.msg.notification.TagType tag = notificationFactory
+					org.fosstrak.reader.rprm.core.msg.notification.TagType tag = notificationFactory
 							.createTagType();
 					if (dataSelectorFields != null
 							&& (dataSelectorFields.contains(FieldName.TAG_ID)
@@ -350,13 +350,13 @@ public class ReadReportNotificationListener implements NotificationListener {
 		//get all Source reports
 		Iterator sourceReportIt = rdReadReport.getSourceReports().values().iterator();
 		while (sourceReportIt.hasNext()) {
-			org.accada.reader.rprm.core.msg.notification.ReadReportType.SourceReport sourceReport = notificationFactory.createReadReportTypeSourceReport();
+			org.fosstrak.reader.rprm.core.msg.notification.ReadReportType.SourceReport sourceReport = notificationFactory.createReadReportTypeSourceReport();
 			SourceReport rdSourceReport = (SourceReport) sourceReportIt.next();
 
 			//add the source info
 			if (rdSourceReport.containsSourceInfo()) {
 				SourceInfoType sourceInfo = notificationFactory.createSourceInfoType();
-				org.accada.reader.rprm.core.readreport.SourceInfoType rdSourceInfo = rdSourceReport.getSourceInfo();
+				org.fosstrak.reader.rprm.core.readreport.SourceInfoType rdSourceInfo = rdSourceReport.getSourceInfo();
 				if (rdSourceInfo.getSourceFrequency() >= 0) {
 					sourceInfo.setSourceFrequency(Integer.toString(rdSourceInfo.getSourceFrequency()));
 				}
@@ -373,7 +373,7 @@ public class ReadReportNotificationListener implements NotificationListener {
 			Collection tags = rdSourceReport.getAllTags().values();
 			Iterator it = tags.iterator();
 			while(it.hasNext()) {
-				org.accada.reader.rprm.core.readreport.TagType rdTag = (org.accada.reader.rprm.core.readreport.TagType)it.next();
+				org.fosstrak.reader.rprm.core.readreport.TagType rdTag = (org.fosstrak.reader.rprm.core.readreport.TagType)it.next();
 				TagType tag = notificationFactory.createTagType();
 				if (dataSelectorFields != null && (dataSelectorFields.contains(FieldName.TAG_ID) || dataSelectorFields.contains(FieldName.ALL)  || dataSelectorFields.contains(FieldName.ALL_TAG)  || dataSelectorFields.contains(FieldName.ALL_SUPPORTED))) {
 					tag.setTagID(HexUtil.hexToByteArray(rdTag.getId()));
@@ -403,16 +403,16 @@ public class ReadReportNotificationListener implements NotificationListener {
 	 * @return List with all JAXB TagEvents
 	 * @throws JAXBException
 	 */
-	private List getTagEvents(org.accada.reader.rprm.core.msg.notification.TagType msgTag, org.accada.reader.rprm.core.readreport.TagType rdTag) throws JAXBException {
+	private List getTagEvents(org.fosstrak.reader.rprm.core.msg.notification.TagType msgTag, org.fosstrak.reader.rprm.core.readreport.TagType rdTag) throws JAXBException {
 		List eventList = msgTag.getTagEvent();
 		Collection tagEvents = rdTag.getAllTagEvents().values();
 		Iterator it = tagEvents.iterator();
 		while(it.hasNext()) {
-			org.accada.reader.rprm.core.msg.notification.TagEventType tagEvent = notificationFactory.createTagEventType();
-			org.accada.reader.rprm.core.readreport.TagEventType rdEvent = (org.accada.reader.rprm.core.readreport.TagEventType)it.next();
+			org.fosstrak.reader.rprm.core.msg.notification.TagEventType tagEvent = notificationFactory.createTagEventType();
+			org.fosstrak.reader.rprm.core.readreport.TagEventType rdEvent = (org.fosstrak.reader.rprm.core.readreport.TagEventType)it.next();
 			tagEvent.setEventType(rdEvent.getEventType());
 
-			org.accada.reader.rprm.core.msg.notification.EventTimeType time = notificationFactory.createEventTimeType();
+			org.fosstrak.reader.rprm.core.msg.notification.EventTimeType time = notificationFactory.createEventTimeType();
 			if (rdEvent.getTimeTick() >= 0) {
 				time.setEventTimeTick(Long.toString(rdEvent.getTimeTick()));
 			}
@@ -452,14 +452,14 @@ public class ReadReportNotificationListener implements NotificationListener {
 	 * @return List with all JAXB TagFields
 	 * @throws JAXBException
 	 */
-	private List getTagFields(TagType msgTag, org.accada.reader.rprm.core.readreport.TagType rdTag) throws JAXBException {
+	private List getTagFields(TagType msgTag, org.fosstrak.reader.rprm.core.readreport.TagType rdTag) throws JAXBException {
 		List fieldList = msgTag.getTagFields();
 
 		Collection coll = rdTag.getAllTagFields().values();
 		Iterator it = coll.iterator();
 		while(it.hasNext()) {
 			TagFieldValueParamType tfvpReader = (TagFieldValueParamType)it.next();
-			org.accada.reader.rprm.core.msg.notification.TagFieldValueParamType tfvp = notificationFactory.createTagFieldValueParamType();
+			org.fosstrak.reader.rprm.core.msg.notification.TagFieldValueParamType tfvp = notificationFactory.createTagFieldValueParamType();
 			tfvp.setTagFieldName(tfvpReader.getTagFieldName());
 			tfvp.setTagFieldValue(tfvpReader.getTagFieldValue());
 			fieldList.add(tfvp);
@@ -473,8 +473,8 @@ public class ReadReportNotificationListener implements NotificationListener {
 		StringWriter sw = new StringWriter();
 		Marshaller notificationMarshaller = null;
 		JAXBContext notificationContext = null;
-		String NOTIFICATION_PACKAGE = "org.accada.reader.rprm.core.msg.notification";
-		org.accada.reader.rprm.core.msg.notification.ObjectFactory notificationFactory = new org.accada.reader.rprm.core.msg.notification.ObjectFactory();
+		String NOTIFICATION_PACKAGE = "org.fosstrak.reader.rprm.core.msg.notification";
+		org.fosstrak.reader.rprm.core.msg.notification.ObjectFactory notificationFactory = new org.fosstrak.reader.rprm.core.msg.notification.ObjectFactory();
 
 		try {
 			notificationContext = JAXBContext.newInstance(NOTIFICATION_PACKAGE);

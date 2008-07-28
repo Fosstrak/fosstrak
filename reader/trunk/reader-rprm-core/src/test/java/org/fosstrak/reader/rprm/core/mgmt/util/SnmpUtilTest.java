@@ -1,20 +1,20 @@
-package org.accada.reader.rprm.core.mgmt.util;
+package org.fosstrak.reader.rprm.core.mgmt.util;
 
 import java.util.Date;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.mgmt.OperationalStatus;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.IfMib;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.IpMib;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.accada.reader.rprm.core.mgmt.util.SnmpUtil;
-import org.accada.reader.rprm.core.msg.Address;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.mgmt.OperationalStatus;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.IfMib;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.IpMib;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.util.SnmpUtil;
+import org.fosstrak.reader.rprm.core.msg.Address;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.mo.MOScalar;
 import org.snmp4j.agent.mo.MOTable;
@@ -25,7 +25,7 @@ import org.snmp4j.smi.TcpAddress;
 import org.snmp4j.smi.UdpAddress;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.util.SnmpUtil</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.util.SnmpUtil</code>.
  */
 public class SnmpUtilTest extends TestCase {
 

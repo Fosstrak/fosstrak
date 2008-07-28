@@ -1,10 +1,10 @@
 header
 { 
-	package org.accada.reader.msg.reply;
+	package org.fosstrak.reader.msg.reply;
 }
 
 {
-	import org.accada.reader.msg.reply.impl.ErrorTypeImpl;
+	import org.fosstrak.reader.msg.reply.impl.ErrorTypeImpl;
 }
 
 class TextReplyParser extends Parser;
