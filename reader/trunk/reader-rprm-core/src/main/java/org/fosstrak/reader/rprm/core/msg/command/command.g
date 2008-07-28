@@ -1,9 +1,9 @@
 header { 
-package org.accada.reader.msg.command;
+package org.fosstrak.reader.msg.command;
 }
 
 {
-import org.accada.reader.msg.command.impl.CommandImpl;
+import org.fosstrak.reader.msg.command.impl.CommandImpl;
 }
 
 class TextCommandParser extends Parser;

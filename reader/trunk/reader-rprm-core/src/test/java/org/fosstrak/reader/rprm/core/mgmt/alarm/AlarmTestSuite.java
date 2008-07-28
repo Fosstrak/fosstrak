@@ -1,10 +1,10 @@
-package org.accada.reader.rprm.core.mgmt.alarm;
+package org.fosstrak.reader.rprm.core.mgmt.alarm;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * Tests for package <code>org.accada.reader.mgmt.alarm</code>.
+ * Tests for package <code>org.fosstrak.reader.mgmt.alarm</code>.
  */
 public class AlarmTestSuite {
 	

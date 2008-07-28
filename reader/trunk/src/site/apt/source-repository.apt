@@ -22,7 +22,7 @@ Source Repository Access
    The following is a link to the online source repository.
 
 +--
-https://svn.accada.org/repos/reader/tags/reader-0.4.0
+https://svn.fosstrak.org/repos/reader/tags/reader-0.4.0
 +--
 
 
@@ -31,7 +31,7 @@ https://svn.accada.org/repos/reader/tags/reader-0.4.0
    The source can be checked out anonymously fromSVN with this command:
 
 +--
-$ svn checkout https://svn.accada.org/repos/reader/tags/reader-0.4.0 reader
+$ svn checkout https://svn.fosstrak.org/repos/reader/tags/reader-0.4.0 reader
 +--
 
 
@@ -41,7 +41,7 @@ $ svn checkout https://svn.accada.org/repos/reader/tags/reader-0.4.0 reader
    command:
 
 +--
-$ svn checkout https://svn.accada.org/repos/reader/trunk reader
+$ svn checkout https://svn.fosstrak.org/repos/reader/trunk reader
 +--
 
    To commit changes to the repository, execute the following command (svn

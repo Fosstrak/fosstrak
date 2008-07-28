@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -21,7 +21,7 @@
 /**
  * 
  */
-package org.accada.reader.rp.proxy.msg.stubs.serializers.text;
+package org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -30,18 +30,18 @@ import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
-import org.accada.reader.rprm.core.msg.command.TagFieldValueParamType;
-import org.accada.reader.rprm.core.msg.command.TextCommandParserHelper;
-import org.accada.reader.rprm.core.msg.util.HexUtil;
-import org.accada.reader.rp.proxy.msg.stubs.DataSelector;
-import org.accada.reader.rp.proxy.msg.stubs.NotificationChannel;
-import org.accada.reader.rp.proxy.msg.stubs.ReadPoint;
-import org.accada.reader.rp.proxy.msg.stubs.Source;
-import org.accada.reader.rp.proxy.msg.stubs.TagField;
-import org.accada.reader.rp.proxy.msg.stubs.TagFieldValue;
-import org.accada.reader.rp.proxy.msg.stubs.TagSelector;
-import org.accada.reader.rp.proxy.msg.stubs.Trigger;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.CommandSerializer;
+import org.fosstrak.reader.rprm.core.msg.command.TagFieldValueParamType;
+import org.fosstrak.reader.rprm.core.msg.command.TextCommandParserHelper;
+import org.fosstrak.reader.rprm.core.msg.util.HexUtil;
+import org.fosstrak.reader.rp.proxy.msg.stubs.DataSelector;
+import org.fosstrak.reader.rp.proxy.msg.stubs.NotificationChannel;
+import org.fosstrak.reader.rp.proxy.msg.stubs.ReadPoint;
+import org.fosstrak.reader.rp.proxy.msg.stubs.Source;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagField;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagFieldValue;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagSelector;
+import org.fosstrak.reader.rp.proxy.msg.stubs.Trigger;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.CommandSerializer;
 
 /**
  * @author Andreas
@@ -129,7 +129,7 @@ public class CommandSerializerImpl implements CommandSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.CommandSerializer#setId(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.CommandSerializer#setId(java.lang.String)
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -138,7 +138,7 @@ public class CommandSerializerImpl implements CommandSerializer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.CommandSerializer#setTargetName(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.CommandSerializer#setTargetName(java.lang.String)
 	 */
 	public void setTargetName(String targetName) {
 		this.targetName = targetName;
@@ -344,7 +344,7 @@ public class CommandSerializerImpl implements CommandSerializer {
 	 *            TagFieldValue array
 	 * @return List of <code>TagFieldValueParamType</code>
 	 * @throws JAXBException
-	 * @see org.accada.reader.msg.command.TagFieldValueParamType
+	 * @see org.fosstrak.reader.msg.command.TagFieldValueParamType
 	 */
 	public List toTagFieldValueList(TagFieldValue[] tfArray)
 			throws JAXBException {

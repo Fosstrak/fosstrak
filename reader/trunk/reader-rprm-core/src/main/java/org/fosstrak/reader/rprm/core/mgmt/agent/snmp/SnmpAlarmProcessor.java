@@ -1,42 +1,42 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core.mgmt.agent.snmp;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp;
 
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.accada.reader.rprm.core.mgmt.alarm.Alarm;
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmProcessor;
-import org.accada.reader.rprm.core.mgmt.alarm.FailedEraseAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.FailedKillAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.FailedLockAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.FailedMemReadAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.FailedWriteAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.FreeMemoryAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.IOPortOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.NotificationChannelOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.ReadPointOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.ReaderDeviceOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.SourceOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.util.SnmpUtil;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.Alarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmProcessor;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.FailedEraseAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.FailedKillAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.FailedLockAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.FailedMemReadAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.FailedWriteAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.FreeMemoryAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.IOPortOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.NotificationChannelOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.ReadPointOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.ReaderDeviceOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.SourceOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.util.SnmpUtil;
 import org.snmp4j.agent.NotificationOriginator;
 import org.snmp4j.agent.mo.MOScalar;
 import org.snmp4j.smi.Gauge32;

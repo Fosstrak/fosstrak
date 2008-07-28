@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,7 +26,7 @@
 //
 
 
-package org.accada.reader.rprm.core.msg.reply;
+package org.fosstrak.reader.rprm.core.msg.reply;
 
 
 /**
@@ -119,108 +119,108 @@ public interface AntennaReadPointReply {
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedWriteCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedWriteCountType}
      */
-    org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedWriteCountType getGetFailedWriteCount();
+    org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedWriteCountType getGetFailedWriteCount();
 
     /**
      * reply for get failed write count
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedWriteCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedWriteCountType}
      */
-    void setGetFailedWriteCount(org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedWriteCountType value);
+    void setGetFailedWriteCount(org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedWriteCountType value);
 
     /**
      * reply for get read count
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetReadCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetReadCountType}
      */
-    org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetReadCountType getGetReadCount();
+    org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetReadCountType getGetReadCount();
 
     /**
      * reply for get read count
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetReadCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetReadCountType}
      */
-    void setGetReadCount(org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetReadCountType value);
+    void setGetReadCount(org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetReadCountType value);
 
     /**
      * reply for get failed read count
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedReadCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedReadCountType}
      */
-    org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedReadCountType getGetFailedReadCount();
+    org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedReadCountType getGetFailedReadCount();
 
     /**
      * reply for get failed read count
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedReadCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedReadCountType}
      */
-    void setGetFailedReadCount(org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedReadCountType value);
+    void setGetFailedReadCount(org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedReadCountType value);
 
     /**
      * reply for get kill count
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetKillCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetKillCountType}
      */
-    org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetKillCountType getGetKillCount();
+    org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetKillCountType getGetKillCount();
 
     /**
      * reply for get kill count
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetKillCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetKillCountType}
      */
-    void setGetKillCount(org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetKillCountType value);
+    void setGetKillCount(org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetKillCountType value);
 
     /**
      * reply for get write count
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetWriteCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetWriteCountType}
      */
-    org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetWriteCountType getGetWriteCount();
+    org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetWriteCountType getGetWriteCount();
 
     /**
      * reply for get write count
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetWriteCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetWriteCountType}
      */
-    void setGetWriteCount(org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetWriteCountType value);
+    void setGetWriteCount(org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetWriteCountType value);
 
     /**
      * reply for get failed kill count
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedKillCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedKillCountType}
      */
-    org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedKillCountType getGetFailedKillCount();
+    org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedKillCountType getGetFailedKillCount();
 
     /**
      * reply for get failed kill count
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedKillCountType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedKillCountType}
      */
-    void setGetFailedKillCount(org.accada.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedKillCountType value);
+    void setGetFailedKillCount(org.fosstrak.reader.rprm.core.msg.reply.AntennaReadPointReply.GetFailedKillCountType value);
 
 
     /**

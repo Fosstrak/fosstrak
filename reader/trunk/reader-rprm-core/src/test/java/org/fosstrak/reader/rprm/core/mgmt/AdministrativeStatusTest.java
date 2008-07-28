@@ -1,11 +1,11 @@
-package org.accada.reader.rprm.core.mgmt;
+package org.fosstrak.reader.rprm.core.mgmt;
 
-import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
+import org.fosstrak.reader.rprm.core.mgmt.AdministrativeStatus;
 
 import junit.framework.TestCase;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.AdministrativeStatus</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.AdministrativeStatus</code>.
  */
 public class AdministrativeStatusTest extends TestCase {
 	

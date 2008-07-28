@@ -1,36 +1,36 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core.msg.transport;
+package org.fosstrak.reader.rprm.core.msg.transport;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ProtocolException;
 import java.net.Socket;
 
-import org.accada.reader.rprm.core.msg.Clients;
-import org.accada.reader.rprm.core.msg.HttpReceiverHandshakeMessage;
-import org.accada.reader.rprm.core.msg.HttpSenderHandshakeMessage;
-import org.accada.reader.rprm.core.msg.IncomingMessage;
-import org.accada.reader.rprm.core.msg.MessagingConstants;
-import org.accada.reader.rprm.core.msg.ReceiverHandshakeMessage;
+import org.fosstrak.reader.rprm.core.msg.Clients;
+import org.fosstrak.reader.rprm.core.msg.HttpReceiverHandshakeMessage;
+import org.fosstrak.reader.rprm.core.msg.HttpSenderHandshakeMessage;
+import org.fosstrak.reader.rprm.core.msg.IncomingMessage;
+import org.fosstrak.reader.rprm.core.msg.MessagingConstants;
+import org.fosstrak.reader.rprm.core.msg.ReceiverHandshakeMessage;
 import org.apache.log4j.Logger;
 
 /**
@@ -99,7 +99,7 @@ public class HttpConnection extends Connection implements Runnable {
 	}
 
 	/**
-	 * @see org.accada.reader.rprm.core.msg.transport.Connection#close()
+	 * @see org.fosstrak.reader.rprm.core.msg.transport.Connection#close()
 	 */
 	public void close() {
 		log.debug("Closing the HTTP connection.");
@@ -329,7 +329,7 @@ public class HttpConnection extends Connection implements Runnable {
 	}
 
 	/**
-	 * @see org.accada.reader.rprm.core.msg.transport.Connection#setReceiverHandshake(ReceiverHandshakeMessage)
+	 * @see org.fosstrak.reader.rprm.core.msg.transport.Connection#setReceiverHandshake(ReceiverHandshakeMessage)
 	 */
 	public void setReceiverHandshake(
 			HttpReceiverHandshakeMessage receiverHandshake) {
@@ -337,7 +337,7 @@ public class HttpConnection extends Connection implements Runnable {
 	}
 
 	/**
-	 * @see org.accada.reader.rprm.core.msg.transport.Connection#setSenderHandshake(SenderHandshakeMessage)
+	 * @see org.fosstrak.reader.rprm.core.msg.transport.Connection#setSenderHandshake(SenderHandshakeMessage)
 	 */
 	public void setSenderHandshake(HttpSenderHandshakeMessage senderHandshake) {
 		this.senderHandshake = senderHandshake;

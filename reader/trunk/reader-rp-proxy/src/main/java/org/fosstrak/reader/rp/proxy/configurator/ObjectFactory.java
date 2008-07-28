@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,20 +26,20 @@
 //
 
 
-package org.accada.reader.rp.proxy.configurator;
+package org.fosstrak.reader.rp.proxy.configurator;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
-import org.accada.reader.rp.proxy.configurator.DataSelectorConfiguration.EventFilters;
-import org.accada.reader.rp.proxy.configurator.DataSelectorConfiguration.FieldNames;
-import org.accada.reader.rp.proxy.configurator.DataSelectorConfiguration.TagFields;
-import org.accada.reader.rp.proxy.configurator.NotificationChannelConfiguration.NotificationTriggers;
+import org.fosstrak.reader.rp.proxy.configurator.DataSelectorConfiguration.EventFilters;
+import org.fosstrak.reader.rp.proxy.configurator.DataSelectorConfiguration.FieldNames;
+import org.fosstrak.reader.rp.proxy.configurator.DataSelectorConfiguration.TagFields;
+import org.fosstrak.reader.rp.proxy.configurator.NotificationChannelConfiguration.NotificationTriggers;
 
 
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.accada.reader.proxy.configurator package. 
+ * generated in the org.fosstrak.reader.proxy.configurator package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -55,7 +55,7 @@ public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.accada.reader.proxy.configurator
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.fosstrak.reader.proxy.configurator
      * 
      */
     public ObjectFactory() {
@@ -78,11 +78,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rp.proxy.configurator.NotificationChannelConfiguration.Sources }
+     * Create an instance of {@link org.fosstrak.reader.rp.proxy.configurator.NotificationChannelConfiguration.Sources }
      * 
      */
-    public org.accada.reader.rp.proxy.configurator.NotificationChannelConfiguration.Sources createNotificationChannelConfigurationSources() {
-        return new org.accada.reader.rp.proxy.configurator.NotificationChannelConfiguration.Sources();
+    public org.fosstrak.reader.rp.proxy.configurator.NotificationChannelConfiguration.Sources createNotificationChannelConfigurationSources() {
+        return new org.fosstrak.reader.rp.proxy.configurator.NotificationChannelConfiguration.Sources();
     }
 
     /**
@@ -150,11 +150,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rp.proxy.configurator.Sources }
+     * Create an instance of {@link org.fosstrak.reader.rp.proxy.configurator.Sources }
      * 
      */
-    public org.accada.reader.rp.proxy.configurator.Sources createSources() {
-        return new org.accada.reader.rp.proxy.configurator.Sources();
+    public org.fosstrak.reader.rp.proxy.configurator.Sources createSources() {
+        return new org.fosstrak.reader.rp.proxy.configurator.Sources();
     }
 
     /**

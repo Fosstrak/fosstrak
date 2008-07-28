@@ -1,21 +1,21 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp;
 
 import java.net.MalformedURLException;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmChannel;
-import org.accada.reader.rprm.core.msg.Address;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmChannel;
+import org.fosstrak.reader.rprm.core.msg.Address;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.mo.snmp.SnmpTargetMIB;
 import org.snmp4j.smi.OctetString;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.SnmpAgent</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.SnmpAgent</code>.
  */
 public class SnmpAgentTest extends TestCase {
 

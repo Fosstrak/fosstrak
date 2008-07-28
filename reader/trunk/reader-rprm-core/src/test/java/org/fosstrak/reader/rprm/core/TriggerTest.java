@@ -1,16 +1,16 @@
-package org.accada.reader.rprm.core;
+package org.fosstrak.reader.rprm.core;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.Trigger;
-import org.accada.reader.rprm.core.TriggerType;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.Trigger;
+import org.fosstrak.reader.rprm.core.TriggerType;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 
 /**
- * Tests for the class <code>org.accada.reader.Trigger</code>.
+ * Tests for the class <code>org.fosstrak.reader.Trigger</code>.
  */
 public class TriggerTest extends TestCase {
 

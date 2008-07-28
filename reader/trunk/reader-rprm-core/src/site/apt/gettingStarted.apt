@@ -7,9 +7,9 @@
 Reader RP/RM Core Module: Getting Started
 
 
-* Installing the Accada Reader RP/RM Core
+* Installing the Fosstrak Reader RP/RM Core
 
-   The following instructions show how to install the Accada Reader:
+   The following instructions show how to install the Fosstrak Reader:
 
    * Download the reader binaries with the dependencies included from the {{{../download.html}download}} section of the website.
 
@@ -24,7 +24,7 @@ Reader RP/RM Core Module: Getting Started
 
    * Start the reader instance by invoking the executable jar
 
-   The reader is now listening for incoming http requests on port 8000, incoming tcp requests on port 5566, and incoming snmp requests on port 161. To communicate with the reader instance, you might want to consider using the Accada Reader RP Proxy and Accada Reader RP Client or a SNMP Manager such as MIB Explorer.
+   The reader is now listening for incoming http requests on port 8000, incoming tcp requests on port 5566, and incoming snmp requests on port 161. To communicate with the reader instance, you might want to consider using the Fosstrak Reader RP Proxy and Fosstrak Reader RP Client or a SNMP Manager such as MIB Explorer.
    For more information, on how to use theses tools, please {{{../index.html}click}} here
 
    You might also want to consider unpacking the jar and adjusting the settings in the ReaderDevice.xml file (see below).
@@ -82,7 +82,7 @@ Reader RP/RM Core Module: Getting Started
       <readers>
          <reader>
             <name>SimulatorController</name>
-            <class>org.accada.reader.hal.impl.sim.SimulatorController</class>
+            <class>org.fosstrak.reader.hal.impl.sim.SimulatorController</class>
             <properties>/props/SimulatorController.xml</properties>
             <defaultProperties>/props/SimulatorController_default.xml</defaultProperties>
             <readpoint>Shelf1</readpoint>
@@ -121,7 +121,7 @@ Reader RP/RM Core Module: Getting Started
 
    <!-- The io trigger classes -->
       <IOEdgeTriggerPortManager>
-         <port>org.accada.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager</port>
+         <port>org.fosstrak.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager</port>
       </IOEdgeTriggerPortManager>
       <IOValueTriggerPortManager>
       </IOValueTriggerPortManager>

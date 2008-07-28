@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,7 +26,7 @@
 //
 
 
-package org.accada.reader.rprm.core.msg.reply;
+package org.fosstrak.reader.rprm.core.msg.reply;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -35,81 +35,81 @@ import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 
-import org.accada.reader.rprm.core.msg.reply.AddressReturnType;
-import org.accada.reader.rprm.core.msg.reply.BooleanReturnType;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorListParamType;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorListReturnType;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorReply;
-import org.accada.reader.rprm.core.msg.reply.DataSelectorReturnType;
-import org.accada.reader.rprm.core.msg.reply.EPC;
-import org.accada.reader.rprm.core.msg.reply.EpcReturnType;
-import org.accada.reader.rprm.core.msg.reply.ErrorType;
-import org.accada.reader.rprm.core.msg.reply.EventTimeType;
-import org.accada.reader.rprm.core.msg.reply.EventTypeListParamType;
-import org.accada.reader.rprm.core.msg.reply.EventTypeListReturnValue;
-import org.accada.reader.rprm.core.msg.reply.EventTypeReply;
-import org.accada.reader.rprm.core.msg.reply.FieldNameListParamType;
-import org.accada.reader.rprm.core.msg.reply.FieldNameListReturnType;
-import org.accada.reader.rprm.core.msg.reply.FieldNameReply;
-import org.accada.reader.rprm.core.msg.reply.HexStringListType;
-import org.accada.reader.rprm.core.msg.reply.HexStringReturnType;
-import org.accada.reader.rprm.core.msg.reply.IntReturnType;
-import org.accada.reader.rprm.core.msg.reply.NoParamType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelListParamType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelListReturnType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReply;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReturnType;
-import org.accada.reader.rprm.core.msg.reply.ObjectFactory;
-import org.accada.reader.rprm.core.msg.reply.ReadPointListParamType;
-import org.accada.reader.rprm.core.msg.reply.ReadPointListReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadPointReply;
-import org.accada.reader.rprm.core.msg.reply.ReadPointReturnType;
-import org.accada.reader.rprm.core.msg.reply.ReadReportType;
-import org.accada.reader.rprm.core.msg.reply.ReaderDeviceReply;
-import org.accada.reader.rprm.core.msg.reply.ReaderTimeType;
-import org.accada.reader.rprm.core.msg.reply.Reply;
-import org.accada.reader.rprm.core.msg.reply.SourceInfoType;
-import org.accada.reader.rprm.core.msg.reply.SourceListParamType;
-import org.accada.reader.rprm.core.msg.reply.SourceListReturnType;
-import org.accada.reader.rprm.core.msg.reply.SourceReply;
-import org.accada.reader.rprm.core.msg.reply.SourceReturnType;
-import org.accada.reader.rprm.core.msg.reply.StringListParamType;
-import org.accada.reader.rprm.core.msg.reply.StringListReturnType;
-import org.accada.reader.rprm.core.msg.reply.StringReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagEventType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldListParamType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldReply;
-import org.accada.reader.rprm.core.msg.reply.TagFieldReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType;
-import org.accada.reader.rprm.core.msg.reply.TagFieldValueParamType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorListParamType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorReply;
-import org.accada.reader.rprm.core.msg.reply.TagSelectorReturnType;
-import org.accada.reader.rprm.core.msg.reply.TagType;
-import org.accada.reader.rprm.core.msg.reply.TimeStampReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerListParamType;
-import org.accada.reader.rprm.core.msg.reply.TriggerListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerReply;
-import org.accada.reader.rprm.core.msg.reply.TriggerReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeListReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeReply;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeReturnType;
-import org.accada.reader.rprm.core.msg.reply.TriggerValueReturnType;
-import org.accada.reader.rprm.core.msg.reply.NotificationChannelReply.ReadQueuedData;
-import org.accada.reader.rprm.core.msg.reply.ReadReportType.SourceReport;
-import org.accada.reader.rprm.core.msg.reply.SourceReply.RawReadIDs;
-import org.accada.reader.rprm.core.msg.reply.SourceReply.Read;
-import org.accada.reader.rprm.core.msg.reply.SourceReply.ReadIDs;
-import org.accada.reader.rprm.core.msg.reply.TagEventType.EventTriggers;
-import org.accada.reader.rprm.core.msg.reply.TriggerTypeListReturnType.ReturnValue;
+import org.fosstrak.reader.rprm.core.msg.reply.AddressReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.BooleanReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReply;
+import org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.EPC;
+import org.fosstrak.reader.rprm.core.msg.reply.EpcReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ErrorType;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTimeType;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTypeListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTypeListReturnValue;
+import org.fosstrak.reader.rprm.core.msg.reply.EventTypeReply;
+import org.fosstrak.reader.rprm.core.msg.reply.FieldNameListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.FieldNameListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.FieldNameReply;
+import org.fosstrak.reader.rprm.core.msg.reply.HexStringListType;
+import org.fosstrak.reader.rprm.core.msg.reply.HexStringReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.IntReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NoParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ObjectFactory;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointReply;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadPointReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadReportType;
+import org.fosstrak.reader.rprm.core.msg.reply.ReaderDeviceReply;
+import org.fosstrak.reader.rprm.core.msg.reply.ReaderTimeType;
+import org.fosstrak.reader.rprm.core.msg.reply.Reply;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceInfoType;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.StringListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.StringListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.StringReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagEventType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TagType;
+import org.fosstrak.reader.rprm.core.msg.reply.TimeStampReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerListParamType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeListReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReply;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerValueReturnType;
+import org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply.ReadQueuedData;
+import org.fosstrak.reader.rprm.core.msg.reply.ReadReportType.SourceReport;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply.RawReadIDs;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply.Read;
+import org.fosstrak.reader.rprm.core.msg.reply.SourceReply.ReadIDs;
+import org.fosstrak.reader.rprm.core.msg.reply.TagEventType.EventTriggers;
+import org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeListReturnType.ReturnValue;
 
 
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.accada.reader.msg.reply package. 
+ * generated in the org.fosstrak.reader.msg.reply package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -126,7 +126,7 @@ public class ObjectFactory {
     private final static QName _HexStringListTypeListValue_QNAME = new QName("", "value");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.accada.reader.msg.reply
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.fosstrak.reader.msg.reply
      * 
      */
     public ObjectFactory() {
@@ -173,19 +173,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.SourceListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.SourceListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.SourceListParamType.List createSourceListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.SourceListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.SourceListParamType.List createSourceListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.SourceListParamType.List();
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.HexStringListType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.HexStringListType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.HexStringListType.List createHexStringListTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.HexStringListType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.HexStringListType.List createHexStringListTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.HexStringListType.List();
     }
 
     /**
@@ -245,11 +245,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.FieldNameListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.FieldNameListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.FieldNameListParamType.List createFieldNameListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.FieldNameListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.FieldNameListParamType.List createFieldNameListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.FieldNameListParamType.List();
     }
 
     /**
@@ -333,11 +333,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.DataSelectorListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.DataSelectorListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.DataSelectorListParamType.List createDataSelectorListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.DataSelectorListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.DataSelectorListParamType.List createDataSelectorListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.DataSelectorListParamType.List();
     }
 
     /**
@@ -349,11 +349,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.TagFieldListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.TagFieldListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.TagFieldListParamType.List createTagFieldListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.TagFieldListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.TagFieldListParamType.List createTagFieldListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.TagFieldListParamType.List();
     }
 
     /**
@@ -373,11 +373,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.TriggerTypeListReturnType.ReturnValue.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeListReturnType.ReturnValue.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.TriggerTypeListReturnType.ReturnValue.List createTriggerTypeListReturnTypeReturnValueList() {
-        return new org.accada.reader.rprm.core.msg.reply.TriggerTypeListReturnType.ReturnValue.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeListReturnType.ReturnValue.List createTriggerTypeListReturnTypeReturnValueList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeListReturnType.ReturnValue.List();
     }
 
     /**
@@ -437,11 +437,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.NotificationChannelListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.NotificationChannelListParamType.List createNotificationChannelListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.NotificationChannelListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelListParamType.List createNotificationChannelListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelListParamType.List();
     }
 
     /**
@@ -485,11 +485,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.ReadPointListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.ReadPointListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.ReadPointListParamType.List createReadPointListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.ReadPointListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.ReadPointListParamType.List createReadPointListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.ReadPointListParamType.List();
     }
 
     /**
@@ -557,11 +557,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.StringListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.StringListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.StringListParamType.List createStringListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.StringListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.StringListParamType.List createStringListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.StringListParamType.List();
     }
 
     /**
@@ -597,19 +597,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.TagSelectorListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.TagSelectorListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.TagSelectorListParamType.List createTagSelectorListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.TagSelectorListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.TagSelectorListParamType.List createTagSelectorListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.TagSelectorListParamType.List();
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.TriggerListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.TriggerListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.TriggerListParamType.List createTriggerListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.TriggerListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.TriggerListParamType.List createTriggerListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.TriggerListParamType.List();
     }
 
     /**
@@ -717,11 +717,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType.List createTagFieldValueListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.TagFieldValueListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType.List createTagFieldValueListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.TagFieldValueListParamType.List();
     }
 
     /**
@@ -733,11 +733,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link org.accada.reader.rprm.core.msg.reply.EventTypeListParamType.List }
+     * Create an instance of {@link org.fosstrak.reader.rprm.core.msg.reply.EventTypeListParamType.List }
      * 
      */
-    public org.accada.reader.rprm.core.msg.reply.EventTypeListParamType.List createEventTypeListParamTypeList() {
-        return new org.accada.reader.rprm.core.msg.reply.EventTypeListParamType.List();
+    public org.fosstrak.reader.rprm.core.msg.reply.EventTypeListParamType.List createEventTypeListParamTypeList() {
+        return new org.fosstrak.reader.rprm.core.msg.reply.EventTypeListParamType.List();
     }
 
     /**
@@ -784,10 +784,10 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "value", scope = org.accada.reader.rprm.core.msg.reply.HexStringListType.List.class)
+    @XmlElementDecl(namespace = "", name = "value", scope = org.fosstrak.reader.rprm.core.msg.reply.HexStringListType.List.class)
     @XmlJavaTypeAdapter(HexBinaryAdapter.class)
     public JAXBElement<byte[]> createHexStringListTypeListValue(byte[] value) {
-        return new JAXBElement<byte[]>(_HexStringListTypeListValue_QNAME, byte[].class, org.accada.reader.rprm.core.msg.reply.HexStringListType.List.class, ((byte[]) value));
+        return new JAXBElement<byte[]>(_HexStringListTypeListValue_QNAME, byte[].class, org.fosstrak.reader.rprm.core.msg.reply.HexStringListType.List.class, ((byte[]) value));
     }
 
 }

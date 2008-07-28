@@ -8,9 +8,9 @@
   <moduleSets>
     <moduleSet>
       <includes>
-        <include>org.accada.reader:reader-rprm-core</include>
-        <include>org.accada.reader:reader-rp-proxy</include>
-        <include>org.accada.reader:reader-rp-client</include>
+        <include>org.fosstrak.reader:reader-rprm-core</include>
+        <include>org.fosstrak.reader:reader-rp-proxy</include>
+        <include>org.fosstrak.reader:reader-rp-client</include>
       </includes>
       <sources>
         <fileSets>

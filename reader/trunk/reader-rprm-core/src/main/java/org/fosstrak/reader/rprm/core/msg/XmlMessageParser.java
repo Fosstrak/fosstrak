@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core.msg;
+package org.fosstrak.reader.rprm.core.msg;
 
 import java.io.StringReader;
 
@@ -27,9 +27,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.accada.reader.rprm.core.msg.command.Command;
-import org.accada.reader.rprm.core.msg.reply.ErrorType;
-import org.accada.reader.rprm.core.msg.reply.Reply;
+import org.fosstrak.reader.rprm.core.msg.command.Command;
+import org.fosstrak.reader.rprm.core.msg.reply.ErrorType;
+import org.fosstrak.reader.rprm.core.msg.reply.Reply;
 import org.apache.log4j.Logger;
 import org.xml.sax.InputSource;
 
@@ -53,7 +53,7 @@ public class XmlMessageParser implements MessageParser {
 	private Unmarshaller unmarshaller = null;
 
 	/** The factory for creating error replies if a parser exception happens. */
-	private org.accada.reader.rprm.core.msg.reply.ObjectFactory replyFactory;
+	private org.fosstrak.reader.rprm.core.msg.reply.ObjectFactory replyFactory;
 
 	// ====================================================================
 	// ------------------------- Constructor ----------------------------//
@@ -66,7 +66,7 @@ public class XmlMessageParser implements MessageParser {
 		try {
 			unmarshaller = jaxbContext.createUnmarshaller();
 //			unmarshaller.setValidating(true);
-			replyFactory = new org.accada.reader.rprm.core.msg.reply.ObjectFactory();
+			replyFactory = new org.fosstrak.reader.rprm.core.msg.reply.ObjectFactory();
 		} catch (JAXBException e) {
 			log.error(e);
 		}

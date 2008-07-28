@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -21,12 +21,12 @@
 /**
  * 
  */
-package org.accada.reader.rp.proxy.msg.stubs.serializers.text;
+package org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text;
 
-import org.accada.reader.rp.proxy.msg.stubs.DataSelector;
-import org.accada.reader.rp.proxy.msg.stubs.Source;
-import org.accada.reader.rp.proxy.msg.stubs.Trigger;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.NotificationChannelSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.DataSelector;
+import org.fosstrak.reader.rp.proxy.msg.stubs.Source;
+import org.fosstrak.reader.rp.proxy.msg.stubs.Trigger;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.NotificationChannelSerializer;
 
 /**
  * @author Andreas
@@ -71,7 +71,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#create(java.lang.String, java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#create(java.lang.String, java.lang.String)
 	 */
 	public String create(String name, String addr) {
 		resetCommand();
@@ -85,7 +85,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#getName()
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#getName()
 	 */
 	public String getName() {
 		resetCommand();
@@ -98,7 +98,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#getAddress()
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#getAddress()
 	 */
 	public String getAddress() {
 		resetCommand();
@@ -111,7 +111,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#getEffectiveAddress()
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#getEffectiveAddress()
 	 */
 	public String getEffectiveAddress() {
 		resetCommand();
@@ -124,7 +124,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#setAddress(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#setAddress(java.lang.String)
 	 */
 	public String setAddress(String addr) {
 		resetCommand();
@@ -138,7 +138,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#getDataSelector()
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#getDataSelector()
 	 */
 	public String getDataSelector() {
 		resetCommand();
@@ -151,7 +151,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#setDataSelector(org.accada.reader.testclient.command.DataSelectorSerializer)
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#setDataSelector(org.fosstrak.reader.testclient.command.DataSelectorSerializer)
 	 */
 	public String setDataSelector(DataSelector dataSelector) {
 		resetCommand();
@@ -165,7 +165,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#addSources(org.accada.reader.Source[])
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#addSources(org.fosstrak.reader.Source[])
 	 */
 	public String addSources(Source[] sourceList) {
 		resetCommand();
@@ -179,7 +179,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#removeSources(org.accada.reader.Source[])
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#removeSources(org.fosstrak.reader.Source[])
 	 */
 	public String removeSources(Source[] sourceList) {
 		resetCommand();
@@ -193,7 +193,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#removeAllSources()
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#removeAllSources()
 	 */
 	public String removeAllSources() {
 		resetCommand();
@@ -206,7 +206,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#getSource(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#getSource(java.lang.String)
 	 */
 	public String getSource(String name) {
 		resetCommand();
@@ -220,7 +220,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#getAllSources()
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#getAllSources()
 	 */
 	public String getAllSources() {
 		resetCommand();
@@ -233,7 +233,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#addNotificationTriggers(org.accada.reader.Trigger[])
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#addNotificationTriggers(org.fosstrak.reader.Trigger[])
 	 */
 	public String addNotificationTriggers(Trigger[] triggers) {
 		resetCommand();
@@ -247,7 +247,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#removeNotificationTriggers(org.accada.reader.Trigger[])
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#removeNotificationTriggers(org.fosstrak.reader.Trigger[])
 	 */
 	public String removeNotificationTriggers(Trigger[] triggers) {
 		resetCommand();
@@ -261,7 +261,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#removeAllNotificationTriggers()
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#removeAllNotificationTriggers()
 	 */
 	public String removeAllNotificationTriggers() {
 		resetCommand();
@@ -274,7 +274,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#getNotificationTrigger(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#getNotificationTrigger(java.lang.String)
 	 */
 	public String getNotificationTrigger(String name) {
 		resetCommand();
@@ -288,7 +288,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#getAllNotificationTriggers()
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#getAllNotificationTriggers()
 	 */
 	public String getAllNotificationTriggers() {
 		resetCommand();
@@ -301,7 +301,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#readQueuedData(boolean)
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#readQueuedData(boolean)
 	 */
 	public String readQueuedData(boolean clearBuffer) {
 		resetCommand();
@@ -315,7 +315,7 @@ public class NotificationChannelSerializerImpl extends CommandSerializerImpl
 	}
 	
 	/* (non-Javadoc)
-	 * @see org.accada.reader.testclient.command.NotificationChannelSerializer#readQueuedData(boolean)
+	 * @see org.fosstrak.reader.testclient.command.NotificationChannelSerializer#readQueuedData(boolean)
 	 */
 	public String readQueuedData() {
 		resetCommand();

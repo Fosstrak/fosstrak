@@ -1,11 +1,11 @@
-package org.accada.reader.rprm.core.mgmt.util;
+package org.fosstrak.reader.rprm.core.mgmt.util;
 
-import org.accada.reader.rprm.core.mgmt.util.DHCPServerFinder;
+import org.fosstrak.reader.rprm.core.mgmt.util.DHCPServerFinder;
 
 import junit.framework.TestCase;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.util.DHCPServerFinder</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.util.DHCPServerFinder</code>.
  */
 public class DHCPServerFinderTest extends TestCase {
 	

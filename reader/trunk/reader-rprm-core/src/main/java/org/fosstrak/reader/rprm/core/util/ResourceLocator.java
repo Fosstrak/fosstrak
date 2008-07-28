@@ -1,10 +1,10 @@
 /**
- * This class locates resources (configuration files, images) for the accada
+ * This class locates resources (configuration files, images) for the fosstrak
  * reader core. It searches for user resources in the user directory (current
  * application directory) and for default resources in the library if no user
  * resources found.
  */
-package org.accada.reader.rprm.core.util;
+package org.fosstrak.reader.rprm.core.util;
 
 import java.io.File;
 import java.net.URI;

@@ -1,21 +1,21 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table ;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table ;
 
 import java.util.Date;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.NotificationChannel;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.mgmt.AdministrativeStatus;
-import org.accada.reader.rprm.core.mgmt.OperationalStatus;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.RowObjectContainer;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
-import org.accada.reader.rprm.core.mgmt.util.SnmpUtil;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.NotificationChannel;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.mgmt.AdministrativeStatus;
+import org.fosstrak.reader.rprm.core.mgmt.OperationalStatus;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.RowObjectContainer;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmLevel;
+import org.fosstrak.reader.rprm.core.mgmt.util.SnmpUtil;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.smi.Counter32;
 import org.snmp4j.smi.Integer32;
@@ -24,7 +24,7 @@ import org.snmp4j.smi.UnsignedInteger32;
 import org.snmp4j.smi.Variable;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.EpcgNotificationChannelTableRow</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.table.EpcgNotificationChannelTableRow</code>.
  */
 public class EpcgNotificationChannelTableRowTest extends TestCase {
 

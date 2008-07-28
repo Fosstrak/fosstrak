@@ -6,7 +6,7 @@
          <param name="ConversionPattern" value="%-4r [%t] %-5p %c %x - %m%n"/>
       </layout>
    </appender>
-   <logger name="org.accada.reader.rp.proxy">
+   <logger name="org.fosstrak.reader.rp.proxy">
       <level value="info"/>
    </logger>
    <root>

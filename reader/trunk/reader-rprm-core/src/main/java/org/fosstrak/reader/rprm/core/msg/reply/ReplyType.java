@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,7 +26,7 @@
 //
 
 
-package org.accada.reader.rprm.core.msg.reply;
+package org.fosstrak.reader.rprm.core.msg.reply;
 
 
 /**
@@ -88,18 +88,18 @@ public interface ReplyType {
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TriggerReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TriggerReply}
      */
-    org.accada.reader.rprm.core.msg.reply.TriggerReply getTrigger();
+    org.fosstrak.reader.rprm.core.msg.reply.TriggerReply getTrigger();
 
     /**
      * A Read/Notify Trigger
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TriggerReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TriggerReply}
      */
-    void setTrigger(org.accada.reader.rprm.core.msg.reply.TriggerReply value);
+    void setTrigger(org.fosstrak.reader.rprm.core.msg.reply.TriggerReply value);
 
     /**
      * Which data is reported by (a
@@ -108,9 +108,9 @@ public interface ReplyType {
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.DataSelectorReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReply}
      */
-    org.accada.reader.rprm.core.msg.reply.DataSelectorReply getDataSelector();
+    org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReply getDataSelector();
 
     /**
      * Which data is reported by (a
@@ -119,63 +119,63 @@ public interface ReplyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.DataSelectorReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReply}
      */
-    void setDataSelector(org.accada.reader.rprm.core.msg.reply.DataSelectorReply value);
+    void setDataSelector(org.fosstrak.reader.rprm.core.msg.reply.DataSelectorReply value);
 
     /**
      * Name of the fields in a read report
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.FieldNameReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.FieldNameReply}
      */
-    org.accada.reader.rprm.core.msg.reply.FieldNameReply getFieldName();
+    org.fosstrak.reader.rprm.core.msg.reply.FieldNameReply getFieldName();
 
     /**
      * Name of the fields in a read report
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.FieldNameReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.FieldNameReply}
      */
-    void setFieldName(org.accada.reader.rprm.core.msg.reply.FieldNameReply value);
+    void setFieldName(org.fosstrak.reader.rprm.core.msg.reply.FieldNameReply value);
 
     /**
      * A read point
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadPointReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadPointReply}
      */
-    org.accada.reader.rprm.core.msg.reply.ReadPointReply getReadPoint();
+    org.fosstrak.reader.rprm.core.msg.reply.ReadPointReply getReadPoint();
 
     /**
      * A read point
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReadPointReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReadPointReply}
      */
-    void setReadPoint(org.accada.reader.rprm.core.msg.reply.ReadPointReply value);
+    void setReadPoint(org.fosstrak.reader.rprm.core.msg.reply.ReadPointReply value);
 
     /**
      * The data fields on a tag that can be read or written
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TagFieldReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TagFieldReply}
      */
-    org.accada.reader.rprm.core.msg.reply.TagFieldReply getTagField();
+    org.fosstrak.reader.rprm.core.msg.reply.TagFieldReply getTagField();
 
     /**
      * The data fields on a tag that can be read or written
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TagFieldReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TagFieldReply}
      */
-    void setTagField(org.accada.reader.rprm.core.msg.reply.TagFieldReply value);
+    void setTagField(org.fosstrak.reader.rprm.core.msg.reply.TagFieldReply value);
 
     /**
      * the error code for the command - 0
@@ -196,36 +196,36 @@ public interface ReplyType {
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.SourceReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.SourceReply}
      */
-    org.accada.reader.rprm.core.msg.reply.SourceReply getSource();
+    org.fosstrak.reader.rprm.core.msg.reply.SourceReply getSource();
 
     /**
      * A Read Source
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.SourceReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.SourceReply}
      */
-    void setSource(org.accada.reader.rprm.core.msg.reply.SourceReply value);
+    void setSource(org.fosstrak.reader.rprm.core.msg.reply.SourceReply value);
 
     /**
      * A tag selector
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TagSelectorReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReply}
      */
-    org.accada.reader.rprm.core.msg.reply.TagSelectorReply getTagSelector();
+    org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReply getTagSelector();
 
     /**
      * A tag selector
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TagSelectorReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReply}
      */
-    void setTagSelector(org.accada.reader.rprm.core.msg.reply.TagSelectorReply value);
+    void setTagSelector(org.fosstrak.reader.rprm.core.msg.reply.TagSelectorReply value);
 
     /**
      * An enumeration object - Type of
@@ -233,9 +233,9 @@ public interface ReplyType {
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TriggerTypeReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReply}
      */
-    org.accada.reader.rprm.core.msg.reply.TriggerTypeReply getTriggerType();
+    org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReply getTriggerType();
 
     /**
      * An enumeration object - Type of
@@ -243,9 +243,9 @@ public interface ReplyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.TriggerTypeReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReply}
      */
-    void setTriggerType(org.accada.reader.rprm.core.msg.reply.TriggerTypeReply value);
+    void setTriggerType(org.fosstrak.reader.rprm.core.msg.reply.TriggerTypeReply value);
 
     /**
      * An enumeration object - Type of
@@ -253,9 +253,9 @@ public interface ReplyType {
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.EventTypeReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.EventTypeReply}
      */
-    org.accada.reader.rprm.core.msg.reply.EventTypeReply getEventType();
+    org.fosstrak.reader.rprm.core.msg.reply.EventTypeReply getEventType();
 
     /**
      * An enumeration object - Type of
@@ -263,45 +263,45 @@ public interface ReplyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.EventTypeReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.EventTypeReply}
      */
-    void setEventType(org.accada.reader.rprm.core.msg.reply.EventTypeReply value);
+    void setEventType(org.fosstrak.reader.rprm.core.msg.reply.EventTypeReply value);
 
     /**
      * Information about the error.
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ErrorType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ErrorType}
      */
-    org.accada.reader.rprm.core.msg.reply.ErrorType getError();
+    org.fosstrak.reader.rprm.core.msg.reply.ErrorType getError();
 
     /**
      * Information about the error.
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ErrorType}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ErrorType}
      */
-    void setError(org.accada.reader.rprm.core.msg.reply.ErrorType value);
+    void setError(org.fosstrak.reader.rprm.core.msg.reply.ErrorType value);
 
     /**
      * A Reader
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReaderDeviceReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReaderDeviceReply}
      */
-    org.accada.reader.rprm.core.msg.reply.ReaderDeviceReply getReaderDevice();
+    org.fosstrak.reader.rprm.core.msg.reply.ReaderDeviceReply getReaderDevice();
 
     /**
      * A Reader
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.ReaderDeviceReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.ReaderDeviceReply}
      */
-    void setReaderDevice(org.accada.reader.rprm.core.msg.reply.ReaderDeviceReply value);
+    void setReaderDevice(org.fosstrak.reader.rprm.core.msg.reply.ReaderDeviceReply value);
 
     /**
      * The notification channel
@@ -309,9 +309,9 @@ public interface ReplyType {
      * 
      * @return
      *     possible object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.NotificationChannelReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply}
      */
-    org.accada.reader.rprm.core.msg.reply.NotificationChannelReply getNotificationChannel();
+    org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply getNotificationChannel();
 
     /**
      * The notification channel
@@ -319,9 +319,9 @@ public interface ReplyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link org.accada.reader.rprm.core.msg.reply.NotificationChannelReply}
+     *     {@link org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply}
      */
-    void setNotificationChannel(org.accada.reader.rprm.core.msg.reply.NotificationChannelReply value);
+    void setNotificationChannel(org.fosstrak.reader.rprm.core.msg.reply.NotificationChannelReply value);
 
     /**
      * The id of the command for which

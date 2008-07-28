@@ -1,11 +1,11 @@
-package org.accada.reader.rprm.core.mgmt.alarm;
+package org.fosstrak.reader.rprm.core.mgmt.alarm;
 
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmLevel;
 
 import junit.framework.TestCase;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.alarm.AlarmLevel</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.alarm.AlarmLevel</code>.
  */
 public class AlarmLevelTest extends TestCase {
 	

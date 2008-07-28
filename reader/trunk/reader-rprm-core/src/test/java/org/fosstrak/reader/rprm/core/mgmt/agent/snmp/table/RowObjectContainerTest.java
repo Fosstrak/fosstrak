@@ -1,12 +1,12 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table ;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table ;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.RowObjectContainer;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.RowObjectContainer;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.RowObjectContainer</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.table.RowObjectContainer</code>.
  */
 public class RowObjectContainerTest extends TestCase {
 	

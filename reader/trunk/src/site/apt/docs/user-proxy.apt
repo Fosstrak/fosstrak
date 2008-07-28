@@ -15,7 +15,7 @@ User Guide Reader RP Proxy
 
   [[2]] {{{#Application}Field of Application}}
 
-  [[3]] {{{#Installing}Installing the Accada Reader RP Proxy}}
+  [[3]] {{{#Installing}Installing the Fosstrak Reader RP Proxy}}
 
   [[4]] {{{#First}First Steps}}
 
@@ -26,7 +26,7 @@ User Guide Reader RP Proxy
 
 * {Features}
 
-  The Accada Reader RP Proxy is a Java class library that supports the
+  The Fosstrak Reader RP Proxy is a Java class library that supports the
   communication with a reader that implements the EPCglobal Reader Protocol
   Version 1.1.
 
@@ -62,9 +62,9 @@ User Guide Reader RP Proxy
 [../images/ReaderProxy_architecture.png]
 
 
-* {Installing} the Accada Reader RP Proxy
+* {Installing} the Fosstrak Reader RP Proxy
 
-   The following instructions show how to install the Accada Reader RP Proxy:
+   The following instructions show how to install the Fosstrak Reader RP Proxy:
 
    * Download the Reader RP Proxy binaries with the dependencies included from
      the {{{../download.html}download}} section of the website.
@@ -105,18 +105,18 @@ User Guide Reader RP Proxy
   {{{../index.html}reader}} which includes a simulation engine.
 
 +---
-import org.accada.reader.rprm.core.EventType;
-import org.accada.reader.rprm.core.FieldName;
-import org.accada.reader.rp.proxy.DataSelector;
-import org.accada.reader.rp.proxy.NotificationChannel;
-import org.accada.reader.rp.proxy.ReaderDevice;
-import org.accada.reader.rp.proxy.Source;
-import org.accada.reader.rp.proxy.Trigger;
-import org.accada.reader.rp.proxy.factories.DataSelectorFactory;
-import org.accada.reader.rp.proxy.factories.NotificationChannelFactory;
-import org.accada.reader.rp.proxy.factories.ReaderDeviceFactory;
-import org.accada.reader.rp.proxy.factories.TriggerFactory;
-import org.accada.reader.rp.proxy.msg.Handshake;
+import org.fosstrak.reader.rprm.core.EventType;
+import org.fosstrak.reader.rprm.core.FieldName;
+import org.fosstrak.reader.rp.proxy.DataSelector;
+import org.fosstrak.reader.rp.proxy.NotificationChannel;
+import org.fosstrak.reader.rp.proxy.ReaderDevice;
+import org.fosstrak.reader.rp.proxy.Source;
+import org.fosstrak.reader.rp.proxy.Trigger;
+import org.fosstrak.reader.rp.proxy.factories.DataSelectorFactory;
+import org.fosstrak.reader.rp.proxy.factories.NotificationChannelFactory;
+import org.fosstrak.reader.rp.proxy.factories.ReaderDeviceFactory;
+import org.fosstrak.reader.rp.proxy.factories.TriggerFactory;
+import org.fosstrak.reader.rp.proxy.msg.Handshake;
 
 public class ReaderProxyExample {
 
@@ -211,15 +211,15 @@ public class ReaderProxyExample {
 +---
 
     In order to process the notification messages from the reader, the proxy
-    provides the class org.accada.reader.rp.proxy.NotificationChannelEndPoint.
+    provides the class org.fosstrak.reader.rp.proxy.NotificationChannelEndPoint.
     The class that is interested in receiving the notification messages has to
-    implement the interface org.accada.reader.rp.proxy.NotificationChannelListener
+    implement the interface org.fosstrak.reader.rp.proxy.NotificationChannelListener
     and has to be registered with the NotificationChannelEndPoint as shown
     below.
 
 +---
-import org.accada.reader.rp.proxy.NotificationChannelListener;
-import org.accada.reader.rprm.core.msg.notification.Notification;
+import org.fosstrak.reader.rp.proxy.NotificationChannelListener;
+import org.fosstrak.reader.rprm.core.msg.notification.Notification;
 
 public class ReaderNotificationChannelListener implements NotificationChannelListener {
 
@@ -252,13 +252,13 @@ public class ReaderNotificationChannelListener implements NotificationChannelLis
   configuration file
 
   An other way to configure the reader is to use the <<<ReaderConfigurator>>>
-  that is part of the Accada Reader RP Proxy module. It is less flexible than
+  that is part of the Fosstrak Reader RP Proxy module. It is less flexible than
   using method calls for each configuration item but needs less code too.
 
 +---
 import org.apache.log4j.Logger;
 import org.apache.log4j.BasicConfigurator;
-import org.accada.reader.proxy.configurator.ReaderConfigurator;
+import org.fosstrak.reader.proxy.configurator.ReaderConfigurator;
 
 public class ReaderConfiguratorExample {
 

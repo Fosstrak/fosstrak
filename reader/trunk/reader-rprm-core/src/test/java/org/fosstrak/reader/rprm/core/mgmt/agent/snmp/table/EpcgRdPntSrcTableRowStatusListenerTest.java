@@ -1,24 +1,24 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table ;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table ;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.AntennaReadPoint;
-import org.accada.reader.rprm.core.ReadPoint;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.Source;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgRdPntSrcTableRowStatusListener;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.RowObjectContainer;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.AntennaReadPoint;
+import org.fosstrak.reader.rprm.core.ReadPoint;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.Source;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgRdPntSrcTableRowStatusListener;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.RowObjectContainer;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.mo.snmp.RowStatus;
 import org.snmp4j.agent.mo.snmp.RowStatusEvent;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.EpcgRdPntSrcTableRowStatusListener</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.table.EpcgRdPntSrcTableRowStatusListener</code>.
  */
 public class EpcgRdPntSrcTableRowStatusListenerTest extends TestCase {
 

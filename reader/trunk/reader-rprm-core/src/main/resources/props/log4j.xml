@@ -6,13 +6,13 @@
          <param name="ConversionPattern" value="%-4r [%t] %-5p %c %x - %m%n"/>
       </layout>
    </appender>
-   <logger name="org.accada.reader.rp.proxy.msg">
+   <logger name="org.fosstrak.reader.rp.proxy.msg">
       <level value="info"/>
    </logger>
    <logger name="org.snmp4j.agent">
       <level value="info"/>
    </logger>
-   <logger name="org.accada.reader.rprm.core.mgmt.agent.snmp.table">
+   <logger name="org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table">
       <level value="info"/>
    </logger>
    <root>

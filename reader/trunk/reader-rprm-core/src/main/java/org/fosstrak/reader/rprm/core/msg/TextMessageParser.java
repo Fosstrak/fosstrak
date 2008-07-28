@@ -1,42 +1,42 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core.msg;
+package org.fosstrak.reader.rprm.core.msg;
 
 import java.io.StringReader;
 
 import javax.xml.bind.Element;
 import javax.xml.bind.JAXBException;
 
-import org.accada.reader.rprm.core.msg.command.Command;
-import org.accada.reader.rprm.core.msg.command.CommandNotSupportedException;
-import org.accada.reader.rprm.core.msg.command.ParameterMissingException;
-import org.accada.reader.rprm.core.msg.command.ParameterWrongTypeException;
-import org.accada.reader.rprm.core.msg.command.TextCommandParser;
-import org.accada.reader.rprm.core.msg.command.TextCommandParserException;
-import org.accada.reader.rprm.core.msg.command.TextCommandParserHelper;
-import org.accada.reader.rprm.core.msg.command.TextLexer;
-import org.accada.reader.rprm.core.msg.reply.ErrorType;
-import org.accada.reader.rprm.core.msg.reply.Reply;
-import org.accada.reader.rprm.core.msg.reply.TextReplyParser;
-import org.accada.reader.rprm.core.msg.reply.TextReplyParserHelper;
+import org.fosstrak.reader.rprm.core.msg.command.Command;
+import org.fosstrak.reader.rprm.core.msg.command.CommandNotSupportedException;
+import org.fosstrak.reader.rprm.core.msg.command.ParameterMissingException;
+import org.fosstrak.reader.rprm.core.msg.command.ParameterWrongTypeException;
+import org.fosstrak.reader.rprm.core.msg.command.TextCommandParser;
+import org.fosstrak.reader.rprm.core.msg.command.TextCommandParserException;
+import org.fosstrak.reader.rprm.core.msg.command.TextCommandParserHelper;
+import org.fosstrak.reader.rprm.core.msg.command.TextLexer;
+import org.fosstrak.reader.rprm.core.msg.reply.ErrorType;
+import org.fosstrak.reader.rprm.core.msg.reply.Reply;
+import org.fosstrak.reader.rprm.core.msg.reply.TextReplyParser;
+import org.fosstrak.reader.rprm.core.msg.reply.TextReplyParserHelper;
 import org.apache.log4j.Logger;
 
 import antlr.RecognitionException;
@@ -59,7 +59,7 @@ public class TextMessageParser implements MessageParser {
 	static private Logger log;
 
 	/** The factory for creating error replies if a parser exception happens. */
-	private org.accada.reader.rprm.core.msg.reply.ObjectFactory replyFactory;
+	private org.fosstrak.reader.rprm.core.msg.reply.ObjectFactory replyFactory;
 
 	// ====================================================================
 	// ------------------------- Constructor ----------------------------//
@@ -70,7 +70,7 @@ public class TextMessageParser implements MessageParser {
 	 */
 	public TextMessageParser(Context context) {
 		log = Logger.getLogger(getClass().getName());
-		replyFactory = new org.accada.reader.rprm.core.msg.reply.ObjectFactory();
+		replyFactory = new org.fosstrak.reader.rprm.core.msg.reply.ObjectFactory();
 	}
 
 	// ====================================================================
@@ -135,7 +135,7 @@ public class TextMessageParser implements MessageParser {
 	public Reply parseReplyMessage(final String message) throws MessageParsingException {
 		try {
 			StringReader reader = new StringReader(message);
-			org.accada.reader.rprm.core.msg.reply.TextLexer lexer = new org.accada.reader.rprm.core.msg.reply.TextLexer(reader);
+			org.fosstrak.reader.rprm.core.msg.reply.TextLexer lexer = new org.fosstrak.reader.rprm.core.msg.reply.TextLexer(reader);
 			TextReplyParser parser = new TextReplyParser(lexer);
 			TextReplyParserHelper helper = parser.reply();
 			Reply reply = helper.buildReplyTree();
@@ -173,7 +173,7 @@ public class TextMessageParser implements MessageParser {
 //				Command command = helper.buildCommandTree();
 //				return command;
 //			} else if (context == Context.REPLY) {
-//				org.accada.reader.msg.reply.TextLexer lexer = new org.accada.reader.msg.reply.TextLexer(reader);
+//				org.fosstrak.reader.msg.reply.TextLexer lexer = new org.fosstrak.reader.msg.reply.TextLexer(reader);
 //				TextReplyParser parser = new TextReplyParser(lexer);
 //				TextReplyParserHelper helper = parser.reply();
 //				Reply reply = helper.buildReplyTree();

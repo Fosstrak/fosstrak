@@ -1,10 +1,10 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table ;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table ;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgReaderServerTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTableRowFactory;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgReaderServerTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTableRowFactory;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.mo.MOTableRow;
 import org.snmp4j.smi.Integer32;
@@ -12,7 +12,7 @@ import org.snmp4j.smi.OID;
 import org.snmp4j.smi.Variable;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.SnmpTableRowFactory</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.table.SnmpTableRowFactory</code>.
  */
 public class SnmpTableRowFactoryTest extends TestCase {
 

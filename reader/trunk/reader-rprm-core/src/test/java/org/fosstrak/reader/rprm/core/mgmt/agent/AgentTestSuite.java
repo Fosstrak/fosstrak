@@ -1,10 +1,10 @@
-package org.accada.reader.rprm.core.mgmt.agent;
+package org.fosstrak.reader.rprm.core.mgmt.agent;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * Tests for package <code>org.accada.reader.mgmt.agent</code>.
+ * Tests for package <code>org.fosstrak.reader.mgmt.agent</code>.
  */
 public class AgentTestSuite {
 	

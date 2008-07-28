@@ -1,10 +1,10 @@
 /**
- * This class locates resources (configuration files, images) for the accada
+ * This class locates resources (configuration files, images) for the fosstrak
  * reader proxy. It searches for user resources in the user directory (current
  * application directory) and for default resources in the library if no user
  * resources found.
  */
-package org.accada.reader.rp.proxy.util;
+package org.fosstrak.reader.rp.proxy.util;
 
 import java.io.File;
 import java.net.URI;

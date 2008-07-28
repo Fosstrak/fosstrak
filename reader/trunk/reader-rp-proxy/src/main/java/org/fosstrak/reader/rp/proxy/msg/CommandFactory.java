@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rp.proxy.msg;
+package org.fosstrak.reader.rp.proxy.msg;
 
 import java.io.StringWriter;
 import java.util.Calendar;
@@ -29,42 +29,42 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import org.accada.reader.rp.proxy.msg.stubs.DataSelector;
-import org.accada.reader.rp.proxy.msg.stubs.NotificationChannel;
-import org.accada.reader.rp.proxy.msg.stubs.ReadPoint;
-import org.accada.reader.rp.proxy.msg.stubs.Source;
-import org.accada.reader.rp.proxy.msg.stubs.TagField;
-import org.accada.reader.rp.proxy.msg.stubs.TagFieldValue;
-import org.accada.reader.rp.proxy.msg.stubs.TagSelector;
-import org.accada.reader.rp.proxy.msg.stubs.Trigger;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.DataSelectorSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.EventTypeSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.FieldNameSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.NotificationChannelSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.ReadPointSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.ReaderDeviceSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.SourceSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.TagFieldSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.TagSelectorSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.TriggerSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.TriggerTypeSerializer;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.DataSelectorSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.EventTypeSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.FieldNameSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.NotificationChannelSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.ReadPointSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.ReaderDeviceSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.SourceSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.TagFieldSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.TagSelectorSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.TriggerSerializerImpl;
-import org.accada.reader.rp.proxy.msg.stubs.serializers.xml.TriggerTypeSerializerImpl;
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.msg.MessageSerializingException;
-import org.accada.reader.rprm.core.msg.command.Command;
-import org.accada.reader.rprm.core.msg.command.NotificationChannelCommand;
-import org.accada.reader.rprm.core.msg.command.ObjectFactory;
-import org.accada.reader.rprm.core.msg.command.SourceCommand;
+import org.fosstrak.reader.rp.proxy.msg.stubs.DataSelector;
+import org.fosstrak.reader.rp.proxy.msg.stubs.NotificationChannel;
+import org.fosstrak.reader.rp.proxy.msg.stubs.ReadPoint;
+import org.fosstrak.reader.rp.proxy.msg.stubs.Source;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagField;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagFieldValue;
+import org.fosstrak.reader.rp.proxy.msg.stubs.TagSelector;
+import org.fosstrak.reader.rp.proxy.msg.stubs.Trigger;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.DataSelectorSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.EventTypeSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.FieldNameSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.NotificationChannelSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.ReadPointSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.ReaderDeviceSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.SourceSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.TagFieldSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.TagSelectorSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.TriggerSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.TriggerTypeSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.DataSelectorSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.EventTypeSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.FieldNameSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.NotificationChannelSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.ReadPointSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.ReaderDeviceSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.SourceSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.TagFieldSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.TagSelectorSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.TriggerSerializerImpl;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.xml.TriggerTypeSerializerImpl;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.msg.MessageSerializingException;
+import org.fosstrak.reader.rprm.core.msg.command.Command;
+import org.fosstrak.reader.rprm.core.msg.command.NotificationChannelCommand;
+import org.fosstrak.reader.rprm.core.msg.command.ObjectFactory;
+import org.fosstrak.reader.rprm.core.msg.command.SourceCommand;
 
 /**
  * This class generates xml and text commands to send to a reader device.
@@ -688,7 +688,7 @@ public class CommandFactory {
 			cmd.setTargetName(target);
 		}
 		if (object.equals("ReaderDevice")) {
-			ReaderDeviceSerializer rdCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.ReaderDeviceSerializerImpl(getNextId(), target);
+			ReaderDeviceSerializer rdCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.ReaderDeviceSerializerImpl(getNextId(), target);
 			if (command.equals("getEPC")) {
 				return rdCommand.getEPC();
 			}
@@ -851,7 +851,7 @@ public class CommandFactory {
 			}
 		}
 		else if (object.equals("Source")) {
-			SourceSerializer srcCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.SourceSerializerImpl(getNextId(), target);
+			SourceSerializer srcCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.SourceSerializerImpl(getNextId(), target);
 			if (command.equals("create")) {
 				return srcCommand.create(params[0].getString());
 			}
@@ -1035,14 +1035,14 @@ public class CommandFactory {
 			}			
 		}
 		else if (object.equals("ReadPoint")) {
-			ReadPointSerializer rpCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.ReadPointSerializerImpl(getNextId(), target);
+			ReadPointSerializer rpCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.ReadPointSerializerImpl(getNextId(), target);
 			if (command.equals("getName")) {
 				return rpCommand.getName();
 			}
 			
 		}
 		else if (object.equals("TagSelector")) {
-			TagSelectorSerializer tsCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.TagSelectorSerializerImpl(getNextId(), target);
+			TagSelectorSerializer tsCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.TagSelectorSerializerImpl(getNextId(), target);
 			if (command.equals("create")) {
 				try {
 					TagField tf = TagField.create(params[1].getString());
@@ -1069,7 +1069,7 @@ public class CommandFactory {
 			}
 		}
 		else if (object.equals("DataSelector")) {
-			DataSelectorSerializer dsCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.DataSelectorSerializerImpl(getNextId(), target);
+			DataSelectorSerializer dsCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.DataSelectorSerializerImpl(getNextId(), target);
 			if (command.equals("create")) {
 				return dsCommand.create(params[0].getString());
 			}
@@ -1114,7 +1114,7 @@ public class CommandFactory {
 			}
 		}
 		else if (object.equals("NotificationChannel")) {
-			NotificationChannelSerializer ncCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.NotificationChannelSerializerImpl(getNextId(), target);
+			NotificationChannelSerializer ncCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.NotificationChannelSerializerImpl(getNextId(), target);
 			if (command.equals("create")) {
 				return ncCommand.create(params[0].getString(), params[1].getString());
 			}
@@ -1177,7 +1177,7 @@ public class CommandFactory {
 			}
 		}
 		else if (object.equals("Trigger")) {
-			TriggerSerializer trgCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.TriggerSerializerImpl(getNextId(),target);
+			TriggerSerializer trgCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.TriggerSerializerImpl(getNextId(),target);
 			if (command.equals("create")) {
 				return trgCommand.create(params[0].getString(),params[1].getString(),params[2].getString());
 			}
@@ -1199,13 +1199,13 @@ public class CommandFactory {
 		
 		}
 		else if (object.equals("EventType")) {
-			EventTypeSerializer evCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.EventTypeSerializerImpl(getNextId(), target);
+			EventTypeSerializer evCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.EventTypeSerializerImpl(getNextId(), target);
 			if (command.equals("getSupportedTypes")) {
 				return evCommand.getSupportedTypes();
 			}
 		}
 		else if (object.equals("TriggerType")) {
-			TriggerTypeSerializer ttCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.TriggerTypeSerializerImpl(getNextId(), target);
+			TriggerTypeSerializer ttCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.TriggerTypeSerializerImpl(getNextId(), target);
 			if (command.equals("getSupportedTypes")) {
 				return ttCommand.getSupportedTypes();
 			}
@@ -1213,14 +1213,14 @@ public class CommandFactory {
 			
 		}
 		else if (object.equals("FieldName")) {
-			FieldNameSerializer fnCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.FieldNameSerializerImpl(getNextId(), target);
+			FieldNameSerializer fnCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.FieldNameSerializerImpl(getNextId(), target);
 			if (command.equals("getSupportedNames")) {
 				return fnCommand.getSupportedNames();
 			}
 			
 		}
 		else if (object.equals("TagField")) {
-			TagFieldSerializer tfCommand = new org.accada.reader.rp.proxy.msg.stubs.serializers.text.TagFieldSerializerImpl(getNextId(), target);
+			TagFieldSerializer tfCommand = new org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text.TagFieldSerializerImpl(getNextId(), target);
 			if (command.equals("create")) {
 				return tfCommand.create(params[0].getString());
 			}
@@ -1283,7 +1283,7 @@ public class CommandFactory {
 		try {
 			if (context == null) {
 			   context = JAXBContext
-			         .newInstance("org.accada.reader.rprm.core.msg.command");
+			         .newInstance("org.fosstrak.reader.rprm.core.msg.command");
 			}
 			if (marshaller == null) {
 			   marshaller = context.createMarshaller();

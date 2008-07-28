@@ -1,24 +1,24 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rp.client;
+package org.fosstrak.reader.rp.client;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -42,21 +42,21 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import org.accada.reader.rp.client.actions.ConnectAction;
-import org.accada.reader.rp.client.actions.CreateCommandAction;
-import org.accada.reader.rp.client.actions.DisconnectAction;
-import org.accada.reader.rp.client.actions.ObjectChangeAction;
-import org.accada.reader.rp.client.actions.SendAction;
-import org.accada.reader.rp.client.actions.SetMessageFormatText;
-import org.accada.reader.rp.client.actions.SetMessageFormatXML;
-import org.accada.reader.rp.client.actions.SetTransportProtocolHttp;
-import org.accada.reader.rp.client.actions.SetTransportProtocolTcp;
-import org.accada.reader.rp.client.model.MethodComboBoxModel;
-import org.accada.reader.rp.client.model.ObjectComboBoxModel;
-import org.accada.reader.rp.proxy.msg.Client;
-import org.accada.reader.rp.proxy.msg.ClientConnection;
-import org.accada.reader.rp.proxy.msg.Handshake;
-import org.accada.reader.rp.proxy.msg.Parameter;
+import org.fosstrak.reader.rp.client.actions.ConnectAction;
+import org.fosstrak.reader.rp.client.actions.CreateCommandAction;
+import org.fosstrak.reader.rp.client.actions.DisconnectAction;
+import org.fosstrak.reader.rp.client.actions.ObjectChangeAction;
+import org.fosstrak.reader.rp.client.actions.SendAction;
+import org.fosstrak.reader.rp.client.actions.SetMessageFormatText;
+import org.fosstrak.reader.rp.client.actions.SetMessageFormatXML;
+import org.fosstrak.reader.rp.client.actions.SetTransportProtocolHttp;
+import org.fosstrak.reader.rp.client.actions.SetTransportProtocolTcp;
+import org.fosstrak.reader.rp.client.model.MethodComboBoxModel;
+import org.fosstrak.reader.rp.client.model.ObjectComboBoxModel;
+import org.fosstrak.reader.rp.proxy.msg.Client;
+import org.fosstrak.reader.rp.proxy.msg.ClientConnection;
+import org.fosstrak.reader.rp.proxy.msg.Handshake;
+import org.fosstrak.reader.rp.proxy.msg.Parameter;
 
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;

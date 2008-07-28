@@ -1,27 +1,27 @@
-package org.accada.reader.rprm.core.mgmt.alarm;
+package org.fosstrak.reader.rprm.core.mgmt.alarm;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.NotificationChannel;
-import org.accada.reader.rprm.core.ReadPoint;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.Source;
-import org.accada.reader.rprm.core.mgmt.IOPort;
-import org.accada.reader.rprm.core.mgmt.OperationalStatus;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.alarm.Alarm;
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
-import org.accada.reader.rprm.core.mgmt.alarm.FreeMemoryAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.IOPortOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.NotificationChannelOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.ReadPointOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.ReaderDeviceOperStatusAlarm;
-import org.accada.reader.rprm.core.mgmt.alarm.SourceOperStatusAlarm;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.NotificationChannel;
+import org.fosstrak.reader.rprm.core.ReadPoint;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.Source;
+import org.fosstrak.reader.rprm.core.mgmt.IOPort;
+import org.fosstrak.reader.rprm.core.mgmt.OperationalStatus;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.Alarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmLevel;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.FreeMemoryAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.IOPortOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.NotificationChannelOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.ReadPointOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.ReaderDeviceOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.SourceOperStatusAlarm;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.alarm.Alarm</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.alarm.Alarm</code>.
  */
 public class AlarmTest extends TestCase {
 

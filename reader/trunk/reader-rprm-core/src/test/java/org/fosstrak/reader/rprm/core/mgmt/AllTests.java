@@ -1,10 +1,10 @@
-package org.accada.reader.rprm.core.mgmt;
+package org.fosstrak.reader.rprm.core.mgmt;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * All tests for package <code>org.accada.reader.mgmt</code> and its subpackages.
+ * All tests for package <code>org.fosstrak.reader.mgmt</code> and its subpackages.
  */
 public class AllTests {
 	
@@ -20,9 +20,9 @@ public class AllTests {
 		TestSuite suite = new TestSuite("All Tests for package <" + packageName + "> and its subpackages");
 		
 		suite.addTest(MgmtTestSuite.suite());
-		suite.addTest(org.accada.reader.rprm.core.mgmt.agent.AllTests.suite());
-		suite.addTest(org.accada.reader.rprm.core.mgmt.alarm.AllTests.suite());
-		suite.addTest(org.accada.reader.rprm.core.mgmt.util.AllTests.suite());
+		suite.addTest(org.fosstrak.reader.rprm.core.mgmt.agent.AllTests.suite());
+		suite.addTest(org.fosstrak.reader.rprm.core.mgmt.alarm.AllTests.suite());
+		suite.addTest(org.fosstrak.reader.rprm.core.mgmt.util.AllTests.suite());
 		
 		//
 		// Add more tests here

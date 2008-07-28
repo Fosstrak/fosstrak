@@ -1,15 +1,15 @@
-package org.accada.reader.rprm.core.mgmt;
+package org.fosstrak.reader.rprm.core.mgmt;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.mgmt.IOPort;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.mgmt.IOPort;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.IOPort</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.IOPort</code>.
  */
 public class IOPortTest extends TestCase {
 

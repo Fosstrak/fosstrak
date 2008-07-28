@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<faqs title="Accada Reader- Frequently Asked Questions" toplink="false">
+<faqs title="Fosstrak Reader- Frequently Asked Questions" toplink="false">
 
   <part id="about">
     <title>General</title>
@@ -72,10 +72,10 @@ If you are just looking for a graphical user interface to generate some Reader P
 
     <faq id="difference">
       <question>
-        How is this Accada project different from other rfid open source efforts?
+        How is this Fosstrak project different from other rfid open source efforts?
       </question>
       <answer>
-        The Accada project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations. Remember though that this is beta software currently. Don't expect the support you would be getting from a software vendor offering RFID middleware solutions!
+        The Fosstrak project has an active developer community with significant RFID middleware experience and insights into the RFID/EPC standardisation process. There is a strong focus on implementing the specifications developed by EPCglobal and its members and providing useful tools for these implementations. Remember though that this is beta software currently. Don't expect the support you would be getting from a software vendor offering RFID middleware solutions!
       </answer>
     </faq>
 
@@ -84,7 +84,7 @@ If you are just looking for a graphical user interface to generate some Reader P
         I have a question which is not listed in the FAQs
       </question>
       <answer>
-        Visit the <a href="http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-user">Accada-reader-user Archives</a> or post a question to the user mailing list accada-reader-user at lists.sourceforge.net (you need to register first).
+        Visit the <a href="http://sourceforge.net/mailarchive/forum.php?forum_name=fosstrak-reader-user">Fosstrak-reader-user Archives</a> or post a question to the user mailing list fosstrak-reader-user at lists.sourceforge.net (you need to register first).
       </answer>
     </faq>
 

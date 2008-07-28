@@ -1,20 +1,20 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.AntennaReadPoint;
-import org.accada.reader.rprm.core.ReadPoint;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.mgmt.OperationalStatus;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.EpcgScalar;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.EpcgScalarType;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.accada.reader.rprm.core.mgmt.alarm.AlarmLevel;
-import org.accada.reader.rprm.core.mgmt.util.SnmpUtil;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.AntennaReadPoint;
+import org.fosstrak.reader.rprm.core.ReadPoint;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.mgmt.OperationalStatus;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.EpcgScalar;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.EpcgScalarType;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.alarm.AlarmLevel;
+import org.fosstrak.reader.rprm.core.mgmt.util.SnmpUtil;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.agent.mo.MOAccessImpl;
 import org.snmp4j.smi.Counter32;
@@ -24,7 +24,7 @@ import org.snmp4j.smi.OctetString;
 import org.snmp4j.smi.UnsignedInteger32;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.EpcgScalar</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.EpcgScalar</code>.
  */
 public class EpcgScalarTest extends TestCase {
 

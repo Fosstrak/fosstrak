@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -21,9 +21,9 @@
 /**
  * 
  */
-package org.accada.reader.rp.proxy.msg.stubs.serializers.text;
+package org.fosstrak.reader.rp.proxy.msg.stubs.serializers.text;
 
-import org.accada.reader.rp.proxy.msg.stubs.serializers.TagFieldSerializer;
+import org.fosstrak.reader.rp.proxy.msg.stubs.serializers.TagFieldSerializer;
 
 /**
  * @author Andreas
@@ -69,7 +69,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#create(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#create(java.lang.String)
 	 */
 	public String create(String name) {
 		resetCommand();
@@ -85,7 +85,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#getName()
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#getName()
 	 */
 	public String getName() {
 		resetCommand();
@@ -100,7 +100,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#getTagFieldName()
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#getTagFieldName()
 	 */
 	public String getTagFieldName() {
 		resetCommand();
@@ -115,7 +115,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#setTagFieldName(java.lang.String)
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#setTagFieldName(java.lang.String)
 	 */
 	public String setTagFieldName(String pTagFieldName) {
 		resetCommand();
@@ -131,7 +131,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#getMemoryBank()
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#getMemoryBank()
 	 */
 	public String getMemoryBank() {
 		resetCommand();
@@ -146,7 +146,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#setMemoryBank(int)
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#setMemoryBank(int)
 	 */
 	public String setMemoryBank(int pMemoryBank) {
 		resetCommand();
@@ -162,7 +162,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#getOffset()
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#getOffset()
 	 */
 	public String getOffset() {
 		resetCommand();
@@ -177,7 +177,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#setOffset(int)
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#setOffset(int)
 	 */
 	public String setOffset(int pOffset) {
 		resetCommand();
@@ -193,7 +193,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#getLength()
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#getLength()
 	 */
 	public String getLength() {
 		resetCommand();
@@ -208,7 +208,7 @@ public class TagFieldSerializerImpl extends CommandSerializerImpl implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.accada.reader.testclient.command.TagFieldSerializer#setLength(int)
+	 * @see org.fosstrak.reader.testclient.command.TagFieldSerializer#setLength(int)
 	 */
 	public String setLength(int pLength) {
 		resetCommand();

@@ -1,27 +1,27 @@
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table ;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table ;
 
 import java.util.Iterator;
 
 import junit.framework.TestCase;
 
-import org.accada.reader.rprm.core.AntennaReadPoint;
-import org.accada.reader.rprm.core.ReadPoint;
-import org.accada.reader.rprm.core.ReaderDevice;
-import org.accada.reader.rprm.core.Source;
-import org.accada.reader.rprm.core.Trigger;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow.CounterType;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.accada.reader.rprm.core.mgmt.util.SnmpUtil;
-import org.accada.reader.rprm.core.msg.MessageLayer;
+import org.fosstrak.reader.rprm.core.AntennaReadPoint;
+import org.fosstrak.reader.rprm.core.ReadPoint;
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.Source;
+import org.fosstrak.reader.rprm.core.Trigger;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow.CounterType;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.util.SnmpUtil;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.snmp4j.smi.Integer32;
 
 /**
- * Tests for the class <code>org.accada.reader.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow</code>.
+ * Tests for the class <code>org.fosstrak.reader.mgmt.agent.snmp.table.EpcgGlobalCountersTableRow</code>.
  */
 public class EpcgGlobalCountersTableRowTest extends TestCase {
 

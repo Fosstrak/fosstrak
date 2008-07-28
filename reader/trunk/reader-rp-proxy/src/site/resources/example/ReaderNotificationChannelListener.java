@@ -1,5 +1,5 @@
-import org.accada.reader.rp.proxy.NotificationChannelListener;
-import org.accada.reader.rprm.core.msg.notification.Notification;
+import org.fosstrak.reader.rp.proxy.NotificationChannelListener;
+import org.fosstrak.reader.rprm.core.msg.notification.Notification;
 
 
 public class ReaderNotificationChannelListener implements NotificationChannelListener {

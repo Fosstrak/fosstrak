@@ -1,33 +1,33 @@
 /*
  * Copyright (C) 2007 ETH Zurich
  *
- * This file is part of Accada (www.accada.org).
+ * This file is part of Fosstrak (www.fosstrak.org).
  *
- * Accada is free software; you can redistribute it and/or
+ * Fosstrak is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
  *
- * Accada is distributed in the hope that it will be useful,
+ * Fosstrak is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with Accada; if not, write to the Free
+ * License along with Fosstrak; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-package org.accada.reader.rprm.core.mgmt.agent.snmp.table;
+package org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table;
 
-import org.accada.reader.rprm.core.ReaderProtocolException;
-import org.accada.reader.rprm.core.Source;
-import org.accada.reader.rprm.core.Trigger;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib.EpcgReadTrigRowStatusEnum;
-import org.accada.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
-import org.accada.reader.rprm.core.mgmt.util.SnmpUtil;
-import org.accada.reader.rprm.core.msg.MessagingConstants;
+import org.fosstrak.reader.rprm.core.ReaderProtocolException;
+import org.fosstrak.reader.rprm.core.Source;
+import org.fosstrak.reader.rprm.core.Trigger;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib.EpcglobalReaderMib.EpcgReadTrigRowStatusEnum;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table.SnmpTable.TableTypeEnum;
+import org.fosstrak.reader.rprm.core.mgmt.util.SnmpUtil;
+import org.fosstrak.reader.rprm.core.msg.MessagingConstants;
 import org.apache.log4j.Logger;
 import org.snmp4j.smi.Integer32;
 import org.snmp4j.smi.OID;
