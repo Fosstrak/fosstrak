@@ -1,7 +1,7 @@
               -------------------
               Download
               -------------------
-              Matthias Lampe
+              Christof Roduner
               -------------------
               20.03.2008
               -------------------
@@ -9,16 +9,16 @@
 
 Download
 
-    The current version of Fosstrak Reader is 0.4.0.
+    The current version of Fosstrak Reader is 0.5.0.
 
 * Reader RP/RM Core
 
 *--------+----------+
          | Binaries |
 *--------+----------+
- Reader RP/RM Core 0.4.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rprm-core/0.4.0/reader-rprm-core-0.4.0-bin-with-dependencies.zip}reader-rprm-core-0.4.0-bin-with-dependencies.zip}}
+ Reader RP/RM Core 0.5.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rprm-core/0.5.0/reader-rprm-core-0.5.0-bin-with-dependencies.zip}reader-rprm-core-0.5.0-bin-with-dependencies.zip}}
 *--------+----------+
- Reader RP/RM Core 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rprm-core/0.4.0/reader-rprm-core-0.4.0-bin-with-dependencies.tar.gz}reader-rprm-core-0.4.0-bin-with-dependencies.tar.gz}}
+ Reader RP/RM Core 0.5.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rprm-core/0.5.0/reader-rprm-core-0.5.0-bin-with-dependencies.tar.gz}reader-rprm-core-0.5.0-bin-with-dependencies.tar.gz}}
 *--------+----------+
 
 
@@ -28,9 +28,9 @@ Download
 *--------+----------+
          | Binaries |
 *--------+----------+
- Reader RP Proxy 0.4.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rp-proxy/0.4.0/reader-rp-proxy-0.4.0-bin-with-dependencies.zip}reader-rp-proxy-0.4.0-bin-with-dependencies.zip}}
+ Reader RP Proxy 0.5.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rp-proxy/0.5.0/reader-rp-proxy-0.5.0-bin-with-dependencies.zip}reader-rp-proxy-0.5.0-bin-with-dependencies.zip}}
 *--------+----------+
- Reader RP Proxy 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rp-proxy/0.4.0/reader-rp-proxy-0.4.0-bin-with-dependencies.tar.gz}reader-rp-proxy-0.4.0-bin-with-dependencies.tar.gz}}
+ Reader RP Proxy 0.5.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rp-proxy/0.5.0/reader-rp-proxy-0.5.0-bin-with-dependencies.tar.gz}reader-rp-proxy-0.5.0-bin-with-dependencies.tar.gz}}
 *--------+----------+
 
 
@@ -41,9 +41,9 @@ Download
 *--------+----------+
          | Binaries |
 *--------+----------+
- Reader RP Client 0.4.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rp-client/0.4.0/reader-rp-client-0.4.0-bin-with-dependencies.zip}reader-rp-client-0.4.0-bin-with-dependencies.zip}}
+ Reader RP Client 0.5.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rp-client/0.5.0/reader-rp-client-0.5.0-bin-with-dependencies.zip}reader-rp-client-0.5.0-bin-with-dependencies.zip}}
 *--------+----------+
- Reader RP Client 0.4.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rp-client/0.4.0/reader-rp-client-0.4.0-bin-with-dependencies.tar.gz}reader-rp-client-0.4.0-bin-with-dependencies.tar.gz}}
+ Reader RP Client 0.5.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rp-client/0.5.0/reader-rp-client-0.5.0-bin-with-dependencies.tar.gz}reader-rp-client-0.5.0-bin-with-dependencies.tar.gz}}
 *--------+----------+
 
 
@@ -52,9 +52,9 @@ Download
 *--------+----------+
          | Sources  |
 *--------+----------+
- Reader Source 0.4.0 (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader/0.4.0/reader-0.4.0-src.zip}reader-0.4.0-src.zip}}
+ Reader Source 0.5.0 (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader/0.5.0/reader-0.5.0-src.zip}reader-0.5.0-src.zip}}
 *--------+----------+
- Reader Source 0.4.0 (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader/0.4.0/reader-0.4.0-src.tar.gz}reader-0.4.0-src.tar.gz}}
+ Reader Source 0.5.0 (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader/0.5.0/reader-0.5.0-src.tar.gz}reader-0.5.0-src.tar.gz}}
 *--------+----------+
 
 
