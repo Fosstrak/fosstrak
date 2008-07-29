@@ -1,0 +1,67 @@
+              -------------------
+              Reader
+              -------------------
+              Jonas Haller
+              -------------------
+              28.12.2007
+              -------------------
+
+
+Welcome to the Fosstrak Reader Project
+
+
+* Objective
+
+  The objective of the Reader Project is to implement the reader role in the
+  EPC Network and to develop the appropriate tools that facilitate
+  communication with the reader instance.
+
+
+* Organization
+
+[images/ReaderProjectOverview.jpg]
+
+  The Reader Project currently comprises of three separate modules:
+
+  * the Reader RP/RM Core that implements the EPCglobal Reader Protocol and
+    Reader Management Specification
+
+  * the Reader RP Proxy that can be used on a host computer to access a Reader
+    Protocol compliant reader through a Java interface
+
+  * the Reader RP Client to access a Reader Protocol compliant reader directly
+    through a graphical user interface
+
+
+* Usage Scenarios
+
+  Possible usage scenarios include the following:
+
+  * Enable a reader that does not implement the EPCglobal Reader Protocol or
+    the Reader Management Standard by deploying a HAL wrapper - use the Fosstrak
+    Reader and HAL as an adaptor.
+
+  * Simulate the deployment of hundreds of readers - use the Fosstrak Reader with
+    the simulation framework of the Fosstrak HAL.
+
+  * Test your RFID application without any reader hardware attached - use the
+    Fosstrak Reader RP/RM Core with a simulator of the Fosstrak HAL.
+
+  * Interact with a reader that implements the EPCglobal Reader Protocol
+    Version 1.1 - use the Fosstrak Reader Client.
+
+  * Communicate with a reader via the EPCglobal Reader Protocol Version 1.1
+    from within your Java application - use the Fosstrak Reader RP Proxy.
+
+  * Embed our reader implementation in your reader - this requires a powerful
+    reader platform.
+
+
+* Features
+
+  See the {{{features.html}feature list}} for detailed information.
+
+
+* Demo
+
+  Some screenshots and a demo is available {{{demo.html}here}}.

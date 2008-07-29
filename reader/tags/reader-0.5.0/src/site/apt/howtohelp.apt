@@ -1,0 +1,43 @@
+              -------------------
+              How to help
+              -------------------
+              Jonas Haller
+              -------------------
+              28.12.2007
+              -------------------
+
+
+Guide to helping with the Fosstrak Reader project
+
+
+  Our implementation is currently lacking support for some of the major reader
+  platforms that do not yet support the reader protocol natively. If you are
+  interested in providing for one of those platforms that we do not support
+  yet, please {{{../contact.html}contact us}}.
+
+  As with any open source project, there are several other ways you can help:
+
+  * Join the mailing list and answer other user's questions.
+
+  * Report bugs, feature requests and other issues in the issue tracking
+    application.
+
+  * Submit patches to reported issues (both those you find, or that others
+    have filed).
+
+  * Help with the documentation by pointing out areas that are lacking or
+    unclear, and if you are so inclined, submitting patches to correct it.
+
+  Your participation is much appreciated!
+
+
+Developer Conventions
+
+  There are a number of conventions used in the project, which contributors and
+  developers alike should follow for consistency's sake.
+
+  Coming soon:
+
+  * Code Style
+
+  * Commit Message Template
