@@ -169,17 +169,17 @@
   <mailingLists>
     <mailingList>
       <name>Reader user mailing list</name>
-      <subscribe>https://lists.sourceforge.net/lists/listinfo/fosstrak-reader-user</subscribe>
-      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/fosstrak-reader-user</unsubscribe>
-      <post>fosstrak-reader-user@lists.sourceforge.net</post>
-      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=fosstrak-reader-user</archive>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-user</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-user</unsubscribe>
+      <post>accada-reader-user@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-user</archive>
     </mailingList>
     <mailingList>
       <name>Reader developer mailing list</name>
-      <subscribe>https://lists.sourceforge.net/lists/listinfo/fosstrak-reader-developer</subscribe>
-      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/fosstrak-reader-developer</unsubscribe>
-      <post>fosstrak-reader-developer@lists.sourceforge.net</post>
-      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=fosstrak-reader-developer</archive>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-reader-developer</unsubscribe>
+      <post>accada-reader-developer@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=accada-reader-developer</archive>
     </mailingList>
   </mailingLists>
 
