@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faqs title="Fosstrak HAL - Frequently Asked Questions" toplink="false">
+
+  <part id="about">
+    <title>General</title>
+
+    <faq id="what">
+      <question>
+        What is HAL?
+      </question>
+      <answer>
+        HAL is a software layer to abstract different reader hardware to a common interface.
+      </answer>
+    </faq>
+
+    <faq id="reader">
+      <question>
+        I have a reader, but Fosstrak does not support its proprietary protocol.
+      </question>
+      <answer>
+        Implement a wrapper and contribute your implementation to our project. As a benefit you will get all the filtering, event generation, messaging and tool support we already implemented for free.
+      </answer>
+    </faq>
+
+    <faq id="contribute">
+      <question>
+        How can I contribute to this project?
+      </question>
+      <answer>
+        There are a number of ways you can contribute. For example, we currently support only a limited number of RFID readers. If you implement a wrapper for your reader, we would like you to contribute your implementation to this project.
+      </answer>
+    </faq>
+
+    <faq id="external">
+      <question>
+        Can I contribute to this project even, if I am not part of the Auto-ID Labs?
+      </question>
+      <answer>
+        Yes. While initiated by the Auto-ID Lab at ETH Zurich/University St. Gallen and the Distributed Systems Group at ETH Zurich, it is open for participation by everyone.
+      </answer>
+    </faq>
+  </part>
+
+  <part id="feig">
+    <title>FEIG</title>
+    
+    <faq id="feig-lost">
+      <question>
+        Immediately after reading a tag with the FEIG HF reader, it is lost again. Where is the problem?
+      </question>
+      <answer>
+        This behavior is caused by a misconfiguration of the reader. Start the OBID ISOstart software shipped with the reader and connect to the reader. Click on the 'Configuration' icon on the left side and choose 'CFG5: Anticollision' from the list. Push the 'Read' button on the right side to read the actual values stored on the reader. If the field labeled 'ONT' is set to the value '1: only new selected transponders will be sent to the host', this caused the problem. Change the value to '0: all transponders in field will be sent to the host'. Write and save the new value to the EEPROM and RAM to change it persistently.
+      </answer>
+    </faq>
+  </part>
+
+</faqs>
