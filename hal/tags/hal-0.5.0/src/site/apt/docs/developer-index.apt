@@ -1,0 +1,318 @@
+              -------------------
+              Developer Index
+              -------------------
+              Jonas Haller
+              -------------------
+              11.12.2007
+              -------------------
+
+
+Developer Index
+
+  The following sections describe the technical specification of Fosstrak's HAL
+  interface and implementations. It is intended as an introduction to future
+  developers.
+
+
+* Contents
+
+  [[1]] {{{#Introduction}Introduction}}
+
+  [[2]] {{{#Architectural}Architectural Overview}}
+
+  [[3]] {{{#HAL}HAL Interface}}
+
+  [[4]] {{{#Use}Use HAL directly}}
+
+
+* {Introduction}
+
+  The goal of Fosstrak HAL is to provide a common interface and wrappers
+  implementing it to uniformly access various RFID readers.
+
+  Each reader has to be accessed through its own proprietary protocol. This is
+  very inflexible. If you access the reader directly and want to exchange it
+  with an other model, you have to adjust your application to control the
+  reader through a different protocol.
+
+  Fosstrak HAL solves this problem by providing one single interface to access
+  all the implemented readers. With this the code specific to the reader is
+  moved from the application to the hardware abstraction layer. The application
+  does not need to adjust to a specific reader but simply uses the
+  <<<HardwareAbstraction>>> interface to access all readers.
+
+  New readers currently not implemented in the Fosstrak HAL project can easily be
+  added as a new module. The controller must implement the
+  <<<HardwareAbstraction>>> interface and communicate with the reader over the
+  corresponding protocol.
+
+  The Fosstrak HAL project includes a simulator framework. There are several
+  simulator controllers, each implementing the <<<HardwareAbstraction>>>
+  interface. This allows to access the simulators in exactly the same way
+  as HAL implementations for hardware readers.
+
+
+* {Architectural} Overview
+
+  The following figure gives an overview of the HAL architecture.
+
+[../images/hal_architecture.png] architectural overview
+
+  The <<<HardwareAbstraction>>> defines the interface between the HAL and the
+  Fosstrak Reader or any other applitacion using the Fosstrak HAL. It standardises
+  access to various readers and simulators of readers. This allows uniform
+  usage. The readers and simulators become interchangeable because the code
+  specific to the reader is part of the HAL and not of the application.
+
+  The implementations of the <<<HardwareAbstraction>>> interface are divided
+  into multiple modules. One for the simulators and one for each reader
+  manufacturer. A module can contain one or multiple reader controllers.
+
+
+* {HAL} Interface
+
+  The following UML diagram shows the <<<HardwareAbstraction>>> interface.
+
+[../images/HardwareAbstraction.png] UML diagram of HardwareAbstraction interface
+
+  To explain the interface, the methods are divided into following groups:
+
+  * {{{#Identify}Identify}}
+
+  * {{{#Asynchronous}Asynchronous Identify}}
+
+  * {{{#Read}Read and Write}}
+
+  * {{{#Kill}Kill and WriteId}}
+
+  * {{{#Controller}Controller Management}}
+
+  []
+
+  The structure of the <<<Observation>>> returned by the <<<identify>>> method
+  is explicated in an extra {{{#Observation}Observation}} paragraph.
+  
+  The exact description of each methods arguments, functionality and return
+  types can be looked up in the {{{../apidocs/index.html}JavaDoc}}.
+
+** {Identify}
+
+   The <<<identify>>> method has to be implemented mandantory and identifies
+   the tags in the range of the read points given as arguments.
+
+   The return type is an array containig an <<<Observation>>> for each readpoint
+   given in the argument array. Each <<<Observation>>> contains the name of the
+   HAL controller and the read point where the tags were identified, a timestamp
+   when the identification happened, an array of IDs, a corresponding array of
+   <<<TagDescriptor>>>s and a boolean set to false if the identification failed.
+
+** {Asynchronous} Identify
+
+   The methods <<<startAsynchronousIdentify>>>, <<<stopAsynchronousIdentify>>>,
+   <<<isAsynchronousIdentifyRunning>>>, <<<addAsynchronousIdentifyListener>>>,
+   <<<removeAsynchronousIdentifyListener>>> and <<<supportsAsynchronousIdentify>>>
+   serve to identify the tags in the range of the given read points in a
+   continuous way that operates asynchronously. Listeners can be added and
+   removed arbitrarily during operation. Implementation of the asynchronous
+   identification is optional.
+
+** {Read} and Write
+
+   Implementing the <<<readBytes>>> and <<<writeBytes>>> methods is facultative.
+   If implemented and supported by the tag, data can be read from or written to
+   a specified tag in range. The transponder ID should be a result of a previous
+   <<<identify>>>.
+
+** {Kill} and WriteId
+
+   The <<<kill>>> method kills the specified tag if in range. A killed tag does
+   not respond to requests any longer.
+
+   Using <<<writeId>>> writes a new ID onto a tag independent of its position
+   in memory. The actual position of the ID depends on the type of tag used.
+   This method may fail even if the addressed tag is in read range because a
+   write operation needs higher power to succeed.
+
+   Both methods are optional to implement and additionally may depend on the
+   capabilities of the tag.
+
+** {Controller} Management
+
+   The <<<getHALName>>> and <<<getReadPointNames>>> methods are
+   mandantory to implement. They deliver essential information about the HAL.
+
+   All further methods described below are optional to implement.
+
+   The <<parameter>>-methods can be used to get parameters set in the
+   configuration file. Depending on the controller implementation, parameters
+   of the reader can be read and set through these methods. Examples of reader
+   parameters are reader information, transmission power, listen before talk
+   parameters, receiver or anti-collision configuration. Available parameters
+   should be declared in the configuration file of the controller or can be
+   requested with the <<<getAllParameterNames>>> method.
+
+   The <<<reset>>> method reinitialises the controller including the unlocking of
+   all previously locked / muted tags.
+
+   The <<ReadPoint>>-methods allow to control the individual read points and
+   get information about them.
+
+** {Observation}
+
+  The <<<identify>>> method returns an array of <<<Observation>>> objects, one
+  for each read point given in the argument array. The following UML class
+  diagram shows the <<<Observation>>> and its associated classes.
+  
+[../images/Observation.png] UML class diagram of the Observation
+  
+  Among information about place and time of the identification process, an
+  <<<Observation>>> contains an array of IDs detected at the read point. A
+  correspondingarray of <<<TagDescriptor>>> provides information about the tags
+  associated with the IDs.
+  
+  A <<<TagDescriptor>>> comprises an <<<IDType>>> and a <<<MemoryDescriptor>>>.
+  The <<<IDType>>> object contains the name and description of the type of ID
+  of the tag. Supported types including description are defined in the IDTypes
+  configuration file. The content of the default IDTypes configuration file
+  shipped with the Fosstrak HAL is listed below:
+  
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- List of EPCclass1Gen2 tag chip properties -->
+<!-- Code, Identifier and ID as hexadecimal encoded number, e.g. '0xAB' -->
+<!-- Size in bytes as number, e.g. '2' -->
+<!-- Read and Write as boolean, e.g. 'true' and 'false' -->
+<properties>
+
+   <!-- EPC -->
+   <type>
+      <idType>EPC</idType>
+      <description>EPC as tag id</description>
+   </type>
+
+   <!-- ISO15693 -->
+   <type>
+      <idType>ISO15693</idType>
+      <description>ID of a ISO 15693 compliant tag</description>
+   </type>
+
+   <!-- Philips ICode1 -->
+   <type>
+      <idType>ICode1</idType>
+      <description>ID of a Philips ICode1 tag</description>
+   </type>
+
+   <!-- Philips ICodeUID -->
+   <type>
+      <idType>ICodeUID</idType>
+      <description>ID of a Philips ICodeUID tag</description>
+   </type>
+
+   <!-- Unknown type -->
+   <type>
+      <idType>Unknown</idType>
+      <description>Unknown tag</description>
+   </type>
+
+</properties>
++-----------------------------------------------------------------------------+
+  
+  A <<<MemoryDescriptor>>> includes an array of <<<MemoryBankDescriptor>>>.
+  Each of these describes properties of a memory bank on the tag chip: memory
+  size in bytes, if this memory bank is readable and if it is writeable.
+  Properties of ’EPC’ tag chips and their memory banks are defined in the
+  EPCTransponderModels configuration file. An excerpt of the default
+  configuration file with two of the currently supported ’EPC’ tag chips is
+  listed below:
+
++-----------------------------------------------------------------------------+
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- List of EPCclass1Gen2 tag chip properties -->
+<!-- Code, Identifier and ID as hexadecimal encoded number, e.g. '0xAB' -->
+<!-- Size in bytes as number, e.g. '2' -->
+<!-- Read and Write as boolean, e.g. 'true' and 'false' -->
+<properties>
+
+   <!-- Impinj Monza -->
+   <tag>
+      <type>EPCclass1Gen2</type>
+      <manufacturer>Impinj</manufacturer>
+      <modelName>Monza</modelName>
+      <modelID>0x040</modelID>
+      <modelID>0x050</modelID>
+      <modelID>0x070</modelID>
+      <modelID>0x071</modelID>
+      <reservedSize>8</reservedSize>
+      <reservedRead>false</reservedRead>
+      <reservedWrite>false</reservedWrite>
+      <epcSize>16</epcSize>
+      <epcRead>true</epcRead>
+      <epcWrite>true</epcWrite>
+      <tidSize>4</tidSize>
+      <tidRead>true</tidRead>
+      <tidWrite>false</tidWrite>
+      <userSize>0</userSize>
+      <userRead>false</userRead>
+      <userWrite>false</userWrite>
+   </tag>
+
+   <!-- STMicroelectronics XRAG2 -->
+   <!-- NOTE: Dynamic configuration, either 32B EPC memory or 16B EPC and user -->
+   <tag>
+      <type>EPCclass1Gen2</type>
+      <manufacturer>STMicroelectronics</manufacturer>
+      <modelName>XRAG2</modelName>
+      <modelID>0x240</modelID>
+      <reservedSize>8</reservedSize>
+      <reservedRead>false</reservedRead>
+      <reservedWrite>false</reservedWrite>
+      <epcSize>32</epcSize>
+      <epcRead>true</epcRead>
+      <epcWrite>true</epcWrite>
+      <tidSize>8</tidSize>
+      <tidRead>true</tidRead>
+      <tidWrite>false</tidWrite>
+      <userSize>16</userSize>
+      <userRead>true</userRead>
+      <userWrite>true</userWrite>
+   </tag>
+
+
+   <!-- Tag Types -->
+   <type>
+      <name>EPCclass1Gen2</name>
+      <code>0x84</code>
+   </type>
+
+
+   <!-- Manufacturers -->
+   <manufacturer>
+      <name>Impinj</name>
+      <classIdentifier>0xE2</classIdentifier>
+      <maskDesignerIdentifier>0x001</maskDesignerIdentifier>
+   </manufacturer>
+
+   <manufacturer>
+      <name>STMicroelectronics</name>
+      <classIdentifier>0xE2</classIdentifier>
+      <maskDesignerIdentifier>0x007</maskDesignerIdentifier>
+   </manufacturer>
+
+</properties>
++-----------------------------------------------------------------------------+
+
+
+* {Use} HAL directly
+
+  The Fosstrak HAL is designed to be used by Fosstrak Reader. However a
+  <<<HardwareAbstraction>>> implementation can be used by an other application
+  without using the Fosstrak Reader. This allows uniform access to all
+  implemented readers including the simulator and increases performance if the
+  filtering and reporting system of Fosstrak Reader and Access over the Reader
+  Protocol is not needed.
+
+  The name of the class implementing the <<<HardwareAbstraction>>> interface
+  for each reader can be found in the corresponding user documentation. To
+  instanciate this class the constructor has to be called with two arguments of
+  type string. The first parameter is the name of the HAL, the second one is
+  the path and name of the configuration file.
