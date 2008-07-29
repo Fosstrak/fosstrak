@@ -1,0 +1,56 @@
+              -------------------
+              Source Repository Access
+              -------------------
+              Jonas Haller
+              -------------------
+              05.12.2007
+              -------------------
+
+
+Source Repository Access
+
+
+
+* Overview
+
+   This project uses {{{http://subversion.tigris.org}Subversion}} to manage
+   its source code. Instructions on Subversion use can be found at
+   {{{http://svnbook.red-bean.com/} http://svnbook.red-bean.com/}} .
+
+
+
+* Web access
+
+   The following is the address of the online source repository.
+
++--
+https://svn.fosstrak.org/repos/hal/tags/hal-0.4.0
++--
+
+
+
+* Anonymous access
+
+   The source can be checked out anonymously from SVN with this command:
+
++--
+$ svn checkout https://svn.fosstrak.org/repos/hal/tags/hal-0.4.0 hal
++--
+
+
+
+* Developer access
+
+   Developers with commit rights can checkout the module using the following
+   command:
+
++--
+$ svn checkout https://svn.fosstrak.org/repos/hal/trunk hal
++--
+
+   To commit changes to the repository, execute the following command (svn
+   will prompt you for your password):
+
++--
+$ svn commit --username your-username -m "A message"
++--

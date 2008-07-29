@@ -1,0 +1,81 @@
+              -------------------
+              Features
+              -------------------
+              Jonas Haller
+              -------------------
+              27.11.2007
+              -------------------
+
+Features
+
+  The following outlines the features of the Fosstrak HAL Project.
+
+* Fosstrak HAL Modules
+
+  The Fosstrak HAL Project comprises of several modules:
+
+  * the hardware abstraction interface with common utilities
+
+  * a module with simulator variants implementing the hardware abstraction interface
+
+  * modules for each reader device manufacturer containing one or more reader
+    controllers implementating the hardware abstraction interface
+
+
+* Fosstrak Hardware Abstraction Interface Features
+
+  The hardware abstraction standardises the interface to different readers with
+  proprietary and thus incompatible interfaces. Even a simulator without any
+  hardware can implement the same interface. All implementations of the hardware
+  abstraction interface can be treated eqaly and hence are rendered interchangeable.
+
+
+* Fosstrak HAL Simulator Module
+
+  The simulator module consists of a controller with four possible types of
+  simulation:
+
+  * Graphic Simulator
+
+    The graphic simulator provides a GUI that shows a reader with configurable
+    amount of antennas. Tags can be created with few mouse clicks. Reading tags
+    works like on a hardware reader. When tags are moved over an antenna, they are
+    recognised by the reader, after leaving the area of the antenna, they are not
+    recognised any more.
+
+[images/sim_tags.png] Fosstrak HAL Graphic Simulator GUI
+
+  * Batch Simulator
+
+    The batch simulator processes a file with information about tags entering and
+    exiting the range of an antenna. Each event consists of a time, the type of
+    event, source ID, tag ID and optionally user memory contents of the tag. The
+    time describes when the event should happen in milliseconds resolution starting
+    at the beginning of the simulation. The type of event is eiter entering or
+    exiting the range of the source (antenna). The source ID is the name of the
+    source antenna. The tag ID is the UID or EPC of the tag that caused the event.
+
+  * Command Line Simulator
+
+    The command line simulator can be controlled in real time textually over a
+    command line. Tags can be added and removed from a source with simple commands.
+
+  * Simulator Client with Simulator Server
+
+    The simulator client connects to a simulator server and receives events over
+    the network. The simulator server can run on an other computer and opens a
+    graphic simulator for example.
+
+
+* Implemented Readers
+
+  Following readers are implemented in the Fosstrak HAL:
+
+*--------------+-------------------------+-------------------+
+| <<Package>>  | <<Reader Manufacturer>> | <<Reader Models>> |
+*--------------+-------------------------+-------------------+
+| fosstrak-hal-feig | FEIG ELECTRONIC | OBID i-scan ID ISC.MR100/101 (COM)
+|                 |                 | OBID i-scan ID ISC.LRU1000 (TCP/IP)
+*--------------+-------------------------+-------------------+
+| fosstrak-hal-impinj | Impinj | Speedway (TCP/IP)
+*--------------+-------------------------+-------------------+
