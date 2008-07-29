@@ -13,7 +13,7 @@ User Changelog
 *-----------+-------------+---------------------------------------------------+
 | <<Type>>  | <<Changes>> | <<By>> |
 *-----------+-------------+---------------------------------------------------+
-| api | Renamed packages from <<<org.accada>>> to <<<org.fosstrak>>. | roduner
+| api | Renamed packages from <<<org.accada>>> to <<<org.fosstrak>>>. | roduner
 *-----------+-------------+---------------------------------------------------+
 
 * Release 0.4.0
