@@ -1,0 +1,87 @@
+              -------------------
+              Download
+              -------------------
+              Matthias Lampe
+              -------------------
+              20.03.2008
+              -------------------
+
+
+Download
+
+  The current version of Fosstrak HAL is 0.5.0.
+
+* Fosstrak HAL Commons
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ HAL Commons 0.5.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-commons/0.5.0/hal-commons-0.5.0-bin-with-dependencies.zip}hal-commons-0.5.0-bin-with-dependencies.zip}}
+*--------+----------+
+ HAL Commons 0.5.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-commons/0.5.0/hal-commons-0.5.0-bin-with-dependencies.tar.gz}hal-commons-0.5.0-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Fosstrak HAL Implementation Simulator
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ HAL Implementation Simulator 0.5.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-sim/0.5.0/hal-impl-sim-0.5.0-bin-with-dependencies.zip}hal-impl-sim-0.5.0-bin-with-dependencies.zip}}
+*--------+----------+
+ HAL Implementation Simulator 0.5.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-sim/0.5.0/hal-impl-sim-0.5.0-bin-with-dependencies.tar.gz}hal-impl-sim-0.5.0-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Fosstrak HAL Implementation Impinj
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ HAL Implementation Impinj 0.5.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-impinj/0.5.0/hal-impl-impinj-0.5.0-bin-with-dependencies.zip}hal-impl-impinj-0.5.0-bin-with-dependencies.zip}}
+*--------+----------+
+ HAL Implementation Impinj 0.5.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-impinj/0.5.0/hal-impl-impinj-0.5.0-bin-with-dependencies.tar.gz}hal-impl-impinj-0.5.0-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Fosstrak HAL Implementation FEIG
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ HAL Implementation FEIG 0.5.0 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-feig/0.5.0/hal-impl-feig-0.5.0-bin-with-dependencies.zip}hal-impl-feig-0.5.0-bin-with-dependencies.zip}}
+*--------+----------+
+ HAL Implementation FEIG 0.5.0 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-feig/0.5.0/hal-impl-feig-0.5.0-bin-with-dependencies.tar.gz}hal-impl-feig-0.5.0-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Source Distribution (including all submodules)
+
+*--------+----------+
+         | Sources  |
+*--------+----------+
+ HAL Source 0.5.0 (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal/0.5.0/hal-0.5.0-src.zip}hal-0.5.0-src.zip}}
+*--------+----------+
+ HAL Source 0.5.0 (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal/0.5.0/hal-0.5.0-src.tar.gz}hal-0.5.0-src.tar.gz}}
+*--------+----------+
+
+
+* Previous Releases
+
+  All previous releases of Fosstrak HAL can be found in the {{{http://maven-repository.fosstrak.org/releases}distribution repository}}.
+
+
+* System Requirements
+
+*---------------------+---------+
+ <<JDK>>              | 1.6 or above
+*---------------------+---------+
+ <<Memory>>           | No minimum requirements.
+*---------------------+---------+
+ <<Operating System>> | No minimum requirements. Tested on Windows XP.
+*---------------------+---------+
+
+
+* Installation and Usage Instructions
+
+  Please consult the {{{docs/user-guide.html} User Guide}} for installation and usage instructions.
