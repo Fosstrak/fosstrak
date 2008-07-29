@@ -8,10 +8,22 @@
 
 User Changelog
 
-* Release 0.4.0
+* Release 0.5.0
 
-  Reader Modules that can be affected are Reader Core (R), Proxy (P) and
-  Client (C).
+  Symbols used in <Module> column are: <R> for <Reader Core>, <P> for <Proxy>, and
+  <C> for <Client>.
+
+*-----------+------------+-------------+--------------------------------------+
+| <<Type>>  | <<Module>> | <<Changes>> | <<By>> |
+*-----------+------------+-------------+--------------------------------------+
+| api | R | Renamed packages from <<<org.accada>>> to <<<org.fosstrak>>>. | roduner
+*-----------+------------+-------------+--------------------------------------+
+| api | P | Renamed packages from <<<org.accada>>> to <<<org.fosstrak>>>. | roduner
+*-----------+------------+-------------+--------------------------------------+
+| api | C | Renamed packages from <<<org.accada>>> to <<<org.fosstrak>>>. | roduner
+*-----------+------------+-------------+--------------------------------------+
+
+* Release 0.4.0
 
 *-----------+------------+-------------+--------------------------------------+
 | <<Type>>  | <<Module>> | <<Changes>> | <<By>> |
