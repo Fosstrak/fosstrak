@@ -4,13 +4,14 @@
                                     ------
 
 
-Welcome to Fosstrak
+Welcome to Fosstrak (previously Accada)
 
 
 * Project Mission
 
     <<Fosstrak>> is an open source RFID prototyping platform that implements the <<EPC Network>> specifications. It is intended to foster the rapid prototyping of RFID applications and to accelerate the development of an <<Internet of Things>>.
  
+    The project name was <<Accada>> previously, but we changed the name to <<Fosstrak>> after a trademark dispute.
 
 * How can Fosstrak help you?
 
