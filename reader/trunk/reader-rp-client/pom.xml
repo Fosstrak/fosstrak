@@ -7,11 +7,11 @@
 
   <groupId>org.fosstrak.reader</groupId>
   <artifactId>reader-rp-client</artifactId>
-  <version>0.5.0</version>
+  <version>0.5.1-SNAPSHOT</version>
   <parent>
     <artifactId>reader</artifactId>
     <groupId>org.fosstrak.reader</groupId>
-    <version>0.5.0</version>
+    <version>0.5.1-SNAPSHOT</version>
   </parent>
   <packaging>jar</packaging>
   <modelVersion>4.0.0</modelVersion>
