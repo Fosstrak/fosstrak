@@ -7,7 +7,7 @@
 
   <groupId>org.fosstrak.hal</groupId>
   <artifactId>hal</artifactId>
-  <version>0.5.0</version>
+  <version>0.5.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
 
@@ -142,9 +142,9 @@
 
   <scm>
     <!-- keep empty tags here to avoid release:prepare crashes -->
-    <connection>scm:svn:https://svn.fosstrak.org/repos/hal/tags/hal-0.5.0</connection>
-    <developerConnection>scm:svn:https://svn.fosstrak.org/repos/hal/tags/hal-0.5.0</developerConnection>
-    <url>scm:svn:https://svn.fosstrak.org/repos/hal/tags/hal-0.5.0</url>
+    <connection></connection>
+    <developerConnection>scm:svn:https://svn.fosstrak.org/repos/hal/trunk</developerConnection>
+    <url></url>
   </scm>
   <distributionManagement>
     <repository>
