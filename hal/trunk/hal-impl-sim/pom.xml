@@ -7,11 +7,11 @@
 
   <groupId>org.fosstrak.hal</groupId>
   <artifactId>hal-impl-sim</artifactId>
-  <version>0.5.1-SNAPSHOT</version>
+  <version>0.5.0-SNAPSHOT</version>
   <parent>
     <artifactId>hal</artifactId>
     <groupId>org.fosstrak.hal</groupId>
-    <version>0.5.1-SNAPSHOT</version>
+    <version>0.5.0-SNAPSHOT</version>
   </parent>
   <packaging>jar</packaging>
   <modelVersion>4.0.0</modelVersion>
