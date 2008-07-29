@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Fosstrak - Reader RP Client">
+  <body>
+
+    <menu name="Reader Project Modules">
+      <item name="RP/RM Core" href="../reader-rprm-core/project-reports.html" collapse="true">
+        <item name="dummy"/>
+      </item>
+      <item name="RP Proxy" href="../reader-rp-proxy/project-reports.html" collapse="true">
+        <item name="dummy"/>
+      </item>
+      <item name="RP Client" href="project-reports.html" collapse="false">
+        <item name="Dependencies" href="dependencies.html"/>
+        <item name="Dependency Convergence" href="dependency-convergence.html"/>
+        <item name="PMD Report" href="pmd.html"/>
+        <item name="CPD Report" href="cpd.html"/>
+        <item name="JavaNCSS Report" href="javancss.html"/>
+        <item name="Issue Tracking" href="issue-tracking.html"/>
+      </item>
+    </menu>
+
+  </body>
+</project>

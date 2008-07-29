@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML Schema for the reader device configuration of the Fosstrak Reader Proxy -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="configurationDocument">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="readerDeviceConfiguration" type="ReaderDeviceConfiguration"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="TransportProtocol">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HTTP"/>
+			<xs:enumeration value="TCP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TransportFormat">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="XML"/>
+			<xs:enumeration value="Text"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IOEdgeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="rising"/>
+			<xs:enumeration value="falling"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FieldName">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="eventTriggers"/>
+			<xs:enumeration value="eventType"/>
+			<xs:enumeration value="eventTimeTick"/>
+			<xs:enumeration value="eventTimeUTC"/>
+			<xs:enumeration value="readerEPC"/>
+			<xs:enumeration value="readerHandle"/>
+			<xs:enumeration value="readerName"/>
+			<xs:enumeration value="readerRole"/>
+			<xs:enumeration value="readerNowTick"/>
+			<xs:enumeration value="readerNowUTC"/>
+			<xs:enumeration value="tagType"/>
+			<xs:enumeration value="tagID"/>
+			<xs:enumeration value="tagIDasPureURI"/>
+			<xs:enumeration value="tagIDasTagURI"/>
+			<xs:enumeration value="sourceName"/>
+			<xs:enumeration value="sourceFrequency"/>
+			<xs:enumeration value="sourceProtocol"/>
+			<xs:enumeration value="notifyChannelName"/>
+			<xs:enumeration value="notifyTriggerName"/>
+			<xs:enumeration value="allEvent"/>
+			<xs:enumeration value="allReader"/>
+			<xs:enumeration value="allTag"/>
+			<xs:enumeration value="allSource"/>
+			<xs:enumeration value="allNotify"/>
+			<xs:enumeration value="all"/>
+			<xs:enumeration value="allSupported"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TagField">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="tagId"/>
+			<xs:enumeration value="accessPassword"/>
+			<xs:enumeration value="killPassword"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EventFilter">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="evGlimpsed"/>
+			<xs:enumeration value="evNew"/>
+			<xs:enumeration value="evUnknown"/>
+			<xs:enumeration value="evObserved"/>
+			<xs:enumeration value="evLost"/>
+			<xs:enumeration value="evPurged"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NotificationChannelMode">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="connect"/>
+			<xs:enumeration value="listen"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="NotificationChannelConfiguration">
+		<xs:sequence>
+			<xs:element name="notificationChannelHost" type="xs:string"/>
+			<xs:element name="notificationChannelPort" type="xs:int"/>
+			<xs:element name="transportProtocol" type="TransportProtocol"/>
+			<xs:element name="notificationChannelMode" type="NotificationChannelMode"/>
+			<xs:element name="sources" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="source" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="notificationTriggers" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="triggerName" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="dataSelector" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Triggers">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="continuousTrigger" type="ContinuousTriggerConfiguration"/>
+			<xs:element name="timerTrigger" type="TimerTriggerConfiguration"/>
+			<xs:element name="ioEdgeTrigger" type="IOEdgeTriggerConfiguration"/>
+			<xs:element name="ioValueTrigger" type="IOValueTriggerConfiguration"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ContinuousTriggerConfiguration">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TimerTriggerConfiguration">
+		<xs:sequence>
+			<xs:element name="value" type="xs:int"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="IOEdgeTriggerConfiguration">
+		<xs:sequence>
+			<xs:element name="type" type="IOEdgeType"/>
+			<xs:element name="port" type="xs:int"/>
+			<xs:element name="pin" type="xs:int"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="IOValueTriggerConfiguration">
+		<xs:sequence>
+			<xs:element name="port" type="xs:int"/>
+			<xs:element name="value" type="xs:string"/>
+			<xs:element name="mask" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="DataSelectors">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="dataSelector" type="DataSelectorConfiguration"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NotificationChannels">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="notificationChannel" type="NotificationChannelConfiguration"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReaderDeviceConfiguration">
+		<xs:sequence>
+			<xs:element name="readerConfig" type="ReaderConfiguration"/>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="triggers" type="Triggers" minOccurs="0"/>
+				<xs:element name="dataSelectors" type="DataSelectors" minOccurs="0"/>
+				<xs:element name="notificationChannels" type="NotificationChannels" minOccurs="0"/>
+				<xs:element name="sources" type="Sources" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReaderConfiguration">
+		<xs:sequence>
+			<xs:element name="commandChannelHost" type="xs:string"/>
+			<xs:element name="commandChannelPort" type="xs:int"/>
+			<xs:element name="transportProtocol" type="TransportProtocol"/>
+			<xs:element name="transportFormat" type="TransportFormat"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DataSelectorConfiguration">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="fieldNames" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="fieldName" type="FieldName"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="eventFilters" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="eventFilter" type="EventFilter"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="tagFields" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="tagField" type="TagField"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Sources">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="source" type="SourceConfiguration"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SourceConfiguration">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="triggerName" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>

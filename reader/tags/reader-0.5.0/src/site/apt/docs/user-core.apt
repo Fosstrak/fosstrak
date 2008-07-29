@@ -1,0 +1,284 @@
+              -------------------
+              User Guide Core
+              -------------------
+              Jonas Haller
+              -------------------
+              04.01.2008
+              -------------------
+
+User Guide Reader RP/RM Core
+
+
+* Contents
+
+  [[1]] {{{#Features}Features}}
+
+  [[2]] {{{#Application}Field of Application}}
+
+  [[3]] {{{#Installing}Installing the Fosstrak RP/RM Core}}
+
+  [[4]] {{{#First}First Steps}}
+
+  [[6]] {{{#Configure}Configure the Reader}}
+
+
+* {Features}
+
+  Implements the EPCglobal Reader Protocol Version 1.1. and Reader Management
+  Version 1.0 in Java.
+
+  Elements of the protocol implemented include:
+
+  * Transport Binding: TCP and HTTP
+
+  * Message Binding: XML and Text
+
+  * Synchronous and Asynchronous Messaging (Notification Channels)
+
+  * Triggers
+
+  * Data Selectors
+
+  * SNMP Binding of Reader Management 1.0
+
+
+* Field of {Application}
+
+  * Turn a reader that does not implement the EPCglobal Reader Protocol itself
+    into a compliant reader. Deploy the appropriate Fosstrak HAL module and this
+    module as a Reader Protocol compliant proxy together with the reader.
+
+    At the moment, the following readers that are not Reader Protocol compliant
+    do allready have a Fosstrak HAL implementation:
+
+    * Impinj Speedway
+
+    * FEIG ELECTRONIC OBID i-scan ID ISC.MR100/101
+
+    * FEIG ELECTRONIC OBID i-scan ID ISC.LRU1000
+
+    []
+
+    Similar readers might work, but are not tested.
+
+    New modules with an implementation of the <<<HardwareAbstraction>>>
+    interface for other readers can be added to the Fosstrak HAL Project by
+    anyone. See the {{{../../hal/index.html}Fosstrak HAL Project}} website for
+    more information.
+
+  * Use an existing or write your own HAL wrapper for your reader and then
+    leverage the filtering, event generation and messaging provided by our
+    reader implementation.
+
+  * Simulate a single reader via a graphical user interface (using the Fosstrak
+    HAL Simulator module).
+
+  * Simulate a network of hundred of readers using the simulation framework of
+    the Fosstrak HAL project.
+
+  * Embed our reader implementation into your reader.
+
+
+* {Installing} the Fosstrak Reader RP/RM Core
+
+   The following instructions show how to install the Fosstrak Reader:
+
+   * Download the reader binaries with the dependencies included from the
+     {{{../download.html}download}} section of the website.
+
+   * Unzip the downloaded file
+
+   * Make sure a JRE 1.5 or higher is installed and it is added to the path
+     variable.
+
+
+* {First} Steps
+
+  Start the reader instance in one of the following ways:
+
+  * Invoke the executable jar
+
+  * In a console execute
+
+---------------------------------------------------------------------------
+java -jar <path-to>/reader-rprm-core-<version>.jar
+---------------------------------------------------------------------------
+
+  * In a console execute
+
+---------------------------------------------------------------------------
+java -cp <path-to>/reader-rprm-core-<version>.jar org.fosstrak.reader.rprm.core.ReaderDevice
+---------------------------------------------------------------------------
+
+  []
+
+  The reader is now listening for incoming http requests on port 8000, incoming
+  tcp requests on port 5566, and incoming snmp requests on port 161. To
+  communicate with the reader instance, you might want to consider using the
+  Fosstrak Reader RP Proxy, Fosstrak Reader RP Client or a SNMP Manager such as MIB
+  Explorer.
+
+  For more information, on how to use theses tools, please see the
+  {{{../index.html}Fosstrak Reader}} project website.
+
+  You might also want to consider adjusting the settings in the ReaderDevice.xml
+  file (see below).
+
+
+* {Configure} the Reader
+
+  The reader can be configured by setting properties in the ReaderDevice.xml
+  file (see below).
+
+  Properties of the messaging layer of the reader are set in the 'Information
+  about the messaging' section of the configuration file. The properties
+  tcpServerConnection and tcpPort specify if the command channel via TCP is
+  active and which port the reader is listening for incoming TCP connections.
+  Likewise, the properties httpServerConnection and httpPort define if the HTTP
+  command channel is active and which port is used. The property
+  notificationListenTimeout sets the time in ms a notification connection waits
+  in listen mode. The properties threadPoolSize, startPattern and stopPattern
+  must not be changed to ensure correct operation of the reader.
+
+  The reader specific properties such as readpoints, sources, triggers, and
+  reader management information can also be set in the ReaderDevice.xml file.
+  The information about the reader are properties describing the reader
+  including the epc, name and manufacturer of the reader. The properties
+  maxSourceNumber, maxTagSelectorNumber and maxTriggerNumber set a limit for
+  the number of sources, tag selectors and triggers which a client can define.
+
+  In the reader section the different instances of the Fosstrak HAL with their
+  read points are given. In this case the SimulatorController is used with the
+  four read points Shelf1, Shelf2, Shelf3 and Shelf4 which correspond to the
+  four antennas of the simulated reader. The sources of the reader are
+  specified by their name and the read points through which they acquire the
+  RFID data. In our example the reader has four sources wheras each source has
+  one read point that has the same name as the source. In another reader
+  setting one source could have more than one read point.
+  The class name of each implemented controller can be found on the website of
+  the corresponding {{{../../hal/docs/user-guide.html#Configuring}Fosstrak HAL
+  module}}.
+
+  If the reader provides IO edge triggers or IO value triggers the classes that
+  implement the functionalities to access the IO ports are specified by the two
+  properties IOEdgeTriggerPortManager and IOValueTriggerPortManager.
+
+  The remaining properties define the information used for the reader
+  management. The properties description, locationDescription, contact and
+  serialNumber specify additional information about the reader.
+  The SNMP agent is specified by the properties mgmtAgentType,
+  mgmtAgentAddress, mgmtAgentPort, macAddress and mgmtSimulatorStart. Alarm
+  channels can be defined using the properties alarmChannels.
+
++---
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+
+   <!-- Information about the reader -->
+      <epc>ReaderEPC</epc>
+      <name>MyReader</name>
+      <manufacturer>ReaderManufacturer</manufacturer>
+      <manufacturerDescription>ReaderManufacturerDescription</manufacturerDescription>
+      <model>ReaderModel</model>
+      <handle>0</handle>
+      <role>ReaderRole</role>
+   <!-- End -->
+
+   <!-- More Information -->
+      <maxSourceNumber>10</maxSourceNumber>
+      <maxTagSelectorNumber>10</maxTagSelectorNumber>
+      <maxTriggerNumber>10</maxTriggerNumber>
+   <!-- End -->
+
+   <!-- All readers (HardwareAbstractions) used -->
+      <readers>
+         <reader>
+            <name>SimulatorController</name>
+            <class>org.fosstrak.reader.hal.impl.sim.SimulatorController</class>
+            <properties>/props/SimulatorController.xml</properties>
+            <readpoint>Shelf1</readpoint>
+            <readpoint>Shelf2</readpoint>
+            <readpoint>Shelf3</readpoint>
+            <readpoint>Shelf4</readpoint>
+         </reader>
+      </readers>
+   <!-- End -->
+
+   <!-- List of all sources -->
+      <currentSource>Shelf1</currentSource>
+      <sources>
+         <source>
+            <name>Shelf1</name>
+            <fixed>true</fixed>
+            <readpoint>Shelf1</readpoint>
+         </source>
+         <source>
+            <name>Shelf2</name>
+            <fixed>true</fixed>
+            <readpoint>Shelf2</readpoint>
+         </source>
+         <source>
+            <name>Shelf3</name>
+            <fixed>true</fixed>
+            <readpoint>Shelf3</readpoint>
+         </source>
+         <source>
+            <name>Shelf4</name>
+            <fixed>true</fixed>
+            <readpoint>Shelf4</readpoint>
+         </source>
+      </sources>
+   <!-- End -->
+
+   <!-- The io trigger classes -->
+      <IOEdgeTriggerPortManager>
+         <port>org.fosstrak.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager</port>
+      </IOEdgeTriggerPortManager>
+      <IOValueTriggerPortManager>
+      </IOValueTriggerPortManager>
+   <!-- End -->
+
+   <!-- Information used for the reader management implementation -->
+      <description>Description</description>
+      <locationDescription>LocationDescription</locationDescription>
+      <contact>Contact</contact>
+      <serialNumber>SerialNumber</serialNumber>
+      <mgmtAgentType>SNMP</mgmtAgentType>
+      <mgmtAgentAddress>localhost</mgmtAgentAddress>
+      <mgmtAgentPort>161</mgmtAgentPort>
+      <macAddress>00-14-A4-2F-2D-73</macAddress>
+      <mgmtSimulatorStart>false</mgmtSimulatorStart>
+   <!-- End -->
+
+   <!-- List of all alarm channels -->
+      <alarmChannels>
+         <alarmChannel>
+            <name>alarmChannel1</name>
+            <host>localhost</host>
+            <port>162</port>
+         </alarmChannel>
+      </alarmChannels>
+   <!-- End -->
+
+   <!-- Information about the messaging -->
+      <tcpServerConnection>true</tcpServerConnection>
+      <tcpPort>5566</tcpPort>
+      <httpServerConnection>true</httpServerConnection>
+      <httpPort>8000</httpPort>
+      <notificationListenTimeout>30000</notificationListenTimeout>
+      <threadPoolSize>16</threadPoolSize>
+   <!-- End -->
+
+   <!-- Information about the source defaults -->
+      <isFixed>false</isFixed>
+      <glimpsedTimeout>2000</glimpsedTimeout>
+      <observedThreshold>0</observedThreshold>
+      <observedTimeout>1000</observedTimeout>
+      <lostTimeout>0</lostTimeout>
+      <readCyclesPerTrigger>1</readCyclesPerTrigger>
+      <maxReadDutyCycles>100</maxReadDutyCycles>
+      <readTimeout>0</readTimeout>
+   <!-- End -->
+
+</properties>
++---

@@ -1,0 +1,39 @@
+              -------------------
+              Getting Started
+              -------------------
+              Jonas Haller
+              -------------------
+              28.12.2007
+              -------------------
+
+
+Getting Started
+
+
+* Decide what you would like to do
+
+  * If you have a Reader Protocol compliant reader in front of you or you want
+    to communicate with a reader that is online via a GUI, get started with the
+    {{{docs/user_client.html}Reader RP Client}}.
+
+  * If you have a Reader Protocol compliant reader in front of you or you want
+    to communicate with a reader that is online from within your Java
+    application, get started with the {{{docs/user_proxy.html}Reader RP Proxy}}.
+
+  * If you don't have access to a Reader Protocol compliant reader, get started
+    with the {{{reader-rprm-core/gettingStarted.html}Reader RP/RM Core}}.
+
+  If this does not make sense to you, have a look at the {{{demo.html} demos}}
+  to get a better idea of the functionality the Fosstrak Reader project offers.
+
+
+* Sign up to the Reader User Mailing List
+
+  {{{https://lists.sourceforge.net/lists/listinfo/fosstrak-reader-user} Sign up here}}
+
+
+* Having problems
+
+  Check out the
+  {{{http://sourceforge.net/mailarchive/forum.php?forum_name=fosstrak-reader-user}
+  Mailing List Archives}}

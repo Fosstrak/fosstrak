@@ -1,0 +1,67 @@
+package org.fosstrak.reader.rprm.core;
+
+import junit.framework.TestCase;
+
+import org.fosstrak.reader.rprm.core.ReaderDevice;
+import org.fosstrak.reader.rprm.core.Trigger;
+import org.fosstrak.reader.rprm.core.TriggerType;
+import org.fosstrak.reader.rprm.core.mgmt.agent.snmp.SnmpAgent;
+import org.fosstrak.reader.rprm.core.msg.MessageLayer;
+import org.apache.log4j.xml.DOMConfigurator;
+
+/**
+ * Tests for the class <code>org.fosstrak.reader.Trigger</code>.
+ */
+public class TriggerTest extends TestCase {
+
+	private Trigger trigger;
+
+	private ReaderDevice readerDevice;
+
+	/**
+	 * Sets up the test.
+	 * @exception Exception An error occurred
+	 */
+	protected final void setUp() throws Exception {
+		super.setUp();
+
+		DOMConfigurator.configure("./target/classes/props/log4j.xml");
+
+		if (SnmpAgent.getInstance() == null) {
+			MessageLayer.main(new String[] { });
+		}
+
+		readerDevice = ReaderDevice.getInstance();
+
+		trigger = Trigger.create("TriggerTestTrigger", TriggerType.TIMER, "ms=2500", readerDevice);
+	}
+
+	/**
+	 * Does the cleanup.
+	 * @exception Exception An error occurred
+	 */
+	protected final void tearDown() throws Exception {
+		super.tearDown();
+
+		readerDevice.removeTriggers(new Trigger[] { trigger });
+	}
+
+	/**
+	 * Tests the <code>resetFireCount()</code> method.
+	 */
+	public final void testResetFireCount() {
+		trigger.fire();
+		assertEquals(1, trigger.getFireCount());
+		trigger.resetFireCount();
+		assertEquals(0, trigger.getFireCount());
+	}
+
+	/**
+	 * Runs the test using the gui runner.
+	 * @param args No arguments
+	 */
+	public static void main(String[] args) {
+        junit.swingui.TestRunner.run(TriggerTest.class);
+    }
+
+}

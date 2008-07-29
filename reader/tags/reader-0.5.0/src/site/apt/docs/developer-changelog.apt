@@ -1,0 +1,560 @@
+              -------------------
+              Developer Change Log
+              -------------------
+              Jonas Haller
+              -------------------
+              07.01.2008
+              -------------------
+
+Developer Change Log
+
+
+* Changes
+
+  * {{{#0.4.0}Release 0.4.0}}
+
+    * {{{#1605109}Bugfix 1605109}}: Start reader from ReaderDevice class
+
+    * {{{#1547804}Bugfix 1547804}}: Cleaned up properties files
+
+    * {{{#1524549}Bugfix 1524549}}: Source properties added to ReaderDevice.xml
+
+    * {{{#1760340}Bugfix 1760340}}: Removed spinlock and redesigned continuous
+      notification trigger with wait/notify
+
+    * {{{#1524548}Bugfix 1524548}}: Send notifications as HTTP posts
+
+    * {{{#1519656}Bugfix 1519656}}: Search for '\<?xml' instead of '\<' only to
+      identify start of XML in notification
+
+    * {{{#1770773}Bugfix 1770773}}: JAXB context and marshaller stored static
+      and initialized only once
+
+    * {{{#1547776}Bugfix 1547776}}: Added configuration file for the proxy
+
+    * {{{#1773821}Bugfix 1773821}}: Fixed field name, event and tag field
+      values for custom data selector
+
+    * {{{#1723152}Bugfix 1723152}}: Renamed TagSelector shorthand from RF to TS
+
+    * {{{#1782301}Bugfix 1782301}}: Return error if 'ms=' missing in timer
+      trigger value
+
+    * {{{#1782482}Bugfix 1782482}}: Return notification channel port number
+      correctly
+
+    * {{{#1547832}Bugfix 1547832}}: Redesigned resource loading
+
+    * {{{#1783839}Bugfix 1783839}}: Send and receive handshake in core and
+      proxy/client
+
+    * {{{#1800577}Bugfix 1800577}}: Added possibility to start multiple readers
+      on a single computer
+
+    * {{{#1823580}Bugfix 1823580}}: No default configuration files defined in
+      other configuration files
+
+    * {{{#1826817}Bugfix 1826817}}: Iterate over tag field names instead of
+      field names when adding tags to a report in the source
+
+    * {{{#1827468}Bugfix 1827468}}: Rewritten byte array to hexadecimal
+      formatted string converter function in the HexUtil class
+
+    * {{{#1827498}Bugfix 1827498}}: Interprete offset and length of a tag
+      field as bits
+
+
+* Release {0.4.0}
+
+** Bugfix {1605109}: Start reader from ReaderDevice class
+
+  The Fosstrak Reader had its main method in the message layer although the
+  <<<ReaderDevice>>> class is the 'center' of the reader and should contain the
+  main method.
+
+  A new main method was added to the <<<ReaderDevice>>> class. Additionally
+  the new main method can take an argument containing path and name of a
+  configuration file instead of allways using a hard coded configuration file
+  name.
+
+** Bugfix {1524549}: Source properties added to ReaderDevice.xml
+
+  The <<<Source>>> class was initialised with hard coded properties.
+
+  All the adjustable values have been written into a properties file and loaded
+  in the initialisation routine of the <<<Source>>>. The properties have been
+  integrated into the ReaderDevice configuration file in the meantime (see
+  {{{#1547804}1547804}}).
+
+** Bugfix {1547804}: Cleaned up properties files
+
+  There were a number of different properties files. It was unclear which of
+  them currently were in use.
+
+  All the properties files were in use but their organisation was unclear. The
+  configuration files have been cleaned up. In the ReaderDevice configuration
+  file, which was formatted in XML, some values were hidden in element names.
+  These values have been moved into elements and given expressive names. The
+  messaging.properties and source.properties have been converted from
+  properties to XML format and merged into the ReaderDevice configuration file.
+
+** Bugfix {1760340}: Removed spinlock and redesigned continuous notification
+  trigger with wait/notify
+
+  The continuous notification thread caused a spin lock which unnecessarily
+  used a significant amount of system resources. It checked nonstop whether
+  there were new notifications in the buffer to be sent. System resources were
+  not even released between two checks to give another thread the possibility
+  to receive and add a new notification to the buffer.
+
+  To eliminate this spin lock, a simple observer design pattern with the
+  built-in wait and notify thread functionality of Java is used. The continuous
+  notification thread blocks (wait) until the notification channel receives
+  a new notification to be sent and awakes (notifiy) the trigger thread.
+
+** Bugfix {1524548}: Send notifications as HTTP posts
+
+  Delivering notifications over the HTTP protocol was done using the same
+  methods as when responding to commands on the command channel. For this
+  reason the notifications were sent as HTTP responses, nota bene without
+  a preceding HTTP request. This is obviously wrong and an application server
+  receiving the notification is unable to handle it, because it can not send
+  a response to a response.
+
+  The outgoing message dispatcher has been adjusted to handle notifications
+  separately. It gets the target address from the socket and sends the
+  notification as HTTP post.
+
+** Bugfix {1519656}: Search for '\<?xml' instead of '\<' only to identify start
+  of XML in notification
+
+  Sometimes the parser in the notification channel end point of the proxy was
+  not able to parse a notification and throwed an exception. The reason was
+  that the detection of the beginnig of the XML code failed and an invalid XML
+  document was passed down to the parser.
+
+  A small number of other characters prefix the XML notification data. As the
+  beginning of the XML data, the first '\<' character was taken. This failed
+  if one of the preceding characters coincidentally was a '\<' character. To
+  circumvent this problem the data received is searched for the string '\<?xml'
+  to find the correct beginning of the XML data.
+
+** Bugfix {1770773}: JAXB context and marshaller stored static and initialized
+  only once
+
+*** Situation before fixing
+
+  Every time the JAXB context was used a new instance was created. So every time
+  a command or notification was marshalled or unmarshalled the whole Java XML
+  Binding was recreated. This was very time consuming and not necessary. The
+  following table shows a simple reader configuration with about ten commands
+  and the amount of time used for the Java XML Binding.
+
+  Three methods use the JAXB context:
+
+  * <<sC>>: <<<serializeCommand()>>> in the <<<CommandSerializerImpl>>> class of the
+    proxy. Total includes marshalling.
+
+  * <<gJC>>: <<<getJAXBContext()>>> in the <<<Context>>> class of the core. Totel is
+    the same as creating JAXB context.
+
+  * <<nL>>: <<<notifyListeners()>>> in the <<<NotificationChannelEndPoint>>> class
+    of the proxy. Total includes mashalling.
+
+  []
+
+*------------+---------------------------+--------------------------------+
+| <<method>> | <<creating JAXB context>> | <<total>> |
+*------------+---------------------------+--------------------------------+
+| sC | 1280ms | 1311ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 562ms | 562ms |
+*------------+---------------------------+--------------------------------+
+| sC | 156ms | 156ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 125ms | 125ms |
+*------------+---------------------------+--------------------------------+
+| sC | 141ms | 141ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 78ms | 78ms |
+*------------+---------------------------+--------------------------------+
+| sC | 203ms | 203ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 47ms | 47ms |
+*------------+---------------------------+--------------------------------+
+| sC | 125ms | 125ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 94ms | 94ms |
+*------------+---------------------------+--------------------------------+
+| sC | 157ms | 157ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 63ms | 63ms |
+*------------+---------------------------+--------------------------------+
+| sC | 140ms | 140ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 94ms | 94ms |
+*------------+---------------------------+--------------------------------+
+| sC | 125ms | 125ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 156ms | 156ms |
+*------------+---------------------------+--------------------------------+
+| sC | 78ms | 78ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 47ms | 47ms |
+*------------+---------------------------+--------------------------------+
+| sC | 109ms | 109ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 46ms | 46ms |
+*------------+---------------------------+--------------------------------+
+| nL | 344ms | 344ms |
+*------------+---------------------------+--------------------------------+
+| nL | 31ms | 31ms |
+*------------+---------------------------+--------------------------------+
+| nL | 47ms | 47ms |
+*------------+---------------------------+--------------------------------+
+| nL | 47ms | 47ms |
+*------------+---------------------------+--------------------------------+
+| nL | 62ms | 62ms |
+*------------+---------------------------+--------------------------------+
+| nL | 62ms | 62ms |
+*------------+---------------------------+--------------------------------+
+| nL | 47ms | 47ms |
+*------------+---------------------------+--------------------------------+
+| nL | 78ms | 78ms |
+*------------+---------------------------+--------------------------------+
+| nL | 78ms | 78ms |
+*------------+---------------------------+--------------------------------+
+| nL | 156ms | 156ms |
+*------------+---------------------------+--------------------------------+
+| nL | 63ms | 63ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 94ms | 94ms |
+*------------+---------------------------+--------------------------------+
+| <<Total>> | 4935ms | 4966ms |
+*------------+---------------------------+--------------------------------+
+JAXB context creating and marshalling time before fixing.
+
+  As you can see nearly all the time for marshalling is used to create and
+  particularly recreate the JAXB context. These ten simple commands last almost
+  five seconds and this is the time for marshalling and unmarshalling only.
+
+*** Situation after fixing
+
+  In the <<<CommandSerializerImpl>>>, <<<NotificationChannelEndPoint>>> and
+  <<<CommandFactory>>> class of the proxy and the <<<Context>>> class of the
+  core, the context and marshaller are now stored statically and initialised
+  only the first time they are used. This reduces the time needed for
+  marshalling and unmarshalling significantly. The following table shows the
+  same reader configuration with the same method name abbreviations as above.
+
+*------------+---------------------------+--------------------------------+
+| <<method>> | <<creating JAXB context>> | <<total>> |
+*------------+---------------------------+--------------------------------+
+| sC | 1279ms | 1326ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 640ms | 640ms |
+*------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| sC | 15ms | 15ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| sC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| nL | 312ms | 312ms |
+*------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| nL | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| gJC | 0ms | 0ms |
+*------------+---------------------------+--------------------------------+
+| <<Total>> | 2246ms | 2293ms |
+*------------+---------------------------+--------------------------------+
+JAXB context creating and marshalling time after fixing.
+
+  The time for most marshalling and unmarshalling has been reduced to less than
+  one millisecond. Although the amount of time needed to create the JAXB context
+  for the first time is very large, the total time needed for these ten commands
+  is less than half as much as with the previous version. Furthermore the gain
+  increases for every following command and notification which will need less
+  than one millisecond to be marshalled and unmarshalled.
+
+** Bugfix {1547776}: Added configuration file for the proxy
+
+  There is only one property for the timeout to configure in the proxy module,
+  but a configuration file is necessary. Leaving it away and hard coding the
+  value renders it unconfigurable. Merging this single value into an other
+  configuration file is not reasonable. The two possible places would be the
+  log4j configuration file that has nothing to do with the proxy imlementation
+  or a file in an other module that has nothing to do with the proxy too.
+
+  The configuration file of the proxy was missing in the last version 0.3.1 and
+  in the SVN repository. A hard coded value was taken because the file could
+  not be found. So a new configuration file has been added to be able to
+  configure the timeout.
+
+** Bugfix {1773821}: Fixed field name, event and tag field values for custom
+  data selector
+
+  Using a custom data selector in the proxy did not work and caused a null
+  pointer exception in the reader. The reader configurator of the proxy
+  spuriousle sent the name instead of the value of some constants to the reader.
+  This information is meaningless to the reader and caused the null pointer
+  exception.
+
+  The configurator now sends the value of the <<<eventFilter>>>, <<<fieldName>>>
+  and <<<tagField>>>. Additionally to this, some constant values representing
+  element names of the data selector had to be adjusted to the Reader Protocol
+  specification in the reader core. These were a spelling and some upper and
+  lower case errors.
+
+** Bugfix {1723152}: Renamed TagSelector shorthand from RF to TS
+
+  Most configuration command elements have a shorthand in the text binding.
+  According to the Reader Protocol specification the shorthand for
+  <<<TagSelector>>> is <<<TS>>>. This shorthand seemed not to be supported.
+
+  In the serializer of the text message binding of the proxy, there was no
+  difference of the short mode compared to the normal mode for this command.
+  The list of text tokens in the proxy implementation did not contain a constant
+  for the <<<TS>>> shorthand. It contained a <<<RF>>> constant instead, that
+  does not appear in the Reader Protocol specification. The same error appeared
+  in the <<<TextCommandParser>>>, <<<TextCommandParserTokenTypes>>> and
+  <<<TextLexer>>> classes of the reader core. All these constants have been
+  changed to the correct shorthand <<<TS>>> which is now fully supported.
+
+** Bugfix {1782301}: Return error if 'ms=' missing in timer trigger value
+
+  The 'ms=' at the beginning of the timer trigger value is mandantory according
+  to the Reader Protocol specification. If it was missing and the value
+  consisted of the number representing the time for the trigger only, the
+  reader accepted it but generated errors some commands later when the trigger
+  was used effectively.
+
+  In the <<<Trigger>>> class of the reader core the value of the timer trigger
+  is now tested for Reader Protocol compliant format. If the leading 'ms=' is
+  missing, an <<<ERROR_PARAMETER_INVALID_FORMAT>>> is returned immediately.
+
+** Bugfix {1782482}: Return notification channel port number correctly
+
+  Sending a <<<NotificationChannel.getAddress>>> command to the reader returned
+  port number 0.
+
+  The <<<CommandDispatcher>>> sets the value of the port in the address
+  correctly when the mode of the notification channel is 'connect'. Before
+  returning the address, it overwrites it with the own port which only makes
+  sence when the mode of the notification channel is 'listen'. This has been
+  changed to set the own port only when in listen mode.
+
+** Bugfix {1547832}: Redesigned resource loading
+
+  Resources such as configuration files caused problems when loaded from a
+  Java archive. When adjusting configuration files to custom needs one had
+  to extract the java archive to replace the default configuration file. This
+  was very inconvenient.
+
+  The whole resource locating and loading mechanism has been redesigned.
+  Locating resources has been centralised in the new utility class
+  <<<ResourceLocator>>>. Its public <<<getURL>>> method searches for the
+  resource in various places and returnes the absolute URL where to load it.
+  There is no need to create a <<<ResourceLocator>>> object because the
+  <<<getURL>>> and other methods are static.
+
+  The <<<getURL>>> method takes three arguments:
+
+  * A resource file name string including the path to the file if needed. The
+    path can be relative or absolute on the file system. This argument is
+    mandantory but can be an empty string.
+
+  * A default resource file name string with relative or absolute path as well.
+    This argument is optional and can be <<<null>>>. It especially allows in a
+    default setting to search for a custom configuration file with a predefined
+    name before taking the default configuration file that is packed in the
+    Java archive and thus not editable.
+
+  * The caller class that helps to find the class loader that best fits the
+    needs of the caller.
+
+    To get the own class from within an object it is suffisent to call
+    <<<this.getClass()>>>. This is very short and can be done directly in the
+    argument list when calling the <<<getURL>>> method:
+
++---
+URL url = ResourceLocator.getURL(configFile, defaultConfigFile, this.getClass());
++---
+
+    From within a static method it is not easily possible to access the class.
+    One has to take the indirection over an Exception to find the own class
+    name:
+
++---
+Exception ex = new Exception();
+StackTraceElement[] sTrace = ex.getStackTrace();
+String className = sTrace[0].getClassName();
+Class clazz = Class.forName(className);
+URL url = ResourceLocator.getURL(configFile, defaultConfigFile, clazz);
++---
+
+  []
+
+  Locating the resource uses the following approach:
+
+  * Try relative to the user directory. This is where the application was
+    started.
+
+  * Let the most general class loader try to locate the resource.
+
+  * Attempt using the caller class which is able to locate paths relative to
+    the caller package.
+
+  * Use the <<<ClassLoader>>> class to try getting it as a system resource.
+
+  * Try locating the resource on an absolute file path.
+
+  * If all these attempts fail the custom resource can not be found and a
+    search for the default resource file is started.
+
+  * Depending on the location of the caller class inside or outside a Java
+    archive several locations are searched similar to the custom resource
+    locating.
+
+  []
+
+  This procedure finds the resource in many constellations:
+
+  * Relative to the application started or to the library if the module is
+    added as a library (such as the proxy or Fosstrak HAL that uses the same
+    resource loading mechanism).
+
+  * With custom or default configuration  and without the need of unpacking the
+    java archive.
+
+  * On an absolute or relative path.
+
+** Bugfix {1783839}: Send and receive handshake in core and proxy/client
+
+  With TCP as transport binding the reader did not send back a handshake to
+  the host. The host, proxy or test client did not complain about the missing
+  handshake and the data was sended anyway. In addition to this, the host
+  crashed if it received an answer to the handshake from a Reader Protocol
+  compliant reader.
+
+  Proxy and client now send the handshake immediately after setting up a
+  connection and wait for a response before sending data. The reader answers
+  with a receiver handshake after getting a sender handshake.
+
+** Bugfix {1800577}: Added possibility to start multiple readers on a single
+  computer
+
+  The bug description was a bit misleading. The graphical test client has
+  nothing to do with the ReaderDevice.xml, this is the configuration for the
+  reader core module. As described in the third paragraph, not the test client
+  causes the error but the reader.
+
+  The problem are not the ports for http, tcp and the alarm channel that can
+  be changed in the configuration file. It is the DHCPServerFinder of the
+  reader management that uses UDP Port 68 (dedicated for dhcp server). Using
+  the same port twice is not possible as intended for multiple instances of the
+  reader on the same system.
+
+  There is no information in the reader documentation saying that it is
+  possible to run multiple instances of the reader on the same system. So on
+  the one hand this is not a bug of the reader, at most a missing feature. On
+  the other hand there is no real solution to this problem as each instance of
+  the reader needs the standard UDP port 68 for the reader management.
+
+  A quickfix of the problem has the following limitations:
+  The first reader instance fully works as usual. Following instances choose
+  an arbitrary port and thus the EPCglobal Reader Management will not work.
+  Furthermore a <<<java.net.BindExeption>>> is thrown and shows up in the
+  console. The rest of the reader runs and should work anyway.
+
+** Bugfix {1823580}: No default configuration files defined in other
+  configuration files
+
+  This bug was introduced after release 0.3.1 and fixed before this next
+  release. The resource locating and loading has been completely redesigned,
+  see {{{#1547832}bugfix 1547832}} for more information. The aim was to be able
+  to use the reader with a default or a custom configuration without unpacking
+  the java archive. First, a resource file with a default name or the name
+  given as argument to the main method is searched. If it is not found the
+  default resource file with a different name is loaded. This file is packed
+  in the java archive and a configuration of its name is not needed, so this
+  possibility has been removed from the configuration files.
+
+** Bugfix {1826817}: Iterate over tag field names instead of field names when
+  adding tags to a report in the source
+
+  Tags are added to the report in the <<<Source>>> class of the reader core if
+  they match the data selector. To compare the tag with the data selector a
+  loop iterated over field names instead of tag field names and thus found no
+  match and did not report the tag fields specified in the data selector.
+
+  The comparison has been adjusted accordingly to iterate over the tag field
+  names.
+
+** Bugfix {1827468}: Rewritten byte array to hexadecimal formatted string
+  converter function in the HexUtil class
+
+  This bug leaded to a wrong tag field value when converting from byte array to
+  hexadecimal encoded string and vice versa. The <<<HexUtil>>> helper class in
+  the reader core messaging contained a weak implementationf for these
+  conversions. The result was an extra leading double zero after conversion.
+
+  Both conversion methods have been completely replaced with new implementations
+  that do not cause this problem and work for any length of array or string
+  respectively.
+
+** Bugfix {1827498}: Interprete offset and length of a tag field as bits
+
+  According to the Reader Protocol specification the unit of the tag field
+  offset and length values is bits. The reader interpreted these as bytes which
+  is wrong.
+
+  Some code has been added to handle the necessary bit manipulation to map
+  the bit values to the bytes containing the specified bits. This includes
+  shifting to the correct bit position and preserving the unaffected bits.
