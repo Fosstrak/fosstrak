@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Properties file for Feig i-scan HF readers using a serial connection (RS232) -->
+<!-- Reader: Feig Midrange Reader ID ISC.MR/PR/PRH10x (serial version) -->
+<properties>
+
+   <!-- Number of the COM port the reader is attached to -->
+   <!-- Value: COM port number (1-16) -->
+   <comPort>4</comPort>
+
+   <!-- The communication speed (baud rate) of the COM port -->
+   <!-- Value: 115200, 57600, 38400, 19200, 9600, 4800, 2400 or 1200 -->
+   <baudRate>38400</baudRate>
+
+   <!-- The serial frame format -->
+   <!-- Value format: dps, where d = databits (7, 8), p = parity (N[one], E[ven], O[dd]) and s = stopbit (0, 1, 2) -->
+   <!-- Example: <frame>8E1</frame> -->
+   <frame>8E1</frame>
+
+   <!-- The COM communication timeout in milliseconds -->
+   <!-- Note: Multiplexers and high number of tags increase the readtime. Use a higher timeout value in this case (~1500ms). -->
+   <!-- Value: timeout (integer value) -->
+   <timeout>1000</timeout>
+
+   <!-- The Tag / Transponder model that is used in the application -->
+   <!-- Note: It is possible to ommit the transponder model. In this case, the tag type is tried to be determined automatically. This requires additional read cycles for specific operations which may not be appropriate. This is the only possibility if more than one transponder type is used within a single application though. -->
+   <!-- Value: transponder type name. Use getSupportedTransponderTypes() to get a list of supported transponders of the attached reader. (This is reader firmware specific and cannot be determined in advance) -->
+   <!-- Example: <transponderModel>ICODESLI</transponderModel> (Use of ISO I-Code SLI transponders by Philips -->
+   <transponderModel>ICODE1</transponderModel>
+
+   <!-- The multiplexer configuration file -->
+   <!-- Note: Multiplexer configuration is setup in a separate properties file. For single antenna configurations comment the multiplexerConfig and multiplexerDefaultConfig elements out and define readpoint name in this file or define the single readpoint in the multiplexer configuration. -->
+   <!-- Value: multiplexer configuration file name -->
+   <multiplexerConfig>/props/FeigMultiplex.xml</multiplexerConfig>
+
+   <!-- If no multiplexer configuration file defined, you can declare one single readpoint name here. This parameter is omitted if a multiplexerConfig element exists above.
+        The name of the readpoint can be chosen arbitrary but it must be unique. -->
+   <!--readpoint>
+      <name>Antenna</name>
+   </readpoint-->
+
+</properties>
