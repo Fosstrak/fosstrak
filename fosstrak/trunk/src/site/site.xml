@@ -20,14 +20,14 @@
 
     <menu name="About Fosstrak" inherit="none">
       <item name="Overview" href="/overview.html"/>
-      <item name="Background" href="/background.html"/>
-      <item name="Team" href="/team.html"/>
-      <item name="About the EPC Network" href="/epcnetwork.html"/>
       <item name="Status" href="/status.html"/>
-      <item name="License" href="/license.html"/>
-      <item name="Publications" href="/pub.html"/>
       <item name="Quick Demos" href="/demo.html"/>
       <item name="Success Stories" href="/success.html"/>
+      <item name="About the EPC Network" href="/epcnetwork.html"/>  
+      <item name="Publications" href="/pub.html"/> 
+      <item name="Background" href="/background.html"/>
+      <item name="Team" href="/team.html"/>
+      <item name="License" href="/license.html"/>
       <item name="Mailing Lists" href="/mail-lists.html"/>
       <item name="FAQ" href="/faq.html"/>
       <item name="Contact" href="/contact.html"/>
