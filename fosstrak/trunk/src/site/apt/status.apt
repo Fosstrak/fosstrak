@@ -1,40 +1,60 @@
        ------
-                                    Welcome
+                                    Status and Future Roadmap
                                     ------
                                     ------
 
 
-Status
+Current Status
 
     
-    This {{{publ/FosstrakDetails.pdf}recent talk}} gives a good overview of the current status. It does not feature the latest developments though.
+* Fosstrak EPCIS
+
+		 * downloaded more than 1000 times 
+		 
+		 * EPCglobal certified
+		 
+		 * comprises repository, query and capture client
+		 
+		 * first release in April 2007
+		 
+
+* Fosstrak TDT
+
+		 * developed and maintained by author of EPCglobal TDT specification
+		 
+		 * available since 2006
+		 
+		 
+		 
+* Fosstrak Filtering & Collection Middleware and Reader Support		 
+		 
+		 * supports recently released EPCglobal ALE1.1
+		 
+		 * built-in support for a number of commonly used RFID readers
+		 
+		 * support for EPCglobal RP 1.1 protocol
+		 
+		 
+		 
+Future Roadmap
 
 
-* Available
+    We are currently planning to restrict future development efforts to the support of the recently released LLRP. Recommendations regarding other future development projects are welcomed and should be sent to the appropriate mailing lists.  
 
-     The following Java software packages are available:
-          	
-          	 * Reader (implements EPCglobal Reader Protocol (RP) and Reader Management (RM))
-          	 
-          	 * Reader Proxy (implements RP)
-          	       
-          	 * Reader Client (implements RP)
-          	 
-          	 * Filtering and Collection Middleware (implements ALE 1.1 interface and RP interface)
+		 * LLRP support in <<Fosstrak Filtering & Collection Middleware>> scheduled for Q3 2008
+		 
+		 * Eclipse LLRP Plugin scheduled for Q3 2008 
+		 
+		 
+Limitations  
 
-     	       * HAL (Hardware Abstraction Layer) to access existing RFID hardware
-          	 
-          	 * EPCIS Repository (implements EPCIS Capture and Query Interface)    
-          	     
-          	 * EPCIS Repository Graphical User Interface (implements EPCIS Capture and Query Interface)
-          	 
-          	 * Tag Data Translation Engine
-          	 
-      
-* Limitations  
+     <<Fosstrak>> is not a reference implementation of EPC Network standards!
 
-     The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments. It is beta software.
 
+     []
+
+
+ 
 
 
 

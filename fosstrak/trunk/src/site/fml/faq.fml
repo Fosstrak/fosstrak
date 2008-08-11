@@ -10,7 +10,7 @@
         Is this a reference implementation of the EPC Network?
       </question>
       <answer>
-        No, not at all. It is currently alpha software that is intended to facilitate rapid prototyping.
+        No, not at all. 
       </answer>
     </faq>
 
@@ -19,7 +19,7 @@
         Are there other open source projects incorporating the EPC Network standards?
       </question>
       <answer>
-        Yes, there are. See <a href="http://www.autoidlabs.org/opensource">www.autoidlabs.org/opensource</a> for an overview. There is in particular the MENTOR effort which provides .NET implementation of EPCIS.
+        Yes, there are. There have been several attempts to release open source software in the RFID domain. A number of projects never ended up releasing any software though. Two very promising efforts are the <a href="http://www.llrp.org">LLRP Toolkit Project </a> to which the Fosstrak team contributed the Java implementation and the <a href="http://www.rifidi.org">Rifidi</a> project.
       </answer>
     </faq>
 
@@ -28,7 +28,7 @@
         Where can I find more information about the EPC Network?
       </question>
       <answer>
-        Check out the website of <a href="http://www.epcglobalinc.org">EPCglobal</a> and in particular the architecture framework document.
+        Check out the website of <a href="http://www.epcglobalinc.org">EPCglobal</a> and in particular the architecture framework document. Or check out this <a href="http://www.autoidlabs.org/uploads/media/IntegratingReadersV1dot02.pdf">paper</a> we recently wrote on RFID system interfaces.
       </answer>
     </faq>
 
@@ -41,21 +41,12 @@
       </answer>
     </faq>
 
-    <faq id="prototyping">
-      <question>
-        Why is it called a Prototyping Platform?
-      </question>
-      <answer>
-        The Fosstrak software is currently alpha software to be used for prototyping and not for large scale commercial deployments.
-      </answer>
-    </faq>
-
     <faq id="difference-commercial">
       <question>
-        How is the offering of Fosstrak different from the one of commercial software vendors?
+        How is the offering of Fosstrak different from the one of commercial software vendors in the RFID domain?
       </question>
       <answer>
-        Fosstrak provides very limited support, it is alpha software, we target a different community (EPC novices, researchers, students etc.), and we provide software only: no integration services available that take the components and provide a custom solution.
+        Fosstrak provides core software components only: we do not offer integration services or application development.
       </answer>
     </faq>
 

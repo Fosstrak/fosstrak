@@ -10,69 +10,71 @@ Fosstrak Overview
 * Project Mission
 
   
-    <<Fosstrak>> is an open source RFID prototyping platform that implements the <<EPC Network>> specifications. It is intended to foster the rapid prototyping of RFID applications and to accelerate the development of an <<Internet of Things>>.
-   
-     
+    <<Fosstrak>> is an open source RFID software platform that implements the <<EPC Network>> specifications. It is intended to support application developers and integrators by providing core software components for track&trace applications. 
+    
 
+
+* Target Groups
+
+  The <<Fosstrak>> project can support:
+  
+    
+    *  <<RFID System Integrators>>  and <<Application Developers>> because <<Fosstrak>> software provides the core components of many RFID system deployments, e.g. event repository, filtering and collection of RFID data (edgeware) and tag data translation. Integrators and developers can focus on what is unique in their deployments and rely on <<Fosstrak>> software for the standard components. 
+    
+    []
+  
+   
+    *  <<EPC Network Novices>> because our platform contains simple demo applications that illustrate the functionality of the EPC Network. Rather than reading through 200+ pages of specifications, people new to the EPC Network can experiment with real-world demos.
+    
+    []
+    
+    *  <<Researchers and Students>> who work on RFID issues because <<Fosstrak>> software provides an ideal starting point for experimental software and rapid application development: it is free and open source.
+        
+     
+    []
+
+* Current Status
+
+    
+	* <<Fosstrak EPCIS>>
+
+		 * downloaded more than 1000 times 
+		 
+		 * EPCglobal certified
+		 
+		 * comprises repository, query and capture client
+		 
+		 * first release in April 2007
+		 
+
+	* <<Fosstrak Tag Data Translation (TDT) Library>>
+
+		 * developed and maintained by author of EPCglobal TDT specification
+		 
+		 * available since 2006
+		 
+		 
+		 
+	* <<Fosstrak Filtering & Collection Middleware and Reader Support>>		 
+		 
+		 * supports recently released EPCglobal ALE1.1
+		 
+		 * built-in support for a number of commonly used RFID readers
+		 
+		 * support for EPCglobal RP 1.1 protocol
+	
 * Background
 
-    The <<Fosstrak>> project was initiated by {{{http://people.inf.ethz.ch/floerkem} Christian Floerkemeier}}, {{{http://people.inf.ethz.ch/mlampe} Matthias Lampe}}, and {{{http://people.inf.ethz.ch/rodunerc} Christof Roduner}} of the {{{http://www.vs.inf.ethz.ch} Distributed Systems Group}} at ETH Zurich led by {{{http://people.inf.ethz.ch/mattern} Friedemann Mattern}} and the {{{http://www.autoidlabs.ch} Auto-ID Lab }} at ETH Zurich/University of St. Gallen led by {{{http://www.item.unisg.ch/org/item/web2.nsf/c2d5250e0954edd3c12568e40027f306/c50b89b455a2b4cfc1256c41005d049e?OpenDocument} Elgar Fleisch}} . 
+    The <<Fosstrak>> project was initiated by Christian Floerkemeier, {{{http://people.inf.ethz.ch/mlampe} Matthias Lampe}}, and {{{http://people.inf.ethz.ch/rodunerc} Christof Roduner}} of the {{{http://www.vs.inf.ethz.ch} Distributed Systems Group}} at ETH Zurich led by {{{http://people.inf.ethz.ch/mattern} Friedemann Mattern}} and the {{{http://www.autoidlabs.ch} Auto-ID Lab }} at ETH Zurich/University of St. Gallen led by {{{http://www.item.unisg.ch/org/item/web2.nsf/c2d5250e0954edd3c12568e40027f306/c50b89b455a2b4cfc1256c41005d049e?OpenDocument} Elgar Fleisch}} . 
 
 
 [images/ethautoid.gif] 
 
 
     Mark Harrison and James Brusey from the Cambridge University Auto-ID Lab contributed the Tag Data Translation Engine.	
-
-* Target Groups
-
-  The <<Fosstrak>> project can support:
-
-    *  <<EPC Network Novices>> because our prototyping platform contains simple demo applications that illustrate the functionality of the EPC Network. 
-    
-    []
-    
-    *  <<Researchers and Students>> who work on RFID issues because we provide a common codebase for experimental software. 
-        
-     
-    []
-    
-    *  <<RFID Application Developers>> because we provide Java libraries that facilitate communication with EPC Network components. 
-    
-    []
-    
-    *  <<RFID System Integrators>> because our prototyping platform features implementations of the major components of the EPC Network. 
-
-    []
-
-    
-
-
-* Current Status
-
-   This {{{publ/FosstrakDetails.pdf}recent talk}} gives a good overview of the current status.   
-      
-      
-** Available
-
-     The following Java software packages are available:
-     	
-     	 * Reader (implements EPCglobal Reader Protocol (RP) and Reader Management (RM))
-     	 
-     	 * Reader Proxy (implements RP)
-     	       
-     	 * Reader Test Client (implements RP)
-     	 
-     	 * Filtering and Collection Middleware (implements ALE 1.1 interface and RP interface) 
-     	 
-     	 * HAL (Hardware Abstraction Layer) to access existing RFID hardware
-     	 
-     	 * EPCIS Repository (implements EPCIS Capture and Query Interface)
-     	     
-     	 * EPCIS Repository Graphical User Interface (implements EPCIS Capture and Query Interface)
-     	 
-     	 * Tag Data Translation Engine
-
+	
+	
+	
 	
 * License
 
@@ -81,4 +83,4 @@ Fosstrak Overview
 	
 * Limitations
       
-   The EPC Network Prototyping Platform is neither a reference implementation, nor has it been tested for large deployments. It is beta software.
+  <<Fosstrak>> is not a reference implementation of EPC Network standards!
