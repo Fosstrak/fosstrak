@@ -9,7 +9,7 @@ Welcome to Fosstrak (previously Accada)
 
 * Project Mission
 
-    <<Fosstrak>> is an open source RFID software platform that implements the <<EPC Network>> specifications. It is intended to support application developers and integrators by providing core software components for track&trace applications. 
+    <<Fosstrak>> is an open source RFID software platform that implements the <<EPC Network>> specifications. It is intended to support application developers and integrators by providing core software components for track and trace applications. 
  
     The project name was <<Accada>> previously, but we changed the name to <<Fosstrak>> after a trademark dispute.
 
@@ -20,7 +20,7 @@ Welcome to Fosstrak (previously Accada)
 
     []
     
-     *  if you are an <<RFID Application Developer>>, use the Java libraries of <<Fosstrak>> for the non-custom parts of your application, e.g. <<Fosstrak TDT>> for the translation between different tag identifier formats or <<Fosstrak Filtering&Collection Middleware>> for 
+     *  if you are an <<RFID Application Developer>>, use the Java libraries of <<Fosstrak>> for the non-custom parts of your application, e.g. <<Fosstrak TDT>> for the translation between different tag identifier formats or <<Fosstrak Filtering and Collection Middleware>> for 
      tag data processing.
          
     []
