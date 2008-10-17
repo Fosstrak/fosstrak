@@ -2,12 +2,9 @@
 <project name="Fosstrak">
   <bannerLeft>
     <name>Fosstrak</name>
-    <src>images/banner2_left.jpg</src>
+    <src>images/banner_left.gif</src>
     <href>http://www.fosstrak.org/</href>
   </bannerLeft>
-  <bannerRight>
-    <src>images/banner2_middle.jpg</src>
-  </bannerRight>
   <body>
     <links>
       <item name="Fosstrak" href="/index.html" />
