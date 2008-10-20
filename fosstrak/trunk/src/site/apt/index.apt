@@ -11,27 +11,27 @@ Welcome to Fosstrak (previously Accada)
 
     <<Fosstrak>> is an open source RFID software platform that implements the <<EPC Network>> specifications. It is intended to support application developers and integrators by providing core software components for track and trace applications. 
  
-    The project name was <<Accada>> previously, but we changed the name to <<Fosstrak>> after a trademark dispute.
+    The project name was <<Accada>> previously, but we changed the name to Fosstrak after a trademark dispute.
 
 * How can Fosstrak help you?
 
        
-     *  if you are an <<RFID System Integrator>>, deploy <<Fosstrak>> software components such as the EPCglobal certified <<Fosstrak EPCIS>> as part of your solution.
+     *  If you are an RFID <<system integrator>>, deploy Fosstrak software components such as the <<EPCglobal certified Fosstrak EPCIS>> as part of your solution.
 
     []
     
-     *  if you are an <<RFID Application Developer>>, use the Java libraries of <<Fosstrak>> for the non-custom parts of your application, e.g. <<Fosstrak TDT>> for the translation between different tag identifier formats or <<Fosstrak Filtering and Collection Middleware>> for 
+     *  If you are an RFID <<application developer>>, use the Java libraries of Fosstrak for the non-custom parts of your application, e.g. <<Fosstrak TDT>> for the translation between different tag identifier formats or <<Fosstrak Filtering and Collection Middleware>> for 
      tag data processing.
          
     []
     
 
-     *  if you are a <<Researcher or Student>> who works with RFID, use our software as a starting point for your work, e.g. to develop new discovery systems that require multiple EPCIS installations. 
+     *  If you are a <<researcher or student>> who works with RFID, use our software as a starting point for your work, e.g. to develop new discovery systems that require multiple EPCIS installations. 
     
  
     []
     
-     *  if you are an <<EPC Network Novice>>, use the demo apps of <<Fosstrak>> to check out the functionality of the EPC Network. 
+     *  If you are an EPC Network <<novice>>, use our demo applications to check out the functionality of the EPC Network. 
         
     []
     
