@@ -1,0 +1,76 @@
+              -------------------
+              Download
+              -------------------
+              Christof Roduner
+              -------------------
+              06/04/2008
+              -------------------
+
+
+Download
+
+  The current version of Fosstrak EPCIS is 0.4.1.
+
+* Fosstrak EPCIS Repository 
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ EPCIS Repository 0.4.1 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/epcis/epcis-repository/0.4.1/epcis-repository-0.4.1-bin-with-dependencies.zip}epcis-repository-0.4.1-bin-with-dependencies.zip}}
+*--------+----------+
+ EPCIS Repository 0.4.1 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/epcis/epcis-repository/0.4.1/epcis-repository-0.4.1-bin-with-dependencies.tar.gz}epcis-repository-0.4.1-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Fosstrak EPCIS Capture Client
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ EPCIS Capture Client 0.4.1 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/epcis/epcis-captureclient/0.4.1/epcis-captureclient-0.4.1-bin-with-dependencies.zip}epcis-captureclient-0.4.1-bin-with-dependencies.zip}}
+*--------+----------+
+ EPCIS Capture Client 0.4.1 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/epcis/epcis-captureclient/0.4.1/epcis-captureclient-0.4.1-bin-with-dependencies.tar.gz}epcis-captureclient-0.4.1-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Fosstrak EPCIS Query Client
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ EPCIS Query Client 0.4.1 with dependencies (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/epcis/epcis-queryclient/0.4.1/epcis-queryclient-0.4.1-bin-with-dependencies.zip}epcis-queryclient-0.4.1-bin-with-dependencies.zip}}
+*--------+----------+
+ EPCIS Query Client 0.4.1 with dependencies (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/epcis/epcis-queryclient/0.4.1/epcis-queryclient-0.4.1-bin-with-dependencies.tar.gz}epcis-queryclient-0.4.1-bin-with-dependencies.tar.gz}}
+*--------+----------+
+
+
+* Source Distribution (including all submodules)
+
+*--------+----------+
+         | Sources  |
+*--------+----------+
+ EPCIS Source 0.4.1 (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/epcis/epcis/0.4.1/epcis-0.4.1-src.zip}epcis-0.4.1-src.zip}}
+*--------+----------+
+ EPCIS Source 0.4.1 (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/epcis/epcis/0.4.1/epcis-0.4.1-src.tar.gz}epcis-0.4.1-src.tar.gz}}
+*--------+----------+
+
+
+* Previous Releases
+
+  All previous releases of Fosstrak EPCIS can be found in the {{{http://maven-repository.fosstrak.org/releases}distribution repository}}.
+
+
+* System Requirements
+
+*---------------------+---------+
+ <<JDK>>              | 1.5 or above 
+*---------------------+---------+
+ <<Memory>>           | No minimum requirements.
+*---------------------+---------+
+ <<Operating System>> | No minimum requirements. Tested on Windows XP. 
+*---------------------+---------+
+
+
+* Installation and Usage Instructions
+
+  Please consult the {{{docs/user-guide.html} User Guide}} for installation and usage instructions.

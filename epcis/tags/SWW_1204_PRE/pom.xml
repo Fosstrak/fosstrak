@@ -1,0 +1,410 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+
+  <!-- =========================================================== -->
+  <!-- Basics                                                      -->
+  <!-- =========================================================== -->
+
+  <groupId>org.fosstrak.epcis</groupId>
+  <artifactId>epcis</artifactId>
+  <version>0.4.2-SNAPSHOT</version>
+  <packaging>pom</packaging> <!-- aggregator projects require 'pom' as packaging -->
+  <modelVersion>4.0.0</modelVersion>
+
+
+  <!-- =========================================================== -->
+  <!-- Modules                                                     -->
+  <!-- =========================================================== -->
+
+  <modules>
+    <module>epcis-commons</module>
+    <module>epcis-repository</module>
+    <module>epcis-captureclient</module>
+    <module>epcis-queryclient</module>
+  </modules>
+
+
+  <!-- =========================================================== -->
+  <!-- Profiles                                                    -->
+  <!-- =========================================================== -->
+
+  <profiles>
+    <profile>
+      <id>interop-test</id>
+      <!--
+          the epcis-interop-test module is included into a profile in order
+          to build it only on demand: running "mvn install" will not build
+          the epcis-interop-test module, but "mvn install -Dinterop-test" will
+      -->
+      <activation>
+        <property>
+          <name>interop-test</name>
+        </property>
+      </activation>
+      <modules>
+        <module>epcis-interop-test</module>
+      </modules>
+      <properties>
+        <filter.file>../src/main/filters/dev.properties</filter.file>
+      </properties>
+    </profile>
+    <profile>
+      <!-- in order to trigger this profile, specify "-Denv=test" on command line -->
+      <id>env-dev</id>
+      <activation>
+        <property>
+          <name>env</name>
+          <value>dev</value>
+        </property>
+      </activation>
+      <properties>
+        <!-- this file must be available from the child poms, therefore include a ".." -->
+        <filter.file>../src/main/filters/dev.properties</filter.file>
+      </properties>
+    </profile>
+    <profile>
+      <!-- this profile is activated by default -->
+      <id>env-prod</id>
+      <activation>
+        <property>
+          <name>env</name>
+          <value>prod</value>
+        </property>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <filter.file>../src/main/filters/prod.properties</filter.file>
+      </properties>
+    </profile>
+  </profiles>
+
+
+  <!-- =========================================================== -->
+  <!-- Repositories                                                -->
+  <!-- =========================================================== -->
+
+  <repositories>
+    <repository>
+      <id>fosstrak-repository</id>
+      <name>Fosstrak repository</name>
+      <url>http://maven-repository.fosstrak.org/releases</url>
+      <layout>default</layout>
+    </repository>
+    <!--
+      JARs provided by Sun fall under Sun's Binary License which disallows
+      them from being distributed from Maven's central repository. Therefore
+      we need to specify where such libraries can be downloaded. See
+      http://maven.apache.org/guides/mini/guide-coping-with-sun-jars.html
+    -->
+    <repository>
+      <!-- for getting the jta libraries -->
+      <id>sun-maven2</id>
+      <name>Sun Maven 2 Repository</name>
+      <url>http://download.java.net/maven/2</url>
+    </repository>
+    <repository>
+      <!-- for getting the jaxb libraries -->
+      <id>sun-maven1</id>
+      <name>java.net Maven Repository</name>
+      <url>http://download.java.net/maven/1</url>
+      <layout>legacy</layout>
+    </repository>
+    <repository>
+      <!-- for getting the cxf libraries -->
+      <id>apache-incubating</id>
+      <name>Apache Incubating Repository</name>
+      <url>http://people.apache.org/repo/m2-incubating-repository</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+
+  <!-- =========================================================== -->
+  <!-- Build settings                                              -->
+  <!-- =========================================================== -->
+
+  <build>
+    <filters>
+      <filter>${filter.file}</filter>
+    </filters>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <inherited>false</inherited>
+        <configuration>
+          <descriptors>
+            <descriptor>src/main/assembly/src.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <!-- Lock to this version in order to prevent obscure
+               ArrayIndexOutOfBoundsException during release:prepare.
+               See http://jira.codehaus.org/browse/MRELEASE-256 for
+               details on this issue. -->
+          <version>2.0-beta-4</version>
+          <configuration>
+            <tagBase>https://svn.fosstrak.org/repos/epcis/tags</tagBase>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.5</source>
+            <target>1.5</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <!-- Lock to this version in order to prevent generating corrupted
+               menu structures for sub-modules when running site:site from the
+               parent module. See http://jira.codehaus.org/browse/MSITE-270 for
+               details on this issue. -->
+          <version>2.0-beta-5</version>
+          <configuration>
+            <locales>en</locales>
+            <publishDate position="left" format="yyyy-MM-dd hh:mm:ss" />
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <!--
+            By default, the surefire plugin automatically includes all test classes
+            with following wildcard patterns:
+            **/Test*.java
+            **/*Test.java
+            **/*TestCase.java
+          -->
+          <configuration>
+            <testFailureIgnore>true</testFailureIgnore>
+            <excludes>
+               <!-- these tests require special setup, see FAQ -->
+              <exclude>**/ImplementationErrorTest.java</exclude>
+              <exclude>**/QueryTooComplexTest.java</exclude>
+              <exclude>**/QueryPerformanceTest.java</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+
+  <!-- =========================================================== -->
+  <!-- Infrastructure                                              -->
+  <!-- =========================================================== -->
+  
+  <scm>
+    <!-- keep empty tags here to avoid release:prepare crashes -->
+    <connection></connection>
+    <developerConnection>scm:svn:https://svn.fosstrak.org/repos/epcis/trunk</developerConnection>
+    <url>https://svn.fosstrak.org/repos/epcis/</url>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>fosstrak-repository</id>
+      <name>Fosstrak repository</name>
+      <url>sftp://maven-repository.fosstrak.org/local/home/fosstrakrep/public_html/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>fosstrak-repository</id>
+      <name>Fosstrak repository</name>
+      <url>sftp://maven-repository.fosstrak.org/local/home/fosstrakrep/public_html/snapshots</url>
+    </snapshotRepository>
+    <site>
+      <id>fosstrak-website</id>
+      <name>Fosstrak website</name>
+      <url>sftp://www.fosstrak.org/local/home/fosstrakweb/public_html/epcis</url>
+    </site>
+  </distributionManagement>
+  <issueManagement>
+    <system>Sourceforge</system>
+    <url>http://sourceforge.net/tracker/?group_id=170911</url>
+  </issueManagement>
+  <mailingLists>
+    <mailingList>
+      <name>EPCIS user mailing list</name>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-epcis-user</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-epcis-user</unsubscribe>
+      <post>accada-epcis-user@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=accada-epcis-user</archive>
+    </mailingList>
+    <mailingList>
+      <name>EPCIS developer mailing list</name>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-epcis-developer</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-epcis-developer</unsubscribe>
+      <post>accada-epcis-developer@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=accada-epcis-developer</archive>
+    </mailingList>
+  </mailingLists>
+
+
+  <!-- =========================================================== -->
+  <!-- Reporting                                                   -->
+  <!-- =========================================================== -->
+  
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <configuration>
+          <linkXref>true</linkXref>
+          <sourceEncoding>utf-8</sourceEncoding>
+          <targetJdk>1.5</targetJdk>
+          <excludes>
+            <exclude>**/*Test.java</exclude>
+            <exclude>**/soapapi/*.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>javancss-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>changes-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+        <configuration>
+          <issueLinkTemplate>http://sourceforge.net/support/tracker.php?aid=%ISSUE%</issueLinkTemplate>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+
+  <!-- =========================================================== -->
+  <!-- Project Information                                         -->
+  <!-- =========================================================== -->
+
+  <name>epcis</name>
+  <url>http://www.fosstrak.org/epcis</url>
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License (LGPL)</name>
+      <url>http://www.gnu.org/licenses/lgpl.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>roduner</id>
+      <name>Christof Roduner</name>
+      <email>roduner at inf.ethz.ch</email>
+      <organization>ETH Zurich</organization>
+      <roles>
+        <role>project coordinator</role>
+        <role>project lead</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+    <developer>
+      <id>steybem</id>
+      <name>Marco Steybe</name>
+      <email>marco.steybe at zuehlke.com</email>
+      <organization>Zuehlke Engineering</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Sean Wellington</name>
+      <email>-</email>
+      <organization>-</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </contributor>
+    <contributor>
+      <name>Andrea Groessbauer</name>
+      <email>-</email>
+      <organization>-</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </contributor>
+    <contributor>
+      <name>Alain Remund</name>
+      <email>-</email>
+      <organization>-</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </contributor>
+    <contributor>
+      <name>Arthur Van Dorp</name>
+      <email>-</email>
+      <organization>-</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </contributor>
+    <contributor>
+      <name>David Gubler</name>
+      <email>-</email>
+      <organization>-</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </contributor>
+  </contributors>
+
+</project>
