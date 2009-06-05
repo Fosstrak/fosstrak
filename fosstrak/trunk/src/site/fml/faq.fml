@@ -10,7 +10,7 @@
         Is this a reference implementation of the EPC Network?
       </question>
       <answer>
-        No, not at all. 
+        No. 
       </answer>
     </faq>
 
@@ -37,16 +37,7 @@
         Which components of the EPC Network have you implemented?
       </question>
       <answer>
-        Have a look at the <a href="status.html">status page </a>.
-      </answer>
-    </faq>
-
-    <faq id="difference-commercial">
-      <question>
-        How is the offering of Fosstrak different from the one of commercial software vendors in the RFID domain?
-      </question>
-      <answer>
-        Fosstrak provides core software components only: we do not offer integration services or application development.
+        Have a look at the <a href="overview.html">overview page </a>.
       </answer>
     </faq>
 
@@ -56,26 +47,6 @@
       </question>
       <answer>
         EPCglobal is a subscriber-driven organisation comprised of industry leaders and organisations focused on creating global standards for the EPCglobal Network.
-      </answer>
-    </faq>
-
-    <faq id="license">
-      <question>
-        Why is Fosstrak Software available under LGPL License?
-      </question>
-      <answer>
-        The LGPL License allows software vendors to bundle Fosstrak components in their applications and systems without the reciprocal open source requirement. And it provides all Fosstrak users the assurance that enhancements to the Fosstrak source code will continue to remain free and openly available. It means that the people that make changes and enhancements to the Fosstrak source code have the obligation to LGPL their changes back when they redistribute our code.
-
-        Note that this is in contrast to a BSD or Apache-style license that allows for forking and creation of commercial projects.
-      </answer>
-    </faq>
-
-    <faq id="source">
-      <question>
-        Do I have to publish any modifications and extension I make again as open source?
-      </question>
-      <answer>
-        Have a look at the <a href="license.html">license </a> or at the explanation of LGPL-style licences at <a href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License"> Wikipedia.</a>
       </answer>
     </faq>
 
