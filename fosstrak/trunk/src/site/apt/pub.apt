@@ -12,32 +12,30 @@ Recent Talks and Publications
     
    []
    
+    * {{{publ/epcnetwork.pdf} EPC Network Background and Value of Open Source }} 
+
+   []
+   
     * {{{http://www.autoidlabs.org/uploads/media/IntegratingReadersV1dot02.pdf}Integrating RFID Readers in the Enterprise IT - Overview of Intra-organizational RFID System Services and Architectures }} - Extended Version of IEEE RFID 2008 Paper (not Fosstrak specific)
 
-
+	
 *  Talks
     
+   * {{{publ/FosstrakIEEERFID.pdf} Fosstrak - Free and Open Source Software for Track and Trace}} - Presentation at Invited Session on Open Source RFID Software at IEEE RFID 2009
+   
+   []
+   
+   
    * {{{publ/EPCConnectionTalk.pdf}How can you benefit from Fosstrak (previously Accada)?}} - Presentation at EPC Connection 2007
    
    []
 
-   * {{{publ/FosstrakDetails.pdf}Fosstrak in Detail}} - Presentation at SAP Oct. 2006 (slightly out of date)
-
-   []
   
 
 *  In the Press
 
    * {{{http://www.rfidjournal.com/article/articleview/3405/1/1/} RFIDJournal Article}} - June 2007
    
-   []
-
-	
-*  Flyer
-
-
-   * {{{publ/FosstrakFlyer.pdf}Fosstrak Flyer}}
-
    []
 
     

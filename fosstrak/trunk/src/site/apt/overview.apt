@@ -36,9 +36,11 @@ Fosstrak Overview
 * Current Status
 
     
-	* <<Fosstrak EPCIS>>
+	* <<Fosstrak EPCIS Repository>>
 
 		 * downloaded more than 1000 times 
+		 
+		 * most widely used EPCIS Repository (to our knowledge)
 		 
 		 * EPCglobal certified
 		 
@@ -51,17 +53,23 @@ Fosstrak Overview
 
 		 * developed and maintained by author of EPCglobal TDT specification
 		 
-		 * available since 2006
+		 * available since 2006 
 		 
 		 
 		 
-	* <<Fosstrak Filtering & Collection Middleware and Reader Support>>		 
+	* <<Fosstrak Filtering & Collection Middleware with ALE and LLRP Support>>		 
 		 
-		 * supports recently released EPCglobal ALE1.1
+		 * supports recently released EPCglobal ALE1.1 and LLRP
 		 
 		 * built-in support for a number of commonly used RFID readers
+
 		 
-		 * support for EPCglobal RP 1.1 protocol
+	* <<Fosstrak LLRP Commander>>		 
+		 
+		 * configure and manage RFID readers via LLRP
+		 
+		 * released in June 2009	
+		 
 	
 * Background
 
@@ -73,14 +81,3 @@ Fosstrak Overview
 
     Mark Harrison and James Brusey from the Cambridge University Auto-ID Lab contributed the Tag Data Translation Engine.	
 	
-	
-	
-	
-* License
-
-    The software is available under an {{{license.html} LGPL-style license.}} 
-	
-	
-* Limitations
-      
-  <<Fosstrak>> is not a reference implementation of EPC Network standards!
