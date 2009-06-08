@@ -4,7 +4,7 @@
                                     ------
 
 
-Fosstrak: Open Source Core Components for RFID Applications
+Fosstrak: Open Source RFID Software Platform
 
     <<Fosstrak>> is an open source RFID software platform that implements the <<EPC Network>> specifications. It is intended to support application developers and integrators by providing core software components for track and trace applications. 
 
@@ -35,7 +35,7 @@ Fosstrak: Open Source Core Components for RFID Applications
 * Fosstrak Modules
 
     
-	* <<Fosstrak EPCIS Repository>>
+	* <<{{{epcis/index.html}Fosstrak EPCIS Repository}}>>
 
 		 * downloaded more than 1000 times 
 		 
@@ -48,7 +48,7 @@ Fosstrak: Open Source Core Components for RFID Applications
 		 * first release in April 2007
 		 
 
-	* <<Fosstrak Tag Data Translation (TDT) Library>>
+	* <<{{{tdt/index.html}Fosstrak Tag Data Translation (TDT) Library}}>>
 
 		 * developed and maintained by author of EPCglobal TDT specification
 		 
@@ -56,14 +56,14 @@ Fosstrak: Open Source Core Components for RFID Applications
 		 
 		 
 		 
-	* <<Fosstrak Filtering & Collection Middleware with ALE and LLRP Support>>		 
+	* <<{{{fc/index.html}Fosstrak Filtering & Collection Middleware with ALE and LLRP Support}}>>		 
 		 
 		 * supports recently released EPCglobal ALE1.1 and LLRP
 		 
 		 * built-in support for a number of commonly used RFID readers
 
 		 
-	* <<Fosstrak LLRP Commander>>		 
+	* <<{{{llrp/index.html}Fosstrak LLRP Commander}}>>		 
 		 
 		 * configure and manage RFID readers via LLRP
 		 
