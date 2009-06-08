@@ -14,7 +14,7 @@
    
       <table class="bodyTable"><tr class="a"><th>Name</th><th>Subscribe</th><th>Unsubscribe</th><th>Post</th><th>Archive</th></tr>
       
-      <tr class="a"><td>Reader user mailing list</td><td><a href="https://lists.sourceforge.net/lists/listinfo/fosstrak-commander-user">Subscribe</a></td><td><a href="https://lists.sourceforge.net/lists/listinfo/fosstrak-commander-user">Unsubscribe</a></td><td><a href="mailto:fosstrak-commander-user@lists.sourceforge.net">Post</a></td><td><a href="http://sourceforge.net/mailarchive/forum.php?forum_name=fosstrak-commander-user">sourceforge.net</a></td></tr> -->
+      <!--<tr class="a"><td>LLRP Commander user mailing list</td><td><a href="https://lists.sourceforge.net/lists/listinfo/fosstrakcommander-user">Subscribe</a></td><td><a href="https://lists.sourceforge.net/lists/listinfo/fosstrakcommander-user">Unsubscribe</a></td><td><a href="mailto:fosstrak-commander-user@lists.sourceforge.net">Post</a></td><td><a href="http://sourceforge.net/mailarchive/forum.php?forum_name=fosstrakcommander-user">sourceforge.net</a></td></tr> --> 
       
       <tr class="a"><td>Filtering and Collection user mailing list</td><td><a href="https://lists.sourceforge.net/lists/listinfo/accada-ale-user">Subscribe</a></td><td><a href="https://lists.sourceforge.net/lists/listinfo/accada-ale-user">Unsubscribe</a></td><td><a href="mailto:accada-ale-user@lists.sourceforge.net">Post</a></td><td><a href="http://sourceforge.net/mailarchive/forum.php?forum_name=accada-ale-user">sourceforge.net</a></td></tr>
       

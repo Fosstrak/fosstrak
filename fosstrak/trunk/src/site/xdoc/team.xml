@@ -12,7 +12,7 @@
      <tr>
        <td>Co-Founders and Project Coordinators</td>
        <td>
-         <a href="http://people.inf.ethz.ch/floerkem/">Christian Floerkemeier</a><br/>
+         Christian Floerkemeier<br/>
          <a href="http://people.inf.ethz.ch/rodunerc/">Christof Roduner</a><br/>
          <a href="http://people.inf.ethz.ch/mlampe/">Matthias Lampe</a>
        </td>
@@ -20,9 +20,8 @@
      <tr>
        <td>Project Leads</td>
        <td>
-         Christian Floerkemeier (Reader)<br/>
          <a href="http://www.ifm.eng.cam.ac.uk/people/mgh12/">Mark Harrison</a> (Tag Data Translation)<br/>
-         Matthias Lampe (Filtering and Collection)<br/>
+         Samuel Wieland (ALE Middleware and LLRP Commander)<br/>
          Christof Roduner (EPCIS)<br/>
          Marco Steybe (EPCIS)<br/>
        </td>
@@ -33,10 +32,12 @@
          James Brusey<br/>
          Arthur van Dorp<br/>
          Remo Egli<br/>
+		 Ueli Etter<br/>
          Andreas Fuerer<br/>
          Andrea Groessbauer<br/>
          David Gubler<br/>
          Jonas Haller<br/>
+		 Zhang Haoning<br/>
          <a href="http://www.leontiadis.info">Nektarios Leontiadis</a><br/>
          Patrice Oehen<br/>
          Alain Remund<br/>
@@ -49,55 +50,7 @@
    </table>
    
    <br/><br/><br/>
-           
-    <subsection name="Team Members">
-          
-   <p>(in alphabetical order)</p>
-
-	<TABLE BORDER="0">
-	   <TR>
-	     <TD><img src="images/jpb54.jpg"/><br/><br/>James Brusey</TD>
-	     <TD><img src="images/ArthurVanDorp.jpg"/><br/><br/>Arthur van Dorp</TD>
-	     <TD><img src="images/egli.jpg"/><br/><br/>Andreas Egli</TD>
-	   </TR>
-	   <TR><TD COLSPAN="3"><BR/></TD></TR>
-	   <TR>
-   	     <TD><img src="images/floerkem.jpg"/><br/><br/>Christian Floerkemeier</TD>
-	     <TD><img src="images/afuerer.jpg"/><br/><br/>Andreas Fuerer</TD>
-   	     <TD><img src="images/AndreaGroessbauer.jpg"/><br/><br/>Andrea Groessbauer</TD>
-	   </TR>
-	   <TR><TD COLSPAN="3"><BR/></TD></TR>
-	   <TR>
-   	     <TD><img src="images/mgh12.jpg"/><br/><br/>Mark Harrison</TD>	   
-   	     <TD><img src="images/DavidGubler.jpg"/><br/><br/>David Gubler</TD>
-   	     <TD><img src="images/jhaller.jpg"/><br/><br/>Jonas Haller</TD>
-       </TR>
-	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
-	   <TR>
-  	     <TD><img src="images/mlampe.jpg"/><br/><br/>Matthias Lampe</TD>
-   	     <TD><img src="images/nektarios.jpg"/><br/><br/>Nektarios Leontiadis</TD>
-	     <TD><img src="images/oehen.jpg"/><br/><br/>Patrice Oehen</TD>
-	   </TR>
-	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
-   	   <TR>
-	     <TD><img src="images/RemundAlain.jpg"/><br/><br/>Alain Remund</TD>
-   	     <TD><img src="images/rodunerc.jpg"/><br/><br/>Christof Roduner</TD>
-   	     <TD><img src="images/noimage.jpg"/><br/><br/>Angelo Rosenfelder</TD>
-   	   </TR>
-  	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
-  	   <TR>
-   	     <TD><img src="images/schnerol.JPG"/><br/><br/>Roland Schneider</TD>
-   	     <TD><img src="images/MarcoSteybe.jpg"/><br/><br/>Marco Steybe</TD>
-   	     <TD><img src="images/noimage.jpg"/><br/><br/>Markus Vitalini</TD>
-   	   </TR>
-  	   <TR><TD COLSPAN="3"><BR/><BR/><BR/></TD></TR>
-  	   <TR>
-   	     <TD><img src="images/zweifel.jpg"/><br/><br/>Oliver Zweifel</TD>
-   	   </TR>
-   	   <TR><TD COLSPAN="3"><BR/></TD></TR>
-	</TABLE>
-
-      </subsection>  
+ 
 
 
 

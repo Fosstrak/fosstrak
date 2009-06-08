@@ -16,7 +16,7 @@
     <menu name="About Fosstrak" inherit="none">
       <item name="Overview" href="/overview.html"/>
       <!-- <item name="Status" href="/status.html"/> -->
-      <item name="Quick Demos" href="/demo.html"/>
+      <!-- <item name="Quick Demos" href="/demo.html"/> -->
       <item name="Success Stories" href="/success.html"/>
       <!-- <item name="About the EPC Network" href="/epcnetwork.html"/>  -->
       <item name="Publications" href="/pub.html"/> 
@@ -34,6 +34,9 @@
               <item name="TDT Engine" href="tdt/index.html"/>
 			  <item name="ALE Middleware" href="fc/index.html" />
               <item name="LLRP Commander" href="llrp/index.html"/>
+			  <item name="Legacy" href="/legacy.html" collapse="true">
+				<item name="Reader" href="reader/index.html"/>
+			  </item>
     </menu>
 
 	<!--
