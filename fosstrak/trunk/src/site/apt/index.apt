@@ -12,7 +12,7 @@ Fosstrak: Open Source RFID Software Platform
 * How can Fosstrak help you?
 
        
-     *  If you are an RFID <<system integrator>>, deploy Fosstrak software components such as the <<EPCglobal certified Fosstrak EPCIS>> as part of your solution.
+     *  If you are an RFID <<system integrator>>, deploy Fosstrak software components such as the <<EPCglobal-certified Fosstrak EPCIS>> as part of your solution.
 
     []
     
@@ -41,12 +41,13 @@ Fosstrak: Open Source RFID Software Platform
 		 
 		 * most widely used EPCIS Repository (to our knowledge)
 		 
-		 * EPCglobal certified
+		 * EPCglobal-certified
 		 
 		 * comprises repository, query and capture client
 		 
 		 * first release in April 2007
 		 
+	[]
 
 	* <<{{{tdt/index.html}Fosstrak Tag Data Translation (TDT) Library}}>>
 
@@ -54,50 +55,18 @@ Fosstrak: Open Source RFID Software Platform
 		 
 		 * available since 2006 
 		 
-		 
-		 
+	[]
+
 	* <<{{{fc/index.html}Fosstrak Filtering & Collection Middleware with ALE and LLRP Support}}>>		 
 		 
 		 * supports recently released EPCglobal ALE1.1 and LLRP
 		 
 		 * built-in support for a number of commonly used RFID readers
 
+	[]
 		 
 	* <<{{{llrp/index.html}Fosstrak LLRP Commander}}>>		 
 		 
 		 * configure and manage RFID readers via LLRP
 		 
 		 * released in June 2009	
-		 
-	
-    
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
