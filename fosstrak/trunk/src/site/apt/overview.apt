@@ -42,12 +42,13 @@ Fosstrak Overview
 		 
 		 * most widely used EPCIS Repository (to our knowledge)
 		 
-		 * EPCglobal certified
+		 * EPCglobal-certified
 		 
 		 * comprises repository, query and capture client
 		 
 		 * first release in April 2007
-		 
+
+	[]		 
 
 	* <<Fosstrak Tag Data Translation (TDT) Library>>
 
@@ -55,7 +56,7 @@ Fosstrak Overview
 		 
 		 * available since 2006 
 		 
-		 
+	[]
 		 
 	* <<Fosstrak Filtering & Collection Middleware with ALE and LLRP Support>>		 
 		 
@@ -63,7 +64,8 @@ Fosstrak Overview
 		 
 		 * built-in support for a number of commonly used RFID readers
 
-		 
+	[]
+
 	* <<Fosstrak LLRP Commander>>		 
 		 
 		 * configure and manage RFID readers via LLRP
