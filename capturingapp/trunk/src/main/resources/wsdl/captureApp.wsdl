@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:impl="urn:wsdl:capturingapp:fosstrak:org" targetNamespace="urn:wsdl:capturingapp:fosstrak:org">
+	<wsdl:types>
+		<xsd:schema targetNamespace="urn:wsdl:capturingapp:fosstrak:org">
+
+			<xsd:element name="GetCaptureAppNames" type="impl:EmptyParms" />
+			<xsd:element name="GetCaptureAppNamesResult" type="impl:ArrayOfString" />
+
+			<xsd:complexType name="ArrayOfString">
+				<xsd:sequence>
+					<xsd:element name="string" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="EmptyParms" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getCaptureAppNamesRequest">
+		<wsdl:part name="parms" element="impl:GetCaptureAppNames" />
+	</wsdl:message>
+	<wsdl:message name="getCaptureAppNamesResponse">
+		<wsdl:part name="getCaptureAppNamesReturn" element="impl:GetCaptureAppNamesResult" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="CaptureAppPortType">
+
+		<wsdl:operation name="getCaptureAppNames">
+			<wsdl:input message="impl:getCaptureAppNamesRequest" name="getCaptureAppNamesRequest" />
+			<wsdl:output message="impl:getCaptureAppNamesResponse"
+				name="getCaptureAppNamesResponse" />
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="CaptureAppServiceBinding" type="impl:CaptureAppPortType">
+		<wsdlsoap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="getCaptureAppNames">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getCaptureAppNamesRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getCaptureAppNamesResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<!-- Capture app service -->
+	<wsdl:service name="CapturingAppService">
+		<wsdl:port binding="impl:CaptureAppServiceBinding" name="CaptureAppServicePort">
+			<wsdlsoap:address
+				location="http://localhost:8080/fc-capturingapp/services/CapturingAppService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
