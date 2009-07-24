@@ -29,14 +29,19 @@
     <!-- =========================================================== -->
      
     <menu name="Capturing Application" inherit="top">
-		  <item name="How To" href="index.html"/>
+      <item name="Overview" href="index.html"/>
       <item name="Download" href="download.html"/>
       <item name="License" href="license.html"/>
       <item name="Mailing Lists" href="mail-lists.html"/>
       <item name="Issue Tracking" href="issue-tracking.html"/>
       <item name="JavaDoc" href="apidocs/index.html"/>
-			
-		  <item name="Project Reports" href="project-reports.html" collapse="false">
+	</menu>
+    <menu name="Guides &amp;amp; Documentation" inherit="top">
+    	<item name="Quick Start" href="docs/user-quickstart.html"/>
+    	<item name="Developers Guide" href="docs/dev-guide.html"/>
+    </menu>
+	<menu>		
+		<item name="Project Reports" href="project-reports.html" collapse="false">
       	<item name="Changes Report" href="changes-report.html"/>
         <item name="Dependencies" href="dependencies.html"/>
         <item name="PMD Report" href="pmd.html"/>
@@ -44,9 +49,7 @@
         <item name="JavaNCSS Report" href="javancss.html"/>
       </item>			
     </menu>
-		
-
-    
+		    
     <breadcrumbs>
       <item href="../index.html" name="Fosstrak" />
       <item name="ALE Middleware > Capturing Application"/> <!-- href is derived from project.url -->
