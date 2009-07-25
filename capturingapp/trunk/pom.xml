@@ -1,11 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fosstrak.capturingapp</groupId>
 	<artifactId>capturingapp</artifactId>
 	<name>capturingapp</name>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
@@ -273,9 +272,9 @@
 
 	<scm>
 		<!-- keep empty tags here to avoid release:prepare crashes -->
-		<connection />
-		<developerConnection>scm:svn:https://svn.fosstrak.org/repos/capturingapp/trunk</developerConnection>
-		<url />
+		<connection>scm:svn:https://svn.fosstrak.org/repos/capturingapp/tags/capturingapp-0.1.0</connection>
+		<developerConnection>scm:svn:https://svn.fosstrak.org/repos/capturingapp/tags/capturingapp-0.1.0</developerConnection>
+		<url>scm:svn:https://svn.fosstrak.org/repos/capturingapp/tags/capturingapp-0.1.0</url>
 	</scm>
 	<distributionManagement>
 		<repository>
