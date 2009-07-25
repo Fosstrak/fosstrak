@@ -3,8 +3,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fosstrak.capturingapp</groupId>
-	<artifactId>capturing-app</artifactId>
-	<name>capturing-app</name>
+	<artifactId>capturingapp</artifactId>
+	<name>capturingapp</name>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<dependencies>
