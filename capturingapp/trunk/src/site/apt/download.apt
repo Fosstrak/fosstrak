@@ -16,7 +16,7 @@ Download
 *--------+----------+
          | Binaries |
 *--------+----------+
- Capturing Application 0.1.0 (war) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/capturingapp/capturing-app/0.1.0/capturing-app-0.1.0.war}capturing-app-0.1.0.war}}
+ Capturing Application 0.1.0 (war) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/capturingapp/capturingapp/0.1.0/capturingapp-0.1.0.war}capturingapp-0.1.0.war}}
 *--------+----------+
 
 
@@ -25,9 +25,9 @@ Download
 *--------+----------+
          | Sources  |
 *--------+----------+
- Capturing Application 0.1.0 (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/capturingapp/capturing-app/0.1.0/capturing-app-0.1.0-src.zip}capturing-app-0.1.0-src.zip}}
+ Capturing Application 0.1.0 (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/capturingapp/capturingapp/0.1.0/capturingapp-0.1.0-src.zip}capturingapp-0.1.0-src.zip}}
 *--------+----------+
- ALE Middleware Source 1.0.0 (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/capturingapp/capturing-app/0.1.0/capturing-app-0.1.0-src.tar.gz}capturing-app-0.1.0-src.tar.gz}}
+ ALE Middleware Source 1.0.0 (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/capturingapp/capturingapp/0.1.0/capturingapp-0.1.0-src.tar.gz}capturingapp-0.1.0-src.tar.gz}}
 *--------+----------+
 
 * Previous Releases
