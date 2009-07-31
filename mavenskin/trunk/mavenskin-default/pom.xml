@@ -26,4 +26,10 @@
 	  </plugin>
 	</plugins>
   </build>
+  <scm>
+    <!-- keep empty tags here to avoid release:prepare crashes -->
+    <connection></connection>
+    <developerConnection>scm:svn:https://svn.fosstrak.org/repos/mavenskin/trunk</developerConnection>
+    <url></url>
+  </scm>
 </project>
