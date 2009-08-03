@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.fosstrak.mavenskin</groupId>
+  <artifactId>mavenskin</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0</version>
+  <name>mavenskin</name>
+  <url>http://www.fosstrak.org</url>
+  
+  <!-- =========================================================== -->
+  <!-- Modules                                                     -->
+  <!-- =========================================================== -->
+
+  <modules>
+    <module>mavenskin-default</module>
+  </modules>
+  
+  <!-- =========================================================== -->
+  <!-- Build settings                                              -->
+  <!-- =========================================================== -->
+  
+  <build>
+  	<plugins>
+	  <plugin>
+	    <artifactId>maven-site-plugin</artifactId>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <!--
+		    Lock to this version in order to prevent generating corrupted menu
+		    structures for sub-modules when running site:site from the parent
+		    module. See http://jira.codehaus.org/browse/MSITE-270 for details
+		    on this issue.
+	    -->
+	    <version>2.0-beta-5</version>
+	    <configuration>
+	      <locales>en</locales>
+	      <publishDate position="left" format="yyyy-MM-dd hh:mm:ss" />
+	    </configuration>
+	  </plugin>
+	</plugins>
+  </build>
+  
+  <!-- =========================================================== -->
+  <!-- Infrastructure                                              -->
+  <!-- =========================================================== -->
+
+  <scm>
+    <!-- keep empty tags here to avoid release:prepare crashes -->
+    <connection>/tags/mavenskin-1.0</connection>
+    <developerConnection>scm:svn:https://svn.fosstrak.org/repos/mavenskin/tags/mavenskin-1.0</developerConnection>
+    <url>/tags/mavenskin-1.0</url>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>fosstrak-repository</id>
+      <name>Fosstrak repository</name>
+      <url>sftp://maven-repository.fosstrak.org/local/home/fosstrakrep/public_html/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>fosstrak-repository</id>
+      <name>Fosstrak repository</name>
+      <url>sftp://maven-repository.fosstrak.org/local/home/fosstrakrep/public_html/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+  
+</project>
