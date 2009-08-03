@@ -5,31 +5,10 @@
   <artifactId>mavenskin-default</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
+  <parent>
+    <artifactId>mavenskin</artifactId>
+    <groupId>org.fosstrak.mavenskin</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
   <name>mavenskin-default</name>
-  <url>http://www.fosstrak.org</url>
-  <build>
-  	<plugins>
-	  <plugin>
-	    <artifactId>maven-site-plugin</artifactId>
-	    <groupId>org.apache.maven.plugins</groupId>
-	    <!--
-		    Lock to this version in order to prevent generating corrupted menu
-		    structures for sub-modules when running site:site from the parent
-		    module. See http://jira.codehaus.org/browse/MSITE-270 for details
-		    on this issue.
-	    -->
-	    <version>2.0-beta-5</version>
-	    <configuration>
-	      <locales>en</locales>
-	      <publishDate position="left" format="yyyy-MM-dd hh:mm:ss" />
-	    </configuration>
-	  </plugin>
-	</plugins>
-  </build>
-  <scm>
-    <!-- keep empty tags here to avoid release:prepare crashes -->
-    <connection></connection>
-    <developerConnection>scm:svn:https://svn.fosstrak.org/repos/mavenskin/trunk</developerConnection>
-    <url></url>
-  </scm>
 </project>
