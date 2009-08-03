@@ -3,11 +3,11 @@
   <groupId>org.fosstrak.mavenskin</groupId>
   <artifactId>mavenskin-default</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <parent>
     <artifactId>mavenskin</artifactId>
     <groupId>org.fosstrak.mavenskin</groupId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
   </parent>
   <name>mavenskin-default</name>
 </project>

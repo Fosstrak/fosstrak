@@ -3,7 +3,7 @@
   <groupId>org.fosstrak.mavenskin</groupId>
   <artifactId>mavenskin</artifactId>
   <packaging>pom</packaging>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <name>mavenskin</name>
   <url>http://www.fosstrak.org</url>
   
@@ -40,8 +40,8 @@
   </build>
   <scm>
     <!-- keep empty tags here to avoid release:prepare crashes -->
-    <connection>/tags/mavenskin-1.0</connection>
-    <developerConnection>scm:svn:https://svn.fosstrak.org/repos/mavenskin/tags/mavenskin-1.0</developerConnection>
-    <url>/tags/mavenskin-1.0</url>
+    <connection></connection>
+    <developerConnection>scm:svn:https://svn.fosstrak.org/repos/mavenskin/trunk</developerConnection>
+    <url></url>
   </scm>
 </project>
