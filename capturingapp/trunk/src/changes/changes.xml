@@ -3,6 +3,9 @@
         <title>Changes Capturing Application</title>
     </properties>
     <body>
+        <release version="0.1.1" date="2009-08-14" description="Bugfix release">
+            <action type="fix">Fix issue with default drools rule (depending on the java-version, a cast-exception occured).</action>
+        </release>
         <release version="0.1.0" description="Initial release">
             <action type="add">Initial code release.</action>
         </release>
