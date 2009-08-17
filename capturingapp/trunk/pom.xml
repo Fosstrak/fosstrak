@@ -4,7 +4,7 @@
 	<groupId>org.fosstrak.capturingapp</groupId>
 	<artifactId>capturingapp</artifactId>
 	<name>capturingapp</name>
-	<version>0.1.1</version>
+	<version>0.1.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
@@ -272,9 +272,9 @@
 
 	<scm>
 		<!-- keep empty tags here to avoid release:prepare crashes -->
-		<connection>scm:svn:https://svn.fosstrak.org/repos/capturingapp/tags/capturingapp-0.1.1</connection>
-		<developerConnection>scm:svn:https://svn.fosstrak.org/repos/capturingapp/tags/capturingapp-0.1.1</developerConnection>
-		<url>scm:svn:https://svn.fosstrak.org/repos/capturingapp/tags/capturingapp-0.1.1</url>
+		<connection></connection>
+		<developerConnection>scm:svn:https://svn.fosstrak.org/repos/capturingapp/trunk</developerConnection>
+		<url></url>
 	</scm>
 	<distributionManagement>
 		<repository>
