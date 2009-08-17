@@ -1,0 +1,47 @@
+              -------------------
+              Download
+              -------------------
+              Samuel Wieland
+              -------------------
+              22/07/2009
+              -------------------
+
+
+Download
+
+  The current version of Fosstrak Capturing Application is 0.1.1.
+
+* Capturing Application
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ Capturing Application 0.1.1 (war) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/capturingapp/capturingapp/0.1.1/capturingapp-0.1.1.war}capturingapp-0.1.1.war}}
+*--------+----------+
+
+
+* Source Distribution
+
+*--------+----------+
+         | Sources  |
+*--------+----------+
+ Capturing Application 0.1.1 (zip) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/capturingapp/capturingapp/0.1.1/capturingapp-0.1.1-src.zip}capturingapp-0.1.1-src.zip}}
+*--------+----------+
+ ALE Middleware Source 1.0.1 (tar.gz) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/capturingapp/capturingapp/0.1.1/capturingapp-0.1.1-src.tar.gz}capturingapp-0.1.1-src.tar.gz}}
+*--------+----------+
+
+* Previous Releases
+
+  All previous releases of the Fosstrak Capturing Application can be found in the {{{http://maven-repository.fosstrak.org/releases}distribution repository}}.
+
+
+* System Requirements
+
+*---------------------+---------+
+ <<JDK>>              | 1.6.x
+*---------------------+---------+
+ <<Memory>>           | No minimum requirements.
+*---------------------+---------+
+ <<Operating System>> | No minimum requirements. Tested on Windows XP, Windows Vista 32bit, GNU linux. 
+*---------------------+---------+
+

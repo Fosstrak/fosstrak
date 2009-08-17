@@ -1,0 +1,18 @@
+       ------
+                                    Fosstrak Capturing Application
+                                    ------
+                                    ------
+
+
+Fosstrak Capturing Application
+
+* Contents
+	
+	[[]] {{{#Overview}Overview}}
+	
+
+* {Overview}
+
+	The capturing application helps you generate events for the EPCIS repository from ECReports from the Filtering and Collection.
+	
+	You can use the {{{docs/user-quickstart.html}Quick Start}} to run a simple scenario or have a look at the more detailed {{{docs/dev-guide.html}Developers guide}}.
