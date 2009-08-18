@@ -55,8 +55,8 @@
 
   </body>
   <skin>
-      <groupId>org.apache.maven.skins</groupId>
-      <artifactId>maven-stylus-skin</artifactId>
+      <groupId>org.fosstrak.mavenskin</groupId>
+      <artifactId>mavenskin-default</artifactId>
       <version>1.0</version>
   </skin>
   <poweredBy>
