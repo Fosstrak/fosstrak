@@ -1,0 +1,33 @@
+              -------------------
+              Demo
+              -------------------
+              Dominique Guinard
+              -------------------
+              14/12/2010
+              -------------------
+
+EPCIS Webadapter Demonstration
+
+	Additionaly, we provide a demonstration server for the {{{docs/webadapter-guide.html}EPCIS Webadapter}}. This lets
+	you browse and interact with the content of the Fosstrak EPCIS (or any compliant EPCIS) with any Web-browser, Web-language,
+	or HTTP library.
+
+	Both the RESTful query and capture interfaces can be found here:
+
+	{{{http://restepc.webofthings.com}http://restepc.webofthings.com}}
+
+
+	Finally, the EPC Mashup Dashboard, demonstrates how the EPCIS Webadapter can foster building lightweight (e.g., mobile, mashup) applications on top
+	of the EPCIS Respository. You can access it here (best viewed with Firefox):
+
+	{{{http://epcmashup.webofthings.com}http://epcmashup.webofthings.com}}
+
+	Note, this later application is here for demonstration purposes only and should not be considered as "ready for production".
+
+*Screenshots of the EPCIS Webadapter
+	
+[images/epcis-webadapter-browser.png] Fosstrak EPCIS Webadapter HTML browser
+
+  .
+
+[images/epcis-webadapter-mashupdashboard.png] EPC Mashup Dashboard built on top of the EPCIS Webadapter
