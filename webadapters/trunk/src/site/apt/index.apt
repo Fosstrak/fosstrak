@@ -1,5 +1,5 @@
               -------------------
-              EPCIS Webadapter
+              EPCIS-Webadapter
               -------------------
 							Dominique Guinard
               -------------------
@@ -12,15 +12,24 @@ Introduction
 	which a different range of applications can be built thanks to a lightweight and Web-enabled RESTful architecture. It offers
 	access to all standard EPCIS functionality through a native Web interface.
 
-	Using this approach, each query, tagged object, location or RFID reader gets a unique URL that can be linked to, exchanged in emails, browsed for, bookmarked,
-	etc. (on the Web or in an Intranet). Additionally, this paradigm shift allows Web languages like HTML and JavaScript to directly use RFID data to 
-	fast-prototype light-weight applications such as mobile applications, wireless sensor networks applications or Web mashups. 
-
-	<<Please note that the EPCIS Webadapter is not an EPCglobal standardized interface and currently is still a beta Fosstrak module.>>
+	Using the EPCIS-Webadapter:
 	
-	Detailed information about this module and how to use it can be found in the {{{docs/webadapter-guide.html}EPCIS Webadapter guide}}
+  * Each query, tagged object, location or RFID reader gets a unique URL that can be linked to, exchanged in emails, browsed for, bookmarked,
+	etc. (on the Web or in an Intranet). 
 
-* Features of the EPCIS Webadapter
+  []
+
+	* You can use Web languages like HTML and JavaScript to directly use RFID data.
+  
+	[]
+
+	* You create light-weight applications that are using RFID data on resource-limited environements such as <<mobile phones, wireless sensor nodes or Web mashups>>. 
+
+	<<Please note that the EPCIS-Webadapter is not an EPCglobal standardized interface and currently is still a beta Fosstrak module.>>
+	
+	Detailed information about this module and how to use it can be found in the {{{docs/webadapter-guide.html}EPCIS-Webadapter guide}}
+
+* Features of the EPCIS-Webadapter
 
 	The WS-* type of integration architecture is well adapted to combine business applications. 
 	For example, it can be used to integrate EPCIS data about the status of a shipment with an ERP 
@@ -32,13 +41,13 @@ Introduction
 	Moreover, they do not fully meet the requirements of resource-constrained devices such as 
 	mobile phones and wireless sensor/actuator networks often not providing WS-* server or even client stacks.
 
-	The EPCIS Webadapter is a optional plugin that that offers an additional RESTful interface 
+	The EPCIS-Webadapter is a optional plugin that that offers an additional RESTful interface 
 	on top of any standard-compliant EPCIS. Using this approach, each query, tagged object, location or RFID reader gets a unique URL that can be linked to,
 	exchanged in emails, browsed for, bookmarked, and consumed from any scripting or programming language understanding the HTTP protocol.
 
-[images/epcis-webadapter-architecture.png] Architecture of the EPCIS Webadapter
+[images/epcis-webadapter-architecture.png] Architecture of the EPCIS-Webadapter
 
-	The EPCIS Webadapter has three main goals:
+	The EPCIS-Webadapter has three main goals:
 
   * lowering the entry barrier for developers and foster rapid prototyping by bringing the EPCIS data closer to Web languages such as Javascript or Python.
 
@@ -54,5 +63,5 @@ Introduction
 
 	The module basically translates the incoming RESTful request into SOAP requests on the original EPCIS. It further takes care of reformatting the results into several Web formats such as HTML, JSON, Atom and XML. The plugin is based on {{{http://jersey.dev.java.net/} Jersey}}, an implementation of the Java Standard for RESTful Web Services (JAX-RS). For generating Atom feeds for query subscriptions, it uses the {{{http://abdera.apache.org/} Apache Abdera}} framework.
 
-	More information about this module can be found in the {{{docs/restadapter-guide.html}EPCIS Webadapter guide}} or in this {{{http://www.inf.ethz.ch/personal/dguinard/publications/bibtex.html?file=/home/webvs/www/htdocs/publ/papers/dguinard-giving-2010}research paper}}.
+	More information about this module can be found in the {{{docs/restadapter-guide.html}EPCIS-Webadapter guide}} or in this {{{http://www.inf.ethz.ch/personal/dguinard/publications/bibtex.html?file=/home/webvs/www/htdocs/publ/papers/dguinard-giving-2010}research paper}}.
 
