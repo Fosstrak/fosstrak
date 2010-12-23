@@ -51,6 +51,7 @@ EPCIS Webadapter Guide
 	the Fosstrak EPCIS Repository.
 
 * {Introduction to the EPCIS Webadapter}
+
 	This module offers an additional, RESTful, integration interface, or API (Application Programming Interface) for the 		EPCIS upon which a different range of applications can be built thanks to a lightweight and Web-enabled RESTful
 	architecture. It offers access to all standard EPCIS functionality through a native Web interface.
 
@@ -115,7 +116,7 @@ EPCIS Webadapter Guide
 
 *{Online Demonstration}
 
-	The EPCIS Webadapter and some of the applications built upon can be directly tested from our {{{../demo.html} demo server}}.
+	The EPCIS Webadapter and some of the applications built upon can be directly tested from our {{{demo.html} demo server}}.
 
 * {Installing the EPCIS Webadapter}
 
@@ -124,7 +125,7 @@ EPCIS Webadapter Guide
 ** {Setting up an EPCIS Repository}
 
 	The EPCIS Webadapter can be deployed on top of any standard compliant EPCIS Repository. To install
-	the Fosstrak EPCIS Repository please refer to {{{user-guide.html}EPCIS Repository User Guide}}.
+	the Fosstrak EPCIS Repository please refer to {{{docs/user-guide.html}EPCIS Repository User Guide}}.
 	To go on with this installation guide, all you need is the root URL of an EPCIS Repository (e.g., 
 	<<<http://localhost:8080/epcis-repository-0.4.2>>>).
 
