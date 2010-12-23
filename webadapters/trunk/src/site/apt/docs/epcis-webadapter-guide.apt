@@ -50,6 +50,9 @@ EPCIS Webadapter Guide
 	this guide outlines the steps to follow in order to set up the EPCIS Webadapter to work with
 	the Fosstrak EPCIS Repository.
 
+	As the project is part of an {{{http://www.webofthings.com/rfid}ongoing research project}}, your feedback is <<very>>
+	valuable to us! We created a questionnaire where we try to better understand your experience and where you can ask us 	for new features or improvements, thanks a lot for your answers: {{{https://spreadsheets.google.com/viewform?formkey=dGplWlFEc3pwajNJVldnUjZTZzh3ZkE6MA}Feedback form}}. If this guide does not answer the questions you may have, feel free to post them to the {{{mailto:fosstrak-epcis-user@lists.sourceforge.net}Fosstrak EPCIS user mailing list}}.
+
 * {Introduction to the EPCIS Webadapter}
 
 	This module offers an additional, RESTful, integration interface, or API (Application Programming Interface) for the 		EPCIS upon which a different range of applications can be built thanks to a lightweight and Web-enabled RESTful
@@ -111,8 +114,6 @@ EPCIS Webadapter Guide
 	{{{http://www.autoidlabs.org/} Auto-ID Labs (MIT and Zurich)}}, the {{{http://diuf.unifr.ch/drupal/softeng/} Software Engineering Group of the University of 		Fribourg}} and {{{http://www.sap.com/about/company/research/centers/zurich.epx} SAP Research Zurich}}.
 
 	More information about the architecture of the project can be found {{{http://www.inf.ethz.ch/personal/dguinard/publications/bibtex.html?file=/home/webvs/www/htdocs/publ/papers/dguinard-giving-2010} in this paper}}.
-
-  	If this guide does not answer the questions you may have, feel free to post them to the {{{mailto:fosstrak-epcis-user@lists.sourceforge.net}Fosstrak EPCIS user mailing list}}. As the project is part of an {{{http://www.webofthings.com/rfid}ongoing research project}}, your feedback is <<very>> valuable to us! We created a questionnaire where we try to better understand your experience and where you can ask us for new features or improvements, thanks a lot for your answers: {{{https://spreadsheets.google.com/viewform?formkey=dGplWlFEc3pwajNJVldnUjZTZzh3ZkE6MA}Feedback form}}.
 
 *{Online Demonstration}
 
