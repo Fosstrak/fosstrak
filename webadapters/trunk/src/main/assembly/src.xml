@@ -8,11 +8,7 @@
   <moduleSets>
     <moduleSet>
       <includes>
-        <include>org.fosstrak.epcis:epcis-commons</include>
-        <include>org.fosstrak.epcis:epcis-repository</include>
-        <include>org.fosstrak.epcis:epcis-captureclient</include>
-        <include>org.fosstrak.epcis:epcis-queryclient</include>
-        <include>org.fosstrak.epcis:epcis-interop-test</include>
+        <include>org.fosstrak.webadapters:epcis-webadapter</include>
       </includes>
       <sources>
         <fileSets>
