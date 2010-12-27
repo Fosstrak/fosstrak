@@ -8,7 +8,7 @@
 	<groupId>org.fosstrak.webadapters</groupId>
 	<artifactId>epcis-webadapter</artifactId>
 	<name>epcis-webadapter</name>
-	<version>0.1.0</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 
@@ -268,9 +268,9 @@
 	<!-- =========================================================== -->
 	<scm>
 		<!-- keep empty tags here to avoid release:prepare crashes -->
-		<connection>scm:svn:https://svn.fosstrak.org/repos/webadapters/tags/epcis-webadapter-0.1.0</connection>
-		<developerConnection>scm:svn:https://svn.fosstrak.org/repos/webadapters/tags/epcis-webadapter-0.1.0</developerConnection>
-		<url>scm:svn:https://svn.fosstrak.org/repos/webadapters/tags/epcis-webadapter-0.1.0</url>
+		<connection></connection>
+		<developerConnection>scm:svn:https://svn.fosstrak.org/repos/webadapters/trunk</developerConnection>
+		<url>https://svn.fosstrak.org/repos/webadapters/</url>
 	</scm>
 	<distributionManagement>
 		<repository>
