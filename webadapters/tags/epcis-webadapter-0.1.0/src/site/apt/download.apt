@@ -1,0 +1,48 @@
+              -------------------
+              Download
+              -------------------
+              Dominique Guinard
+              -------------------
+              14/12/2010
+              -------------------
+
+
+Download
+
+  The current version of Fosstrak EPCIS Web-adapter is 0.1.0.
+
+* EPCIS-Webadapter
+
+*--------+----------+
+         | Binaries |
+*--------+----------+
+ EPCIS-Webadapter (war) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/webadapters/0.1.0/epcis-webadapter-0.1.0.war}epcis-webadapter-0.1.0.war}}
+*--------+----------+
+
+
+* Source Distribution
+
+*--------+----------+
+         | Sources  |
+*--------+----------+
+EPCIS-Webadapter (war) | {{{http://maven-repository.fosstrak.org/releases/org/fosstrak/webadapters/0.1.0/epcis-webadapter-0.1.0.zip}epcis-webadapter-0.1.0.zip}}
+*--------+----------+
+
+
+* Previous Releases
+
+  All previous releases of the Fosstrak EPCIS-Webadapter can be found in the {{{http://maven-repository.fosstrak.org/releases}distribution repository}}.
+
+
+* System Requirements
+
+*---------------------+---------+
+ <<JDK>>              | 1.6.x
+*---------------------+---------+
+ <<EPCIS>>            | Requires a standard compliant EPCIS such as the {{{http://fosstrak.org/epcis}Fosstrak EPCIS}} to be installed.
+*---------------------+---------+
+ <<Application Server>> | Needs to be deployed in a standard Java Application Server. Tested with Tomcat 6.* and Glassfish V 3.*
+*---------------------+---------+
+ <<Operating System>> | No minimum requirements. Tested on Windows XP, and GNU linux. 
+*---------------------+---------+
+
