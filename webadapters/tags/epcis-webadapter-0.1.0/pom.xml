@@ -1,0 +1,342 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- =========================================================== -->
+  <!-- Basics                                                      -->
+  <!-- =========================================================== -->
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.fosstrak.webadapters</groupId>
+	<artifactId>epcis-webadapter</artifactId>
+	<name>epcis-webadapter</name>
+	<version>0.1.0</version>
+	<packaging>war</packaging>
+
+
+
+  <!-- =========================================================== -->
+  <!-- Dependencies                                                -->
+  <!-- =========================================================== -->
+
+    <dependencies>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
+
+        <!-- JAX-RS (REST) Implementation (Client and Server) -->
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-core</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+
+        <!-- Atom Server / Client -->
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-atom-abdera</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <!-- JAX-WS (WS-* Web-services) stack -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.1.4</version>
+        </dependency>
+
+        <!-- Internal SQL DB -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+
+
+
+    		<!-- test dependencies -->
+        <dependency>
+            <groupId>com.sun.jersey.jersey-test-framework</groupId>
+            <artifactId>jersey-test-framework-grizzly</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.0</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+
+  <!-- =========================================================== -->
+  <!-- Repositories                                                -->
+  <!-- =========================================================== -->
+
+    <repositories>
+<repository>
+  <id>maven2-repository.dev.java.net</id>
+  <name>Java.net Repository for Maven</name>
+  <url>http://download.java.net/maven/2/</url>
+  <layout>default</layout>
+</repository>
+
+    </repositories>
+
+
+
+    <pluginRepositories>
+    <!--
+      for getting the tomcat-maven-plugin libraries
+    -->
+        <pluginRepository>
+            <id>Codehaus Maven Repository</id>
+            <url>http://maven.codehaus.org/maven2/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+	  <!-- =========================================================== -->
+  <!-- Build settings                                              -->
+  <!-- =========================================================== -->
+
+    <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+	    <configuration>
+	      <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin> 
+      <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+            <source>1.6</source>
+            </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptors>
+            <descriptor>src/main/assembly/bin-with-dependencies.xml</descriptor>
+            <descriptor>src/main/assembly/src.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <locales>en</locales>
+          <publishDate position="left" format="yyyy-MM-dd hh:mm:ss" />
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <!--
+          By default, the surefire plugin automatically includes all test classes
+          with following wildcard patterns:
+            **/Test*.java
+            **/*Test.java
+            **/*TestCase.java
+        -->
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <configuration>
+            <tagBase>https://svn.fosstrak.org/repos/webadapters/tags</tagBase>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+	<!-- =========================================================== -->
+	<!-- Reporting                                                   -->
+	<!-- =========================================================== -->
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<maxmemory>1024</maxmemory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<configuration>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<linkXref>true</linkXref>
+					<sourceEncoding>utf-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+					<targetJdk>1.5</targetJdk>
+					<excludes>
+						<exclude>**/*Test.java</exclude>
+						<exclude>**/package-info.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>changes-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+				<configuration>
+					<issueLinkTemplate>http://sourceforge.net/support/tracker.php?aid=%ISSUE%</issueLinkTemplate>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>javancss-maven-plugin</artifactId>
+				<version>2.0-beta-2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+
+<!-- =========================================================== -->
+	<!-- Infrastructure                                              -->
+	<!-- =========================================================== -->
+	<scm>
+		<!-- keep empty tags here to avoid release:prepare crashes -->
+		<connection>scm:svn:https://svn.fosstrak.org/repos/webadapters/tags/epcis-webadapter-0.1.0</connection>
+		<developerConnection>scm:svn:https://svn.fosstrak.org/repos/webadapters/tags/epcis-webadapter-0.1.0</developerConnection>
+		<url>scm:svn:https://svn.fosstrak.org/repos/webadapters/tags/epcis-webadapter-0.1.0</url>
+	</scm>
+	<distributionManagement>
+		<repository>
+			<id>fosstrak-repository</id>
+			<name>Fosstrak repository</name>
+			<url>sftp://maven-repository.fosstrak.org/local/home/fosstrakrep/public_html/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>fosstrak-repository</id>
+			<name>Fosstrak repository</name>
+			<url>sftp://maven-repository.fosstrak.org/local/home/fosstrakrep/public_html/snapshots</url>
+		</snapshotRepository>
+		<site>
+			<id>fosstrak-website</id>
+			<name>Fosstrak website</name>
+			<url>sftp://www.fosstrak.org/local/home/fosstrakweb/public_html/webadapters</url>
+		</site>
+	</distributionManagement>
+  <issueManagement>
+    <system>Sourceforge</system>
+    <url>http://sourceforge.net/tracker/?group_id=170911</url>
+  </issueManagement>
+  <mailingLists>
+    <mailingList>
+      <name>EPCIS user mailing list</name>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/accada-epcis-user</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/accada-epcis-user</unsubscribe>
+      <post>accada-epcis-user@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=accada-epcis-user</archive>
+    </mailingList>
+  </mailingLists>
+
+
+	<!-- =========================================================== -->
+	<!-- Project Information                                         -->
+	<!-- =========================================================== -->  
+	<url>http://www.fosstrak.org/webadapters</url>
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License (LGPL)</name>
+      <url>http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>dguinard</id>
+      <name>Dominique Guinard</name>
+      <email>dguinard at inf.ethz.ch</email>
+      <organization>ETH Zurich / SAP Research / MIT Auto-ID Labs</organization>
+      <roles>
+        <role>project coordinator</role>
+        <role>project lead</role>
+      </roles>
+      <timezone>+1</timezone>
+  	</developer>
+    <developer>
+      <id>mathiasmueller</id>
+      <name>Mathias Mueller</name>
+      <email>mathias.mueller at unifr.ch</email>
+      <organization>University of Fribourg</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+</project>
+
