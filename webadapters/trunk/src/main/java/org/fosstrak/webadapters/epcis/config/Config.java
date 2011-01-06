@@ -120,6 +120,9 @@ public class Config {
     public static final String AUTHORS[][] = {
         DOMINIQUE, MATHIAS, PATRIK
     };
+
+    /** Refers to the online documentation and guides. */
+    public static final String HELP_URL = "http://www.webofthings.com/rfid/help";
     /**
      * This Media (MIME) type is a fix to handle WebKit browsers which have
      *   a strange way of handling favorite mime types.

@@ -48,12 +48,8 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.SchemaOutputResolver;
 
 /**
- * Class description
- * The XML Entity Provider Class
- *
+ * XML Entity Provider Class
  * @author Mathias Mueller mathias.mueller(at)unifr.ch, <a href="http://www.guinard.org">Dominique Guinard</a>
- *
- *
  */
 @Provider
 @Produces({MediaType.APPLICATION_XML, MediaType.TEXT_XML})
@@ -74,9 +70,9 @@ public class XMLWriter implements MessageBodyWriter<EPCISResource> {
      * @return
      */
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        boolean isAssignable       = EPCISResource.class.isAssignableFrom(type);
+        boolean isAssignable = EPCISResource.class.isAssignableFrom(type);
         boolean isMediaTypeCorrect = false;
-        boolean isSafari           = true;
+        boolean isSafari = true;
 
         isSafari = HTMLWebPageSmartPhoneWriter.isSmartPhone(context);
 
@@ -124,12 +120,12 @@ public class XMLWriter implements MessageBodyWriter<EPCISResource> {
 
             // EPCIS Webadapter specific data
             if (mediaType.equals(MediaType.valueOf(MediaType.APPLICATION_XML)) || (resource.getQueryResults() == null)) {
-                JAXBContext myContext  = JAXBContext.newInstance(EPCISResource.class);
-                Marshaller  marshaller = myContext.createMarshaller();
+                JAXBContext myContext = JAXBContext.newInstance(EPCISResource.class);
+                Marshaller marshaller = myContext.createMarshaller();
 
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-                
+
 
                 // write XMLSchema
                 if (Config.IS_PRINT_XMLSCHEMA) {
@@ -149,23 +145,23 @@ public class XMLWriter implements MessageBodyWriter<EPCISResource> {
                 entityStream.write(xml.getBytes());
 
                 // marshaller.marshal(resource, entityStream);
-            }    // Only data which is compliant to the EPCGlobal EPCIS Query Results XML Schema
-                    else {
+            } // Only data which is compliant to the EPCGlobal EPCIS Query Results XML Schema
+            else {
 
                 // EPCIS specific data
                 ObjectFactory objectFactory = new ObjectFactory();
 
                 // create the EPCISDocument containing the Event
                 EPCISQueryDocumentType epcisQueryDocumentType = new EPCISQueryDocumentType();
-                EPCISQueryBodyType     epcisQueryBodyType     = new EPCISQueryBodyType();
+                EPCISQueryBodyType epcisQueryBodyType = new EPCISQueryBodyType();
 
                 epcisQueryBodyType.setQueryResults(resource.getQueryResults());
                 epcisQueryDocumentType.setEPCISBody(epcisQueryBodyType);
                 epcisQueryDocumentType.setSchemaVersion(new BigDecimal("1.0"));
                 epcisQueryDocumentType.setCreationDate(ActualDateTime.GET_NOW_XMLGC());
 
-                JAXBContext                         jaxbContext = JAXBContext.newInstance("org.epcis.fosstrak.restadapter.ws.generated");
-                JAXBElement<EPCISQueryDocumentType> item        = objectFactory.createEPCISQueryDocument(epcisQueryDocumentType);
+                JAXBContext jaxbContext = JAXBContext.newInstance("org.fosstrak.webadapters.epcis.ws.generated");
+                JAXBElement<EPCISQueryDocumentType> item = objectFactory.createEPCISQueryDocument(epcisQueryDocumentType);
                 Marshaller marshaller = jaxbContext.createMarshaller();
 
                 marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");

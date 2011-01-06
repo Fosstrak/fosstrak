@@ -312,6 +312,7 @@ public class HTMLStringBuilder {
         res.append(" <a href='' class='restjson'>JSON</a>");
         res.append(" <a href='' class='restoptions'>OPTIONS</a>");
         res.append(" <a href='' class='resthead'>HEAD</a>");
+        res.append(" <a href=" + Config.HELP_URL + " target='_blank'>Help</a>");
         res.append("</div>");
 
         return res.toString();
