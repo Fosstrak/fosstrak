@@ -483,7 +483,7 @@ public class CaptureBusinessLogic extends AbstractBusinessLogic implements ICapt
         try {
             JAXBContext jaxbContext;
 
-            jaxbContext = JAXBContext.newInstance("org.epcis.fosstrak.restadapter.ws.generated");
+            jaxbContext = JAXBContext.newInstance("org.fosstrak.webadapters.epcis.ws.generated");
 
             JAXBElement<EPCISDocumentType> item       = objectFactory.createEPCISDocument(epcisDocumentType);
             Marshaller                     marshaller = jaxbContext.createMarshaller();
