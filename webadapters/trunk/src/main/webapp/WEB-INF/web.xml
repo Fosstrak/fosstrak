@@ -40,6 +40,8 @@
  made subject to such option by the copyright holder.
 -->
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <description>Webadapter for any standard compliant EPCIS</description>
+    <display-name>epcis-webadapter</display-name>
     <servlet>
         <servlet-name>ServletAdaptor</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
@@ -58,5 +60,3 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
-
-

@@ -30,7 +30,7 @@ import org.fosstrak.webadapters.epcis.util.URI;
 public class Config {
 
     // EPCIS default URL (can be changed for the Web UI)
-    private static String EPCIS_REPOSITORY_URL = "http://localhost:8080/epcis-repository-0.4.2";
+    private static String EPCIS_REPOSITORY_URL = "http://localhost:8080/epcis-repository-0.5.0";
     // Version of the EPCIS Webadapter
     public static final String EPCIS_REST_ADAPTER_VERSION = "1";
     public static final String APP_NAME = "EPCIS Webadapter";
