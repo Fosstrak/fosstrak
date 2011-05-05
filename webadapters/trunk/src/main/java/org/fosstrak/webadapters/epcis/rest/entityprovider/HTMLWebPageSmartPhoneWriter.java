@@ -50,9 +50,10 @@ import org.fosstrak.webadapters.epcis.config.Config;
 public class HTMLWebPageSmartPhoneWriter implements MessageBodyWriter<EPCISResource> {
 
     public static final String USER_AGENT = "user-agent";
-    public static final String IPHONE = "iPhone";
+    public static final String IPHONE = "iphone";
     public static final String MOBILE = "mobile";
     public static final String WEBKIT = "webkit";
+    public static final String ANDROID = "android";
     @Context
     HttpServletRequest context;
 
@@ -71,17 +72,17 @@ public class HTMLWebPageSmartPhoneWriter implements MessageBodyWriter<EPCISResou
      */
     public static boolean isSmartPhone(HttpServletRequest myContext) {
         boolean isSmartPhone = false;
-        String userAgent = myContext.getHeader(USER_AGENT).toLowerCase();
-
-        if (myContext != null) {
-            if (userAgent.contains(WEBKIT) && userAgent.contains(MOBILE)) {
+        try {
+            String userAgent = myContext.getHeader(USER_AGENT).toLowerCase();
+            if (userAgent.contains(MOBILE) || userAgent.contains(IPHONE) || userAgent.contains(ANDROID)) {
                 isSmartPhone = true;
             }
-        } else {
-            isSmartPhone = false;
+            return isSmartPhone;
+
+        } catch (Exception ex) {
+            return isSmartPhone = false;
         }
 
-        return isSmartPhone;
     }
 
     /**
