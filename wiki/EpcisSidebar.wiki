@@ -8,7 +8,7 @@
   * [EpcisRoadmap Roadmap]
   * [EpcisTeam Project Team]
   * [EpcisMailinglists Mailing Lists]
-  * [EpcisIssueTracking Issue Tracking]
+  * [http://code.google.com/p/fosstrak/issues Issue Tracking]
 
 *Guides & Documentation*
   * [EpcisUserGuide User Guide]
