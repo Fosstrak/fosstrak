@@ -1,4 +1,4 @@
-EPCIS
+*EPCIS*
   * [EpcisMain Overview]
   * [EpcisFeatures Features]
   * [EpcisDemo Demo]
@@ -10,7 +10,7 @@ EPCIS
   * [EpcisMailinglists Mailing Lists]
   * [EpcisIssueTracking Issue Tracking]
 
-Guides & Documentation
+*Guides & Documentation*
   * [EpcisUserGuide User Guide]
   * [EpcisDeveloperGuide Developer Guide]
   * [EpcisArchitectureGuide Architecture Guide]
