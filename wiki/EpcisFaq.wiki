@@ -1,4 +1,4 @@
-#sidebar EpcisFaq
+#sidebar EpcisSidebar
 
 = Fosstrak EPCIS - Frequently Asked Questions =
 
