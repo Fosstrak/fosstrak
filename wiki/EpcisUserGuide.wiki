@@ -2,7 +2,7 @@
 
 = EPCIS User Guide =
 
-<wiki:toc max_depth="2"/>
+<wiki:toc max_depth="3"/>
 
 == About this Guide ==
 
@@ -782,5 +782,3 @@ log4j.appender.LOGFILE.DatePattern='.'yyyy-MM-dd'.log'
 log4j.appender.LOGFILE.layout=org.apache.log4j.PatternLayout
 log4j.appender.LOGFILE.layout.ConversionPattern=%5p (%d{yyyy-MM-dd HH:mm:ss,SSS}) [%C:%L] - %m%n
 }}}
-
-
