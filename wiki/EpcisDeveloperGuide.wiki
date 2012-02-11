@@ -2,6 +2,8 @@
 
 = EPCIS Developer Guide =
 
+<wiki:toc max_depth="3"/>
+
 == About this Guide ==
 
 This developer guide is intended for people who wish to work on Fosstrak's EPCIS repository implementation and contribute to the project. It outlines the steps to follow for setting up the development environment and helps developers to find their way through the code.
