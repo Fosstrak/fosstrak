@@ -1,0 +1,19 @@
+#sidebar EcpisSidebar
+
+= EPCIS Webadapter Guide =
+
+<wiki:toc max_depth="3"/>
+
+== About this Guide ==
+
+This guide is intended to help users getting started with the Fosstrak EPCIS Webadapter module. The EPCIS Webadapter adds a RESTful, fully Web-enabled, API to a standard EPCIS repository. While the EPCIS Webadapter can be deployed on top of any standard compliant EPCIS Repository, this guide outlines the steps to follow in order to set up the EPCIS Webadapter to work with the Fosstrak EPCIS Repository.
+
+*Please note that the EPCIS Webadapter is not an EPCglobal standardized interface and currently is still a beta Fosstrak module.*
+
+As the project is part of an [http://www.webofthings.com/rfid ongoing research project], your feedback is very valuable to us! We created a questionnaire where we try to better understand your experience and where you can ask us for new features or improvements, thanks a lot for your answers: [https://spreadsheets.google.com/viewform?formkey=dGplWlFEc3pwajNJVldnUjZTZzh3ZkE6MA Feedback form]. If this guide does not answer the questions you may have, feel free to post them to the mailing list.
+
+The project was started in frame of the Web of Things initiative at ETH Zurich. It is a collaboration between the [http://www.vs.inf.ethz.ch/ Distributed Systems Lab of ETH], the [http://www.autoidlabs.org/ Auto-ID Labs (MIT and Zurich)], the [http://diuf.unifr.ch/drupal/softeng/ Software Engineering Group of the University of Fribourg] and [http://www.sap.com/about/company/research/centers/zurich.epx SAP Research Zurich].
+
+== Introduction to the EPCIS Webadapter ==
+
+http://fosstrak.googlecode.com/svn/images/epcis_architecture.png
