@@ -7,11 +7,8 @@
   * [EpcisArchitectureGuide Architecture Guide]
   * [EpcisWebadapterGuide Webadapter Guide]
   * [EpcisDemo Demo]
-  * [EpcisFaq FAQ]
-  * [EpcisMailinglists Mailing Lists]
   * [EpcisRoadmap Roadmap]
   * [EpcisTeam Project Team]
-  * [EpcisLicense License]
 
 *Other Modules*
   * [TdtMain TDT]
@@ -19,10 +16,12 @@
   * [LlrpMain LLRP]
 
 *About Fosstrak*
+  * [GeneralFaq GeneralFAQ]
+  * [GeneralMailinglist Mailing Lists]
   * [http://fosstrak.wordpress.com/ Blog]
+  * [GeneralLicense License]
   * [GeneralStories Success Stories]
   * [GeneralPublications Publications]
   * [GeneralBackground Background]
   * [GeneralTeam GeneralTeam]
-  * [GeneralFaq GeneralFAQ]
   * [GeneralContact Contact]
