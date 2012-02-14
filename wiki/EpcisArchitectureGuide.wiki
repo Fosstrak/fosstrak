@@ -12,7 +12,7 @@ This guide describes the architecture and design of Fosstrak's EPCIS implementat
 
 The goal of EPCIS is to enable applications to incorporate EPC-related data into their businesses. It provides means to store EPC data persistently and offers a framework to add data to a repository as well as query it. In order to implement these means, Fosstrak's EPCIS project provides three separate modules: an EPCIS repository, an EPCIS capture application, and an EPCIS query application. The following figure gives a short overview of the basic interaction scenarios for these three modules.
 
-http://fosstrak.googlecode.com/svn/images/epcis_architecture.png
+http://fosstrak.googlecode.com/svn/wikires/epcis/architecture.png
 
 The architectural style is client server; a client is either an EPCIS capture application, an EPCIS query application, or both. The server is an EPCIS repository providing the interfaces to which clients connect. The repository parses client requests and processes them according to the rules defined in the specification. The transport protocols used by the client applications are XML over HTTP and SOAP over HTTP, respectively.
 
@@ -68,15 +68,15 @@ Subscribed queries are executed just like polled queries, i.e., using the `poll`
 
 The resource tier consists of a relational database management system (RDBMS) which stores all the event data, the vocabularies, and the subscriptions. The figure below shows the database schema for ObjectEvents. The schemas for Transaction-, Quantity-, and AggregationsEvents are similar to the one below and are not reproduced here.
 
-http://fosstrak.googlecode.com/svn/images/epcis_db_objectevents.png
+http://fosstrak.googlecode.com/svn/wikires/epcis/db_objectevents.png
 
 Standard vocabularies each have their own database table. Below, we show the schema for _Business Transaction_, _Disposition_, and _Read Point_ vocabularies. Non-standard vocabularies are stored in the `voc_any` database table.
 
-http://fosstrak.googlecode.com/svn/images/epcis_db_vocabularies.png
+http://fosstrak.googlecode.com/svn/wikires/epcis/db_vocabularies.png
 
 As mentioned before we also store the subscriptions in the RDBMS. The corresponding schema looks as follows:
 
-http://fosstrak.googlecode.com/svn/images/epcis_db_subscriptions.png
+http://fosstrak.googlecode.com/svn/wikires/epcis/db_subscriptions.png
 
 == EPCIS Capture Application ==
 
