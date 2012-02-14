@@ -10,7 +10,7 @@ An EPC identifier may be expressed in a number of representations or encodings, 
 
 The Fosstrak TDT Engine makes use of the XML schema and instance files defined in EPCglobal Tag Data Translation v1.0 and represents a convenient way for Java developers to integrate TDT functionality into their software.
 
-http://fosstrak.googlecode.com/svn/images/tdt_overview.png
+http://fosstrak.googlecode.com/svn/wikires/tdt/overview.png
 
 == Usage Scenarios ==
 
