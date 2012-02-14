@@ -22,8 +22,8 @@ The Fosstrak EPCIS Capture and Query Clients provide an intuitive graphical user
 
 The following two screenshots show the features available in our EPCIS Capture and Query Clients:
 
-http://fosstrak.googlecode.com/svn/images/epcis_capture_gui.png
-http://fosstrak.googlecode.com/svn/images/epcis_query_gui.png
+http://fosstrak.googlecode.com/svn/wikires/epcis/capture_gui.png
+http://fosstrak.googlecode.com/svn/wikires/epcis/query_gui.png
 
 == Detailed Feature List ==
 
