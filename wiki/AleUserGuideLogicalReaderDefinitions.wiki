@@ -135,7 +135,7 @@ Example:
 
 Make sure, that you use the name of a !LogicalReader only once. The logical reader API does not allow duplicates of !LogicalReaders.
 
-To check your xml-file for correctness you can use our xsd schema ([http://fosstrak.googlecode.com/svn/wikires/ale/logical_readers.xsd LogicalReaders.xsd]).
+To check your xml-file for correctness you can use our xsd schema ([http://fosstrak.googlecode.com/svn/wikires/ale/LogicalReaders.xsd LogicalReaders.xsd]).
 
 == Example1 - An LLRP !LogicalReader ==
 
