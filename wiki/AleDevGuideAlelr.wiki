@@ -44,3 +44,69 @@ If you ever encounter a problem with the serialization of an XML the following p
   * Write a handcrafted java-class holding all the parameters that shall be serialized.
   * Add a specific serializer/deserializer to the !SerializerUtils (see `org.fosstrak.ale.util.SerializerUtil`).
   * Call that serializer/deserializer and look at the xml that is generated.
+
+
+=== Requirements ===
+
+  * A working copy of [http://incubator.apache.org/cxf/ Apache CXF]
+  * The EPC base XSD definition: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCGlobal.xsd EPCGlobal.xsd]
+  * The ALELR definitions: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-ale EPCglobal-ale-1_1-alelr.xsd]
+  * The ALE commons: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-common.xsd EPCglobal-ale-1_1-common.xsd]
+  * The ALELR Serviceport WSDL definition: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-ale.wsdl EPCglobal-ale-1_1-alelr.wsdl]
+
+
+=== Compiling ===
+
+
+To compile the wsdl file you need Apache CXF.
+
+We will use the wsdl2java program to translate the WSDL to Java classes.
+
+Compile the WSDL:
+
+{{{
+wsdl2java -impl -v 
+        -p urn:epcglobal:xsd:1=org.fosstrak.ale.xsd.epcglobal 
+        -p urn:epcglobal:ale:xsd:1=org.fosstrak.ale.xsd.ale.epcglobal 
+        -p urn:epcglobal:alelr:wsdl:1=org.fosstrak.ale.wsdl.alelr.epcglobal 
+        EPCglobal-ale-1_1-alelr.wsdl
+}}}
+
+The flags in detail:
+  * "-impl": This tells wsdl2java to generate a stub for the service binding implementation.
+  * "-p ." : if you omit the namespace mapping all packages get generated into the java namespace _1.
+To implement the service binding you need to implement the java class ALELRServicePortTypeImpl.
+
+In the Fosstrak Filtering and Collection most parts of the wsdl are auto-generated and you need not to change anything (see the pom.xml if you are interested).
+
+The ALELRServicePortTypeImpl is stored in the module fc-server (see the next chapter of this guide).
+
+=== !ServiceBinding ===
+
+The stubs described in the former chapter are used for the communication between two services. However the binding from these stubs to the actual implementation of the Logical Reader API has to be defined explicitly. This task is performed by the ALELRServicePortTypeImpl.
+
+For each method defined in [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-alelr.wsdl EPCglobal-ale-1_1-alelr.wsdl] there exists a method in the java file ALELRServicePortTypeImpl. Whenever a client calls a method on its local method stub, the messages involved get serialized into xml, sent over the communication channel and then deserialized by the server stub. The stub then calls the corresponding method on the ALELRServicePortTypeImpl. The ALELRServicePortTypeImpl reformatts the incomming message (if necessary) and calls the !LogicalReaderManager accordingly.
+
+
+Example for getStandardVersion:
+
+{{{
+public java.lang.String getStandardVersion(EmptyParms parms) 
+        throws ImplementationExceptionResponse    { 
+        
+        if (!isInitialized) { initialize(); }
+        
+        try {
+                return LogicalReaderManager.getStandardVersion();
+        } catch (org.fosstrak.ale.wsdl.ale.epcglobal.ImplementationExceptionResponse e) {
+                e.printStackTrace();
+                throw new ImplementationExceptionResponse(e.getMessage());
+        }
+}
+}}}
+
+You need to implement all the methods that shall be provided to clients in the ALELRServicePortTypeImpl.
+
+=== Status ===
+
+Currently the ALE supports the functionality of the logical reader API. For further reading refer to the [AleFeatures features list] and the Javadoc.
