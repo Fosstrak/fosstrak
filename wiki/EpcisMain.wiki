@@ -8,7 +8,7 @@ Fosstrak EPCIS provides an EPCglobal-certified EPCIS Repository as well as Query
 
 Fosstrak EPCIS is a complete implementation of the EPCIS standard specification (Version 1.0.1 of September 21, 2007). It successfully passed conformance testing and is [http://www.epcglobalinc.org/certification/ EPCglobal-certified].
 
-[http://www.epcglobalinc.org/certification/ http://fosstrak.googlecode.com/svn/images/epcis_certification_mark.png]
+[http://www.epcglobalinc.org/certification/ http://fosstrak.googlecode.com/svn/wikires/epcis/certification_mark.png]
 
 == How can the Fosstrak EPCIS Project help you? ==
 
@@ -28,7 +28,7 @@ The Fosstrak EPCIS Project comprises three separate modules:
 
 The figure below gives an overview of the Fosstrak EPCIS Implementation. For more information refer to the [EpcisArchitectureGuide Architecture Guide].
 
-http://fosstrak.googlecode.com/svn/images/epcis_architecture.png
+http://fosstrak.googlecode.com/svn/wikires/epcis/architecture.png
 
 == Usage Scenarios ==
 
