@@ -50,3 +50,64 @@ Test Scenario:
 
 == Compatibility Tests ==
 
+Compatibility tests with these !ReaderSimulators: 
+
+ReaderAPI:
+  * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/comptests/CompReaderAPI.xml CompReaderAPI]
+
+RPReader:
+  * Shelf: Shelf1, Shelf2
+  * Readtime Interval: 1000 ms
+  * Readduration: 500 ms
+  * _notificationListenTimeout_25000/_notificationListenTimeout_
+
+RPLogRd1:
+  * connects to RPReader
+
+!LogRd1:
+  * connects to HALReader1
+
+!LogRd2:
+  * connects to HALReader2
+
+CompLogReader
+  * Composite Logical Reader, consitsting of !LogRd1 and RPLogRd1
+
+ECSpec:
+  * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/comptests/ECSpec1.xml ECSpec1] Connects to !LogRd1 only
+  * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/comptests/ECSpec2.xml ECSpec2] Connects to !LogRd1 and to !LogRd2
+  * [[http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/comptests/ECSpecComp.xml ECSpecComp] Connects to CompLogReader
+
+Test Scenario:
+
+1. Change Sources
+
+|| Define the ECSpec2 || ||
+|| Define a subscriber, which subscribes to ECSpec2 || ||
+|| Put one Tag on Shelf1 of the HALReader1 || Tag must appear in Report ||
+|| Put one Tag on Shelf1 of the HALReader2 || Tag must appear in Report ||
+
+2. Change Spec
+
+|| Define the ECSpec1 || ||
+|| Define a subscriber, which subscribes to ECSpec1 || ||
+|| Put one Tag on Shelf1 of the HALReader1 || Tag must appear in Report ||
+|| Put one Tag on Shelf1 of the HALReader2	|| Tag must not appear in Report ||
+|| !LogRd1 disconnects from HALReader1; !LogRd connects to HALReader2 using this update for the LRSpec of the !LogRd1: [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/comptests/newLRSpecLogRd1.xml newLRSpecLogRd1] || ||
+|| Put one Tag on Shelf1 of the HALReader1 || Tag must not appear in Report ||
+|| Put one Tag on Shelf1 of the HALReader2 || Tag must appear in Report ||
+
+3. Update Spec
+
+|| Define the ECSpecComp || ||
+|| Define a subscriber, which subscribes to ECSpecComp || ||
+|| Put one Tag on Shelf1 of the HALReader1 || Tag must appear in Report ||
+|| Put one Tag on Shelf1 of the RPReader1 || Tag must appear in Report ||
+|| Update LRSpec of !CompReader: remove !LogRd1 using "removeReaders" || ||
+|| Put one Tag on Shelf1 of the HALReader1 || Tag must not appear in Report ||
+|| Put one Tag on Shelf1 of the RPReader1 || Tag must appear in Report ||
+|| Update LRSpec of !CompReader: remove !LogRd1 using "removeReaders"; Update LRSpec of !CompReader: add LogRd2 using "addReaders" || ||
+|| Put one Tag on Shelf1 of the HALReader1 || Tag must appear in Report ||
+|| Put one Tag on Shelf1 of the RPReader1 || Tag must not appear in Report ||
+
+== Modification Tests ==
