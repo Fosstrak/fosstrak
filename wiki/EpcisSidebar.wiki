@@ -16,7 +16,7 @@
   * [LlrpMain LLRP]
 
 *About Fosstrak*
-  * [GeneralFaq GeneralFAQ]
+  * [GeneralFaq FAQ]
   * [GeneralMailinglist Mailing Lists]
   * [http://fosstrak.wordpress.com/ Blog]
   * [GeneralLicense License]
@@ -25,3 +25,5 @@
   * [GeneralBackground Background]
   * [GeneralTeam GeneralTeam]
   * [GeneralContact Contact]
+
+#include AleSidebar
