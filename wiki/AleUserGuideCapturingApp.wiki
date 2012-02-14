@@ -1,0 +1,7 @@
+#sidebar AleSidebar
+
+= User Guide: Capturing Application =
+
+The capturing application helps you generate events for the EPCIS repository from ECReports from the Filtering and Collection.
+
+You can use the [AleUserGuideQuickStart Quick Start] to run a simple scenario or have a look at the more detailed [AleDevGuide Developers guide].
