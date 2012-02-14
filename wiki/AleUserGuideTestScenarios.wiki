@@ -212,3 +212,32 @@ Test Scenario:
 || Put one Tag on Shelf1 of the HALReader1; moved away from Shelf1 and back again repeated times (either as addition or deletion in Subsc1, or as current in Subsc2,3) || all must only have one Tag once in their Report ||
 
 == Performance Tests ==
+
+Performance tests with these !ReaderSimulators:
+
+  * HALReader1-10:
+      * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/performancetests/PerformanceAPI.xml PerformanceAPI] contains 10 HALReader.
+
+  * !LogicalReader1-10:
+      * connects to HALReader1-10
+
+  * ECSpec1-5:
+      * various modes on various readers...
+        [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/performancetests/ECSpec1.xml ECSpec1], [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/performancetests/ECSpec2.xml ECSpec2], [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/performancetests/ECSpec3.xml ECSpec3], [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/performancetests/ECSpec4.xml ECSpec4], [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/performancetests/ECSpec5.xml ECSpec5] 
+
+  * TestAdaptor
+    * !LogicalReader1 subscribes to !PerReader1
+    * Execute the !TestAdaptor on !PerReader1 with the following parameters
+      * tps (tags per shot) = 100
+      * wt (wait time) = 1000
+      * gain (tags more per shot) = 5
+    * --> monitor processor and memory load on your system
+    * NOTICE:
+      * The !TestAdaptor does not create real tags. These are just random strings/numbers!
+      * Pay attention with the gain factor. The load of your system increases fast with increasing tags per shot!
+
+  * !ManyReaders
+    * PerLogRd1-10 subscribes to a set of PerReader1-10
+    * Load all Shelves with Tags
+    * Run System some hours
+    * --> monitor processor and memory load on your system
