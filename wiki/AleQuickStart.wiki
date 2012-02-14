@@ -82,7 +82,7 @@ http://localhost:8080/fc-server-1.0.0/services/ALEService
 
 Verify that a connection between the web-based client and the server can be established by clicking "getVendorVersion()". A version number should be returned.
 
-Set the endpoint to the filtering and collection server's Logical Reader API by selecting "setEndPoint(String endPointName)" in the "LogicalReader API". Click "Invoke" to execute the command.
+Set the endpoint to the filtering and collection server's Logical Reader API by selecting "setEndPoint(String endPointName)" in the "!LogicalReader API". Click "Invoke" to execute the command.
 
 {{{
 endpoint: http://<SERVER>:<PORT>/<FCSERVER_VERSION>/services/ALELRService
@@ -95,9 +95,9 @@ Verify that a connection between the web-based client and the server can be esta
 
 == Set the readers connected to ALE Middleware via the ALE Logical Reader API ==
 
-The next step is to configure the fc-server with the LLRP reader connected. Click on "define(String readerName, LRSpec spec)" in the section LogicalReader API.
+The next step is to configure the fc-server with the LLRP reader connected. Click on "define(String readerName, LRSpec spec)" in the section !LogicalReader API.
 
-DO NOT CONFUSE the define method for an EventCycle with the define method for a logical reader! For this tutorial name your reader "LogicalReader1" and use the [http://fosstrak.googlecode.com/svn/wikires/ale/LLRPReader.xml LLRPReader.xml] as your LRSpec.
+DO NOT CONFUSE the define method for an !EventCycle with the define method for a logical reader! For this tutorial name your reader "!LogicalReader1" and use the [http://fosstrak.googlecode.com/svn/wikires/ale/LLRPReader.xml LLRPReader.xml] as your LRSpec.
 
 {{{
 readerName:  <READERNAME>
@@ -118,7 +118,7 @@ You can inspect the logical reader specification LRSpec by the method "getLRSpec
 
 In the next step you will define an ALE ECSpec. This tells the ALE Middleware how the RFID tag reads ariving from the Rifidi Emulator should be filtered and aggregated.
 
-Invoke the method "define(String specName, String specFilePath)". DO NOT CONFUSE the define method for an EventCycle with the define method for a logical reader! For this tutorial name your EventCycle "specCURRENT" and load this [http://fosstrak.googlecode.com/svn/wikires/ale/ECSpec_current.xml ECSpec message]
+Invoke the method "define(String specName, String specFilePath)". DO NOT CONFUSE the define method for an !EventCycle with the define method for a logical reader! For this tutorial name your !EventCycle "specCURRENT" and load this [http://fosstrak.googlecode.com/svn/wikires/ale/ECSpec_current.xml ECSpec message]
 
 {{{
 specName: <SPEC_NAME>
