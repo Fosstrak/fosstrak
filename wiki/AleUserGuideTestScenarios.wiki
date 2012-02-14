@@ -11,3 +11,42 @@ These tests should help you test your Fosstrak Filtering & Collection environmen
 To define a subscriber to subscribe to an ECSpec, a very simple way is to start and register an [AleUserGuideQuickStart Eventsink].
 
 == Basic Tests ==
+
+Basic tests with these files:
+
+ReaderAPI
+  * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/simpletests/SimpleAPI.xml SimpleAPI]: One HALReader with LogicalReader1 connecting to it.
+
+ECspecs
+  * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/simpletests/ECSpec.xml ECSpecCurrent],
+  * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/simpletests/ECSpecADDITIONS.xml ECSpecAdditions],
+  * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/simpletests/ECSpecDELETIONS.xml ECSpecDeletions],
+  * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/simpletests/ECSpecADDITIONSandDELETIONS.xml ECSpecAdditionsAndDeletions]
+
+Test Scenario:
+
+1. Current
+|| Define the ECSpecCurrent || ||
+|| Define a subscriber, which subscribes to ECSpecCurrent || ||
+|| Put one Tag on Shelf1 of the HALReader || Tag must appear in all Reports until Tag is removed from Shelf1 ||
+|| Remove Tag from Shelf1 of the HALReader || Tag must not appear any Report from now on ||
+
+2. Additions
+|| Define the ECSpecAdditions || ||
+|| Define a subscriber, which subscribes to ECSpecAdditions || ||
+|| Put one Tag on Shelf1 of the HALReader || Tag must only appear in the first following Report ||
+
+3. Deletions
+|| Define the ECSpecDeletions || ||
+|| Define a subscriber, which subscribes to ECSpecDeletions || ||
+|| Put one Tag on Shelf1 of the HALReader || Tag must not appear in the Report ||
+|| Remove Tag from Shelf1 of the HALReader || Tag must only appear in the first following Report ||
+
+4. Additions & Deletions
+|| Define the ECSpecAdditionsAndDeletions || ||	
+|| Define a subscriber, which subscribes to the mentioned ECSpec || ||	
+|| Put one Tag on Shelf1 of the HALReader || Tag must only appear in the first following Report ||
+|| Remove Tag from Shelf1 of the HALReader || Tag must only appear in the first following Report ||
+
+== Compatibility Tests ==
+
