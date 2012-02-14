@@ -1,8 +1,15 @@
+*Modules*
+  * [EpcisMain EPCIS]
+  * [TdtMain TDT]
+  * [AleMain ALE]
+  * [LlrpMain LLRP]
+
+*About Fosstrak*
+  * [GeneralFaq FAQ]
+  * [GeneralMailinglist Mailing List]
   * [http://fosstrak.wordpress.com/ Blog]
-  * [http://code.google.com/p/fosstrak Overview]
-  * [GeneralStories Success Stories]
   * [GeneralPublications Publications]
   * [GeneralBackground Background]
-  * [GeneralTeam Team]
-  * [GeneralFaq FAQ]
+  * [GeneralTeam GeneralTeam]
+  * [GeneralLicense License]
   * [GeneralContact Contact]
