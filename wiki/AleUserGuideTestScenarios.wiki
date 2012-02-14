@@ -2,6 +2,8 @@
 
 = User Guide: Test Scenarios =
 
+<wiki:toc max_depth="3"/>
+
 == About these Tests ==
 
 These tests should help you test your Fosstrak Filtering & Collection environment. The tests are wide spread, to cover most of the functionallity of the Filtering and Collection middleware.
