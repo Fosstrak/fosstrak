@@ -1,17 +1,24 @@
 *EPCIS*
   * [EpcisMain Overview]
   * [EpcisFeatures Features]
-  * [EpcisDemo Demo]
   * [EpcisDownload Download]
+  * Guides & Documentation*
+    * [EpcisUserGuide User Guide]
+    * [EpcisDeveloperGuide Developer Guide]
+    * [EpcisArchitectureGuide Architecture Guide]
+    * [EpcisWebadapterGuide Webadapter Guide]
+    * [EpcisDemo Demo]
   * [EpcisLicense License]
   * [EpcisFaq FAQ]
   * [EpcisRoadmap Roadmap]
   * [EpcisTeam Project Team]
   * [EpcisMailinglists Mailing Lists]
   * [http://code.google.com/p/fosstrak/issues Issue Tracking]
+----
 
-*Guides & Documentation*
-  * [EpcisUserGuide User Guide]
-  * [EpcisDeveloperGuide Developer Guide]
-  * [EpcisArchitectureGuide Architecture Guide]
-  * [EpcisWebadapterGuide Webadapter Guide]
+*Fosstrak*
+  * [http://code.google.com/p/fosstrak Home]
+  * [EpcisMain EPCIS]
+  * [TdtMain TDT]
+  * [AleMain ALE]
+  * [LlrpMain LLRP]
