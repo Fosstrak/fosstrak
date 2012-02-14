@@ -139,7 +139,7 @@ ECSpec2:
 
 Test Scenario:
 
-1. One2Many
+1. !One2Many
 
 || Define the CompECSpec || ||
 || Define a subscriber, which subscribes to CompECSpec || ||
@@ -155,11 +155,9 @@ Test Scenario:
 || Define a subscriber, which subscribes to ECSpec2 || ||
 || Put one Tag on Shelf1 of the HALReader1 || Tag must only appear in Report of Subsc1 ||
 || Put one Tag on Shelf1 of the HALReader2 || Tag must only appear in Report of Subsc2 ||
-|| LogRd1 disconnects from HALReader1; LogRd1 connects to HALReader3 using this update for the LRSpec of the
-LogRd1: [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/modtests/newLRSpecLogRd1.xml newLRSpecLogRd1] || ||
-|| LogRd2 disconnects from HALReader2; LogRd2 connects to HALReader1 using this update for the LRSpec of the
-LogRd1: [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/modtests/newLRSpecLogRd3.xml newLRSpecLogRd3] || ||
+|| !LogRd1 disconnects from HALReader1; !LogRd1 connects to HALReader3 using this update for the LRSpec of the !LogRd1: [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/modtests/newLRSpecLogRd1.xml newLRSpecLogRd1] || ||
+|| !LogRd2 disconnects from HALReader2; !LogRd2 connects to HALReader1 using this update for the LRSpec of the !LogRd1: [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/modtests/newLRSpecLogRd3.xml newLRSpecLogRd3] || ||
 || Put one Tag on Shelf1 of the HALReader1 || Tag must only appear in Report of Subsc2 ||
-|| Put one Tag on Shelf1 of the HALReader3	|| Tag must only appear in Report of Subsc1 ||
+|| Put one Tag on Shelf1 of the HALReader3 || Tag must only appear in Report of Subsc1 ||
 
 == Multiple Event Cycles Tests ==
