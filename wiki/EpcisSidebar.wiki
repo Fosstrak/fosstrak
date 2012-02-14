@@ -13,9 +13,16 @@
   * [EpcisTeam Project Team]
   * [EpcisLicense License]
 
-*Fosstrak*
-  * [http://code.google.com/p/fosstrak Home]
-  * [EpcisMain EPCIS]
+*Other Modules*
   * [TdtMain TDT]
   * [AleMain ALE]
   * [LlrpMain LLRP]
+
+*About Fosstrak*
+  * [http://fosstrak.wordpress.com/ Blog]
+  * [GeneralStories Success Stories]
+  * [GeneralPublications Publications]
+  * [GeneralBackground Background]
+  * [GeneralTeam GeneralTeam]
+  * [GeneralFaq GeneralFAQ]
+  * [GeneralContact Contact]
