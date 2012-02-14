@@ -1,6 +1,6 @@
 #sidebar AleSidebar
 
-= Developer Guide: Logical Reader Concepts =
+= Developer Guide: Logical Reader Concept =
 
 <wiki:toc max_depth="2"/>
 
@@ -91,7 +91,7 @@ The second case is more complicated an shall be explained in the section about !
 
 In both of the two cases a !LogicalReader is returned.
 
-== CompositeReader ==
+== !CompositeReader ==
 
 The class !CompositeReader models a composite in the composite pattern that can be composed by different other components. The components are in this case !LogicalReaders.
 
