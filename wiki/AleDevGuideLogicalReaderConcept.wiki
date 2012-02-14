@@ -10,7 +10,7 @@ From the view of an ALE client it is preferable to share a common view on a read
 
 In a first step the chosen design pattern are presented. Then the basic implementation of the Logical Reader API is shown and explained more specific.
 
-The documentation for the usage of the Logical Reader API through the !LogicalReaderManager is not covered here. Please refer to the chapter [AleDevGuideLogicalReaderManagement "LogicalReader Management"].
+The documentation for the usage of the Logical Reader API through the !LogicalReaderManager is not covered here. Please refer to the chapter [AleDevGuideLogicalReaderManagement "!LogicalReader Management"].
 
 == Composite Pattern ==
 
