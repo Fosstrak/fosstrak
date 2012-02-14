@@ -1,0 +1,10 @@
+#sidebar GeneralSidebar
+
+= License =
+
+The Fosstrak modules are licensed under the following terms:
+
+|| EPCIS || [http://www.gnu.org/licenses/lgpl-2.1-standalone.html GNU Lesser General Public License (LGPL), Version 2.1, February 1999] ||
+|| TDT || [http://www.gnu.org/licenses/lgpl-2.1-standalone.html GNU Lesser General Public License (LGPL), Version 2.1, February 1999] ||
+|| ALE || [http://www.gnu.org/licenses/lgpl-2.1-standalone.html GNU Lesser General Public License (LGPL), Version 2.1, February 1999] ||
+|| LLRP || [http://www.gnu.org/licenses/gpl-3.0-standalone.html GNU General Public License (GPL), Version 3, June 2007] ||
