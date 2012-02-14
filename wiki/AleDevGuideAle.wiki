@@ -11,7 +11,7 @@ This document shall give a short overview to the ALE class from the Fosstrak fil
 The ALE is the responsible class for the communication with the applications of the Layer above. It provides:
   * Interface for the definition and modification of !EventCycles
   * Subscription/unsubscription of report notifications
-  * Administrative methods (eg. VendorVersion).
+  * Administrative methods (eg. !VendorVersion).
 The ALEServicePort provides the interface that allows clients to connect to the ALE. The service port provides:
   * Serialization and deserialization of ECSpecs and other control messages.
   * Binding from the ALE interface to the actual implementation of the Filtering and Collection.
@@ -57,7 +57,7 @@ If you ever encounter a problem with the serialization of an XML the following p
 
   * A working copy of [http://incubator.apache.org/cxf/ Apache CXF]
   * The EPC base XSD definition: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCGlobal.xsd EPCGlobal.xsd]
-  * The ALE definitions: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-ale EPCglobal-ale-1_1-ale.xsd]
+  * The ALE definitions: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-ale.xsd EPCglobal-ale-1_1-ale.xsd]
   * The ALE commons: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-common.xsd EPCglobal-ale-1_1-common.xsd]
   * The ALE Serviceport WSDL definition: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-ale.wsdl EPCglobal-ale-1_1-ale.wsdl]
 
