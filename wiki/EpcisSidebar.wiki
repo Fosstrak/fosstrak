@@ -21,6 +21,6 @@
   * [http://fosstrak.wordpress.com/ Blog]
   * [GeneralPublications Publications]
   * [GeneralBackground Background]
-  * [GeneralTeam GeneralTeam]
+  * [GeneralTeam Team]
   * [GeneralLicense License]
   * [GeneralContact Contact]
