@@ -1,0 +1,136 @@
+#sidebar AleSidebar
+
+= User Guide: Logical Reader Definitions =
+
+== Objective ==
+
+This guide shall introduce Logical Readers and how they can be declared to be used in the Filtering and Collection server.
+
+There are two different types of Logical Reader Definitions that should not be confused!
+
+  * Dynamic Logical Reader Definitions:
+
+    Dynamic Logical Reader Definitions are read by the fc-client and the fc-webclient. If you want to specify a logical reader at runtime through the Logical Reader API you need to use a Dynamic Logical Reader.
+
+  *  Static Logical Reader Definitions:
+
+    Static Logical Reader Definitions are read/written by the Logical Reader Manager upon Filtering and Collection server deployment. They contain additional information for the Logical Reader Manager. 
+
+== !LogicalReaders ==
+
+!LogicalReaders act always either as a connector between software and hardware or as a connector between software and software. Therefor you need some parameters that configure your !LogicalReader at your needs. In the following we will give a short introduction how you can setup the basic structure for a !LogicalReader. You will find some elaborate Examples for real !LogicalReaders later on in this guide (See Example1, Example2, Example3).
+
+When you want to define your own !LogicalReader through an xml-file you need to obey some restrictions. Some of them are discussed here. 
+
+=== The xml has must have a valid encoding and version number ===
+
+Example:
+
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+}}}
+
+=== The xml must contain exactly one LRSpec defintion. ===
+
+_Applies to dynamic definitions only._
+
+Example:
+
+{{{
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:LRSpec xmlns:ns2="urn:epcglobal:ale:wsdl:1" 
+        xmlns:ns3="urn:epcglobal:ale:xsd:1">
+</ns3:LRSpec> 
+}}}
+
+=== You must define whether the reader is composite or not. ===
+
+_Applies to dynamic definitions only._
+
+Example:
+
+{{{
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:LRSpec xmlns:ns2="urn:epcglobal:ale:wsdl:1" 
+        xmlns:ns3="urn:epcglobal:ale:xsd:1">
+    <isComposite>false</isComposite>
+</ns3:LRSpec>
+}}}
+
+=== The reader must contain at least the LRProperty of the ReaderType. ===
+
+_Applies to dynamic definitions only._
+
+Example:
+
+{{{
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:LRSpec xmlns:ns2="urn:epcglobal:ale:wsdl:1" 
+        xmlns:ns3="urn:epcglobal:ale:xsd:1">
+    <isComposite>false</isComposite>
+    <readers/>
+    <properties>
+        <property>
+            <name>ReaderType</name>
+            <value>org.fosstrak.ale.server.readers.hal.HALAdaptor</value>
+        </property>
+</ns3:LRSpec>
+}}}
+
+=== If your reader is a composite reader, you must provide the list of the "subreaders". ===
+
+_Applies to dynamic definitions only._
+
+Example:
+
+{{{
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:LRSpec xmlns:ns2="urn:epcglobal:ale:wsdl:1" 
+        xmlns:ns3="urn:epcglobal:ale:xsd:1">
+    <isComposite>true</isComposite>
+    <readers>
+        <reader>LogicalReader1</reader>
+    </readers>
+    <properties>
+        <property>
+            <name>ReaderType</name>
+            <value>org.fosstrak.ale.server.readers.CompositeReader</value>
+        </property>
+    </properties>
+</ns3:LRSpec>
+}}}
+
+=== The xml must contain exactly one !LogicalReaders tag. ===
+
+_Applies to static definitions only._
+
+Example:
+
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<LogicalReaders xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="/resources/LogicalReaders.xsd">
+</LogicalReaders> 
+}}}
+
+=== Whenever you define a !LogicalReader you must specify an LRSpec and within that LRSpec you must specify if this reader is composite or not. ===
+
+_Applies to static definitions only._
+
+Example:
+
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<LogicalReaders xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="/resources/LogicalReaders.xsd">
+        <LogicalReader name="LogicalReader1">
+                <LRSpec isComposite="false" 
+                   readerType="org.fosstrak.ale.server.readers.llrp.LLRPAdaptor">
+                </LRSpec>
+        </LogicalReader>
+</LogicalReaders>
+}}}
+
+Make sure, that you use the name of a !LogicalReader only once. The logical reader API does not allow duplicates of !LogicalReaders.
+
+To check your xml-file for correctness you can use our xsd schema ([http://fosstrak.googlecode.com/svn/wikires/ale/logical_readers.xsd LogicalReaders.xsd]).
