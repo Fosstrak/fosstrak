@@ -1,6 +1,7 @@
 #sidebar AleSidebar
 
-= Quick Start - Deploying the Fosstrak ALE Middleware with an LLRP-Compliant RFID Reader =
+= User Guide: Quick Start =
+_Deploying the Fosstrak ALE Middleware with an LLRP-Compliant RFID Reader_
 
 == Objective ==
 
