@@ -19,11 +19,8 @@
   * [GeneralFaq FAQ]
   * [GeneralMailinglist Mailing Lists]
   * [http://fosstrak.wordpress.com/ Blog]
-  * [GeneralLicense License]
-  * [GeneralStories Success Stories]
   * [GeneralPublications Publications]
   * [GeneralBackground Background]
   * [GeneralTeam GeneralTeam]
+  * [GeneralLicense License]
   * [GeneralContact Contact]
-
-#include AleSidebar
