@@ -1,4 +1,4 @@
-#sidebar AleFeatures
+#sidebar AleSidebar
 
 = Features =
 
