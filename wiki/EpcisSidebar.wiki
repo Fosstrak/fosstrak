@@ -8,13 +8,12 @@
     * [EpcisArchitectureGuide Architecture Guide]
     * [EpcisWebadapterGuide Webadapter Guide]
     * [EpcisDemo Demo]
-  * [EpcisLicense License]
   * [EpcisFaq FAQ]
-  * [EpcisRoadmap Roadmap]
-  * [EpcisTeam Project Team]
   * [EpcisMailinglists Mailing Lists]
   * [http://code.google.com/p/fosstrak/issues Issue Tracking]
-----
+  * [EpcisRoadmap Roadmap]
+  * [EpcisTeam Project Team]
+  * [EpcisLicense License]
 
 *Fosstrak*
   * [http://code.google.com/p/fosstrak Home]
