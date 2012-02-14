@@ -139,9 +139,9 @@ To check your xml-file for correctness you can use our xsd schema ([http://fosst
 
 == Example1 - An LLRP !LogicalReader ==
 
-In LLRP the reader needs special arameters for the connection between the physical reader and the LogicalReader. For a detailed introduction of these parameters refer to the developers-guide - section [AleDevGuideImplementingAdaptors "Implement an Adaptor"].
+In LLRP the reader needs special arameters for the connection between the physical reader and the !LogicalReader. For a detailed introduction of these parameters refer to the developers-guide - section [AleDevGuideImplementingAdaptors "Implement an Adaptor"].
 
-The Example shows the definition of one LLRP LogicalReader.
+The Example shows the definition of one LLRP !LogicalReader.
 
 === Dynamic Definition ===
 
