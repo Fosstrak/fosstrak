@@ -9,7 +9,6 @@
   * [EpcisDemo Demo]
   * [EpcisFaq FAQ]
   * [EpcisMailinglists Mailing Lists]
-  * [http://code.google.com/p/fosstrak/issues Issue Tracking]
   * [EpcisRoadmap Roadmap]
   * [EpcisTeam Project Team]
   * [EpcisLicense License]
