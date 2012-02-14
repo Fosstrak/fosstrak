@@ -161,3 +161,54 @@ Test Scenario:
 || Put one Tag on Shelf1 of the HALReader3 || Tag must only appear in Report of Subsc1 ||
 
 == Multiple Event Cycles Tests ==
+
+Multiple Event Cycles tests with these !ReaderSimulators:
+
+ReaderAPI
+  * [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/simpletests/SimpleAPI.xml SimpleAPI]: One HALReader with !LogicalReader1 connecting to it.
+
+EC1: [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/ectests/ECSpecFast.xml ECSpecFast]
+  * !LogicalReaders: !LogicalReader1
+  * duration: 5000ms
+  * repeatPeriod: 6000ms
+  * !ReportName: !FastAdd, !FastDel
+  * reportSet set="ADDITIONS"
+  * reportSet set="DELETIONS"
+
+EC2: [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/ectests/ECSpecSlow.xml ECSpecSlow]
+  * !LogicalReaders: !LogicalReader1
+  * duration: 3000ms
+  * repeatPeriod: 60000ms
+  * !ReportName: Slow
+  * reportSet set="CURRENT"
+
+EC3: [http://fosstrak.googlecode.com/svn/wikires/ale/testfiles/ectests/ECSpecLong.xml ECSpecLong]
+  * !LogicalReaders: !LogicalReader1
+  * duration:50000ms
+  * repeatPeriod: 70000ms
+  * !ReportName: Long
+  * reportSet set="CURRENT"
+
+Test Scenario:
+
+1. All have it
+
+|| Define the EC1 || ||
+|| Define a subscriber, which subscribes to EC1 || ||
+|| Define the EC2 || ||
+|| Define a subscriber, which subscribes to EC2 || ||
+|| Define the EC3 || ||
+|| Define a subscriber, which subscribes to EC3 || ||
+|| Put one Tag on Shelf1 of the HALReader1 || all must have the Tag in their first Report; EC1 must not have the Tag in the following Reports ||
+
+2. !NoDuplicates
+
+|| Define the EC1 || ||
+|| Define a subscriber, which subscribes to EC1 || ||
+|| Define the EC2 || ||
+|| Define a subscriber, which subscribes to EC2 || ||
+|| Define the EC3 || ||
+|| Define a subscriber, which subscribes to EC3 || ||
+|| Put one Tag on Shelf1 of the HALReader1; moved away from Shelf1 and back again repeated times (either as addition or deletion in Subsc1, or as current in Subsc2,3) || all must only have one Tag once in their Report ||
+
+== Performance Tests ==
