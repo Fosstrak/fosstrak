@@ -56,9 +56,9 @@ try {
 
 == Creation and Flow ==
 
-An EventCycle is constructed according to an !EventCycle specification (called ECSpec). The ECSpec specifies several parameters. The most important ones are the time intervall during which tags are read and the readers where tags shall be collected.
+An !EventCycle is constructed according to an !EventCycle specification (called ECSpec). The ECSpec specifies several parameters. The most important ones are the time intervall during which tags are read and the readers where tags shall be collected.
 
-Whenever a client defines a new !EventCycle through the ALE interface, a new !ReportsGenerator will be created along an EventCycle. The !ReportsGenerator acts as a gateway to the !EventCycle for clients. A client does not subscribe on an !EventCycle but on the associated !ReportsGenerator. The !ReportsGenerator ensures that the !EventCycle is started/stopped and that subscribers (clients) receive the resulting tags.
+Whenever a client defines a new !EventCycle through the ALE interface, a new !ReportsGenerator will be created along an !EventCycle. The !ReportsGenerator acts as a gateway to the !EventCycle for clients. A client does not subscribe on an !EventCycle but on the associated !ReportsGenerator. The !ReportsGenerator ensures that the !EventCycle is started/stopped and that subscribers (clients) receive the resulting tags.
 
 Upon creation the !EventCycle aquires the readers from the logical reader API and registers as an Observer. The !EventCycle does not accept tags yet.
 
