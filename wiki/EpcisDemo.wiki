@@ -16,5 +16,5 @@ Note, this later application is here for demonstration purposes only and should 
 
 == Screenshots of the Webadapter ==
 
-http://fosstrak.googlecode.com/svn/images/epcis_webadapter_browser.png
-http://fosstrak.googlecode.com/svn/images/epcis_webadapter_mashupdashboard.png
+http://fosstrak.googlecode.com/svn/wikires/epcis/webadapter_browser.png
+http://fosstrak.googlecode.com/svn/wikires/epcis/webadapter_mashupdashboard.png
