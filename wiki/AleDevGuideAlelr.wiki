@@ -1,8 +1,8 @@
 #sidebar AleSidebar
 
-<wiki:toc max_depth="2"/>
-
 = Developer Guide: ALE LR Service Binding =
+
+<wiki:toc max_depth="2"/>
 
 == Overview ==
 
@@ -20,12 +20,12 @@ The Logical Reader Manager has the current list of all Logical Readers which are
 
 The whole functionality is in a single class: !LogicalReaderManager.java. The most functionality is contained in the methods described below. Most of the other methods are delegated using reflection to the specializations of a Logical Reader. Please refer to the logical-reader-api for more information about the logical readers functionality.
 
-  * initializeFromFile(String loadFilePath): using the JAXB framework the specified .xml file is parsed and Java Objects are generated. Once generated the Logical Reader Manager has a HashMap of all Logical Readers of the current setting.
-  * storeToFile(String storeFilePath): using the JAXB framework the specified .xml file is generated from the current HashMap of the !LogicalReaderManager. This method allows a ALE user to hold a backup configuration for recovery. Note that the configuration can be changed significantly during the operation of the ALE since the Logical Reader Manager allows a user to change the HashMap of the Logical Readers using the methods addReaders(String name, java.util.ListString readers) and removeReaders(String name, java.util.ListString readers).
+  * initializeFromFile(String loadFilePath): using the JAXB framework the specified .xml file is parsed and Java Objects are generated. Once generated the Logical Reader Manager has a !HashMap of all Logical Readers of the current setting.
+  * storeToFile(String storeFilePath): using the JAXB framework the specified .xml file is generated from the current !HashMap of the !LogicalReaderManager. This method allows a ALE user to hold a backup configuration for recovery. Note that the configuration can be changed significantly during the operation of the ALE since the Logical Reader Manager allows a user to change the !HashMap of the Logical Readers using the methods addReaders(String name, java.util.!ListString readers) and removeReaders(String name, java.util.!ListString readers).
   * undefine(String name): removes the logical reader
   * update(String name, LRSpec spec): changes the LRSpec of the given reader
   * define(String name, org.fosstrak.ale.server.readers.gen.LRSpec spec): creates a logical reader from the loaded .xml file.
   * define(String name, LRSpec spec): creates a logical reader after initialisation.
-  * setLogicalReader(LogicalReader reader): adds the logical reader to the list of logical readers.
+  * setLogicalReader(!LogicalReader reader): adds the logical reader to the list of logical readers.
 
 == WSDL Interface ==
