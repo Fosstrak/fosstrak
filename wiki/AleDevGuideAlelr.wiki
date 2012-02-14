@@ -50,7 +50,7 @@ If you ever encounter a problem with the serialization of an XML the following p
 
   * A working copy of [http://incubator.apache.org/cxf/ Apache CXF]
   * The EPC base XSD definition: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCGlobal.xsd EPCGlobal.xsd]
-  * The ALELR definitions: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-ale EPCglobal-ale-1_1-alelr.xsd]
+  * The ALELR definitions: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-ale.xsd EPCglobal-ale-1_1-alelr.xsd]
   * The ALE commons: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-common.xsd EPCglobal-ale-1_1-common.xsd]
   * The ALELR Serviceport WSDL definition: [http://fosstrak.googlecode.com/svn/wikires/ale/EPCglobal-ale-1_1-ale.wsdl EPCglobal-ale-1_1-alelr.wsdl]
 
