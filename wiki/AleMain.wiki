@@ -4,7 +4,7 @@
 
 The Fosstrak ALE Middleware allows you to filter and collect data from RFID readers.
 
-http://fosstrak.googlecode.com/svn/images/ale_overview.png
+http://fosstrak.googlecode.com/svn/wikires/ale/overview.png
 
 The Fosstrak ALE Middleware comprises three separate modules:
 
