@@ -2,6 +2,8 @@
 
 = Implementing Adaptors =
 
+<wiki:toc max_depth="3"/>
+
 == Objective ==
 
 This guide is intented for developers who wish to integrate a tag reader into to the Logical Reader API of the fosstrak ALE. The guide gives three examples to three existing Adaptors. In the second part a more detailed explanation about how to implement your own adaptor is given.
