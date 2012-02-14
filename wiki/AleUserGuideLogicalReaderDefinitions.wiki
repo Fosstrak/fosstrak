@@ -59,7 +59,7 @@ Example:
 </ns3:LRSpec>
 }}}
 
-=== The reader must contain at least the LRProperty of the ReaderType. ===
+=== The reader must contain at least the LRProperty of the !ReaderType. ===
 
 _Applies to dynamic definitions only._
 
@@ -202,7 +202,7 @@ You can download the xml [http://fosstrak.googlecode.com/svn/wikires/ale/users-g
 </LogicalReaders>
 }}}
 
-== Example2 - A HAL Protocol LogicalReader (example Feig Reader) ==
+== Example2 - A HAL Protocol !LogicalReader (example Feig Reader) ==
 
 In the Hardware Abstraction Layer (HAL) the reader needs special parameters for the bootstrapping of the HAL. For a detailed introduction of these parameters refer to the developers-guide - section [AleDevGuideImplementingAdaptors "Implement an Adaptor"].
 
