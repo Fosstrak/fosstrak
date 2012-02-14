@@ -23,8 +23,8 @@ Currently the HALAdaptor creates a !SimulatorController object. This object in t
 http://fosstrak.googlecode.com/svn/wikires/ale/HALAdaptor.png
 
 For example properties files refer to:
-  * BatchSimulator.xml for a batch simulator
-  * GraphicSimulator.xml for a graphical simulator
+  * !BatchSimulator.xml for a batch simulator
+  * !GraphicSimulator.xml for a graphical simulator
 
 The HAL devices from the Fosstrak project currently do not provide a polling mechanism. To retrieve Tags from these devices we therefor need a mechanism to periodically poll the device. We chose an identifyThread that polls the HAL device in a regular time interval.
 
@@ -131,9 +131,9 @@ The RPAdaptor provides an adaptor to the reader protokoll (RP).
 
 === Schematic ===
 
-The RPAdaptor provides a default constructor and an initializer method. Both are called in the construction phase of the LogicalReader. The RPAdaptor implements all methods that are required by the logical reader API (basically these are the methods that are specified in LogicalReader and in !BaseReader).
+The RPAdaptor provides a default constructor and an initializer method. Both are called in the construction phase of the !LogicalReader. The RPAdaptor implements all methods that are required by the logical reader API (basically these are the methods that are specified in !LogicalReader and in !BaseReader).
 
-Aside the standard methods and fields the RPAdaptor requires some more functionality to communicate with a rp-proxy. The InputGenerator sets up the connection between the RPAdaptor and the rp-proxy. There are two channels that need to be created. The first one (command channel) is created for the communication from the RPAdaptor to the rp-proxy. The command channel uses the connection settings provided by !ConnectionPoint. The second channel (notification channel) is used for the communication from the rp-proxy to the RPAdaptor and provides a channel for the delivery of tags from the physical reader. The settings provided by !NotificationPoint are used to set up this channel. As soon as the RPAdaptor is started through the logical reader API the rp-proxy sends tag events that are then processed by the !InputGenerator and sent through the RPAdaptor to the observers (!CompositeReader or !EventCycle).
+Aside the standard methods and fields the RPAdaptor requires some more functionality to communicate with a rp-proxy. The !InputGenerator sets up the connection between the RPAdaptor and the rp-proxy. There are two channels that need to be created. The first one (command channel) is created for the communication from the RPAdaptor to the rp-proxy. The command channel uses the connection settings provided by !ConnectionPoint. The second channel (notification channel) is used for the communication from the rp-proxy to the RPAdaptor and provides a channel for the delivery of tags from the physical reader. The settings provided by !NotificationPoint are used to set up this channel. As soon as the RPAdaptor is started through the logical reader API the rp-proxy sends tag events that are then processed by the !InputGenerator and sent through the RPAdaptor to the observers (!CompositeReader or !EventCycle).
 
 http://fosstrak.googlecode.com/svn/wikires/ale/RPAdaptor.png
 
