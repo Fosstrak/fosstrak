@@ -18,14 +18,18 @@
     * [AleDevGuideLogicalReaderConcept Logical Reader Concepts]
     * [AleDevGuideImplementingAdaptors Implementing Adaptors]
     * [AleDevGuideSerializers Serializers and Deserializers]
-  * [AleFaq FAQ]
-  * [AleMailinglists Mailing Lists]
-  * [http://code.google.com/p/fosstrak/issues Issue Tracking]
-  * [AleLicense License]
 
-*Fosstrak*
-  * [http://code.google.com/p/fosstrak Home]
+*Other Modules*
   * [EpcisMain EPCIS]
   * [TdtMain TDT]
-  * [AleMain ALE]
   * [LlrpMain LLRP]
+
+*About Fosstrak*
+  * [GeneralFaq FAQ]
+  * [GeneralMailinglist Mailing Lists]
+  * [http://fosstrak.wordpress.com/ Blog]
+  * [GeneralPublications Publications]
+  * [GeneralBackground Background]
+  * [GeneralTeam GeneralTeam]
+  * [GeneralLicense License]
+  * [GeneralContact Contact]
