@@ -17,7 +17,7 @@
 
 *About Fosstrak*
   * [GeneralFaq FAQ]
-  * [GeneralMailinglist Mailing Lists]
+  * [GeneralMailinglist Mailing List]
   * [http://fosstrak.wordpress.com/ Blog]
   * [GeneralPublications Publications]
   * [GeneralBackground Background]
