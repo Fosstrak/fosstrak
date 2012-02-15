@@ -1,4 +1,4 @@
-#sidebar LlrpBackground
+#sidebar LlrpSidebar
 
 = Background and Motivation =
 
