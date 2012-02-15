@@ -5,8 +5,7 @@
   * [LlrpBackground Background]
   * [LlrpUserGuide User Guide]
   * Developer Guide
-    * [LlrpDevGuideOverview Overview]
-    * [LlrpDevGuideInstallation Installation]
+    * [LlrpDevGuideBuilding Building the Code]
     * GUI
       * [LlrpDevGuideGuiGraphical Graphical Editor]
       * [LlrpDevGuideGuiXml XML / Binary Editor]
