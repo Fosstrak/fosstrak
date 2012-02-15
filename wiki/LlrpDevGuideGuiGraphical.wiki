@@ -42,15 +42,15 @@ http://fosstrak.googlecode.com/svn/wikires/llrp/add_rospec_object_graph.png
 
 We call the nodes of this graph _tree elements_. A tree element is either of type `LLRPMessage`, `LLRPParameter` or `List<LLRPParameter>`. Moreover, every tree element has 0 or more _fields_, 0 or more _children_ (which can be null), and exactly 1 _parent_ (the parent of the root is null). The tree element `ROSpec` (which is of type `LLRPParameter`), for instance, has 3 fields (`ROSpecID`, `Priority`, `CurrentState`), 3 children (`ROBoundarySpec`, `SpecParameter`, `ROReportSpec` (null)) and the tree element `ADD_ROSPEC` as parent.
 
-Because LTKJava does not provide a method to get all children of a tree element, the children are retrieved indirectly by using information from `llrpdef.xml` [[1]], and _reflection_. For example, to get the children of the `ROSpec` parameter, the names of the children (`ROBoundarySpec`, `SpecParameter`, `ROReportSpec`) are learned by querying `llrpdef.xml`, and then the corresponding getter methods of `ROSpec` (`getROBoundarySpec()`, `getSpecParameterList()`, `getROReportSpec()`) are called using reflection.
+Because LTKJava does not provide a method to get all children of a tree element, the children are retrieved indirectly by using information from `llrpdef.xml` `[1]`, and _reflection_. For example, to get the children of the `ROSpec` parameter, the names of the children (`ROBoundarySpec`, `SpecParameter`, `ROReportSpec`) are learned by querying `llrpdef.xml`, and then the corresponding getter methods of `ROSpec` (`getROBoundarySpec()`, `getSpecParameterList()`, `getROReportSpec()`) are called using reflection.
 
 All functionality to navigate and modify the LTKJava object graph is encapsulated in the class `LLRPTreeMaintainer`.
 
-The code to query the `llrpdef.xml` is contained in the class `LLRP` (to be precise: the class `LLRP` does not directly access `llrpdef.xml`, but uses helper classes of the `LTKGenerator` [[2]]).
+The code to query the `llrpdef.xml` is contained in the class `LLRP` (to be precise: the class `LLRP` does not directly access `llrpdef.xml`, but uses helper classes of the `LTKGenerator` `[2]`).
 
-[[1]] `llrpdef.xml` is the LLRP description in XML, see http://llrp-toolkit.wiki.sourceforge.net/LLRP+Protocol+Definition+(llrpdef.xml).
+`[1]` `llrpdef.xml` is the LLRP description in XML, see http://llrp-toolkit.wiki.sourceforge.net/LLRP+Protocol+Definition+(llrpdef.xml).
 
-[[2]] The `LTKGenerator` is the module that generates the `LTKJava` classes from `llrpdef.xml`.
+`[2]` The `LTKGenerator` is the module that generates the `LTKJava` classes from `llrpdef.xml`.
 
 === Validation functionality ===
 
