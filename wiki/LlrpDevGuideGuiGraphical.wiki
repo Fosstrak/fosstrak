@@ -14,37 +14,37 @@ The graphical editor is realized using [http://www.eclipse.org/articles/Article-
 
 For detailed information have a look at the following classes:
 
-  * org.fosstrak.llrp.commander.editors.graphical.GraphicalEditorPage
-  * org.fosstrak.llrp.commander.editors.graphical.LLRPMasterDetailsBlock
-  * org.fosstrak.llrp.commander.editors.graphical.LLRPDetailsPage
-  * org.fosstrak.llrp.commander.editors.graphical.LLRPTreeContentProvider
-  * org.fosstrak.llrp.commander.editors.graphical.LLRPTreeLabelProvider
-  * org.fosstrak.llrp.commander.editors.graphical.actions.AddParameterAction
-  * org.fosstrak.llrp.commander.editors.graphical.actions.DeleteParameterAction
+  * `org.fosstrak.llrp.commander.editors.graphical.GraphicalEditorPage`
+  * `org.fosstrak.llrp.commander.editors.graphical.LLRPMasterDetailsBlock`
+  * `org.fosstrak.llrp.commander.editors.graphical.LLRPDetailsPage`
+  * `org.fosstrak.llrp.commander.editors.graphical.LLRPTreeContentProvider`
+  * `org.fosstrak.llrp.commander.editors.graphical.LLRPTreeLabelProvider`
+  * `org.fosstrak.llrp.commander.editors.graphical.actions.AddParameterAction`
+  * `org.fosstrak.llrp.commander.editors.graphical.actions.DeleteParameterAction`
 
 == Utility Classes ==
 
 The classes described in this section are all used by the graphical editor, but in principle they are independent of the GUI classes and can be used irrespective of them (The class `LLRPFactory`, for example, is also used by the New Message Wizard). We are talking about:
 
-  * org.fosstrak.llrp.commander.util.LLRPTreeMaintainer
-  * org.fosstrak.llrp.commander.util.LLRP
-  * org.fosstrak.llrp.commander.util.LLRPFactory
-  * org.fosstrak.llrp.commander.util.LLRPConstraints
-  * org.fosstrak.llrp.commander.util.LLRPPresenceConstraint
-  * org.fosstrak.llrp.commander.util.LLRPRangeConstraint
-  * org.fosstrak.llrp.commander.util.Range
+  * `org.fosstrak.llrp.commander.util.LLRPTreeMaintainer`
+  * `org.fosstrak.llrp.commander.util.LLRP`
+  * `org.fosstrak.llrp.commander.util.LLRPFactory`
+  * `org.fosstrak.llrp.commander.util.LLRPConstraints`
+  * `org.fosstrak.llrp.commander.util.LLRPPresenceConstraint`
+  * `org.fosstrak.llrp.commander.util.LLRPRangeConstraint`
+  * `org.fosstrak.llrp.commander.util.Range`
 
 === Underlying Model ===
 
-As model classes for the graphical editor the classes of !LTKJava are used (`LLRPMessage`, `LLRPParameter`, etc.). This is, the graphical editor works on a tree of !LTKJava objects. The root of the tree is an object of type `LLRPMessage`, and has `LLRPParameters` and lists of `LLRPParameters` as children. As an example, consider the following picture that shows the (slightly simplified) object graph for a typical `ADD_ROSPEC` message:
+As model classes for the graphical editor the classes of LTKJava are used (`LLRPMessage`, `LLRPParameter`, etc.). This is, the graphical editor works on a tree of LTKJava objects. The root of the tree is an object of type `LLRPMessage`, and has `LLRPParameters` and lists of `LLRPParameters` as children. As an example, consider the following picture that shows the (slightly simplified) object graph for a typical `ADD_ROSPEC` message:
 
 http://fosstrak.googlecode.com/svn/wikires/llrp/add_rospec_object_graph.png
 
 We call the nodes of this graph _tree elements_. A tree element is either of type `LLRPMessage`, `LLRPParameter` or `List<LLRPParameter>`. Moreover, every tree element has 0 or more _fields_, 0 or more _children_ (which can be null), and exactly 1 _parent_ (the parent of the root is null). The tree element `ROSpec` (which is of type `LLRPParameter`), for instance, has 3 fields (`ROSpecID`, `Priority`, `CurrentState`), 3 children (`ROBoundarySpec`, `SpecParameter`, `ROReportSpec` (null)) and the tree element `ADD_ROSPEC` as parent.
 
-Because !LTKJava does not provide a method to get all children of a tree element, the children are retrieved indirectly by using information from `llrpdef.xml` [1], and _reflection_. For example, to get the children of the `ROSpec` parameter, the names of the children (`ROBoundarySpec`, `SpecParameter`, `ROReportSpec`) are learned by querying `llrpdef.xml`, and then the corresponding getter methods of `ROSpec` (`getROBoundarySpec()`, `getSpecParameterList()`, `getROReportSpec()`) are called using reflection.
+Because LTKJava does not provide a method to get all children of a tree element, the children are retrieved indirectly by using information from `llrpdef.xml` [1], and _reflection_. For example, to get the children of the `ROSpec` parameter, the names of the children (`ROBoundarySpec`, `SpecParameter`, `ROReportSpec`) are learned by querying `llrpdef.xml`, and then the corresponding getter methods of `ROSpec` (`getROBoundarySpec()`, `getSpecParameterList()`, `getROReportSpec()`) are called using reflection.
 
-All functionality to navigate and modify the !LTKJava object graph is encapsulated in the class `LLRPTreeMaintainer`.
+All functionality to navigate and modify the LTKJava object graph is encapsulated in the class `LLRPTreeMaintainer`.
 
 The code to query the `llrpdef.xml` is contained in the class `LLRP` (to be precise: the class `LLRP` does not directly access `llrpdef.xml`, but uses helper classes of the `LTKGenerator` [2]).
 
