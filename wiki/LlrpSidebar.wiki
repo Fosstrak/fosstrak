@@ -7,6 +7,17 @@
   * Developer Guide
     * [LlrpDevGuideOverview Overview]
     * [LlrpDevGuideInstallation Installation]
+    * GUI
+      * [LlrpDevGuideGuiGraphical Graphical Editor]
+      * [LlrpDevGuideGuiXml XML / Binary Editor]
+      * [LlrpDevGuideGuiNavigator Navigator]
+      * [LlrpDevGuideGuiExplorer Reader Explorer]
+      * [LlrpDevGuideGuiWizard Wizard]
+    * [LlrpDevGuideMgmtOverview Management]
+      * [LlrpDevGuideMgmtAdaptorManagement Adaptor Management]
+      * [LlrpDevGuideMgmtAdaptors Adaptors]
+      * [LlrpDevGuideMgmtReaders Readers]
+    * [LlrpDevGuideRepository Repository]
 
 *Other Modules*
   * [EpcisMain EPCIS]
