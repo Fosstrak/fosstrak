@@ -16,6 +16,7 @@
   * test build of LLRP module
   * notify users on retired mailing lists
   * redirect www.fosstrak.org to new site
+  * on LlrpInstallation check if URLs work (http://www.fosstrak.org/llrp/llrp_commander/update/, http://maven-repository.fosstrak.org/releases/org/fosstrak/llrp/llrp_commander/)
 
 == Closed ==
 
