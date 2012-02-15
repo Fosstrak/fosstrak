@@ -40,9 +40,9 @@ http://fosstrak.googlecode.com/svn/wikires/llrp/installCommander.png
 
 To install the LLRP Commander without Eclipse Update Manager, perform the following steps:
 
-  # Obtain a copy of the LLRP Commander from Fosstrak's Maven repository: http://maven-repository.fosstrak.org/releases/org/fosstrak/llrp/llrp_commander/.
+  # Obtain a copy of the LLRP Commander from Fosstrak's Maven repository: `http://maven-repository.fosstrak.org/releases/org/fosstrak/llrp/llrp_commander/`.
 
-  # Unpack the archive llrp_commander-<<<VERSION>>.zip> into the plugins directory of your Eclipse installation.
+  # Unpack the archive `llrp_commander-<<<VERSION>>.zip` into the plugins directory of your Eclipse installation.
 
   # Start Eclipse.
 
