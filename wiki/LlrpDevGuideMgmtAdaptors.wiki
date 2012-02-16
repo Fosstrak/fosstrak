@@ -71,7 +71,7 @@ Note: We advise you to use the adaptor management to enqueue messages instead of
 
 == Callback ==
 
-Adaptors support a asynchronous callback mechanism for exceptions and for incoming LLRP messages. Before you can use the asynchronous reporting facility you need to register the interface AsynchronousNotifiable on the adaptor. Whenever an exception occurs or when a LLRP message arrives the notifier will be updated and be provided with the message/exception.
+Adaptors support a asynchronous callback mechanism for exceptions and for incoming LLRP messages. Before you can use the asynchronous reporting facility you need to register the interface `AsynchronousNotifiable` on the adaptor. Whenever an exception occurs or when a LLRP message arrives the notifier will be updated and be provided with the message/exception.
 
 Note: When you create an adaptor through the adaptor management this callback mechanism is already setup for you and you will not need to perform any additional steps.
 
