@@ -7,7 +7,6 @@
     * [AleUserGuideServerInstallation Server Installation]
     * [AleUserGuideLogicalReaderDefinitions Logical Reader Definitions]
     * [AleUserGuideTestClients ALE Clients]
-    * [AleUserGuideCapturingApp Capturing App]
   * Developer Guide
     * [AleDevGuideOverview Overview]
     * [AleDevGuideAle ALE Service Binding]
