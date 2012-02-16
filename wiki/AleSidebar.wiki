@@ -18,6 +18,8 @@
     * [AleDevGuideImplementingAdaptors Implementing Adaptors]
     * [AleDevGuideSerializers Serializers and Deserializers]
   * [AleCapturingApp Capturing Application]
+    * [AleCapturingAppQuickStart Quick Start Guide]
+    * [AleCapturingAppDevGuide Developer Guide]
 
 *Other Modules*
   * [EpcisMain EPCIS]
