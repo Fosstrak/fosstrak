@@ -18,6 +18,7 @@
     * [AleDevGuideLogicalReaderConcept Logical Reader Concepts]
     * [AleDevGuideImplementingAdaptors Implementing Adaptors]
     * [AleDevGuideSerializers Serializers and Deserializers]
+  * [AleCapturingApp Capturing Application]
 
 *Other Modules*
   * [EpcisMain EPCIS]
