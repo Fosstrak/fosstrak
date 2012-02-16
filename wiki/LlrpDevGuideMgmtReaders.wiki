@@ -1,8 +1,8 @@
 #sidebar LlrpSidebar
 
-<wiki:toc max_depth="3"/>
-
 = Developer Guide: Readers =
+
+<wiki:toc max_depth="3"/>
 
 == Overview ==
 
