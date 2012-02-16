@@ -1,0 +1,28 @@
+#sidebar AleSidebar
+
+= Capturing Application: Developer Guide =
+
+<wiki:toc max_depth="3"/>
+
+== Overview ==
+
+From an event notification from the Fosstrak Filtering and Collection server (ECReports) you can easily create an event for the EPCIS repository. You can either implement your own capturing application (section "My own Capturing App") or use the generic capturing application provided by Fosstrak (section "Generic Capturing App").
+
+== Generic Capturing App ==
+
+The generic fosstrak capturing application tries to reduce the coding amount to an absolute minimum. Retrieval and de-serialization of ECReports is handled automatically for you, as well as the delivery of ECPIS documents to the EPCIS repository. All you need to do, is to implement a set of [http://www.jboss.org/drools/ JBoss rules] (Drools) and adjust a few configuration files.
+
+To execute the capturing application, you simply place the WAR file into the `webapps` folder of your tomcat instance. The capturing application will deploy and start automatically.
+
+=== Requirements ===
+
+We assume that you already installed an instance of Apache Tomcat, the Fosstrak ALE and the Fosstrak EPCIS repository.
+  * A copy of the Fosstrak capturing application
+  * Optional: [http://www.7-zip.org/ 7-zip] (allows to modify WAR files inplace)
+
+=== Configuration files ===
+
+There are two ways, how you can edit the configuration files for the capturing application. First: You deploy the WAR file, modify the configuration files and then re-assemble the WAR file. Second: You use 7-zip to open the archive and use the embedded text editor to edit the configuration files within the war. Feel free to choose the variant you like to most.
+  * `WEB-INF/classes/log4j.properties`: Contains the log4j logging directives. Here you can adjust the logging verbosity of the capturing application.
+  * `WEB-INF/classes/captureapplication.properties`: Allows you to specify any number of event sinks for the ALE (where the ECReports are sent to from the ALE). By default, no event sink is enabled.
+
