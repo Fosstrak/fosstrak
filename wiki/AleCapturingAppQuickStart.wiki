@@ -74,8 +74,63 @@ log4j.logger.org.fosstrak = ERROR
 
 == Simple Solution ==
 
-This solution sets up an EventCycle for each reader. This allows the capturing application to distinguish between different readers by the name of the EventCycle.
+This solution sets up an `EventCycle` for each reader. This allows the capturing application to distinguish between different readers by the name of the `EventCycle`.
 
 Please ensure, that you followed the setup in Preparations.
 
 Copy the fc-webclient and the capturing-app WAR files into the Tomcat `webapps` folder und unpack the capturing-app file (We need to adjust a few configuration parameters).
+
+=== Adjust the configuration ===
+
+  # First, we define a new capturing application that is listening on port 9999 for incoming ECReports, and that is delivering EPCIS events to the EPCIS repository at `http://localhost:8080/epcis-repository-0.4.2/capture`. Open the file `webapps/capturing-app-VERSION/WEB-INF/classes/captureapplication.properties` and set the configuration below:
+    {{{
+file: <TOMCAT_FOLDER>/webapps/capturing-app-VERSION/WEB-INF/classes/captureapplication.properties
+
+n=1
+
+cap.0.port=9999
+cap.0.name=myFirstCaptureApp
+cap.0.epcis=http://localhost:8080/epcis-repository-0.4.2/capture
+}}}
+  # Second, we instruct the capturing application to use the simple solution for the scenario. Open the file `webapps/capturing-app-VERSION/WEB-INF/classes/changeset.xml` and set the configuration below:
+    {{{
+file: <TOMCAT_FOLDER>/webapps/capturing-app-VERSION/WEB-INF/classes/changeset.xml
+
+<change-set xmlns='http://drools.org/drools-5.0/change-set'
+            xmlns:xs='http://www.w3.org/2001/XMLSchema-instance'
+            xs:schemaLocation='http://drools.org/drools-5.0/change-set.xsd' >
+   <add>
+      <resource source='classpath:drools/SimpleWareHouse-3EventCycles.drl' type='DRL' />
+   </add>
+</change-set>
+}}}
+  # Start Tomcat now.
+
+=== Setup the readers ===
+
+  # Start your web browser and point it to the address of the web-based client.
+    {{{
+http://<SERVER>:<PORT>/<WEBCLIENT_VERSION>/services/ALEWebClient.jsp
+
+example:
+http://localhost:8080/fc-webclient-1.0.1/services/ALEWebClient.jsp
+}}}
+  # Set the endpoint to the filtering and collection server's Logical Reader API by selecting `setEndPoint(String endPointName)` in the !LogicalReader API. Click "Invoke" to execute the command.
+    {{{
+endpoint: http://<SERVER>:<PORT>/<FCSERVER_VERSION>/services/ALELRService
+
+example: 
+http://localhost:8080/fc-server-1.0.1/services/ALELRService
+}}}
+  # Verify that a connection between the web-based client and the server can be established by clicking `getVendorVersion()`. A version number should be returned.
+  # The next step is to establish a connection from the Filtering & Collection to the reader simulator (basically this means to setup three different readers).
+    # Click on `define(String readerName, LRSpec spec)` in the section !LogicalReader API. Do not confuse the `define` method for an !EventCycle with the `define` method for a logical reader! Define three readers. Make sure to set the reader names exactly as they are written below.
+      # Reader_GoodsReceiving with Reader_GoodsReceiving.xml
+      # Reader_PointOfSale with Reader_PointOfSale.xml
+      # Reader_PointOfExit with Reader_PointOfExit.xml
+      {{{
+Example:
+
+readerName: Reader_PointOfSale
+specFilePath: c:\fosstrakDemo\Reader_PointOfSale.xml
+}}}
