@@ -4,6 +4,7 @@
 
   * create accounts for all committers (Marco, Samuel, etc.)
   * move website content to wiki
+  * setup team page
   * invite existing mailing list members to new mailing list
   * create mailing list page linking to the archives of the various earlier mailing lists
   * on AleQuickStart, add all download links that were present at http://www.fosstrak.org/fc/docs/user-example.html
