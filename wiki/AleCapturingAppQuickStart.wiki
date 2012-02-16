@@ -139,3 +139,41 @@ specFilePath: c:\fosstrakDemo\Reader_PointOfSale.xml
 
 === Setup the !EventCycles ===
 
+  # Start your web browser and point it to the address of the web-based client.
+    {{{
+http://<SERVER>:<PORT>/<WEBCLIENT_VERSION>/services/ALEWebClient.jsp
+
+example:
+http://localhost:8080/fc-webclient-1.0.1/services/ALEWebClient.jsp
+}}}
+  # Set the endpoint to the filtering and collection server by selecting the `setEndpoint(String endPointName)` method in the Filtering and Collection API. Click "Invoke" to execute the command.
+    {{{
+endpoint: http://<SERVER>:<PORT>/<FCSERVER_VERSION>/services/ALEService
+
+example: 
+http://localhost:8080/fc-server-1.0.1/services/ALEService
+}}}
+  # Verify that a connection between the web-based client and the server can be established by clicking `getVendorVersion()`. A version number should be returned.
+  # In the next step you will define three ALE ECSpecs. These tell the ALE Middleware how the RFID tag reads arriving from the simulator should be filtered and aggregated.
+    # Invoke the method `define(String specName, String specFilePath)`. Do not confuse the `define` method for an !EventCycle with the `define` method for a logical reader. For this scenario we need to create three !EventCycles. Make sure to set the names of the !EventCycles exactly as they are written below:
+      # EventCycle_GoodsReceiving with spec [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_GoodsReceiving.xml EventCycle_GoodsReceiving.xml]
+      # EventCycle_PointOfExit with spec [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_PointOfExit.xml EventCycle_PointOfExit.xml]
+      # EventCycle_PointOfSale with spec [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_PointOfSale.xml EventCycle_PointOfSale.xml]
+      {{{
+Example:
+
+specName: EventCycle_PointOfExit
+specFilePath: c:\fosstrakDemo\EventCycle_PointOfExit.xml
+}}}
+    # Retrieve the !EventCycle names to check if they are created correctly by clicking `getECSpecNames()`. The result should be: `[EventCycle_PointOfSale, EventCycle_PointOfExit, EventCycle_GoodsReceiving]`.
+
+=== Deliver ECReports to the capturing application ===
+
+Invoke `subscribe(String specName, String notificationUri)`. For each of the three !EventCycles we just created, invoke the registration with the target URL `http://localhost:9999`.
+
+{{{
+Example:
+
+notificationURI: http://localhost:9999
+specName: EventCycle_GoodsReceiving
+}}}
