@@ -2,6 +2,7 @@
 
 == Open ==
 
+  * add changelog
   * create accounts for all committers (Marco, Samuel, etc.)
   * move website content to wiki
   * setup team page
