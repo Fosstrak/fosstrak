@@ -243,7 +243,7 @@ With the MySQL-Commandline client, connect to the MySQL server. Switch into the 
 
 == Elaborate Solution =
 
-This solution sets up one EventCycle retrieving tags from all the readers. Aside the tag information (EPC), the EventCycle delivers also tag stats (with the name of the reader that read the EPC). With this information, the capturing application can determine the name of the reader delivering the EPC.
+This solution sets up one !EventCycle retrieving tags from all the readers. Aside the tag information (EPC), the !EventCycle delivers also tag stats (with the name of the reader that read the EPC). With this information, the capturing application can determine the name of the reader delivering the EPC.
 
 Please ensure, that you followed the setup in Preparations.
 
