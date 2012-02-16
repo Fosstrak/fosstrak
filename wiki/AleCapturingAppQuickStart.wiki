@@ -2,6 +2,8 @@
 
 = Capturing Application: Quick Start =
 
+<wiki:toc max_depth="3"/>
+
 == Overview ==
 
 This tutorial will guide you through an example scenario, how the Fosstrak Capturing Application can be used to link the Fosstrak ALE and the Fosstrak EPCIS repository by retrieving ECReports from the ALE and delivering EPCIS events to the EPCIS repository. The tutorial shows two different solutions to the scenario described below (A simple one and a more elaborate one).
