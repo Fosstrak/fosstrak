@@ -8,9 +8,9 @@
 
 Adaptors provide an interface for the creation, modification and deletion of LLRP readers.
 
-For each physical LLRP reader the adaptor creates a logical reader that will then maintain the connection. For more details refer to the chapter [LlrpDevGuideMgmgtReaders Readers].
+For each physical LLRP reader the adaptor creates a logical reader that will then maintain the connection. For more details refer to the chapter [LlrpDevGuideMgmtReaders Readers].
 
-If you want to know more about the creation of an adaptor instance please refere the the chapter [LlrpDevGuideMgmgtAdaptorManagement Adaptor Management].
+If you want to know more about the creation of an adaptor instance please refere the the chapter [LlrpDevGuideMgmtAdaptorManagement Adaptor Management].
 
 One implementation of the interface is the class `AdaptorImpl`. Within this guide we will refer to this reference implementation.
 
