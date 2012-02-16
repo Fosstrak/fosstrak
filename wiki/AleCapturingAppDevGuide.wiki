@@ -60,7 +60,7 @@ global java.util.List epcisResults
 // add an EPCIS-document to the capturing app.
 epcisResults.add(myEPCISdocument);
 }}}
-   # Fosstrak provides some helpers to retrieve data from ECReports and to assemble EPCIS documents. The helper functions can be found in the two libraries `org.fosstrak.capturingapp.util.Util` and `org.fosstrak.capturingapp.util.SimpleEPCISDocument`. Please consult the JavaDoc for detailed instructions.
+   # Fosstrak provides some helpers to retrieve data from ECReports and to assemble EPCIS documents. The helper functions can be found in the two libraries `org.fosstrak.capturingapp.util.Util` and `org.fosstrak.capturingapp.util.SimpleEPCISDocument`. Please consult the Javadoc for detailed instructions.
 
 === Complete Example ===
 
@@ -112,7 +112,7 @@ If you need more control on the drools session loading etc., the fosstrak captur
 
 Incoming ECReports are processed by a number of so-called handlers. You can implement your own handler, pack it into a JAR file and place this JAR file into the library folder of the capturing application (`WEB-INF/lib`). Each handler needs to implement the abstract class `org.fosstrak.capturingapp.ECReportsHandler.java`.
 
-For a detailed explanation how to write your own handler, please refer to the JavaDoc of the class `ECReportsHandler.java` or use the default handler `DefaultECReportHandler`.
+For a detailed explanation how to write your own handler, please refer to the Javadoc of the class `ECReportsHandler.java` or use the default handler `DefaultECReportHandler`.
 
 ==== Handler loading ====
 
