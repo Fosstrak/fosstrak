@@ -95,7 +95,7 @@ jdbc:mysql://localhost:3306/llrpMsgDB
 
 In order to log the LLRP messages to an external PostgreSQL database, the LLRP Commander needs access to a database of the PostgreSQL server.
 
-  # Open the PostgreSQL admin tool (pgAdmin) and connect to your server. On *nix you can alternatively use the command-line to create the database and the roles.
+  # Open the PostgreSQL admin tool (pgAdmin) and connect to your server. On **nix you can alternatively use the command-line to create the database and the roles.
     # Create a new _Login Role_ with role name "llrp" and password "llrp". In "Role Privileges" check "Can create database objects" (see appendix).
       {{{
 Command-line command to create the role in *nix
@@ -131,7 +131,7 @@ Make sure to configure the LLRP Commander to use either the MySQL or the Postgre
 Connect from Matlab:
 
   # You need to add the MySQL or PostgreSQL JDBC-Connector to the Java classpath of Matlab before you can establish a connection to the SQL server.
-    # Either obtain a copy of the MySQL JDBC-Connector ([http://dev.mysql.com/downloads/connector/j/5.1.html download]) or PostgreSQL ([http://jdbc.postgresql.org/download.html download] - please select JDBC-4 8.3.*). Store the file to a location of your choice.
+    # Either obtain a copy of the MySQL JDBC-Connector ([http://dev.mysql.com/downloads/connector/j/5.1.html download]) or PostgreSQL ([http://jdbc.postgresql.org/download.html download] - please select JDBC-4 8.3.x). Store the file to a location of your choice.
     # Add a reference in the Matlab Java `classpath.txt`. You can find the file in the folder `matlabroot\toolbox\local\classpath.txt`.
       {{{
 file: matlabroot\toolbox\local\classpath.txt
