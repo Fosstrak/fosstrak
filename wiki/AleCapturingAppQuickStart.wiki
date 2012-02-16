@@ -1,0 +1,81 @@
+#sidebar AleSidebar
+
+= Capturing Application: Quick Start =
+
+== Overview ==
+
+This tutorial will guide you through an example scenario, how the Fosstrak Capturing Application can be used to link the Fosstrak ALE and the Fosstrak EPCIS repository by retrieving ECReports from the ALE and delivering EPCIS events to the EPCIS repository. The tutorial shows two different solutions to the scenario described below (A simple one and a more elaborate one).
+
+== Scenario ==
+
+We model a simple store equipped with three RFID readers. One reader (`Reader_GoodsReceiving`) in the backend, where incoming goods are registered by the staff. A second reader (`Reader_PointOfExit`) installed at the exit door that either warns about stolen goods or thanks the customer for the purchasing. The third reader (`Reader_PointOfSale`) is installed at the cash desk.
+
+  * `Reader_GoodsReceiving`: Upon tag read: write a new entry into the EPCIS repository (new registered item).
+  * `Reader_PointOfSale`: Upon tag read: check the EPCIS repository if the tag has already been sold. If not sold, create a new entry in the repository, flaging the tag as sold.
+  * `Reader_PointOfExit`: Upon tag read: check the EPCIS repository if the tag has been sold. If not sold, raise an alarm.
+
+== Prerequisites ==
+
+  * a copy of the `fc-server-1.0.1.war` or newer
+  * a copy of the `fc-webclient fc-webclient-1.0.1.war` or newer
+  * a copy of the `epcis-repository-0.4.2.war` or newer
+  * a copy of the `hal-simulator`. Select `hal-impl-sim-0.5.0-bin-with-dependencies.[zip|tar.gz]` or newer
+  * Configuration files:
+    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_GoodsReceiving.xml Reader_GoodsReceiving.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfExit.xml Reader_PointOfExit.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfSale.xml Reader_PointOfSale.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/SimulatorClient.xml SimulatorClient.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/SimulatorController.xml SimulatorController.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_GoodsReceiving.xml EventCycle_GoodsReceiving.xml] (simple scenario)
+    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_PointOfExit.xml EventCycle_PointOfExit.xml] (simple scenario)
+    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_PointOfSale.xml EventCycle_PointOfSale.xml] (simple scenario)
+    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/fosstrakDemo.xml fosstrakDemo.xml] (elaborate scenario)
+  * [http://tomcat.apache.org/ Apache Tomcat] Java Servlet Container
+
+== Preparations ==
+
+The preparations need to be performed for both solutions.
+
+=== Start the multi reader simulator ===
+
+We use a simulator to generate the tag input for the Filtering & Collection. The multi reader simulator is capable of simulating several readers in one application, allowing you to move tags from one reader to another.
+
+First unpack `hal-impl-sim-VERSION-bin-with-dependencies` to a folder of your choice (example `c:\fosstrakDemo`).
+
+Open a command line and run the simulator.
+
+{{{
+cd c:\fosstrakDemo
+java -cp hal-impl-sim-0.5.0\hal-impl-sim-0.5.0.jar org.fosstrak.hal.impl.sim.multi.SimulatorServerController
+}}}
+
+If everything runs fine, an empty window should pop up.
+
+http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/simulatorController.png
+
+=== Prepare EPCIS repository ===
+
+If you already have a running instance of an EPCIS repository, you can skip this step. Otherwise follow the [EpcisUserGuide installation instructions] of the Fosstrak EPCIS repository.
+
+=== Prepare the Filtering & Collection ===
+
+Deploy the Fosstrak Filtering & Collection to your Tomcat `webapps` folder (by simply copying the WAR file into the folder). We need access to the configuration files packed into the WAR file, so unpack the war-file into the `webapps` folder.
+
+Copy the two configuration files `SimulatorClient.xml` and `SimulatorController.xml` into the folder `webapps\fc-server-VERSION\WEB-INF\classes\props` (overwrite the existing copies).
+
+We recommend to adjust the log level for the Filtering & Collection from either `DEBUG` or `INFO` to `ERROR`. To do so, open the file `webapps\fc-server-VERSION\WEB-INF\classes\log4j.properties` and adjust the log level:
+
+{{{
+file: <TOMCAT_FOLDER>\webapps\fc-server-VERSION\WEB-INF\classes\log4j.properties
+
+# class specific levels
+log4j.logger.org.fosstrak = ERROR
+}}}
+
+== Simple Solution ==
+
+This solution sets up an EventCycle for each reader. This allows the capturing application to distinguish between different readers by the name of the EventCycle.
+
+Please ensure, that you followed the setup in Preparations.
+
+Copy the fc-webclient and the capturing-app WAR files into the Tomcat `webapps` folder und unpack the capturing-app file (We need to adjust a few configuration parameters).
