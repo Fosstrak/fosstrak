@@ -125,12 +125,17 @@ http://localhost:8080/fc-server-1.0.1/services/ALELRService
   # Verify that a connection between the web-based client and the server can be established by clicking `getVendorVersion()`. A version number should be returned.
   # The next step is to establish a connection from the Filtering & Collection to the reader simulator (basically this means to setup three different readers).
     # Click on `define(String readerName, LRSpec spec)` in the section !LogicalReader API. Do not confuse the `define` method for an !EventCycle with the `define` method for a logical reader! Define three readers. Make sure to set the reader names exactly as they are written below.
-      # Reader_GoodsReceiving with Reader_GoodsReceiving.xml
-      # Reader_PointOfSale with Reader_PointOfSale.xml
-      # Reader_PointOfExit with Reader_PointOfExit.xml
-      {{{
+      # `Reader_GoodsReceiving` with [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_GoodsReceiving.xml Reader_GoodsReceiving.xml]
+      # `Reader_PointOfSale` with [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfSale.xml Reader_PointOfSale.xml]
+      # `Reader_PointOfExit` with [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfExit.xml Reader_PointOfExit.xml]
+    {{{
 Example:
 
 readerName: Reader_PointOfSale
 specFilePath: c:\fosstrakDemo\Reader_PointOfSale.xml
 }}}
+    # Retrieve the logical reader names to check if readers are there by clicking `getLogicalReaderNames()`. The result should be `[Reader_PointOfSale, Reader_PointOfExit, Reader_GoodsReceiving]`.
+  # Now switch to the multi reader simulator and refresh it to display the readers (click "view" and then "refresh").
+
+=== Setup the !EventCycles ===
+
