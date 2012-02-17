@@ -27,6 +27,7 @@
  * David Gubler
  * Jonas Haller
  * Zhang Haoning
+ * Nikos Kefalakis
  * Nektarios Leontiadis
  * Mathias Mueller
  * Patrice Oehen
