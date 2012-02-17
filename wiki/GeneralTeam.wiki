@@ -7,14 +7,16 @@
 
 = Contributors and Committers =
 
- * Dominic Guinard
- * Mark Harrison
- * Matthias Lampe
- * Benoit Plomion
- * Wafa Soubra
- * Marco Steybe
- * Marc-Antoine Mouilleron
- * Samuel Wieland 
+ * Dominic Guinard (EPCIS Web Adapter)
+ * Mark Harrison (TDT)
+ * Matthias Lampe 
+ * Benoit Plomion (ALE)
+ * Wafa Soubra (ALE)
+ * Marco Steybe (EPCIS)
+ * Marc-Antoine Mouilleron (EPCIS)
+ * Samuel Wieland (ALE & LLRP Commander)
+ * Marco Aurelio Barreto Silva (Fosstrak Brazil)	 
+ * Thiago da Silva Menezes (Fosstrak Brazil)
 
 = Fosstrak Alumni = 
 
