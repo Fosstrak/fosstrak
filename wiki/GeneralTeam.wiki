@@ -35,4 +35,5 @@
  * Angelo Rosenfelder
  * Roland Schneider
  * Markus Vitalini
+ * Sean Wellington
  * Oliver Zweifel
