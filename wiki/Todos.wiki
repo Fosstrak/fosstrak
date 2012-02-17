@@ -3,10 +3,8 @@
 == Open ==
 
   * add changelog
-  * setup team page
   * invite existing mailing list members to new mailing list
   * on AleQuickStart, add all download links that were present at http://www.fosstrak.org/fc/docs/user-example.html
-  * decide what to do with capturingapp (see also links on AleDevGuideSerializers)
   * deploy artifacts to new Maven repository
   * update POMs with new Maven repository URLs
   * test build of EPCIS module
@@ -19,6 +17,8 @@
 
 == Closed ==
 
+  * decide what to do with capturingapp (see also links on AleDevGuideSerializers)
+  * setup team page
   * move SVN repository to Google Code
   * close old SVN repository
   * create accounts for all committers (Marco, Samuel, etc.)
