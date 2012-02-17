@@ -28,6 +28,7 @@
  * Jonas Haller
  * Zhang Haoning
  * Nikos Kefalakis
+ * Adrien Laurence
  * Nektarios Leontiadis
  * Mathias Mueller
  * Patrice Oehen
