@@ -1,0 +1,37 @@
+#summary Team.
+
+= Project Management Chairs =
+
+ * [http://www.linkedin.com/pub/christian-floerkemeier/3/218/140 Christian Floerkemeier]
+ * [http://www.inf.ethz.ch/personal/rodunerc/ Christof Roduner]
+
+= Contributors and Committers =
+
+ * Dominic Guinard
+ * Mark Harrison
+ * Matthias Lampe
+ * Benoit Plomion
+ * Wafa Soubra
+ * Marco Steybe
+ * Marc-Antoine Mouilleron
+ * Samuel Wieland 
+
+= Fosstrak Alumni = 
+
+ * James Brusey
+ * Arthur van Dorp
+ * Remo Egli
+ * Ueli Etter
+ * Andreas Fuerer
+ * Andrea Groessbauer
+ * David Gubler
+ * Jonas Haller
+ * Zhang Haoning
+ * Nektarios Leontiadis
+ * Mathias Mueller
+ * Patrice Oehen
+ * Alain Remund
+ * Angelo Rosenfelder
+ * Roland Schneider
+ * Markus Vitalini
+ * Oliver Zweifel
