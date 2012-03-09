@@ -41,6 +41,9 @@ Please see the [EpcisUserGuide User Guide] for installation and usage instructio
 ==== EPCIS Capture Client ====
  * Added support for capturing EPCISMasterDataDocument in !CaptureClient.
  * Code refactoring and cleanup.
+==== EPCIS Query Client ====
+ * Updated CXF dependencies to 2.2.9
+ * Code refactoring and cleanup.
 
 === Version 0.4.2 (released February 3, 2009) ===
 ==== EPCIS Repository ====
@@ -51,6 +54,11 @@ Please see the [EpcisUserGuide User Guide] for installation and usage instructio
 ==== EPCIS Capture Client ====
  * Added support for connecting to EPCIS repositories that require client authentication (HTTP Basic and HTTPS with client certificates).
  * Updated example events. They are now compliant with EPCglobal's Core Business Vocabulary.
+==== EPCIS Query Client ====
+ * Added support for connecting to EPCIS repositories that require client authentication (HTTP Basic and HTTPS with client certificates).
+ * Fixed some issues with huge pop-up windows showing stack traces.
+ * Removed MATCH_childEPC from list of operators that can be selected by users. (MATCH_childEPC was defined in a draft version of the EPCIS specification but does not exist in the final release.)
+ * Updated example queries. They are now compliant with EPCglobal's Core Business Vocabulary.
  
 === Version 0.4.1 (released September 2, 2008) ===
 ==== EPCIS Repository ====
@@ -64,10 +72,14 @@ Renamed packages from org.accada to org.fosstrak.
 ==== EPCIS Repository ====
  * Fixed parsing of values for extension fields. Fixes [http://sourceforge.net/tracker/?func=detail&aid=1964350&group_id=170911&atid=856005 1964350].
  * Fixed epcis_demo_data.sql. (Demo data did not match latest schema.)
+==== EPCIS Query Client ====
+ * Fixed interoperability issues of query client GUI with other vendors' EPCIS repository. (The GUI used a wrong query name when requesting subscription IDs from repositories.) - Thanks to Stefan Schweizer for pointing this out.
 
 === Version 0.3.1 (released March 24, 2008) ===
 ==== EPCIS Repository ====
  * Fixed inconsistent capitalization of table names, which caused problems on case-sensitive platforms (e.g., Linux).
+==== EPCIS Query Client ====
+ * Disabled chunked HTTP transfers in order to make the query client work with repositories operating behind an Apache proxy server. (Apache's mod_proxy_http module does not support chunked requests.)
 
 === Version 0.3.0 (released March 20, 2008) ===
 ==== EPCIS Repository ====
@@ -109,6 +121,11 @@ Renamed packages from org.accada to org.fosstrak.
 ==== EPCIS Capture Client ====
  * Added possibility to construct EPCIS events using the JAXB data binding API and capture them via the !CaptureClient.
  * Added some utility classes for quickly sending capture requests to an EPCIS repository.
+==== EPCIS Query Client ====
+ * Replaced the Web service framework Apache Axis 1 with Apache CXF.
+ * Introduced a JAXB data binding to map Web service requests and responses to Java beans.
+ * Added some utility classes for quickly sending query requests to an EPCIS repository.
+ * Configured !QueryClientGui to reuse functionality provided by !QueryControlClient.
 
 === Version 0.2.3 (released December 14, 2007) ===
 ==== EPCIS Repository ====
@@ -133,12 +150,18 @@ Renamed packages from org.accada to org.fosstrak.
 ==== EPCIS Capture Client ====
  * Changed access method for invoking EPCIS capture interface in !CaptureClient. The capture interface expects an XML document conforming to the EPCISDocument in the payload of the HTTP POST request.
  * Changed return type of capture method in !CaptureClient. It will now return the HTTP response code (received from the EPCIS repository) instead of the message given in payload of the HTTP response. The !CaptureClientGui will display an appropriate success or fail message.
+==== EPCIS Query Client ====
+ * Corrected parsing of time values from repository response. Fixes [http://sourceforge.net/tracker/?func=detail&aid=1845531&group_id=170911&atid=856005 1845531].
+ * Display time values in ISO8601 format.
+ * Display error message when no event type is selected in GUI.
 
 === Version 0.2.1 (released August 10, 2007) ===
 ==== EPCIS Repository ====
  * Scheduled queries were not restored properly after a service restart. Fixes [http://sourceforge.net/tracker/?func=detail&aid=1725569&group_id=170911&atid=856005 1725569].
  * Changed demo database to make all examples shown in Query Client work.
  * Changed build environment: Added profiles (dev, prod) to the build environment with specific settings for a development and a productive environment (you can activate a profile by adding e.g. "-Denv=dev" to your mvn build command).
+==== EPCIS Query Client ====
+ * axis-wsdl4j was not properly included in Webstart application.
 
 === Version 0.2.0 (released April 27, 2007) ===
 Initial release.
