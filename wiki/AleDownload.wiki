@@ -11,7 +11,7 @@
 || Standalone Client || 1.0.2 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-client/1.0.2/fc-client-1.0.2-bin-with-dependencies.zip fc-client-1.0.2-bin-with-dependencies.zip] ||
 || Web-Based Client || 1.0.2 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-webclient/1.0.2/fc-webclient-1.0.2-bin-with-dependencies.zip fc-webclient-1.0.2-bin-with-dependencies.zip] ||
 
-The source code for these binaries can be found at http://fosstrak.googlecode.com/svn/fc/tags/fc-1.0.2.
+The source code for these binaries can be found in the Subversion repository at http://fosstrak.googlecode.com/svn/fc/tags/fc-1.0.2.
 
 == System Requirements ==
  * JDK 1.6.x or higher
