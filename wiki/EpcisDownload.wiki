@@ -13,7 +13,7 @@
 || || || ||
 || EPCIS Webadapter || 0.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/webadapters/epcis-webadapter/0.1.0/epcis-webadapter-0.1.0-bin-with-dependencies.zip epcis-webadapter-0.1.0-bin-with-dependencies.zip] ||
 
-The source code for these binaries can be found at http://fosstrak.googlecode.com/svn/epcis/tags/epcis-0.5.0 and http://fosstrak.googlecode.com/svn/webadapters/tags/epcis-webadapter-0.1.0.
+The source code for these binaries can be found in the Subversion repository at http://fosstrak.googlecode.com/svn/epcis/tags/epcis-0.5.0 and http://fosstrak.googlecode.com/svn/webadapters/tags/epcis-webadapter-0.1.0.
 
 == Previous Releases ==
 All previous releases of Fosstrak EPCIS can be found in the [https://oss.sonatype.org/content/repositories/public/org/fosstrak/ distribution repository].
