@@ -17,7 +17,7 @@ The source code for these binaries can be found at http://fosstrak.googlecode.co
  * JDK 1.6.x or higher
 
 == Installation and Usage Instructions ==
-Please see the [AleUserGuide User Guide] for installation and usage instructions.
+Please see the [AleUserGuideQuickStart User Guide] for installation and usage instructions.
 
 == Changelog ==
 
