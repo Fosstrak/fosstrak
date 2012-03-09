@@ -1,8 +1,23 @@
 #sidebar EpcisSidebar
 
-= EPCIS Download =
+= Fosstrak EPCIS Download =
 
 == Latest Release ==
 
-|| *Module* || *Download (.zip)* || *Download (.tgz)* ||
-|| Fosstrak EPCIS Repository 0.5.0 || || ||
+|| *Module* || *Version* || *Download* ||
+|| EPCIS Repository || 0.5.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/epcis/epcis-repository/0.5.0/epcis-repository-0.5.0-bin-with-dependencies.zip epcis-repository-0.5.0-bin-with-dependencies.zip] ||
+|| EPCIS Capture Client || 0.5.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/epcis/epcis-captureclient/0.5.0/epcis-captureclient-0.5.0-bin-with-dependencies.zip epcis-captureclient-0.5.0-bin-with-dependencies.zip] ||
+|| EPCIS Query Client || 0.5.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/epcis/epcis-queryclient/0.5.0/epcis-queryclient-0.5.0-bin-with-dependencies.zip epcis-queryclient-0.5.0-bin-with-dependencies.zip] ||
+|| || || ||
+|| EPCIS Webadapter || 0.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/webadapters/epcis-webadapter/0.1.0/epcis-webadapter-0.1.0-bin-with-dependencies.zip epcis-webadapter-0.1.0-bin-with-dependencies.zip] ||
+
+The source code for these binaries can be found at http://fosstrak.googlecode.com/svn/epcis/tags/epcis-0.5.0 and http://fosstrak.googlecode.com/svn/webadapters/tags/epcis-webadapter-0.1.0.
+
+== Previous Releases ==
+All previous releases of Fosstrak EPCIS can be found in the [https://oss.sonatype.org/content/repositories/public/org/fosstrak/ distribution repository].
+
+== System Requirements ==
+ * JDK 1.6.0_05 or higher
+
+== Installation and Usage Instructions ==
+Please see the [EpcisUserGuide User Guide] for installation and usage instructions.
