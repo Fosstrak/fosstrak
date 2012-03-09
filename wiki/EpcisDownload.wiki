@@ -37,7 +37,10 @@ Please see the [EpcisUserGuide User Guide] for installation and usage instructio
  * Fixed handling of dbReset scripts. Furthermore, use Hibernate to run the scripts (removes the need of deprecated method).
  * Disabled the Hibernate query_cache since we're mainly running updates/inserts and no queries.
  * Set the antiResourceLocking flag in the application context to true in order to prevent JAR file locking and allow clean undeploys on Windows systems.
- * Use correct number of SQL joins for queries with two or more EQ_fieldname parameters. Fixes [http://sourceforge.net/tracker/?func=detail&aid=2495950&group_id=170911&atid=856005 2495950]. Thanks to Oscar Saiz.
+ * Use correct number of SQL joins for queries with two or more EQ_fieldname parameters. Fixes [http://sourceforge.net/tracker/?func=detail&aid=2495950&group_id=170911&atid=856005 2495950]. Thanks to Oscar Saiz.`
+==== EPCIS Capture Client ====
+ * Added support for capturing EPCISMasterDataDocument in !CaptureClient.
+ * Code refactoring and cleanup.
 
 === Version 0.4.2 (released February 3, 2009) ===
 ==== EPCIS Repository ====
@@ -45,6 +48,9 @@ Please see the [EpcisUserGuide User Guide] for installation and usage instructio
  * Fixed query subscription error (unable to serialize and store objects of type !ArrayOfString to database) Fixes [http://sourceforge.net/tracker/?func=detail&aid=2379542&group_id=170911&atid=856005 2379542]. Thanks to Nektarios Leontiadis.
  * Updated demo data. Example events are now compliant with EPCglobal's Core Business Vocabulary.
  * Added "resource-ref" mapping in web.xml for easier deployment in containers other than Tomcat.
+==== EPCIS Capture Client ====
+ * Added support for connecting to EPCIS repositories that require client authentication (HTTP Basic and HTTPS with client certificates).
+ * Updated example events. They are now compliant with EPCglobal's Core Business Vocabulary.
  
 === Version 0.4.1 (released September 2, 2008) ===
 ==== EPCIS Repository ====
@@ -52,8 +58,7 @@ Please see the [EpcisUserGuide User Guide] for installation and usage instructio
  * Subscriptions were not stored in the database. Fixes [http://sourceforge.net/tracker/?func=detail&aid=2088551&group_id=170911&atid=856005 2088551].
 
 === Version 0.4.0 (released July 29, 2008) ===
-==== EPCIS Repository ====
- * Renamed packages from org.accada to org.fosstrak.
+Renamed packages from org.accada to org.fosstrak.
 
 === Version 0.3.2 (released June 4, 2008) ===
 ==== EPCIS Repository ====
@@ -101,6 +106,9 @@ Please see the [EpcisUserGuide User Guide] for installation and usage instructio
  * Capture Interface: check value of the 'eventTimeZoneOffset' field to match the expected pattern.
  * Capture Interface: check elements in the 'epcList', 'childEPCs', and 'parentID' fields to match the pure identity URI pattern as defined in EPCglobal Tag Data Standard 1.3.1.
  * Capture Interface: return HTTP status code different from 200 for any invalid user-provided input (e.g., invalid XML schema, invalid XML values).
+==== EPCIS Capture Client ====
+ * Added possibility to construct EPCIS events using the JAXB data binding API and capture them via the !CaptureClient.
+ * Added some utility classes for quickly sending capture requests to an EPCIS repository.
 
 === Version 0.2.3 (released December 14, 2007) ===
 ==== EPCIS Repository ====
@@ -113,11 +121,18 @@ Please see the [EpcisUserGuide User Guide] for installation and usage instructio
  * Added test case for !TimeParser.
  * Corrected serialization of time values into XML. Fixes [http://sourceforge.net/tracker/?func=detail&aid=1845531&group_id=170911&atid=856005 1845531].
  * Fixed parsing of event time when time value does not have exactly three digits for millisecond. Fixes [http://sourceforge.net/tracker/?func=detail&aid=1789784&group_id=170911&atid=856005 1789784].
+==== EPCIS Capture Client ====
+ * Corrected serialization of time values into XML. Fixes [http://sourceforge.net/tracker/?func=detail&aid=1845531&group_id=170911&atid=856005 1845531].
+ * Display time values in ISO8601 format.
+ * Added field for setting eventTimeZoneOffset in capture client GUI and adjusted example event.
 
 === Version 0.2.2 (released August 31, 2007) ===
 ==== EPCIS Repository ====
  * HTTP Capture Interface in 0.2.1 was not EPCIS compliant. Fixed capture operation which now expects the EPCISDocument as payload in the HTTP POST request. Fixes [http://sourceforge.net/tracker/?func=detail&aid=1781884&group_id=170911&atid=856005 1781884].
  * Fixed Null pointer exception. Fixes [http://sourceforge.net/tracker/?func=detail&aid=1781885&group_id=170911&atid=856005 1781885].
+==== EPCIS Capture Client ====
+ * Changed access method for invoking EPCIS capture interface in !CaptureClient. The capture interface expects an XML document conforming to the EPCISDocument in the payload of the HTTP POST request.
+ * Changed return type of capture method in !CaptureClient. It will now return the HTTP response code (received from the EPCIS repository) instead of the message given in payload of the HTTP response. The !CaptureClientGui will display an appropriate success or fail message.
 
 === Version 0.2.1 (released August 10, 2007) ===
 ==== EPCIS Repository ====
