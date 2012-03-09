@@ -15,9 +15,6 @@
 
 The source code for these binaries can be found in the Subversion repository at http://fosstrak.googlecode.com/svn/epcis/tags/epcis-0.5.0 and http://fosstrak.googlecode.com/svn/webadapters/tags/epcis-webadapter-0.1.0.
 
-== Previous Releases ==
-All previous releases of Fosstrak EPCIS can be found in the [https://oss.sonatype.org/content/repositories/public/org/fosstrak/ distribution repository].
-
 == System Requirements ==
  * JDK 1.6.0_05 or higher
 
