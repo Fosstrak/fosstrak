@@ -1,0 +1,728 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<title>CaptureClientHelper xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../apidocs/org/fosstrak/epcis/captureclient/CaptureClientHelper.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright (C) 2007 ETH Zurich</em>
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * This file is part of Fosstrak (www.fosstrak.org).</em>
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * Fosstrak is free software; you can redistribute it and/or</em>
+<a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> * modify it under the terms of the GNU Lesser General Public</em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * License version 2.1, as published by the Free Software Foundation.</em>
+<a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Fosstrak is distributed in the hope that it will be useful,</em>
+<a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</em>
+<a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_comment"> * Lesser General Public License for more details.</em>
+<a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="15" href="#15">15</a>  <em class="jxr_comment"> * You should have received a copy of the GNU Lesser General Public</em>
+<a class="jxr_linenumber" name="16" href="#16">16</a>  <em class="jxr_comment"> * License along with Fosstrak; if not, write to the Free</em>
+<a class="jxr_linenumber" name="17" href="#17">17</a>  <em class="jxr_comment"> * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,</em>
+<a class="jxr_linenumber" name="18" href="#18">18</a>  <em class="jxr_comment"> * Boston, MA  02110-1301  USA</em>
+<a class="jxr_linenumber" name="19" href="#19">19</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="20" href="#20">20</a>  
+<a class="jxr_linenumber" name="21" href="#21">21</a>  <strong class="jxr_keyword">package</strong> org.fosstrak.epcis.captureclient;
+<a class="jxr_linenumber" name="22" href="#22">22</a>  
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> java.net.URL;
+<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> java.text.DecimalFormat;
+<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> java.util.Calendar;
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> java.util.GregorianCalendar;
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> java.util.StringTokenizer;
+<a class="jxr_linenumber" name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> java.util.TimeZone;
+<a class="jxr_linenumber" name="32" href="#32">32</a>  <strong class="jxr_keyword">import</strong> java.util.Map.Entry;
+<a class="jxr_linenumber" name="33" href="#33">33</a>  
+<a class="jxr_linenumber" name="34" href="#34">34</a>  <strong class="jxr_keyword">import</strong> javax.swing.ImageIcon;
+<a class="jxr_linenumber" name="35" href="#35">35</a>  
+<a class="jxr_linenumber" name="36" href="#36">36</a>  <strong class="jxr_keyword">import</strong> org.w3c.dom.Document;
+<a class="jxr_linenumber" name="37" href="#37">37</a>  <strong class="jxr_keyword">import</strong> org.w3c.dom.Element;
+<a class="jxr_linenumber" name="38" href="#38">38</a>  
+<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment"> * This is a helper class which encapsulates common functionality used within</em>
+<a class="jxr_linenumber" name="41" href="#41">41</a>  <em class="jxr_javadoccomment"> * the capture client classes.</em>
+<a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> * @author Marco Steybe</em>
+<a class="jxr_linenumber" name="44" href="#44">44</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="45" href="#45">45</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureClientHelper.html">CaptureClientHelper</a> {
+<a class="jxr_linenumber" name="46" href="#46">46</a>  
+<a class="jxr_linenumber" name="47" href="#47">47</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="48" href="#48">48</a>  <em class="jxr_javadoccomment">     * Miscellaneous numeric formats used in formatting.</em>
+<a class="jxr_linenumber" name="49" href="#49">49</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="50" href="#50">50</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> DecimalFormat XX_FORMAT = <strong class="jxr_keyword">new</strong> DecimalFormat(<span class="jxr_string">"00"</span>);
+<a class="jxr_linenumber" name="51" href="#51">51</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> DecimalFormat XXX_FORMAT = <strong class="jxr_keyword">new</strong> DecimalFormat(<span class="jxr_string">"000"</span>);
+<a class="jxr_linenumber" name="52" href="#52">52</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> DecimalFormat XXXX_FORMAT = <strong class="jxr_keyword">new</strong> DecimalFormat(<span class="jxr_string">"0000"</span>);
+<a class="jxr_linenumber" name="53" href="#53">53</a>  
+<a class="jxr_linenumber" name="54" href="#54">54</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment">     * The various tooltips.</em>
+<a class="jxr_linenumber" name="56" href="#56">56</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="57" href="#57">57</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String toolTipDate = <span class="jxr_string">"Format is ISO 8601, i.e. YYYY-MM-DDThh:mm:ss.SSSZ"</span>;
+<a class="jxr_linenumber" name="58" href="#58">58</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String toolTipUri = <span class="jxr_string">"URI"</span>;
+<a class="jxr_linenumber" name="59" href="#59">59</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String toolTipUris = <span class="jxr_string">"One or multiple URIs, separated by spaces"</span>;
+<a class="jxr_linenumber" name="60" href="#60">60</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String toolTipInteger = <span class="jxr_string">"Integer number"</span>;
+<a class="jxr_linenumber" name="61" href="#61">61</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String toolTipOptional = <span class="jxr_string">". This field is optional"</span>;
+<a class="jxr_linenumber" name="62" href="#62">62</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String toolTipBizTransType = <span class="jxr_string">"Business Transaction Type"</span>;
+<a class="jxr_linenumber" name="63" href="#63">63</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String toolTipBizTransID = <span class="jxr_string">"Business Transactio ID"</span>;
+<a class="jxr_linenumber" name="64" href="#64">64</a>  
+<a class="jxr_linenumber" name="65" href="#65">65</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="66" href="#66">66</a>  <em class="jxr_javadoccomment">     * The possible values for the "actions" parameter.</em>
+<a class="jxr_linenumber" name="67" href="#67">67</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="68" href="#68">68</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String[] ACTIONS = { <span class="jxr_string">"ADD"</span>, <span class="jxr_string">"OBSERVE"</span>, <span class="jxr_string">"DELETE"</span> };
+<a class="jxr_linenumber" name="69" href="#69">69</a>  
+<a class="jxr_linenumber" name="70" href="#70">70</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="71" href="#71">71</a>  <em class="jxr_javadoccomment">     * The four possible event types, in human readable form.</em>
+<a class="jxr_linenumber" name="72" href="#72">72</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="73" href="#73">73</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String[] EPCIS_EVENT_NAMES = {
+<a class="jxr_linenumber" name="74" href="#74">74</a>              <span class="jxr_string">"Object event"</span>, <span class="jxr_string">"Aggregation event"</span>, <span class="jxr_string">"Quantity event"</span>, <span class="jxr_string">"Transaction event"</span> };
+<a class="jxr_linenumber" name="75" href="#75">75</a>  
+<a class="jxr_linenumber" name="76" href="#76">76</a>      <strong class="jxr_keyword">public</strong> enum <a href="../../../../org/fosstrak/epcis/captureclient/CaptureClientHelper.html">EpcisEventType</a> {
+<a class="jxr_linenumber" name="77" href="#77">77</a>  
+<a class="jxr_linenumber" name="78" href="#78">78</a>          ObjectEvent(0, <span class="jxr_string">"Object event"</span>), AggregationEvent(1, <span class="jxr_string">"Aggregation event"</span>), QuantityEvent(2, <span class="jxr_string">"Quantity event"</span>),
+<a class="jxr_linenumber" name="79" href="#79">79</a>          TransactionEvent(3, <span class="jxr_string">"Transaction event"</span>);
+<a class="jxr_linenumber" name="80" href="#80">80</a>  
+<a class="jxr_linenumber" name="81" href="#81">81</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> guiIndex;
+<a class="jxr_linenumber" name="82" href="#82">82</a>          <strong class="jxr_keyword">private</strong> String guiName;
+<a class="jxr_linenumber" name="83" href="#83">83</a>  
+<a class="jxr_linenumber" name="84" href="#84">84</a>          <strong class="jxr_keyword">private</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureClientHelper.html">EpcisEventType</a>(<strong class="jxr_keyword">int</strong> guiIndex, String guiName) {
+<a class="jxr_linenumber" name="85" href="#85">85</a>              <strong class="jxr_keyword">this</strong>.guiIndex = guiIndex;
+<a class="jxr_linenumber" name="86" href="#86">86</a>              <strong class="jxr_keyword">this</strong>.guiName = guiName;
+<a class="jxr_linenumber" name="87" href="#87">87</a>          }
+<a class="jxr_linenumber" name="88" href="#88">88</a>  
+<a class="jxr_linenumber" name="89" href="#89">89</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureClientHelper.html">EpcisEventType</a> fromGuiIndex(<strong class="jxr_keyword">int</strong> index) {
+<a class="jxr_linenumber" name="90" href="#90">90</a>              <strong class="jxr_keyword">for</strong> (EpcisEventType eventType : values()) {
+<a class="jxr_linenumber" name="91" href="#91">91</a>                  <strong class="jxr_keyword">if</strong> (eventType.guiIndex == index) {
+<a class="jxr_linenumber" name="92" href="#92">92</a>                      <strong class="jxr_keyword">return</strong> eventType;
+<a class="jxr_linenumber" name="93" href="#93">93</a>                  }
+<a class="jxr_linenumber" name="94" href="#94">94</a>              }
+<a class="jxr_linenumber" name="95" href="#95">95</a>              <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="96" href="#96">96</a>          }
+<a class="jxr_linenumber" name="97" href="#97">97</a>  
+<a class="jxr_linenumber" name="98" href="#98">98</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String[] guiNames() {
+<a class="jxr_linenumber" name="99" href="#99">99</a>              String[] guiNames = <strong class="jxr_keyword">new</strong> String[values().length];
+<a class="jxr_linenumber" name="100" href="#100">100</a>             <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; values().length; i++) {
+<a class="jxr_linenumber" name="101" href="#101">101</a>                 guiNames[i] = values()[i].getGuiName();
+<a class="jxr_linenumber" name="102" href="#102">102</a>             }
+<a class="jxr_linenumber" name="103" href="#103">103</a>             <strong class="jxr_keyword">return</strong> guiNames;
+<a class="jxr_linenumber" name="104" href="#104">104</a>         }
+<a class="jxr_linenumber" name="105" href="#105">105</a> 
+<a class="jxr_linenumber" name="106" href="#106">106</a>         <strong class="jxr_keyword">public</strong> String getGuiName() {
+<a class="jxr_linenumber" name="107" href="#107">107</a>             <strong class="jxr_keyword">return</strong> guiName;
+<a class="jxr_linenumber" name="108" href="#108">108</a>         }
+<a class="jxr_linenumber" name="109" href="#109">109</a>     }
+<a class="jxr_linenumber" name="110" href="#110">110</a> 
+<a class="jxr_linenumber" name="111" href="#111">111</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="112" href="#112">112</a> <em class="jxr_javadoccomment">     * Returns the time zone designator in a ISO6601-compliant format from the</em>
+<a class="jxr_linenumber" name="113" href="#113">113</a> <em class="jxr_javadoccomment">     * given &lt;code&gt;Calendar&lt;/code&gt; value.</em>
+<a class="jxr_linenumber" name="114" href="#114">114</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="115" href="#115">115</a> <em class="jxr_javadoccomment">     * @param cal</em>
+<a class="jxr_linenumber" name="116" href="#116">116</a> <em class="jxr_javadoccomment">     *            The Calendar to be formatted.</em>
+<a class="jxr_linenumber" name="117" href="#117">117</a> <em class="jxr_javadoccomment">     * @return The time zone designator from the given Calendar.</em>
+<a class="jxr_linenumber" name="118" href="#118">118</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="119" href="#119">119</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String getTimeZone(<strong class="jxr_keyword">final</strong> Calendar cal) {
+<a class="jxr_linenumber" name="120" href="#120">120</a>         StringBuilder buf = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="121" href="#121">121</a>         TimeZone tz = cal.getTimeZone();
+<a class="jxr_linenumber" name="122" href="#122">122</a>         <em class="jxr_comment">// determine offset of timezone from UTC (incl. daylight saving)</em>
+<a class="jxr_linenumber" name="123" href="#123">123</a>         <strong class="jxr_keyword">int</strong> offset = tz.getOffset(cal.getTimeInMillis());
+<a class="jxr_linenumber" name="124" href="#124">124</a>         <strong class="jxr_keyword">int</strong> hours = Math.abs((offset / (60 * 1000)) / 60);
+<a class="jxr_linenumber" name="125" href="#125">125</a>         <strong class="jxr_keyword">int</strong> minutes = Math.abs((offset / (60 * 1000)) % 60);
+<a class="jxr_linenumber" name="126" href="#126">126</a>         buf.append(offset &lt; 0 ? '-' : '+');
+<a class="jxr_linenumber" name="127" href="#127">127</a>         buf.append(XX_FORMAT.format(hours));
+<a class="jxr_linenumber" name="128" href="#128">128</a>         buf.append(':');
+<a class="jxr_linenumber" name="129" href="#129">129</a>         buf.append(XX_FORMAT.format(minutes));
+<a class="jxr_linenumber" name="130" href="#130">130</a>         <strong class="jxr_keyword">return</strong> buf.toString();
+<a class="jxr_linenumber" name="131" href="#131">131</a>     }
+<a class="jxr_linenumber" name="132" href="#132">132</a> 
+<a class="jxr_linenumber" name="133" href="#133">133</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="134" href="#134">134</a> <em class="jxr_javadoccomment">     * Formats a &lt;code&gt;Calendar&lt;/code&gt; value into an ISO8601-compliant date/time</em>
+<a class="jxr_linenumber" name="135" href="#135">135</a> <em class="jxr_javadoccomment">     * string.</em>
+<a class="jxr_linenumber" name="136" href="#136">136</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="137" href="#137">137</a> <em class="jxr_javadoccomment">     * @param cal</em>
+<a class="jxr_linenumber" name="138" href="#138">138</a> <em class="jxr_javadoccomment">     *            The time value to be formatted into a date/time string.</em>
+<a class="jxr_linenumber" name="139" href="#139">139</a> <em class="jxr_javadoccomment">     * @return The formatted date/time string.</em>
+<a class="jxr_linenumber" name="140" href="#140">140</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="141" href="#141">141</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String format(<strong class="jxr_keyword">final</strong> Calendar cal) {
+<a class="jxr_linenumber" name="142" href="#142">142</a>         <strong class="jxr_keyword">if</strong> (cal == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="143" href="#143">143</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalArgumentException(<span class="jxr_string">"argument can not be null"</span>);
+<a class="jxr_linenumber" name="144" href="#144">144</a>         }
+<a class="jxr_linenumber" name="145" href="#145">145</a> 
+<a class="jxr_linenumber" name="146" href="#146">146</a>         <em class="jxr_comment">// determine era and adjust year if necessary</em>
+<a class="jxr_linenumber" name="147" href="#147">147</a>         <strong class="jxr_keyword">int</strong> year = cal.get(Calendar.YEAR);
+<a class="jxr_linenumber" name="148" href="#148">148</a>         <strong class="jxr_keyword">if</strong> (cal.isSet(Calendar.ERA) &amp;&amp; cal.get(Calendar.ERA) == GregorianCalendar.BC) {
+<a class="jxr_linenumber" name="149" href="#149">149</a>             <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="150" href="#150">150</a> <em class="jxr_javadoccomment">             * calculate year using astronomical system: year n BCE =&gt;</em>
+<a class="jxr_linenumber" name="151" href="#151">151</a> <em class="jxr_javadoccomment">             * astronomical year -n + 1</em>
+<a class="jxr_linenumber" name="152" href="#152">152</a> <em class="jxr_javadoccomment">             */</em>
+<a class="jxr_linenumber" name="153" href="#153">153</a>             year = 0 - year + 1;
+<a class="jxr_linenumber" name="154" href="#154">154</a>         }
+<a class="jxr_linenumber" name="155" href="#155">155</a> 
+<a class="jxr_linenumber" name="156" href="#156">156</a>         <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="157" href="#157">157</a> <em class="jxr_javadoccomment">         * the format of the date/time string is: YYYY-MM-DDThh:mm:ss.SSSTZD</em>
+<a class="jxr_linenumber" name="158" href="#158">158</a> <em class="jxr_javadoccomment">         * note that we cannot use java.text.SimpleDateFormat for formatting</em>
+<a class="jxr_linenumber" name="159" href="#159">159</a> <em class="jxr_javadoccomment">         * because it can't handle years &lt;= 0 and TZD's</em>
+<a class="jxr_linenumber" name="160" href="#160">160</a> <em class="jxr_javadoccomment">         */</em>
+<a class="jxr_linenumber" name="161" href="#161">161</a>         StringBuilder buf = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="162" href="#162">162</a>         <em class="jxr_comment">// year ([-]YYYY)</em>
+<a class="jxr_linenumber" name="163" href="#163">163</a>         buf.append(XXXX_FORMAT.format(year));
+<a class="jxr_linenumber" name="164" href="#164">164</a>         buf.append('-');
+<a class="jxr_linenumber" name="165" href="#165">165</a>         <em class="jxr_comment">// month (MM)</em>
+<a class="jxr_linenumber" name="166" href="#166">166</a>         buf.append(XX_FORMAT.format(cal.get(Calendar.MONTH) + 1));
+<a class="jxr_linenumber" name="167" href="#167">167</a>         buf.append('-');
+<a class="jxr_linenumber" name="168" href="#168">168</a>         <em class="jxr_comment">// day (DD)</em>
+<a class="jxr_linenumber" name="169" href="#169">169</a>         buf.append(XX_FORMAT.format(cal.get(Calendar.DAY_OF_MONTH)));
+<a class="jxr_linenumber" name="170" href="#170">170</a>         buf.append('T');
+<a class="jxr_linenumber" name="171" href="#171">171</a>         <em class="jxr_comment">// hour (hh)</em>
+<a class="jxr_linenumber" name="172" href="#172">172</a>         buf.append(XX_FORMAT.format(cal.get(Calendar.HOUR_OF_DAY)));
+<a class="jxr_linenumber" name="173" href="#173">173</a>         buf.append(':');
+<a class="jxr_linenumber" name="174" href="#174">174</a>         <em class="jxr_comment">// minute (mm)</em>
+<a class="jxr_linenumber" name="175" href="#175">175</a>         buf.append(XX_FORMAT.format(cal.get(Calendar.MINUTE)));
+<a class="jxr_linenumber" name="176" href="#176">176</a>         buf.append(':');
+<a class="jxr_linenumber" name="177" href="#177">177</a>         <em class="jxr_comment">// second (ss)</em>
+<a class="jxr_linenumber" name="178" href="#178">178</a>         buf.append(XX_FORMAT.format(cal.get(Calendar.SECOND)));
+<a class="jxr_linenumber" name="179" href="#179">179</a>         buf.append('.');
+<a class="jxr_linenumber" name="180" href="#180">180</a>         <em class="jxr_comment">// millisecond (SSS)</em>
+<a class="jxr_linenumber" name="181" href="#181">181</a>         buf.append(XXX_FORMAT.format(cal.get(Calendar.MILLISECOND)));
+<a class="jxr_linenumber" name="182" href="#182">182</a>         <em class="jxr_comment">// time zone designator (+/-hh:mm)</em>
+<a class="jxr_linenumber" name="183" href="#183">183</a>         buf.append(getTimeZone(cal));
+<a class="jxr_linenumber" name="184" href="#184">184</a>         <strong class="jxr_keyword">return</strong> buf.toString();
+<a class="jxr_linenumber" name="185" href="#185">185</a>     }
+<a class="jxr_linenumber" name="186" href="#186">186</a> 
+<a class="jxr_linenumber" name="187" href="#187">187</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="188" href="#188">188</a> <em class="jxr_javadoccomment">     * Implements a class that holds examples for the EPCIS Capture Interface</em>
+<a class="jxr_linenumber" name="189" href="#189">189</a> <em class="jxr_javadoccomment">     * Client.</em>
+<a class="jxr_linenumber" name="190" href="#190">190</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="191" href="#191">191</a> <em class="jxr_javadoccomment">     * @author David Gubler</em>
+<a class="jxr_linenumber" name="192" href="#192">192</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="193" href="#193">193</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureClientHelper.html">ExampleEvents</a> {
+<a class="jxr_linenumber" name="194" href="#194">194</a>  
+<a class="jxr_linenumber" name="195" href="#195">195</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> List&lt;CaptureEvent&gt; examples = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="196" href="#196">196</a> 
+<a class="jxr_linenumber" name="197" href="#197">197</a>         <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="198" href="#198">198</a> <em class="jxr_javadoccomment">         * Sets up the examples. Add examples here if you wish.</em>
+<a class="jxr_linenumber" name="199" href="#199">199</a> <em class="jxr_javadoccomment">         */</em>
+<a class="jxr_linenumber" name="200" href="#200">200</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> initEvents() {
+<a class="jxr_linenumber" name="201" href="#201">201</a>             examples = <strong class="jxr_keyword">new</strong> ArrayList&lt;CaptureEvent&gt;();
+<a class="jxr_linenumber" name="202" href="#202">202</a>             <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a> ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="203" href="#203">203</a>             ex.setDescription(<span class="jxr_string">"DEMO 1: Item is assigned a new EPC"</span>);
+<a class="jxr_linenumber" name="204" href="#204">204</a>             ex.setType(0);
+<a class="jxr_linenumber" name="205" href="#205">205</a>             ex.setEventTime(<span class="jxr_string">"2006-09-20T06:36:17Z"</span>);
+<a class="jxr_linenumber" name="206" href="#206">206</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="207" href="#207">207</a>             ex.setAction(0);
+<a class="jxr_linenumber" name="208" href="#208">208</a>             ex.setBizStep(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:commissioning"</span>);
+<a class="jxr_linenumber" name="209" href="#209">209</a>             ex.setDisposition(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:active"</span>);
+<a class="jxr_linenumber" name="210" href="#210">210</a>             ex.setBizLocation(<span class="jxr_string">"urn:epc:id:sgln:0614141.00729.loc5"</span>);
+<a class="jxr_linenumber" name="211" href="#211">211</a>             ex.setReadPoint(<span class="jxr_string">"urn:epc:id:sgln:0614141.00729.rp97"</span>);
+<a class="jxr_linenumber" name="212" href="#212">212</a>             ex.setEpcList(<span class="jxr_string">"urn:epc:id:sgtin:0057000.123780.7788"</span>);
+<a class="jxr_linenumber" name="213" href="#213">213</a>             examples.add(ex);
+<a class="jxr_linenumber" name="214" href="#214">214</a> 
+<a class="jxr_linenumber" name="215" href="#215">215</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="216" href="#216">216</a>             ex.setDescription(<span class="jxr_string">"DEMO 2: Item is inspected for QA"</span>);
+<a class="jxr_linenumber" name="217" href="#217">217</a>             ex.setType(0);
+<a class="jxr_linenumber" name="218" href="#218">218</a>             ex.setEventTime(<span class="jxr_string">"2006-09-20T07:33:31.116Z"</span>);
+<a class="jxr_linenumber" name="219" href="#219">219</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="220" href="#220">220</a>             ex.setAction(1);
+<a class="jxr_linenumber" name="221" href="#221">221</a>             ex.setBizStep(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:inspecting"</span>);
+<a class="jxr_linenumber" name="222" href="#222">222</a>             ex.setDisposition(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:active"</span>);
+<a class="jxr_linenumber" name="223" href="#223">223</a>             ex.setBizLocation(<span class="jxr_string">"urn:epc:id:sgln:0614141.00729.loc5"</span>);
+<a class="jxr_linenumber" name="224" href="#224">224</a>             ex.setReadPoint(<span class="jxr_string">"urn:epc:id:sgln:0614141.00729.handheld8"</span>);
+<a class="jxr_linenumber" name="225" href="#225">225</a>             ex.setEpcList(<span class="jxr_string">"urn:epc:id:sgtin:0057000.123780.7788"</span>);
+<a class="jxr_linenumber" name="226" href="#226">226</a>             examples.add(ex);
+<a class="jxr_linenumber" name="227" href="#227">227</a> 
+<a class="jxr_linenumber" name="228" href="#228">228</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="229" href="#229">229</a>             ex.setDescription(<span class="jxr_string">"DEMO 3: Item is aggregated onto a pallet"</span>);
+<a class="jxr_linenumber" name="230" href="#230">230</a>             ex.setType(1);
+<a class="jxr_linenumber" name="231" href="#231">231</a>             ex.setAction(0);
+<a class="jxr_linenumber" name="232" href="#232">232</a>             ex.setEventTime(<span class="jxr_string">"2006-09-20T08:55:04Z"</span>);
+<a class="jxr_linenumber" name="233" href="#233">233</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="234" href="#234">234</a>             ex.setBizStep(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:packing"</span>);
+<a class="jxr_linenumber" name="235" href="#235">235</a>             ex.setDisposition(<span class="jxr_string">"urn:epcglobal:cbv:disp:in_progress"</span>);
+<a class="jxr_linenumber" name="236" href="#236">236</a>             ex.setBizLocation(<span class="jxr_string">"urn:epc:id:sgln:0614141.00729.loc450"</span>);
+<a class="jxr_linenumber" name="237" href="#237">237</a>             ex.setReadPoint(<span class="jxr_string">"urn:epc:id:sgln:0614141.00729.rp104"</span>);
+<a class="jxr_linenumber" name="238" href="#238">238</a>             ex.setBizTransaction(<span class="jxr_string">"urn:epcglobal:cbv:btt:po"</span>, <span class="jxr_string">"http://transaction.fosstrak.org/po/12345678"</span>);
+<a class="jxr_linenumber" name="239" href="#239">239</a>             ex.setParentID(<span class="jxr_string">"urn:epc:id:sscc:0614141.1234567890"</span>);
+<a class="jxr_linenumber" name="240" href="#240">240</a>             ex.setChildEPCs(<span class="jxr_string">"urn:epc:id:sgtin:0057000.123780.7788 urn:epc:id:sgtin:0057000.123430.2027 "</span>
+<a class="jxr_linenumber" name="241" href="#241">241</a>                     + <span class="jxr_string">"urn:epc:id:sgtin:0057000.123430.2028 urn:epc:id:sgtin:0057000.123430.2029"</span>);
+<a class="jxr_linenumber" name="242" href="#242">242</a>             examples.add(ex);
+<a class="jxr_linenumber" name="243" href="#243">243</a> 
+<a class="jxr_linenumber" name="244" href="#244">244</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="245" href="#245">245</a>             ex.setDescription(<span class="jxr_string">"DEMO 4: Pallet arrives at port of Kaohsiung"</span>);
+<a class="jxr_linenumber" name="246" href="#246">246</a>             ex.setType(0);
+<a class="jxr_linenumber" name="247" href="#247">247</a>             ex.setEventTime(<span class="jxr_string">"2006-09-20T10:33:31.116Z"</span>);
+<a class="jxr_linenumber" name="248" href="#248">248</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="249" href="#249">249</a>             ex.setAction(1);
+<a class="jxr_linenumber" name="250" href="#250">250</a>             ex.setBizStep(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:arriving"</span>);
+<a class="jxr_linenumber" name="251" href="#251">251</a>             ex.setDisposition(<span class="jxr_string">"urn:epcglobal:cbv:disp:in_progress"</span>);
+<a class="jxr_linenumber" name="252" href="#252">252</a>             ex.setBizLocation(<span class="jxr_string">"http://epcis.fosstrak.org/demo/loc/china/kaohsiung"</span>);
+<a class="jxr_linenumber" name="253" href="#253">253</a>             ex.setReadPoint(<span class="jxr_string">"http://epcis.fosstrak.org/demo/loc/china/kaohsiung/e62"</span>);
+<a class="jxr_linenumber" name="254" href="#254">254</a>             ex.setEpcList(<span class="jxr_string">"urn:epc:id:sscc:0614141.1234567890"</span>);
+<a class="jxr_linenumber" name="255" href="#255">255</a>             examples.add(ex);
+<a class="jxr_linenumber" name="256" href="#256">256</a> 
+<a class="jxr_linenumber" name="257" href="#257">257</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="258" href="#258">258</a>             ex.setDescription(<span class="jxr_string">"DEMO 5: Pallet departs from port of Kaohsiung"</span>);
+<a class="jxr_linenumber" name="259" href="#259">259</a>             ex.setType(0);
+<a class="jxr_linenumber" name="260" href="#260">260</a>             ex.setEventTime(<span class="jxr_string">"2006-09-21T13:27:08.155Z"</span>);
+<a class="jxr_linenumber" name="261" href="#261">261</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="262" href="#262">262</a>             ex.setAction(1);
+<a class="jxr_linenumber" name="263" href="#263">263</a>             ex.setBizStep(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:departing"</span>);
+<a class="jxr_linenumber" name="264" href="#264">264</a>             ex.setDisposition(<span class="jxr_string">"urn:epcglobal:cbv:disp:in_transit"</span>);
+<a class="jxr_linenumber" name="265" href="#265">265</a>             ex.setBizLocation(<span class="jxr_string">"http://epcis.fosstrak.org/demo/loc/china/kaohsiung"</span>);
+<a class="jxr_linenumber" name="266" href="#266">266</a>             ex.setReadPoint(<span class="jxr_string">"http://epcis.fosstrak.org/demo/loc/china/kaohsiung/b18"</span>);
+<a class="jxr_linenumber" name="267" href="#267">267</a>             ex.setEpcList(<span class="jxr_string">"urn:epc:id:sscc:0614141.1234567890"</span>);
+<a class="jxr_linenumber" name="268" href="#268">268</a>             examples.add(ex);
+<a class="jxr_linenumber" name="269" href="#269">269</a> 
+<a class="jxr_linenumber" name="270" href="#270">270</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="271" href="#271">271</a>             ex.setDescription(<span class="jxr_string">"Item passes a reader during manufacturing process"</span>);
+<a class="jxr_linenumber" name="272" href="#272">272</a>             ex.setType(0);
+<a class="jxr_linenumber" name="273" href="#273">273</a>             ex.setEventTime(<span class="jxr_string">"2006-04-03T20:33:31.116Z"</span>);
+<a class="jxr_linenumber" name="274" href="#274">274</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="275" href="#275">275</a>             ex.setAction(1);
+<a class="jxr_linenumber" name="276" href="#276">276</a>             ex.setBizStep(<span class="jxr_string">"http://epcis.fosstrak.org/bizstep/production"</span>);
+<a class="jxr_linenumber" name="277" href="#277">277</a>             ex.setBizLocation(<span class="jxr_string">"urn:epc:id:sgln:0614141.00101.loc210"</span>);
+<a class="jxr_linenumber" name="278" href="#278">278</a>             ex.setReadPoint(<span class="jxr_string">"urn:epc:id:sgln:0614141.00101.rp210"</span>);
+<a class="jxr_linenumber" name="279" href="#279">279</a>             ex.setEpcList(<span class="jxr_string">"urn:epc:id:sgtin:0057000.123780.3167"</span>);
+<a class="jxr_linenumber" name="280" href="#280">280</a>             examples.add(ex);
+<a class="jxr_linenumber" name="281" href="#281">281</a> 
+<a class="jxr_linenumber" name="282" href="#282">282</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="283" href="#283">283</a>             ex.setDescription(<span class="jxr_string">"Two pallets are loaded onto a truck"</span>);
+<a class="jxr_linenumber" name="284" href="#284">284</a>             ex.setType(0);
+<a class="jxr_linenumber" name="285" href="#285">285</a>             ex.setEventTime(<span class="jxr_string">"2006-05-09T21:01:44Z"</span>);
+<a class="jxr_linenumber" name="286" href="#286">286</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="287" href="#287">287</a>             ex.setAction(1);
+<a class="jxr_linenumber" name="288" href="#288">288</a>             ex.setBizStep(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:loading"</span>);
+<a class="jxr_linenumber" name="289" href="#289">289</a>             ex.setDisposition(<span class="jxr_string">"urn:epcglobal:cbv:disp:in_transit"</span>);
+<a class="jxr_linenumber" name="290" href="#290">290</a>             ex.setBizLocation(<span class="jxr_string">"urn:epc:id:sgln:0614141.00101.loc209"</span>);
+<a class="jxr_linenumber" name="291" href="#291">291</a>             ex.setReadPoint(<span class="jxr_string">"urn:epc:id:sgln:0614141.00101.rp53"</span>);
+<a class="jxr_linenumber" name="292" href="#292">292</a>             ex.setEpcList(<span class="jxr_string">"urn:epc:id:sscc:0614141.2644895423 urn:epc:id:sscc:0614141.2644895424"</span>);
+<a class="jxr_linenumber" name="293" href="#293">293</a>             ex.setBizTransaction(<span class="jxr_string">"urn:epcglobal:cbv:fmcg:btt:po"</span>, <span class="jxr_string">"http://transaction.example.com/po/12345678"</span>);
+<a class="jxr_linenumber" name="294" href="#294">294</a>             examples.add(ex);
+<a class="jxr_linenumber" name="295" href="#295">295</a> 
+<a class="jxr_linenumber" name="296" href="#296">296</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="297" href="#297">297</a>             ex.setDescription(<span class="jxr_string">"Item arrives for repair"</span>);
+<a class="jxr_linenumber" name="298" href="#298">298</a>             ex.setType(0);
+<a class="jxr_linenumber" name="299" href="#299">299</a>             ex.setEventTime(<span class="jxr_string">"2006-05-10T04:50:35Z"</span>);
+<a class="jxr_linenumber" name="300" href="#300">300</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="301" href="#301">301</a>             ex.setAction(1);
+<a class="jxr_linenumber" name="302" href="#302">302</a>             ex.setBizStep(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:receiving"</span>);
+<a class="jxr_linenumber" name="303" href="#303">303</a>             ex.setDisposition(<span class="jxr_string">"http://epcis.fosstrak.org/disp/in_repair"</span>);
+<a class="jxr_linenumber" name="304" href="#304">304</a>             ex.setBizLocation(<span class="jxr_string">"urn:epc:id:sgln:0614141.00101.repair-center"</span>);
+<a class="jxr_linenumber" name="305" href="#305">305</a>             ex.setReadPoint(<span class="jxr_string">"urn:epc:id:sgln:0614141.00101.rp77"</span>);
+<a class="jxr_linenumber" name="306" href="#306">306</a>             ex.setEpcList(<span class="jxr_string">"urn:epc:id:sgtin:0034000.987650.2686"</span>);
+<a class="jxr_linenumber" name="307" href="#307">307</a>             examples.add(ex);
+<a class="jxr_linenumber" name="308" href="#308">308</a> 
+<a class="jxr_linenumber" name="309" href="#309">309</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="310" href="#310">310</a>             ex.setDescription(<span class="jxr_string">"Three items are aggregated onto a barcode-labeled pallet"</span>);
+<a class="jxr_linenumber" name="311" href="#311">311</a>             ex.setType(1);
+<a class="jxr_linenumber" name="312" href="#312">312</a>             ex.setAction(0);
+<a class="jxr_linenumber" name="313" href="#313">313</a>             ex.setEventTime(<span class="jxr_string">"2006-06-01T15:55:04Z"</span>);
+<a class="jxr_linenumber" name="314" href="#314">314</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="315" href="#315">315</a>             ex.setBizStep(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:packing"</span>);
+<a class="jxr_linenumber" name="316" href="#316">316</a>             ex.setDisposition(<span class="jxr_string">"urn:epcglobal:cbv:disp:in_progress"</span>);
+<a class="jxr_linenumber" name="317" href="#317">317</a>             ex.setBizLocation(<span class="jxr_string">"urn:epc:id:sgln:0614141.00101.loc208"</span>);
+<a class="jxr_linenumber" name="318" href="#318">318</a>             ex.setReadPoint(<span class="jxr_string">"urn:epc:id:sgln:0614141.00101.rp98"</span>);
+<a class="jxr_linenumber" name="319" href="#319">319</a>             ex.setBizTransaction(<span class="jxr_string">"urn:epcglobal:cbv:fmcg:btt:po"</span>, <span class="jxr_string">"http://transaction.example.com/po/12345678"</span>);
+<a class="jxr_linenumber" name="320" href="#320">320</a>             ex.setBizTransaction(<span class="jxr_string">"urn:epcglobal:cbv:btt:asn"</span>, <span class="jxr_string">"http://transaction.example.com/asn/1152"</span>);
+<a class="jxr_linenumber" name="321" href="#321">321</a>             ex.setParentID(<span class="jxr_string">"urn:epc:id:sscc:0614141.2644895423"</span>);
+<a class="jxr_linenumber" name="322" href="#322">322</a>             ex.setChildEPCs(<span class="jxr_string">"urn:epc:id:sgtin:0057000.123430.2025 urn:epc:id:sgtin:0057000.123430.2027 "</span>
+<a class="jxr_linenumber" name="323" href="#323">323</a>                     + <span class="jxr_string">"urn:epc:id:sgtin:0057000.123430.2028"</span>);
+<a class="jxr_linenumber" name="324" href="#324">324</a>             examples.add(ex);
+<a class="jxr_linenumber" name="325" href="#325">325</a> 
+<a class="jxr_linenumber" name="326" href="#326">326</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="327" href="#327">327</a>             ex.setDescription(<span class="jxr_string">"Aggregation ends at customer site"</span>);
+<a class="jxr_linenumber" name="328" href="#328">328</a>             ex.setType(1);
+<a class="jxr_linenumber" name="329" href="#329">329</a>             ex.setAction(2);
+<a class="jxr_linenumber" name="330" href="#330">330</a>             ex.setEventTime(<span class="jxr_string">"2006-06-05T09:26:06Z"</span>);
+<a class="jxr_linenumber" name="331" href="#331">331</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="332" href="#332">332</a>             ex.setBizLocation(<span class="jxr_string">"urn:epc:id:sgln:0614141.82863.loc3"</span>);
+<a class="jxr_linenumber" name="333" href="#333">333</a>             ex.setReadPoint(<span class="jxr_string">"urn:epc:id:sgln:0614141.82863.reader10"</span>);
+<a class="jxr_linenumber" name="334" href="#334">334</a>             ex.setBizTransaction(<span class="jxr_string">"urn:epcglobal:cbv:fmcg:btt:po"</span>, <span class="jxr_string">"http://po.example.org/E58J3Q"</span>);
+<a class="jxr_linenumber" name="335" href="#335">335</a>             ex.setBizTransaction(<span class="jxr_string">"urn:epcglobal:cbv:btt:asn"</span>, <span class="jxr_string">"http://transaction.example.com/asn/1152"</span>);
+<a class="jxr_linenumber" name="336" href="#336">336</a>             ex.setParentID(<span class="jxr_string">"urn:epc:id:sscc:0614141.2644895423"</span>);
+<a class="jxr_linenumber" name="337" href="#337">337</a>             examples.add(ex);
+<a class="jxr_linenumber" name="338" href="#338">338</a> 
+<a class="jxr_linenumber" name="339" href="#339">339</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="340" href="#340">340</a>             ex.setDescription(<span class="jxr_string">"Physical inventory count: 67 items"</span>);
+<a class="jxr_linenumber" name="341" href="#341">341</a>             ex.setType(2);
+<a class="jxr_linenumber" name="342" href="#342">342</a>             ex.setEventTime(<span class="jxr_string">"2006-01-15T16:15:31Z"</span>);
+<a class="jxr_linenumber" name="343" href="#343">343</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="344" href="#344">344</a>             ex.setBizStep(<span class="jxr_string">"urn:epcglobal:cbv:bizstep:storing"</span>);
+<a class="jxr_linenumber" name="345" href="#345">345</a>             ex.setDisposition(<span class="jxr_string">"urn:epcglobal:cbv:disp:active"</span>);
+<a class="jxr_linenumber" name="346" href="#346">346</a>             ex.setBizLocation(<span class="jxr_string">"urn:epc:id:sgln:0614141.82863.loc6"</span>);
+<a class="jxr_linenumber" name="347" href="#347">347</a>             ex.setReadPoint(<span class="jxr_string">"urn:epc:id:sgln:0614141.82863.loc6-virt"</span>);
+<a class="jxr_linenumber" name="348" href="#348">348</a>             ex.setEpcClass(<span class="jxr_string">"urn:epc:id:sgtin:0069000.957110"</span>);
+<a class="jxr_linenumber" name="349" href="#349">349</a>             ex.setQuantity(67);
+<a class="jxr_linenumber" name="350" href="#350">350</a>             examples.add(ex);
+<a class="jxr_linenumber" name="351" href="#351">351</a> 
+<a class="jxr_linenumber" name="352" href="#352">352</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="353" href="#353">353</a>             ex.setDescription(<span class="jxr_string">"Order changed by customer - two more objects added to transaction"</span>);
+<a class="jxr_linenumber" name="354" href="#354">354</a>             ex.setType(3);
+<a class="jxr_linenumber" name="355" href="#355">355</a>             ex.setEventTime(<span class="jxr_string">"2006-08-18T11:53:01Z"</span>);
+<a class="jxr_linenumber" name="356" href="#356">356</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="357" href="#357">357</a>             ex.setAction(0);
+<a class="jxr_linenumber" name="358" href="#358">358</a>             ex.setBizTransaction(<span class="jxr_string">"urn:epcglobal:cbv:fmcg:btt:po"</span>, <span class="jxr_string">"http://transaction.example.com/po/6677150"</span>);
+<a class="jxr_linenumber" name="359" href="#359">359</a>             ex.setEpcList(<span class="jxr_string">"urn:epc:id:sgtin:0057000.678930.5003 urn:epc:id:sgtin:0057000.678930.5004"</span>);
+<a class="jxr_linenumber" name="360" href="#360">360</a>             examples.add(ex);
+<a class="jxr_linenumber" name="361" href="#361">361</a> 
+<a class="jxr_linenumber" name="362" href="#362">362</a>             ex = <strong class="jxr_keyword">new</strong> <a href="../../../../org/fosstrak/epcis/captureclient/CaptureEvent.html">CaptureEvent</a>();
+<a class="jxr_linenumber" name="363" href="#363">363</a>             ex.setDescription(<span class="jxr_string">"Transaction is finished"</span>);
+<a class="jxr_linenumber" name="364" href="#364">364</a>             ex.setType(3);
+<a class="jxr_linenumber" name="365" href="#365">365</a>             ex.setEventTime(<span class="jxr_string">"2006-08-20T07:03:51Z"</span>);
+<a class="jxr_linenumber" name="366" href="#366">366</a>             ex.setEventTimeZoneOffset(<span class="jxr_string">"+00:00"</span>);
+<a class="jxr_linenumber" name="367" href="#367">367</a>             ex.setAction(2);
+<a class="jxr_linenumber" name="368" href="#368">368</a>             ex.setBizTransaction(<span class="jxr_string">"urn:epcglobal:cbv:fmcg:btt:po"</span>, <span class="jxr_string">"http://transaction.example.com/po/6677150"</span>);
+<a class="jxr_linenumber" name="369" href="#369">369</a>             ex.setEpcList(<span class="jxr_string">"urn:epc:id:sgtin:0057000.678930.5003 urn:epc:id:sgtin:0057000.678930.5004"</span>);
+<a class="jxr_linenumber" name="370" href="#370">370</a>             examples.add(ex);
+<a class="jxr_linenumber" name="371" href="#371">371</a>         }
+<a class="jxr_linenumber" name="372" href="#372">372</a>         
+<a class="jxr_linenumber" name="373" href="#373">373</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> List&lt;CaptureEvent&gt; getExamples() {
+<a class="jxr_linenumber" name="374" href="#374">374</a>             <strong class="jxr_keyword">if</strong> (examples == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="375" href="#375">375</a>                 initEvents();
+<a class="jxr_linenumber" name="376" href="#376">376</a>             }
+<a class="jxr_linenumber" name="377" href="#377">377</a>             <strong class="jxr_keyword">return</strong> examples;
+<a class="jxr_linenumber" name="378" href="#378">378</a>         }
+<a class="jxr_linenumber" name="379" href="#379">379</a>     }
+<a class="jxr_linenumber" name="380" href="#380">380</a> 
+<a class="jxr_linenumber" name="381" href="#381">381</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="382" href="#382">382</a> <em class="jxr_javadoccomment">     * Loads ImageIcon from either JAR or filesystem.</em>
+<a class="jxr_linenumber" name="383" href="#383">383</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="384" href="#384">384</a> <em class="jxr_javadoccomment">     * @param filename</em>
+<a class="jxr_linenumber" name="385" href="#385">385</a> <em class="jxr_javadoccomment">     *            The name of the file holding the image icon.</em>
+<a class="jxr_linenumber" name="386" href="#386">386</a> <em class="jxr_javadoccomment">     * @return The ImageIcon.</em>
+<a class="jxr_linenumber" name="387" href="#387">387</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="388" href="#388">388</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> ImageIcon getImageIcon(<strong class="jxr_keyword">final</strong> String filename) {
+<a class="jxr_linenumber" name="389" href="#389">389</a>         <em class="jxr_comment">// try loading image from JAR (Web Start environment)</em>
+<a class="jxr_linenumber" name="390" href="#390">390</a>         ClassLoader classLoader = CaptureClientHelper.<strong class="jxr_keyword">class</strong>.getClassLoader();
+<a class="jxr_linenumber" name="391" href="#391">391</a>         URL url = classLoader.getResource(<span class="jxr_string">"gui/"</span> + filename);
+<a class="jxr_linenumber" name="392" href="#392">392</a>         <strong class="jxr_keyword">if</strong> (url != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="393" href="#393">393</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> ImageIcon(url);
+<a class="jxr_linenumber" name="394" href="#394">394</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="395" href="#395">395</a>             <em class="jxr_comment">// try loading image from filesystem - hack as we</em>
+<a class="jxr_linenumber" name="396" href="#396">396</a>             <em class="jxr_comment">// can be called in either Eclipse or shell environment</em>
+<a class="jxr_linenumber" name="397" href="#397">397</a>             ImageIcon ii;
+<a class="jxr_linenumber" name="398" href="#398">398</a>             ii = <strong class="jxr_keyword">new</strong> ImageIcon(<span class="jxr_string">"./tools/capturingGUI/media/"</span> + filename);
+<a class="jxr_linenumber" name="399" href="#399">399</a>             <strong class="jxr_keyword">if</strong> (ii.getImageLoadStatus() != java.awt.MediaTracker.COMPLETE) {
+<a class="jxr_linenumber" name="400" href="#400">400</a>                 ii = <strong class="jxr_keyword">new</strong> ImageIcon(<span class="jxr_string">"./gui/"</span> + filename);
+<a class="jxr_linenumber" name="401" href="#401">401</a>             }
+<a class="jxr_linenumber" name="402" href="#402">402</a>             <strong class="jxr_keyword">return</strong> ii;
+<a class="jxr_linenumber" name="403" href="#403">403</a>         }
+<a class="jxr_linenumber" name="404" href="#404">404</a>     }
+<a class="jxr_linenumber" name="405" href="#405">405</a> 
+<a class="jxr_linenumber" name="406" href="#406">406</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="407" href="#407">407</a> <em class="jxr_javadoccomment">     * Adds the given quantity value as {@code &lt;quantity&gt;} element to the XML</em>
+<a class="jxr_linenumber" name="408" href="#408">408</a> <em class="jxr_javadoccomment">     * document.</em>
+<a class="jxr_linenumber" name="409" href="#409">409</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="410" href="#410">410</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="411" href="#411">411</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;quantity&gt;} element from.</em>
+<a class="jxr_linenumber" name="412" href="#412">412</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="413" href="#413">413</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;quantity&gt;} element</em>
+<a class="jxr_linenumber" name="414" href="#414">414</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="415" href="#415">415</a> <em class="jxr_javadoccomment">     * @param quantity</em>
+<a class="jxr_linenumber" name="416" href="#416">416</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;quantity&gt;} element.</em>
+<a class="jxr_linenumber" name="417" href="#417">417</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;quantity&gt;} element was successfully</em>
+<a class="jxr_linenumber" name="418" href="#418">418</a> <em class="jxr_javadoccomment">     *         created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="419" href="#419">419</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="420" href="#420">420</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addQuantity(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, <strong class="jxr_keyword">final</strong> String quantity) {
+<a class="jxr_linenumber" name="421" href="#421">421</a>         Integer n = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="422" href="#422">422</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="423" href="#423">423</a>             n = <strong class="jxr_keyword">new</strong> Integer(quantity);
+<a class="jxr_linenumber" name="424" href="#424">424</a>         } <strong class="jxr_keyword">catch</strong> (NumberFormatException e) {
+<a class="jxr_linenumber" name="425" href="#425">425</a>             <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="426" href="#426">426</a>         }
+<a class="jxr_linenumber" name="427" href="#427">427</a>         <strong class="jxr_keyword">return</strong> addElement(document, root, n.toString(), <span class="jxr_string">"quantity"</span>);
+<a class="jxr_linenumber" name="428" href="#428">428</a>     }
+<a class="jxr_linenumber" name="429" href="#429">429</a> 
+<a class="jxr_linenumber" name="430" href="#430">430</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="431" href="#431">431</a> <em class="jxr_javadoccomment">     * Adds the given epcClass value as {@code &lt;epcClass&gt;} element to the XML</em>
+<a class="jxr_linenumber" name="432" href="#432">432</a> <em class="jxr_javadoccomment">     * document.</em>
+<a class="jxr_linenumber" name="433" href="#433">433</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="434" href="#434">434</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="435" href="#435">435</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;epcClass&gt;} element from.</em>
+<a class="jxr_linenumber" name="436" href="#436">436</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="437" href="#437">437</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;epcClass&gt;} element</em>
+<a class="jxr_linenumber" name="438" href="#438">438</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="439" href="#439">439</a> <em class="jxr_javadoccomment">     * @param epcClass</em>
+<a class="jxr_linenumber" name="440" href="#440">440</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;epcClass&gt;} element.</em>
+<a class="jxr_linenumber" name="441" href="#441">441</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;epcClass&gt;} element was successfully</em>
+<a class="jxr_linenumber" name="442" href="#442">442</a> <em class="jxr_javadoccomment">     *         created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="443" href="#443">443</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="444" href="#444">444</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addEpcClass(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, <strong class="jxr_keyword">final</strong> String epcClass) {
+<a class="jxr_linenumber" name="445" href="#445">445</a>         <strong class="jxr_keyword">return</strong> addElement(document, root, epcClass, <span class="jxr_string">"epcClass"</span>);
+<a class="jxr_linenumber" name="446" href="#446">446</a>     }
+<a class="jxr_linenumber" name="447" href="#447">447</a> 
+<a class="jxr_linenumber" name="448" href="#448">448</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="449" href="#449">449</a> <em class="jxr_javadoccomment">     * Adds the EPCs from the given list of childEPCs as {@code &lt;epc&gt;} elements</em>
+<a class="jxr_linenumber" name="450" href="#450">450</a> <em class="jxr_javadoccomment">     * inside an {@code &lt;childEPCs&gt;} element to the XML document.</em>
+<a class="jxr_linenumber" name="451" href="#451">451</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="452" href="#452">452</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="453" href="#453">453</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;epc&gt;} and {@code</em>
+<a class="jxr_linenumber" name="454" href="#454">454</a> <em class="jxr_javadoccomment">     *            &lt;childEPCs&gt;} element from.</em>
+<a class="jxr_linenumber" name="455" href="#455">455</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="456" href="#456">456</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;childEPCs&gt;} element</em>
+<a class="jxr_linenumber" name="457" href="#457">457</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="458" href="#458">458</a> <em class="jxr_javadoccomment">     * @param childEPCs</em>
+<a class="jxr_linenumber" name="459" href="#459">459</a> <em class="jxr_javadoccomment">     *            A space-separated list of EPCs.</em>
+<a class="jxr_linenumber" name="460" href="#460">460</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;childEPCs&gt;} element was successfully</em>
+<a class="jxr_linenumber" name="461" href="#461">461</a> <em class="jxr_javadoccomment">     *         created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="462" href="#462">462</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="463" href="#463">463</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addChildEpcList(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, <strong class="jxr_keyword">final</strong> String childEPCs) {
+<a class="jxr_linenumber" name="464" href="#464">464</a>         <strong class="jxr_keyword">if</strong> (isEmpty(childEPCs)) {
+<a class="jxr_linenumber" name="465" href="#465">465</a>             <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="466" href="#466">466</a>         }
+<a class="jxr_linenumber" name="467" href="#467">467</a>         Element element = document.createElement(<span class="jxr_string">"childEPCs"</span>);
+<a class="jxr_linenumber" name="468" href="#468">468</a>         StringTokenizer st = <strong class="jxr_keyword">new</strong> StringTokenizer(childEPCs);
+<a class="jxr_linenumber" name="469" href="#469">469</a>         <strong class="jxr_keyword">while</strong> (st.hasMoreTokens()) {
+<a class="jxr_linenumber" name="470" href="#470">470</a>             addElement(document, element, st.nextToken(), <span class="jxr_string">"epc"</span>);
+<a class="jxr_linenumber" name="471" href="#471">471</a>         }
+<a class="jxr_linenumber" name="472" href="#472">472</a>         root.appendChild(element);
+<a class="jxr_linenumber" name="473" href="#473">473</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="474" href="#474">474</a>     }
+<a class="jxr_linenumber" name="475" href="#475">475</a> 
+<a class="jxr_linenumber" name="476" href="#476">476</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="477" href="#477">477</a> <em class="jxr_javadoccomment">     * Adds the given mapping of business transactions ([business transaction</em>
+<a class="jxr_linenumber" name="478" href="#478">478</a> <em class="jxr_javadoccomment">     * IDs] -&gt; [business transaction types]) as part of a {@code</em>
+<a class="jxr_linenumber" name="479" href="#479">479</a> <em class="jxr_javadoccomment">     * &lt;bizTransactionList&gt;} element to the XML document.</em>
+<a class="jxr_linenumber" name="480" href="#480">480</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="481" href="#481">481</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="482" href="#482">482</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;bizTransactionList&gt;}</em>
+<a class="jxr_linenumber" name="483" href="#483">483</a> <em class="jxr_javadoccomment">     *            element from.</em>
+<a class="jxr_linenumber" name="484" href="#484">484</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="485" href="#485">485</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;bizTransactionList&gt;}</em>
+<a class="jxr_linenumber" name="486" href="#486">486</a> <em class="jxr_javadoccomment">     *            element should be generated.</em>
+<a class="jxr_linenumber" name="487" href="#487">487</a> <em class="jxr_javadoccomment">     * @param bizTransactions</em>
+<a class="jxr_linenumber" name="488" href="#488">488</a> <em class="jxr_javadoccomment">     *            A mapping of business transaction IDs to business transaction</em>
+<a class="jxr_linenumber" name="489" href="#489">489</a> <em class="jxr_javadoccomment">     *            types.</em>
+<a class="jxr_linenumber" name="490" href="#490">490</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;bizTransactionList&gt;} element was</em>
+<a class="jxr_linenumber" name="491" href="#491">491</a> <em class="jxr_javadoccomment">     *         successfully created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="492" href="#492">492</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="493" href="#493">493</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addBizTransactions(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root,
+<a class="jxr_linenumber" name="494" href="#494">494</a>             <strong class="jxr_keyword">final</strong> Map&lt;String, String&gt; bizTransactions) {
+<a class="jxr_linenumber" name="495" href="#495">495</a>         <strong class="jxr_keyword">if</strong> (bizTransactions == <strong class="jxr_keyword">null</strong> || bizTransactions.isEmpty() || bizTransactions.keySet().size() &lt; 1) {
+<a class="jxr_linenumber" name="496" href="#496">496</a>             <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="497" href="#497">497</a>         }
+<a class="jxr_linenumber" name="498" href="#498">498</a>         Element element = document.createElement(<span class="jxr_string">"bizTransactionList"</span>);
+<a class="jxr_linenumber" name="499" href="#499">499</a>         <strong class="jxr_keyword">for</strong> (Entry&lt;String, String&gt; bizTransEntry : bizTransactions.entrySet()) {
+<a class="jxr_linenumber" name="500" href="#500">500</a>             <strong class="jxr_keyword">if</strong> (!isEmpty(bizTransEntry.getKey()) &amp;&amp; !isEmpty(bizTransEntry.getValue())) {
+<a class="jxr_linenumber" name="501" href="#501">501</a>                 Element bizNode = document.createElement(<span class="jxr_string">"bizTransaction"</span>);
+<a class="jxr_linenumber" name="502" href="#502">502</a>                 bizNode.appendChild(document.createTextNode(bizTransEntry.getKey()));
+<a class="jxr_linenumber" name="503" href="#503">503</a>                 bizNode.setAttribute(<span class="jxr_string">"type"</span>, bizTransEntry.getValue());
+<a class="jxr_linenumber" name="504" href="#504">504</a>                 element.appendChild(bizNode);
+<a class="jxr_linenumber" name="505" href="#505">505</a>             }
+<a class="jxr_linenumber" name="506" href="#506">506</a>         }
+<a class="jxr_linenumber" name="507" href="#507">507</a>         root.appendChild(element);
+<a class="jxr_linenumber" name="508" href="#508">508</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="509" href="#509">509</a>     }
+<a class="jxr_linenumber" name="510" href="#510">510</a> 
+<a class="jxr_linenumber" name="511" href="#511">511</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="512" href="#512">512</a> <em class="jxr_javadoccomment">     * Adds the given bizLocation as {@code &lt;id&gt;} element inside a {@code</em>
+<a class="jxr_linenumber" name="513" href="#513">513</a> <em class="jxr_javadoccomment">     * &lt;bizLocation&gt;} element to the XML document.</em>
+<a class="jxr_linenumber" name="514" href="#514">514</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="515" href="#515">515</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="516" href="#516">516</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;id&gt;} and {@code</em>
+<a class="jxr_linenumber" name="517" href="#517">517</a> <em class="jxr_javadoccomment">     *            &lt;bizLocation&gt;} elements from.</em>
+<a class="jxr_linenumber" name="518" href="#518">518</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="519" href="#519">519</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;bizLocation&gt;} element</em>
+<a class="jxr_linenumber" name="520" href="#520">520</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="521" href="#521">521</a> <em class="jxr_javadoccomment">     * @param bizLocation</em>
+<a class="jxr_linenumber" name="522" href="#522">522</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;id&gt;} element.</em>
+<a class="jxr_linenumber" name="523" href="#523">523</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;bizLocation&gt;} element was successfully</em>
+<a class="jxr_linenumber" name="524" href="#524">524</a> <em class="jxr_javadoccomment">     *         created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="525" href="#525">525</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="526" href="#526">526</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addBizLocation(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, <strong class="jxr_keyword">final</strong> String bizLocation) {
+<a class="jxr_linenumber" name="527" href="#527">527</a>         <strong class="jxr_keyword">if</strong> (isEmpty(bizLocation)) {
+<a class="jxr_linenumber" name="528" href="#528">528</a>             <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="529" href="#529">529</a>         }
+<a class="jxr_linenumber" name="530" href="#530">530</a>         Element element = document.createElement(<span class="jxr_string">"bizLocation"</span>);
+<a class="jxr_linenumber" name="531" href="#531">531</a>         addElement(document, element, bizLocation, <span class="jxr_string">"id"</span>);
+<a class="jxr_linenumber" name="532" href="#532">532</a>         root.appendChild(element);
+<a class="jxr_linenumber" name="533" href="#533">533</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="534" href="#534">534</a>     }
+<a class="jxr_linenumber" name="535" href="#535">535</a> 
+<a class="jxr_linenumber" name="536" href="#536">536</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="537" href="#537">537</a> <em class="jxr_javadoccomment">     * Adds the given readPoint as {@code &lt;id&gt;} element inside a {@code</em>
+<a class="jxr_linenumber" name="538" href="#538">538</a> <em class="jxr_javadoccomment">     * &lt;readPoint&gt;} element to the XML document.</em>
+<a class="jxr_linenumber" name="539" href="#539">539</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="540" href="#540">540</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="541" href="#541">541</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;id&gt;} and {@code</em>
+<a class="jxr_linenumber" name="542" href="#542">542</a> <em class="jxr_javadoccomment">     *            &lt;readPoint&gt;} elements from.</em>
+<a class="jxr_linenumber" name="543" href="#543">543</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="544" href="#544">544</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;readPoint&gt;} element</em>
+<a class="jxr_linenumber" name="545" href="#545">545</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="546" href="#546">546</a> <em class="jxr_javadoccomment">     * @param readPoint</em>
+<a class="jxr_linenumber" name="547" href="#547">547</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;id&gt;} element.</em>
+<a class="jxr_linenumber" name="548" href="#548">548</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;readPoint&gt;} element was successfully</em>
+<a class="jxr_linenumber" name="549" href="#549">549</a> <em class="jxr_javadoccomment">     *         created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="550" href="#550">550</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="551" href="#551">551</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addReadPoint(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, <strong class="jxr_keyword">final</strong> String readPoint) {
+<a class="jxr_linenumber" name="552" href="#552">552</a>         <strong class="jxr_keyword">if</strong> (isEmpty(readPoint)) {
+<a class="jxr_linenumber" name="553" href="#553">553</a>             <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="554" href="#554">554</a>         }
+<a class="jxr_linenumber" name="555" href="#555">555</a>         Element element = document.createElement(<span class="jxr_string">"readPoint"</span>);
+<a class="jxr_linenumber" name="556" href="#556">556</a>         addElement(document, element, readPoint, <span class="jxr_string">"id"</span>);
+<a class="jxr_linenumber" name="557" href="#557">557</a>         root.appendChild(element);
+<a class="jxr_linenumber" name="558" href="#558">558</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="559" href="#559">559</a>     }
+<a class="jxr_linenumber" name="560" href="#560">560</a> 
+<a class="jxr_linenumber" name="561" href="#561">561</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="562" href="#562">562</a> <em class="jxr_javadoccomment">     * Adds the given disposition value as {@code &lt;disposition&gt;} element to the</em>
+<a class="jxr_linenumber" name="563" href="#563">563</a> <em class="jxr_javadoccomment">     * XML document.</em>
+<a class="jxr_linenumber" name="564" href="#564">564</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="565" href="#565">565</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="566" href="#566">566</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;disposition&gt;} element</em>
+<a class="jxr_linenumber" name="567" href="#567">567</a> <em class="jxr_javadoccomment">     *            from.</em>
+<a class="jxr_linenumber" name="568" href="#568">568</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="569" href="#569">569</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;disposition&gt;} element</em>
+<a class="jxr_linenumber" name="570" href="#570">570</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="571" href="#571">571</a> <em class="jxr_javadoccomment">     * @param disposition</em>
+<a class="jxr_linenumber" name="572" href="#572">572</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;disposition&gt;} element.</em>
+<a class="jxr_linenumber" name="573" href="#573">573</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;disposition&gt;} element was successfully</em>
+<a class="jxr_linenumber" name="574" href="#574">574</a> <em class="jxr_javadoccomment">     *         created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="575" href="#575">575</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="576" href="#576">576</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addDisposition(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, String disposition) {
+<a class="jxr_linenumber" name="577" href="#577">577</a>         <strong class="jxr_keyword">return</strong> addElement(document, root, disposition, <span class="jxr_string">"disposition"</span>);
+<a class="jxr_linenumber" name="578" href="#578">578</a>     }
+<a class="jxr_linenumber" name="579" href="#579">579</a> 
+<a class="jxr_linenumber" name="580" href="#580">580</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="581" href="#581">581</a> <em class="jxr_javadoccomment">     * Adds the given bizStep value as {@code &lt;bizStep&gt;} element to the XML</em>
+<a class="jxr_linenumber" name="582" href="#582">582</a> <em class="jxr_javadoccomment">     * document.</em>
+<a class="jxr_linenumber" name="583" href="#583">583</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="584" href="#584">584</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="585" href="#585">585</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;bizStep&gt;} element from.</em>
+<a class="jxr_linenumber" name="586" href="#586">586</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="587" href="#587">587</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;bizStep&gt;} element</em>
+<a class="jxr_linenumber" name="588" href="#588">588</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="589" href="#589">589</a> <em class="jxr_javadoccomment">     * @param bizStep</em>
+<a class="jxr_linenumber" name="590" href="#590">590</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;bizStep&gt;} element.</em>
+<a class="jxr_linenumber" name="591" href="#591">591</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;bizStep&gt;} element was successfully created,</em>
+<a class="jxr_linenumber" name="592" href="#592">592</a> <em class="jxr_javadoccomment">     *         &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="593" href="#593">593</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="594" href="#594">594</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addBizStep(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, <strong class="jxr_keyword">final</strong> String bizStep) {
+<a class="jxr_linenumber" name="595" href="#595">595</a>         <strong class="jxr_keyword">return</strong> addElement(document, root, bizStep, <span class="jxr_string">"bizStep"</span>);
+<a class="jxr_linenumber" name="596" href="#596">596</a>     }
+<a class="jxr_linenumber" name="597" href="#597">597</a> 
+<a class="jxr_linenumber" name="598" href="#598">598</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="599" href="#599">599</a> <em class="jxr_javadoccomment">     * Adds the given action value as {@code &lt;action&gt;} element to the XML</em>
+<a class="jxr_linenumber" name="600" href="#600">600</a> <em class="jxr_javadoccomment">     * document.</em>
+<a class="jxr_linenumber" name="601" href="#601">601</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="602" href="#602">602</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="603" href="#603">603</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;action&gt;} element from.</em>
+<a class="jxr_linenumber" name="604" href="#604">604</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="605" href="#605">605</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;action&gt;} element</em>
+<a class="jxr_linenumber" name="606" href="#606">606</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="607" href="#607">607</a> <em class="jxr_javadoccomment">     * @param action</em>
+<a class="jxr_linenumber" name="608" href="#608">608</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;action&gt;} element.</em>
+<a class="jxr_linenumber" name="609" href="#609">609</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;action&gt;} element was successfully created,</em>
+<a class="jxr_linenumber" name="610" href="#610">610</a> <em class="jxr_javadoccomment">     *         &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="611" href="#611">611</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="612" href="#612">612</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addAction(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, String action) {
+<a class="jxr_linenumber" name="613" href="#613">613</a>         <strong class="jxr_keyword">return</strong> addElement(document, root, action, <span class="jxr_string">"action"</span>);
+<a class="jxr_linenumber" name="614" href="#614">614</a>     }
+<a class="jxr_linenumber" name="615" href="#615">615</a> 
+<a class="jxr_linenumber" name="616" href="#616">616</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="617" href="#617">617</a> <em class="jxr_javadoccomment">     * Adds the EPCs from the given epcList as {@code &lt;epc&gt;} elements inside an</em>
+<a class="jxr_linenumber" name="618" href="#618">618</a> <em class="jxr_javadoccomment">     * {@code &lt;epcList&gt;} element to the XML document.</em>
+<a class="jxr_linenumber" name="619" href="#619">619</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="620" href="#620">620</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="621" href="#621">621</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;epc&gt;} and {@code</em>
+<a class="jxr_linenumber" name="622" href="#622">622</a> <em class="jxr_javadoccomment">     *            &lt;epcList&gt;} element from.</em>
+<a class="jxr_linenumber" name="623" href="#623">623</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="624" href="#624">624</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;childEPCs&gt;} element</em>
+<a class="jxr_linenumber" name="625" href="#625">625</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="626" href="#626">626</a> <em class="jxr_javadoccomment">     * @param epcList</em>
+<a class="jxr_linenumber" name="627" href="#627">627</a> <em class="jxr_javadoccomment">     *            A space-separated list of EPCs.</em>
+<a class="jxr_linenumber" name="628" href="#628">628</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;epcList&gt;} element was successfully created,</em>
+<a class="jxr_linenumber" name="629" href="#629">629</a> <em class="jxr_javadoccomment">     *         &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="630" href="#630">630</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="631" href="#631">631</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addEpcList(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, <strong class="jxr_keyword">final</strong> String epcList) {
+<a class="jxr_linenumber" name="632" href="#632">632</a>         <strong class="jxr_keyword">if</strong> (isEmpty(epcList)) {
+<a class="jxr_linenumber" name="633" href="#633">633</a>             <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="634" href="#634">634</a>         }
+<a class="jxr_linenumber" name="635" href="#635">635</a>         Element element = document.createElement(<span class="jxr_string">"epcList"</span>);
+<a class="jxr_linenumber" name="636" href="#636">636</a>         StringTokenizer st = <strong class="jxr_keyword">new</strong> StringTokenizer(epcList);
+<a class="jxr_linenumber" name="637" href="#637">637</a>         <strong class="jxr_keyword">while</strong> (st.hasMoreTokens()) {
+<a class="jxr_linenumber" name="638" href="#638">638</a>             addElement(document, element, st.nextToken(), <span class="jxr_string">"epc"</span>);
+<a class="jxr_linenumber" name="639" href="#639">639</a>         }
+<a class="jxr_linenumber" name="640" href="#640">640</a>         root.appendChild(element);
+<a class="jxr_linenumber" name="641" href="#641">641</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="642" href="#642">642</a>     }
+<a class="jxr_linenumber" name="643" href="#643">643</a> 
+<a class="jxr_linenumber" name="644" href="#644">644</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="645" href="#645">645</a> <em class="jxr_javadoccomment">     * Adds the given parentID value as {@code &lt;parentID&gt;} element to the XML</em>
+<a class="jxr_linenumber" name="646" href="#646">646</a> <em class="jxr_javadoccomment">     * document.</em>
+<a class="jxr_linenumber" name="647" href="#647">647</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="648" href="#648">648</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="649" href="#649">649</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;parentID&gt;} element from.</em>
+<a class="jxr_linenumber" name="650" href="#650">650</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="651" href="#651">651</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;parentID&gt;} element</em>
+<a class="jxr_linenumber" name="652" href="#652">652</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="653" href="#653">653</a> <em class="jxr_javadoccomment">     * @param parentID</em>
+<a class="jxr_linenumber" name="654" href="#654">654</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;parentID&gt;} element.</em>
+<a class="jxr_linenumber" name="655" href="#655">655</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;parentID&gt;} element was successfully</em>
+<a class="jxr_linenumber" name="656" href="#656">656</a> <em class="jxr_javadoccomment">     *         created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="657" href="#657">657</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="658" href="#658">658</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addParentId(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, String parentID) {
+<a class="jxr_linenumber" name="659" href="#659">659</a>         <strong class="jxr_keyword">return</strong> addElement(document, root, parentID, <span class="jxr_string">"parentID"</span>);
+<a class="jxr_linenumber" name="660" href="#660">660</a>     }
+<a class="jxr_linenumber" name="661" href="#661">661</a> 
+<a class="jxr_linenumber" name="662" href="#662">662</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="663" href="#663">663</a> <em class="jxr_javadoccomment">     * Adds the given eventTime value as {@code &lt;eventTime&gt;} element to the XML</em>
+<a class="jxr_linenumber" name="664" href="#664">664</a> <em class="jxr_javadoccomment">     * document.</em>
+<a class="jxr_linenumber" name="665" href="#665">665</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="666" href="#666">666</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="667" href="#667">667</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;eventTime&gt;} element from.</em>
+<a class="jxr_linenumber" name="668" href="#668">668</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="669" href="#669">669</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;eventTime&gt;} element</em>
+<a class="jxr_linenumber" name="670" href="#670">670</a> <em class="jxr_javadoccomment">     *            should be generated.</em>
+<a class="jxr_linenumber" name="671" href="#671">671</a> <em class="jxr_javadoccomment">     * @param eventTime</em>
+<a class="jxr_linenumber" name="672" href="#672">672</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;eventTime&gt;} element.</em>
+<a class="jxr_linenumber" name="673" href="#673">673</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;eventTime&gt;} element was successfully</em>
+<a class="jxr_linenumber" name="674" href="#674">674</a> <em class="jxr_javadoccomment">     *         created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="675" href="#675">675</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="676" href="#676">676</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addEventTime(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, <strong class="jxr_keyword">final</strong> String eventTime) {
+<a class="jxr_linenumber" name="677" href="#677">677</a>         <strong class="jxr_keyword">return</strong> addElement(document, root, eventTime, <span class="jxr_string">"eventTime"</span>);
+<a class="jxr_linenumber" name="678" href="#678">678</a>     }
+<a class="jxr_linenumber" name="679" href="#679">679</a> 
+<a class="jxr_linenumber" name="680" href="#680">680</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="681" href="#681">681</a> <em class="jxr_javadoccomment">     * Adds the given eventTimeZoneOffset value as {@code &lt;eventTimeZoneOffset&gt;}</em>
+<a class="jxr_linenumber" name="682" href="#682">682</a> <em class="jxr_javadoccomment">     * element to the XML document.</em>
+<a class="jxr_linenumber" name="683" href="#683">683</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="684" href="#684">684</a> <em class="jxr_javadoccomment">     * @param document</em>
+<a class="jxr_linenumber" name="685" href="#685">685</a> <em class="jxr_javadoccomment">     *            The Document to generate the {@code &lt;eventTimeZoneOffset&gt;}</em>
+<a class="jxr_linenumber" name="686" href="#686">686</a> <em class="jxr_javadoccomment">     *            element from.</em>
+<a class="jxr_linenumber" name="687" href="#687">687</a> <em class="jxr_javadoccomment">     * @param root</em>
+<a class="jxr_linenumber" name="688" href="#688">688</a> <em class="jxr_javadoccomment">     *            The root Element under which the {@code &lt;eventTimeZoneOffset&gt;}</em>
+<a class="jxr_linenumber" name="689" href="#689">689</a> <em class="jxr_javadoccomment">     *            element should be generated.</em>
+<a class="jxr_linenumber" name="690" href="#690">690</a> <em class="jxr_javadoccomment">     * @param eventTimeZoneOffset</em>
+<a class="jxr_linenumber" name="691" href="#691">691</a> <em class="jxr_javadoccomment">     *            The value for the {@code &lt;eventTimeZoneOffset&gt;} element.</em>
+<a class="jxr_linenumber" name="692" href="#692">692</a> <em class="jxr_javadoccomment">     * @return &lt;true&gt; if the {@code &lt;eventTimeZoneOffset&gt;} element was</em>
+<a class="jxr_linenumber" name="693" href="#693">693</a> <em class="jxr_javadoccomment">     *         successfully created, &lt;code&gt;false&lt;/code&gt; otherwise.</em>
+<a class="jxr_linenumber" name="694" href="#694">694</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="695" href="#695">695</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addEventTimeZoneOffset(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root,
+<a class="jxr_linenumber" name="696" href="#696">696</a>             <strong class="jxr_keyword">final</strong> String eventTimeZoneOffset) {
+<a class="jxr_linenumber" name="697" href="#697">697</a>         <strong class="jxr_keyword">return</strong> addElement(document, root, eventTimeZoneOffset, <span class="jxr_string">"eventTimeZoneOffset"</span>);
+<a class="jxr_linenumber" name="698" href="#698">698</a>     }
+<a class="jxr_linenumber" name="699" href="#699">699</a> 
+<a class="jxr_linenumber" name="700" href="#700">700</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> addElement(<strong class="jxr_keyword">final</strong> Document document, <strong class="jxr_keyword">final</strong> Element root, <strong class="jxr_keyword">final</strong> String elementValue,
+<a class="jxr_linenumber" name="701" href="#701">701</a>             <strong class="jxr_keyword">final</strong> String elementName) {
+<a class="jxr_linenumber" name="702" href="#702">702</a>         <strong class="jxr_keyword">if</strong> (isEmpty(elementValue)) {
+<a class="jxr_linenumber" name="703" href="#703">703</a>             <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="704" href="#704">704</a>         }
+<a class="jxr_linenumber" name="705" href="#705">705</a>         Element element = document.createElement(elementName);
+<a class="jxr_linenumber" name="706" href="#706">706</a>         element.appendChild(document.createTextNode(elementValue));
+<a class="jxr_linenumber" name="707" href="#707">707</a>         root.appendChild(element);
+<a class="jxr_linenumber" name="708" href="#708">708</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="709" href="#709">709</a>     }
+<a class="jxr_linenumber" name="710" href="#710">710</a> 
+<a class="jxr_linenumber" name="711" href="#711">711</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> isEmpty(String s) {
+<a class="jxr_linenumber" name="712" href="#712">712</a>         <strong class="jxr_keyword">return</strong> s == <strong class="jxr_keyword">null</strong> || s.trim().equals(<span class="jxr_string">""</span>);
+<a class="jxr_linenumber" name="713" href="#713">713</a>     }
+<a class="jxr_linenumber" name="714" href="#714">714</a> }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

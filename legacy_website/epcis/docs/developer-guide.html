@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak EPCIS - Developer Guide</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Marco Steybe, Andrea Groessbauer" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 0.5.1-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">EPCIS</a>
+                          </div>
+            <div class="xright">            <a href="../index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../../fc/index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>EPCIS</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../demo.html">Demo</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../tasklist.html">Roadmap</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../team-list.html">Project Team</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../docs/user-guide.html">User Guide</a>
+          </li>
+              
+    <li class="none">
+              <strong>Developer Guide</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="../docs/architecture-guide.html">Architecture Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../docs/webadapter-guide.html">Webadapter Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../../webadapters/apidocs/index.html">JavaDoc Webadapter</a>
+          </li>
+          </ul>
+              <h5>EPCIS Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-repository/project-reports.html">EPCIS Repository</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-queryclient/project-reports.html">EPCIS Query Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-captureclient/project-reports.html">EPCIS Capture Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-commons/project-reports.html">EPCIS Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-interop-test/project-reports.html">EPCIS Interop Test</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Developer Guide</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#About this Guide">About this Guide</a></li><li><a href="#Getting Started">Getting Started</a><ol type="i"><li><a href="#Setting up the Development Environment">Setting up the Development Environment</a></li><li><a href="#Getting the Source Code">Getting the Source Code</a></li><li><a href="#Setting up Eclipse">Setting up Eclipse</a></li><li><a href="#Building and Deploying the Project">Building and Deploying the Project</a></li></ol></li><li><a href="#Project Layout">Project Layout</a><ol type="i"><li><a href="#Project Modules">Project Modules</a></li><li><a href="#Directory Layout">Directory Layout</a></li></ol></li><li><a href="#Other Features">Other Features</a><ol type="i"><li><a href="#Build Profiles">Build Profiles</a></li><li><a href="#Generating the Project Website">Generating the Project Website</a></li></ol></li></ol></div><div class="section"><h3><a name="About this Guide">About this Guide</a></h3><p>This developer guide is intended for people who wish to work on Fosstrak's EPCIS repository implementation and contribute to the project. It outlines the steps to follow for setting up the development environment and helps developers to find their way through the code.</p><p>If you just want to set up your own EPCIS repository for use in your own project, you should follow the <a href="./user-guide.html">User Guide</a>. Generally, it is advisable if you first read the <a href="./user-guide.html">User Guide</a> before continuing with the developer guide.</p><p>If you cannot find your answer here, feel free to ask the <a href="mailto:fosstrak-epcis-developer@lists.sourceforge.net">Fosstrak EPCIS developer mailing list</a>.</p></div><div class="section"><h3><a name="Getting Started">Getting Started</a></h3><p>This section of the developer guide describes the first steps for getting started with the project. It includes a description on how to set up the development environment, how to obtain the sources, and how to build and deploy the application.</p><div class="section"><h4><a name="Setting up the Development Environment">Setting up the Development Environment</a></h4><p>Make sure you have the following prerequisites installed:</p><ol type="1"><li><a href="http://java.sun.com/javase/downloads">JDK</a> version 5.0 or higher. Also check that the <tt>JAVA_HOME</tt> environment variable points to your Java <tt>bin</tt> directory.</li><li><a href="http://tomcat.apache.org">Apache Tomcat</a> servlet container version 5.5 or higher. It will be used to deploy and run the EPCIS repository web application. Also check that the <tt>CATALINA_HOME</tt> environment variable points to your Tomcat installation directory.</li><li><a href="http://dev.mysql.com/downloads/mysql/5.0.html">MySQL server</a> version 5.0 or higher. It will be used by the EPCIS repository to store event data.</li><li><a href="http://maven.apache.org/">Maven 2</a>. It will be used for building and configuring the project and for deploying the application. Also check that the <tt>M2_HOME</tt> environment variable points to your Maven installation directory and make sure that you are familiar with the Maven build tool.</li></ol></div><div class="section"><h4><a name="Getting the Source Code">Getting the Source Code</a></h4><p>First thing you need to do is checking out the sourcecode from the SVN repository. See <a href="../source-repository.html">Source Repository</a> on how to access the SVN repository. In the following we will use the <tt>EPCIS_HOME</tt> variable to refer to the location where you checked out the sources.</p></div><div class="section"><h4><a name="Setting up Eclipse">Setting up Eclipse</a></h4><p>We recommend using the Eclipse IDE to work on the Fosstrak projects. Please follow these steps to set up the projects in Eclipse:</p><ol type="1"><li>Add the classpath variable <tt>M2_REPO</tt> to Eclipse:<div class="source"><pre>mvn eclipse:configure-workspace -Declipse.workspace=&lt;path-to-your-eclipse-workspace&gt;</pre></div></li><li>In order to generate the <tt>.project</tt> and <tt>.classpath</tt> files used by Eclipse, run the following command from the <tt>EPCIS_HOME</tt> directory:<div class="source"><pre>mvn eclipse:eclipse -DdownloadSources</pre></div><p>If you do not want to download all the sources, ignore the <tt>-DdownloadSources</tt> switch.</p></li><li>From inside Eclipse, import all the sub-modules: go to <i>File</i> &gt; <i>Import</i> &gt; <i>Existing Projects into Workspace</i> and select all four projects available there.</li><li>In Eclipse, import the code formatter stylesheet: go to <i>Window</i> &gt; <i>Preferences...</i>, navigate to the branch <i>Java</i> &gt; <i>Code Style</i> &gt; <i>Formatter</i>, and import the file from <tt>EPCIS_HOME/src/config/epcis_codeformatter.xml</tt>. Now either set the EPCIS code style profile active for your entire workspace, or go to the preferences of each individual EPCIS project (<i>Project</i> &gt; <i>Properties</i>) and set the active code style profile to <i>EPCIS</i>. Prior to committing code to SVN hit <tt>CTRL+SHIRT+F</tt> to format the code according to the Fosstrak EPCIS code style.</li></ol></div><div class="section"><h4><a name="Building and Deploying the Project">Building and Deploying the Project</a></h4><p>The first time you work on the project you need to get all the dependencies and install them into your local Maven repository. The following command will do all that for you:</p><div class="source"><pre>mvn install</pre></div><p>Building the project is straight forward:</p><div class="source"><pre>mvn compile</pre></div><p>In order to deploy and undeploy the application to and from Tomcat, we use the tomcat-maven-plugin. This plugin communicates with the Tomcat Manager and thus needs to know the username and password to access the Manager application. Add the following block to your <tt>M2_HOME/conf/settings.xml</tt> file and specify the correct username and password:</p><div class="source"><pre>&lt;server&gt;
+  &lt;id&gt;tomcat-manager&lt;/id&gt;
+  &lt;username&gt;admin&lt;/username&gt;
+  &lt;password&gt;1234&lt;/password&gt;
+&lt;/server&gt;</pre></div><p>Now, you can use the following commands to deploy, undeploy, or redeploy the application. Make sure you run these commands from the <tt>EPCIS_HOME/epcis-repository</tt> directory because the maven-tomcat-plugin is only available to the epcis-repository sub-module.</p><div class="source"><pre>mvn tomcat:deploy
+mvn tomcat:undeploy
+mvn tomcat:redeploy</pre></div><p>Note: if you use Tomcat 7, then you need to adjust the URL to the manager application in the tomcat-maven-plugin configuration to match the required path for Tomcat 7. Just un-comment the <tt>&lt;url&gt;</tt> element in the corresponding plugin section in <tt>EPCIS_HOME/epcis-repository/pom.xml</tt>.</p><p>You can also manually deploy the application by placing the WAR file directly into Tomcat's <tt>webapps</tt> directory. Run the following command and grab the WAR file from <tt>EPCIS_HOME/epcis-repository/target</tt></p><div class="source"><pre>mvn package</pre></div><p>Now you are ready to go and start working on the project.</p></div></div><div class="section"><h3><a name="Project Layout">Project Layout</a></h3><p>This section helps developers to find their way through the code.</p><div class="section"><h4><a name="Project Modules">Project Modules</a></h4><p>Fosstrak's EPCIS project is a multimodule project. Currently, it includes five modules which inherit from the base epcis-module:</p><ul><li><b>epcis-commons</b><p>This module contains the common functionality (such as parsers) as well as the JAXB data binding of the EPCIS schema (which is used by the <i>epcis-repository</i>, the <i>epcis-queryclient</i>, and the <i>epcis-captureclient</i> modules).</p></li><li><b>epcis-captureclient</b><p>This module consists of a capture client GUI and a simple capture client API library which can be used to send EPCIS events to an EPCIS repository.</p></li><li><b>epcis-queryclient</b><p>This module consists of a query client GUI, a query callback client, and a query control client API which can be used to send queries to an EPCIS repository.</p></li><li><b>epcis-repository</b><p>This module contains the actual implementation of the bindings defined in the EPCIS specification.</p></li><li><b>epcis-interop-test</b><p>This module contains tests to check interoperability compliance with the EPICS standard.</p></li></ul></div><div class="section"><h4><a name="Directory Layout">Directory Layout</a></h4><p>We use the standard Maven directory layout for all the modules:</p><div class="source"><pre>+- pom.xml                             -&gt; top-level POM file
++- src/
+|   +- config/                         -&gt; top-level configuration files, e.g., checkstyle configs
+|   +- main/
+|   |   +- assembly/                   -&gt; assembly descriptor for generating the source distribution
+|   |   `- filters/                    -&gt; filter properties for the build profiles
+|   `- site/                           -&gt; project documentation
+|
++- epcis-captureclient/
++- epcis-commons/
++- epcis-queryclient/
++- epcis-repository/
+    +- pom.xml                         -&gt; module POM file
+    `- src/
+        +- changes/                    -&gt; documentation for all changes
+        +- main/
+        |   +- assembly/               -&gt; assembly descriptor for the binary distribution
+        |   +- java/                   -&gt; Java source files
+        |   +- resources/              -&gt; class path resources, e.g., config files, hibernate mappings, WSDLs, XSDs
+        |   +- sql/                    -&gt; database scripts
+        |   `- webapp/
+        |       +- META-INF/           -&gt; webapp context configurations
+        |       `- static/             -&gt; static web content, e.g., images, CSS
+        |       `- WEB-INF/            -&gt; deployment descriptor, JSPs
+        +- site/                       -&gt; module documentation
+        `- test/                       -&gt; Test resources and source files</pre></div></div></div><div class="section"><h3><a name="Other Features">Other Features</a></h3><div class="section"><h4><a name="Build Profiles">Build Profiles</a></h4><p>An introduction to build profiles is given in the <a href="http://maven.apache.org/guides/introduction/introduction-to-profiles.html}Maven documentation">http://maven.apache.org/guides/introduction/introduction-to-profiles.html}Maven documentation</a>. We currently use two different build profiles, called <i>env-dev</i> and <i>env-prod</i>. The build properties for the two profiles are given in the <tt>dev.properties</tt> and <tt>prod.properties</tt> file, respectively. They are located at <tt>EPCIS_HOME/src/main/filters</tt>.</p><p>By default the <i>env-prod</i> profile is activated. A different profile can be activated on the command line by specifying a profile explicitly using the <tt>-P</tt> switch, or by providing a property named <tt>env</tt> with the corresponding value. The following examples show the two possibilities for building the project using the <i>env-dev</i> profile:</p><div class="source"><pre>mvn compile -Penv-dev
+mvn compile -Denv=dev</pre></div><p>A developer can activate the developement profile permanently by specifying an <tt>activeProfile</tt> element in his local <tt>settings.xml</tt> file. That way, he can also override properties from the development environment without touching the <tt>dev.properties</tt> file. The following is an example excerpt from the <tt>settings.xml</tt> file which shows how to permanently activate the <i>env-dev</i> profile:</p><div class="source"><pre>&lt;profiles&gt;
+  &lt;profile&gt;
+    &lt;id&gt;env-dev&lt;/id&gt;
+    &lt;properties&gt;
+      &lt;db.username&gt;myname&lt;/db.username&gt;
+      &lt;db.password&gt;mysecret&lt;/db.password&gt;
+      &lt;db.database&gt;mydb&lt;/db.database&gt;
+    &lt;/properties&gt;
+  &lt;/profile&gt;
+&lt;/profiles&gt;
+
+&lt;activeProfiles&gt;
+  &lt;activeProfile&gt;env-dev&lt;/activeProfile&gt;
+&lt;/activeProfiles&gt;</pre></div></div><div class="section"><h4><a name="Generating the Project Website">Generating the Project Website</a></h4><p>The main web site (including this documentation) can be generated by using the following command:</p><div class="source"><pre>mvn site -N</pre></div><p>In order to generate all module reports and to test the whole site navigation before a live deploy, you can execute the following command which will generate the web site in the specified directory:</p><div class="source"><pre>mvn site:stage -DstagingDirectory=d:\testsite</pre></div></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2010
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

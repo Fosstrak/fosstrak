@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pmd-cpd>
+<duplication lines="23" tokens="125">
+<file line="219" path="C:\fosstrak\epcis\epcis-repository\src\main\java\org\fosstrak\epcis\repository\query\QueryOperationsModule.java"/>
+<file line="805" path="C:\fosstrak\epcis\epcis-repository\src\main\java\org\fosstrak\epcis\repository\query\QueryOperationsModule.java"/>
+<codefragment>
+<![CDATA[
+        for (QueryParam param : queryParams.getParam()) {
+            String paramName = param.getName();
+            Object paramValue = param.getValue();
+
+            // check for null value
+            if (paramName == null || "".equals(paramName)) {
+                String msg = "Missing name for a query parameter";
+                throw queryParameterException(msg, null);
+            }
+            if (paramValue == null) {
+                String msg = "Missing value for query parameter '" + paramName + "'";
+                throw queryParameterException(msg, null);
+            }
+            // check if the current query parameter has already been provided
+            int index = Collections.binarySearch(sortedParamNames, paramName);
+            if (index < 0) {
+                // we have not yet seen this query parameter name - ok
+                sortedParamNames.add(-index - 1, paramName);
+            } else {
+                // we have already handled this query parameter name - not ok
+                String msg = "Query parameter '" + paramName + "' provided more than once";
+                throw queryParameterException(msg, null);
+            }
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

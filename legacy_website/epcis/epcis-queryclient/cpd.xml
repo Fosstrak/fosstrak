@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pmd-cpd>
+<duplication lines="43" tokens="432">
+<file line="1539" path="C:\fosstrak\epcis\epcis-queryclient\src\main\java\org\fosstrak\epcis\queryclient\QueryClientGui.java"/>
+<file line="1587" path="C:\fosstrak\epcis\epcis-queryclient\src\main\java\org\fosstrak\epcis\queryclient\QueryClientGui.java"/>
+<codefragment>
+<![CDATA[
+                debug("epcList:\t");
+                table[row][5] = "";
+                for (EPC epc : e.getEpcList().getEpc()) {
+                    debug(" '" + epc.getValue() + "'");
+                    table[row][5] = table[row][5] + "'" + epc.getValue() + "' ";
+                }
+                debug("\n");
+                debug("action:\t\t" + e.getAction().toString() + "\n");
+                table[row][6] = e.getAction().toString();
+                debug("bizStep:\t" + e.getBizStep() + "\n");
+                table[row][7] = e.getBizStep();
+                debug("disposition:\t" + e.getDisposition() + "\n");
+                table[row][8] = e.getDisposition();
+                if (e.getReadPoint() != null) {
+                    debug("readPoint:\t" + e.getReadPoint().getId() + "\n");
+                    table[row][9] = e.getReadPoint().getId();
+                } else {
+                    debug("readPoint:\tnull\n");
+                }
+                if (e.getBizLocation() != null) {
+                    debug("bizLocation:\t" + e.getBizLocation().getId() + "\n");
+                    table[row][10] = e.getBizLocation().getId();
+                } else {
+                    debug("bizLocation:\tnull\n");
+                }
+                if (e.getBizTransactionList() != null) {
+                    debug("bizTrans:\tType, ID\n");
+                    table[row][11] = "";
+                    for (BusinessTransactionType bizTrans : e.getBizTransactionList().getBizTransaction()) {
+                        debug("\t'" + bizTrans.getType() + "', '" + bizTrans.getValue() + "'\n");
+                        table[row][11] = table[row][11] + "'" + bizTrans.getType() + ", " + bizTrans.getValue()
+                                + "' ; ";
+                    }
+                    if (!"".equals(table[row][11])) {
+                        // remove last "; "
+                        table[row][11] = ((String) table[row][11]).substring(0, ((String) table[row][11]).length() - 2);
+                    }
+                } else {
+                    debug("bizTrans:\tnull\n");
+                }
+                debug("\n");
+
+            } else if (event instanceof AggregationEventType) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="41" tokens="411">
+<file line="1541" path="C:\fosstrak\epcis\epcis-queryclient\src\main\java\org\fosstrak\epcis\queryclient\QueryClientGui.java"/>
+<file line="1637" path="C:\fosstrak\epcis\epcis-queryclient\src\main\java\org\fosstrak\epcis\queryclient\QueryClientGui.java"/>
+<codefragment>
+<![CDATA[
+                for (EPC epc : e.getChildEPCs().getEpc()) {
+                    debug(" '" + epc.getValue() + "'");
+                    table[row][5] = table[row][5] + "'" + epc.getValue() + "' ";
+                }
+                debug("\n");
+                debug("action:\t\t" + e.getAction().toString() + "\n");
+                table[row][6] = e.getAction().toString();
+                debug("bizStep:\t" + e.getBizStep() + "\n");
+                table[row][7] = e.getBizStep();
+                debug("disposition:\t" + e.getDisposition() + "\n");
+                table[row][8] = e.getDisposition();
+                if (e.getReadPoint() != null) {
+                    debug("readPoint:\t" + e.getReadPoint().getId() + "\n");
+                    table[row][9] = e.getReadPoint().getId();
+                } else {
+                    debug("readPoint:\tnull\n");
+                }
+                if (e.getBizLocation() != null) {
+                    debug("bizLocation:\t" + e.getBizLocation().getId() + "\n");
+                    table[row][10] = e.getBizLocation().getId();
+                } else {
+                    debug("bizLocation:\tnull\n");
+                }
+                if (e.getBizTransactionList() != null) {
+                    debug("bizTrans:\tType, ID\n");
+                    table[row][11] = "";
+                    for (BusinessTransactionType bizTrans : e.getBizTransactionList().getBizTransaction()) {
+                        debug("\t'" + bizTrans.getType() + "', '" + bizTrans.getValue() + "'\n");
+                        table[row][11] = table[row][11] + "'" + bizTrans.getType() + ", " + bizTrans.getValue()
+                                + "' ; ";
+                    }
+                    if (!"".equals(table[row][11])) {
+                        // remove last "; "
+                        table[row][11] = ((String) table[row][11]).substring(0, ((String) table[row][11]).length() - 2);
+                    }
+                } else {
+                    debug("bizTrans:\tnull\n");
+                }
+                debug("\n");
+
+            } else if (event instanceof QuantityEventType) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="34" tokens="325">
+<file line="1547" path="C:\fosstrak\epcis\epcis-queryclient\src\main\java\org\fosstrak\epcis\queryclient\QueryClientGui.java"/>
+<file line="1684" path="C:\fosstrak\epcis\epcis-queryclient\src\main\java\org\fosstrak\epcis\queryclient\QueryClientGui.java"/>
+<codefragment>
+<![CDATA[
+                table[row][5] = e.getEpcClass();
+                debug("bizStep:\t" + e.getBizStep() + "\n");
+                table[row][7] = e.getBizStep();
+                debug("disposition:\t" + e.getDisposition() + "\n");
+                table[row][8] = e.getDisposition();
+                if (e.getReadPoint() != null) {
+                    debug("readPoint:\t" + e.getReadPoint().getId() + "\n");
+                    table[row][9] = e.getReadPoint().getId();
+                } else {
+                    debug("readPoint:\tnull\n");
+                }
+                if (e.getBizLocation() != null) {
+                    debug("bizLocation:\t" + e.getBizLocation().getId() + "\n");
+                    table[row][10] = e.getBizLocation().getId();
+                } else {
+                    debug("bizLocation:\tnull\n");
+                }
+                if (e.getBizTransactionList() != null) {
+                    debug("bizTrans:\tType, ID\n");
+                    table[row][11] = "";
+                    for (BusinessTransactionType bizTrans : e.getBizTransactionList().getBizTransaction()) {
+                        debug("\t'" + bizTrans.getType() + "', '" + bizTrans.getValue() + "'\n");
+                        table[row][11] = table[row][11] + "'" + bizTrans.getType() + ", " + bizTrans.getValue()
+                                + "' ; ";
+                    }
+                    if (!"".equals(table[row][11])) {
+                        // remove last "; "
+                        table[row][11] = ((String) table[row][11]).substring(0, ((String) table[row][11]).length() - 2);
+                    }
+                } else {
+                    debug("bizTrans:\tnull\n");
+                }
+                debug("\n");
+            }
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

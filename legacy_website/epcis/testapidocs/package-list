@@ -1,0 +1,6 @@
+org.fosstrak.epcis.captureclient
+org.fosstrak.epcis.queryclient
+org.fosstrak.epcis.repository.capture
+org.fosstrak.epcis.repository.query
+org.fosstrak.epcis.repository.test
+org.fosstrak.epcis.utils

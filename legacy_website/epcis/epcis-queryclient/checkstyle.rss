@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>epcis-queryclient - Checkstyle report</title>
+    <link>http://www.fosstrak.org/epcis/epcis-queryclient</link>
+    <description>epcis-queryclient - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2010</copyright>
+    <item>
+      <title>File: 22,
+             Errors: 1,
+             Warnings: 316,
+             Infos: 0
+      </title>
+            <link>http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.queryclient.QueryClientNotConfiguredException.java">org/fosstrak/epcis/queryclient/QueryClientNotConfiguredException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.SecurityExceptionResponse.java">org/fosstrak/epcis/soap/SecurityExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.queryclient.QueryControlInterface.java">org/fosstrak/epcis/queryclient/QueryControlInterface.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  34
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.NoSuchSubscriptionExceptionResponse.java">org/fosstrak/epcis/soap/NoSuchSubscriptionExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.SubscribeNotPermittedExceptionResponse.java">org/fosstrak/epcis/soap/SubscribeNotPermittedExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.queryclient.QueryCallbackClient.java">org/fosstrak/epcis/queryclient/QueryCallbackClient.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.queryclient.QueryClientGui.java">org/fosstrak/epcis/queryclient/QueryClientGui.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  27
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.queryclient.QueryCallbackInterface.java">org/fosstrak/epcis/queryclient/QueryCallbackInterface.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.queryclient.QueryControlClient.java">org/fosstrak/epcis/queryclient/QueryControlClient.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.DuplicateSubscriptionExceptionResponse.java">org/fosstrak/epcis/soap/DuplicateSubscriptionExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  17
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.SubscriptionControlsExceptionResponse.java">org/fosstrak/epcis/soap/SubscriptionControlsExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.queryclient.Query.java">org/fosstrak/epcis/queryclient/Query.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.InvalidURIExceptionResponse.java">org/fosstrak/epcis/soap/InvalidURIExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.ImplementationExceptionResponse.java">org/fosstrak/epcis/soap/ImplementationExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.NoSuchNameExceptionResponse.java">org/fosstrak/epcis/soap/NoSuchNameExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.queryclient.QueryClientHelper.java">org/fosstrak/epcis/queryclient/QueryClientHelper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.EPCISServicePortType.java">org/fosstrak/epcis/soap/EPCISServicePortType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  17
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.QueryTooComplexExceptionResponse.java">org/fosstrak/epcis/soap/QueryTooComplexExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.ValidationExceptionResponse.java">org/fosstrak/epcis/soap/ValidationExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.QueryTooLargeExceptionResponse.java">org/fosstrak/epcis/soap/QueryTooLargeExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.EPCglobalEPCISService.java">org/fosstrak/epcis/soap/EPCglobalEPCISService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.fosstrak.org/epcis/epcis-queryclient/checkstyle.html#org.fosstrak.epcis.soap.QueryParameterExceptionResponse.java">org/fosstrak/epcis/soap/QueryParameterExceptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

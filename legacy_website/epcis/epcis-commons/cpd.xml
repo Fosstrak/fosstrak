@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pmd-cpd>
+<duplication lines="123" tokens="142">
+<file line="103" path="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\model\AggregationEventType.java"/>
+<file line="82" path="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\model\ObjectEventType.java"/>
+<codefragment>
+<![CDATA[
+        this.epcList = value;
+    }
+
+    /**
+     * Gets the value of the action property.
+     * 
+     * @return possible object is {@link ActionType }
+     */
+    public ActionType getAction() {
+        return action;
+    }
+
+    /**
+     * Sets the value of the action property.
+     * 
+     * @param value
+     *            allowed object is {@link ActionType }
+     */
+    public void setAction(ActionType value) {
+        this.action = value;
+    }
+
+    /**
+     * Gets the value of the bizStep property.
+     * 
+     * @return possible object is {@link String }
+     */
+    public String getBizStep() {
+        return bizStep;
+    }
+
+    /**
+     * Sets the value of the bizStep property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     */
+    public void setBizStep(String value) {
+        this.bizStep = value;
+    }
+
+    /**
+     * Gets the value of the disposition property.
+     * 
+     * @return possible object is {@link String }
+     */
+    public String getDisposition() {
+        return disposition;
+    }
+
+    /**
+     * Sets the value of the disposition property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     */
+    public void setDisposition(String value) {
+        this.disposition = value;
+    }
+
+    /**
+     * Gets the value of the readPoint property.
+     * 
+     * @return possible object is {@link ReadPointType }
+     */
+    public ReadPointType getReadPoint() {
+        return readPoint;
+    }
+
+    /**
+     * Sets the value of the readPoint property.
+     * 
+     * @param value
+     *            allowed object is {@link ReadPointType }
+     */
+    public void setReadPoint(ReadPointType value) {
+        this.readPoint = value;
+    }
+
+    /**
+     * Gets the value of the bizLocation property.
+     * 
+     * @return possible object is {@link BusinessLocationType }
+     */
+    public BusinessLocationType getBizLocation() {
+        return bizLocation;
+    }
+
+    /**
+     * Sets the value of the bizLocation property.
+     * 
+     * @param value
+     *            allowed object is {@link BusinessLocationType }
+     */
+    public void setBizLocation(BusinessLocationType value) {
+        this.bizLocation = value;
+    }
+
+    /**
+     * Gets the value of the bizTransactionList property.
+     * 
+     * @return possible object is {@link BusinessTransactionListType }
+     */
+    public BusinessTransactionListType getBizTransactionList() {
+        return bizTransactionList;
+    }
+
+    /**
+     * Sets the value of the bizTransactionList property.
+     * 
+     * @param value
+     *            allowed object is {@link BusinessTransactionListType }
+     */
+    public void setBizTransactionList(BusinessTransactionListType value) {
+        this.bizTransactionList = value;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * @return possible object is {@link ObjectEventExtensionType }
+     */
+    public ObjectEventExtensionType getExtension() {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="115" tokens="139">
+<file line="71" path="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\model\ObjectEventType.java"/>
+<file line="111" path="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\model\TransactionEventType.java"/>
+<codefragment>
+<![CDATA[
+    public EPCListType getEpcList() {
+        return epcList;
+    }
+
+    /**
+     * Sets the value of the epcList property.
+     * 
+     * @param value
+     *            allowed object is {@link EPCListType }
+     */
+    public void setEpcList(EPCListType value) {
+        this.epcList = value;
+    }
+
+    /**
+     * Gets the value of the action property.
+     * 
+     * @return possible object is {@link ActionType }
+     */
+    public ActionType getAction() {
+        return action;
+    }
+
+    /**
+     * Sets the value of the action property.
+     * 
+     * @param value
+     *            allowed object is {@link ActionType }
+     */
+    public void setAction(ActionType value) {
+        this.action = value;
+    }
+
+    /**
+     * Gets the value of the bizStep property.
+     * 
+     * @return possible object is {@link String }
+     */
+    public String getBizStep() {
+        return bizStep;
+    }
+
+    /**
+     * Sets the value of the bizStep property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     */
+    public void setBizStep(String value) {
+        this.bizStep = value;
+    }
+
+    /**
+     * Gets the value of the disposition property.
+     * 
+     * @return possible object is {@link String }
+     */
+    public String getDisposition() {
+        return disposition;
+    }
+
+    /**
+     * Sets the value of the disposition property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     */
+    public void setDisposition(String value) {
+        this.disposition = value;
+    }
+
+    /**
+     * Gets the value of the readPoint property.
+     * 
+     * @return possible object is {@link ReadPointType }
+     */
+    public ReadPointType getReadPoint() {
+        return readPoint;
+    }
+
+    /**
+     * Sets the value of the readPoint property.
+     * 
+     * @param value
+     *            allowed object is {@link ReadPointType }
+     */
+    public void setReadPoint(ReadPointType value) {
+        this.readPoint = value;
+    }
+
+    /**
+     * Gets the value of the bizLocation property.
+     * 
+     * @return possible object is {@link BusinessLocationType }
+     */
+    public BusinessLocationType getBizLocation() {
+        return bizLocation;
+    }
+
+    /**
+     * Sets the value of the bizLocation property.
+     * 
+     * @param value
+     *            allowed object is {@link BusinessLocationType }
+     */
+    public void setBizLocation(BusinessLocationType value) {
+        this.bizLocation = value;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * @return possible object is {@link TransactionEventExtensionType }
+     */
+    public TransactionEventExtensionType getExtension() {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="104" tokens="119">
+<file line="122" path="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\model\AggregationEventType.java"/>
+<file line="95" path="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\model\QuantityEventType.java"/>
+<codefragment>
+<![CDATA[
+        this.quantity = value;
+    }
+
+    /**
+     * Gets the value of the bizStep property.
+     * 
+     * @return possible object is {@link String }
+     */
+    public String getBizStep() {
+        return bizStep;
+    }
+
+    /**
+     * Sets the value of the bizStep property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     */
+    public void setBizStep(String value) {
+        this.bizStep = value;
+    }
+
+    /**
+     * Gets the value of the disposition property.
+     * 
+     * @return possible object is {@link String }
+     */
+    public String getDisposition() {
+        return disposition;
+    }
+
+    /**
+     * Sets the value of the disposition property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     */
+    public void setDisposition(String value) {
+        this.disposition = value;
+    }
+
+    /**
+     * Gets the value of the readPoint property.
+     * 
+     * @return possible object is {@link ReadPointType }
+     */
+    public ReadPointType getReadPoint() {
+        return readPoint;
+    }
+
+    /**
+     * Sets the value of the readPoint property.
+     * 
+     * @param value
+     *            allowed object is {@link ReadPointType }
+     */
+    public void setReadPoint(ReadPointType value) {
+        this.readPoint = value;
+    }
+
+    /**
+     * Gets the value of the bizLocation property.
+     * 
+     * @return possible object is {@link BusinessLocationType }
+     */
+    public BusinessLocationType getBizLocation() {
+        return bizLocation;
+    }
+
+    /**
+     * Sets the value of the bizLocation property.
+     * 
+     * @param value
+     *            allowed object is {@link BusinessLocationType }
+     */
+    public void setBizLocation(BusinessLocationType value) {
+        this.bizLocation = value;
+    }
+
+    /**
+     * Gets the value of the bizTransactionList property.
+     * 
+     * @return possible object is {@link BusinessTransactionListType }
+     */
+    public BusinessTransactionListType getBizTransactionList() {
+        return bizTransactionList;
+    }
+
+    /**
+     * Sets the value of the bizTransactionList property.
+     * 
+     * @param value
+     *            allowed object is {@link BusinessTransactionListType }
+     */
+    public void setBizTransactionList(BusinessTransactionListType value) {
+        this.bizTransactionList = value;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * @return possible object is {@link QuantityEventExtensionType }
+     */
+    public QuantityEventExtensionType getExtension() {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="104" tokens="119">
+<file line="103" path="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\model\AggregationEventType.java"/>
+<file line="122" path="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\model\TransactionEventType.java"/>
+<codefragment>
+<![CDATA[
+        this.epcList = value;
+    }
+
+    /**
+     * Gets the value of the action property.
+     * 
+     * @return possible object is {@link ActionType }
+     */
+    public ActionType getAction() {
+        return action;
+    }
+
+    /**
+     * Sets the value of the action property.
+     * 
+     * @param value
+     *            allowed object is {@link ActionType }
+     */
+    public void setAction(ActionType value) {
+        this.action = value;
+    }
+
+    /**
+     * Gets the value of the bizStep property.
+     * 
+     * @return possible object is {@link String }
+     */
+    public String getBizStep() {
+        return bizStep;
+    }
+
+    /**
+     * Sets the value of the bizStep property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     */
+    public void setBizStep(String value) {
+        this.bizStep = value;
+    }
+
+    /**
+     * Gets the value of the disposition property.
+     * 
+     * @return possible object is {@link String }
+     */
+    public String getDisposition() {
+        return disposition;
+    }
+
+    /**
+     * Sets the value of the disposition property.
+     * 
+     * @param value
+     *            allowed object is {@link String }
+     */
+    public void setDisposition(String value) {
+        this.disposition = value;
+    }
+
+    /**
+     * Gets the value of the readPoint property.
+     * 
+     * @return possible object is {@link ReadPointType }
+     */
+    public ReadPointType getReadPoint() {
+        return readPoint;
+    }
+
+    /**
+     * Sets the value of the readPoint property.
+     * 
+     * @param value
+     *            allowed object is {@link ReadPointType }
+     */
+    public void setReadPoint(ReadPointType value) {
+        this.readPoint = value;
+    }
+
+    /**
+     * Gets the value of the bizLocation property.
+     * 
+     * @return possible object is {@link BusinessLocationType }
+     */
+    public BusinessLocationType getBizLocation() {
+        return bizLocation;
+    }
+
+    /**
+     * Sets the value of the bizLocation property.
+     * 
+     * @param value
+     *            allowed object is {@link BusinessLocationType }
+     */
+    public void setBizLocation(BusinessLocationType value) {
+        this.bizLocation = value;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * @return possible object is {@link TransactionEventExtensionType }
+     */
+    public TransactionEventExtensionType getExtension() {
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

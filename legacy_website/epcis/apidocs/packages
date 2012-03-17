@@ -1,0 +1,10 @@
+org.fosstrak.epcis.gui
+org.fosstrak.epcis.model
+org.fosstrak.epcis.utils
+org.fosstrak.epcis.repository.capture
+org.fosstrak.epcis.repository
+org.fosstrak.epcis.repository.model
+org.fosstrak.epcis.repository.query
+org.fosstrak.epcis.soap
+org.fosstrak.epcis.captureclient
+org.fosstrak.epcis.queryclient

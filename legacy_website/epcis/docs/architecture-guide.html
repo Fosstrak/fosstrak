@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak EPCIS - Architecture Guide</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Marco Steybe" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 0.5.1-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">EPCIS</a>
+                          </div>
+            <div class="xright">            <a href="../index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../../fc/index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>EPCIS</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../demo.html">Demo</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../tasklist.html">Roadmap</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../team-list.html">Project Team</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../docs/user-guide.html">User Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../docs/developer-guide.html">Developer Guide</a>
+          </li>
+              
+    <li class="none">
+              <strong>Architecture Guide</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="../docs/webadapter-guide.html">Webadapter Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../../webadapters/apidocs/index.html">JavaDoc Webadapter</a>
+          </li>
+          </ul>
+              <h5>EPCIS Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-repository/project-reports.html">EPCIS Repository</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-queryclient/project-reports.html">EPCIS Query Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-captureclient/project-reports.html">EPCIS Capture Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-commons/project-reports.html">EPCIS Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../epcis-interop-test/project-reports.html">EPCIS Interop Test</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Architecture Guide</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#About this Guide">About this Guide</a></li><li><a href="#Introduction">Introduction</a></li><li><a href="#EPCIS Repository">EPCIS Repository</a><ol type="i"><li><a href="#Access Tier">Access Tier</a><ul><li><a href="#Capture Interface">Capture Interface</a></li><li><a href="#Query Control Interface">Query Control Interface</a></li></ul></li><li><a href="#Business Tier">Business Tier</a><ul><li><a href="#Capture Operations Module">Capture Operations Module</a></li><li><a href="#Query Operations Module">Query Operations Module</a></li><li><a href="#Query Callback Interface">Query Callback Interface</a></li></ul></li><li><a href="#Resource Tier">Resource Tier</a></li></ol></li><li><a href="#EPCIS Capture Application">EPCIS Capture Application</a></li><li><a href="#EPCIS Query Application">EPCIS Query Application</a></li></ol></div><div class="section"><h3><a name="About this Guide">About this Guide</a></h3><p>This guide describes the architecture and design of Fosstrak's EPCIS implementation. It is intended as an introduction to the project for future developers who are somewhat familiar with the EPCglobal EPC Information Services (EPCIS) standard. The latest version of the standard is available at EPCglobal (<a href="http://www.epcglobalinc.org/standards/epcis">http://www.epcglobalinc.org/standards/epcis</a>).</p></div><div class="section"><h3><a name="Introduction">Introduction</a></h3><p>The goal of EPCIS is to enable applications to incorporate EPC-related data into their businesses. It provides means to store EPC data persistently and offers a framework to add data to a repository as well as query it. In order to implement these means, Fosstrak's EPCIS project provides three separate modules: an EPCIS repository, an EPCIS capture application, and an EPCIS query application. The following figure gives a short overview of the basic interaction scenarios for these three modules.</p><img src="../images/epcis_architecture.png" alt="architectural overview" /><p>The architectural style is client server; a client is either an EPCIS capture application, an EPCIS query application, or both. The server is an EPCIS repository providing the interfaces to which clients connect. The repository parses client requests and processes them according to the rules defined in the specification. The transport protocols used by the client applications are XML over HTTP and SOAP over HTTP, respectively.</p><p>In the following sections we will describe the repository and the client applications in more details.</p></div><div class="section"><h3><a name="EPCIS Repository">EPCIS Repository</a></h3><p>The Fosstrak EPCIS repository implements the following five bindings as defined by the EPCIS specification:</p><ul><li>XML binding for the data definition layer</li><li>HTTP binding for the capture interface</li><li>SOAP/HTTP binding for the query control interface</li><li>HTTP binding for the query callback interface</li><li>HTTPS binding for the query callback interface</li></ul><p>In the following sections we will describe how these bindings are implemented.</p><div class="section"><h4><a name="Access Tier">Access Tier</a></h4><p>The access tier is the entry point into the EPCIS repository and provides the interfaces used by the client applications to access the repository.</p><div class="section"><h5><a name="Capture Interface">Capture Interface</a></h5><p>The HTTP binding for the capture interface is implemented by providing a Java Servlet which is registered with the Servlet container (we use <a href="http://tomcat.apache.org/">Apache Tomcat</a>). The Servlet receives capture requests from an EPCIS capture application. These requests must include EPCIS events serialized in XML and must be given in the payload of an HTTP POST request (see the EPCIS specification for details). The Servlet validates the incoming XML documents against the EPCIS schema and passes it to the <tt>CaptureOperationsModule</tt> in the business tier.</p></div><div class="section"><h5><a name="Query Control Interface">Query Control Interface</a></h5><p>In order to implement the SOAP/HTTP binding for the query control interface, we use the <a href="http://incubator.apache.org/cxf/">Apache CXF Web service framework</a> in combination with the <a href="https://jax-ws.dev.java.net/">JAX-WS API</a> and a <a href="https://jaxb.dev.java.net/">JAXB data binding</a> to map Java objects to XML and vice versa. CXF maps the contents of the incoming SOAP requests to Java objects and hands them over to the <tt>QueryOperationsModule</tt> in the business tier for processing.</p></div></div><div class="section"><h4><a name="Business Tier">Business Tier</a></h4><p>The business tier receives input from the access tier. As indicated above, it consists of two seperate modules: the <tt>CaptureOperationsModule</tt> and the <tt>QueryOperationsModule</tt>.</p><div class="section"><h5><a name="Capture Operations Module">Capture Operations Module</a></h5><p>The <tt>CaptureOperationsModule</tt> simply takes EPCIS events and stores their contents into the RDBMS. We use <a href="http://www.hibernate.org/">Hibernate</a> to map the domain model objects to the relational database and generate the required SQL calls.</p></div><div class="section"><h5><a name="Query Operations Module">Query Operations Module</a></h5><p>The <tt>QueryOperationsModule</tt> generates SQL queries dynamically from the given query parameter values and sends them to the resource tier for processing. The result sets returned by the resource tier are mapped to the EPC event domain model and are handed over to the access tier which in turn sends the results back to the client application.</p></div><div class="section"><h5><a name="Query Callback Interface">Query Callback Interface</a></h5><p>Unlike the query control interface, the query callback interface is not directly accessible for client applications. Instead, a client application <i>subscribes</i> a query via the query callback interface whereupon the repository returns the query results via the query callback interface.</p><p>Unlike polled queries which are stateless, subscribed queries have to keep track of things like their last execution time, the destination URL for reporting results, the query parameters, and when or on what event the query should be executed. To meet these requirenments we keep references to subscriptions in the Web application context. This avoids subscriptions from being garbage collected and retains them across service invocations. Furthermore, we also store the subscriptions in the database in order to save them across application restarts.</p><p>The component which implements the query callback interface is the <tt>QuerySubscription</tt>. It represents subscribed queries which are either scheduled or triggered: A <tt>QuerySubscriptionScheduled</tt> represents a subscription associated with a schedule and a query. The query is invoked whenever the timer of the schedule times out. A <tt>QuerySubscriptionTriggered</tt>, on the other side, represents a subscription associated with a trigger URI and a query. The query is invoked whenever an event is captured that includes the specified trigger URI.</p><p>Subscribed queries are executed just like polled queries, i.e., using the <tt>poll</tt> method of the <tt>QueryOperationsModule</tt>. The results are returned to the client by serializing the query results into XML and sending it in the payload of an HTTP/HTTPS POST request.</p></div></div><div class="section"><h4><a name="Resource Tier">Resource Tier</a></h4><p>The resource tier consists of a relational database management system (RDBMS) which stores all the event data, the vocabularies, and the subscriptions. The figure below shows the database schema for ObjectEvents. The schemas for Transaction-, Quantity-, and AggregationsEvents are similar to the one below and are not reproduced here.</p><img src="../images/db_objectevents.png" alt="database schema ObjectEvent" /><p>Standard vocabularies each have their own database table. Below, we show the schema for <i>Business Transaction</i>, <i>Disposition</i>, and <i>Read Point</i> vocabularies. Non-standard vocabularies are stored in the <tt>voc_any</tt> database table.</p><img src="../images/db_vocabularies.png" alt="database schema vocabularies" /><p>As mentioned before we also store the subscriptions in the RDBMS. The corresponding schema looks as follows:</p><img src="../images/db_subscriptions.png" alt="database schema subscriptions" /></div></div><div class="section"><h3><a name="EPCIS Capture Application">EPCIS Capture Application</a></h3><p>An EPCIS capture application is used for capturing events to the repository. Because we implement the HTTP/POST binding of the capture interface, a capture application must send the XML events in the payload of an HTTP POST requests to the repository. We use the JAXB data binding to map EPCIS event domain model objects to XML and vice versa.</p><p>The Fosstrak EPCIS capture application provides both a capture client API and a capture client GUI. The API can be used by other applications to send capture requests to the repository, and the GUI can be used to manually insert EPCIS events into a repository. Please refer to the <a href="./user-guide.html">User Guide</a> for further information on how to use the capture client API or GUI.</p></div><div class="section"><h3><a name="EPCIS Query Application">EPCIS Query Application</a></h3><p>An EPCIS query application submits queries to an EPCIS repository using SOAP requests. The query application also uses the CXF Web service framework to generate the SOAP requests, and uses the JAXB data binding to map the Java objects to XML.</p><p>Similar to the capture application, the query application provides both a query client API and a query client GUI. Please refer to the <a href="./user-guide.html">User Guide</a> for details about how to use the query client API or GUI.</p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2010
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

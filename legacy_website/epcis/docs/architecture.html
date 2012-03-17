@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Accada EPCIS - Architecture</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Marco Steybe, Andrea Groessbauer" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner2_left.jpg" alt="" />
+    
+            </a>
+                          <span id="bannerRight">
+    
+                                            <img src="../images/banner2_middle.jpg" alt="" />
+    
+            </span>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Dec 17, 2007 17:22:27 CET
+                          |   
+          <a href="../../index.html">Accada</a>
+              &gt;
+      
+          <a href="../">EPCIS</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Accada</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Accada</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>EPCIS Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../demo.html">Demo</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../docs/user-guide.html">User Guide</a>
+        </li>
+              
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+              
+    <li class="none">
+              <strong>Architecture</strong>
+        </li>
+          </ul>
+          <h5>EPCIS Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-repository/project-reports.html">EPCIS Repository</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-queryclient/project-reports.html">EPCIS Query Client</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-captureclient/project-reports.html">EPCIS Capture Client</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-commons/project-reports.html">EPCIS Commons</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-interop-test/project-reports.html">EPCIS Interop Test</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Architecture</h2><p>The following sections describe the technical specification of Accada's EPCIS implementation. It is intended as an introduction to future developers who are somewhat familiar with the EPCglobal EPC Information Services (EPCIS) specification <a href="#[1]">[1]</a>. We currently implement version 1.0 of this specification.</p><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Introduction">Introduction</a></li><li><a href="#Architectural%20Overview">Architectural Overview</a></li><li><a href="#EPCIS%20Repository">EPCIS Repository</a><ol type="1"><li><a href="#Access%20Tier">Access Tier</a></li><li><a href="#Business%20Tier">Business Tier</a></li><li><a href="#Resource%20Tier">Resource Tier</a></li></ol></li><li><a href="#EPCIS%20Capture%20Application">EPCIS Capture Application</a></li><li><a href="#EPCIS%20Query%20Application">EPCIS Query Application</a></li></ol></div><div class="section"><h3><a name="Introduction">Introduction</a></h3><p>The goal of EPCIS is to enable applications to incorporate EPC-related data into their businesses. It provides means to store EPC data persistently and offers a framework to add data to a repository as well as query it. The EPCIS specification describes a standard interface for accessing EPC-related information and thus leverages an EPC-related data sharing accross applications.</p><p>Accada's EPCIS implementation is not intended to provide a reference implementation but an entry point to allow rapid prototyping. Our software has evolved over several semester and lab projects at the Distributed Systems Group <a href="#[2]">[2]</a> at ETH Zurich and is under continous development.</p></div><div class="section"><h3><a name="Architectural Overview">Architectural Overview</a></h3><p>The following figure gives an overview of the EPCIS architecture.</p><img src="../images/epcis_architecture.png" alt="architectural overview" /><p>The architectural style is client server. A client is either an EPCIS Capture Application or an EPCIS Query Application or both. The server is an EPCIS Repository providing several interfaces to which clients may connect. The Repository parses client requests and processes them by accessing the relational database. The transport protocols used are XML over HTTP and SOAP over HTTP.</p><p>In the following sections we describe the Repository and the Client Applications in detail.</p></div><div class="section"><h3><a name="EPCIS Repository">EPCIS Repository</a></h3><p>Some communication and accessing information are described in the <a href="#Access Tier">Access Tier</a>, the description of the whole functionality is in the <a href="#Business Tier">Business Tier</a>, and the database details are given in the <a href="#Resource Tier">Resource Tier</a>.</p><p>The sections below describe our EPCIS Repository implementation and are divided into so-called tiers. How the information and services of the repository are accessed and how applications may communicate with it are described in the section about the <a href="#Access Tier">Access Tier</a>. The services, implementing the actual functionality, are in the <a href="#Business Tier">Business Tier</a>. Finally the database, storing the information surrounding the EPC's (so called events), is maintained in the <a href="#Resource Tier">Resource Tier</a>.</p><div class="section"><h4><a name="Access Tier">Access Tier</a></h4><p>This tier is the entry point into the EPCIS Repository and provides the interfaces used by the client applications accessing the Repository. In here also user authentication and authorisation should take place. Currently our implementation does neither provide authentication nor authorisation mechanisms!</p><p>Our Repository implements the SOAP binding for the Query Interface. We use Axis <a href="#[3]">[3]</a> as the framework to provide the SOAP interface. Thus an EPCIS Query Application implemented in Java may use the generated Axis classes available in our epcis-queryclient module in order to access the Repository. Concerning the Capture Interface we implement the HTTP binding and thus an EPCIS Capture Application may send capture events through HTTP POST request with the event (XML form) as payload. More information about the Capture and Query Applications follow in <a href="#EPCIS Capture Application">EPCIS Capture Application</a> and <a href="#EPCIS Query Application">EPCIS Query Application</a> further below.</p></div><div class="section"><h4><a name="Business Tier">Business Tier</a></h4><p>The business tier consists of the EPCIS Repository implementation. Simply speaking the Repository takes client requests, applies some parsing and error handling, transforms the requests into SQL INSERT and SELECT queries, and submits them to the underlying resource tier (database). In the case of an EPCIS query, this tier sends back the resulting EPCIS response. As mentioned above Accada's EPCIS Repository consists of an implementation of the SOAP binding for the Query Interface and an implementation of the HTTP binding for the Capture Interface.</p><p>The following class-diagram shows the components that make up the business tier:</p><img src="../images/classdiagram_repository.png" alt="classdiagram repository" /><p>In the remainder of this section we describe the most important components in more detail.</p><div class="section"><h5>Query Operations Module</h5><p>In order to implement the SOAP binding on the Query side, the Axis framework <a href="#[3]">[3]</a> comes into play. We use Axis to support SOAP over HTTP and thus integrate the Axis HTTP <i>TransportListener</i> through a servlet into our Web container. In Axis the incoming SOAP messages pass the framework in form of a <i>MessageContext</i> which contains the request or response message as well as a number of attributes. The processing of the <i>MessageContext</i> is made in <i>Handler</i>s. We provide two such <i>Handler</i>s, one for pre-processing and one for post-processing. In between is the actual service implementation:</p><div class="source"><pre>         +------------------+    +-----------------------+    +------------------+
+msg  -&gt;  | QueryInitHandler | -&gt; | QueryOperationsModule | -&gt; | QueryPostHandler |
+         +------------------+    +-----------------------+    +------------------+</pre></div><p>The <i>Handler</i>s make up a <i>HandlerChain</i> which may be configured in the deployment descriptor (see the <a href="developer-guide.html">Developer Guide</a> for locating the corresponding <tt>server-config.wsdd</tt> file). The following describes the <i>Handler</i>s and the <i>Service</i> in more detail:</p><ul><li><b>QueryInitHandler</b><p>The <tt>QueryInitHandler</tt> performs the initialization work for our Repository implementation. That is, it sets up the database connection, loads application and logging properties, and restores scheduled subscriptions. It saves all necessary information to the <i>MessageContext</i> which will be passed on to the <i>Service</i>. The <tt>QueryInitHandler</tt> is also responsible to clean up after a service fault by undoing the initialization steps (closing the database connection and making the scheduled subscriptions persistent).</p></li><li><b>QueryOperationsModule</b><p>The <tt>QueryOperationsModule</tt> is the service implementation of the SOAP binding for the EPCIS Query Interface. In here the actual business functionality takes place. Basically the <tt>QueryOperationsModule</tt> takes the incoming request from Axis, handles it according to the specification (by interacting with the underlying database) and returns the resulting query responses back to Axis. Please refer to the specification <a href="#[1]">[1]</a> for more details about the operations available in the Query Operations Module.</p></li><li><b>QueryPostHandler</b><p>The <tt>QueryPostHandler</tt> is invoked after the service has completed its work successfully. It reverses the steps taken by the <tt>QueryInitHandler</tt>, closing the database connection and storing the scheduled subscriptions.</p></li></ul></div><div class="section"><h5>A Framework for Subscriptions</h5><p>Unlike polled queries which are stateless, subscribed queries have to keep track of things like their last execution time, the destination URL for reporting results, the query parameters, and when or on what event the query should be executed. To meet these requirenments we keep references to subscriptions in the Web application context. This avoids subscriptions being garbage collected and retains them across service invocations. Furthermore we hold the subscriptions also in the database in order to save them across application restarts.</p><p>In order to handle subscribed queries requested through the Query Control Interface's <tt>subscribe</tt> operation we provide the <tt>QuerySubscription</tt> component. It represents standing queries which are either scheduled or triggered:</p><ul><li><b>QuerySubscriptionScheduled</b><p>A <tt>QuerySubscriptionScheduled</tt> represents a subscription associated with a schedule and a query. The query is invoked whenever the timer of the schedule times out.</p></li><li><b>QuerySubscriptionTriggered</b><p>A <tt>QuerySubscriptionTriggered</tt> represents a subscription associated with a trigger URI and a query. The query is invoked whenever an event is captured that includes the specified trigger URI.</p></li></ul></div><div class="section"><h5>Capture Operations Module</h5><p>The <tt>CaptureOperationsModule</tt> is the implementation of the HTTP binding for the EPCIS Capture Interface. It is responsible for storing incoming capture events to the repository. Currently <tt>MasterData</tt> cannot be inserted through this module, as the specification does not describe the means how <tt>MasterData</tt> should be entered. Also note that currently there is no way to delete event data once it is entered.</p><p>Technically the <tt>CaptureOperationsModule</tt> is an <i>HttpServlet</i> which implements the <tt>doPost</tt> operation and thus waits on a specific HTTP address for incoming POST requests. The payload of the POST request must correspond to a valid EPCIS event in its XML representation as described by the specification <a href="#[1]">[1]</a>.</p></div></div><div class="section"><h4><a name="Resource Tier">Resource Tier</a></h4><p>The resource tier consists of a relational database which stores all the event data, the vocabularies, and the subscriptions. The figure below shows the database schema for holding ObjectEvents. The schemas for Transaction-, Quantity-, and AggregationsEvents are similar to the one below and are not reproduced here.</p><img src="../images/db_objectevents.png" alt="database schema ObjectEvent" /><p>Vocabularies each have their own database table. Below we exemplary give the schema for BizTransaction, Disposition, and ReadPoint vocabularies. The <tt>vocabularies</tt> table holds the mapping from vocabulary names to our vocabulary database table names.</p><img src="../images/db_vocabularies.png" alt="database schema vocabularies" /><p>As mentioned before we also store the subscriptions to the database. The corresponding schema looks like this:</p><img src="../images/db_subscriptions.png" alt="database schema subscriptions" /></div></div><div class="section"><h3><a name="EPCIS Capture Application">EPCIS Capture Application</a></h3><p>An EPCIS Capture Application is used for capturing events to the Repository. Since we only implement the HTTP/POST binding of the EPCIS Capture Interface, a capture application must send events in their XML form through HTTP POST requests to our Repository. The following diagram shows the components available in our epcis-captureclient module:</p><img src="../images/classdiagram_capture.png" alt="classdiagram captureclient" /><p>Basically we provide the <tt>CaptureClient</tt> and the <tt>CaptureClientGui</tt> as described in the following sections:</p><div class="section"><h4>CaptureClient</h4><p>The <tt>CaptureClient</tt> implementing the <tt>CaptureClientInterface</tt> provides transparent access to the Repository. It supports the <tt>capture</tt> operation and sends the given events in their XML form to the Repository using HTTP POST requests.</p></div><div class="section"><h4>CaptureClientGui</h4><p>This graphical user interface provides the capturing functionalities for use by humans. Technically the <tt>CaptureClientGui</tt> is an implementation of the Model-View-Controller (MVC) pattern: The <tt>CaptureEvent</tt> represents a real world event (the <i>model</i> in the MVC pattern). The <tt>CaptureClientGui</tt> is the actual <i>view</i> in the MVC pattern. And the <tt>CaptureClient</tt> implements the <i>controller</i> part of the MVC pattern. Please refer to the <a href="user-guide.html">User Guide</a> for further information on the use of the capture gui.</p></div></div><div class="section"><h3><a name="EPCIS Query Application">EPCIS Query Application</a></h3><p>An EPCIS Query Application sends queries through the EPCIS Query Interface to the EPCIS Repository. Because we currently only implement the SOAP/HTTP binding of the Query Interface, a query application must use SOAP requests. For this reason we provide the epcis-queryclient module which includes the Axis generated classes for use in a Java query client. The following diagram outlines the components that make up the epcis-queryclient module:</p><img src="../images/classdiagram_query.png" alt="classdiagram queryclient" /><p>The main components are the <tt>QueryControlClient</tt>, the <tt>QueryCallbackClient</tt>, and the <tt>QueryClientGui</tt>. In the following we describe these components briefly:</p><div class="section"><h4>QueryControlClient</h4><p>The <tt>QueryControlClient</tt> is a simple Java class that can help in getting started with a query application. It uses the Axis framework and the Axis generated Java classes in order to connect and send queries to the Repository. The <tt>QueryControlClient</tt> implements the <tt>QueryControlInterface</tt> and thus provides the operations available in the EPCIS Query Control Interface. It acts as an application-side layer providing transparent access to the Query Operations Module at the EPCIS Repository.</p></div><div class="section"><h4>QueryCallbackClient</h4><p>A query callback is the mechanism for returning results of a standing query (subscribed query) back to the requesting client. The <tt>QueryCallbackClient</tt> provides very simple support for this mechanism: It can be started as a new <tt>Thread</tt> and will then be listening at a specific <tt>ServerSocket</tt> for incoming HTTP POST connections. Once such a connection is established, it parses and caches the POST payload, and notifies everyone waiting for a response.</p><p>The following sequence diagram gives an overview for the query callback mechanism. It shows the processing steps a subscribed query takes, from the time of subscription to the delivery of results to the client.</p><img src="../images/sequence_callback.png" /></div><div class="section"><h4>QueryClientGui</h4><p>We also provide a graphical user interface for composing and sending queries manually. The gui makes use of the <tt>QueryControlClient</tt> described above for sending the queries to our Repository. Technically this component is also implemented according to the MVC pattern: The <tt>Query</tt> models a real world query (the <i>model</i> in the MVC pattern) and has merely setter and getter functionalities. The <tt>QueryClientGui</tt> is the actual <i>view</i> in the MVC pattern. And finally the <tt>QueryClientGuiHelper</tt> which performs integrity checks, does the error handling, marshalls parameters and transfers queries to the <tt>QueryControlClient</tt> is the <i>controller</i> in the MVC pattern. Please consult the <a href="user-guide.html">User Guide</a> for further notes on how to use this gui.</p></div></div><div class="section"><h3>References</h3><p><a name="[1]">[1]</a> <i>EPC Information Services (EPCIS) Version 1.0 Specification</i>, Proposed Specification Version of 29 November 2006</p><p><a name="[2]">[2]</a> <i>Distributed Systems Groups, ETH Zurich</i>, <a href="http://www.vs.inf.ethz.ch/">http://www.vs.inf.ethz.ch/</a></p><p><a name="[3]">[3]</a> <i>Apache Axis, The Apache Software Foundation</i>, <a href="http://ws.apache.org/axis/java/index.html">http://ws.apache.org/axis/java/index.html</a></p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://www.fosstrak.org/epcis/epcis-captureclient/webstart/" href="epcis-captureclient.jnlp">
+  <information>
+    <title>Fosstrak EPCIS Capture Client</title>
+    <vendor>fosstrak.org</vendor>
+    <homepage href="http://www.fosstrak.org/" />
+    <description>Generic GUI client to interact with an EPCIS Capture Interface</description>
+  </information>
+  <offline-allowed/>
+  <resources>
+    <j2se version="1.5+" />
+    
+<jar href="epcis-captureclient-0.5.0.jar" main="true"/>
+<jar href="epcis-commons-0.5.0.jar"/>
+<jar href="stax-api-1.0-2.jar"/>
+
+  </resources>
+  <security>
+    <all-permissions/>
+  </security>
+  <application-desc main-class="org.fosstrak.epcis.captureclient.CaptureClientGui" />
+</jnlp>

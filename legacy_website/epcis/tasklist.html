@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak EPCIS - Roadmap</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 0.5.1-SNAPSHOT
+	-->
+                     
+                <a href="../index.html">Fosstrak</a>
+                &gt;
+      
+          EPCIS
+                        </div>
+            <div class="xright">            <a href="index.html">EPCIS Repository</a>
+            |
+                <a href="../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../fc/index.html">ALE Middleware</a>
+            |
+                <a href="../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>EPCIS</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="demo.html">Demo</a>
+          </li>
+              
+    <li class="none">
+                    <a href="download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+              <strong>Roadmap</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="team-list.html">Project Team</a>
+          </li>
+              
+    <li class="none">
+                    <a href="mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="issue-tracking.html">Issue Tracking</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="docs/user-guide.html">User Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="docs/developer-guide.html">Developer Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="docs/architecture-guide.html">Architecture Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="docs/webadapter-guide.html">Webadapter Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="apidocs/index.html">JavaDoc</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../webadapters/apidocs/index.html">JavaDoc Webadapter</a>
+          </li>
+          </ul>
+              <h5>EPCIS Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="epcis-repository/project-reports.html">EPCIS Repository</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="epcis-queryclient/project-reports.html">EPCIS Query Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="epcis-captureclient/project-reports.html">EPCIS Capture Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="epcis-commons/project-reports.html">EPCIS Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="epcis-interop-test/project-reports.html">EPCIS Interop Test</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Fosstrak EPCIS - Roadmap</h2><p>This page lists all tasks that we would like to address in the next major releases. If you feel like contributing to one of these tasks or if you have any other ideas for features you'd love to see implemented, please contact the developer mailing list (see the project <a href="./mail-lists.html">mailing lists</a>).</p><hr /><div class="section"><h3>Support attributes for extensions</h3><p>The Fosstrak EPCIS implementation accepts EPCIS events with custom event fields (event field extensions), but does not support attributes for these event fields. According to the specification, extension elements may have attributes and thus support for such attributes should be added to the Fosstrak EPCIS implementation.</p><p>For example, Fosstrak EPCIS should be able to handle to following EPCIS event:</p><div class="source"><pre>&lt;ObjectEvent&gt;
+  &lt;eventTime&gt;2008-11-09T13:30:17Z&lt;/eventTime&gt;
+  &lt;eventTimeZoneOffset&gt;+00:00&lt;/eventTimeZoneOffset&gt;
+  &lt;epcList&gt;
+    &lt;epc&gt;urn:epc:id:sgtin:0057000.123780.7788&lt;/epc&gt;
+  &lt;/epcList&gt;
+  ...
+  &lt;myns:myextension myattribute=&quot;My Attribute&quot;&gt;My Extension&lt;/myns:myextension&gt;
+&lt;/ObjectEvent&gt;</pre></div><p>Above EPCIS event can be successfully captured to the Fosstrak EPCIS repository, but the information in the attribute (e.g., the value &quot;My Attribute&quot;) is lost.</p></div><div class="section"><h3>Refactoring of resource layer and performance evaluation</h3><p>The repository is split into the capture operations and the query operations modules. The capture part makes use of Hibernate to separate the database from the domain model. For the query module, we implemented an SQL backend which uses JDBC to connect to the database (see the <a href="./docs/architecture-guide.html">architecture guide</a> for more details). Unfortunately the query backend is still too much coupled with the actual query operations module. The goal would be to have a fully decoupled front- and backend, such that the DBMS could be easily replaced.</p><p>One idea is to use the Java Persistence API, e.g., OpenJPA. As Hibernate implements the JPA interfaces, we could use the same approach for both the capture and query modules.</p><p>In order to measure the repository throughput, a thorough performance analysis is also required which should result in a performance benchmark. This benchmark should then indicate whether further work on the resource layer is required in order to improve performance.</p></div><div class="section"><h3>Improvement of test environment and quality assurance</h3><p>The epcis-interop-test module provides a way to test the <i>interoperability</i> of the repository implementation. Unfortunately, the test setup is rather cumbersome and the tests require manual modifications in order to run successfully. Therefore we need an improved test setup with integration tests and further unit tests in order to assure code quality.</p><p>The EPCglobal EPCIS Conformance Requirements document is a good place to start.</p></div><div class="section"><h3>More user-friendly object model</h3><p>The current internal object model is automatically generated from XML schema files using JAXB and is used in the repository as well as in the clients. This rather counterintuitive model should be hidden from the user API and instead a new object model wrapping the current model should be provided to the user.</p><p>For example, in order to print the timestamps of a number of RFID events in a list, a developer currently has to write the following code:</p><div class="source"><pre>for (int i = 0; i &lt; events.getObjectEventOrAggregationEventOrQuantityEvent().size(); i++) {
+  JAXBElement element = (JAXBElement) events.getObjectEventOrAggregationEventOrQuantityEvent().get(i);
+  EPCISEventType event = element.getValue();
+  System.out.println(event.getEventTime());
+}</pre></div><p>It would be much easier for a developer if he or she could write something like the following:</p><div class="source"><pre>for (EpcisEvent event : events) {
+  System.out.println(event.getEventTime());
+}</pre></div></div><div class="section"><h3>Access control</h3><p>Add a simple access control mechanism to define which events a given user is allowed to retrieve. Restrictions can be based on EPC, read point, biz location, biz step, disposition, time. See also section 8.2.2 in the EPCIS specification.</p></div><div class="section"><h3>Improvement of capture and query clients</h3><p>The Fosstrak EPCIS capture and query clients do not support the entire range of event fields or query parameters, especially when dealing with extensions. For example, adding events or querying for events with event field extensions is not possible. Also, the GUIs are not very appealing from a usability point of view. Improvements and refactoring are necessary.</p></div><div class="section"><h3>Refactoring of triggered query subscriptions</h3><p>Triggered queries are currently implemented with the help of scheduled queries, i.e., the trigger condition is checked using a scheduled query which runs every once in a while (see the <a href="./docs/user-guide.html">user guide</a> for information on how to configure at which intervals the repository should check for the trigger condition). This checking for trigger condition adds up to a lot of overhead and might be implemented more efficiently using a different approach.</p></div><div class="section"><h3>Cleanup tasks</h3><div class="section"><h4>Generic ISO8601 time parser</h4><p>The current org.fosstrak.epcis.utils.TimeParser can only handle specific cases when event times are parsed. This time parser should be made more generic or could be replaced by an existing ISO8601 parser (<a href="http://joda-time.sourceforge.net">http://joda-time.sourceforge.net</a> might be an alternative).</p></div><div class="section"><h4>Generic EPC parser</h4><p>Incoming EPCs are parsed and validated in a very basic way. EPC validation should be handled by <a href="http://www.fosstrak.org/tdt/">fosstrak-tdt</a> instead.</p></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2010
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>
