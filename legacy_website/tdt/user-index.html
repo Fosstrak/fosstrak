@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak - User Guide</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 0.9.1-SNAPSHOT
+	-->
+                     
+                <a href="../index.html">Fosstrak</a>
+                &gt;
+      
+          TDT Engine
+                        </div>
+            <div class="xright">            <a href="../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="index.html">TDT Engine</a>
+            |
+                <a href="../fc/index.html">ALE Middleware</a>
+            |
+                <a href="../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>TDT Engine</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+              <strong>User Guide</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="changes-report.html">Changelog</a>
+          </li>
+              
+    <li class="none">
+                    <a href="dependencies.html">Dependencies</a>
+          </li>
+              
+    <li class="none">
+                    <a href="mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="source-repository.html">Source Repository</a>
+          </li>
+              
+    <li class="none">
+                    <a href="apidocs/index.html">JavaDoc</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="project-reports.html">Reports</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>User Guide</h2>
+<div class="section"><h3><a name="Sample_code">Sample code</a>
+</h3>
+<p>The following source code samples show how to use the TDT Engine. </p>
+<div class="source"><pre>public class TestCaseSgtin extends TestCase
+{
+
+    private TDTEngine engine = null;
+
+    private Map&lt;String,String&gt; params;
+
+    protected void setUp() {
+        params = new HashMap&lt;String,String&gt;();
+        if (engine == null) {
+            try {
+                engine = new TDTEngine();
+            }
+            catch (Exception e) {
+                e.printStackTrace(System.err);
+                //System.exit(1);
+            }
+        }
+    }
+    
+    public void testPage13Staged() {
+        // this test follows fig 4 on page 13 of TDT Spec
+        // jpb trying this version using a staged approach, only going one level at a time.
+
+        params.put(&quot;taglength&quot;, &quot;96&quot;);
+        params.put(&quot;filter&quot;, &quot;3&quot;);
+        params.put(&quot;companyprefixlength&quot;, &quot;7&quot;);
+        String orig = &quot;gtin=00037000302414;serial=1041970&quot;;
+        String s = engine.convert(orig,
+                                  params,
+                                  LevelTypeList.BINARY);
+        //               ................................................................................................
+        String expect = &quot;001100000111010000000010010000100010000000011101100010000100000000000000000011111110011000110010&quot;;
+        Assert.assertEquals(expect, s);
+
+        String s2 = engine.convert(s,
+                                   params,
+                                   LevelTypeList.TAG_ENCODING);
+
+        expect = &quot;urn:epc:tag:sgtin-96:3.0037000.030241.1041970&quot;;
+        Assert.assertEquals(expect, s2);
+        System.out.println(&quot;te &quot; + s2);
+        String s3 = engine.convert(s2,
+                                   params,
+                                   LevelTypeList.PURE_IDENTITY);
+        expect = &quot;urn:epc:id:sgtin:0037000.030241.1041970&quot;;
+        Assert.assertEquals(expect, s3);
+        System.out.println(&quot;pi &quot; + s3);
+        String s4 = engine.convert(s3,
+                                   params,
+                                   LevelTypeList.LEGACY);
+
+        Assert.assertEquals(orig, s4);
+
+
+    }
+    public void testPage13() {
+        // this test follows fig 4 on page 13 of TDT Spec
+
+        params.put(&quot;taglength&quot;, &quot;96&quot;);
+        params.put(&quot;filter&quot;, &quot;3&quot;);
+        params.put(&quot;companyprefixlength&quot;, &quot;7&quot;);
+        String orig = &quot;gtin=00037000302414;serial=1041970&quot;;
+        String s = engine.convert(orig,
+                                  params,
+                                  LevelTypeList.BINARY);
+        //               ................................................................................................
+        String expect = &quot;001100000111010000000010010000100010000000011101100010000100000000000000000011111110011000110010&quot;;
+        Assert.assertEquals(expect, s);
+
+        String s2 = engine.convert(s,
+                                   params,
+                                   LevelTypeList.LEGACY);
+        Assert.assertEquals(orig, s2);
+
+
+    }
+
+    public void testPage26() {
+        // table 3 on page 26 has some legacy codes. Check that they
+        // convert back and forth to binary.
+
+        params.put(&quot;taglength&quot;, &quot;96&quot;);
+        params.put(&quot;filter&quot;, &quot;3&quot;);
+        params.put(&quot;companyprefixlength&quot;, &quot;7&quot;);
+        String legacy [] =
+            {&quot;gtin=00037000302414;serial=10419703&quot;,
+             &quot;sscc=000370003024147856&quot;,
+             &quot;gln=0003700030247;serial=1041970&quot;,
+             &quot;grai=00037000302414274877906943&quot;,
+             &quot;giai=00370003024149267890123&quot;,
+             &quot;generalmanager=5;objectclass=17;serial=23&quot;,
+             &quot;cageordodaac=AB123;serial=3789156&quot;
+            };
+
+        for (String s : legacy) {
+            String s2 = engine.convert(s,
+                                       params,
+                                       LevelTypeList.BINARY);
+            System.out.println(&quot;  &quot; + s + &quot; -&gt; &quot; + s2);
+            String s3 = engine.convert(s2,
+                                       params,
+                                       LevelTypeList.LEGACY);
+            System.out.println(&quot;    -&gt; &quot; + s3);
+            Assert.assertEquals(s, s3);
+        }
+
+    }
+    
+    public void testSgtin64() {
+        params.put(&quot;taglength&quot;, &quot;64&quot;);
+        params.put(&quot;filter&quot;, &quot;3&quot;);
+        params.put(&quot;companyprefixlength&quot;, &quot;7&quot;);
+        String orig = &quot;gtin=20073796510026;serial=1&quot;;
+        String s = engine.convert(orig,
+                                  params,
+                                  LevelTypeList.BINARY);
+        //               ................................................................................................
+        String expect = &quot;1001100000010011110001111010100011110100000000000000000000000001&quot;;
+        //                  9   8   1   3   c   7   a   8   f   4   0   0   0   0   0   1
+        Assert.assertEquals(expect, s);
+        }
+    
+
+    public void testUsDod96() {
+        params.put(&quot;taglength&quot;, &quot;96&quot;);
+        params.put(&quot;filter&quot;, &quot;0&quot;);
+        String orig = &quot;cageordodaac=2S194;serial=12345678901&quot;;
+        String s = engine.convert(orig,
+                                  params,
+                                  LevelTypeList.BINARY);
+        //               ................................................................................................
+        String expect = &quot;001011110000001000000011001001010011001100010011100100110100001011011111110111000001110000110101&quot;;
+        //                  2   f   0   2   0   3   2   5   3   3   1   3   9   3   4   2   d   f   d   c   1   c   3   5
+        Assert.assertEquals(expect, s);
+    }
+
+    public void testUsDod64() {
+        params.put(&quot;taglength&quot;, &quot;64&quot;);
+        params.put(&quot;filter&quot;, &quot;1&quot;);
+        String orig = &quot;cageordodaac=1D381;serial=16522293&quot;;
+        String s = engine.convert(orig,
+                                  params,
+                                  LevelTypeList.BINARY);
+        //               ................................................................................................
+        String expect = &quot;1100111001110001000100110011111000110001111111000001110000110101&quot;;
+        //                  c   e   7   1   1   3   3   e   3   1   f   c   1   c   3   5
+        Assert.assertEquals(expect, s);
+    }
+}</pre>
+</div>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

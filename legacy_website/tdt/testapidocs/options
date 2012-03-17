@@ -1,0 +1,19 @@
+-classpath 'C:/accada/tdt/target/classes;C:/accada/tdt/target/test-classes;C:/Documents and Settings/admin/.m2/repository/javax/xml/bind/jaxb-api/2.1/jaxb-api-2.1.jar;C:/Documents and Settings/admin/.m2/repository/net/sf/csv4j/csv4j/0.4.0/csv4j-0.4.0.jar;C:/Documents and Settings/admin/.m2/repository/xerces/xercesImpl/2.2.1/xercesImpl-2.2.1.jar;C:/Documents and Settings/admin/.m2/repository/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar;C:/Documents and Settings/admin/.m2/repository/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar;C:/Documents and Settings/admin/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar;C:/Documents and Settings/admin/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar'
+ -encoding
+'ISO-8859-1'
+-protected
+-sourcepath
+'C:/accada/tdt/src/test/java'
+-author
+-bottom
+'Copyright &#169; 2009. All Rights Reserved.'
+-charset
+'ISO-8859-1'
+-d
+'C:/accada/tdt/target/site/testapidocs'
+-doctitle
+'tdt 0.9.1-SNAPSHOT Test API'
+-use
+-version
+-windowtitle
+'tdt 0.9.1-SNAPSHOT Test API'
