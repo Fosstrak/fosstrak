@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2010-12-27T18:35:12.656">
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\db\InternalDatabase.java">
+<violation beginline="155" endline="158" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="initDB" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="161" endline="164" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="initDB" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="284" endline="284" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="containsSubscriptionID" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="326" endline="326" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getSubscriptionAlias" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="367" endline="367" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getNextFreeAlias" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="378" endline="380" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getNextFreeAlias" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="446" endline="446" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="insertSubscription" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="489" endline="489" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="printDB" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="634" endline="634" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getReaders" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="637" endline="637" begincolumn="24" endcolumn="26" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getReaders" variable="loc" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'loc'.
+</violation>
+<violation beginline="676" endline="676" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getLocations" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="717" endline="717" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getReaders" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="759" endline="759" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getFeedIDs" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="861" endline="861" begincolumn="13" endcolumn="21" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getNextEntryID" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="920" endline="920" begincolumn="17" endcolumn="25" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="InternalDatabase" method="getFeed" externalInfoUrl="http://refdoc.venezia.dev.impots/multiproject/pmdSODA/chapters/chapitre-11.1-jdbc.html#_JDBC-RS_" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\db\LocationReaderConnection.java">
+<violation beginline="91" endline="93" begincolumn="17" endcolumn="17" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.db" class="LocationReaderConnection" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\feed\FeedResource.java">
+<violation beginline="23" endline="23" begincolumn="1" endcolumn="36" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.feed" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.servlet.ServletContext'
+</violation>
+<violation beginline="24" endline="24" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.feed" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.ws.rs.core.Context'
+</violation>
+<violation beginline="356" endline="359" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.feed" class="FeedResource" method="addEntry" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\logic\AbstractEventBusinessLogic.java">
+<violation beginline="147" endline="151" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractEventBusinessLogic" method="getFilteredEvents" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="155" endline="159" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractEventBusinessLogic" method="getFilteredEvents" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="169" endline="185" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractEventBusinessLogic" method="getFilteredEvents" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="524" endline="562" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractEventBusinessLogic" method="getEPCISEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\logic\AbstractQueryParamBusinessLogic.java">
+<violation beginline="331" endline="334" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractQueryParamBusinessLogic" method="getSEQuery" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="356" endline="358" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractQueryParamBusinessLogic" method="getSEQuery" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="394" endline="396" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractQueryParamBusinessLogic" method="getSEQuery" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="418" endline="421" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractQueryParamBusinessLogic" method="getSEQuery" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="509" endline="512" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractQueryParamBusinessLogic" method="getSEQuery" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="534" endline="537" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="AbstractQueryParamBusinessLogic" method="getSEQuery" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\logic\Initializer.java">
+<violation beginline="23" endline="23" begincolumn="1" endcolumn="31" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.logic" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.logging.Level'
+</violation>
+<violation beginline="24" endline="24" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.logic" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.logging.Logger'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\logic\QueryBusinessLogic.java">
+<violation beginline="23" endline="23" begincolumn="1" endcolumn="47" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.logic" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.sun.jersey.api.json.JSONWithPadding'
+</violation>
+<violation beginline="52" endline="52" begincolumn="1" endcolumn="34" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.logic" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.ws.rs.core.MediaType'
+</violation>
+<violation beginline="792" endline="794" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="QueryBusinessLogic" method="getEpc" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="931" endline="933" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.logic" class="QueryBusinessLogic" method="getBusinessTransaction" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\logic\RESTfulEPCISBusinessLogic.java">
+<violation beginline="38" endline="38" begincolumn="1" endcolumn="58" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.logic" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.webadapters.epcis.db.InternalDatabase'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\logic\SubscriptionBusinessLogic.java">
+<violation beginline="164" endline="164" begincolumn="24" endcolumn="33" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.logic" class="SubscriptionBusinessLogic" method="addSubscription" variable="voidHolder" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'voidHolder'.
+</violation>
+<violation beginline="206" endline="206" begincolumn="28" endcolumn="41" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.logic" class="SubscriptionBusinessLogic" method="addSubscription" variable="clientResponse" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'clientResponse'.
+</violation>
+<violation beginline="208" endline="208" begincolumn="28" endcolumn="44" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.logic" class="SubscriptionBusinessLogic" method="addSubscription" variable="clientResponseXML" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'clientResponseXML'.
+</violation>
+<violation beginline="265" endline="265" begincolumn="20" endcolumn="40" rule="UnusedPrivateMethod" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.logic" class="SubscriptionBusinessLogic" method="generateID" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateMethod" priority="3">
+Avoid unused private methods such as 'generateID(String)'.
+</violation>
+<violation beginline="269" endline="272" begincolumn="13" endcolumn="5" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.logic" class="SubscriptionBusinessLogic" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'id'.
+</violation>
+<violation beginline="418" endline="418" begincolumn="24" endcolumn="30" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.logic" class="SubscriptionBusinessLogic" method="addEntryToSubscription" variable="builder" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'builder'.
+</violation>
+<violation beginline="457" endline="457" begincolumn="39" endcolumn="44" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.logic" class="SubscriptionBusinessLogic" method="addEntryToSubscription" variable="helper" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'helper'.
+</violation>
+<violation beginline="492" endline="492" begincolumn="24" endcolumn="40" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.logic" class="SubscriptionBusinessLogic" method="addEntryToSubscription" variable="clientResponseXML" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'clientResponseXML'.
+</violation>
+<violation beginline="526" endline="526" begincolumn="24" endcolumn="33" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.logic" class="SubscriptionBusinessLogic" method="unsubscribeSubscription" variable="voidHolder" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'voidHolder'.
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\model\epc\ElectronicProductCode.java">
+<violation beginline="145" endline="148" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.epc" class="ElectronicProductCode" method="getComponents" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="156" endline="159" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.epc" class="ElectronicProductCode" method="getComponents" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="169" endline="172" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.epc" class="ElectronicProductCode" method="getComponents" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\model\events\AggregationEvent.java">
+<violation beginline="241" endline="241" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="AggregationEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="265" endline="265" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="AggregationEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="272" endline="272" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="AggregationEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\model\events\EPCISEvent.java">
+<violation beginline="753" endline="755" begincolumn="17" endcolumn="17" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="setUpEntry" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="759" endline="761" begincolumn="17" endcolumn="17" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="setUpEntry" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="855" endline="855" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="862" endline="862" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="869" endline="869" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="876" endline="876" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="883" endline="883" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="890" endline="890" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="897" endline="897" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="904" endline="904" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="911" endline="911" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="918" endline="918" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="942" endline="942" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="EPCISEvent" method="isLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\model\events\ObjectEvent.java">
+<violation beginline="217" endline="217" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="ObjectEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="223" endline="223" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="ObjectEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\model\events\QuantityEvent.java">
+<violation beginline="155" endline="155" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="QuantityEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="162" endline="162" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="QuantityEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\model\events\TransactionEvent.java">
+<violation beginline="237" endline="237" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="TransactionEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="261" endline="261" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="TransactionEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="268" endline="268" begincolumn="11" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.model.events" class="TransactionEvent" method="isSubclassLikeEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\representation\HTMLPageIphoneBuilder.java">
+<violation beginline="51" endline="51" begincolumn="23" endcolumn="34" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.representation" class="HTMLPageIphoneBuilder" method="buildRepresentation" variable="unifrLogoURL" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'unifrLogoURL'.
+</violation>
+<violation beginline="52" endline="52" begincolumn="23" endcolumn="33" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.representation" class="HTMLPageIphoneBuilder" method="buildRepresentation" variable="ethzLogoURL" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'ethzLogoURL'.
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\representation\HTMLStringBuilder.java">
+<violation beginline="995" endline="995" begincolumn="24" endcolumn="35" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.webadapters.epcis.representation" class="HTMLStringBuilder" method="buildButtonAjax" variable="feedImageURI" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'feedImageURI'.
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\representation\PrettyPrint.java">
+<violation beginline="39" endline="42" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.representation" class="PrettyPrint" method="prettyPrintXML" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="77" endline="78" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.representation" class="PrettyPrint" method="prettyPrintHTML" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\rest\RESTfulEPCIS.java">
+<violation beginline="838" endline="840" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.rest" class="RESTfulEPCIS" method="getResults" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\rest\entityprovider\HTMLWebPageSmartPhoneWriter.java">
+<violation beginline="104" endline="107" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.rest.entityprovider" class="HTMLWebPageSmartPhoneWriter" method="isWriteable" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\rest\entityprovider\HTMLWebPageWriter.java">
+<violation beginline="77" endline="80" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.rest.entityprovider" class="HTMLWebPageWriter" method="isWriteable" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\util\TimeParser.java">
+<violation beginline="236" endline="238" begincolumn="29" endcolumn="29" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.util" class="TimeParser" method="parse" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\epcis\EPCISWebServiceClient.java">
+<violation beginline="298" endline="298" begincolumn="13" endcolumn="32" rule="ReturnFromFinallyBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.ws.epcis" class="EPCISWebServiceClient" method="pollSEQueryToQueryResultsWithBounds" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#ReturnFromFinallyBlock" priority="3">
+Avoid returning from a finally block
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\epcis\queryparam\AbstractParameter.java">
+<violation beginline="120" endline="123" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.ws.epcis.queryparam" class="AbstractParameter" method="getValue" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\epcis\queryparam\AbstractRightClassChooserParameter.java">
+<violation beginline="62" endline="65" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.ws.epcis.queryparam" class="AbstractRightClassChooserParameter" method="getQueryParamValue" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="72" endline="75" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.webadapters.epcis.ws.epcis.queryparam" class="AbstractRightClassChooserParameter" method="getQueryParamValue" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\epcis\queryparam\Transaction.java">
+<violation beginline="24" endline="24" begincolumn="1" endcolumn="83" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.epcis.queryparam" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.webadapters.epcis.ws.generated.QueryParameterExceptionResponse'
+</violation>
+<violation beginline="25" endline="25" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.epcis.queryparam" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.text.ParseException'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\AggregationEventExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\AggregationEventType.java">
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\BusinessLocationExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\BusinessLocationType.java">
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISBodyExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISBodyType.java">
+<violation beginline="14" endline="14" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISDocumentExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISDocumentType.java">
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISEventExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISEventListExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISHeaderExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISHeaderType.java">
+<violation beginline="14" endline="14" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISMasterDataBodyExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISMasterDataBodyType.java">
+<violation beginline="14" endline="14" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISMasterDataDocumentExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISMasterDataDocumentType.java">
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISMasterDataHeaderExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISQueryDocumentExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCISQueryDocumentType.java">
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EPCglobalEPCISService.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.MalformedURLException'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\EventListType.java">
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\ObjectEventExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\ObjectEventType.java">
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\QuantityEventExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\QuantityEventType.java">
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\QueryResults.java">
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\QueryResultsExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\QuerySchedule.java">
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\QueryScheduleExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\ReadPointExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\ReadPointType.java">
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\StandardBusinessDocument.java">
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\SubscriptionControls.java">
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\SubscriptionControlsExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\TransactionEventExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\TransactionEventType.java">
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\VocabularyElementExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\VocabularyElementType.java">
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\VocabularyExtensionType.java">
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+<file name="C:\fosstrak\webadapters\target\checkout\src\main\java\org\fosstrak\webadapters\epcis\ws\generated\VocabularyType.java">
+<violation beginline="16" endline="16" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.webadapters.epcis.ws.generated" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.w3c.dom.Element'
+</violation>
+</file>
+</pmd>

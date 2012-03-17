@@ -1,0 +1,17 @@
+org.fosstrak.webadapters.epcis.config
+org.fosstrak.webadapters.epcis.db
+org.fosstrak.webadapters.epcis.db.exceptions
+org.fosstrak.webadapters.epcis.feed
+org.fosstrak.webadapters.epcis.http
+org.fosstrak.webadapters.epcis.logic
+org.fosstrak.webadapters.epcis.model
+org.fosstrak.webadapters.epcis.model.epc
+org.fosstrak.webadapters.epcis.model.events
+org.fosstrak.webadapters.epcis.representation
+org.fosstrak.webadapters.epcis.rest.entityprovider
+org.fosstrak.webadapters.epcis.rest
+org.fosstrak.webadapters.epcis.util
+org.fosstrak.webadapters.epcis.ws.epcis
+org.fosstrak.webadapters.epcis.ws.epcis.query
+org.fosstrak.webadapters.epcis.ws.epcis.queryparam
+org.fosstrak.webadapters.epcis.ws.generated

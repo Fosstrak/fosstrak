@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>EPCIS Web Adapter - EPCIS Webadapter</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Dominique Guinard" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 0.1.0
+	-->
+                     
+                <a href="../index.html">Fosstrak</a>
+                &gt;
+      
+          EPCIS Webadapter
+                        </div>
+            <div class="xright">            <a href="../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../fc/index.html">ALE Middleware</a>
+            |
+                <a href="../llrp/index.html">LLRP Commander</a>
+            |
+                <a href="index.html">EPCIS Webadapter</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>EPCIS Webadapter</h5>
+            <ul>
+              
+    <li class="none">
+              <strong>Overview</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="demo.html">Demo</a>
+          </li>
+              
+    <li class="none">
+                    <a href="feedback.html">Feedback</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="issue-tracking.html">Issue Tracking</a>
+          </li>
+          </ul>
+              <h5>Guides and Documentation</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="docs/epcis-webadapter-guide.html">EPCIS Webadapter Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Introduction</h2>
+<p>This module offers an additional, RESTful, integration interface, or API (Application Programming Interface) for the EPCIS upon which a different range of applications can be built thanks to a lightweight and Web-enabled RESTful architecture. It offers access to all standard EPCIS functionality through a native Web interface.</p>
+<p>Using the EPCIS Webadapter:</p>
+<ul><li>Each query, tagged object, location or RFID reader gets a unique URL that can be linked to, exchanged in emails, browsed for, bookmarked, etc. (on the Web or in an Intranet). </li>
+</ul>
+<ul><li>You can use Web languages like HTML and JavaScript to directly use RFID data.</li>
+</ul>
+<ul><li>You create light-weight applications that are using RFID data on resource-limited environements such as <b>mobile phones, wireless sensor nodes or Web mashups</b>. <p><b>Please note that the EPCIS Webadapter is not an EPCglobal standardized interface and currently is still a beta Fosstrak module.</b></p>
+<p>Detailed information about this module and how to use it can be found in the <a href="docs/EPCIS Webadapter-guide.html">EPCIS Webadapter guide</a></p>
+</li>
+</ul>
+<div class="section"><h3>Features of the EPCIS Webadapter</h3>
+<p>The WS-* type of integration architecture is well adapted to combine business applications. For example, it can be used to integrate EPCIS data about the status of a shipment with an ERP (Enterprise Resource Planning) application. </p>
+<p>However, WS-* applications are complex systems with high entry barriers and require developer expertise in the domain. Hence, they are not well adapted for more light-weight and ad-hoc application scenarios. Furthermore, the WS-* protocols are known to be rather verbose. Moreover, they do not fully meet the requirements of resource-constrained devices such as mobile phones and wireless sensor/actuator networks often not providing WS-* server or even client stacks.</p>
+<p>The EPCIS Webadapter is a optional plugin that that offers an additional RESTful interface on top of any standard-compliant EPCIS. Using this approach, each query, tagged object, location or RFID reader gets a unique URL that can be linked to, exchanged in emails, browsed for, bookmarked, and consumed from any scripting or programming language understanding the HTTP protocol.</p>
+<img src="images/epcis-webadapter-architecture.png" alt="Architecture of the EPCIS Webadapter" /><p>The EPCIS Webadapter has three main goals:</p>
+<ul><li>lowering the entry barrier for developers and foster rapid prototyping by bringing the EPCIS data closer to Web languages such as Javascript or Python.</li>
+</ul>
+<ul><li>allowing users to directly access, share and bookmark EPCIS queries and their results through any standard Web-browser, without the need to install any additional software. With this module, every resource of the EPC network gets a unique URL and subscription to queries are delivered as Web Feeds (using the Atom standard).</li>
+</ul>
+<ul><li>Offering a more light-weight access to the data. This enables creating applications in which the EPCIS data are directly consumed by resource-constrained devices (e.g., Wireless sensor networks, mobile phones, etc.) without requiring proxy or translation gateways.</li>
+</ul>
+<p>The module basically translates the incoming RESTful request into SOAP requests on the original EPCIS. It further takes care of reformatting the results into several Web formats such as HTML, JSON, Atom and XML. The plugin is based on <a href="http://jersey.dev.java.net/" class="externalLink"> Jersey</a>, an implementation of the Java Standard for RESTful Web Services (JAX-RS). For generating Atom feeds for query subscriptions, it uses the <a href="http://abdera.apache.org/" class="externalLink"> Apache Abdera</a> framework.</p>
+<p>More information about this module can be found in the <a href="docs/EPCIS Webadapter-guide.html">EPCIS Webadapter guide</a> or in this <a href="http://www.inf.ethz.ch/personal/dguinard/publications/bibtex.html?file=/home/webvs/www/htdocs/publ/papers/dguinard-giving-2010" class="externalLink">research paper</a>.</p>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2010
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>
