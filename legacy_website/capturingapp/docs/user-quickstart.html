@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak Capturing Application - Quick Start</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 0.1.1
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware > Capturing Application</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../../fc/index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>Capturing Application</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+    <li class="none">
+              <strong>Quick Start</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="../docs/dev-guide.html">Developers Guide</a>
+          </li>
+          </ul>
+                  <ul>
+              
+          
+                    
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../project-reports.html">Project Reports</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../changes-report.html">Changes Report</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../dependencies.html">Dependencies</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../pmd.html">PMD Report</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../cpd.html">CPD Report</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../javancss.html">JavaNCSS Report</a>
+          </li>
+              </ul>
+        </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Quick Start</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Overview">Overview</a></li><li><a href="#Scenario">Scenario</a></li><li><a href="#Prerequisites">Prerequisites</a></li><li><a href="#Preparations">Preparations</a></li><li><a href="#Simple">Simple Solution</a></li><li><a href="#Elaborate">Elaborate Solution</a></li></ol></div><div class="section"><h3><a name="Overview">Overview</a></h3><p>This tutorial will guide you through an example scenario, how the Fosstrak Capturing Application can be used to link the Fosstrak ALE and the Fosstrak EPCIS-repository by retrieving ECReports from the ALE and delivering EPCIS-reports to the EPCIS-repository. The tutorial shows two different solutions to the scenario described below (A simple one and a more elaborate one). </p></div><div class="section"><h3><a name="Scenario">Scenario</a></h3><p>We model a simple store equipped with three RFID readers. One reader (Reader_GoodsReceiving) in the backend, where incoming goods are registered by the staff. A second reader (Reader_PointOfExit) installed at the exit door that either warns about stolen goods or thanks the customer for the purchasing. The third reader (Reader_PointOfSale) is installed at the cash desk.</p><ul><li>Reader_GoodsReceiving: Upon tag read: write a new entry into the EPCIS-repository (new registered item).</li><li>Reader_PointOfSale: Upon tag read: check the EPCIS-repository, if the tag has already been sold. If not sold, create a new entry in the repository, flaging the tag as sold.</li><li>Reader_PointOfExit: Upon tag read: check the EPCIS-repository, if the tag has been sold. If not sold, raise an alarm.</li></ul></div><div class="section"><h3><a name="Prerequisites">Prerequisites</a></h3><ul><li>a copy of the <a href="http://maven-repository.fosstrak.org/releases/org/fosstrak/fc/fc-server/">fc-server-1.0.1.war or newer</a>.</li><li>a copy of the <a href="http://maven-repository.fosstrak.org/releases/org/fosstrak/fc/fc-webclient/">fc-webclient fc-webclient-1.0.1.war or newer</a>.</li><li>a copy of the <a href="http://maven-repository.fosstrak.org/releases/org/fosstrak/epcis/epcis-repository/">epcis-repository epcis-repository-0.4.2.war or newer</a>.</li><li>a copy of the <a href="http://maven-repository.fosstrak.org/releases/org/fosstrak/hal/hal-impl-sim/">hal-simulator</a>. Select <b>hal-impl-sim-0.5.0-bin-with-dependencies.[zip|tar.gz]</b> or newer.</li><li>Configuration files:<ul><li><a href="../files/quickstart/Reader_GoodsReceiving.xml">Reader_GoodsReceiving.xml</a> (Both Scenarios).</li><li><a href="../files/quickstart/Reader_PointOfExit.xml">Reader_PointOfExit.xml</a> (Both Scenarios).</li><li><a href="../files/quickstart/Reader_PointOfSale.xml">Reader_PointOfSale.xml</a> (Both Scenarios).</li><li><a href="../files/quickstart/SimulatorClient.xml">SimulatorClient.xml</a> (Both Scenarios).</li><li><a href="../files/quickstart/SimulatorController.xml">SimulatorController.xml</a> (Both Scenarios)</li><li><a href="../files/quickstart/EventCycle_GoodsReceiving.xml">EventCycle_GoodsReceiving.xml</a> (Simple Scenario).</li><li><a href="../files/quickstart/EventCycle_PointOfExit.xml">EventCycle_PointOfExit.xml</a> (Simple Scenario).</li><li><a href="../files/quickstart/EventCycle_PointOfSale.xml">EventCycle_PointOfSale.xml</a> (Simple Scenario).</li><li><a href="../files/quickstart/fosstrakDemo.xml">fosstrakDemo.xml</a> (Elaborate Scenario).</li></ul></li><li><a href="http://tomcat.apache.org/"> Apache Tomcat Java Servlet Container</a></li></ul></div><div class="section"><h3><a name="Preparations">Preparations</a></h3><p>The preparations need to be performed for both solutions. Please follow the different steps carefully.</p><div class="section"><h4>Start the multi reader simulator.</h4><p>We use a simulator to generate the tag input for the Filtering &amp; Collection. The multi reader simulator is capable of simulating several readers in one application, allowing you to move tags from one reader to another.</p><p>First unpack hal-impl-sim-VERSION-bin-with-dependencies to a folder of your choice (example c:\fosstrakDemo).</p><p>Open a commandline and run the simulator.</p><div class="source"><pre>cd c:\fosstrakDemo
+java -cp hal-impl-sim-0.5.0\hal-impl-sim-0.5.0.jar org.fosstrak.hal.impl.sim.multi.SimulatorServerController</pre></div><p>If everything runs fine, an empty window should pop up.</p><img src="../files/quickstart/simulatorController.png" /></div><div class="section"><h4>Prepare EPCIS-repository</h4><p>If you already have a running instance of an EPCIS-repository, you can safely skip this section. Otherwise follow the installation instructions of the Fosstrak EPCIS-repository. <a href="http://fosstrak.org/epcis/docs/user-guide.html">EPCIS-Documentation</a>.</p></div><div class="section"><h4>Prepare the Filtering &amp; Collection</h4><p>Deploy the Fosstrak Filtering &amp; Collection to your Tomcat webapps folder (by simply copying the war-file into the folder). We need access to the configuration files packed into the war-file, so unpack the war-file into the webapps folder.</p><p>Copy the two configuration files <a href="../files/quickstart/SimulatorClient.xml">SimulatorClient.xml</a> and <a href="../files/quickstart/SimulatorController.xml">SimulatorController.xml</a> into the folder <i>webapps\fc-server-VERSION\WEB-INF\classes\props</i> (Overwrite the existing copies). </p><p>We recommend you, to adjust the log-level for the Filtering &amp; Collection from either DEBUG or INFO to ERROR. To do so, open the file <i>webapps\fc-server-VERSION\WEB-INF\classes\log4j.properties</i> and adjust the log-level:</p><div class="source"><pre>file: &lt;TOMCAT_FOLDER&gt;\webapps\fc-server-VERSION\WEB-INF\classes\log4j.properties
+
+# class specific levels
+log4j.logger.org.fosstrak = ERROR</pre></div></div></div><div class="section"><h3><a name="Simple">Simple</a> Solution</h3><p>This solution sets up an EventCycle for each reader. This allows the capturing application to distinguish between different readers by the name of the EventCycle.</p><p>Please ensure, that you followed the setup in <a href="#Preparations">Preparations</a>.</p><p>Copy the fc-webclient and the capturing-app war-files into the Tomcat webapps folder und unpack the capturing-app file (We need to adjust a few configuration parameters).</p><div class="section"><h4>Adjust the configuration</h4><ol type="1"><li>First, we define a new capturing application that is listening on port <b>9999</b> for incoming ECReports, and that is delivering EPCIS-events to the EPCIS-repository at <b>http://localhost:8080/epcis-repository-0.4.2/capture</b>. Open the file <i>webapps/capturing-app-VERSION/WEB-INF/classes/captureapplication.properties</i> and set the configuration below:<div class="source"><pre>file: &lt;TOMCAT_FOLDER&gt;/webapps/capturing-app-VERSION/WEB-INF/classes/captureapplication.properties
+
+n=1
+
+cap.0.port=9999
+cap.0.name=myFirstCaptureApp
+cap.0.epcis=http://localhost:8080/epcis-repository-0.4.2/capture</pre></div></li><li>Second, we instruct the capturing application to use the simple solution for the scenario. Open the file <i>webapps/capturing-app-VERSION/WEB-INF/classes/changeset.xml</i> and set the configuration below:<div class="source"><pre>file: &lt;TOMCAT_FOLDER&gt;/webapps/capturing-app-VERSION/WEB-INF/classes/changeset.xml
+
+&lt;change-set xmlns='http://drools.org/drools-5.0/change-set'
+            xmlns:xs='http://www.w3.org/2001/XMLSchema-instance'
+            xs:schemaLocation='http://drools.org/drools-5.0/change-set.xsd' &gt;
+   &lt;add&gt;
+      &lt;resource source='classpath:drools/SimpleWareHouse-3EventCycles.drl' type='DRL' /&gt;
+   &lt;/add&gt;
+&lt;/change-set&gt;</pre></div></li><li>Start Tomcat now.</li></ol></div><div class="section"><h4>Setup the readers</h4><ol type="1"><li>Start your web browser and point it to the address of the web-based client.<div class="source"><pre>http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;WEBCLIENT_VERSION&gt;/services/ALEWebClient.jsp
+
+example:
+http://localhost:8080/fc-webclient-1.0.1/services/ALEWebClient.jsp</pre></div></li><li>Set the endpoint to the filtering and collection server's Logical Reader API by selecting <b>setEndPoint(String endPointName)</b> in the <b>LogicalReader API</b>. Click <b>Invoke</b> to execute the command.<div class="source"><pre>endpoint: http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;FCSERVER_VERSION&gt;/services/ALELRService
+
+example: 
+http://localhost:8080/fc-server-1.0.1/services/ALELRService</pre></div></li><li>Verify that a connection between the web-based client and the server can be established by clicking <b>getVendorVersion()</b>. A version number should be returned.</li><li>The next step is to establish a connection from the Filtering &amp; Collection to the reader simulator (basically this means to setup three different readers).<ol type="i"><li>Click on <b>define(String readerName, LRSpec spec)</b> in the section LogicalReader API. <b>DO NOT CONFUSE</b> the define method for an EventCycle with the define method for a logical reader!<p>Define three readers. Make sure to set the reader names exactly as they are written below.</p><ul><li>Reader_GoodsReceiving with <a href="../files/quickstart/Reader_GoodsReceiving.xml">Reader_GoodsReceiving.xml</a></li><li>Reader_PointOfSale with <a href="../files/quickstart/Reader_PointOfSale.xml">Reader_PointOfSale.xml</a></li><li>Reader_PointOfExit with <a href="../files/quickstart/Reader_PointOfExit.xml">Reader_PointOfExit.xml</a></li></ul><div class="source"><pre>Example:
+
+readerName: Reader_PointOfSale
+specFilePath: c:\fosstrakDemo\Reader_PointOfSale.xml</pre></div></li><li>Retrieve the logical reader names to check if readers are there by clicking <b>getLogicalReaderNames()</b>. The result should be <i>[Reader_PointOfSale, Reader_PointOfExit, Reader_GoodsReceiving]</i>.</li></ol></li><li>Now switch to the multi reader simulator and refresh it to to display the readers (click <b>view</b> and then <b>refresh</b>).</li></ol></div><div class="section"><h4>Setup the EventCycles</h4><ol type="1"><li>Start your web browser and point it to the address of the web-based client.<div class="source"><pre>http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;WEBCLIENT_VERSION&gt;/services/ALEWebClient.jsp
+
+example:
+http://localhost:8080/fc-webclient-1.0.1/services/ALEWebClient.jsp</pre></div></li><li>Set the endpoint to the filtering and collection server by selecting the <b>setEndpoint(String endPointName)</b> method in the <b>Filtering and Collection API</b>. Click <b>Invoke</b> to execute the command.<div class="source"><pre>endpoint: http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;FCSERVER_VERSION&gt;/services/ALEService
+
+example: 
+http://localhost:8080/fc-server-1.0.1/services/ALEService</pre></div></li><li>Verify that a connection between the web-based client and the server can be established by clicking <b>getVendorVersion()</b>. A version number should be returned. </li><li>In the next step you will define three ALE ECSpecs. These tell the ALE Middleware how the RFID tag reads arriving from the simulator should be filtered and aggregated. <ol type="i"><li>Invoke the method <b>define(String specName, String specFilePath)</b>. DO NOT CONFUSE the define method for an EventCycle with the define method for a logical reader! <p>For this scenario we need to create three EventCycles. Make sure to set the names of the EventCycles exactly as they are written below:</p><ul><li>EventCycle_GoodsReceiving with spec <a href="../files/quickstart/EventCycle_GoodsReceiving.xml">EventCycle_GoodsReceiving.xml</a>.</li><li>EventCycle_PointOfExit with spec <a href="../files/quickstart/EventCycle_PointOfExit.xml">EventCycle_PointOfExit.xml</a>.</li><li>EventCycle_PointOfSale with spec <a href="../files/quickstart/EventCycle_PointOfSale.xml">EventCycle_PointOfSale.xml</a>.</li></ul><div class="source"><pre>Example:
+
+specName: EventCycle_PointOfExit
+specFilePath: c:\fosstrakDemo\EventCycle_PointOfExit.xml</pre></div></li><li>Retrieve the EventCycle names to check if they are created correctly by clicking <b>getECSpecNames()</b>. The result should be: <i>[EventCycle_PointOfSale, EventCycle_PointOfExit, EventCycle_GoodsReceiving]</i>.</li></ol></li></ol></div><div class="section"><h4>Deliver ECReports to the capturing application</h4><p>Invoke <b>subscribe(String specName, String notificationUri)</b>. For each of the three EventCycles we just created, invoke the registration with the target URL <b>http://localhost:9999</b>.</p><div class="source"><pre>Example:
+
+notificationURI: http://localhost:9999
+specName: EventCycle_GoodsReceiving</pre></div></div><div class="section"><h4>Watch the result</h4><p>Now all the applications should be linked together correctly. Switch back to the multi reader simulator and make sure, that you can look at the log-output of Tomcat (the capturing application will print the scenario output to the commandline provided by Tomcat).</p><p>Create a few tags (please use the tags from the list below, as they can be translated by the ALE to a meaningful representation).</p><p>Tags:</p><ul><li>3078E7D4141ADC7C66FB10A5</li><li>30842E5663E88618294179E9</li><li>3025979BA9244C71AF8A92B6</li><li>30E85865E0CB78EA767BBBEC</li><li>307AD9A00C520D2585913539</li><li>305887668C7F5160AA3CB66F</li></ul><p>Move one tag on the reader <b>Reader_GoodsReceiving</b> and wait a few seconds. On the commandline a message will be printed informing you about newly registered items.</p><div class="source"><pre>example:
+
+=====================================================
+registering new items:
+urn:epc:raw:96:15001446348594317971238359205
+=====================================================</pre></div><p>Move the tag on the reader <b>Reader_PointOfExit</b> and wait a few seconds. On the commandline alert messages will be printed, as the goods have taken to the exit without being payed for.</p><div class="source"><pre>example:
+
+=====================================================
+!!!!!!!!!!!!! FOUND STOLEN GOODS!!!!!!!!!!
+urn:epc:raw:96:15001446348594317971238359205
+=====================================================</pre></div><p>Move the tag on the reader <b>Reader_PointOfSale</b> and wait a few seconds. On the commandline a message will inform you about a customer having purchased some goods.</p><div class="source"><pre>example:
+
+=====================================================
+customer purchased items:
+urn:epc:raw:96:15001446348594317971238359205
+=====================================================</pre></div><p>Move the tag back on the reader <b>Reader_PointOfExit</b> and a friendly message will be sent to you.</p><div class="source"><pre>example:
+
+=====================================================
+Dear customer, thank you for your purchasing. Goodbye
+=====================================================</pre></div></div><div class="section"><h4>Clean the entries in the EPCIS-repository</h4><p>If you want to run the demo with the same EPCs again, you need to clean out all the entries in the EPCIS-repository. A clean and dirty way, how you can achieve this, is via the mysql-commandline.</p><p>With the MySQL-Commandline client, connect to the MySQL server. Switch into the EPCIS database <b>use epcis;</b>. Then delete all the events <b>delete from event_objectevent;</b>.</p></div></div><div class="section"><h3><a name="Elaborate">Elaborate</a> Solution</h3><p>This solution sets up one EventCycle retrieving tags from all the readers. Aside the tag information (EPC), the EventCycle delivers also tag stats (with the name of the reader that read the EPC). With this information, the capturing application can determine the name of the reader delivering the EPC.</p><p>Please ensure, that you followed the setup in <a href="#Preparations">Preparations</a>.</p><p>Copy the fc-webclient and the capturing-app war-files into the Tomcat webapps folder und unpack the capturing-app file (We need to adjust a few configuration parameters).</p><div class="section"><h4>Adjust the configuration</h4><ol type="1"><li>First, we define a new capturing application that is listening on port <b>9999</b> for incoming ECReports, and that is delivering EPCIS-events to the EPCIS-repository at <b>http://localhost:8080/epcis-repository-0.4.2/capture</b>. Open the file <i>webapps/capturing-app-VERSION/WEB-INF/classes/captureapplication.properties</i> and set the configuration below:<div class="source"><pre>file: &lt;TOMCAT_FOLDER&gt;/webapps/capturing-app-VERSION/WEB-INF/classes/captureapplication.properties
+
+n=1
+
+cap.0.port=9999
+cap.0.name=myFirstCaptureApp
+cap.0.epcis=http://localhost:8080/epcis-repository-0.4.2/capture</pre></div></li><li>Second, we instruct the capturing application to use the elaborate solution for the scenario. Open the file <i>webapps/capturing-app-VERSION/WEB-INF/classes/changeset.xml</i> and set the configuration below:<div class="source"><pre>file: &lt;TOMCAT_FOLDER&gt;/webapps/capturing-app-VERSION/WEB-INF/classes/changeset.xml
+
+&lt;change-set xmlns='http://drools.org/drools-5.0/change-set'
+            xmlns:xs='http://www.w3.org/2001/XMLSchema-instance'
+            xs:schemaLocation='http://drools.org/drools-5.0/change-set.xsd' &gt;
+   &lt;add&gt;
+      &lt;resource source='classpath:drools/SimpleWareHouse-1EventCycle.drl' type='DRL' /&gt;
+   &lt;/add&gt;
+&lt;/change-set&gt;</pre></div></li><li>Start Tomcat now.</li></ol></div><div class="section"><h4>Setup the readers</h4><ol type="1"><li>Start your web browser and point it to the address of the web-based client.<div class="source"><pre>http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;WEBCLIENT_VERSION&gt;/services/ALEWebClient.jsp
+
+example:
+http://localhost:8080/fc-webclient-1.0.1/services/ALEWebClient.jsp</pre></div></li><li>Set the endpoint to the filtering and collection server's Logical Reader API by selecting <b>setEndPoint(String endPointName)</b> in the <b>LogicalReader API</b>. Click <b>Invoke</b> to execute the command.<div class="source"><pre>endpoint: http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;FCSERVER_VERSION&gt;/services/ALELRService
+
+example: 
+http://localhost:8080/fc-server-1.0.1/services/ALELRService</pre></div></li><li>Verify that a connection between the web-based client and the server can be established by clicking <b>getVendorVersion()</b>. A version number should be returned.</li><li>The next step is to establish a connection from the Filtering &amp; Collection to the reader simulator (basically this means to setup three different readers).<ol type="i"><li>Click on <b>define(String readerName, LRSpec spec)</b> in the section LogicalReader API. <b>DO NOT CONFUSE</b> the define method for an EventCycle with the define method for a logical reader!</li><li>Define three readers. Make sure to set the reader names exactly as they are written below.<ul><li>Reader_GoodsReceiving with <a href="../files/quickstart/Reader_GoodsReceiving.xml">Reader_GoodsReceiving.xml</a></li><li>Reader_PointOfSale with <a href="../files/quickstart/Reader_PointOfSale.xml">Reader_PointOfSale.xml</a></li><li>Reader_PointOfExit with <a href="../files/quickstart/Reader_PointOfExit.xml">Reader_PointOfExit.xml</a></li></ul><div class="source"><pre>Example:
+
+readerName: Reader_PointOfSale
+specFilePath: c:\fosstrakDemo\Reader_PointOfSale.xml</pre></div></li><li>Retrieve the logical reader names to check if readers are there by clicking <b>getLogicalReaderNames()</b>. The result should be <i>[Reader_PointOfSale, Reader_PointOfExit, Reader_GoodsReceiving]</i>.</li></ol></li><li>Now switch to the multi reader simulator and refresh it to to display the readers (click <b>view</b> and then <b>refresh</b>).</li></ol></div><div class="section"><h4>Setup the EventCycle</h4><ol type="1"><li>Start your web browser and point it to the address of the web-based client.<div class="source"><pre>http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;WEBCLIENT_VERSION&gt;/services/ALEWebClient.jsp
+
+example:
+http://localhost:8080/fc-webclient-1.0.1/services/ALEWebClient.jsp</pre></div></li><li>Set the endpoint to the filtering and collection server by selecting the <b>setEndpoint(String endPointName)</b> method in the <b>Filtering and Collection API</b>. Click <b>Invoke</b> to execute the command.<div class="source"><pre>endpoint: http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;FCSERVER_VERSION&gt;/services/ALEService
+
+example: 
+http://localhost:8080/fc-server-1.0.1/services/ALEService</pre></div></li><li>Verify that a connection between the web-based client and the server can be established by clicking <b>getVendorVersion()</b>. A version number should be returned. </li><li>In the next step you will define one ALE ECSpec. This one tells the ALE Middleware how the RFID tag reads arriving from the simulator should be filtered and aggregated.<ol type="i"><li>Invoke the method <b>define(String specName, String specFilePath)</b>. DO NOT CONFUSE the define method for an EventCycle with the define method for a logical reader! </li><li>For this scenario we need to create one EventCycle. Make sure to set the name of the EventCycle exactly as it's written below:<ul><li>fosstrakDemo with spec <a href="../files/quickstart/fosstrakDemo.xml">fosstrakDemo.xml</a>.</li></ul><div class="source"><pre>Example:
+
+specName: fosstrakDemo
+specFilePath: c:\fosstrakDemo\fosstrakDemo.xml</pre></div></li><li>Retrieve the EventCycle names to check if they are created correctly by clicking <b>getECSpecNames()</b>. The result should be: <i>[fosstrakDemo]</i>.</li></ol></li></ol></div><div class="section"><h4>Deliver ECReports to the capturing application</h4><p>Invoke <b>subscribe(String specName, String notificationUri)</b>. Subscribe the capturing application to the results of the event cycle.</p><div class="source"><pre>Example:
+
+notificationURI: http://localhost:9999
+specName: fosstrakDemo</pre></div></div><div class="section"><h4>Watch the result</h4><p>Now all the applications should be linked together correctly. Switch back to the multi reader simulator and make sure, that you can look at the log-output of Tomcat (the capturing application will print the scenario output to the commandline provided by Tomcat).</p><p>Create a few tags (please use the tags from the list below, as they can be translated by the ALE to a meaningful representation).</p><p>Tags:</p><ul><li>3078E7D4141ADC7C66FB10A5</li><li>30842E5663E88618294179E9</li><li>3025979BA9244C71AF8A92B6</li><li>30E85865E0CB78EA767BBBEC</li><li>307AD9A00C520D2585913539</li><li>305887668C7F5160AA3CB66F</li></ul><p>Move one tag on the reader <b>Reader_GoodsReceiving</b> and wait a few seconds. On the commandline a message will be printed informing you about newly registered items.</p><div class="source"><pre>example:
+
+=====================================================
+registering new items:
+urn:epc:raw:96:15001446348594317971238359205
+=====================================================</pre></div><p>Move the tag on the reader <b>Reader_PointOfExit</b> and wait a few seconds. On the commandline alert messages will be printed, as the goods have taken to the exit without being payed for.</p><div class="source"><pre>example:
+
+=====================================================
+!!!!!!!!!!!!! FOUND STOLEN GOODS!!!!!!!!!!
+urn:epc:raw:96:15001446348594317971238359205
+=====================================================</pre></div><p>Move the tag on the reader <b>Reader_PointOfSale</b> and wait a few seconds. On the commandline a message will inform you about a customer having purchased some goods.</p><div class="source"><pre>example:
+
+=====================================================
+customer purchased items:
+urn:epc:raw:96:15001446348594317971238359205
+=====================================================</pre></div><p>Move the tag back on the reader <b>Reader_PointOfExit</b> and a friendly message will be sent to you.</p><div class="source"><pre>example:
+
+=====================================================
+Dear customer, thank you for your purchasing. Goodbye
+=====================================================</pre></div></div><div class="section"><h4>Clean the entries in the EPCIS-repository</h4><p>If you want to run the demo with the same EPCs again, you need to clean out all the entries in the EPCIS-repository. A clean and dirty way, how you can achieve this, is via the mysql-commandline.</p><p>With the MySQL-Commandline client, connect to the MySQL server. Switch into the EPCIS database <b>use epcis;</b>. Then delete all the events <b>delete from event_objectevent;</b>.</p></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>
