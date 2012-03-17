@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak HAL - Simulator Configuration and Usage</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:35:03 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">HAL</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>HAL Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+            
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../docs/user-guide.html">User</a>
+                <ul>
+                  
+    <li class="none">
+              <strong>Simulator</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-impinj.html">Impinj</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-feig.html">Feig</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/developer-index.html">Developer</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/developer-changelog.html">Developer Changelog</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>HAL Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-commons/project-reports.html">HAL Commons</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-sim/project-reports.html">HAL Simulator</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-impinj/project-reports.html">HAL Impinj</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-feig/project-reports.html">HAL Feig</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Simulator Configuration and Usage</h2><div class="section"><h3>Simulator Types</h3><p>The simulator controller manages four simulator types, each with different configuration. The following sections describe the configuration of the simulator controller and each simulator type including usage instructions:</p><ul><li><a href="#Simulator">Simulator Controller</a> (common to all simulator types)</li><li><a href="#Graphic">Graphic Simulator</a></li><li><a href="#Batch">Batch Simulator</a></li><li><a href="#Command">Command Line Simulator</a></li><li><a href="#Multi">Multi Simulator</a> (client / server)</li></ul></div><div class="section"><h3><a name="Simulator">Simulator</a> Controller</h3><div class="section"><h4>Configuration of the Fosstrak Reader</h4><p>The following XML code is an example on how to configure the Fosstrak Reader to use the HAL implementation of the simulator controller. The name can be chosen arbitrary but must be unique if multiple readers are configured. The class implementing the <tt>HardwareAbstraction</tt> interface for the simulator controller is <tt>org.fosstrak.hal.impl.sim.SimulatorController</tt>. The properties element contains the path to the configuration file. For information about this see the configuration file example below.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+   &lt;!-- All readers (HardwareAbstractions) used --&gt;
+      &lt;readers&gt;
+         &lt;reader&gt;
+            &lt;name&gt;SimulatorController&lt;/name&gt;
+            &lt;class&gt;org.fosstrak.hal.impl.sim.SimulatorController&lt;/class&gt;
+            &lt;properties&gt;/props/SimulatorController.xml&lt;/properties&gt;
+            &lt;readpoint&gt;Shelf1&lt;/readpoint&gt;
+            &lt;readpoint&gt;Shelf2&lt;/readpoint&gt;
+            &lt;readpoint&gt;Shelf3&lt;/readpoint&gt;
+            &lt;readpoint&gt;Shelf4&lt;/readpoint&gt;
+         &lt;/reader&gt;
+      &lt;/readers&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Configuration File Example</h4><p>This is an example of a configuration file for the simulator controller. All options with their comments should be self-explanatory.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- SimulatorType to be loaded dynamically --&gt;
+   &lt;simType&gt;org.fosstrak.hal.impl.sim.GraphicSimulator&lt;/simType&gt;
+   &lt;simTypePropFile&gt;/props/GraphicSimulator.xml&lt;/simTypePropFile&gt;
+
+   &lt;!-- Configuration file with all the transponder models --&gt;
+   &lt;epcTransponderModelsConfig&gt;/props/EPCTransponderModels_default.xml&lt;/epcTransponderModelsConfig&gt;
+   &lt;!-- The IdTypes configuration file --&gt;
+   &lt;idTypesConfig&gt;/props/IDTypes_default.xml&lt;/idTypesConfig&gt;
+
+   &lt;!-- Read point definition --&gt;
+   &lt;numberOfReadPoints&gt;4&lt;/numberOfReadPoints&gt;
+   &lt;!-- readpoints numebred readPoint_1 ... readPoint_n (at the moment) --&gt;
+   &lt;!-- the client has to use these names to address these read points --&gt;
+   &lt;!-- example: &lt;readPoint_1&gt;Antenna1&lt;/readPoint_1&gt; --&gt;
+   &lt;readPoint_1&gt;Shelf1&lt;/readPoint_1&gt;
+   &lt;readPoint_2&gt;Shelf2&lt;/readPoint_2&gt;
+   &lt;readPoint_3&gt;Shelf3&lt;/readPoint_3&gt;
+   &lt;readPoint_4&gt;Shelf4&lt;/readPoint_4&gt;
+
+&lt;/properties&gt;</pre></div></div></div><div class="section"><h3><a name="Graphic">Graphic</a> Simulator</h3><div class="section"><h4>Configuration of the Simulator Controller</h4><p>The following XML code is an example on how to configure the Simulator Controller to use this simulator. The class implementing the <tt>SimulatorEngine</tt> interface for the graphic simulator is <tt>org.fosstrak.hal.impl.sim.GraphicSimulator</tt>. The simTypePropFile element contains the path to the configuration file. For information about this see the configuration file example below.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- SimulatorType to be loaded dynamically --&gt;
+   &lt;simType&gt;org.fosstrak.reader.hal.impl.sim.GraphicSimulator&lt;/simType&gt;
+   &lt;simTypePropFile&gt;/props/GraphicSimulator.xml&lt;/simTypePropFile&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Configuration File Example</h4><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- language --&gt;
+   &lt;Language&gt;en&lt;/Language&gt;
+
+   &lt;!-- rfid reader --&gt;
+   &lt;ReaderImage&gt;/images/rfid-reader_default.png&lt;/ReaderImage&gt;
+   &lt;ReaderWidth&gt;141&lt;/ReaderWidth&gt;
+   &lt;ReaderHeight&gt;100&lt;/ReaderHeight&gt;
+   &lt;ReaderLabelSize&gt;10&lt;/ReaderLabelSize&gt;
+   &lt;ReaderLabelFont&gt;Verdana&lt;/ReaderLabelFont&gt;
+   &lt;InterReaderPadding&gt;200&lt;/InterReaderPadding&gt;
+
+   &lt;!-- rfid antenna --&gt;
+   &lt;AntennasPerRow&gt;4&lt;/AntennasPerRow&gt;
+   &lt;AntennaImage&gt;/images/rfid-antenna_default.png&lt;/AntennaImage&gt;
+   &lt;AntennaLabelFont&gt;Verdana&lt;/AntennaLabelFont&gt;
+   &lt;AntennaLabelSize&gt;10&lt;/AntennaLabelSize&gt;
+   &lt;AntennaWidth&gt;100&lt;/AntennaWidth&gt;
+   &lt;AntennaHeight&gt;110&lt;/AntennaHeight&gt;
+   &lt;HorizontalInterAntennaPadding&gt;120&lt;/HorizontalInterAntennaPadding&gt;
+   &lt;VerticalInterAntennaPadding&gt;60&lt;/VerticalInterAntennaPadding&gt;
+
+   &lt;!-- rfid tag --&gt;
+   &lt;TagImage&gt;/images/rfid-tag_default.png&lt;/TagImage&gt;
+   &lt;TagLabelFont&gt;Verdana&lt;/TagLabelFont&gt;
+   &lt;TagLabelSize&gt;10&lt;/TagLabelSize&gt;
+   &lt;TagWidth&gt;100&lt;/TagWidth&gt;
+   &lt;TagHeight&gt;20&lt;/TagHeight&gt;
+   &lt;InterTagPadding&gt;10&lt;/InterTagPadding&gt;
+   &lt;TagPrefix&gt;9204F0004B0&lt;/TagPrefix&gt;
+
+   &lt;!-- paddings --&gt;
+   &lt;FramePadding&gt;50&lt;/FramePadding&gt;
+   &lt;HorizontalPadding&gt;50&lt;/HorizontalPadding&gt;
+   &lt;VerticalPadding&gt;50&lt;/VerticalPadding&gt;
+
+   &lt;!-- window --&gt;
+   &lt;MinimumWindowWidth&gt;800&lt;/MinimumWindowWidth&gt;
+   &lt;MinimumWindowHeight&gt;400&lt;/MinimumWindowHeight&gt;
+
+   &lt;!-- dialog windows --&gt;
+   &lt;DialogWindowWidth&gt;800&lt;/DialogWindowWidth&gt;
+   &lt;DialogWindowHeight&gt;120&lt;/DialogWindowHeight&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Usage</h4><p>Handling of the graphic simulater is very intuitive. Tags can be created via the 'Tag' - 'Add new Tag' menu item or the context menu. Drag tags over an antenna to read them.</p><img src="../images/sim_tags.png" alt="Graphic Simulator User Interface" /><p>The memory of a tag can be accessed and changed by hand through its context menu.</p><img src="../images/memory_banks.png" alt="Memory Access" /></div></div><div class="section"><h3><a name="Batch">Batch</a> Simulator</h3><div class="section"><h4>Configuration of the Simulator Controller</h4><p>The following XML code is an example on how to configure the Simulator Controller to use this simulator. The class implementing the <tt>SimulatorEngine</tt> interface for the batch simulator is <tt>org.fosstrak.hal.impl.sim.BatchSimulator</tt>. The simTypePropFile element contains the path to the configuration file. For information about this see the configuration file example below.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- SimulatorType to be loaded dynamically --&gt;
+   &lt;simType&gt;org.fosstrak.reader.hal.impl.sim.BatchSimulator&lt;/simType&gt;
+   &lt;simTypePropFile&gt;/props/BatchSimulator.xml&lt;/simTypePropFile&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Configuration File Example</h4><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!-- Properties file for BatchSimulator --&gt;
+&lt;properties&gt;
+
+   &lt;!-- Absolute file path or name of the batch file --&gt;
+   &lt;!-- Value: file URL or name --&gt;
+   &lt;!-- Example: C:\project\props\batchfile.txt --&gt;
+   &lt;!-- Example: /props/batchfile.txt --&gt;
+   &lt;batchfile&gt;/props/batchfile.txt&lt;/batchfile&gt;
+
+   &lt;!-- Number of iterations to execute --&gt;
+   &lt;!-- Value: iterations (long) --&gt;
+   &lt;iterations&gt;3&lt;/iterations&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Usage</h4><p>Example batch file with comments:</p><div class="source"><pre># Example batch file for Fosstrak BatchSimulator
+# Author: Jonas Haller
+#
+# Lines beginning with '#' are not processed (comments)
+# An event line has the following form:
+#  &lt;time&gt;;&lt;eventTypeName&gt;;&lt;sourceID&gt;;&lt;serial&gt;;&lt;userMemoryData&gt;
+# The values have following meaning:
+#  &lt;time&gt;: Time after last event in milliseconds, must fit into a long
+#  &lt;eventTypeName&gt;: Type of the event, 'EN' for enter, 'EX' for exit
+#  &lt;sourceID&gt;: ID of the source (read point name)
+#  &lt;serial&gt;: Serial number of the tag triggering the event
+#  &lt;userMemoryData&gt;: String containing the user memory data of the tag or 'null' if none
+# Example of an event line:
+#  1000;EN;Antenna;9204F0004B00001;0123456789ABCDEF
+500;EN;Shelf1;9204F0004B00001;null
+500;EX;Shelf1;9204F0004B00001;null</pre></div><p>With this batch file a tag enters the range of antenna 'Shelf1' 500 milliseconds after starting the simulator. An other 500 ms later the tag leaves the read range of the antenna.</p></div></div><div class="section"><h3><a name="Command">Command</a> Line Simulator</h3><div class="section"><h4>Configuration of the Simulator Controller</h4><p>The following XML code is an example on how to configure the Simulator Controller to use this simulator. The class implementing the <tt>SimulatorEngine</tt> interface for the command line simulator is <tt>org.fosstrak.hal.impl.sim.CmdLineSim</tt>. The simTypePropFile element can be left empty as this simulator does not need any configuration.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- SimulatorType to be loaded dynamically --&gt;
+   &lt;simType&gt;org.fosstrak.reader.hal.impl.sim.CmdLineSim&lt;/simType&gt;
+   &lt;simTypePropFile&gt;&lt;/simTypePropFile&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Configuration</h4><p>The command line simulator does not need any configuration.</p></div><div class="section"><h4>Usage</h4><p>After starting the command line simulator, a prompt is shown in the console and awaits one of the following commands:</p><ul><li>sourceids : Lists all available source IDs</li><li>add : Asks for a source ID and a tag ID and adds the tag to this source</li><li>remove : Asks for a source ID and a tag ID and removes the tag from this source</li><li>contains : Asks for a source ID and a tag ID and returnes 'Yes' if the source contains this tag</li><li>getall : Asks for a source ID and lists all tags contained by this source</li><li>exit : Exit the command line simulator</li></ul></div></div><div class="section"><h3><a name="Multi">Multi</a> Simulator</h3><div class="section"><h4>Configuration of the Simulator Controller</h4><p>The following XML code is an example on how to configure the Simulator Controller to use this simulator. The class implementing the <tt>SimulatorEngine</tt> interface for the multi simulator is <tt>org.fosstrak.hal.impl.sim.SimulatorClient</tt>. The simTypePropFile element contains the path to the configuration file of the simulator client. For information about this see the configuration file example below.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- SimulatorType to be loaded dynamically --&gt;
+   &lt;simType&gt;org.fosstrak.reader.hal.impl.sim.SimulatorClient&lt;/simType&gt;
+   &lt;simTypePropFile&gt;/props/SimulatorClient.xml&lt;/simTypePropFile&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Configuration File Example</h4><p>Simulator client:</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- the host to connect to --&gt;
+   &lt;host&gt;localhost&lt;/host&gt;
+
+   &lt;!-- the port to connect to --&gt;
+   &lt;port&gt;8800&lt;/port&gt;
+
+   &lt;!-- the waittime between connection attempts in ms --&gt;
+   &lt;waittime&gt;500&lt;/waittime&gt;
+
+   &lt;!-- the timeout for connection attempt in ms--&gt;
+   &lt;timeout&gt;3000&lt;/timeout&gt;
+
+&lt;/properties&gt;</pre></div><p>Simulator server controller (SimulatorServerController.xml):</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- SimulatorType to be loaded dynamically --&gt;
+   &lt;simType&gt;org.fosstrak.reader.hal.impl.sim.multi.GraphicSimulatorServer&lt;/simType&gt;
+   &lt;simTypePropFile&gt;/props/GraphicSimulator.xml&lt;/simTypePropFile&gt;
+
+   &lt;!-- the port to listen to --&gt;
+   &lt;port&gt;8800&lt;/port&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Usage</h4><p>The multi simulator consists of a client implementing the <tt>SimulatorEngine</tt> interface and connecting to a server through TCP/IP. The server can run on an other computer and starts a graphic, batch or command line simulator. The events generated by the simulator on the server are sent to the client.</p><p>Executing the main method of the class <tt>org.fosstrak.hal.impl.sim.multi.SimulatorServerController</tt> starts the simulator server.</p><p>See the user guide of the simulator type configured in the simulator server controller configuration file.</p></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

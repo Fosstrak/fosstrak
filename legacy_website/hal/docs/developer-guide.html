@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak HAL - Developer Guide</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:35:03 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">HAL</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>HAL Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/user-guide.html">User</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/user-simulator.html">Simulator</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-impinj.html">Impinj</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-feig.html">Feig</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+            
+            
+      
+              
+            <li class="expanded">
+              <a href="../docs/developer-index.html">Developer</a>
+                <ul>
+                  
+    <li class="none">
+              <strong>Developer Guide</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/developer-changelog.html">Developer Changelog</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>HAL Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-commons/project-reports.html">HAL Commons</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-sim/project-reports.html">HAL Simulator</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-impinj/project-reports.html">HAL Impinj</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-feig/project-reports.html">HAL Feig</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Developer Guide</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#About">About this Guide</a></li><li><a href="#Getting">Getting Started</a></li><li><a href="#Project">Project Layout</a></li><li><a href="#Using">Using Maven</a></li></ol></div><div class="section"><h3><a name="About">About</a> this Guide</h3><p>This guide is intended for developers who wish to work on Fosstrak HAL Implementations. It outlines the steps to follow for setting up the development environment and helps developers to find their way through the code.</p></div><div class="section"><h3><a name="Getting">Getting</a> Started</h3><p>This section describes the setup of the development environment we use when working on Fosstrak's HAL project. To compile the HAL, simply execute Maven. A <a href="http://java.sun.com/javase/downloads/">Java Development Kit</a> needs to be installed.</p><div class="section"><h4>SVN Checkout</h4><p>First thing you need to do is checking out the code from the SVN repository. See the <a href="../source-repository.html">Source Repository</a> section on how to access the sources.</p></div><div class="section"><h4>Installing Maven</h4><p>We use <a href="http://maven.apache.org/">Maven 2</a> as our build tool. After installation you need to have the <tt>M2_HOME</tt> environment variable set to your Maven installation directory.</p></div><div class="section"><h4>Installing Java Communications API</h4><p>The FEIG OBID i-scan ID.ISC MR101-A implementation needs the Java Communications API to compile successfully and communicate with the reader. Instructions on installing the Java Communications API can be found in the <a href="user-feig.html#Java%20Communications%20API">Feig User Guide</a>.</p></div></div><div class="section"><h3><a name="Project">Project</a> Layout</h3><p>This section helps developers to find their way through the code.</p><div class="section"><h4>Project Modules</h4><p>Fosstrak's HAL project consists of multiple modules. Currently, it includes four modules:</p><ul><li><b>hal-commons</b><p>This module contains the <tt>HardwareAbstraction</tt> interface definition and common functionality such as exceptions, descriptors, models, types and utility classes.</p></li><li><b>hal-impl-sim</b><p>This module provides simulators implementing the <tt>HardwareAbstraction</tt> interface. Each simulator can be used in exactly the same way as an implementation for a hardware reader. Following simulator types are available:</p><ul><li>The <b>Graphic Simulator</b> shows a GUI with representations of a reader and antennas. Tags can be created and draged over an antenna. The memory of a tag can be read and written manually in the GUI.</li><li>The <b>Batch Simulator</b> takes a file containing information about which tag does enter or exit an antenna on what time.</li><li>The <b>Command Line Simulator</b> opens a prompt and the user can add and remove tags textually and interactively.</li><li>The <b>Multi Simulator</b> consists of a client implementing the <tt>HardwareAbstraction</tt> interface and connecting to a server through TCP/IP. The server can run on an other computer and starts a graphic, batch or command line simulator. The events generated by the simulator are sent to the client.</li></ul></li><li><b>hal-impl-impinj</b><p>This module implements the <tt>HardwareAbstraction</tt> interface for the <b>Impinj Speedway</b> reader. The controller communicates with the reader through TCP/IP and the Impinj Mach1 protocol.</p></li><li><b>hal-impl-feig</b><p>This module contains two controllers for readers from FEIG ELECTRONIC:</p><ul><li>The <b>FeigCOMController</b> implements the <tt>HardwareAbstraction</tt> for the FEIG ELECTRONIC OBID i-scan ID ISC.MR100/101 reader with possibility to use FEIG ELECTRONIC OBID i-scan ID ISC.ANT.MUX multiplexers for attaching multiple antennas to one reader. Communication with the reader is done through a COM port which require the Java Communications API to be installed.</li><li>The <b>FeigTCPIPController</b> communicates to the FEIG ELECTRONIC OBID i-scan ID ISC.LRU1000 reader over TCP/IP. The reader has a built-in multiplexer to attach four antennas to the reader.</li></ul></li></ul></div><div class="section"><h4>Directory Layout</h4><p>We use the standard Maven directory layout as follows:</p><div class="source"><pre>|
++-- pom.xml                             -&gt; top-level POM file
+|
++-- LICENSE.txt, README.txt
+|
++-- src/
+|   |
+|   `-- site/                           -&gt; project documentation
+|
++-- hal-commons/
+|   ¦
+|   '
+|
++-- hal-impl-impinj/
+|   ¦
+|   '
+|
++-- hal-impl-feig/
+|   ¦
+|   '
+|
++-- hal-impl-sim/
+|   |
+|   +-- pom.xml                         -&gt; module POM file
+|   |
+|   `-- src/
+|       |
+|       +-- main/
+|       |   |
+|       |   +-- java/                   -&gt; java source files
+|       |   |
+|       |   +-- resources/              -&gt; configuration files and images
+|       |   |
+|       |   `-- assembly/               -&gt; packaging information
+|       |
+|       +-- site/                       -&gt; module documentation
+|       |
+|       `-- test/
+|           |
+|           `-- java/                   -&gt; java unit test source files
+|
+`-- target/                             -&gt; generated contents</pre></div></div></div><div class="section"><h3><a name="Using">Using</a> Maven</h3><p>We use Maven as our build tool for the Fosstrak HAL project.</p><div class="section"><h4>Building</h4><p>For building the sources, it is sufficient to run the following command:</p><div class="source"><pre>mvn compile</pre></div></div><div class="section"><h4>Eclipse Integration</h4><p>In order to work on the Fosstrak HAL using Eclipse, follow these instructions:</p><ol type="1"><li>Eclipse needs to know the path to the local maven repository. Execute the following command to automatically set up the corresponding classpath variable <tt>M2_REPO</tt> accordingly:<div class="source"><pre>mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt; eclipse:add-maven-repo</pre></div></li><li>In order to generate the <tt>.project</tt> and <tt>.classpath</tt> file used by Eclipse, execute the following command from the directory containing the Fosstrak HAL source code:<div class="source"><pre>mvn eclipse:eclipse</pre></div></li><li>Inside Eclipse, import all the sub-modules (from the menu bar, select File &gt; Import &gt; Existing Projects into Workspace).</li></ol></div><div class="section"><h4>Generation of Binaries</h4><p>The following command will generate the binaries for the modules.</p><div class="source"><pre>mvn package</pre></div></div><div class="section"><h4>Installing</h4><p>To install Fosstrak HAL in the local Maven repository and use it in other projects, for instance Fosstrak Reader, run the following command:</p><div class="source"><pre>mvn install</pre></div></div><div class="section"><h4>Site Generation</h4><p>The main web site (containing this documentation) can be generated by using the following command:</p><div class="source"><pre>mvn site -N</pre></div><p>In order to generate all module reports and to test the whole site navigation before a live deploy, you can execute the following command which will generate the web site under the given directory:</p><div class="source"><pre>mvn site:stage -DstagingDirectory=&lt;directory-to-deploy-site&gt;</pre></div></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+org.fosstrak.hal
+org.fosstrak.hal.transponder
+org.fosstrak.hal.util
+org.fosstrak.hal.impl.sim
+org.fosstrak.hal.impl.sim.graphic
+org.fosstrak.hal.impl.sim.multi
+org.fosstrak.hal.impl.feig.comm
+org.fosstrak.hal.impl.feig
+org.fosstrak.hal.impl.feig.util
+org.fosstrak.hal.impl.impinj.comm
+org.fosstrak.hal.impl.impinj
