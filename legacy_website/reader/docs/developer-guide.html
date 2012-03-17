@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak Reader - Developer Guide</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:34:28 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">Reader</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../../hal/index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>Reader Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../demo.html">Demo</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../howtohelp.html">How to help</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/user-index.html">User</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/user-core.html">Core</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-proxy.html">Proxy</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-client.html">Client</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+            
+            
+      
+              
+            <li class="expanded">
+              <a href="../docs/developer-index.html">Developer</a>
+                <ul>
+                  
+    <li class="none">
+              <strong>Developer Guide</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/developer-changelog.html">Developer Changelog</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>Reader Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../reader-rprm-core/project-reports.html">RP/RM Core</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../reader-rp-proxy/project-reports.html">RP Proxy</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../reader-rp-client/project-reports.html">RP Client</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Developer Guide</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#About">About this Guide</a></li><li><a href="#Getting">Getting Started</a></li><li><a href="#Project">Project Layout</a></li><li><a href="#Using">Using Maven</a></li></ol></div><div class="section"><h3><a name="About">About</a> this Guide</h3><p>This guide is intended for developers who wish to work on Fosstrak Reader project. It outlines the steps to follow for setting up the development environment and helps developers to find their way through the code.</p></div><div class="section"><h3><a name="Getting">Getting</a> Started</h3><p>This section describes the setup of the development environment we use when working on Fosstrak's Reader project. To compile the Reader, execute Maven as explained below. A <a href="http://java.sun.com/javase/downloads/">Java Development Kit</a> needs to be installed.</p><div class="section"><h4>SVN Checkout</h4><p>First thing you need to do is checking out the code from the SVN repository. See <a href="../source-repository.html">Source Repository</a> on how to access the sources.</p></div><div class="section"><h4>Installing Maven</h4><p>We use <a href="http://maven.apache.org/">Maven 2</a> as our build tool. After installation you need to have the <tt>M2_HOME</tt> environment variable set to your Maven installation directory.</p></div></div><div class="section"><h3><a name="Project">Project</a> Layout</h3><p>This section helps developers to find their way through the code.</p><div class="section"><h4>Project Modules</h4><p>Fosstrak's Reader project consists of three modules:</p><ul><li><b>reader-rprm-core</b><p>This module implements the EPCglobal Reader Protocol and Reader Management. It represents a compliant reader that uses the Fosstrak HAL with a simulator or reader hardware that does not support the Reader Protocol as backend.</p></li><li><b>reader-rp-proxy</b><p>This module is a library for communication with a Reader Protocol compliant reader such as but not limited to the reader core module. The proxy depends on code of the reader core even if the reader of the core module is not used. An example of shared code located in the core module is the marshalling and unmarshalling of Reader Protocol messages that is used on both sides.</p></li><li><b>reader-rp-client</b><p>This module provides a graphical user interface to configure a Reader Protocol compliant reader and two versions of an event sink that acts as a notification channel end point and displays information about events reported by the reader. The client depends on code of of the reader core and the proxy.</p></li></ul></div><div class="section"><h4>Directory Layout</h4><p>We use the standard Maven directory layout as follows:</p><div class="source"><pre>|
++-- pom.xml                             -&gt; top-level POM file
+|
++-- LICENSE.txt, README.txt
+|
++-- src/
+|   |
+|   `-- site/                           -&gt; project documentation
+|
++-- reader-rprm-core/
+|   ¦
+|   '
+|
++-- reader-rp-proxy/
+|   ¦
+|   '
+|
++-- reader-rp-client/
+|   |
+|   +-- pom.xml                         -&gt; module POM file
+|   |
+|   `-- src/
+|       |
+|       +-- main/
+|       |   |
+|       |   +-- java/                   -&gt; java source files
+|       |   |
+|       |   +-- resources/              -&gt; configuration files and images
+|       |   |
+|       |   `-- assembly/               -&gt; packaging information
+|       |
+|       +-- site/                       -&gt; module documentation
+|       |
+|       `-- test/
+|           |
+|           `-- java/                   -&gt; java unit test source files
+|
+`-- target/                             -&gt; generated contents</pre></div></div></div><div class="section"><h3><a name="Using">Using</a> Maven</h3><p>We use Maven as our build tool for the Fosstrak Reader project.</p><div class="section"><h4>Building</h4><p>For building the sources, it is sufficient to run the following command:</p><div class="source"><pre>mvn compile</pre></div></div><div class="section"><h4>Eclipse Integration</h4><p>In order to work on the Fosstrak Reader using Eclipse, follow these instructions:</p><ol type="1"><li>Eclipse needs to know the path to the local maven repository. Execute the following command to automatically set up the corresponding classpath variable <tt>M2_REPO</tt> accordingly:<div class="source"><pre>mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt; eclipse:add-maven-repo</pre></div></li><li>In order to generate the <tt>.project</tt> and <tt>.classpath</tt> file used by Eclipse, execute the following command from the directory containing the Fosstrak Reader source code:<div class="source"><pre>mvn eclipse:eclipse</pre></div></li><li>Inside Eclipse, import all the sub-modules (from the menu bar select File &gt; Import &gt; Existing Projects into Workspace).</li></ol></div><div class="section"><h4>Generation of Binaries</h4><p>The following command will generate the binaries for the modules.</p><div class="source"><pre>mvn package</pre></div></div><div class="section"><h4>Installing</h4><p>To install Fosstrak Reader in the local Maven repository and use it in other projects, for instance an application using the reader proxy module, run the following command:</p><div class="source"><pre>mvn install</pre></div></div><div class="section"><h4>Site Generation</h4><p>The main web site (containing this documentation) can be generated by using the following command:</p><div class="source"><pre>mvn site -N</pre></div><p>In order to generate all module reports and to test the whole site navigation before a live deploy, you can execute the following command which will generate the web site under the given directory:</p><div class="source"><pre>mvn site:stage -DstagingDirectory=&lt;directory-to-deploy-site&gt;</pre></div></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

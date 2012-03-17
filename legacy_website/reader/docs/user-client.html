@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak Reader - User Guide Client</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:34:28 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">Reader</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../../hal/index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>Reader Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../demo.html">Demo</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../howtohelp.html">How to help</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+      
+            
+      
+            
+            
+            
+      
+              
+            <li class="expanded">
+              <a href="../docs/user-index.html">User</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/user-core.html">Core</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-proxy.html">Proxy</a>
+        </li>
+                  
+    <li class="none">
+              <strong>Client</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/developer-index.html">Developer</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/developer-changelog.html">Developer Changelog</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>Reader Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../reader-rprm-core/project-reports.html">RP/RM Core</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../reader-rp-proxy/project-reports.html">RP Proxy</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../reader-rp-client/project-reports.html">RP Client</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>User Guide Reader RP Client</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Features">Features</a></li><li><a href="#Application">Field of Application</a></li><li><a href="#Installing">Installing the Fosstrak RP Client</a></li><li><a href="#First">First Steps</a></li><li><a href="#Display">Display Notification Messages</a></li><li><a href="#Configuration">Simple Reader Configuration</a></li></ol></div><div class="section"><h3><a name="Features">Features</a></h3><p>The Fosstrak Reader RP Client is a Java Swing-based graphical user interface to execute commands and communicate with a RFID reader that implements the EPCglobal Reader Protocol Version 1.1. The Reader Client supports the following elements of the protocol:</p><ul><li>Transport Binding: TCP and HTTP</li><li>Message Binding: XML and Text</li><li>Synchronous and Asynchronous Messaging (Notification Channels)</li><li>Triggers</li><li>Data Selectors</li></ul><p>Additional to the Test Client, there are two versions of an event sink contained in the Reader RP Client module. The <tt>EventSinkUI</tt> displays a graphical user interface with a text field to show messages received. The <tt>EventSink</tt> uses the console to output messages received. Mentioning an event sink in this user guide will apply to both versions.</p><p>The event sink is started separately and acts as an end point to a notification channel of the reader. Notifications received from the reader are displayed in the particular output field - text area or console respectively.</p></div><div class="section"><h3>Field of <a name="Application">Application</a></h3><ul><li>Communicate with a reader via the EPCglobal Reader Protocol Version 1.1 using a graphical front end to create and send commands.</li><li>Receive and display notification messages from a reader.</li></ul><img src="../images/ReaderClient_architecture.png" /></div><div class="section"><h3><a name="Installing">Installing</a> the Fosstrak RP Client</h3><p>The following instructions show how to install the Fosstrak Reader RP Client:</p><ul><li>Download the Reader RP Client binaries with the dependencies included from the <a href="../download.html">download</a> section of the website.</li><li>Unzip the downloaded file.</li><li>Make sure a JRE 1.5 or higher is installed and it is added to the path variable.</li></ul></div><div class="section"><h3><a name="First">First</a> Steps</h3><ul><li>Start the Reader RP Client instance in one of the following ways:<ul><li>Invoke the executable jar</li><li>In a console execute<div class="source"><pre>java -jar &lt;path-to&gt;/reader-rp-client-&lt;version&gt;.jar</pre></div></li><li>In a console execute<div class="source"><pre>java -cp &lt;path-to&gt;/reader-rp-client-&lt;version&gt;.jar org.fosstrak.reader.rp.client.TestClient</pre></div></li></ul></li><li>Enter the IP address and port of a RP compatible reader</li><li>Select the appropriate transport and message binding</li><li>Click the &quot;Connect&quot; Button</li><li>Select a sample command from the drop-down menus (e.g. ReaderDevice.GetName())</li><li>Generate the message by hitting the &quot;Create Command&quot; button</li><li>Transmit the command to the reader instance by clicking on the &quot;Send&quot; button</li></ul><img src="../images/ReaderTestClientScreenshot.png" /></div><div class="section"><h3><a name="Display">Display</a> Notification Messages</h3><ul><li>Start the class org.fosstrak.reader.rp.client.EventSinkUI in the jar file with the following command:<div class="source"><pre>java -cp &lt;path-to&gt;/reader-rp-client-&lt;version&gt;.jar org.fosstrak.reader.rp.client.EventSinkUI [port]</pre></div></li><li>As the port argument use the TCP port to which the reader will be sending the notification messages. This port has to be specified later when defining the notification channel for the reader. The default port 9999.</li></ul><img src="../images/EventSinkUIScreenshot.png" /></div><div class="section"><h3>Simple Reader <a name="Configuration">Configuration</a></h3><p>This section shows an example reader configuration procedure using the Reader RP Client.</p><p>The setup consists of an EventSinkUI listening on port 9999 and an Fosstrak Reader using the graphical simulator. Both are runnning on the same computer as the Reader RP Client. The simulator has a source with the name 'Shelf1'.</p><ol type="1"><li>Start the Reader, EventSinkUI and Reader RP Client. See the documentation of the <a href="user-core.html">Reader</a>, <a href="#Display">EventSinkUI</a> and <a href="#First">Client</a> for instructions on how to do this.</li><li>Connect to the reader on localhost port 8000 with transport binding HTTP and format XML.</li><li>Create a read trigger:<ul><li>Select 'Trigger' in the Object drop-down list.</li><li>Select 'create' in the Command drop-down list.</li><li>Add a String parameter 'rt' (name), 'TIMER' (type) and 'ms=2000' (timer value) to the parameter list.</li><li>Hit the 'Create Command' button. The command in the Request text field should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:command xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;2&lt;/id&gt;
+    &lt;targetName&gt;&lt;/targetName&gt;
+    &lt;trigger&gt;
+        &lt;create&gt;
+            &lt;name&gt;rt&lt;/name&gt;
+            &lt;triggerType&gt;TIMER&lt;/triggerType&gt;
+            &lt;triggerValue&gt;ms=2000&lt;/triggerValue&gt;
+        &lt;/create&gt;
+    &lt;/trigger&gt;
+&lt;/ns2:command&gt;</pre></div></li><li>Hit the 'Send' button. The reply in the Response text field should look like this:<div class="source"><pre>HTTP/1.1 200 OK
+RP-Receiver-Signature: RPR1
+RP-Spec-Version-OK: yes
+RP-Request-Content-Type-OK: yes
+RP-Response-Content-Type-OK: yes
+RP-Response-ACKNAK-OK: yes
+Content-Type: text/xml; charset=utf-8
+Content-Length: 269
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:reply xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;2&lt;/id&gt;
+    &lt;resultCode&gt;0&lt;/resultCode&gt;
+    &lt;trigger&gt;
+        &lt;create&gt;
+            &lt;returnValue&gt;rt&lt;/returnValue&gt;
+        &lt;/create&gt;
+    &lt;/trigger&gt;
+&lt;/ns2:reply&gt;</pre></div></li></ul></li><li>Create a notification trigger:<ul><li>Select 'Trigger' in the Object drop-down list.</li><li>Select 'create' in the Command drop-down list.</li><li>Add a String parameter 'nt' (name), 'TIMER' (type) and 'ms=2000' (timer value) to the parameter list.</li><li>Hit the 'Create Command' button. The command in the Request text field should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:command xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;4&lt;/id&gt;
+    &lt;targetName&gt;&lt;/targetName&gt;
+    &lt;trigger&gt;
+        &lt;create&gt;
+            &lt;name&gt;nt&lt;/name&gt;
+            &lt;triggerType&gt;TIMER&lt;/triggerType&gt;
+            &lt;triggerValue&gt;ms=2000&lt;/triggerValue&gt;
+        &lt;/create&gt;
+    &lt;/trigger&gt;
+&lt;/ns2:command&gt;</pre></div></li><li>Hit the 'Send' button. The reply in the Response text field without the HTTP header should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:reply xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;4&lt;/id&gt;
+    &lt;resultCode&gt;0&lt;/resultCode&gt;
+    &lt;trigger&gt;
+        &lt;create&gt;
+            &lt;returnValue&gt;nt&lt;/returnValue&gt;
+        &lt;/create&gt;
+    &lt;/trigger&gt;
+&lt;/ns2:reply&gt;</pre></div></li></ul></li><li>Create a notification channel:<ul><li>Select 'NotificationChannel' in the Object drop-down list.</li><li>Select 'create' in the Command drop-down list.</li><li>Add a String parameter 'nc' (name) and 'tcp://localhost:9999?mode=connect' (address) to the parameter list.</li><li>Hit the 'Create Command' button. The command in the Request text field should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:command xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;6&lt;/id&gt;
+    &lt;targetName&gt;&lt;/targetName&gt;
+    &lt;notificationChannel&gt;
+        &lt;create&gt;
+            &lt;name&gt;nc&lt;/name&gt;
+            &lt;address&gt;http://localhost:9999?mode=connect&lt;/address&gt;
+        &lt;/create&gt;
+    &lt;/notificationChannel&gt;
+&lt;/ns2:command&gt;</pre></div></li><li>Hit the 'Send' button. The reply in the Response text field without the HTTP header should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:reply xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;6&lt;/id&gt;
+    &lt;resultCode&gt;0&lt;/resultCode&gt;
+    &lt;notificationChannel&gt;
+        &lt;create&gt;
+            &lt;returnValue&gt;nc&lt;/returnValue&gt;
+        &lt;/create&gt;
+    &lt;/notificationChannel&gt;
+&lt;/ns2:reply&gt;</pre></div></li></ul></li><li>Add the notification trigger to the notification channel:<ul><li>Select 'NotificationChannel' in the Object drop-down list.</li><li>Select 'addNotificationTriggers' in the Command drop-down list.</li><li>Write 'nc' as the target name in the Target text field.</li><li>Add an Array parameter 'nt' (trigger name) to the parameter list.</li><li>Hit the 'Create Command' button. The command in the Request text field should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:command xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;8&lt;/id&gt;
+    &lt;targetName&gt;nc&lt;/targetName&gt;
+    &lt;notificationChannel&gt;
+        &lt;addNotificationTriggers&gt;
+            &lt;triggers&gt;
+                &lt;list&gt;
+                    &lt;value&gt;nt&lt;/value&gt;
+                &lt;/list&gt;
+            &lt;/triggers&gt;
+        &lt;/addNotificationTriggers&gt;
+    &lt;/notificationChannel&gt;
+&lt;/ns2:command&gt;</pre></div></li><li>Hit the 'Send' button. The reply in the Response text field without the HTTP header should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:reply xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;8&lt;/id&gt;
+    &lt;resultCode&gt;0&lt;/resultCode&gt;
+    &lt;notificationChannel&gt;
+        &lt;addNotificationTriggers/&gt;
+    &lt;/notificationChannel&gt;
+&lt;/ns2:reply&gt;</pre></div></li></ul></li><li>Add the source to the notification channel:<ul><li>Select 'NotificationChannel' in the Object drop-down list.</li><li>Select 'addSources' in the Command drop-down list.</li><li>Write 'nc' as the target name in the Target text field.</li><li>Add an Array parameter 'Shelf1' (source name) to the parameter list.</li><li>Hit the 'Create Command' button. The command in the Request text field should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:command xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;10&lt;/id&gt;
+    &lt;targetName&gt;nc&lt;/targetName&gt;
+    &lt;notificationChannel&gt;
+        &lt;addSources&gt;
+            &lt;sources&gt;
+                &lt;list&gt;
+                    &lt;value&gt;Shelf1&lt;/value&gt;
+                &lt;/list&gt;
+            &lt;/sources&gt;
+        &lt;/addSources&gt;
+    &lt;/notificationChannel&gt;
+&lt;/ns2:command&gt;</pre></div></li><li>Hit the 'Send' button. The reply in the Response text field without the HTTP header should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:reply xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;10&lt;/id&gt;
+    &lt;resultCode&gt;0&lt;/resultCode&gt;
+    &lt;notificationChannel&gt;
+        &lt;addSources/&gt;
+    &lt;/notificationChannel&gt;
+&lt;/ns2:reply&gt;</pre></div></li></ul></li><li>Add the read trigger to the source:<ul><li>Select 'Source' in the Object drop-down list.</li><li>Select 'addReadTriggers' in the Command drop-down list.</li><li>Write 'Shelf1' as the target name in the Target text field.</li><li>Add an Array parameter 'rt' (read trigger name) to the parameter list.</li><li>Hit the 'Create Command' button. The command in the Request text field should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:command xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;12&lt;/id&gt;
+    &lt;targetName&gt;Shelf1&lt;/targetName&gt;
+    &lt;source&gt;
+        &lt;addReadTriggers&gt;
+            &lt;triggers&gt;
+                &lt;list&gt;
+                    &lt;value&gt;rt&lt;/value&gt;
+                &lt;/list&gt;
+            &lt;/triggers&gt;
+        &lt;/addReadTriggers&gt;
+    &lt;/source&gt;
+&lt;/ns2:command&gt;</pre></div></li><li>Hit the 'Send' button. The reply in the Response text field without the HTTP header should look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:reply xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;12&lt;/id&gt;
+    &lt;resultCode&gt;0&lt;/resultCode&gt;
+    &lt;source&gt;
+        &lt;addReadTriggers/&gt;
+    &lt;/source&gt;
+&lt;/ns2:reply&gt;</pre></div></li></ul></li><li>The reader is now configured. Add a new tag to the Fosstrak Reader Simulator and drag it over the Antenna with the name 'Shelf1'. The event sink should show a notification text formated in XML. An example of such a notification could look like this:<div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns2:notification xmlns:ns2=&quot;urn:epcglobal:rp:xsd:1&quot;&gt;
+    &lt;id&gt;1&lt;/id&gt;
+    &lt;reader&gt;
+        &lt;readerEPC&gt;ReaderEPC&lt;/readerEPC&gt;
+        &lt;readerName&gt;MyReader&lt;/readerName&gt;
+        &lt;readerHandle&gt;0&lt;/readerHandle&gt;
+        &lt;readerRole&gt;ReaderRole&lt;/readerRole&gt;
+    &lt;/reader&gt;
+    &lt;notifyTriggerName&gt;NotificationTrigger&lt;/notifyTriggerName&gt;
+    &lt;notifyChannelName&gt;NotificationChannel&lt;/notifyChannelName&gt;
+    &lt;readReport&gt;
+        &lt;sourceReport&gt;
+            &lt;sourceInfo&gt;
+                &lt;sourceName&gt;Shelf1&lt;/sourceName&gt;
+                &lt;sourceFrequency&gt;0&lt;/sourceFrequency&gt;
+                &lt;sourceProtocol&gt;not supported&lt;/sourceProtocol&gt;
+            &lt;/sourceInfo&gt;
+            &lt;tag&gt;
+                &lt;tagID&gt;9204F0004B000000&lt;/tagID&gt;
+                &lt;tagIDAsPureURI&gt;urn:epc:raw:64.x9204F0004B000000&lt;/tagIDAsPureURI&gt;
+                &lt;tagIDAsTagURI&gt;urn:epc:raw:64.x9204F0004B000000&lt;/tagIDAsTagURI&gt;
+                &lt;tagType&gt;not supported&lt;/tagType&gt;
+                &lt;tagEvent&gt;
+                    &lt;eventType&gt;evGlimpsed&lt;/eventType&gt;
+                    &lt;eventTriggers&gt;
+                        &lt;trigger&gt;ReadTrigger&lt;/trigger&gt;
+                    &lt;/eventTriggers&gt;
+                    &lt;time&gt;
+                        &lt;eventTimeTick&gt;1199287632796&lt;/eventTimeTick&gt;
+                        &lt;eventTimeUTC&gt;2008-01-02T16:27:12.796+01:00&lt;/eventTimeUTC&gt;
+                    &lt;/time&gt;
+                &lt;/tagEvent&gt;
+                &lt;tagEvent&gt;
+                    &lt;eventType&gt;evNew&lt;/eventType&gt;
+                    &lt;eventTriggers&gt;
+                        &lt;trigger&gt;NoTrigger&lt;/trigger&gt;
+                    &lt;/eventTriggers&gt;
+                    &lt;time&gt;
+                        &lt;eventTimeTick&gt;1199287632796&lt;/eventTimeTick&gt;
+                        &lt;eventTimeUTC&gt;2008-01-02T16:27:12.796+01:00&lt;/eventTimeUTC&gt;
+                    &lt;/time&gt;
+                &lt;/tagEvent&gt;
+            &lt;/tag&gt;
+        &lt;/sourceReport&gt;
+    &lt;/readReport&gt;
+&lt;/ns2:notification&gt;</pre></div></li></ol></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

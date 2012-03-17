@@ -1,0 +1,8 @@
+org.fosstrak.reader.rprm.core
+org.fosstrak.reader.rprm.core.mgmt
+org.fosstrak.reader.rprm.core.mgmt.agent
+org.fosstrak.reader.rprm.core.mgmt.agent.snmp
+org.fosstrak.reader.rprm.core.mgmt.agent.snmp.mib
+org.fosstrak.reader.rprm.core.mgmt.agent.snmp.table
+org.fosstrak.reader.rprm.core.mgmt.alarm
+org.fosstrak.reader.rprm.core.mgmt.util
