@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak LLRP Commander - Developers guide - Adaptor Management</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.1.1-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">LLRP Commander</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../../fc/index.html">ALE Middleware</a>
+            |
+                <a href="../index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>LLRP Commander</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Install</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../background.html">Background</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+          </ul>
+              <h5>Guides and Documentation</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../docs/user-index.html">User Guide</a>
+          </li>
+              
+          
+                    
+                  
+                  
+                  
+                  
+                  
+                  
+                        
+                        
+                  
+                  
+                        
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/developer-installation.html">Installation</a>
+          </li>
+                  
+          
+                    
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/developer-gui.html">GUI</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/developer-graphical.html">Graphical Editor</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/developer-xml.html">XML / Binary Editor</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/developer-navigator.html">Navigator</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/developer-explorer.html">Reader Explorer</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/developer-wizard.html">Wizard</a>
+          </li>
+              </ul>
+        </li>
+                  
+          
+                          
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/developer-mgmt.html">Management</a>
+                  <ul>
+                  
+    <li class="none">
+              <strong>Adaptor Management</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="../docs/developer-adaptors.html">Adaptors</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/developer-readers.html">Readers</a>
+          </li>
+              </ul>
+        </li>
+                  
+    <li class="none">
+                    <a href="../docs/developer-repository.html">Repository</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+              </ul>
+        </li>
+          </ul>
+              <h5>LLRP Commander Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../llrp-adaptor/project-reports.html">LLRP Adaptor</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../llrp_commander/project-reports.html">LLRP Commander</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Developers guide - Adaptor Management</h2><div class="section"><h3>Content</h3><ol type="1"><li><a href="#Overview">Overview</a></li><li><a href="#Initialization">Initialization</a></li><li><a href="#Shutdown">Shutdown</a></li><li><a href="#Definition">Definition</a></li><li><a href="#Undefinition">Undefinition</a></li><li><a href="#Enqueuing">Enqueuing</a></li><li><a href="#MessagePosting">MessagePosting and Dispatching</a></li><li><a href="#ExceptionPosting">ExceptionPosting</a></li><li><a href="#LoadFromFile">LoadFromFile</a></li><li><a href="#StoreToFile">StoreToFile</a></li><li><a href="#ExceptionHandler">ExceptionHandler</a></li><li><a href="#Sample">Sample</a></li><li><a href="#Multithreading">Multithreading</a></li></ol></div><div class="section"><h3><a name="Overview">Overview</a></h3><p>This chapter shall give an overview to the adaptor management providing access to adaptors and readers. The behavior of the adaptor management is explained by explaining the most important methods and their behavior.</p><p>This includes:</p><ul><li>error management</li><li>message management</li><li>concurrency</li><li>adaptor management</li><li>configuration management</li></ul></div><div class="section"><h3><a name="Initialization">Initialization</a></h3><div class="source"><pre>public boolean initialize(
+                String readConfig, 
+                String storeConfig,
+                boolean commitChanges,
+                LLRPExceptionHandler exceptionHandler,
+                MessageHandler handler) 
+        throws LLRPRuntimeException { ... }</pre></div><p>It is <b>very important</b> to initialize the adaptor management properly. For this task the initialize method is provided. </p><p>The first two parameters tell the adaptor management where to read or write the configuration.</p><p>If you want the adaptor management to run a snapshot configuration set the flag <tt>commitChanges</tt> to true. If so, all the changes to the adaptors and to the readers in the local adaptors will be reflected <b>immediately</b> back into the configuration file.</p><p>The exception handler and the handler are responsible for error and message reporting. If you set them to <b>null</b> you will have to use the corresponding setters to specify them in a later phase. </p></div><div class="section"><h3><a name="Shutdown">Shutdown</a></h3><div class="source"><pre>public synchronized void shutdown() { ... }</pre></div><p>If you shutdown your client, it is best to run this method to shutdown the adaptor management. This method performs several cleanup routines, stores the configuration and stops the worker threads.</p></div><div class="section"><h3><a name="Definition">Definition</a></h3><div class="source"><pre>public synchronized String define(String adaptorName, String address) 
+        throws LLRPRuntimeException, RemoteException, NotBoundException { ... }</pre></div><p>In a first step the adaptor management inspects the address parameter. If this parameter is set to <b>null</b> the adaptor is assumed to be a local adaptor. Otherwise the address is considered to be a valid ip address of a remote rmi machine.</p><p>In the case where the address is not <b>null</b> the adaptor management tries to establish an rmi connection to the specified ip address and tries to aquire the adaptor from the rmi registry. Please notice that in the remote case the adaptorName you provided will be overridden by the name of the remote adaptor.</p><p>Then the management makes sure that in the local repository no other adaptor with the same name exists.</p><p>In order to receive asynchronous messages from the adaptor and therefore also from the readers a asynchronous callback receiver has to be installed. The adaptor management uses the class <tt>AdaptorCallback</tt> for this purpose.</p><p>If all the previous steps have been performed successfully a new worker thread is created and started. The thread takes over the control of the adaptor.</p></div><div class="section"><h3><a name="Undefinition">Undefinition</a></h3><div class="source"><pre>public synchronized void undefine(String adaptorName) 
+    throws LLRPRuntimeException { ... }</pre></div><p>The adaptor management stops the worker thread, deregisters the asynchronous callback and removes the adaptor from the adaptor list.</p></div><div class="section"><h3><a name="Enqueuing">Enqueuing</a></h3><div class="source"><pre>public void enqueueLLRPMessage(String adaptorName, 
+                       String readerName, 
+                       LLRPMessage message) 
+                       throws LLRPRuntimeException { ... }</pre></div><p>In order to simplify the sending of an LLRPMessage the adaptor management provides a short-cut. When you post an LLRPMessage together with the <b>readerName</b> and the <b>adaptorName</b> the adaptor management will select the correct adaptor and send the message asynchronously to the specified reader. One of the main advantages of this procedure is that you do not have to wait for the message to be sent (Asynchronous messaging). </p></div><div class="section"><h3><a name="MessagePosting">MessagePosting</a> and Dispatching</h3><p>Incoming messages are distributed in a publish/subscribe mechanism. Clients interested into a certain message type (or into all messages) can register by means of provided subscription methods. A subscriber needs to implement the interface <tt>MessageHandler</tt>. The adapter management will then, after a registration, distribute the LLRP messages automatically and asynchronously. </p><p>We basically distinguish between full-handlers and partial-handlers.</p><div class="section"><h4>Full-handler </h4><p>A full handler receives all incoming messages regardless of their type. Below the available methods are provided:</p><div class="source"><pre>/**
+ * register a handler that will receive all the incoming messages.
+ * @param handler the handler.
+ */
+public void registerFullHandler(MessageHandler handler) { ... }
+
+/**
+ * remove a handler from the full handler list.
+ * @param handler the handler to be removed.
+ */
+public void deregisterFullHandler(MessageHandler handler) { ... }
+
+/**
+ * tests whether a given handler is already registered or not.
+ * @param handler the handler to check for.
+ * @return true if the handler is present, false otherwise.
+ */
+public boolean hasFullHandler(MessageHandler handler) { ...}</pre></div></div><div class="section"><h4>Partial-handler</h4><p>A partial handler receives only a subset of the incoming LLRP messages filtered by the class of the message. At the subscription, the handler can submit a class that hints the adapter management to only deliver the messages that match the the class.</p><div class="source"><pre>/**
+ * register a handler that will receive only a restricted set of messages.
+ * @param handler the handler.
+ * @param clzz the type of messages that the handler likes to receive (example KEEPALIVE.class).
+ */
+public void registerPartialHandler(MessageHandler handler, Class clzz) { ... }
+
+/**
+ * remove a handler from the handlers list.
+ * @param handler the handler to remove.
+ * @param clzz the class where the handler is registered.
+ */
+public void deregisterPartialHandler(MessageHandler handler, Class clzz) { ... }
+
+/**
+ * checks whether a given handler is registered at a given selector class.
+ * @param handler the handler to check.
+ * @param clzz the class where to search for the handler.
+ * @return true if the handler is present, false otherwise.
+ */
+public boolean hasPartialHandler(MessageHandler handler, Class clzz) { ... )</pre></div></div><div class="section"><h4>Distribution to the handlers</h4><p>Whenever a new LLRP message is submitted to the adapter management, the method <tt>dispatchHandlers</tt> is invoked. All the full-handlers get informed about the new message. Depending on the class, the partial-handlers get retrieved from a lookup-table and then handled in the same way as full-handlers.</p></div><div class="section"><h4>Example registration</h4><p>The registration example below shows, how to register a full handler and a second handler that only retrieves <tt>KEEP_ALIVE</tt> messages.</p><div class="source"><pre>// example for a full handler
+MessageHandler fullHandler = new MessageHandler() {
+        public void handle(String adapter, String reader, LLRPMessage msg) {
+                System.out.println(
+                        String.format(
+                                &quot;received message from adapter: %s, reader: %s&quot;,
+                                adapter, 
+                                reader));
+        }
+};
+AdaptorManagement.getInstance().registerFullHandler(fullHandler);
+
+// example for a partial handler
+MessageHandler partialHandler = new MessageHandler() {
+        public void handle(String adapter, String reader, LLRPMessage msg) {
+                System.out.println(
+                        String.format(
+                                &quot;received keep-alive message from adapter: %s, reader: %s&quot;,
+                                adapter, 
+                                reader));
+        }
+};
+AdaptorManagement.getInstance().registerPartialHandler(
+        partialHandler,
+        KEEP_ALIVE.class);</pre></div></div></div><div class="section"><h3><a name="ExceptionPosting">ExceptionPosting</a></h3><div class="source"><pre>public void postException(
+                LLRPRuntimeException e, 
+                LLRPExceptionHandlerTypeMap 
+                exceptionType, 
+                String adapterName, 
+                String readerName) 
+{ ... }</pre></div><p>Whenever an error occurs the clients (adaptors, readers...) can invoke this method. If an exception handler has been installed during setup of the adaptor management, an exception is constructed and is delivered to this exception handler. </p><p>In case that the exception handler is not set, an error is reported to the error logger.</p></div><div class="section"><h3><a name="LoadFromFile">LoadFromFile</a></h3><div class="source"><pre>public synchronized void loadFromFile() 
+    throws LLRPRuntimeException { ... }</pre></div><p>The adaptor management gives the possiblity to retrieve the adaptors/readers from file. For the storage of the configuration the <tt>java.util.Properties</tt> are used.</p></div><div class="section"><h3><a name="StoreToFile">StoreToFile</a></h3><div class="source"><pre>public synchronized void storeToFile() throws LLRPRuntimeException { ... }</pre></div><p>As with loadFromFile this method stores a configuration to a configuration file on disc.</p></div><div class="section"><h3><a name="ExceptionHandler">ExceptionHandler</a></h3><div class="source"><pre>public void setExceptionHandler(LLRPExceptionHandler exceptionHandler) { ... }</pre></div><p>In order to receive asynchronous exceptions from the adaptors and the readers you will have to set an exception handler. If you did not set the handler during initialization you can use this helper method to perform this task.</p></div><div class="section"><h3><a name="Sample">Sample</a></h3><div class="source"><pre>// create a message handler
+MessageHandler msgHandler = new MessageHandler() {
+        public void handle(String adapter, String reader, LLRPMessage msg) {
+                ...
+        }
+};
+
+// create an exception handler
+ExceptionHandler exHandler = new ExceptionHandler();
+
+// run the initializer method
+String readConfig = Utility.findWithFullPath(&quot;/readerDefaultConfig.properties&quot;);
+String writeConfig = readConfig;
+boolean commitChanges = true;
+AdaptorManagement.getInstance().initialize(
+    readConfig, storeConfig, commitChanges, exHandler, msgHandler);
+
+// now the management should be initialized and ready to be used
+
+// create an adaptor
+String adaptorName = &quot;myAdaptor&quot;;
+AdaptorManagement.getInstance().define(adaptorName, &quot;localhost&quot;);
+
+// create a reader
+String readerName = &quot;myReader&quot;;
+Adaptor adaptor = AdaptorManagement.getAdaptor(adaptorName);
+adaptor.define(readerName, &quot;192.168.1.23&quot;, 5084, true, true);
+
+//Enqueue some LLRPMessage on the adaptor
+AdaptorManagement.enqueueLLRPMessage(adaptorName, readerName, message);
+
+// when you shutdown your application call the shutdown method
+AdaptorManagement.getInstance().shutdown();</pre></div></div><div class="section"><h3><a name="Multithreading">Multithreading</a></h3><p>The LLRP GUI Client allows several adaptors to be run simultaneously, therefore the AdaptorManagement needs some mechanisms to support a parallel execution of different adaptors.</p><p>Each adaptor runs on a thread <tt>AdaptorWorker</tt>. Each thread maintains a callback for the asynchronous message callback.</p><img src="../images/developer/workerThread.png" alt=" WorkerThread" /></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

@@ -1,0 +1,25 @@
+-classpath
+'C:/fosstrak/llrp/llrp-adaptor/target/classes;C:/Documents and Settings/chr/.m2/repository/log4j/log4j/1.2.12/log4j-1.2.12.jar;C:/Documents and Settings/chr/.m2/repository/xerces/xercesImpl/2.4.0/xercesImpl-2.4.0.jar;C:/Documents and Settings/chr/.m2/repository/org/llrp/ltkjava/1.0.0.6/ltkjava-1.0.0.6.jar;C:/Documents and Settings/chr/.m2/repository/org/llrp/ltkjava-generator/1.0.0.6/ltkjava-generator-1.0.0.6.jar;C:/Documents and Settings/chr/.m2/repository/jargs/jargs/1.0/jargs-1.0.jar;C:/Documents and Settings/chr/.m2/repository/jdom/jdom/1.0/jdom-1.0.jar;C:/Documents and Settings/chr/.m2/repository/org/slf4j/slf4j-log4j12/1.5.0/slf4j-log4j12-1.5.0.jar;C:/Documents and Settings/chr/.m2/repository/org/apache/mina/mina-core/1.1.7/mina-core-1.1.7.jar;C:/Documents and Settings/chr/.m2/repository/org/slf4j/slf4j-api/1.5.0/slf4j-api-1.5.0.jar'
+-encoding
+'Cp1252'
+-protected
+-source
+'1.5'
+-sourcepath
+'C:/fosstrak/llrp/llrp-adaptor/src/main/java'
+-verbose
+-author
+-bottom
+'Copyright &#169; 2009. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'C:/fosstrak/llrp/llrp-adaptor/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'llrp-adaptor 1.0.1-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'llrp-adaptor 1.0.1-SNAPSHOT API'

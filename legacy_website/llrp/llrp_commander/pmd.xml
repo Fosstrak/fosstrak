@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.2" timestamp="2009-08-18T11:41:42.823">
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\ExceptionHandler.java">
+<violation beginline="154" endline="156" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander" class="ExceptionHandler" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'aAdapter'.
+</violation>
+<violation beginline="154" endline="156" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander" class="ExceptionHandler" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'aReader'.
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\LLRPPlugin.java">
+<violation beginline="167" endline="167" begincolumn="38" endcolumn="41" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander" class="LLRPPlugin" method="getResourceFile" variable="file" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'file'.
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\ResourceCenter.java">
+<violation beginline="251" endline="253" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.llrp.commander" class="ResourceCenter" method="handle" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\dialogs\AddFCDialog.java">
+<violation beginline="63" endline="63" begincolumn="59" endcolumn="69" rule="AvoidUsingHardCodedIP" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.dialogs" class="AddFCDialog" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidUsingHardCodedIP" priority="3">
+Do not hard code IPv4 or IPv6 addresses, even 127.0.0.1 !
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\dialogs\AddReaderDialog.java">
+<violation beginline="90" endline="90" begincolumn="61" endcolumn="71" rule="AvoidUsingHardCodedIP" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.dialogs" class="AddReaderDialog" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidUsingHardCodedIP" priority="3">
+Do not hard code IPv4 or IPv6 addresses, even 127.0.0.1 !
+</violation>
+<violation beginline="218" endline="218" begincolumn="59" endcolumn="62" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander.dialogs" class="AddReaderDialog" method="handleEvent" variable="port" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'port'.
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\LLRPBinaryContentProvider.java">
+<violation beginline="35" endline="35" begincolumn="31" endcolumn="37" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander.editors" class="LLRPBinaryContentProvider" variable="message" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'message'.
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\LLRPBinaryLabelProvider.java">
+<violation beginline="50" endline="52" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.editors" class="LLRPBinaryLabelProvider" method="getColumnText" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\LLRPEditor.java">
+<violation beginline="232" endline="239" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.editors" class="LLRPEditor" method="pageChange" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\NonRuleBasedDamagerRepairer.java">
+<violation beginline="122" endline="123" begincolumn="27" endcolumn="25" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.editors" class="NonRuleBasedDamagerRepairer" method="getDamageRegion" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\XMLConfiguration.java">
+<violation beginline="24" endline="24" begincolumn="1" endcolumn="31" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.llrp.commander.editors" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.log4j.Logger'
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\XMLDoubleClickStrategy.java">
+<violation beginline="92" endline="93" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.editors" class="XMLDoubleClickStrategy" method="selectComment" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="131" endline="132" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.editors" class="XMLDoubleClickStrategy" method="selectWord" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\XMLEditor.java">
+<violation beginline="24" endline="24" begincolumn="1" endcolumn="31" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.llrp.commander.editors" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.log4j.Logger'
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\graphical\LLRPDetailsPage.java">
+<violation beginline="183" endline="203" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander.editors.graphical" class="LLRPDetailsPage" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'toolkit'.
+</violation>
+<violation beginline="219" endline="219" begincolumn="33" endcolumn="39" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander.editors.graphical" class="LLRPDetailsPage" method="createDescriptionAction" variable="browser" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'browser'.
+</violation>
+<violation beginline="275" endline="312" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander.editors.graphical" class="LLRPDetailsPage" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'toolkit'.
+</violation>
+<violation beginline="328" endline="330" begincolumn="43" endcolumn="41" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.editors.graphical" class="LLRPDetailsPage" method="modifyText" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\graphical\LLRPMasterDetailsBlock.java">
+<violation beginline="218" endline="220" begincolumn="113" endcolumn="41" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.editors.graphical" class="LLRPMasterDetailsBlock" method="createAddParameterActions" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="255" endline="259" begincolumn="49" endcolumn="49" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.editors.graphical" class="LLRPMasterDetailsBlock" method="createAddParameterActions" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="262" endline="269" begincolumn="49" endcolumn="49" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.editors.graphical" class="LLRPMasterDetailsBlock" method="createAddParameterActions" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="298" endline="342" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander.editors.graphical" class="LLRPMasterDetailsBlock" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'toolkit'.
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\editors\graphical\actions\DeleteParameterAction.java">
+<violation beginline="54" endline="64" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander.editors.graphical.actions" class="DeleteParameterAction" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'window'.
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\preferences\pref\GroupedStringFieldEditor.java">
+<violation beginline="81" endline="81" begincolumn="25" endcolumn="41" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander.preferences.pref" class="GroupedStringFieldEditor" variable="preferencesLabels" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'preferencesLabels'.
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\util\LLRP.java">
+<violation beginline="98" endline="101" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.util" class="LLRP" method="getMessageDefinition" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="117" endline="120" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.util" class="LLRP" method="getParameterDefinition" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="136" endline="139" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.util" class="LLRP" method="getChoiceDefinition" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="206" endline="208" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.util" class="LLRP" method="getEnumerationDefinition" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\util\LLRPTreeMaintainer.java">
+<violation beginline="365" endline="367" begincolumn="57" endcolumn="57" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.util" class="LLRPTreeMaintainer" method="validateField" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="485" endline="487" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.util" class="LLRPTreeMaintainer" method="areListsNonRecursivelyValid" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\views\MessageboxView.java">
+<violation beginline="451" endline="454" begincolumn="16" endcolumn="9" rule="UselessOverridingMethod" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.views" class="MessageboxView" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
+Overriding method merely calls super
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\views\MessageboxViewLabelProvider.java">
+<violation beginline="85" endline="85" begincolumn="39" endcolumn="50" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.fosstrak.llrp.commander.views" class="MessageboxViewLabelProvider" method="getColumnImage" variable="sharedImages" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'sharedImages'.
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\views\ReaderExplorerView.java">
+<violation beginline="960" endline="967" begincolumn="49" endcolumn="49" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.views" class="ReaderExplorerView$IDValidator" method="isValid" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\views\TableViewPart.java">
+<violation beginline="147" endline="149" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.views" class="TableViewPart" method="doubleClick" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\accada\llrp\llrp-commander\src\main\java\org\fosstrak\llrp\commander\wizards\NewLLRPMessageWizard.java">
+<violation beginline="26" endline="26" begincolumn="8" endcolumn="32" rule="DuplicateImports" ruleset="Import Statement Rules" package="org.fosstrak.llrp.commander.wizards" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DuplicateImports" priority="4">
+Avoid duplicate imports such as 'org.eclipse.ui.INewWizard'
+</violation>
+<violation beginline="27" endline="27" begincolumn="8" endcolumn="32" rule="DuplicateImports" ruleset="Import Statement Rules" package="org.fosstrak.llrp.commander.wizards" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DuplicateImports" priority="4">
+Avoid duplicate imports such as 'org.eclipse.ui.IWorkbench'
+</violation>
+<violation beginline="34" endline="34" begincolumn="8" endcolumn="45" rule="DuplicateImports" ruleset="Import Statement Rules" package="org.fosstrak.llrp.commander.wizards" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DuplicateImports" priority="4">
+Avoid duplicate imports such as 'org.eclipse.core.runtime.CoreException'
+</violation>
+<violation beginline="131" endline="132" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.wizards" class="NewLLRPMessageWizard" method="doFinish" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="141" endline="142" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.llrp.commander.wizards" class="NewLLRPMessageWizard" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

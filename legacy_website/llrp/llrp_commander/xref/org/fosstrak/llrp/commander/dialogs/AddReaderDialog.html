@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<title>AddReaderDialog xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/org/fosstrak/llrp/commander/dialogs/AddReaderDialog.html">View Javadoc</a></div><pre>
+
+<a name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
+<a name="2" href="#2">2</a>   <em class="jxr_comment"> *  </em>
+<a name="3" href="#3">3</a>   <em class="jxr_comment"> *  Fosstrak LLRP Commander (www.fosstrak.org)</em>
+<a name="4" href="#4">4</a>   <em class="jxr_comment"> * </em>
+<a name="5" href="#5">5</a>   <em class="jxr_comment"> *  Copyright (C) 2008 ETH Zurich</em>
+<a name="6" href="#6">6</a>   <em class="jxr_comment"> *</em>
+<a name="7" href="#7">7</a>   <em class="jxr_comment"> *  This program is free software: you can redistribute it and/or modify</em>
+<a name="8" href="#8">8</a>   <em class="jxr_comment"> *  it under the terms of the GNU General Public License as published by</em>
+<a name="9" href="#9">9</a>   <em class="jxr_comment"> *  the Free Software Foundation, either version 3 of the License, or</em>
+<a name="10" href="#10">10</a>  <em class="jxr_comment"> *  (at your option) any later version.</em>
+<a name="11" href="#11">11</a>  <em class="jxr_comment"> *</em>
+<a name="12" href="#12">12</a>  <em class="jxr_comment"> *  This program is distributed in the hope that it will be useful,</em>
+<a name="13" href="#13">13</a>  <em class="jxr_comment"> *  but WITHOUT ANY WARRANTY; without even the implied warranty of</em>
+<a name="14" href="#14">14</a>  <em class="jxr_comment"> *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</em>
+<a name="15" href="#15">15</a>  <em class="jxr_comment"> *  GNU General Public License for more details.</em>
+<a name="16" href="#16">16</a>  <em class="jxr_comment"> *</em>
+<a name="17" href="#17">17</a>  <em class="jxr_comment"> *  You should have received a copy of the GNU General Public License</em>
+<a name="18" href="#18">18</a>  <em class="jxr_comment"> *  along with this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/&gt;" target="alexandria_uri">http://www.gnu.org/licenses/&gt;</a> </em>
+<a name="19" href="#19">19</a>  <em class="jxr_comment"> *</em>
+<a name="20" href="#20">20</a>  <em class="jxr_comment"> */</em>
+<a name="21" href="#21">21</a>  
+<a name="22" href="#22">22</a>  <strong class="jxr_keyword">package</strong> org.fosstrak.llrp.commander.dialogs;
+<a name="23" href="#23">23</a>  
+<a name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.eclipse.jface.window.Window;
+<a name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.SWT;
+<a name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.events.SelectionAdapter;
+<a name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.events.SelectionEvent;
+<a name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.layout.GridData;
+<a name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.widgets.Button;
+<a name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.widgets.Composite;
+<a name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.widgets.Control;
+<a name="32" href="#32">32</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.widgets.Event;
+<a name="33" href="#33">33</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.widgets.Listener;
+<a name="34" href="#34">34</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.widgets.Shell;
+<a name="35" href="#35">35</a>  <strong class="jxr_keyword">import</strong> org.eclipse.swt.widgets.Text;
+<a name="36" href="#36">36</a>  <strong class="jxr_keyword">import</strong> org.fosstrak.llrp.adaptor.AdaptorManagement;
+<a name="37" href="#37">37</a>  
+<a name="38" href="#38">38</a>  <em class="jxr_javadoccomment">/**</em>
+<a name="39" href="#39">39</a>  <em class="jxr_javadoccomment"> * dialog to add a new reader to the reader explorer.</em>
+<a name="40" href="#40">40</a>  <em class="jxr_javadoccomment"> * @author sawielan</em>
+<a name="41" href="#41">41</a>  <em class="jxr_javadoccomment"> *</em>
+<a name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> */</em>
+<a name="43" href="#43">43</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/fosstrak/llrp/commander/dialogs/AddReaderDialog.html">AddReaderDialog</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../../org/fosstrak/llrp/commander/dialogs/ConnectDialog.html">ConnectDialog</a> {
+<a name="44" href="#44">44</a>  	
+<a name="45" href="#45">45</a>  	<em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> the index for the reader name in the values array. */</em>
+<a name="46" href="#46">46</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> VALUE_READER_NAME = 0;
+<a name="47" href="#47">47</a>  	
+<a name="48" href="#48">48</a>  	<em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> the index for the reader ip in the values array. */</em>
+<a name="49" href="#49">49</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> VALUE_READER_IP = 1;
+<a name="50" href="#50">50</a>  	
+<a name="51" href="#51">51</a>  	<em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> the index for the reader port in the values array. */</em>
+<a name="52" href="#52">52</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> VALUE_READER_PORT = 2;
+<a name="53" href="#53">53</a>  	
+<a name="54" href="#54">54</a>  	<em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> increasing number added automatically to the reader name. */</em>
+<a name="55" href="#55">55</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">long</strong> num = 0;
+<a name="56" href="#56">56</a>  	
+<a name="57" href="#57">57</a>  	<em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> flag whether client initiated or not. */</em>
+<a name="58" href="#58">58</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> ci = <strong class="jxr_keyword">true</strong>;
+<a name="59" href="#59">59</a>  	
+<a name="60" href="#60">60</a>  	<em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> handle to the client initiated connection button. */</em>
+<a name="61" href="#61">61</a>  	<strong class="jxr_keyword">protected</strong> Button cICon;
+<a name="62" href="#62">62</a>  	
+<a name="63" href="#63">63</a>  	<em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> flag whether connect immediately or not. */</em>
+<a name="64" href="#64">64</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> connectImmediate = <strong class="jxr_keyword">true</strong>;
+<a name="65" href="#65">65</a>  	
+<a name="66" href="#66">66</a>  	<em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> handle to the connect immediately button. */</em>
+<a name="67" href="#67">67</a>  	<strong class="jxr_keyword">protected</strong> Button conImmed;
+<a name="68" href="#68">68</a>  	
+<a name="69" href="#69">69</a>  	<em class="jxr_javadoccomment">/**</em>
+<a name="70" href="#70">70</a>  <em class="jxr_javadoccomment">	 * create a new add reader dialog.</em>
+<a name="71" href="#71">71</a>  <em class="jxr_javadoccomment">	 * @param aShell the parent shell.</em>
+<a name="72" href="#72">72</a>  <em class="jxr_javadoccomment">	 */</em>
+<a name="73" href="#73">73</a>  	<strong class="jxr_keyword">public</strong> <a href="../../../../../org/fosstrak/llrp/commander/dialogs/AddReaderDialog.html">AddReaderDialog</a>(Shell aShell) {
+<a name="74" href="#74">74</a>  		<strong class="jxr_keyword">super</strong>(aShell, <span class="jxr_string">"Add Local Reader"</span>);
+<a name="75" href="#75">75</a>  		FIELDS = <strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"Reader Name"</span>, <span class="jxr_string">"IP"</span>, <span class="jxr_string">"Port"</span> };
+<a name="76" href="#76">76</a>  		
+<a name="77" href="#77">77</a>  		<em class="jxr_comment">// make sure, we propose a unique reader name</em>
+<a name="78" href="#78">78</a>  		String readerName = String.format(<span class="jxr_string">"ReaderName%d"</span>, num++);
+<a name="79" href="#79">79</a>  		<strong class="jxr_keyword">try</strong> {
+<a name="80" href="#80">80</a>  			<strong class="jxr_keyword">while</strong> (AdaptorManagement.getInstance().getAdaptor(
+<a name="81" href="#81">81</a>  					AdaptorManagement.DEFAULT_ADAPTOR_NAME).containsReader(
+<a name="82" href="#82">82</a>  							readerName)) {
+<a name="83" href="#83">83</a>  				
+<a name="84" href="#84">84</a>  				readerName = String.format(<span class="jxr_string">"ReaderName%d"</span>, num++);
+<a name="85" href="#85">85</a>  			}
+<a name="86" href="#86">86</a>  		} <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a name="87" href="#87">87</a>  			readerName = String.format(<span class="jxr_string">"ReaderName%d"</span>, 
+<a name="88" href="#88">88</a>  					System.currentTimeMillis());
+<a name="89" href="#89">89</a>  		}
+<a name="90" href="#90">90</a>  		DEFAULTS = <strong class="jxr_keyword">new</strong> String [] { 	readerName, <span class="jxr_string">"127.0.0.1"</span>, <span class="jxr_string">"5084"</span> };
+<a name="91" href="#91">91</a>  	}
+<a name="92" href="#92">92</a>  	
+<a name="93" href="#93">93</a>  	@Override
+<a name="94" href="#94">94</a>  	<strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> addOKButton(Composite parent) {
+<a name="95" href="#95">95</a>  		<strong class="jxr_keyword">final</strong> Button btnOK = <strong class="jxr_keyword">new</strong> Button(parent, SWT.PUSH);
+<a name="96" href="#96">96</a>  		btnOK.setText(<span class="jxr_string">"OK"</span>);
+<a name="97" href="#97">97</a>  		btnOK.setLayoutData(gridLabel);
+<a name="98" href="#98">98</a>  		
+<a name="99" href="#99">99</a>  		btnOK.addSelectionListener(<strong class="jxr_keyword">new</strong> SelectionAdapter() {
+<a name="100" href="#100">100</a> 		      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> widgetSelected(SelectionEvent e) {
+<a name="101" href="#101">101</a> 		    	  <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i=0; i&lt;DEFAULTS.length; i++) {
+<a name="102" href="#102">102</a> 		    		  values[i] = txts[i].getText();
+<a name="103" href="#103">103</a> 		    	  }
+<a name="104" href="#104">104</a> 				
+<a name="105" href="#105">105</a> 		    	  ci = cICon.getSelection();
+<a name="106" href="#106">106</a> 		    	  connectImmediate = conImmed.getSelection();
+<a name="107" href="#107">107</a> 		    	  
+<a name="108" href="#108">108</a> 		    	  setReturnCode(Window.OK);
+<a name="109" href="#109">109</a> 		    	  close();
+<a name="110" href="#110">110</a> 		      }
+<a name="111" href="#111">111</a> 		    });
+<a name="112" href="#112">112</a> 		
+<a name="113" href="#113">113</a> 		registerTextFieldListeners(btnOK);
+<a name="114" href="#114">114</a> 	}
+<a name="115" href="#115">115</a> 	
+<a name="116" href="#116">116</a> 	<em class="jxr_javadoccomment">/**</em>
+<a name="117" href="#117">117</a> <em class="jxr_javadoccomment">	 * Create GUI elements in the dialog.</em>
+<a name="118" href="#118">118</a> <em class="jxr_javadoccomment">	 */</em>
+<a name="119" href="#119">119</a> 	<strong class="jxr_keyword">protected</strong> Control createContents(Composite parent) {
+<a name="120" href="#120">120</a> 		setLayout(parent);
+<a name="121" href="#121">121</a> 		
+<a name="122" href="#122">122</a> 		addTextFields(parent);
+<a name="123" href="#123">123</a> 		
+<a name="124" href="#124">124</a> 		<em class="jxr_comment">// we need to create a special grid data object for the check-box </em>
+<a name="125" href="#125">125</a> 		<em class="jxr_comment">// without width-hint as otherwise the check-box will not be displayed </em>
+<a name="126" href="#126">126</a> 		<em class="jxr_comment">// in *nix ...</em>
+<a name="127" href="#127">127</a> 		GridData gridNoWidthHint = <strong class="jxr_keyword">new</strong> GridData();
+<a name="128" href="#128">128</a> 		gridNoWidthHint.horizontalSpan = 3;
+<a name="129" href="#129">129</a> 		
+<a name="130" href="#130">130</a> 		conImmed = <strong class="jxr_keyword">new</strong> Button(parent, SWT.CHECK);
+<a name="131" href="#131">131</a> 		conImmed.setText(<span class="jxr_string">"Connect immediately"</span>);
+<a name="132" href="#132">132</a> 		conImmed.setLayoutData(gridNoWidthHint);
+<a name="133" href="#133">133</a> 		conImmed.setSelection(<strong class="jxr_keyword">true</strong>);
+<a name="134" href="#134">134</a> 		
+<a name="135" href="#135">135</a> 		cICon = <strong class="jxr_keyword">new</strong> Button(parent, SWT.CHECK);
+<a name="136" href="#136">136</a> 		cICon.setText(<span class="jxr_string">"Connector mode (initiate connection to the reader)"</span>);
+<a name="137" href="#137">137</a> 		cICon.setLayoutData(gridNoWidthHint);
+<a name="138" href="#138">138</a> 		cICon.setSelection(<strong class="jxr_keyword">true</strong>);
+<a name="139" href="#139">139</a> 		
+<a name="140" href="#140">140</a> 		addInvisibleButton(parent);
+<a name="141" href="#141">141</a> 		addOKButton(parent);
+<a name="142" href="#142">142</a> 		addCancelButton(parent);
+<a name="143" href="#143">143</a> 
+<a name="144" href="#144">144</a> 		parent.pack();
+<a name="145" href="#145">145</a> 		<strong class="jxr_keyword">return</strong> parent;
+<a name="146" href="#146">146</a> 	}
+<a name="147" href="#147">147</a> 	
+<a name="148" href="#148">148</a> 	<em class="jxr_javadoccomment">/**</em>
+<a name="149" href="#149">149</a> <em class="jxr_javadoccomment">	 * @return Logical Name of connection resource</em>
+<a name="150" href="#150">150</a> <em class="jxr_javadoccomment">	 */</em>
+<a name="151" href="#151">151</a> 	<strong class="jxr_keyword">public</strong> String getName() {
+<a name="152" href="#152">152</a> 		<strong class="jxr_keyword">return</strong> values[VALUE_READER_NAME];
+<a name="153" href="#153">153</a> 	}
+<a name="154" href="#154">154</a> 
+<a name="155" href="#155">155</a> 	<em class="jxr_javadoccomment">/**</em>
+<a name="156" href="#156">156</a> <em class="jxr_javadoccomment">	 * @return IP Address of connection resource</em>
+<a name="157" href="#157">157</a> <em class="jxr_javadoccomment">	 */</em>
+<a name="158" href="#158">158</a> 	<strong class="jxr_keyword">public</strong> String getIP() {
+<a name="159" href="#159">159</a> 		<strong class="jxr_keyword">return</strong> values[VALUE_READER_IP];
+<a name="160" href="#160">160</a> 	}
+<a name="161" href="#161">161</a> 
+<a name="162" href="#162">162</a> 	<em class="jxr_javadoccomment">/**</em>
+<a name="163" href="#163">163</a> <em class="jxr_javadoccomment">	 * @return IP Port of connection resource</em>
+<a name="164" href="#164">164</a> <em class="jxr_javadoccomment">	 */</em>
+<a name="165" href="#165">165</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getPort() {
+<a name="166" href="#166">166</a> 		<strong class="jxr_keyword">return</strong> Integer.parseInt(values[VALUE_READER_PORT]);
+<a name="167" href="#167">167</a> 	}
+<a name="168" href="#168">168</a> 	
+<a name="169" href="#169">169</a> 	<em class="jxr_javadoccomment">/**</em>
+<a name="170" href="#170">170</a> <em class="jxr_javadoccomment">	 * @return true if client initiates connection, false otherwise.</em>
+<a name="171" href="#171">171</a> <em class="jxr_javadoccomment">	 */</em>
+<a name="172" href="#172">172</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isClientInitiated() {
+<a name="173" href="#173">173</a> 		<strong class="jxr_keyword">return</strong> ci;
+<a name="174" href="#174">174</a> 	}
+<a name="175" href="#175">175</a> 	
+<a name="176" href="#176">176</a> 	<em class="jxr_javadoccomment">/**</em>
+<a name="177" href="#177">177</a> <em class="jxr_javadoccomment">	 * @return true if connect immediately, false otherwise.</em>
+<a name="178" href="#178">178</a> <em class="jxr_javadoccomment">	 */</em>
+<a name="179" href="#179">179</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isConnectImmediately() {
+<a name="180" href="#180">180</a> 		<strong class="jxr_keyword">return</strong> connectImmediate;
+<a name="181" href="#181">181</a> 	}
+<a name="182" href="#182">182</a> 	
+<a name="183" href="#183">183</a> 	@Override
+<a name="184" href="#184">184</a> 	<strong class="jxr_keyword">public</strong> Listener getListener(<strong class="jxr_keyword">final</strong> Text txt, <strong class="jxr_keyword">int</strong> offset, <strong class="jxr_keyword">final</strong> Button ok) {
+<a name="185" href="#185">185</a> 		Listener listener = <strong class="jxr_keyword">null</strong>;
+<a name="186" href="#186">186</a> 		<strong class="jxr_keyword">switch</strong> (offset) {
+<a name="187" href="#187">187</a> 		<strong class="jxr_keyword">case</strong> VALUE_READER_NAME:
+<a name="188" href="#188">188</a> 			listener = <strong class="jxr_keyword">new</strong> Listener() {
+<a name="189" href="#189">189</a> 				<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> handleEvent(Event event) {
+<a name="190" href="#190">190</a> 					<strong class="jxr_keyword">try</strong> {
+<a name="191" href="#191">191</a> 						<em class="jxr_comment">// do not allow:</em>
+<a name="192" href="#192">192</a> 						<em class="jxr_comment">// - empty name</em>
+<a name="193" href="#193">193</a> 						<em class="jxr_comment">// - name shorter than 3</em>
+<a name="194" href="#194">194</a> 						<em class="jxr_comment">// - name that is already contained</em>
+<a name="195" href="#195">195</a> 						<strong class="jxr_keyword">if</strong> ((txt.getText() == <strong class="jxr_keyword">null</strong>) || (txt.getText().length() &lt; 3) || 
+<a name="196" href="#196">196</a> 								(AdaptorManagement.getInstance().
+<a name="197" href="#197">197</a> 										getAdaptor(AdaptorManagement.DEFAULT_ADAPTOR_NAME).
+<a name="198" href="#198">198</a> 											containsReader(txt.getText()))) {
+<a name="199" href="#199">199</a> 							ok.setEnabled(false);
+<a name="200" href="#200">200</a> 							
+<a name="201" href="#201">201</a> 						} <strong class="jxr_keyword">else</strong> {
+<a name="202" href="#202">202</a> 							ok.setEnabled(<strong class="jxr_keyword">true</strong>);
+<a name="203" href="#203">203</a> 						}
+<a name="204" href="#204">204</a> 					} <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a name="205" href="#205">205</a> 						ok.setEnabled(false);
+<a name="206" href="#206">206</a> 					}
+<a name="207" href="#207">207</a> 				}
+<a name="208" href="#208">208</a> 			};
+<a name="209" href="#209">209</a> 			<strong class="jxr_keyword">break</strong>;
+<a name="210" href="#210">210</a> 		<strong class="jxr_keyword">case</strong> VALUE_READER_IP:
+<a name="211" href="#211">211</a> 			<em class="jxr_comment">// we don't care about the IP format (hope that user does it right).</em>
+<a name="212" href="#212">212</a> 			<strong class="jxr_keyword">break</strong>;		
+<a name="213" href="#213">213</a> 		<strong class="jxr_keyword">case</strong> VALUE_READER_PORT:
+<a name="214" href="#214">214</a> 			listener = <strong class="jxr_keyword">new</strong> Listener() {
+<a name="215" href="#215">215</a> 				<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> handleEvent(Event event) {
+<a name="216" href="#216">216</a> 					<strong class="jxr_keyword">try</strong> {
+<a name="217" href="#217">217</a> 						<em class="jxr_comment">// try to parse the port.</em>
+<a name="218" href="#218">218</a> 						<strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> port = Integer.parseInt(txt.getText());
+<a name="219" href="#219">219</a> 						ok.setEnabled(<strong class="jxr_keyword">true</strong>);
+<a name="220" href="#220">220</a> 					} <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a name="221" href="#221">221</a> 						ok.setEnabled(false);
+<a name="222" href="#222">222</a> 					}
+<a name="223" href="#223">223</a> 				}
+<a name="224" href="#224">224</a> 			};
+<a name="225" href="#225">225</a> 			<strong class="jxr_keyword">break</strong>;
+<a name="226" href="#226">226</a> 		}
+<a name="227" href="#227">227</a> 
+<a name="228" href="#228">228</a> 		<strong class="jxr_keyword">return</strong> listener;
+<a name="229" href="#229">229</a> 	}
+<a name="230" href="#230">230</a> }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+
