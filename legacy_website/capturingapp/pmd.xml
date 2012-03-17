@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2009-08-18T00:56:05.203">
+<file name="C:\accada\capturingapp\target\checkout\target\generated-sources\src\main\java\org\fosstrak\capturingapp\wsdl\CaptureAppPortType.java">
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.capturingapp.wsdl" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.jws.soap.SOAPBinding.ParameterStyle'
+</violation>
+</file>
+<file name="C:\accada\capturingapp\target\checkout\target\generated-sources\src\main\java\org\fosstrak\capturingapp\wsdl\CapturingAppService.java">
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="57" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="org.fosstrak.capturingapp.wsdl" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+</file>
+</pmd>

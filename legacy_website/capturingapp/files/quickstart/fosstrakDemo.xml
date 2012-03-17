@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ECSpec xmlns:ns2="urn:epcglobal:ale:xsd:1">
+  <logicalReaders>
+    <logicalReader>Reader_GoodsReceiving</logicalReader>
+    <logicalReader>Reader_PointOfSale</logicalReader>
+    <logicalReader>Reader_PointOfExit</logicalReader>
+  </logicalReaders>
+  <boundarySpec>
+    <repeatPeriod unit="MS">2000</repeatPeriod>
+    <duration unit="MS">2000</duration>
+    <stableSetInterval unit="MS">0</stableSetInterval>
+  </boundarySpec>
+  <reportSpecs>
+    <reportSpec reportName="additionsReport">
+      <reportSet set="ADDITIONS"/>
+      <output includeRawHex="true" includeRawDecimal="true" includeEPC="true" includeTag="true" includeCount="true"/>
+      <extension>
+        <statProfileNames>
+          <statProfileName>demoAdditions</statProfileName>
+        </statProfileNames>
+      </extension>
+    </reportSpec>
+    <reportSpec reportName="currentTags">
+      <reportSet set="CURRENT"/>
+      <output includeRawHex="true" includeRawDecimal="true" includeEPC="true" includeTag="true" includeCount="true"/>
+      <extension>
+        <statProfileNames>
+          <statProfileName>demoCurrent</statProfileName>
+        </statProfileNames>
+      </extension>
+    </reportSpec>
+  </reportSpecs>
+</ns2:ECSpec>
