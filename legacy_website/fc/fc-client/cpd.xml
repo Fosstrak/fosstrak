@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="81" tokens="306">
+<file line="363" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALEClient.java"/>
+<file line="375" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALELRClient.java"/>
+<codefragment>
+<![CDATA[
+		panel.add(readerNameValueField);
+	}
+	
+	
+	
+	/**
+	 * This method adds a choose file field to the panel.
+	 * 
+	 * @param panel to which the choose file field should be added
+	 */
+	private void addChooseFileField(JPanel panel) {
+	
+		filePathField = new JTextField();
+		
+		final FileDialog fileDialog = new FileDialog(this);
+		fileDialog.setModal(true);
+		fileDialog.addComponentListener(new ComponentAdapter() {
+			public void componentHidden(ComponentEvent e) {
+				if (fileDialog.getFile() != null) {
+					filePathField.setText(fileDialog.getDirectory() + fileDialog.getFile());
+				}
+			}
+		});
+		
+		final JButton chooseFileButton = new JButton(guiText.getString("ChooseFileButtonLabel"));
+		chooseFileButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				fileDialog.setVisible(true);
+			}
+		});
+
+		JPanel chooseFileButtonPanel = new JPanel();
+		chooseFileButtonPanel.setLayout(new GridLayout(1, 3));
+		chooseFileButtonPanel.add(new JPanel());
+		chooseFileButtonPanel.add(chooseFileButton);
+		chooseFileButtonPanel.add(new JPanel());
+		
+		panel.add(new JLabel(guiText.getString("FilePathLabel")));
+		panel.add(filePathField);
+		panel.add(chooseFileButtonPanel);
+				
+	}
+	
+	/**
+	 * This method adds a execute button to the panel.
+	 * 
+	 * @param panel to which the execute button should be added
+	 */
+	private void addExecuteButton(JPanel panel) {
+		
+		if (execButtonPanel == null) {
+			
+			JButton execButton = new JButton(guiText.getString("ExecuteButtonLabel"));
+			execButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					executeCommand();
+				}
+			});
+			
+			execButtonPanel = new JPanel();
+			execButtonPanel.setLayout(new GridLayout(1, 3));
+			execButtonPanel.add(new JPanel());
+			execButtonPanel.add(execButton);
+			execButtonPanel.add(new JPanel());
+			
+		}
+		
+		panel.add(execButtonPanel);
+		
+	}
+
+	/**
+	 * This method executes the command which is selected in the command selection combobox
+	 * with the parameters which are set in the corresponding fields.
+	 * To execute the commands, the methods of the ale proxy will be invoked. 
+	 */
+	private void executeCommand() {
+		
+		Object result = null;
+		String specName = null;
+		String textParameter = null;
+]]>
+</codefragment>
+</duplication>
+<duplication lines="73" tokens="298">
+<file line="618" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALEClient.java"/>
+<file line="627" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALELRClient.java"/>
+<codefragment>
+<![CDATA[
+				for (String name : logicalReaderNames) {
+					specNameComboBox.addItem(name);
+				}
+			}
+			specNameComboBox.setSelectedItem(current);
+		}
+	}
+	
+	/**
+	 * This method creates a exception dialog and sets it visible.
+	 * 
+	 * @param message to display
+	 * @param reason to display
+	 */
+	private void showExcpetionDialog(String message, String reason) {
+		
+		Rectangle guiBounds = this.getBounds();
+		int width = getProperty("DialogWidth");
+		int height = getProperty("DialogHeight");
+		int xPos = guiBounds.x + (guiBounds.width - width) / 2;
+		int yPos = guiBounds.y + (guiBounds.height - height) / 2;
+		
+		final JDialog dialog = new JDialog(this, true);
+		dialog.setBounds(xPos, yPos, width, height);
+		dialog.setLayout(new BorderLayout(10, 10));
+		dialog.setTitle(guiText.getString("ExceptionDialogTitle"));
+		
+		// message label
+		JLabel messageLabel = new JLabel(message);
+		JPanel messageLabelPanel = new JPanel();
+		messageLabelPanel.add(messageLabel);
+		
+		// reason panel
+		JTextArea reasonTextArea = new JTextArea(reason);
+		JScrollPane reasonScrollPane = new JScrollPane(reasonTextArea);
+		reasonScrollPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(guiText.getString("DetailsPanelTitle")), BorderFactory.createEmptyBorder(5,5,5,5)));
+		reasonTextArea.setEditable(false);
+
+		// ok button
+		JButton okButton = new JButton(guiText.getString("OkButtonLabel"));
+		okButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dialog.setVisible(false);
+			}
+		});
+		
+		// put all together
+		dialog.add(messageLabelPanel, BorderLayout.NORTH);
+		dialog.add(reasonScrollPane, BorderLayout.CENTER);
+		dialog.add(okButton, BorderLayout.SOUTH);
+		dialog.setVisible(true);
+		
+	}
+	
+	/**
+	 * This method creates a exception dialog and sets it visible.
+	 * 
+	 * @param text to display
+	 */
+	private void showExcpetionDialog(String text) {
+		
+		showExcpetionDialog(text, null);
+		
+	}
+	
+	/**
+	 * This method loads the ec specification from a file.
+	 * 
+	 * @param filename of ec specification file
+	 * @return ec specification
+	 * @throws Exception if specification could not be loaded
+	 */
+	private LRSpec getLRSpecFromFile(String filename) throws Exception {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="32" tokens="192">
+<file line="194" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALEClient.java"/>
+<file line="192" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALELRClient.java"/>
+<codefragment>
+<![CDATA[
+		this.setLocation(getProperty("WindowWidth"), 0);
+		this.setSize(getProperty("WindowWidth"), getProperty("WindowHeight"));
+		this.setTitle(guiText.getString("ApplicationTitle"));
+		this.setJMenuBar(createMenuBar());
+		
+		this.setLayout(new BorderLayout());
+		this.add(createCommandSelectionPanel(), BorderLayout.NORTH);
+		this.add(commandSuperPanel, BorderLayout.CENTER);
+		this.add(resultScrollPane, BorderLayout.SOUTH);
+		
+		commandSuperPanel.setLayout(new BorderLayout());
+		commandSuperPanel.add(commandPanel, BorderLayout.NORTH);
+		
+		resultScrollPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(guiText.getString("ResultPanelTitle")), BorderFactory.createEmptyBorder(5,5,5,5)));
+		
+		resultTextArea.setEditable(false);
+		
+		this.setVisible(true);
+		
+	}
+
+	/**
+	 * This method creates the command selection panel.
+	 * 
+	 * @return command selection panel
+	 */
+	private JPanel createCommandSelectionPanel() {
+		
+		JPanel selectionPanel = new JPanel();
+		selectionPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(guiText.getString("SelectionPanelTitle")), BorderFactory.createEmptyBorder(5,5,5,5)));
+		
+		commandSelection.setMaximumRowCount(13);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="64" tokens="186">
+<file line="745" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALEClient.java"/>
+<file line="745" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALELRClient.java"/>
+<codefragment>
+<![CDATA[
+		for (int i = 1; i < 13; i++) {
+			commands[i - 1] = guiText.getString("Command" + i);			
+		}
+		return commands;
+		
+	}
+
+	/**
+	 * This method creates the menu bar.
+	 * 
+	 * @return menu bar
+	 */
+	private JMenuBar createMenuBar() {
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.add(createFileMenu());
+		
+		return menuBar;
+		
+	}
+	
+	/**
+	 * This method creates the file menu.
+	 * 
+	 * @return file menu
+	 */
+	private Component createFileMenu() {
+		
+		JMenu fileMenuItem = new JMenu(guiText.getString("FileMenu"));
+		
+		JMenuItem exitMenuItem = new JMenuItem(guiText.getString("QuitMenuItem"));
+		exitMenuItem.addMouseListener(new MouseAdapter() {
+			public void mouseReleased(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		fileMenuItem.add(exitMenuItem);
+		
+		return fileMenuItem;
+		
+	}
+
+	/**
+	 * This method gets a property value as integer.
+	 * 
+	 * @param key of the property
+	 * @return property as integer value
+	 */
+	private int getProperty(String key) {
+		
+		String error;
+		String value = props.getProperty(key);
+		if(value == null) {
+			error =  "Value '" + key + "' not found in properties !";
+		} else {
+			try {
+				return Integer.parseInt(value.trim());
+			} catch (Exception e) {
+				error = "Value '" + key + "' is not an integer !";
+			}
+		}
+		throw new NumberFormatException(error);
+		
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="43" tokens="167">
+<file line="225" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALEClient.java"/>
+<file line="223" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALELRClient.java"/>
+<codefragment>
+<![CDATA[
+		commandSelection.setMaximumRowCount(13);
+		
+		commandSelection.addItem(null);
+		for (String item : getCommands()) {
+			commandSelection.addItem(item);
+		}
+		
+		commandSelection.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if ("comboBoxChanged".equals(e.getActionCommand())) {
+					setCommandPanel(commandSelection.getSelectedIndex());
+				}				
+			}
+		});
+		
+		selectionPanel.add(commandSelection);
+		
+		return selectionPanel;
+		
+	}
+
+	/**
+	 * This method sets the command selection panel depending on the command id.
+	 * 
+	 * @param command id
+	 */
+	private void setCommandPanel(int command) {
+		
+		if (command == -1) {
+			commandPanel.removeAll();
+			commandPanel.setBorder(null);
+			this.setVisible(false);
+			this.setVisible(true);
+			return;
+		}
+		
+		commandPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(guiText.getString("Command" + command)), BorderFactory.createEmptyBorder(5,5,5,5)));
+		commandPanel.removeAll();
+
+		switch(command) {
+		
+			case 4: //getLRSpecNames
+			case 11: // getStandardVersion
+]]>
+</codefragment>
+</duplication>
+<duplication lines="25" tokens="111">
+<file line="693" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALEClient.java"/>
+<file line="701" path="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALELRClient.java"/>
+<codefragment>
+<![CDATA[
+		return DeserializerUtil.deserializeLRSpec(inputStream);
+		
+	}
+
+	/**
+	 * This method displays the result in the result text area.
+	 * 
+	 * @param result to display
+	 */
+	private void showResult(Object result) {
+		
+		resultTextArea.setText(null);
+		if (result instanceof String) {
+			resultTextArea.append((String)result);
+		} else if (result instanceof ArrayOfString) {
+			ArrayOfString resultStringArray = (ArrayOfString)result;
+			if (resultStringArray.getString().size() == 0) {
+				resultTextArea.append(guiText.getString("EmptyArray"));
+			} else {
+				for (String s : resultStringArray.getString()) {
+					resultTextArea.append(s);
+					resultTextArea.append("\n");
+				}
+			}
+		} else if (result instanceof LRSpec) {
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

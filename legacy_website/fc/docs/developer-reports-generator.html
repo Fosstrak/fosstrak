@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - Reports Generation</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                    
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/user-example.html">Quick Start</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-installation.html">Install fc-server</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-testclients.html">Use ALE Clients</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-test-scenarios.html">Test Scenarios</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                    
+                  
+                  
+                        
+                  
+                  
+                  
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Reports Generation</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Objective">Objective</a></li><li><a href="#ReportsGenerator">ReportsGenerator</a></li><li><a href="#StateDiagram">ReportsGenerator StateDiagram</a></li><li><a href="#Report">Report</a></li></ol></div><div class="section"><h3><a name="Objective">Objective</a></h3><p>This guide should give you a brief overview how reports are generated. In the first part the ReportsGenerator will be introduced and explained. In the second part the Report creation will be explained (Tag filtering).</p></div><div class="section"><h3><a name="ReportsGenerator">ReportsGenerator</a></h3><p>The Reports Generator is created with a name for the Reports Generator and a ECSpec. An ECSpec describes an event cycle and one or more reports that are to be generated from it. It contains a list of logical Readers whose read cycles are to be included in the event cycle, a specification of how the boundaries of event cycles are to be determined, and a list of specifications each of which describes a report to be generated from this event cycle. When there are subscribers for the EventCycle the ReportsGenerator starts the EventCycle. When the Event Cycle is finished, each report is generated by the Report class and sent through the ReportsGenerator to the subscribers.</p><p>We will give a short overview to the methods available in the ReportsGenerator. For a complete list of all methods refer to the java-doc:</p><ul><li>ReportsGenerator: The constructor takes a name for the ReportsGenerator and an ECSpec for the later construction of an EventCycle.</li><li>setState/getState: A ReportsGenerator has an associated state that can be modified by this methods. For further information on the states refer to <a href="#StateDiagram">ReportsGenerator StateDiagram</a>.</li><li>subscribe/unsubscribe: Whenever a a client subscribes/unsubscribes for an EventCycle through the ALE interface the notificationURI will be registered/deregistered by this methods.</li><li>getSubscribers: Returns the notification URIs of all subscribers.</li><li>notifySubscribers: Upon a successfull run of an EventCycle the subscribers need to be notified about the Reports.</li><li>poll: The ReportsGenerator allows polling. This method performs the polling.</li><li>getPollReports: This method delivers the ec reports which have been generated because of a poll. </li></ul><img src="../images/ReportsGenerator/ReportsGenerator.png" /></div><div class="section"><h3>ReportsGenerator <a name="StateDiagram">StateDiagram</a></h3><p>The ReportsGenerator is implemented as a state machine with essentially 3 states. When a ReportsGenerator is created it transitions into the running state and from there directly into one of the two substates <i>REQUESTED</i> or <i>UNREQUESTED</i> depending whether the ALE requestes the ReportsGenerator to deliver tags or not. As long as the ReportsGenerator is not undefined through the ALE it transitions between the states <i>REQUESTED</i> and <i>UNREQUESTED</i>.</p><ul><li><i>REQUESTED</i>: There is a client that wants to retrieve Tags. This state implies that there is a running EventCycle.</li><li><i>UNREQUESTED</i>: There is no client and the ReportsGenerator is waiting.</li></ul><img src="../images/ReportsGenerator/ReportsGeneratorStateDiagram.png" /></div><div class="section"><h3><a name="Report">Report</a></h3><p>The Report generates a Report according to the ECReportSpec. The Report class is invoked by the EventCycle. According to its ECReportSpec. It decides which of the Tags observed or lost by the current or last EventCycle are to be included in the report for a specific group and which not. Responsible for this decision is the isMember(String tagURI) method.</p><div class="source"><pre>private boolean isMember(String tagURI) 
+        throws ECSpecValidationException, ImplementationException {
+
+        if (reportType == ECReportSetEnum.ADDITIONS) {
+                
+                // if report type is additions the tag is only a 
+                // member if it wasn't a member of the last event cycle
+                if (lastEventCycleTags.contains(tagURI)) {
+                        return false;
+                }
+                
+        }
+        
+        // check if tagURI is member of an exclude pattern
+        for (Pattern pattern : excludePatterns) {
+                if (pattern.isMember(tagURI)) {
+                        return false;
+                }
+        }
+        
+        // check if there are include patterns specified
+        if (includePatterns.size() == 0) {
+                return true;
+        } else {
+                
+                // check if tagURI is a member of an include pattern
+                for (Pattern pattern : includePatterns) {
+                        if (pattern.isMember(tagURI)) {
+                                return true;
+                        }
+                }
+                return false;
+        }
+        
+}</pre></div><p>Reasons for an observed Tag not to be included in the report could be:</p><ul><li>reportType is set to Aditions: The Tag was not present during the last EventCyle</li><li>reportType is set to Current: The Tag is member of an exclude pattern</li></ul><p>Reasons for an not observed Tag to be included in the report could be:</p><ul><li>reportType is set to Deletions: The Tag was present during the last EventCycle, but not in the current</li></ul><p>If the method isMember(String tagURI) returns with true, then the Tag is put in the Report which every subscriber of the Event Cycle gets by the Reports Generator.</p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

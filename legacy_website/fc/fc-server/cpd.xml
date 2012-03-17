@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="15" tokens="121">
+<file line="50" path="C:\accada\fc\fc-server\src\main\java\org\fosstrak\ale\wsdl\alelr\epcglobal\ALELRServicePortTypeImpl.java"/>
+<file line="118" path="C:\accada\fc\fc-server\src\main\java\org\fosstrak\ale\wsdl\alelr\epcglobal\ALELRServicePortTypeImpl.java"/>
+<codefragment>
+<![CDATA[
+			LogicalReaderManager.addReaders(parms.getName(), parms.getReaders().getReader());
+		} catch (org.fosstrak.ale.wsdl.ale.epcglobal.NoSuchNameExceptionResponse e) {
+			throw new NoSuchNameExceptionResponse(e.getMessage());
+		} catch (org.fosstrak.ale.wsdl.ale.epcglobal.SecurityExceptionResponse e) {
+			throw new SecurityExceptionResponse(e.getMessage());
+		} catch (org.fosstrak.ale.wsdl.ale.epcglobal.ImplementationExceptionResponse e) {
+			throw new ImplementationExceptionResponse(e.getMessage());
+		}
+		return null;
+    }
+
+    /* (non-Javadoc)
+     * @see org.fosstrak.ale.wsdl.alelr.epcglobal.ALELRServicePortType#define(org.fosstrak.ale.wsdl.alelr.epcglobal.Define  parms )*
+     */
+    public org.fosstrak.ale.wsdl.alelr.epcglobal.DefineResult define(Define parms) throws ValidationExceptionResponse , ImplementationExceptionResponse , DuplicateNameExceptionResponse , SecurityExceptionResponse    { 
+]]>
+</codefragment>
+</duplication>
+<duplication lines="15" tokens="109">
+<file line="50" path="C:\accada\fc\fc-server\src\main\java\org\fosstrak\ale\wsdl\alelr\epcglobal\ALELRServicePortTypeImpl.java"/>
+<file line="168" path="C:\accada\fc\fc-server\src\main\java\org\fosstrak\ale\wsdl\alelr\epcglobal\ALELRServicePortTypeImpl.java"/>
+<codefragment>
+<![CDATA[
+			LogicalReaderManager.removeReaders(parms.getName(), parms.getReaders().getReader());
+		} catch (org.fosstrak.ale.wsdl.ale.epcglobal.NoSuchNameExceptionResponse e) {
+			throw new NoSuchNameExceptionResponse(e.getMessage());
+		} catch (org.fosstrak.ale.wsdl.ale.epcglobal.SecurityExceptionResponse e) {
+			throw new SecurityExceptionResponse(e.getMessage());
+		} catch (org.fosstrak.ale.wsdl.ale.epcglobal.ImplementationExceptionResponse e) {
+			throw new ImplementationExceptionResponse(e.getMessage());
+		}
+		return null;
+    }
+
+    /* (non-Javadoc)
+     * @see org.fosstrak.ale.wsdl.alelr.epcglobal.ALELRServicePortType#getVendorVersion(org.fosstrak.ale.wsdl.alelr.epcglobal.EmptyParms  parms )*
+     */
+    public java.lang.String getVendorVersion(EmptyParms parms) throws ImplementationExceptionResponse { 
+]]>
+</codefragment>
+</duplication>
+<duplication lines="15" tokens="107">
+<file line="50" path="C:\accada\fc\fc-server\src\main\java\org\fosstrak\ale\wsdl\alelr\epcglobal\ALELRServicePortTypeImpl.java"/>
+<file line="67" path="C:\accada\fc\fc-server\src\main\java\org\fosstrak\ale\wsdl\alelr\epcglobal\ALELRServicePortTypeImpl.java"/>
+<file line="84" path="C:\accada\fc\fc-server\src\main\java\org\fosstrak\ale\wsdl\alelr\epcglobal\ALELRServicePortTypeImpl.java"/>
+<codefragment>
+<![CDATA[
+			LogicalReaderManager.setProperties(parms.getName(), parms.getProperties().getProperty());
+		} catch (org.fosstrak.ale.wsdl.ale.epcglobal.NoSuchNameExceptionResponse e) {
+			throw new NoSuchNameExceptionResponse(e.getMessage());
+		} catch (org.fosstrak.ale.wsdl.ale.epcglobal.SecurityExceptionResponse e) {
+			throw new SecurityExceptionResponse(e.getMessage());
+		} catch (org.fosstrak.ale.wsdl.ale.epcglobal.ImplementationExceptionResponse e) {
+			throw new ImplementationExceptionResponse(e.getMessage());
+		}
+		return null;
+    }
+
+    /* (non-Javadoc)
+     * @see org.fosstrak.ale.wsdl.alelr.epcglobal.ALELRServicePortType#update(org.fosstrak.ale.wsdl.alelr.epcglobal.Update  parms )*
+     */
+    public org.fosstrak.ale.wsdl.alelr.epcglobal.UpdateResult update(Update parms) throws ValidationExceptionResponse , InUseExceptionResponse , ImplementationExceptionResponse , SecurityExceptionResponse , NoSuchNameExceptionResponse , ImmutableReaderExceptionResponse , ReaderLoopExceptionResponse    { 
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

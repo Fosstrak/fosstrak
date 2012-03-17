@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - How to implement an Adaptor</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                    
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/user-example.html">Quick Start</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-installation.html">Install fc-server</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-testclients.html">Use ALE Clients</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-test-scenarios.html">Test Scenarios</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                    
+                  
+                  
+                  
+                  
+                  
+                        
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>How to implement an Adaptor</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Objective">Objective</a></li><li><a href="#HALAdaptor">HALAdaptor</a></li><li><a href="#RPAdaptor">RPAdaptor</a></li><li><a href="#LLRPAdaptor">LLRPAdaptor</a></li><li><a href="#TestAdaptor">TestAdaptor</a></li><li><a href="#A">A new Adaptor</a></li></ol></div><div class="section"><h3><a name="Objective">Objective</a></h3><p>This guide is intented for developers who wish to integrate a tag reader into to the Logical Reader API of the fosstrak ALE. The guide gives three examples to three existing Adaptors. In the second part a more detailed explanation about how to implement your own adaptor is given.</p><p>There are two different types of Logical Reader Definitions that should not be confused! </p><ul><li>Dynamic Logical Reader Definitions:<p>Dynamic Logical Reader Definitions are read by the fc-client and the fc-webclient. If you want to specify a logical reader at runtime through the Logical Reader API you need to use a Dynamic Logical Reader. </p></li><li>Static Logical Reader Definitions:<p>Static Logical Reader Definitions are read/written by the Logical Reader Manager upon ALE deployment. They contain additional information for the Logical Reader Manager. </p></li></ul></div><div class="section"><h3><a name="HALAdaptor">HALAdaptor</a></h3><p>The HALAdaptor provides an adaptor to the Hardware Abstraction Layer (HAL).</p><div class="section"><h4>Schematic</h4><p>Currently the HALAdaptor creates a SimulatorController object. This object in turn then sets up the HAL device as requested by the properties file. </p><img src="../images/readerAPI/HALAdaptor.png" /><p>For example properties files refer to:</p><ul><li>BatchSimulator.xml for a batch simulator</li><li>GraphicSimulator.xml for a graphical simulator</li></ul><p>The HAL devices from the Fosstrak project currently do not provide a polling mechanism. To retrieve Tags from these devices we therefor need a mechanism to periodically poll the device. We chose an identifyThread that polls the HAL device in a regular time interval.</p><img src="../images/readerAPI/HALAdaptorPolling.png" /></div><div class="section"><h4>Required parameters </h4><p>You need to provide all the following parameters to the HALAdaptor:</p><ul><li>isComposite: is the reader a composite reader (false).</li><li>ReaderType: the class name of the implementor (org.fosstrak.ale.server.readers.hal.HALAdaptor)</li><li>PhysicalReaderName: the name of the underlying physical reader.</li><li>ReadTimeInterval: how often to read from the reader.</li><li>PropertiesFile: the properties file for the HAL reader.</li></ul><p>The xml definitions slightly differ for the dynamic and the static definition. Two full examples are given to illustrate where the parameters are defined.</p></div><div class="section"><h4>Load HAL other than SimulatorController</h4><p>If you want to load a HAL implementation not contained in the simulator framework (eg. impinj or feig implementation) you need to specify the corresponding implementation in the configuration file.</p><p><b>ATTENTION</b>: Make sure that your implementation of the HardwareAbstraction interface provides a public constructor of the form <i>XYZ(String halName, String configFile)</i>.</p><div class="source"><pre>Example 1: for the impinj hal from fosstrak
+// add the following property to the required properties
+&lt;property&gt;
+        &lt;name&gt;ImplementingClass&lt;/name&gt;
+        &lt;value&gt;org.fosstrak.hal.impl.impinj.ImpinjTCPIPController&lt;/value&gt;
+&lt;/property
+
+Example 2: for the feig hal from fosstrak
+// add the following property to the required properties
+&lt;property&gt;
+        &lt;name&gt;ImplementingClass&lt;/name&gt;
+        &lt;value&gt;org.fosstrak.hal.impl.feig.FeigTCPIPController&lt;/value&gt;
+&lt;/property&gt;
+
+Example 3: for the simulator controller (default)
+// add the following property to the required properties
+&lt;property&gt;
+        &lt;name&gt;ImplementingClass&lt;/name&gt;
+        &lt;value&gt;org.fosstrak.hal.impl.sim.SimulatorController&lt;/value&gt;
+&lt;/property
+</pre></div></div><div class="section"><h4>Dynamic definition</h4><div class="source"><pre>Sample Configuration for a HALAdaptor
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns3:LRSpec xmlns:ns2=&quot;urn:epcglobal:ale:wsdl:1&quot; 
+        xmlns:ns3=&quot;urn:epcglobal:ale:xsd:1&quot;&gt;
+    &lt;isComposite&gt;false&lt;/isComposite&gt;
+    &lt;readers/&gt;
+    &lt;properties&gt;
+        &lt;property&gt;
+            &lt;name&gt;ReaderType&lt;/name&gt;
+            &lt;value&gt;org.fosstrak.ale.server.readers.hal.HALAdaptor&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;Description&lt;/name&gt;
+            &lt;value&gt;My first HAL device reader&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;PhysicalReaderName&lt;/name&gt;
+            &lt;value&gt;MyReader1&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;ReadTimeInterval&lt;/name&gt;
+            &lt;value&gt;1000&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;PropertiesFile&lt;/name&gt;
+            &lt;value&gt;/props/SimulatorController.xml&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/properties&gt;
+&lt;/ns3:LRSpec&gt;</pre></div></div><div class="section"><h4>Static definition </h4><p>In addition to the dynamic definition you must provide the reader name!</p><div class="source"><pre>Sample Configuration for a HALAdaptor
+
+&lt;LogicalReader name=&quot;LogicalReader1&quot;&gt;
+        &lt;LRSpec isComposite=&quot;false&quot; 
+                readerType=&quot;org.fosstrak.ale.server.readers.hal.HALAdaptor&quot;&gt;
+                &lt;LRProperty name=&quot;Description&quot; 
+                        value=&quot;HAL reader created during system startup&quot;/&gt;
+                &lt;LRProperty name=&quot;AdaptorClass&quot; value=&quot;HAL&quot;/&gt;
+                &lt;LRProperty name=&quot;PhysicalReaderName&quot; value=&quot;MyReader&quot;/&gt;
+                &lt;LRProperty name=&quot;ReadTimeInterval&quot; value=&quot;1000&quot;/&gt;
+                &lt;LRProperty name=&quot;PropertiesFile&quot; 
+                        value=&quot;/props/SimulatorController.xml&quot;/&gt;
+                &lt;LRProperty name=&quot;ReadPoints&quot; value=&quot;Shelf1,Shelf2&quot;/&gt;
+        &lt;/LRSpec&gt;
+&lt;/LogicalReader&gt;</pre></div></div></div><div class="section"><h3><a name="RPAdaptor">RPAdaptor</a></h3><p>The RPAdaptor provides an adaptor to the reader protokoll (RP). </p><div class="section"><h4>Schematic</h4><p>The RPAdaptor provides a default constructor and an initializer method. Both are called in the construction phase of the LogicalReader. The RPAdaptor implements all methods that are required by the logical reader API (basically these are the methods that are specified in LogicalReader and in BaseReader).</p><p>Aside the standard methods and fields the RPAdaptor requires some more functionality to communicate with a rp-proxy. The InputGenerator sets up the connection between the RPAdaptor and the rp-proxy. There are two channels that need to be created. The first one (command channel) is created for the communication from the RPAdaptor to the rp-proxy. The command channel uses the connection settings provided by ConnectionPoint. The second channel (notification channel) is used for the communication from the rp-proxy to the RPAdaptor and provides a channel for the delivery of tags from the physical reader. The settings provided by NotificationPoint are used to set up this channel. As soon as the RPAdaptor is started through the logical reader API the rp-proxy sends tag events that are then processed by the InputGenerator and sent through the RPAdaptor to the observers (CompositeReader or EventCycle).</p><img src="../images/readerAPI/RPAdaptor.png" /><p>The reader protocol provides a tag-smoothing by hardware. In the current implementation of the RPAdaptor we do not use this feature and poll the adaptor in a regular time intervall through a identifyThread instead. The main reason why we did without the tag smoothing is mainly an architectural decision. The reports generation performs this action in a higher application level again. To allow maximum flexibility in this high level tag smoothing we wanted to provide as many tags as possible. </p><img src="../images/readerAPI/RPAdaptorPolling.png" /></div><div class="section"><h4>Required parameters</h4><p>You need to provide all the following parameters to the RPAdaptor:</p><ul><li>isComposite: is the reader a composite reader (false).</li><li>ReaderType: the class name of the implementor (org.fosstrak.ale.server.readers.hal.HALAdaptor)</li><li>PhysicalReaderName: the name of the underlying physical reader.</li><li>ReadTimeInterval: how often to read from the reader.</li><li>PhysicalReaderSource: the sources where to read from (one rp reader can have several different sources).</li><li>NotificationPoint: The notification point where to send notifications.</li><li>ConnectionPoint: The controll connection point.</li></ul><p>The xml definitions slightly differ for the dynamic and the static definition. Two full examples are given to illustrate where the parameters are defined.</p></div><div class="section"><h4>Dynamic definition</h4><div class="source"><pre>Sample Configuration for a RPAdaptor
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns3:LRSpec xmlns:ns2=&quot;urn:epcglobal:ale:wsdl:1&quot; 
+        xmlns:ns3=&quot;urn:epcglobal:ale:xsd:1&quot;&gt;
+    &lt;isComposite&gt;false&lt;/isComposite&gt;
+    &lt;readers/&gt;
+    &lt;properties&gt;
+        &lt;property&gt;
+            &lt;name&gt;ReaderType&lt;/name&gt;
+            &lt;value&gt;org.fosstrak.ale.server.readers.rp.RPAdaptor&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;Description&lt;/name&gt;
+            &lt;value&gt;This Logical Reader consists of shelf 1 
+                and shelf 2,3,4 of the physical 
+                reader named MyReader&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;PhysicalReaderName&lt;/name&gt;
+            &lt;value&gt;MyReader&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;ReadTimeInterval&lt;/name&gt;
+            &lt;value&gt;1000&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;PhysicalReaderSource&lt;/name&gt;
+            &lt;value&gt;Shelf1,Shelf2,Shelf3,Shelf4&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;NotificationPoint&lt;/name&gt;
+            &lt;value&gt;http://localhost:9090&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;ConnectionPoint&lt;/name&gt;
+            &lt;value&gt;http://localhost:8000&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/properties&gt;
+&lt;/ns3:LRSpec&gt;</pre></div></div><div class="section"><h4>Static definition</h4><div class="source"><pre>Sample Configuration for a RPAdaptor
+
+&lt;LogicalReader name=&quot;LogicalReader1&quot;&gt;
+        &lt;LRSpec isComposite=&quot;false&quot; 
+                readerType=&quot;org.fosstrak.ale.server.readers.rp.RPAdaptor&quot;&gt;
+                &lt;LRProperty name=&quot;Description&quot; value=&quot;My physical Reader&quot;/&gt;
+                &lt;LRProperty name=&quot;ConnectionPoint&quot; 
+                        value=&quot;http://localhost:8000&quot;/&gt;
+                &lt;LRProperty name=&quot;NotificationPoint&quot; 
+                        value=&quot;http://localhost:9090&quot;/&gt;
+                &lt;LRProperty name=&quot;ReadTimeInterval&quot; value=&quot;200&quot;/&gt;
+                &lt;LRProperty name=&quot;AdaptorClass&quot; value=&quot;ReaderProtocol&quot;/&gt;
+                &lt;LRProperty name=&quot;PhysicalReaderName&quot; value=&quot;MyReader&quot;/&gt;
+                &lt;LRProperty name=&quot;PhysicalReaderSource&quot; 
+                        value=&quot;Shelf1,Shelf2,Shelf3,Shelf4&quot;/&gt;
+        &lt;/LRSpec&gt;
+&lt;/LogicalReader&gt;</pre></div></div></div><div class="section"><h3><a name="LLRPAdaptor">LLRPAdaptor</a></h3><p>Fosstrak supports the integration of LLRP enabled readers through the Fosstrak LLRP Commander project. The LLRP Commander enables you to configure and manage your LLRP readers through a simple and intuitive eclipse GUI. For a detailed discussion how to use the Fosstrak LLRP Commander please refer to the respective project documentation website at Fosstrak.</p><p>For the integration of an LLRP enabled reader into the filtering and collection framework, Fosstrak implements a simple bridge to the reader management module of the Fosstrak LLRP Commander. </p><p>The following list shall give an overview to all available parameters that can be passed to filtering and collection through an LRSpec.</p><ul><li>ReaderType: (Mandatory) The reader type is mandatory and HAS to be set to <i>org.fosstrak.ale.server.readers.llrp.LLRPAdaptor</i></li><li>PhysicalReaderName: (Mandatory) Within the LLRP GUI Client component each LLRP reader has a unique name. This parameter refers to this name. You can create several logical readers that point to the same physical reader.</li><li>ip: (optional) If you specify an ip within the LRSpec fc checks if the reader &quot;PhysicalReaderName&quot; is already registered. If not fc tries to establish a new connection to the specified ip. If the reader does not exist and no ip is provided an exception is triggered.</li><li>port: (optional) if you omit the port parameter the default port is used to establish the reader connection (5084).</li><li>clientInitiated: (optional) if you specify the parameter ip you have to specify this parameter to either true or false. This parameter specifies the connection profile to choose for the LLRP reader connection (please refer to the LLRP GUI Client documentation for a more detailed explanation). Most profiles will use &quot;true&quot; and therefore the adaptor default is set to &quot;true&quot;.</li><li>Description: (optional) parameter with a textual description of the logical reader.</li><li>antennaID: (optional) parameter controlling from which antenna ids the logical reader is accepting tags. By default, the logical reader accepts all the tags. If you specify a comma-separated list of antenna ids, then the logical reader will only deliver those tags to you, that have been read on an antenna specified in the list. <b>NOTICE</b>: When you omit the parameter <i>EnableAntennaID</i> in the <i>TagReportContentSelector</i>-Section of your <i>RO_SPEC</i>-configuration, the logical reader has no means to determine the antenna id and will simply deliver all the tags to you.</li></ul><div class="section"><h4>Dynamic definition</h4><div class="source"><pre>Sample Configuration for a LLRPAdaptor
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns3:LRSpec xmlns:ns2=&quot;urn:epcglobal:ale:wsdl:1&quot; xmlns:ns3=&quot;urn:epcglobal:ale:xsd:1&quot;&gt;
+    &lt;isComposite&gt;false&lt;/isComposite&gt;
+    &lt;readers/&gt;
+    &lt;properties&gt;
+        &lt;property&gt;
+            &lt;name&gt;ReaderType&lt;/name&gt;
+            &lt;value&gt;org.fosstrak.ale.server.readers.llrp.LLRPAdaptor&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;Description&lt;/name&gt;
+            &lt;value&gt;my llrp reader&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;PhysicalReaderName&lt;/name&gt;
+            &lt;value&gt;ethzReader&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;ip&lt;/name&gt;
+            &lt;value&gt;127.0.0.1&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;port&lt;/name&gt;
+            &lt;value&gt;5084&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;clientInitiated&lt;/name&gt;
+            &lt;value&gt;true&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;antennaID&lt;/name&gt;
+            &lt;value&gt;1,2&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/properties&gt;
+&lt;/ns3:LRSpec&gt;</pre></div></div><div class="section"><h4>Static definition</h4><div class="source"><pre>Sample Configuration for a LLRPAdaptor
+
+&lt;LogicalReader name=&quot;LogicalReader1&quot;&gt;
+        &lt;LRSpec isComposite=&quot;false&quot; 
+                readerType=&quot;org.fosstrak.ale.server.readers.llrp.LLRPAdaptor&quot;&gt;
+                &lt;LRProperty name=&quot;Description&quot; value=&quot;my llrp reader&quot;/&gt;
+                &lt;LRProperty name=&quot;PhysicalReaderName&quot; 
+                        value=&quot;ethzReader&quot;/&gt;
+                &lt;LRProperty name=&quot;ip&quot; 
+                        value=&quot;127.0.0.1&quot;/&gt;
+                &lt;LRProperty name=&quot;port&quot; value=&quot;5084&quot;/&gt;
+                &lt;LRProperty name=&quot;clientInitiated&quot; value=&quot;true&quot;/&gt;
+                &lt;LRProperty name=&quot;antennaID&quot; value=&quot;1,2&quot;/&gt;
+        &lt;/LRSpec&gt;
+&lt;/LogicalReader&gt;</pre></div></div></div><div class="section"><h3><a name="TestAdaptor">TestAdaptor</a></h3><p>For testing purposes the TestAdaptor can be used. The TestAdaptor simulates a reader that from time to time reads a tag.</p><p>As the TestAdaptor is not intended to be used as a productive reader adaptor only the basic configuration parameters will be explained here.</p><ul><li>tps: this value indicates the &quot;tags per shot&quot;, meaning how many tags get fired in each iteration</li><li>wt: this value indicates the &quot;wait time&quot;, meaning how long to wait between two shots</li><li>gain: this value indicates the increase of the tags per shot. ATTENTION: this rapidly increases the tps!</li></ul><div class="section"><h4>Dynamic Definition</h4><div class="source"><pre>Sample Configuration for a RPAdaptor
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ns3:LRSpec xmlns:ns2=&quot;urn:epcglobal:ale:wsdl:1&quot; 
+        xmlns:ns3=&quot;urn:epcglobal:ale:xsd:1&quot;&gt;
+    &lt;isComposite&gt;false&lt;/isComposite&gt;
+    &lt;readers/&gt;
+    &lt;properties&gt;
+        &lt;property&gt;
+            &lt;name&gt;ReaderType&lt;/name&gt;
+            &lt;value&gt;org.fosstrak.ale.server.readers.test.TestAdaptor&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;Description&lt;/name&gt;
+            &lt;value&gt;Test Adaptor to test performance&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;tps&lt;/name&gt;
+            &lt;value&gt;1000&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;gain&lt;/name&gt;
+            &lt;value&gt;0&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property&gt;
+            &lt;name&gt;wt&lt;/name&gt;
+            &lt;value&gt;5000&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/properties&gt;
+&lt;/ns3:LRSpec&gt;</pre></div></div><div class="section"><h4>Static Definition</h4><div class="source"><pre>Sample Configuration for a RPAdaptor
+
+&lt;LogicalReader name=&quot;LogicalReader1&quot;&gt;
+        &lt;LRSpec isComposite=&quot;false&quot; 
+                readerType=&quot;org.fosstrak.ale.server.readers.test.TestAdaptor&quot;&gt;
+                &lt;LRProperty name=&quot;Description&quot;
+                        value=&quot;Test Adaptor to test performance&quot;/&gt;
+                &lt;LRProperty name=&quot;tps&quot; value=&quot;100&quot;/&gt;
+                &lt;LRProperty name=&quot;wt&quot; value=&quot;3000&quot;/&gt;
+                &lt;LRProperty name=&quot;gain&quot; value=&quot;0&quot;/&gt;
+        &lt;/LRSpec&gt;
+&lt;/LogicalReader&gt;</pre></div></div></div><div class="section"><h3><a name="A">A</a> new Adaptor</h3><p>When you want to integrate your own reader into the logical reader API there are only few restrictions and obligations you need to obey.</p><p>In a first step you should create a new package for your reader adaptor.</p><p>Create a new class with the name of your adaptor and let this class extend the class BaseReader.</p><p>You need to overwrite the following methods</p><ul><li>start: start the reader (this means only to let the reader deliver tags).</li><li>stop: stop the reader (this means only to stop the reader from delivering tags).</li><li>connectReader: here you should place the connection setup between the reader and the reader adaptor.</li><li>disconnectReader: destroy the connection between the reader and the adaptor.</li><li>identify: you must implement this method, even when you do have a reader that is capable if auto-polling</li><li>update: here you have to place the code for an update through the logical reader API.</li><li>initialize: this method is used to setup your adaptor (see further below).</li></ul><p>Pay attention to flag the state of your adaptor correctly through the methods (setConnected, setStarted, ...)</p><p>Instead of a constructor with arguments we chose the approach of an default constructor and an initializer method. To ensure that your adaptor is setup correctly implement the constructor and the initizalizer method as following:</p><ul><li>constructor: do not implement a constructor that needs arguments. Easiest is just to place the constructor call for the superclass (&quot;super()&quot;) and leave the rest empty.</li><li>initialize: The initializer-method takes two arguments. The first (name: String) will be the name of your reader within the logical reader API. The second (spec:LRSpec) is a valid LRSpec that contains the details how to build your reader.<p>pay attention to put the call to the initializer method of the superclass (&quot;super.initialize(name, spec)&quot;). After that feel free to express yourself.</p></li></ul><p>Now you are ready to use your reader in the logical reader API.</p><p>sample code of an empty reader adaptor:</p><div class="source"><pre>package org.fosstrak.ale.server.readers.myreader;
+
+import org.fosstrak.ale.server.Tag;
+import org.fosstrak.ale.server.readers.BaseReader;
+import org.fosstrak.ale.server.readers.LRSpec;
+import org.fosstrak.ale.wsdl.ale.epcglobal.ImplementationException;
+import org.fosstrak.reader.hal.HardwareException;
+import org.fosstrak.reader.hal.Observation;
+
+public class MyReaderAdaptor extends BaseReader {
+
+        public MyReaderAdaptor() {
+                super();
+        }
+        
+        public void initialize(String name, LRSpec spec) 
+          throws ImplementationException {
+                super.initialize(name, spec);
+        }
+
+        @Override
+        public void addTag(Tag tag) {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void connectReader() throws ImplementationException {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void disconnectReader() throws ImplementationException {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public Observation[] identify(String[] readPointNames)
+                        throws HardwareException {
+                // TODO Auto-generated method stub
+                return null;
+        }
+
+        @Override
+        public void start() {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void stop() {
+                // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void update(LRSpec spec) throws ImplementationException {
+                // TODO Auto-generated method stub
+
+        }
+}</pre></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

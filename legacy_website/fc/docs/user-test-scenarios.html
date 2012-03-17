@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - Test Scenarios</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                    
+                  
+                  
+                  
+                        
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/user-example.html">Quick Start</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-installation.html">Install fc-server</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-testclients.html">Use ALE Clients</a>
+          </li>
+                  
+    <li class="none">
+              <strong>Test Scenarios</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                    
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Test Scenarios</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#About">About these Tests</a></li><li><a href="#Basic">Basic Tests</a></li><li><a href="#Compatibility">Compatibility Tests</a></li><li><a href="#Modification">Modification Tests</a></li><li><a href="#Multiple">Multiple EventCycles Tests</a></li><li><a href="#Performance">Performance Tests</a></li></ol></div><div class="section"><h3><a name="About">About</a> these Tests</h3><p>These tests should help you test your Fosstrak Filtering &amp; Collection environment. The tests are wide spread, to cover most of the functionallity of the Filtering and Collection middleware.</p><p>To define a subscriber to subscribe to an ECSpec, a very simple way is to start and register an <a href="..//docs/user-example.html#Subscribe"> Eventsink</a>.</p></div><div class="section"><h3><a name="Basic">Basic</a> Tests</h3><p>Basic tests with these files:</p><p>ReaderAPI</p><ul><li><a href="../testfiles/simpletests/SimpleAPI.xml"> SimpleAPI</a> : One HALReader with LogicalReader1 connecting to it.</li></ul><p>ECspecs</p><ul><li><a href="../testfiles/simpletests/ECSpec.xml"> ECSpecCurrent</a>,</li><li><a href="../testfiles/simpletests/ECSpecADDITIONS.xml"> ECSpecAdditions</a>,</li><li><a href="../testfiles/simpletests/ECSpecDELETIONS.xml"> ECSpecDeletions</a>,</li><li><a href="../testfiles/simpletests/ECSpecADDITIONSandDELETIONS.xml"> ECSpecAdditionsAndDeletions</a></li></ul><p>Test Scenario:</p><ol type="1"><li>Current<table class="bodyTable"><tbody><tr class="a"><td align="left">Define the ECSpecCurrent</td><td align="left"></td></tr><tr class="b"><td align="left">Define a subscriber, which subscribes to ECSpecCurrent</td><td align="left"></td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader</td><td align="left">Tag must appear in all Reports until Tag is removed from Shelf1</td></tr><tr class="b"><td align="left">Remove Tag from Shelf1 of the HALReader</td><td align="left">Tag must not appear any Report from now on</td></tr></tbody></table></li><li>Additions<table class="bodyTable"><tbody><tr class="a"><td align="left">Define the ECSpecAdditions</td><td align="left"></td></tr><tr class="b"><td align="left">Define a subscriber, which subscribes to ECSpecAdditions</td><td align="left"></td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader</td><td align="left">Tag must only appear in the first following Report</td></tr></tbody></table></li><li>Deletions<table class="bodyTable"><tbody><tr class="b"><td align="left">Define the ECSpecDeletions</td><td align="left"></td></tr><tr class="a"><td align="left">Define a subscriber, which subscribes to ECSpecDeletions</td><td align="left"></td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader</td><td align="left">Tag must not appear in the Report</td></tr><tr class="a"><td align="left">Remove Tag from Shelf1 of the HALReader</td><td align="left">Tag must only appear in the first following Report</td></tr></tbody></table></li><li>Additions &amp; Deletions<table class="bodyTable"><tbody><tr class="b"><td align="left">Define the ECSpecAdditionsAndDeletions</td><td align="left"></td></tr><tr class="a"><td align="left">Define a subscriber, which subscribes to the mentioned ECSpec</td><td align="left"></td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader</td><td align="left">Tag must only appear in the first following Report</td></tr><tr class="a"><td align="left">Remove Tag from Shelf1 of the HALReader</td><td align="left">Tag must only appear in the first following Report</td></tr></tbody></table></li></ol></div><div class="section"><h3><a name="Compatibility">Compatibility</a> Tests</h3><p>Compatibility tests with these ReaderSimulators: </p><p>ReaderAPI: </p><ul><li><a href="../testfiles/comptests/CompReaderAPI.xml"> CompReaderAPI</a></li></ul><p>RPReader:</p><ul><li>Shelf: Shelf1,Shelf2</li><li>Readtime Interval: 1000 ms</li><li>Readduration: 500 ms</li><li><i>notificationListenTimeout</i>25000<i>/notificationListenTimeout</i></li></ul><p>RPLogRd1:</p><ul><li>connects to RPReader</li></ul><p>LogRd1:</p><ul><li>connects to HALReader1</li></ul><p>LogRd2:</p><ul><li>connects to HALReader2</li></ul><p>CompLogReader</p><ul><li>Composite Logical Reader, consitsting of LogRd1 and RPLogRd1</li></ul><p>ECSpec:</p><ul><li><a href="../testfiles/comptests/ECSpec1.xml"> ECSpec1</a> Connects to LogRd1 only</li><li><a href="../testfiles/comptests/ECSpec2.xml"> ECSpec2</a> Connects to LogRd1 and to LogRd2</li><li><a href="../testfiles/comptests/ECSpecComp.xml"> ECSpecComp</a> Connects to CompLogReader</li></ul><p>Test Scenario:</p><ol type="1"><li>Change Sources<table class="bodyTable"><tbody><tr class="b"><td align="left">Define the ECSpec2</td><td align="left"></td></tr><tr class="a"><td align="left">Define a subscriber, which subscribes to ECSpec2</td><td align="left"></td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">Tag must appear in Report</td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader2</td><td align="left">Tag must appear in Report</td></tr></tbody></table></li><li>Change Spec<table class="bodyTable"><tbody><tr class="b"><td align="left">Define the ECSpec1</td><td align="left"></td></tr><tr class="a"><td align="left">Define a subscriber, which subscribes to ECSpec1</td><td align="left"></td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">Tag must appear in Report</td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader2</td><td align="left">Tag must not appear in Report</td></tr><tr class="b"><td align="left">LogRd1 disconnects from HALReader1<br />LogRd connects to HALReader2 using this update for the LRSpec<br />of the LogRd1: <a href="../testfiles/comptests/newLRSpecLogRd1.xml"> newLRSpecLogRd1</a></td><td align="left"></td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">Tag must not appear in Report</td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader2</td><td align="left">Tag must appear in Report</td></tr></tbody></table></li><li>Update Spec<table class="bodyTable"><tbody><tr class="a"><td align="left">Define the ECSpecComp</td><td align="left"></td></tr><tr class="b"><td align="left">Define a subscriber, which subscribes to ECSpecComp</td><td align="left"></td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">Tag must appear in Report</td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the RPReader1</td><td align="left">Tag must appear in Report</td></tr><tr class="a"><td align="left">Update LRSpec of CompReader: remove LogRd1 using &quot;removeReaders&quot;</td><td align="left"></td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">Tag must not appear in Report</td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the RPReader1</td><td align="left">Tag must appear in Report</td></tr><tr class="b"><td align="left">Update LRSpec of CompReader: remove LogRd1 using &quot;removeReaders&quot;<br />Update LRSpec of CompReader: add LogRd2 using &quot;addReaders&quot;</td><td align="left"></td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">Tag must appear in Report</td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the RPReader1</td><td align="left">Tag must not appear in Report</td></tr></tbody></table></li></ol></div><div class="section"><h3><a name="Modification">Modification</a> Tests</h3><p>Modification tests with these ReaderSimulators: </p><p>ReaderAPI: </p><ul><li><a href="../testfiles/modtests/ModAPI.xml"> ModReaderAPI</a></li></ul><p>LogRd1,2,3:</p><ul><li>connect to HALReader1,2,3</li></ul><p>CompositeReader:</p><ul><li>readers: LogicalReader1, LogicalReader2, LogicalReader3</li></ul><p>ECSpec:</p><ul><li><a href="../testfiles/modtests/ECSpec1.xml"> ECSpec1</a> Connects to LogRd1 only</li><li><a href="../testfiles/modtests/ECSpec2.xml"> ECSpec2</a> Connects to LogRd2 only</li><li><a href="../testfiles/modtests/ECSpecComp.xml"> ECSpecComp</a> Connects to CompLogReader</li></ul><p>CompECSpec:</p><ul><li>LogicalReader: CompositeReader</li></ul><p>ECSpec1:</p><ul><li>LogicalReader: ModLogRd1</li></ul><p>ECSpec2:</p><ul><li>LogicalReader: ModLogRd2</li></ul><p>Test Scenario:</p><ol type="1"><li>One2Many<table class="bodyTable"><tbody><tr class="a"><td align="left">Define the CompECSpec</td><td align="left"></td></tr><tr class="b"><td align="left">Define a subscriber, which subscribes to CompECSpec</td><td align="left"></td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">Tag must appear in Report</td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader2</td><td align="left">Tag must appear in Report</td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader3</td><td align="left">Tag must appear in Report</td></tr></tbody></table></li><li>Subscribe/Unsubscribe<table class="bodyTable"><tbody><tr class="b"><td align="left">Define the ECSpec1</td><td align="left"></td></tr><tr class="a"><td align="left">Define a subscriber, which subscribes to ECSpec1</td><td align="left"></td></tr><tr class="b"><td align="left">Define the ECSpec2</td><td align="left"></td></tr><tr class="a"><td align="left">Define a subscriber, which subscribes to ECSpec2</td><td align="left"></td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">Tag must only appear in Report of Subsc1</td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader2</td><td align="left">Tag must only appear in Report of Subsc2</td></tr><tr class="b"><td align="left">LogRd1 disconnects from HALReader1<br />LogRd1 connects to HALReader3 using this update for the LRSpec of the<br />LogRd1: <a href="../testfiles/modtests/newLRSpecLogRd1.xml"><br />newLRSpecLogRd1</a></td><td align="left"></td></tr><tr class="a"><td align="left">LogRd2 disconnects from HALReader2<br />LogRd2 connects to HALReader1 using this update for the LRSpec of the<br />LogRd1: <a href="../testfiles/modtests/newLRSpecLogRd3.xml"><br />newLRSpecLogRd3</a></td><td align="left"></td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">Tag must only appear in Report of Subsc2</td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader3</td><td align="left">Tag must only appear in Report of Subsc1</td></tr></tbody></table></li></ol></div><div class="section"><h3><a name="Multiple">Multiple</a> Event Cycles Tests</h3><p>Multiple Event Cycles tests with these ReaderSimulators: </p><p>ReaderAPI</p><ul><li><a href="../testfiles/simpletests/SimpleAPI.xml"> SimpleAPI</a> : One HALReader with LogicalReader1 connecting to it.</li></ul><p>EC1: <a href="../testfiles/ectests/ECSpecFast.xml"> ECSpecFast</a></p><ul><li>LogicalReaders: LogicalReader1</li><li>duration: 5000ms</li><li>repeatPeriod: 6000ms</li><li>ReportName: FastAdd, FastDel</li><li>reportSet set=&quot;ADDITIONS&quot;</li><li>reportSet set=&quot;DELETIONS&quot;</li></ul><p>EC2: <a href="../testfiles/ectests/ECSpecSlow.xml"> ECSpecSlow</a></p><ul><li>LogicalReaders: LogicalReader1</li><li>duration: 3000ms</li><li>repeatPeriod: 60000ms</li><li>ReportName: Slow</li><li>reportSet set=&quot;CURRENT&quot;</li></ul><p>EC3: <a href="../testfiles/ectests/ECSpecLong.xml"> ECSpecLong</a></p><ul><li>LogicalReaders: LogicalReader1</li><li>duration:50000ms</li><li>repeatPeriod: 70000ms</li><li>ReportName: Long</li><li>reportSet set=&quot;CURRENT&quot;</li></ul><p>Test Scenario:</p><ol type="1"><li>All have it<table class="bodyTable"><tbody><tr class="b"><td align="left">Define the EC1</td><td align="left"></td></tr><tr class="a"><td align="left">Define a subscriber, which subscribes to EC1</td><td align="left"></td></tr><tr class="b"><td align="left">Define the EC2</td><td align="left"></td></tr><tr class="a"><td align="left">Define a subscriber, which subscribes to EC2</td><td align="left"></td></tr><tr class="b"><td align="left">Define the EC3</td><td align="left"></td></tr><tr class="a"><td align="left">Define a subscriber, which subscribes to EC3</td><td align="left"></td></tr><tr class="b"><td align="left">Put one Tag on Shelf1 of the HALReader1</td><td align="left">all must have the Tag in their first Report<br />EC1 must not have the Tag in the following Reports</td></tr></tbody></table></li><li>NoDuplicates<table class="bodyTable"><tbody><tr class="a"><td align="left">Define the EC1</td><td align="left"></td></tr><tr class="b"><td align="left">Define a subscriber, which subscribes to EC1</td><td align="left"></td></tr><tr class="a"><td align="left">Define the EC2</td><td align="left"></td></tr><tr class="b"><td align="left">Define a subscriber, which subscribes to EC2</td><td align="left"></td></tr><tr class="a"><td align="left">Define the EC3</td><td align="left"></td></tr><tr class="b"><td align="left">Define a subscriber, which subscribes to EC3</td><td align="left"></td></tr><tr class="a"><td align="left">Put one Tag on Shelf1 of the HALReader1<br />moved away from Shelf1 and back again repeadted times<br />(either as addition or deletion in Subsc1, or as current in Subsc2,3)</td><td align="left">all must only have one Tag once in their Report</td></tr></tbody></table></li></ol></div><div class="section"><h3><a name="Performance">Performance</a> Tests</h3><p>Performance tests with these ReaderSimulators: </p><ul><li>HALReader1-10:<p><a href="../testfiles/performancetests/performanceAPI.xml"> PerformanceAPI</a> contains 10 HALReader.</p></li><li>LogicalReader1-10:<ul><li>connects to HALReader1-10</li></ul></li></ul><ul><li>ECSpec1-5:<ul><li>various modes on various readers...<p><a href="../testfiles/performancetests/ECSpec1.xml"> ECSpec1</a>, <a href="../testfiles/performancetests/ECSpec2.xml"> ECSpec2</a>, <a href="../testfiles/performancetests/ECSpec3.xml"> ECSpec3</a>, <a href="../testfiles/performancetests/ECSpec4.xml"> ECSpec4</a>, <a href="../testfiles/performancetests/ECSpec5.xml"> ECSpec5</a> </p></li></ul></li></ul><ol type="1"><li>TestAdaptor<ul><li>LogicalReader1 subscribes to PerReader1</li><li>Execute the TestAdaptor on PerReader1 with the following parameters <ul><li>tps (tags per shot) = 100</li><li>wt (wait time) = 1000</li><li>gain (tags more per shot) = 5<p>--&gt; monitor processor and memory load on your system</p></li></ul></li><li>NOTICE:<ul><li>The TestAdaptor does not create real tags. These are just random strings/numbers!</li><li>Pay attention with the gain factor. The load of your system increases fast with increasing tags per shot!</li></ul></li></ul></li><li>ManyReaders<ul><li>PerLogRd1-10 subscribes to a set of PerReader1-10</li><li>Load all Shelves with Tags</li><li>Run System some hours<p>--&gt; monitor processor and memory load on your system</p></li></ul></li></ol></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

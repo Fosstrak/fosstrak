@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - User Guide - Installation and configuration</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                    
+                        
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/user-example.html">Quick Start</a>
+          </li>
+                  
+    <li class="none">
+              <strong>Install fc-server</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-testclients.html">Use ALE Clients</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-test-scenarios.html">Test Scenarios</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                    
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>User Guide - Installation and Configuration</h2><div class="section"><h3><a name="Overview">Overview</a></h3><p>In order to run the Fosstrak ALE Middleware, you need to deploy the filtering and collection server (fc-server) module in a servlet container, such as Apache Tomcat. </p><p>The individual steps include:</p><ol type="1"><li>Install a Java servlet container such as <a href="http://tomcat.apache.org/"> Apache Tomcat</a></li><li>Download the latest Fosstrak fc-server binary</li><li>Deploy the latest Fosstrak fc-server module in the servlet container</li><li>Configure the Fosstrak fc-server </li></ol></div><div class="section"><h3><a name="Install a Java Servlet Container">Install a Java Servlet Container</a></h3><p>Information on how to download and install the Apache Tomcat servlet container are available <a href="http://tomcat.apache.org/"> here</a>.</p><p>Any other Java Servlet Container should work as well.</p></div><div class="section"><h3><a name="Download latest Fosstrak fc-server binary">Download latest Fosstrak fc-server binary</a></h3><p>The latest fc-server web application archive (war) is available from the <a href="../download.html">Fosstrak ALE Middleware download section. </a></p></div><div class="section"><h3><a name="Deploying the Fosstrak fc-server">Deploying the Fosstrak fc-server</a></h3><p>Copy the war-file into the webapps-folder of your the java servlet container and start the server. The war-file will be automatically placed into a new folder.</p><p>Under Tomcat and windows you will usually find the webapps folder inside the tomcat installation directory (c:\Programme\Apache Tomcat \webapps). Under linux/unix this will depend on your distribution. Some possible locations: </p><ul><li>/var/lib/tomcat/webapps</li></ul><ul><li>/usr/local/lib/tomcat/webapps</li></ul></div><div class="section"><h3><a name="Configuring the Fosstrak fc-server via the configuration files">Configuring the Fosstrak fc-server via the configuration files</a></h3><p>This section will give a short overview of the configuration files available. These files allow you to configure the fc-server at start-up without the need to configure the fc-server via the ALE interface. For Tomcat, you will find these configuration files inside the folder <i>TOMCAT_DIRECTORY</i>/webapps/fc-<i>VERSION</i>/WEB-INF/classes.</p><div class="source"><pre>example: /var/lib/tomcat/webapps/fc-server-1.0.0/WEB-INF/classes</pre></div><ul><li>InputGenerators.properties: This propertie-file is the main configuration file for the Fosstrak ALE middleware. You will find it in the folder WEB-INF/classes.<p>The properties file has only a single parameter, namely the xml-file that configures the ALE logical reader API with the RFID readers available at startup.</p><p>Sample InputGenerators.properties:</p><div class="source"><pre># you can specify your initial readers file here
+# eg
+readerAPI = /LogicalReaders.xml</pre></div><p>Make sure that the specified file is placed in the same folder as the InputGenerators.properties file. Otherwise your ALE will not startup correctly.</p></li><li>LogicalReaders.xml: This file specifies the readers that are loaded during startup of the Fosstrak ALE middleware.<p>Continue with the user guide to <a href="user-lrdef.html">Logical Reader Definitions</a> which explains how to use this file to configure the Fosstrak fc-server.</p></li></ul><p>Note: The Tomcat Server needs to be restarted for any changes to the configuration files to take effect.</p></div><div class="section"><h3><a name="Optional: Compiling from source">Optional: Compiling from source</a></h3><p>In certain cases, you might prefer building the fc-server war from source. </p><p>Start by checking out a copy of the entire fc trunk from the fosstrak svn repository. You also need to install <a href="http://maven.apache.org">Apache Maven</a>, the build tool Fosstrak uses, if you have not installed it already.</p><p>To compile the sources run the following command in a shell.</p><div class="source"><pre>under windows:
+        cd &lt;PATH_TO_CHECKOUT&gt;\fc\fc-server
+        
+        mvn compile
+        mvn package
+
+under linux/unix:
+        cd &lt;PATH_TO_CHECKOUT&gt;/fc/fc-server
+        
+        mvn compile &amp;&amp; mvn package</pre></div><p>If the compilation and packaging suceeded, you should have a new folder called &quot;target&quot; in the fc-server folder that contains the war-file for the webserver. </p><div class="source"><pre>under windows:
+        dir target
+
+under linux/unix:
+        ls target
+        
+example output: fc-server-1.0.0.war</pre></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

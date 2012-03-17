@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2009-08-18T11:41:18.088">
+<file name="C:\accada\fc\fc-commons\src\main\java\org\fosstrak\ale\util\SerializerUtil.java">
+<violation beginline="48" endline="48" begincolumn="36" endcolumn="48" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.fosstrak.ale.util" class="SerializerUtil" variable="_ECSpec_QNAME" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as '_ECSpec_QNAME'.
+</violation>
+<violation beginline="49" endline="49" begincolumn="32" endcolumn="47" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.fosstrak.ale.util" class="SerializerUtil" variable="_ECReports_QNAME" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as '_ECReports_QNAME'.
+</violation>
+<violation beginline="51" endline="51" begincolumn="32" endcolumn="48" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.fosstrak.ale.util" class="SerializerUtil" variable="_LRProperty_QNAME" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as '_LRProperty_QNAME'.
+</violation>
+<violation beginline="52" endline="52" begincolumn="32" endcolumn="44" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.fosstrak.ale.util" class="SerializerUtil" variable="_LRSpec_QNAME" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as '_LRSpec_QNAME'.
+</violation>
+<violation beginline="119" endline="119" begincolumn="82" endcolumn="98" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.fosstrak.ale.util" class="SerializerUtil" method="serializeLRSpec" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="144" endline="144" begincolumn="82" endcolumn="98" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.fosstrak.ale.util" class="SerializerUtil" method="serializeLRSpec" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="168" endline="168" begincolumn="82" endcolumn="98" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.fosstrak.ale.util" class="SerializerUtil" method="serializeSetProperties" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="193" endline="193" begincolumn="82" endcolumn="98" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.fosstrak.ale.util" class="SerializerUtil" method="serializeRemoveReaders" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="218" endline="218" begincolumn="82" endcolumn="98" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.fosstrak.ale.util" class="SerializerUtil" method="serializeSetReaders" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="243" endline="243" begincolumn="82" endcolumn="98" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.fosstrak.ale.util" class="SerializerUtil" method="serializeAddReaders" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="269" endline="286" begincolumn="24" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.ale.util" class="SerializerUtil" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'pretty'.
+</violation>
+<violation beginline="275" endline="275" begincolumn="82" endcolumn="98" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.fosstrak.ale.util" class="SerializerUtil" method="serializeECSpec" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="302" endline="302" begincolumn="82" endcolumn="98" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.fosstrak.ale.util" class="SerializerUtil" method="serializeECSpec" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="324" endline="341" begincolumn="24" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.ale.util" class="SerializerUtil" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'pretty'.
+</violation>
+<violation beginline="330" endline="330" begincolumn="82" endcolumn="98" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.fosstrak.ale.util" class="SerializerUtil" method="serializeECReports" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+</file>
+</pmd>

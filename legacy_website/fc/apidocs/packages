@@ -1,0 +1,11 @@
+org.fosstrak.ale.util
+org.fosstrak.ale.server
+org.fosstrak.ale.server.readers
+org.fosstrak.ale.server.readers.gen
+org.fosstrak.ale.server.readers.hal
+org.fosstrak.ale.server.readers.llrp
+org.fosstrak.ale.server.readers.rp
+org.fosstrak.ale.server.readers.test
+org.fosstrak.ale.wsdl.ale.epcglobal
+org.fosstrak.ale.wsdl.alelr.epcglobal
+org.fosstrak.ale.client

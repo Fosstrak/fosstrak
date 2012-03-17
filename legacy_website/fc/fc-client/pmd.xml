@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2009-08-18T11:41:49.511">
+<file name="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALEClient.java">
+<violation beginline="136" endline="136" begincolumn="36" endcolumn="47" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.fosstrak.ale.client" class="ALEClient" variable="SERVICE_NAME" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'SERVICE_NAME'.
+</violation>
+<violation beginline="613" endline="613" begincolumn="19" endcolumn="40" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.ale.client" class="ALEClient" method="executeCommand" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ALELRClient.java">
+<violation beginline="133" endline="133" begincolumn="36" endcolumn="47" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.fosstrak.ale.client" class="ALELRClient" variable="SERVICE_NAME" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'SERVICE_NAME'.
+</violation>
+<violation beginline="622" endline="622" begincolumn="19" endcolumn="40" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.ale.client" class="ALELRClient" method="executeCommand" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ReportHandler.java">
+<violation beginline="24" endline="24" begincolumn="1" endcolumn="36" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.ale.client" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.ByteArrayInputStream'
+</violation>
+<violation beginline="33" endline="33" begincolumn="1" endcolumn="67" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.ale.client" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.ale.wsdl.ale.epcglobal.ImplementationException'
+</violation>
+<violation beginline="36" endline="36" begincolumn="1" endcolumn="53" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.ale.client" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.reader.rp.proxy.RPProxyException'
+</violation>
+<violation beginline="120" endline="120" begincolumn="34" endcolumn="34" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.fosstrak.ale.client" class="ReportHandler" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="125" endline="125" begincolumn="19" endcolumn="40" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.ale.client" class="ReportHandler" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="160" endline="160" begincolumn="27" endcolumn="60" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.ale.client" class="ReportHandler" method="main" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="176" endline="187" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.ale.client" class="ReportHandler" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'data'.
+</violation>
+</file>
+<file name="C:\accada\fc\fc-client\src\main\java\org\fosstrak\ale\client\ReportHandlerListenerGUI.java">
+<violation beginline="27" endline="27" begincolumn="1" endcolumn="31" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.ale.client" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.CharArrayWriter'
+</violation>
+<violation beginline="28" endline="28" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.ale.client" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.IOException'
+</violation>
+<violation beginline="38" endline="38" begincolumn="1" endcolumn="67" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.ale.client" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.ale.wsdl.ale.epcglobal.ImplementationException'
+</violation>
+<violation beginline="125" endline="125" begincolumn="27" endcolumn="60" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.ale.client" class="ReportHandlerListenerGUI" method="main" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

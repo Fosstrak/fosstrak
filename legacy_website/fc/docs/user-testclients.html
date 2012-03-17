@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - Users guide - Test clients</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                    
+                  
+                  
+                        
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/user-example.html">Quick Start</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-installation.html">Install fc-server</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+              <strong>Use ALE Clients</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-test-scenarios.html">Test Scenarios</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                    
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Users guide - Test clients</h2><div class="section"><h3>Content</h3><ol type="1"><li><a href="#Objective">Objective</a></li><li><a href="#Clients">Clients</a></li><li><a href="#ECSpecifications">ECSpecifications</a></li><li><a href="#LRSpec">LRSpec</a></li><li><a href="#Displaying">Displaying reports</a> </li></ol></div><div class="section"><h3><a name="Objective">Objective</a></h3><p>This guide shall give a short overview to the clients that allow the connection to the Filtering and Collection.</p></div><div class="section"><h3><a name="Clients">Clients</a></h3><p>Fosstrak comes with two different testclients that allow to interactively use a Filtering and Collection Server instance. While the first client is a standalone Java application with a Swing GUI, the second client is a web application that can be accessed with any web browser.</p><div class="section"><h4>Standalone Client</h4><p>The <b>Filtering and Collection Standalone Client</b> is a pure Java application. On our <a href="../download.html">download page</a> we provide a ZIP file with all the necessary libraries included.</p><p>The standalone client is configure through the <tt>ALEClient.properties</tt> file. To get started quickly, it should be sufficient to adjust the <tt>EndPoint</tt> option to specify the server to communicate with. All other options can be left unchanged initially. After starting the client with the <tt>java -jar fc-client&lt;Version&gt;.jar</tt> command, you will see the following screen:</p><img src="../images/userGuide/GUIClientBasic.png" /><p>If the endpoint is not correctly configured an error dialog pops up, informing you that the client couldn't connect to the server:</p><img src="../images/userGuide/GUIClientFailureDialog.png" /><p>The client's user interface has three sections. Commands can be choosen from a dropdown box in the top section. In the middle, parameters for the selected command can be typed in (not all commands need parameters). Commands are sent to the server by clicking the the <tt>execute</tt> button. </p><img src="../images/userGuide/GUIClientCommando.png" /><p>The third section is used to display the server's response.</p></div><div class="section"><h4>Web Client</h4><p>The <b>Filtering and Collection Web Client</b> is based on Java Server Pages (JSP). To set it up, you have to get the Web Client WAR file from our <a href="../download.html">download page</a> and simply place it into Tomcat's webapp directory. After restarting Tomcat, the WAR file will be deployed and the Web Client is ready without any need for configuration (for more information about the deployment process, visit this <a href="http://tomcat.apache.org/tomcat-5.5-doc/manager-howto.html#Deploy%20A%20New%20Application%20Remotely">page</a>). To access the Web Client, visit the URL <tt>http://&lt;hostname&gt;:8080/&lt;WAR-File Name&gt;/services/ALEWebClient.jsp</tt>. Again, you will see a user interface that is divided into three frames. In the left frame, all methods are listed, while the top right one accepts the method arguments and the bottom right frame displays server responses.</p><img src="../images/userGuide/WebClient.png" /><p>Before invoking any other methods, you will have to set the endpoint (i.e., the Filtering and Collection Server to communicate with) by choosing the <tt>setEndpoint() </tt> method in left frame and inserts the URL of your Filtering and Collection Server in the text field (top right frame). After hitting the <tt>Invoke </tt> button, the endpoint is set. You can use the <tt>getVendorVersion() </tt> method, to check if communication between the Web Client and the server works.</p></div></div><div class="section"><h3><a name="ECSpecifications">ECSpecifications</a></h3><p>The ECSpecs define how a the Filtering and Collection Server shall generate reports. You can retrieve current tags, tags that have been added or deleted with respect to the last EventCycle or combinations of all. Thatfor you need to provide the Filtering and Collection Server with a valid ECSpec in xml format using one of the two applications (webclient, rp-client). The ECSpec becomes active as soon as you subscribe with a notificationURI.</p><p>The following list provides a few sample ECSpecs. For all three examples you need to have a LogicalReader named &quot;LogicalReader1&quot;. The Filtering and Collection will restart the EventCycle every 30 seconds (30000ms) and will read tags during 5 seconds (5000ms). Feel free to modify the parameters to your needs. Attention: The readTimeInterval should be smaller than the duration of the EventCycle.</p><ul><li><a href="../files/ECSpec_current.xml">ECSpec_current.xml</a>: Retrieve all the tags that are currently on the reader.</li><li><a href="../files/ECSpec_additions.xml">ECSpec_additions.xml</a>: Retrieve all the tags that have been added to the reader since the last EventCycle.</li><li><a href="../files/ECSpec_deletions.xml">ECSpec_deletions.xml</a>: Retrieve all the tags that have been deleted from the reader since the last EventCycle.</li></ul></div><div class="section"><h3><a name="LRSpec">LRSpec</a></h3><p>An LRSpec contains information about a reader. Whenever a new reader is to be created a corresponding LRSpec has to be created and shipped to the Filtering and Collection Server.</p><p>The following list provides a few sample LRSpecs.</p><ul><li><a href="../files/RPReader.xml">RPReader.xml</a>: Create a reader protocoll reader.</li><li><a href="../files/HALReader.xml">HALReader.xml</a>: Create a HAL reader.</li><li><a href="../files/TestAdaptor.xml">TestAdaptor.xml</a>: Create a test reader.</li><li><a href="../files/CompositeReader1.xml">CompositeReader1.xml</a>: Create a composite reader. You need two readers reader1 and reader2 that are already defined, else the Logical Reader API will complain about the missing readers.<p>For a more detailed introduction to the LRSpec refer to the Developers guide - ALEServiceBinding.</p></li></ul></div><div class="section"><h3><a name="Displaying">Displaying</a> reports</h3><p>For testing purposes, the class org.fosstrak.reader.rp.client.EventSinkUI from the Fosstrak Reader Client module can be used to receive and display reports.</p><p>The following steps show how to install and execute the EventSinkUI class:</p><ul><li>Download the Reader RP Client binaries with the dependencies included from the <a href="../download.html">download</a> section of the website.</li><li>Unzip the downloaded file</li><li>Make sure a JRE 1.5 or higher is installed and it is added to the path variable.</li><li>Start the class in the jar file with the following command: java -cp reader-rp-client-VERSION.jar org.fosstrak.reader.rp.client.EventSinkUI [port]</li><li>As the port use the TCP port to which the filtering and collection module is sending the reports. The port is specified when subscribing for a specification in the notification URI. (e.g. tcp://localhost:9999 as the notification URI). </li></ul></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

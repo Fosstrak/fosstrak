@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - User guide</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                          
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+              <strong>Quick Start</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-installation.html">Install fc-server</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-testclients.html">Use ALE Clients</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-test-scenarios.html">Test Scenarios</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                    
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Quick Start - Deploying the Fosstrak ALE Middleware with an LLRP-Compliant RFID Reader</h2><div class="section"><h3><a name="Objective">Objective</a></h3><p>This tutorial will guide you through an example that shows how the Fosstrak ALE Middleware is configured to collect data from an LLRP-compliant RFID reader. </p></div><div class="section"><h3><a name="Prerequisites">Prerequisites</a></h3><p>You will need the following files:</p><ul><li>a copy of the <a href="http://maven-repository.fosstrak.org/releases/org/fosstrak/fc/fc-server/">fc-server-1.0.0.war or higher</a>. (<i>note:</i> LLRP support requires &gt;= 1.0.0).</li><li>a copy of the <a href="http://maven-repository.fosstrak.org/releases/org/fosstrak/fc/fc-webclient/">fc-webclient fc-webclient-0.4.0.war or higher</a></li><li>a copy of the <a href="http://maven-repository.fosstrak.org/releases/org/fosstrak/reader/reader-rp-client">reader protocol client version 0.3.1 or higher</a> (any other HTTP monitor that displays incoming HTTP request will work, too). </li><li>a copy of this LLRP <a href="../files/ROSPEC_example.llrp"> ADD_ROSPEC message</a></li><li>a copy of this ALE <a href="../files/ECSpec_current.xml">ECSpec message</a> </li><li>a copy of this ALE <a href="../files/LLRPReader.xml"> logical reader definition file</a> </li></ul><p>You will also need to install the following programs if they are not already present on your machine:</p><ul><li><a href="../../llrp/index.html">Fosstrak LLRP Commander</a> </li><li><a href="https://sourceforge.net/project/showfiles.php?group_id=170933&package_id=195190">Rifidi Reader Emulator</a></li><li><a href="http://tomcat.apache.org/"> Apache Tomcat Java Servlet Container</a></li></ul></div><div class="section"><h3>Prepare <a name="Tomcat">Tomcat</a></h3><p>Install <a href="http://tomcat.apache.org/"> Apache Tomcat</a> if you have not installed it yet. </p><p>Copy the two WAR files (fc-server-<i>VERSION</i>.war and fc-webclient-<i>VERSION</i>.war) into the Tomcat's <i>webapps</i> directory and start Tomcat. Tomcat will automatically deploy the two WAR files for you.</p></div><div class="section"><h3>Setup LLRP reader emulator </h3><p>To simplify this demo, we use a reader emulator to generate tag reads. </p><ul><li>Install the <a href="https://sourceforge.net/project/showfiles.php?group_id=170933&package_id=195190">Rifidi emulator</a> (if needed) </li><li>Start the Rifidi emulator</li><li>Instantiate a new reader of type &quot;LLRPReader&quot; that listens on port 5084 (default) using the Reader Wizard</li><li>Start the reader just instantiated<p>We will return to the LLRP reader emulator once the other components are configured. </p></li></ul></div><div class="section"><h3>Setup GUI for incoming HTTP ALE notifications </h3><p>To display the reports with the aggregated data sent by the filtering and collection server, we will start a Fosstrak tool that displays incoming HTTP requests. Make sure the provided port is not used by some other application.</p><div class="source"><pre>java -cp &lt;READER_RP_CLIENT_VERSION&gt;.jar \ 
+        org.fosstrak.reader.rp.client.EventSinkUI &lt;PORT&gt;
+
+example:
+java -cp reader-rp-client-0.3.1.jar \ 
+        org.fosstrak.reader.rp.client.EventSinkUI 9999</pre></div><p>The screen will remain empty until the configuration of the filtering and collection server is complete. </p></div><div class="section"><h3><a name="Configure">Configure</a> the Fosstrak ALE web-client</h3><p>In this example, we will use the web-based client to configure the filtering and collection server. Before we can use the web-based client, we need to tell it the URL through which the filtering and collection server can be accessed. </p><p>Start your web browser and point it to the address of the web-based client.</p><div class="source"><pre>http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;WEBCLIENT_VERSION&gt;/services/ALEWebClient.jsp
+
+example:
+http://localhost:8080/fc-webclient-0.4.0/services/ALEWebClient.jsp</pre></div><p>In the next step, specify two endpoints that tell the web-based client where the &quot;Filtering and Collection API&quot; and the &quot;Logical Reader API&quot; can be found.</p><p>Set the endpoint to the filtering and collection server by selecting the &quot;setEndpoint(String endPointName)&quot; method in the &quot;Filtering and Collection API&quot;. Click &quot;Invoke&quot; to execute the command.</p><div class="source"><pre>endpoint: http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;FCSERVER_VERSION&gt;/services/ALEService
+
+example: 
+http://localhost:8080/fc-server-1.0.0/services/ALEService</pre></div><p>Verify that a connection between the web-based client and the server can be established by clicking &quot;getVendorVersion()&quot;. A version number should be returned.</p><p>Set the endpoint to the filtering and collection server's Logical Reader API by selecting &quot;setEndPoint(String endPointName)&quot; in the &quot;LogicalReader API&quot;. Click &quot;Invoke&quot; to execute the command.</p><div class="source"><pre>endpoint: http://&lt;SERVER&gt;:&lt;PORT&gt;/&lt;FCSERVER_VERSION&gt;/services/ALELRService
+
+example: 
+http://localhost:8080/fc-server-1.0.0/services/ALELRService</pre></div><p>Verify that a connection between the web-based client and the server can be established by clicking &quot;getVendorVersion()&quot;. A version number should be returned. </p></div><div class="section"><h3><a name="Set">Set</a> the readers connected to ALE Middleware via the ALE Logical Reader API </h3><p>The next step is to configure the fc-server with the LLRP reader connected. Click on &quot;define(String readerName, LRSpec spec)&quot; in the section LogicalReader API. </p><p>DO NOT CONFUSE the define method for an EventCycle with the define method for a logical reader! For this tutorial name your reader &quot;LogicalReader1&quot; and use the <a href="../files/LLRPReader.xml"> LLRPReader.xml</a> as your LRSpec.</p><div class="source"><pre>readerName:  &lt;READERNAME&gt;
+specFilePath: &lt;PATH_TO_SPEC&gt;\&lt;SPEC_NAME&gt;.xml
+
+example:
+readerName: LogicalReader1
+specFilePath: c:\epc\LLRPReader.xml</pre></div><p>Verify that the reader has been created by clicking on &quot;getLogicalReaderNames()&quot;. The call should return a list of logical readers in brackets. Make sure that the reader just creates is listed. </p><p>In the Rifidi emulator you can now see the message exchange with the Fosstrak ALE middleware.</p><p>You can inspect the logical reader specification LRSpec by the method &quot;getLRSpec(String readerName)&quot;.</p></div><div class="section"><h3><a name="Define">Define</a> the Filtering and Collection Behavior via the ALE Filtering and Collection API</h3><p>In the next step you will define an ALE ECSpec. This tells the ALE Middleware how the RFID tag reads ariving from the Rifidi Emulator should be filtered and aggregated. </p><p>Invoke the method &quot;define(String specName, String specFilePath)&quot;. DO NOT CONFUSE the define method for an EventCycle with the define method for a logical reader! For this tutorial name your EventCycle &quot;specCURRENT&quot; and load this <a href="../files/ECSpec_current.xml">ECSpec message</a> </p><div class="source"><pre>specName: &lt;SPEC_NAME&gt;
+specFilePath: &lt;PATH_TO_SPEC&gt;\&lt;SPEC_NAME&gt;.xml
+
+example:
+specName: specCURRENT
+specFilePath: c:\epc\ECSpec_current.xml</pre></div><p>Verify the correct defintion of your ECSpec by invoking the method &quot;getECSpecNames()&quot;. You should get a list of ECSpec names currently defined in brackets. Make sure that the ECSpec you just defined is listed. </p></div><div class="section"><h3><a name="Specify">Specify</a> the Event Consumer of the ALE Events Being Sent</h3><p>When there is no subscriber for an ECSpec, the ECSpec is not executed. We therefore need to specify a listener by subscribing our event sink to the ECSpec &quot;specCURRENT&quot; we added earlier.</p><p>Invoke &quot;subscribe(String specName, String notificationUri)&quot; and register the URL on which the event sink GUI is listening.</p><div class="source"><pre>notificationURI: http://&lt;SERVER&gt;:&lt;PORT&gt;
+specName: &lt;SPEC_NAME&gt;
+
+example:
+notificationURI: http://localhost:9999
+specName: specCURRENT</pre></div><p>The ALE will start sending empty ECReports to the event sink GUI as the Rifidi emulator is not configured to send EPC tag reads via the LLRP protocol yet.</p></div><div class="section"><h3><a name="Configure">Configure</a> the Rifidi Emulator to Report Tags in &quot;Range&quot;</h3><p>Start the LLRP Commander (via Eclipse) and connect to the remote adapter instance running on the ALE. Check, if you can send and retrieve messages from the reader by sending a GET_READER_CAPABILITIES message.</p><p>Create a new LLRP message and replace the content by the content from the LLRP <a href="../files/ROSPEC_example.llrp">RO_SPEC</a>. Send the message to the Rifid Emulator. From the context menu (right-click on the Rifidi Emulator), select &quot;Send ENABLE_RO_SPEC message&quot; to instruct the reader to enable the ROspec just loaded.</p><p>Now the virtual reader is ready to deliver tags to the ALE. </p><p>Switch to the Rifidi reader emulator and create a tag (SGTIN96, GEN2). When you place the tag on the reader antenna, the tag reads will be reported to the Fosstrak ALE Middleware. After the tag reads are filtered and collected as specified in the ECSpec, they are delivered by the Fosstrak ALE middleware to the event sink GUI. </p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>
