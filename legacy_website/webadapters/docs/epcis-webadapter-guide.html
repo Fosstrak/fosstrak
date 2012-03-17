@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>EPCIS Web Adapter - EPCIS Webadapter User Guide</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Dominique Guinard (guinard.org)" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 0.1.0
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">EPCIS Webadapter</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../../fc/index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            |
+                <a href="../index.html">EPCIS Webadapter</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>EPCIS Webadapter</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../demo.html">Demo</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../feedback.html">Feedback</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+          </ul>
+              <h5>Guides and Documentation</h5>
+            <ul>
+              
+    <li class="none">
+              <strong>EPCIS Webadapter Guide</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>EPCIS Webadapter Guide</h2>
+<div class="section"><h3>Contents</h3>
+<ol type="1"><li><a href="#About this Guide">About this Guide</a></li>
+<li><a href="#Introduction">Introduction to the EPCIS Webadapter</a><ol type="i"><li><a href="#Features">Features</a></li>
+</ol>
+</li>
+<li><a href="#Online Demonstration">Online Demonstration</a></li>
+<li><a href="#Installing the EPCIS Webadapter">Installing the EPCIS Webadapter</a><ol type="i"><li><a href="#Setting up an EPCIS Repository">Setting up an EPCIS Repository</a></li>
+<li><a href="#Deploying the EPCIS Webadapter">Deploying the EPCIS Webadapter</a><ol type="i"><li><a href="#Configuring the EPCIS Webadapter">Configuring the EPCIS Webadapter</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="#Using the EPCIS Webadapter">Using the EPCIS Webadapter</a></li>
+<li><a href="#Developing Applications Using the RESTful API">Developing Applications Using the RESTful API</a><ol type="i"><li><a href="#Tools for Interacting with the RESTful API">Tools for Interacting with the RESTful API</a></li>
+<li><a href="#Requesting Different Formats">Requesting Different Formats</a></li>
+<li><a href="#Working with Feeds">Working with Feeds</a></li>
+<li><a href="#Sample Calls using HTTP and REST Client Libraries">Sample Calls using HTTP and REST Client Libraries</a></li>
+</ol>
+</li>
+<li><a href="#Known Issues">Known Issues</a></li>
+</ol>
+</div>
+<div class="section"><h3><a name="About_this_Guide">About this Guide</a></h3>
+<p>This guide is intended to help users get started with the Fosstrak EPCIS Webadapter module. The EPCIS Webadapter adds a RESTful, fully web-enabled, API to a standard EPCIS repository. While the EPCIS Webadapter can be deployed on top of any standard compliant EPCIS Repository, this guide outlines the steps to follow in order to set up the EPCIS Webadapter to work with the Fosstrak EPCIS Repository.</p>
+<p>As the project is part of an <a href="http://www.webofthings.com/rfid" class="externalLink">ongoing research project</a>, your feedback is <b>very</b> valuable to us! We created a questionnaire where we try to better understand your experience and where you can ask us for new features or improvements, thanks a lot for your answers: <a href="https://spreadsheets.google.com/viewform?formkey=dGplWlFEc3pwajNJVldnUjZTZzh3ZkE6MA" class="externalLink">Feedback form</a>. If this guide does not answer the questions you may have, feel free to post them to the <a href="mailto:fosstrak-epcis-user@lists.sourceforge.net" class="externalLink">Fosstrak EPCIS user mailing list</a>.</p>
+</div>
+<div class="section"><h3><a name="Introduction_to_the_EPCIS_Webadapter">Introduction to the EPCIS Webadapter</a></h3>
+<p>This module offers an additional, RESTful, integration interface, or API (Application Programming Interface) for the EPCIS upon which a different range of applications can be built thanks to a lightweight and Web-enabled RESTful architecture. It offers access to all standard EPCIS functionality through a native Web interface.</p>
+<p>Using the EPCIS Webadapter:</p>
+<ul><li>Each query, tagged object, location or RFID reader gets a unique URL that can be linked to, exchanged in emails, browsed for, bookmarked, etc. (on the Web or in an Intranet). </li>
+</ul>
+<ul><li>You can use Web languages like HTML and JavaScript to directly use RFID data.</li>
+</ul>
+<ul><li>You create light-weight applications that are using RFID data on resource-limited environements such as <b>mobile phones, wireless sensor nodes or Web mashups</b>. <p><b>Please note that the EPCIS Webadapter is not an EPCglobal standardized interface and currently is still a beta Fosstrak module.</b></p>
+</li>
+</ul>
+<div class="section"><h4>Features of the EPCIS Webadapter</h4>
+<p>The WS-* type of integration architecture is well adapted to combine business applications. For example, it can be used to integrate EPCIS data about the status of a shipment with an ERP (Enterprise Resource Planning) application. </p>
+<p>However, WS-* applications are complex systems with high entry barriers and require developer expertise in the domain. Hence, they are not well adapted for more light-weight and ad-hoc application scenarios. Furthermore, the WS-* protocols are known to be rather verbose. Moreover, they do not fully meet the requirements of resource-constrained devices such as mobile phones and wireless sensor/actuator networks often not providing WS-* server or even client stacks.</p>
+<p>The EPCIS Webadapter is a optional plugin that that offers an additional RESTful interface on top of any standard-compliant EPCIS. Using this approach, each query, tagged object, location or RFID reader gets a unique URL that can be linked to, exchanged in emails, browsed for, bookmarked, and consumed from any scripting or programming language understanding the HTTP protocol.</p>
+<img src="../webadapters/images/epcis-webadapter-architecture.png" alt="Architecture of the EPCIS Webadapter" /><p>The EPCIS Webadapter has three main goals:</p>
+<ul><li>lowering the entry barrier for developers and foster rapid prototyping by bringing the EPCIS data closer to Web languages such as Javascript or Python.</li>
+</ul>
+<ul><li>allowing users to directly access, share and bookmark EPCIS queries and their results through any standard Web-browser, without the need to install any additional software. With this module, every resource of the EPC network gets a unique URL and subscription to queries are delivered as Web Feeds (using the Atom standard).</li>
+</ul>
+<ul><li>Offering a more light-weight access to the data. This enables creating applications in which the EPCIS data are directly consumed by resource-constrained devices (e.g., Wireless sensor networks, mobile phones, etc.) without requiring proxy or translation gateways.</li>
+</ul>
+<p>The module basically translates the incoming RESTful request into SOAP requests on the original EPCIS. It further takes care of reformatting the results into several Web formats such as HTML, JSON, Atom and XML. The plugin is based on <a href="http://jersey.dev.java.net/" class="externalLink"> Jersey</a>, an implementation of the Java Standard for RESTful Web Services (JAX-RS). For generating Atom feeds for query subscriptions, it uses the <a href="http://abdera.apache.org/" class="externalLink"> Apache Abdera</a> framework.</p>
+<p>The project was started in frame of the <a href="http://www.webofthings.com" class="externalLink"> Web of Things initiative</a> at <a href="http://www.vs.inf.ethz.ch/" class="externalLink"> ETH Zurich</a>. It is a collaboration between the <a href="http://www.vs.inf.ethz.ch/" class="externalLink"> Distributed Systems Lab of ETH</a>, the <a href="http://www.autoidlabs.org/" class="externalLink"> Auto-ID Labs (MIT and Zurich)</a>, the <a href="http://diuf.unifr.ch/drupal/softeng/" class="externalLink"> Software Engineering Group of the University of Fribourg</a> and <a href="http://www.sap.com/about/company/research/centers/zurich.epx" class="externalLink"> SAP Research Zurich</a>.</p>
+<p>More information about the architecture of the project can be found <a href="http://www.inf.ethz.ch/personal/dguinard/publications/bibtex.html?file=/home/webvs/www/htdocs/publ/papers/dguinard-giving-2010" class="externalLink"> in this paper</a>.</p>
+</div>
+</div>
+<div class="section"><h3><a name="Online_Demonstration">Online Demonstration</a></h3>
+<p>The EPCIS Webadapter and some of the applications built upon can be directly tested from our <a href="demo.html"> demo server</a>.</p>
+</div>
+<div class="section"><h3><a name="Installing_the_EPCIS_Webadapter">Installing the EPCIS Webadapter</a></h3>
+<p>This section includes a step-by-step tutorial describing how to set up the EPCIS Webadapter to work with the Fosstrak EPCIS Repository.</p>
+<div class="section"><h4><a name="Setting_up_an_EPCIS_Repository">Setting up an EPCIS Repository</a></h4>
+<p>The EPCIS Webadapter can be deployed on top of any standard compliant EPCIS Repository. To install the Fosstrak EPCIS Repository please refer to <a href="docs/user-guide.html">EPCIS Repository User Guide</a>. To go on with this installation guide, all you need is the root URL of an EPCIS Repository (e.g., <tt>http://localhost:8080/epcis-repository-0.4.2</tt>).</p>
+</div>
+<div class="section"><h4><a name="Deploying_the_EPCIS_Webadapter">Deploying the EPCIS Webadapter</a></h4>
+<p>The EPCIS Webadapter can be deployed in any Java compliant Web/Application server that supports the deployment of JAX-RS based applications. It was successfully tested with Tomcat (6.x) and the Glassfish (3.x) Application Server.</p>
+<p>To deploy it on Tomcat simply copy the <tt>EPCIS Webadapter-VERSION_NUMBER.war</tt> archive to <tt>CATALINA_BASE/webapps</tt> folder of Tomcat which will auto-deploy the application. Alternatively you can also use the Tomcat manager Webapp and upload the EPCIS Webadapter-VERSION_NUMBER.war&gt;&gt;&gt; archive there.</p>
+<p>If the deployment was successful you should be able to browse to:</p>
+<div class="source"><pre>http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER</pre>
+</div>
+<p>and see a web-page there. From there click on the &quot;EPCIS Webadapter&quot; link. Since this triggers the initial configuration phase of the EPCIS Webadapter (creation of the internal databased, etc.), this might take a while. Please do not interrupt this phase.</p>
+</div>
+<div class="section"><h4><a name="Configuring_the_EPCIS_Webadapter">Configuring the EPCIS Webadapter</a></h4>
+<p>The EPCIS Webadapter is configured to automatically connect to a local EPCIS instance on: <tt>http://localhost:8080/epcis-repository-0.4.2</tt>. To change the instance it connects to go to:</p>
+<div class="source"><pre>http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER/rest/API_VERSION/config/epcisurl</pre>
+</div>
+<p>There, you can specify a new instance of an EPCIS repository the Webadapter should connect to. Any standard-compliant EPCIS repository should work. However, the EPCIS Webadapter was tested on the <a href="user-guide.html"> Fosstrak EPCIS Repository</a>.</p>
+<p>The EPCIS Webadapter also offers clients to register to queries for which updates are delivered to standard Atom feeds. This enables clients to register to EPC queries without requiring them to run an HTTP server. The EPCIS Webadapter embeds an Atom server (based on <a href="http://abdera.apache.org/" class="externalLink"> Apache Abdera</a>). However, the webadapter can be configured to publish the queries updates to any AtomPub compliant server.</p>
+<p>To change the AtomPub server it pushes updates to, go to:</p>
+<div class="source"><pre>http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER/rest/API_VERSION/config/feedurl</pre>
+</div>
+<p>and provide a valid URL to an AtomPub server endpoint.</p>
+</div>
+</div>
+<div class="section"><h3><a name="Using_the_EPCIS_Webadapter">Using the EPCIS Webadapter</a></h3>
+<p>The EPCIS Webadapter adds a RESTful, fully web-enabled, API to a standard EPCIS repository. If you are not familiar with REST, we invite you to read <a href="http://www.inf.ethz.ch/personal/dguinard/publications/bibtex.html?file=/home/webvs/www/htdocs/publ/papers/dguinard-giving-2010" class="externalLink"> this paper</a>, which briefly presents REST in the context of the EPCIS Webadapter.</p>
+<p>Using this approach, each query, tagged object, location or RFID reader gets a unique URL that can be linked to, exchanged in emails, browsed for bookmarked, etc. Furthermore, these resources can be accessed using the standard HTTP 1.1 protocol. Thus, any platform that understands HTTP protocol can consume data from the EPCIS Webadapter in a straightforward way. </p>
+<p>The simplest way to used the EPCIS Webadapter is to use the HTML representation of resources. Pointing any browser to:</p>
+<div class="source"><pre>http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER</pre>
+</div>
+<p>will give you access to the HTML representation. From there you can:</p>
+<ul><li>Query the EPCIS using an HTML form by clicking on &quot;Query Form Browsable Event Finder&quot;.</li>
+<li>Navigate through the EPCIS data directly, by clicking on &quot;Browsable Event Finder&quot;.</li>
+<li>Manage Atom Feeds generated for queries, by clicking on &quot;Subscription List&quot;.</li>
+<li>Simulate RFID events for testing purposes using a simple HTML form, by clicking on &quot;Capture Interface&quot;. </li>
+<li>Configure the EPCIS Webadapter by clicking on &quot;Configuration&quot;.<p>Note that each URL you will encounter in the HTML representation is unique and referenceable. Thus, you can bookmark any result for later use or sharing. </p>
+</li>
+</ul>
+</div>
+<div class="section"><h3><a name="Developing_Applications_Using_the_RESTful_API">Developing Applications Using the RESTful API</a></h3>
+<p>The EPCIS Webadapter makes it easier to create lightweight (e.g., mobile, Web) application that consume EPC data. From a developer view point, all the interaction with the EPCIS Webadapter occurs through the exhaustive use of HTTP 1.1. While </p>
+<p>Basically, the webadapter covers all the functionality of a standard EPCIS repository, plus some more advanced query capabilities. The best way to find how to access this functionality is to explore the HTML representation. There are basically two ways of formulating queries:</p>
+<ul><li>By using the &quot;Browsable Event Finder&quot;, which lets you explore the available resources by clicking on hyper-links. * By using the &quot;Query Form&quot;, which lets you formulate queries through an HTML form.</li>
+</ul>
+<p>Both interfaces will directly display the query results. You can then use the resulting URLs from your application.</p>
+<p>For example, let's say we are looking for all the EPC events for the business location: <tt>urn:ch:sap:regensdorf:frc</tt>. We first use the &quot;Browsable Event Finder&quot; to formulate this query. We directly see the query result and copy the query URL to use it in our application, we just need to <tt>GET</tt>:</p>
+<div class="source"><pre>http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER/rest/API_VERSION/eventquery/result?location=urn:ch:sap:regensdorf:frc</pre>
+</div>
+<p>Similarly, we can use the &quot;Browsable Event Finder&quot; to find out, for instance, all the readers at location &quot;urn:de:maxhavelaar:hamburg:shipyard&quot;. We do so by clicking on &quot;Browsable Event Finder&quot;, on &quot;urn:de:maxhavelaar:hamburg:shipyard&quot; and finally on &quot;List of Read Points&quot;. This returns us a list of all the readers at <tt>urn:de:maxhavelaar:hamburg:shipyard</tt>.</p>
+<p>As before, we can use the created URL for retrieving this list from our application, we just need to <tt>GET</tt>:</p>
+<div class="source"><pre>http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER/rest/API_VERSION/location/urn:de:maxhavelaar:hamburg:shipyard/reader</pre>
+</div>
+<div class="section"><h4><a name="Tools_for_Interacting_with_the_RESTful_API">Tools for Interacting with the RESTful API</a></h4>
+<p>Any client that can communicate with sockets (e.g., using the java.net package) can consume RESTful Web services. However, several tools can help you make this even more straightforward:</p>
+<ul><li>For testing tools such as the <a href="http://code.google.com/p/poster-extension/" class="externalLink"> Poster Firefox Extension</a>, or the <a href="http://curl.haxx.se/" class="externalLink"> cURL command-line tool</a> can help you test all the features of HTTP and RESTful APIs. </li>
+<li>HTTP Client Libraries such as the <a href="http://hc.apache.org/httpcomponents-client-ga" class="externalLink"> Apache HTTP Client</a> are available on most platforms (e.g., <a href="http://www.android.com/" class="externalLink"> Android</a>) and help you formulate RESTful request within a few lines of code.</li>
+<li>Programming languages such as PHP, Python, Javascript, Ruby have full built in support for consuming RESTful Web Services over HTTP.</li>
+<li>In the Java world, implementations of the JAX-RS standard provide high level client API (e.g., <a href="http://jersey.dev.java.net/" class="externalLink"> Jersey Client API</a>) that literally reduce the complexity of communicating with RESTful service to a couple of lines.</li>
+</ul>
+</div>
+<div class="section"><h4><a name="Requesting_Different_Formats">Requesting Different Formats</a></h4>
+<p>As a RESTful API, the EPCIS Webadapter offers several representations (i.e., formats) for resources identified by the following mime-types:</p>
+<ul><li><tt>text/html</tt>: a Web page, including page layout, navigation menu and logos. This representation is human-friendly and meant for web browsers.</li>
+<li><tt>application/xhtml+xml</tt>: contains just the core business of the resource, without layout, navigation or images. It is meant to be embedded into other Web pages or used in Web Mashups.</li>
+<li><tt>text/xml</tt>: is an XML representation, strictly following the XML Schema of the EPCIS standard.</li>
+<li><tt>application/xml</tt>: is an XML representation containing the whole state of the resource (e.g., links to sub-resources, etc.).</li>
+<li><tt>application/json</tt>: is a <a href="http://www.json.org" class="externalLink"> JSON</a> representation of a resource and its state. JSON is a lightweight alternative to XML which is often used in Web Mashups or mobile applications.</li>
+</ul>
+<p>A client requests a particular format through the standard HTTP 1.1 <a href="http://en.wikipedia.org/wiki/Content_negotiation" class="externalLink"> content-negotiation</a> mechanism. </p>
+<p>More concretely it does this by setting the Accept header of the HTTP packet to one (or a list) of accepted/preferred formats. As an example, we can use <a href="http://curl.haxx.se/" class="externalLink"> cURL</a> to get the list of all EPC events for the business location: <tt>urn:ch:sap:regensdorf:frc</tt> in JSON:</p>
+<div class="source"><pre>curl -X GET -H Accept:application/json http://localhost:8080/EPCIS Webadapter-0.0.1-SNAPSHOT/rest/0.0.1/eventquery/result?reader=urn:br:maxhavelaar:natal:shipyard:incoming</pre>
+</div>
+<p>The EPCIS Webadapter also provides a WADL (Web Application Description Language) file to describe the resources it offers. While this can be practical in some cases, WADL-based REST clients are subject to many critisims in the REST community as a browsable HTML representation covers almost all the expressive power of a WADL.</p>
+<p>However, if you do need a WADL for your application, you can find it by sending <tt>OPTIONS</tt> to:</p>
+<div class="source"><pre>http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER/rest/API_VERSION/</pre>
+</div>
+</div>
+<div class="section"><h4><a name="Working_with_Feeds">Working with Feeds</a></h4>
+<p>The EPCIS Webadapter also features an <a href="http://en.wikipedia.org/wiki/Atom_%28standard%29" class="externalLink"> Atom</a> Web feed subscription and generation system on top of the EPCIS Subscription Standard. This is especially useful since, unlike the original EPCIS Subscription system, it does not require clients to run a server with a tailored Web applications that listens to the subscribed endpoint. Thus, it is more adapted to more lightweight clients such as mobile phones, sensor networks, Web browsers, etc.</p>
+<p>To create an Atom feed you first need to create the query URL. This is best achieved by using the &quot;Browsable Event Finder&quot; or the &quot;Query Form&quot;. Once you have the query URL you can subscribe to it by calling PUT, for example on:</p>
+<div class="source"><pre>http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER/rest/API_VERSION/eventquery/subscription?reader=urn:epc:id:sgln:unifr.perolles.cafeteria</pre>
+</div>
+<p>Or with <tt>cURL</tt>:</p>
+<div class="source"><pre>curl -X PUT -H Accept:application/xml http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER/rest/API_VERSION/eventquery/subscription?reader=urn:epc:id:sgln:unifr.perolles.cafeteria</pre>
+</div>
+<p>You can then get the feeds by calling <tt>GET</tt> on:</p>
+<div class="source"><pre>http://HOST:PORT/EPCIS Webadapter-VERSION_NUMBER/rest/feed</pre>
+</div>
+</div>
+<div class="section"><h4><a name="Sample_Calls_using_HTTP_and_REST_Client_Libraries">Sample Calls using HTTP and REST Client Libraries</a></h4>
+<p>The EPCIS Webadapter can be easily used from any language supporting sockets. However, it is very straightforward to use in combination with HTTP client libraries. Here, we provide two examples in Java using two different HTTP library.</p>
+</div>
+<div class="section"><h4><a name="Simple_Example_Using_the_Apache_HTTP_Client">Simple Example Using the Apache HTTP Client</a></h4>
+<p>This an example of a query on the EPCIS Webadapter using the <a href="http://hc.apache.org/httpcomponents-client-ga" class="externalLink"> Apache HTTP Client</a> in Java. This call uses the &quot;query&quot; resource to get all the EPC events that occurred at <tt>urn:ch:sap:regensdorf:frc:storage</tt>. Note that this query was successfully tested on a desktop computer as well as on an <a href="http://www.android.com/" class="externalLink"> Android</a> 2.2 mobile device:</p>
+<div class="source"><pre>import java.io.IOException;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+[...]
+
+    public String querywebadapter() {
+        String result = null;
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpGet request = new HttpGet(&quot;http://localhost:8080/EPCIS Webadapter-0.0.1-SNAPSHOT/rest/0.0.1/eventquery/result?reader=urn:ch:sap:regensdorf:frc:storage&quot;);
+        request.addHeader(&quot;Accept&quot;, &quot;application/json&quot;);
+
+        ResponseHandler&lt;String&gt; handler = new BasicResponseHandler();
+        try {
+            result = httpclient.execute(request, handler);
+        } catch (ClientProtocolException e) {
+            //handle exception
+        } catch (IOException e) {
+            //handle exception
+        }
+        httpclient.getConnectionManager().shutdown();
+
+        return result;
+    }</pre>
+</div>
+</div>
+<div class="section"><h4><a name="Simple_Example_Using_the_Apache_HTTP_Client">Simple Example Using the Apache HTTP Client</a></h4>
+<p>In this more compact version, we use the <a href="http://jersey.dev.java.net/" class="externalLink"> Jersey JAX-RS Client</a> library in Java to get all the locations registered by the EPCIS Repository on which the EPCIS Webadapter is plugged:</p>
+<div class="source"><pre>import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
+  
+    public String queryWebAdapterJersey() {
+        Client client = Client.create();
+        WebResource webResource = client.resource(&quot;http://localhost:8080/EPCIS Webadapter-0.0.1-SNAPSHOT/rest/0.0.1/location&quot;);        
+        return webResource.accept(&quot;application/xml&quot;).get(String.class);
+    }</pre>
+</div>
+</div>
+</div>
+<div class="section"><h3><a name="Known_Issues">Known Issues</a></h3>
+<p><i>&quot;The XML and JSON links of the HTML representations do not work&quot;</i></p>
+<p>We identified that on some browsers (e.g., Chrome) the Javascript that offers to visualize different representations directly from the HTML page does not work. It was successfully tested on Firefox. If you want to see the other representations please refer to <a href="#Requesting Different Formats">Requesting Different Formats</a></p>
+<p><i>&quot;I get the following exception when deploying the EPCIS Webadapter&quot;</i></p>
+<div class="source"><pre>java.lang.NullPointerException
+        org.fosstrak.webadapters.epcis.db.InternalDatabase.getConfigurationEntry(InternalDatabase.java:202)
+        org.fosstrak.webadapters.epcis.db.InternalDatabase.initializeIfNotPresent(InternalDatabase.java:121)
+        org.fosstrak.webadapters.epcis.db.InternalDatabase.&lt;init&gt;(InternalDatabase.java:73)
+        org.fosstrak.webadapters.epcis.db.InternalDatabase.getInstance(InternalDatabase.java:84)
+...</pre>
+</div>
+<p>This is a known bug due to the fact that the SQLite embedded database-driver the EPCIS Webadapter uses is based on JNI. Thus, in some containers (e.g., Tomcat) it can only be loaded once and is not released when undeploying the application. The only workaround we currently have is to restart the Tomcat instance. We are working on migrating the SQLite database to one that does not require the use of a JNI driver.</p>
+<p>As the project is part of an <a href="http://www.webofthings.com/rfid" class="externalLink">ongoing research project</a>, your feedback is <b>very</b> valuable to us! We created a questionnaire where we try to better understand your experience and where you can ask us for new features or improvements, thanks a lot for your answers: <a href="https://spreadsheets.google.com/viewform?			formkey=dGplWlFEc3pwajNJVldnUjZTZzh3ZkE6MA" class="externalLink">Click here to access the Feedback form</a>.</p>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2010
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

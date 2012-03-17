@@ -1,0 +1,1324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>EPCIS Web Adapter - CPD Results</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 0.1.0
+	-->
+                     
+                <a href="../index.html">Fosstrak</a>
+                &gt;
+      
+          EPCIS Webadapter
+                        </div>
+            <div class="xright">            <a href="../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../fc/index.html">ALE Middleware</a>
+            |
+                <a href="../llrp/index.html">LLRP Commander</a>
+            |
+                <a href="index.html">EPCIS Webadapter</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>EPCIS Webadapter</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="demo.html">Demo</a>
+          </li>
+              
+    <li class="none">
+                    <a href="feedback.html">Feedback</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="issue-tracking.html">Issue Tracking</a>
+          </li>
+          </ul>
+              <h5>Guides and Documentation</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="docs/epcis-webadapter-guide.html">EPCIS Webadapter Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>CPD Results</h2>
+<p>The following document contains the results of PMD's  <a href="http://pmd.sourceforge.net/cpd.html" class="externalLink">CPD</a> 4.1.</p>
+</div>
+<div class="section"><h2>Duplications</h2>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\model\events\AggregationEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/AggregationEvent.html#235">235</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\model\events\TransactionEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/TransactionEvent.html#231">231</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        TransactionEvent otherSubclassEvent = (TransactionEvent) otherEvent;
+
+        try {
+            if (!(getParentIDEntry().getValue().equals(otherSubclassEvent.getParentIDEntry().getValue()))) {
+                return false;
+            }
+        } catch (Exception ex) {}
+
+        try {
+
+            List&lt;ElectronicProductCode&gt; myEPCs    = getEpcEntry();
+            List&lt;ElectronicProductCode&gt; otherEPCs = otherSubclassEvent.getEpcEntry();
+
+            for (ElectronicProductCode myEPC : myEPCs) {
+                boolean isContained = false;
+
+                for (ElectronicProductCode otherEPC : otherEPCs) {
+                    if ((myEPC.getEpc().getValue().equals(otherEPC.getEpc().getValue()))) {
+                        isContained = true;
+                    }
+                }
+
+                if (!isContained) {
+                    return false;
+                }
+            }
+
+            if (myEPCs.size() != otherEPCs.size()) {
+                return false;
+            }
+        } catch (Exception ex) {}
+
+        try {
+
+            if (!(getActionEntry().getValue().equals(otherSubclassEvent.getActionEntry().getValue()))) {
+                return false;
+            }
+        } catch (Exception ex) {}
+
+        return res;
+    }
+}</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\rest\RESTfulEPCIS.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/rest/RESTfulEPCIS.html#797">797</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\rest\RESTfulEPCIS.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/rest/RESTfulEPCIS.html#834">834</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    public EPCISResource getResults(@Context UriInfo context, @QueryParam(EVENT_TIME_REST) String eventTime, @QueryParam(RECORD_TIME_REST) String recordTime, @QueryParam(EVENT_TYPE_REST) String eventType, @QueryParam(ACTION_REST) String action, @QueryParam(BUSINESS_STEP_REST) String bizStep, @QueryParam(DISPOSITION_REST) String disposition, @QueryParam(READ_POINT_REST) String readPoint, @QueryParam(READ_POINT_DESCENDANT_REST) String readPointWD, @QueryParam(BUSINESS_LOCATION_REST) String bizLocation, @QueryParam(BUSINESS_LOCATION_DESCENDANT_REST) String bizLocationWD, @QueryParam(BUSINESS_TRANSACTION_TYPE_REST) String bizTransaction, @QueryParam(EPC_REST) String epc, @QueryParam(PARENT_ID_REST) String parentID, @QueryParam(ANY_EPC_REST) String anyEPC, @QueryParam(EPC_CLASS_REST) String epcClass, @QueryParam(QUANTITY_REST) String quantity, @QueryParam(FIELDNAME_REST) String fieldname, @QueryParam(ORDER_BY_REST) String orderBy, @QueryParam(ORDER_DIRECTION_REST) String orderDirection, @QueryParam(EVENT_COUNT_LIMIT_REST) String eventCountLimit, @QueryParam(MAX_EVENT_COUNT_REST) String maxEventCount) {
+        QueryBusinessLogic logic = new QueryBusinessLogic();</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\rest\RESTfulEPCIS.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/rest/RESTfulEPCIS.html#797">797</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\rest\RESTfulEPCIS.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/rest/RESTfulEPCIS.html#875">875</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    public EPCISResource addSubscription(@Context UriInfo context, @QueryParam(EVENT_TIME_REST) String eventTime, @QueryParam(RECORD_TIME_REST) String recordTime, @QueryParam(EVENT_TYPE_REST) String eventType, @QueryParam(ACTION_REST) String action, @QueryParam(BUSINESS_STEP_REST) String bizStep, @QueryParam(DISPOSITION_REST) String disposition, @QueryParam(READ_POINT_REST) String readPoint, @QueryParam(READ_POINT_DESCENDANT_REST) String readPointWD, @QueryParam(BUSINESS_LOCATION_REST) String bizLocation, @QueryParam(BUSINESS_LOCATION_DESCENDANT_REST) String bizLocationWD, @QueryParam(BUSINESS_TRANSACTION_TYPE_REST) String bizTransaction, @QueryParam(EPC_REST) String epc, @QueryParam(PARENT_ID_REST) String parentID, @QueryParam(ANY_EPC_REST) String anyEPC, @QueryParam(EPC_CLASS_REST) String epcClass, @QueryParam(QUANTITY_REST) String quantity, @QueryParam(FIELDNAME_REST) String fieldname, @QueryParam(ORDER_BY_REST) String orderBy, @QueryParam(ORDER_DIRECTION_REST) String orderDirection, @QueryParam(EVENT_COUNT_LIMIT_REST) String eventCountLimit, @QueryParam(MAX_EVENT_COUNT_REST) String maxEventCount) {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\model\events\AggregationEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/AggregationEvent.html#243">243</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\model\events\ObjectEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/ObjectEvent.html#196">196</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        try {
+            List&lt;ElectronicProductCode&gt; myEPCs    = getEpcEntry();
+            List&lt;ElectronicProductCode&gt; otherEPCs = otherSubclassEvent.getEpcEntry();
+
+            for (ElectronicProductCode myEPC : myEPCs) {
+                boolean isContained = false;
+
+                for (ElectronicProductCode otherEPC : otherEPCs) {
+                    if ((myEPC.getEpc().getValue().equals(otherEPC.getEpc().getValue()))) {
+                        isContained = true;
+                    }
+                }
+
+                if (!isContained) {
+                    return false;
+                }
+            }
+
+            if (myEPCs.size() != otherEPCs.size()) {
+                return false;
+            }
+        } catch (Exception ex) {}
+
+        try {
+            if (!(getActionEntry().getValue().equals(otherSubclassEvent.getActionEntry().getValue()))) {
+                return false;
+            }
+        } catch (Exception ex) {}
+
+        return res;
+    }
+}</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\model\events\AggregationEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/AggregationEvent.html#192">192</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\model\events\TransactionEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/TransactionEvent.html#187">187</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    }
+
+    /**
+     * Method description
+     *
+     */
+    @Override
+    public void initFillSpecificData() {
+        if (!getAction().equals(&quot;&quot;)) {
+            actionEntry = new Entry();
+            actionEntry.setValue(getAction());
+        }
+
+        if (!getParentID().equals(&quot;&quot;)) {
+            parentIDEntry = new Entry();
+            parentIDEntry.setValue(getParentID());
+        }
+
+        if (!getEpcList().isEmpty()) {
+            epcsEntry = new Entry();
+            epcsEntry.setName(Epcs);
+            epcsEntry.setNameRef(URI.buildEventIdLink(URIConstants.EPCS, epcsEntry, bizLocationEntry.getValue(), readPointEntry.getValue(), eventTimeEntry.getValue()));
+            setBizTransactionEntry(getBizTransactionList());
+            epcEntry = getEpcList();
+        }
+
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param otherEvent
+     *
+     * @return
+     */
+    @Override
+    public boolean isSubclassLikeEvent(EPCISEvent otherEvent) {
+        boolean res = true;
+
+        if (!(otherEvent instanceof TransactionEvent)) {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\logic\QueryBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/QueryBusinessLogic.html#1153">1153</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\logic\QueryBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/QueryBusinessLogic.html#1186">1186</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    public EPCISResource getResults(UriInfo context, String eventTime, String recordTime, String eventType, String action, String bizStep, String disposition, String readPoint, String readPointWD, String bizLocation, String bizLocationWD, String bizTransaction, String epc, String parentID, String anyEPC, String epcClass, String quantity, String fieldname, String orderBy, String orderDirection, String eventCountLimit, String maxEventCount) {
+        String name = &quot;Event Query Results&quot;;
+        String path = EVENTQUERY_RESULTS;
+        String description = &quot;The list of events for the according simple event query: &quot;;
+        EPCISResource resource = setUpResource(context, name, description, path);
+
+        String queryName = Config.SIMPLE_EVENT_QUERY;
+
+        initAbstractQueryParamBusinessLogic(eventTime, recordTime, eventType, action, bizStep, disposition, readPoint, readPointWD, bizLocation, bizLocationWD, bizTransaction, epc, parentID, anyEPC, epcClass, quantity, fieldname, orderBy, orderDirection, eventCountLimit, maxEventCount);
+
+        QueryResults queryResults = null;</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\logic\CaptureBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/CaptureBusinessLogic.html#339">339</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\logic\CaptureBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/CaptureBusinessLogic.html#377">377</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>            TransactionEventType myEventType = objectFactory.createTransactionEventType();
+
+            ePCISEventType = myEventType;
+
+            if (!businessLocation.equals(&quot;&quot;)) {
+                myEventType.setBizLocation(businessLocationType);
+            }
+
+            if (!businessStep.equals(&quot;&quot;)) {
+                myEventType.setBizStep(businessStep);
+            }
+
+            if (!businessTransaction.equals(&quot;&quot;)) {
+                myEventType.setBizTransactionList(businessTransactionListType);
+            }
+
+            if (!disposition.equals(&quot;&quot;)) {
+                myEventType.setDisposition(disposition);
+            }
+
+            if (!readPoint.equals(&quot;&quot;)) {
+                myEventType.setReadPoint(readPointType);
+            }
+
+            if (!parentId.equals(&quot;&quot;)) {
+                myEventType.setParentID(parentId);
+            }
+
+            if (!action.equals(&quot;&quot;)) {
+                myEventType.setAction(actionType);
+            }
+
+            if (!epc.equals(&quot;&quot;)) {
+                myEventType.setEpcList(ePCListType);</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\ws\generated\AggregationEventType.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/ws/generated/AggregationEventType.html#122">122</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\ws\generated\ObjectEventType.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/ws/generated/ObjectEventType.html#95">95</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        this.epcList = value;
+    }
+
+    /**
+     * Gets the value of the action property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ActionType }
+     *     
+     */
+    public ActionType getAction() {
+        return action;
+    }
+
+    /**
+     * Sets the value of the action property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ActionType }
+     *     
+     */
+    public void setAction(ActionType value) {
+        this.action = value;
+    }
+
+    /**
+     * Gets the value of the bizStep property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBizStep() {
+        return bizStep;
+    }
+
+    /**
+     * Sets the value of the bizStep property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBizStep(String value) {
+        this.bizStep = value;
+    }
+
+    /**
+     * Gets the value of the disposition property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDisposition() {
+        return disposition;
+    }
+
+    /**
+     * Sets the value of the disposition property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDisposition(String value) {
+        this.disposition = value;
+    }
+
+    /**
+     * Gets the value of the readPoint property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ReadPointType }
+     *     
+     */
+    public ReadPointType getReadPoint() {
+        return readPoint;
+    }
+
+    /**
+     * Sets the value of the readPoint property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReadPointType }
+     *     
+     */
+    public void setReadPoint(ReadPointType value) {
+        this.readPoint = value;
+    }
+
+    /**
+     * Gets the value of the bizLocation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BusinessLocationType }
+     *     
+     */
+    public BusinessLocationType getBizLocation() {
+        return bizLocation;
+    }
+
+    /**
+     * Sets the value of the bizLocation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BusinessLocationType }
+     *     
+     */
+    public void setBizLocation(BusinessLocationType value) {
+        this.bizLocation = value;
+    }
+
+    /**
+     * Gets the value of the bizTransactionList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BusinessTransactionListType }
+     *     
+     */
+    public BusinessTransactionListType getBizTransactionList() {
+        return bizTransactionList;
+    }
+
+    /**
+     * Sets the value of the bizTransactionList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BusinessTransactionListType }
+     *     
+     */
+    public void setBizTransactionList(BusinessTransactionListType value) {
+        this.bizTransactionList = value;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ObjectEventExtensionType }
+     *     
+     */
+    public ObjectEventExtensionType getExtension() {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\ws\generated\ObjectEventType.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/ws/generated/ObjectEventType.html#82">82</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\ws\generated\TransactionEventType.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/ws/generated/TransactionEventType.html#134">134</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    public EPCListType getEpcList() {
+        return epcList;
+    }
+
+    /**
+     * Sets the value of the epcList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link EPCListType }
+     *     
+     */
+    public void setEpcList(EPCListType value) {
+        this.epcList = value;
+    }
+
+    /**
+     * Gets the value of the action property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ActionType }
+     *     
+     */
+    public ActionType getAction() {
+        return action;
+    }
+
+    /**
+     * Sets the value of the action property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ActionType }
+     *     
+     */
+    public void setAction(ActionType value) {
+        this.action = value;
+    }
+
+    /**
+     * Gets the value of the bizStep property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBizStep() {
+        return bizStep;
+    }
+
+    /**
+     * Sets the value of the bizStep property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBizStep(String value) {
+        this.bizStep = value;
+    }
+
+    /**
+     * Gets the value of the disposition property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDisposition() {
+        return disposition;
+    }
+
+    /**
+     * Sets the value of the disposition property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDisposition(String value) {
+        this.disposition = value;
+    }
+
+    /**
+     * Gets the value of the readPoint property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ReadPointType }
+     *     
+     */
+    public ReadPointType getReadPoint() {
+        return readPoint;
+    }
+
+    /**
+     * Sets the value of the readPoint property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReadPointType }
+     *     
+     */
+    public void setReadPoint(ReadPointType value) {
+        this.readPoint = value;
+    }
+
+    /**
+     * Gets the value of the bizLocation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BusinessLocationType }
+     *     
+     */
+    public BusinessLocationType getBizLocation() {
+        return bizLocation;
+    }
+
+    /**
+     * Sets the value of the bizLocation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BusinessLocationType }
+     *     
+     */
+    public void setBizLocation(BusinessLocationType value) {
+        this.bizLocation = value;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TransactionEventExtensionType }
+     *     
+     */
+    public TransactionEventExtensionType getExtension() {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\logic\AbstractQueryParamBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/AbstractQueryParamBusinessLogic.html#325">325</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\logic\AbstractQueryParamBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/AbstractQueryParamBusinessLogic.html#388">388</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>            String t1 = getRecordTime();
+            String t2 = null;
+
+            try {
+                t2 = t1.split(Config.INTERVAL)[1];
+                t1 = t1.split(Config.INTERVAL)[0];
+            } catch (Exception ex) {
+                // ok no init of t2 needed
+            }
+
+            boolean isDone     = false;
+            boolean isInterval = false;
+            boolean isFuture   = false;
+            boolean isPast     = false;
+
+            if (t2 != null) {
+                isInterval = true;
+            }
+
+            if (t1.startsWith(Config.ABOVE)) {
+                isFuture = true;
+            }
+
+            if (t1.startsWith(Config.FEWER)) {
+                isPast = true;
+            }
+
+            if (isFuture || isPast) {
+                try {
+                    t1 = t1.substring(1);
+                } catch (Exception ex) {
+
+                    // ok
+                }
+            }
+
+            if (isInterval &amp;&amp;!isDone) {
+                seQuery.setRecordTimeGE(new RecordTimeGE(t1));</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\model\events\ObjectEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/ObjectEvent.html#60">60</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\model\events\TransactionEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/TransactionEvent.html#60">60</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    public TransactionEvent(EPCISEventType event) {
+        super(event);
+        initFillSpecificData();
+        super.setUp();
+    }
+
+    protected String getAction() {
+        String res = &quot;&quot;;
+
+        if (action != null) {
+            res = action.value();
+        }
+
+        return res;
+    }
+
+    protected List&lt;ElectronicProductCode&gt; getEpcList() {
+        List&lt;ElectronicProductCode&gt; res = new LinkedList&lt;ElectronicProductCode&gt;();
+
+        if (epcList != null) {
+            for (EPC myEPC : epcList.getEpc()) {
+                String                myStrEPC              = myEPC.getValue();
+                ElectronicProductCode electronicProductCode = new ElectronicProductCode();
+                Entry                 myEntry               = new Entry();
+
+                myEntry.setValue(myStrEPC);
+                electronicProductCode.setEpc(myEntry);
+                res.add(electronicProductCode);
+            }
+        }
+
+        return res;
+    }</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\ws\generated\AggregationEventType.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/ws/generated/AggregationEventType.html#146">146</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\ws\generated\QuantityEventType.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/ws/generated/QuantityEventType.html#110">110</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        this.quantity = value;
+    }
+
+    /**
+     * Gets the value of the bizStep property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBizStep() {
+        return bizStep;
+    }
+
+    /**
+     * Sets the value of the bizStep property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBizStep(String value) {
+        this.bizStep = value;
+    }
+
+    /**
+     * Gets the value of the disposition property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDisposition() {
+        return disposition;
+    }
+
+    /**
+     * Sets the value of the disposition property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDisposition(String value) {
+        this.disposition = value;
+    }
+
+    /**
+     * Gets the value of the readPoint property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ReadPointType }
+     *     
+     */
+    public ReadPointType getReadPoint() {
+        return readPoint;
+    }
+
+    /**
+     * Sets the value of the readPoint property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReadPointType }
+     *     
+     */
+    public void setReadPoint(ReadPointType value) {
+        this.readPoint = value;
+    }
+
+    /**
+     * Gets the value of the bizLocation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BusinessLocationType }
+     *     
+     */
+    public BusinessLocationType getBizLocation() {
+        return bizLocation;
+    }
+
+    /**
+     * Sets the value of the bizLocation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BusinessLocationType }
+     *     
+     */
+    public void setBizLocation(BusinessLocationType value) {
+        this.bizLocation = value;
+    }
+
+    /**
+     * Gets the value of the bizTransactionList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BusinessTransactionListType }
+     *     
+     */
+    public BusinessTransactionListType getBizTransactionList() {
+        return bizTransactionList;
+    }
+
+    /**
+     * Sets the value of the bizTransactionList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BusinessTransactionListType }
+     *     
+     */
+    public void setBizTransactionList(BusinessTransactionListType value) {
+        this.bizTransactionList = value;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link QuantityEventExtensionType }
+     *     
+     */
+    public QuantityEventExtensionType getExtension() {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\ws\generated\AggregationEventType.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/ws/generated/AggregationEventType.html#122">122</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\ws\generated\TransactionEventType.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/ws/generated/TransactionEventType.html#147">147</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        this.epcList = value;
+    }
+
+    /**
+     * Gets the value of the action property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ActionType }
+     *     
+     */
+    public ActionType getAction() {
+        return action;
+    }
+
+    /**
+     * Sets the value of the action property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ActionType }
+     *     
+     */
+    public void setAction(ActionType value) {
+        this.action = value;
+    }
+
+    /**
+     * Gets the value of the bizStep property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBizStep() {
+        return bizStep;
+    }
+
+    /**
+     * Sets the value of the bizStep property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBizStep(String value) {
+        this.bizStep = value;
+    }
+
+    /**
+     * Gets the value of the disposition property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDisposition() {
+        return disposition;
+    }
+
+    /**
+     * Sets the value of the disposition property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDisposition(String value) {
+        this.disposition = value;
+    }
+
+    /**
+     * Gets the value of the readPoint property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ReadPointType }
+     *     
+     */
+    public ReadPointType getReadPoint() {
+        return readPoint;
+    }
+
+    /**
+     * Sets the value of the readPoint property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReadPointType }
+     *     
+     */
+    public void setReadPoint(ReadPointType value) {
+        this.readPoint = value;
+    }
+
+    /**
+     * Gets the value of the bizLocation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BusinessLocationType }
+     *     
+     */
+    public BusinessLocationType getBizLocation() {
+        return bizLocation;
+    }
+
+    /**
+     * Sets the value of the bizLocation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BusinessLocationType }
+     *     
+     */
+    public void setBizLocation(BusinessLocationType value) {
+        this.bizLocation = value;
+    }
+
+    /**
+     * Gets the value of the extension property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TransactionEventExtensionType }
+     *     
+     */
+    public TransactionEventExtensionType getExtension() {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\logic\AbstractEventBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/AbstractEventBusinessLogic.html#194">194</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\logic\AbstractEventBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/AbstractEventBusinessLogic.html#252">252</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>        if (readPointString.equals(Config.NO_VALUE)) {
+            QueryResults filteredQueryResults = new QueryResults();
+
+            filteredQueryResults.setQueryName(Config.SIMPLE_EVENT_QUERY);
+
+            QueryResultsBody queryResultsBody = new QueryResultsBody();
+            EventListType    eventListType    = new EventListType();
+
+            queryResultsBody.setEventList(eventListType);
+            filteredQueryResults.setResultsBody(queryResultsBody);
+
+
+            List&lt;Object&gt; eventList = queryResults.getResultsBody().getEventList().getObjectEventOrAggregationEventOrQuantityEvent();
+
+            for (Object event : eventList) {
+                JAXBElement    element        = (JAXBElement) event;
+                EPCISEventType epcisEventType = (EPCISEventType) element.getValue();
+
+                if (epcisEventType instanceof ObjectEventType) {
+                    ObjectEventType myEvent = (ObjectEventType) epcisEventType;</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\model\events\AggregationEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/AggregationEvent.html#128">128</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\model\events\TransactionEvent.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/model/events/TransactionEvent.html#102">102</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>    }
+
+    /**
+     * Method description
+     *
+     *
+     * @return
+     */
+    @XmlElement(name = &quot;action&quot;)
+    public Entry getActionEntry() {
+        return actionEntry;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param actionEntry
+     */
+    public void setActionEntry(Entry actionEntry) {
+        this.actionEntry = actionEntry;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @return
+     */
+    @XmlElementWrapper(name = &quot;epcs&quot;)
+    @XmlElement(name = &quot;epc&quot;)
+    public List&lt;ElectronicProductCode&gt; getEpcEntry() {
+        return epcEntry;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param epcEntry
+     */
+    public void setEpcEntry(List&lt;ElectronicProductCode&gt; epcEntry) {
+        this.epcEntry = epcEntry;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @return
+     */
+    @XmlElement(name = &quot;epcList&quot;)
+    public Entry getEpcsEntry() {
+        return epcsEntry;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param epcsEntry
+     */
+    public void setEpcsEntry(Entry epcsEntry) {
+        this.epcsEntry = epcsEntry;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @return
+     */
+    @XmlElement(name = &quot;parentID&quot;)</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\logic\QueryBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/QueryBusinessLogic.html#797">797</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\logic\QueryBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/QueryBusinessLogic.html#817">817</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>            AggregationEvent myEvent = (AggregationEvent) event;
+            List&lt;ElectronicProductCode&gt; epcs = myEvent.getEpcEntry();
+            Entry link = new Entry();
+            List&lt;Entry&gt; components = new ArrayList&lt;Entry&gt;();
+
+            try {
+                link = epcs.get(epcIndex).getEpc();
+                components = epcs.get(epcIndex).getComponents();
+            } catch (Exception ex) {
+
+                // do not return any epc in entry
+                link.setName(&quot;EPC&quot;);
+                link.setDescription(&quot;There is no EPC under this URI.&quot;);
+            }
+
+            links.getContent().add(link);
+            links.getContent().addAll(components);
+        }
+
+        if (event instanceof TransactionEvent) {</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+<p><table class="bodyTable"><tr class="a"><th>File</th>
+<th>Line</th>
+</tr>
+<tr class="b"><td>org\fosstrak\webadapters\epcis\logic\QueryBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/QueryBusinessLogic.html#797">797</a></td>
+</tr>
+<tr class="a"><td>org\fosstrak\webadapters\epcis\logic\QueryBusinessLogic.java</td>
+<td><a href="./xref/org/fosstrak/webadapters/epcis/logic/QueryBusinessLogic.html#837">837</a></td>
+</tr>
+<tr class="b"><td colspan='2'><div class="source"><pre>            TransactionEvent myEvent = (TransactionEvent) event;
+            List&lt;ElectronicProductCode&gt; epcs = myEvent.getEpcEntry();
+            Entry link = new Entry();
+            List&lt;Entry&gt; components = new ArrayList&lt;Entry&gt;();
+
+            try {
+                link = epcs.get(epcIndex).getEpc();
+                components = epcs.get(epcIndex).getComponents();
+            } catch (Exception ex) {
+
+                // do not return any epc in entry
+                link.setName(&quot;EPC&quot;);
+                link.setDescription(&quot;There is no EPC under this URI.&quot;);
+            }
+
+            links.getContent().add(link);
+            links.getContent().addAll(components);
+        }</pre>
+</div>
+</td></tr>
+<table class="bodyTable"></p>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2010
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>
