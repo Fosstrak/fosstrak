@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Accada EPCIS - </title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner2_left.jpg" alt="" />
+    
+            </a>
+                          <span id="bannerRight">
+    
+                                            <img src="../images/banner2_middle.jpg" alt="" />
+    
+            </span>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Dec 17, 2007 17:22:27 CET
+                          |   
+          <a href="../../index.html">Accada</a>
+              &gt;
+      
+          <a href="../">EPCIS</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Accada</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Accada</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>EPCIS Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../demo.html">Demo</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../docs/user-guide.html">User Guide</a>
+        </li>
+              
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+              
+    <li class="none">
+              <a href="../docs/architecture.html">Architecture</a>
+        </li>
+          </ul>
+          <h5>EPCIS Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-repository/project-reports.html">EPCIS Repository</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-queryclient/project-reports.html">EPCIS Query Client</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-captureclient/project-reports.html">EPCIS Capture Client</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-commons/project-reports.html">EPCIS Commons</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../epcis-interop-test/project-reports.html">EPCIS Interop Test</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Roadmap</h2><div class="section"><h3>Axis</h3><div class="section"><h4>Motivation for the use of Axis v1.4</h4><p>Axis 1.4 has been used for the generation of the service stubs, although Version 2.0 is already available. Since Version 2.0 is a complete rewrite using Axis 2.0 would have meant a major rewrite of the XML schema files. This would consequently have to be done every time a new draft of the upcoming standard is released. Therefore we didn't adapt the current implementation.</p></div><div class="section"><h4><a name="Axis Workarounds">Axis Workarounds</a></h4><ol type="1"><li><a name="Making use of Axis for Query Callback">Making use of Axis for Query Callback</a><p>As stated above sending the results of subscribed queries to their destination URI needs serializing an EPCISQueryDocumentType instance with all its parts into XML and then sending it via a HTTP POST request. As we've got the Axis genereated Java classes for the needed elements anyway it was obvious to reuse Axis' XML serializing framework. Unfortunately (ab)using Axis for only getting XML back without using the rest of the invocation framework wasn't envisioned by the Axis developers and therefore not documented. With the help from the Axis user mailing list the solution for serializing an instance of a class MyClass which has to be the result of a WSDL2Java run was found which is listed below:</p><div class="source"><pre>javax.xml.namespace.QName myClassXMLType = myClass Instance.getTypeDesc().getXmlType();
+OutputStream out = getYourStreamFromSomeObject.getOutputStream();
+OutputStreamWriter oWriter = new OutputStreamWriter(out);
+SerialisationContext serContext = new SerialisationContext(oWriter);
+serContext.setWriteXMLType(myClassXMLType);
+serContext.serialize(myClassXMLType, new NullAttributes(), myClass Instance, myClassXMLType, myClassInstance.class, false, true);
+oWriter.flush();
+out.flush();
+oWriter.close();
+out.close();</pre></div></li><li>The <tt>ArrayOfString</tt> Type and Axis<p>The file <tt>EPCglobal-epcis-query-1 0.xsd</tt> defines the type <tt>ArrayOfString</tt> as an element with a sequence of <tt>&lt;string&gt;content&lt;/string</tt>&gt; elements. Axis 1.4 doesn't generate a class for this type, but treats it simply as a Java array of <tt>String</tt> objects. This would be alright if it wouldn't mix everything up on deserialization because it doesn't have any type information for <tt>ArrayOfString</tt>. Our workaround isn't very elegant but functional. On the receiving (and therefore deserializing) side of the service, add an extra line to <tt>EPCglobal-epcisquery-1 0.xsd</tt> as shown below which forces Axis to generate a class with an appropriate deserializer. As this lives only on the deserializing end it doesn't affect the output or standard compliance of the implementation.</p><div class="source"><pre>&lt;xsd:complexType name=&quot;ArrayOfString&quot;&gt;
+  &lt;xsd:sequence&gt;
+    &lt;xsd:element name=&quot;string&quot; type=&quot;xsd:string&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;/&gt;
+    &lt;xsd:element name=&quot;DoNotUseHackAroundBug&quot; type=&quot;xsd:boolean&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;0&quot;/&gt;
+  &lt;/xsd:sequence&gt;
+&lt;/xsd:complexType&gt;</pre></div></li></ol></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

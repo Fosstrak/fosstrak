@@ -1,0 +1,17 @@
+-classpath 'C:/accada/epcis/epcis-repository/target/classes;C:/Documents and Settings/chr/.m2/repository/log4j/log4j/1.2.12/log4j-1.2.12.jar;C:/Documents and Settings/chr/.m2/repository/commons-discovery/commons-discovery/0.4/commons-discovery-0.4.jar;C:/Documents and Settings/chr/.m2/repository/org/apache/axis/axis/1.4/axis-1.4.jar;C:/Documents and Settings/chr/.m2/repository/javax/mail/mail/1.4/mail-1.4.jar;C:/Documents and Settings/chr/.m2/repository/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar;C:/Documents and Settings/chr/.m2/repository/avalon-framework/avalon-framework/4.1.3/avalon-framework-4.1.3.jar;C:/Documents and Settings/chr/.m2/repository/axis/axis-wsdl4j/1.5.1/axis-wsdl4j-1.5.1.jar;C:/Documents and Settings/chr/.m2/repository/org/apache/axis/axis-jaxrpc/1.4/axis-jaxrpc-1.4.jar;C:/Documents and Settings/chr/.m2/repository/commons-logging/commons-logging/1.1/commons-logging-1.1.jar;C:/Documents and Settings/chr/.m2/repository/org/accada/epcis/epcis-commons/0.2.1-SNAPSHOT/epcis-commons-0.2.1-SNAPSHOT.jar;C:/Documents and Settings/chr/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar;C:/Documents and Settings/chr/.m2/repository/logkit/logkit/1.0.1/logkit-1.0.1.jar;C:/Documents and Settings/chr/.m2/repository/org/apache/axis/axis-saaj/1.4/axis-saaj-1.4.jar'
+ -protected
+-sourcepath
+'C:/accada/epcis/epcis-repository/src/main/java'
+-author
+-bottom
+'Copyright © 2007. All Rights Reserved.'
+-charset
+'ISO-8859-1'
+-d
+'C:/accada/epcis/epcis-repository/target/site/apidocs'
+-doctitle
+'epcis-repository 0.2.1-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'epcis-repository 0.2.1-SNAPSHOT API'

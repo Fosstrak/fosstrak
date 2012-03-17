@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pmd version="4.2.5" timestamp="2010-12-29T09:43:23.092">
+<file name="C:\fosstrak\epcis\epcis-repository\src\main\java\org\fosstrak\epcis\repository\EpcisQueryControlInterface.java">
+<violation beginline="25" endline="25" begincolumn="1" endcolumn="52" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.epcis.repository" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.epcis.model.InvalidURIException'
+</violation>
+<violation beginline="26" endline="26" begincolumn="1" endcolumn="56" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.epcis.repository" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.epcis.model.QueryParameterException'
+</violation>
+</file>
+<file name="C:\fosstrak\epcis\epcis-repository\src\main\java\org\fosstrak\epcis\repository\capture\CaptureOperationsModule.java">
+<violation beginline="426" endline="428" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.capture" class="CaptureOperationsModule" method="logDocument" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="541" endline="543" begincolumn="55" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.capture" class="CaptureOperationsModule" method="handleEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="595" endline="597" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.capture" class="CaptureOperationsModule" method="handleEvent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="851" endline="881" begincolumn="13" endcolumn="5" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.epcis.repository.capture" class="CaptureOperationsModule" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'eventType'.
+</violation>
+<violation beginline="1347" endline="1349" begincolumn="16" endcolumn="9" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.capture" class="CaptureOperationsModule" method="checkEpc" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="C:\fosstrak\epcis\epcis-repository\src\main\java\org\fosstrak\epcis\repository\query\QueryOperationsBackendSQL.java">
+<violation beginline="259" endline="261" begincolumn="92" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="QueryOperationsBackendSQL" method="prepareSimpleEventQuery" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="281" endline="283" begincolumn="37" endcolumn="37" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="QueryOperationsBackendSQL" method="prepareSimpleEventQuery" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="697" endline="697" begincolumn="9" endcolumn="17" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="QueryOperationsBackendSQL" method="fetchExistsSubscriptionId" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+</file>
+<file name="C:\fosstrak\epcis\epcis-repository\src\main\java\org\fosstrak\epcis\repository\query\QueryOperationsModule.java">
+<violation beginline="56" endline="56" begincolumn="1" endcolumn="55" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.epcis.repository.query" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.epcis.model.QueryTooLargeException'
+</violation>
+<violation beginline="579" endline="579" begincolumn="11" endcolumn="44" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="QueryOperationsModule" method="parseExtensionField" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="586" endline="586" begincolumn="11" endcolumn="44" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="QueryOperationsModule" method="parseExtensionField" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="593" endline="593" begincolumn="11" endcolumn="54" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="QueryOperationsModule" method="parseExtensionField" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="603" endline="603" begincolumn="11" endcolumn="32" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="QueryOperationsModule" method="parseExtensionField" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\epcis\epcis-repository\src\main\java\org\fosstrak\epcis\repository\query\QuerySubscription.java">
+<violation beginline="208" endline="229" begincolumn="13" endcolumn="5" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.fosstrak.epcis.repository.query" class="QuerySubscription" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'queryParams'.
+</violation>
+<violation beginline="381" endline="383" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="QuerySubscription" method="callbackObject" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\epcis\epcis-repository\src\main\java\org\fosstrak\epcis\repository\query\QuerySubscriptionScheduled.java">
+<violation beginline="31" endline="31" begincolumn="1" endcolumn="56" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.epcis.repository.query" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.epcis.model.ImplementationException'
+</violation>
+</file>
+<file name="C:\fosstrak\epcis\epcis-repository\src\main\java\org\fosstrak\epcis\repository\query\Schedule.java">
+<violation beginline="21" endline="657" begincolumn="1" endcolumn="3" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.fosstrak.epcis.repository.query" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+<violation beginline="36" endline="36" begincolumn="1" endcolumn="56" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.epcis.repository.query" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.epcis.model.ImplementationException'
+</violation>
+<violation beginline="38" endline="38" begincolumn="1" endcolumn="62" rule="UnusedImports" ruleset="Import Statement Rules" package="org.fosstrak.epcis.repository.query" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.fosstrak.epcis.model.SubscriptionControlsException'
+</violation>
+<violation beginline="240" endline="242" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="Schedule" method="dayMadeValid" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="281" endline="283" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="Schedule" method="hourMadeValid" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="315" endline="317" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.epcis.repository.query" class="Schedule" method="minuteMadeValid" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+</pmd>

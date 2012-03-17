@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pmd-cpd>
+<duplication lines="12" tokens="124">
+<file line="709" path="C:\fosstrak\epcis\epcis-captureclient\src\main\java\org\fosstrak\epcis\captureclient\CaptureClientGui.java"/>
+<file line="726" path="C:\fosstrak\epcis\epcis-captureclient\src\main\java\org\fosstrak\epcis\captureclient\CaptureClientGui.java"/>
+<codefragment>
+<![CDATA[
+                if (!CaptureClientHelper.addChildEpcList(document, root, mwChildEPCsTextField.getText())) {
+                    JOptionPane.showMessageDialog(frame, "Please specify at least one EPC", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                CaptureClientHelper.addAction(document, root, (String) mwActionComboBox.getSelectedItem());
+                CaptureClientHelper.addBizStep(document, root, mwBizStepTextField.getText());
+                CaptureClientHelper.addDisposition(document, root, mwDispositionTextField.getText());
+                CaptureClientHelper.addReadPoint(document, root, mwReadPointTextField.getText());
+                CaptureClientHelper.addBizLocation(document, root, mwBizLocationTextField.getText());
+                CaptureClientHelper.addBizTransactions(document, root, fromGui(mwBizTransIDFields, mwBizTransTypeFields));
+            } else if (EpcisEventType.fromGuiIndex(index) == EpcisEventType.QuantityEvent) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="10" tokens="108">
+<file line="709" path="C:\fosstrak\epcis\epcis-captureclient\src\main\java\org\fosstrak\epcis\captureclient\CaptureClientGui.java"/>
+<file line="760" path="C:\fosstrak\epcis\epcis-captureclient\src\main\java\org\fosstrak\epcis\captureclient\CaptureClientGui.java"/>
+<codefragment>
+<![CDATA[
+                if (!CaptureClientHelper.addEpcList(document, root, mwEpcListTextField.getText())) {
+                    JOptionPane.showMessageDialog(frame, "Please specify at least one EPC", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                CaptureClientHelper.addAction(document, root, (String) mwActionComboBox.getSelectedItem());
+                CaptureClientHelper.addBizStep(document, root, mwBizStepTextField.getText());
+                CaptureClientHelper.addDisposition(document, root, mwDispositionTextField.getText());
+                CaptureClientHelper.addReadPoint(document, root, mwReadPointTextField.getText());
+                CaptureClientHelper.addBizLocation(document, root, mwBizLocationTextField.getText());
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<title>QuerySubscriptionTriggered xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/org/accada/epcis/repository/query/QuerySubscriptionTriggered.html">View Javadoc</a></div><pre>
+
+<a name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
+<a name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright (C) 2007 ETH Zurich</em>
+<a name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
+<a name="4" href="#4">4</a>   <em class="jxr_comment"> * This file is part of Accada (www.accada.org).</em>
+<a name="5" href="#5">5</a>   <em class="jxr_comment"> *</em>
+<a name="6" href="#6">6</a>   <em class="jxr_comment"> * Accada is free software; you can redistribute it and/or</em>
+<a name="7" href="#7">7</a>   <em class="jxr_comment"> * modify it under the terms of the GNU Lesser General Public</em>
+<a name="8" href="#8">8</a>   <em class="jxr_comment"> * License version 2.1, as published by the Free Software Foundation.</em>
+<a name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
+<a name="10" href="#10">10</a>  <em class="jxr_comment"> * Accada is distributed in the hope that it will be useful,</em>
+<a name="11" href="#11">11</a>  <em class="jxr_comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</em>
+<a name="12" href="#12">12</a>  <em class="jxr_comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</em>
+<a name="13" href="#13">13</a>  <em class="jxr_comment"> * Lesser General Public License for more details.</em>
+<a name="14" href="#14">14</a>  <em class="jxr_comment"> *</em>
+<a name="15" href="#15">15</a>  <em class="jxr_comment"> * You should have received a copy of the GNU Lesser General Public</em>
+<a name="16" href="#16">16</a>  <em class="jxr_comment"> * License along with Accada; if not, write to the Free</em>
+<a name="17" href="#17">17</a>  <em class="jxr_comment"> * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,</em>
+<a name="18" href="#18">18</a>  <em class="jxr_comment"> * Boston, MA  02110-1301  USA</em>
+<a name="19" href="#19">19</a>  <em class="jxr_comment"> */</em>
+<a name="20" href="#20">20</a>  
+<a name="21" href="#21">21</a>  <strong class="jxr_keyword">package</strong> org.accada.epcis.repository.query;
+<a name="22" href="#22">22</a>  
+<a name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> java.util.GregorianCalendar;
+<a name="24" href="#24">24</a>  
+<a name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> javax.management.Notification;
+<a name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> javax.management.timer.Timer;
+<a name="27" href="#27">27</a>  
+<a name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.accada.epcis.model.ArrayOfString;
+<a name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.accada.epcis.model.Poll;
+<a name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> org.accada.epcis.model.QueryParam;
+<a name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.accada.epcis.model.QueryParams;
+<a name="32" href="#32">32</a>  <strong class="jxr_keyword">import</strong> org.accada.epcis.model.QueryResults;
+<a name="33" href="#33">33</a>  <strong class="jxr_keyword">import</strong> org.accada.epcis.soap.ImplementationExceptionResponse;
+<a name="34" href="#34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.Log;
+<a name="35" href="#35">35</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.LogFactory;
+<a name="36" href="#36">36</a>  
+<a name="37" href="#37">37</a>  <em class="jxr_javadoccomment">/**</em>
+<a name="38" href="#38">38</a>  <em class="jxr_javadoccomment"> * Implementation of triggers. The Schedule checks every once in a while on the</em>
+<a name="39" href="#39">39</a>  <em class="jxr_javadoccomment"> * trigger condition. If the trigger condition is met the query associated with</em>
+<a name="40" href="#40">40</a>  <em class="jxr_javadoccomment"> * the subscription is executed. The checking frequency may be changed in the</em>
+<a name="41" href="#41">41</a>  <em class="jxr_javadoccomment"> * properties.</em>
+<a name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * </em>
+<a name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> * @author Andrea Grössbauer</em>
+<a name="44" href="#44">44</a>  <em class="jxr_javadoccomment"> */</em>
+<a name="45" href="#45">45</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/accada/epcis/repository/query/QuerySubscriptionTriggered.html">QuerySubscriptionTriggered</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../../org/accada/epcis/repository/query/QuerySubscriptionScheduled.html">QuerySubscriptionScheduled</a> {
+<a name="46" href="#46">46</a>  
+<a name="47" href="#47">47</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> serialVersionUID = 658402150914797471L;
+<a name="48" href="#48">48</a>  
+<a name="49" href="#49">49</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Log LOG = LogFactory.getLog(QuerySubscriptionTriggered.<strong class="jxr_keyword">class</strong>);
+<a name="50" href="#50">50</a>  
+<a name="51" href="#51">51</a>      <strong class="jxr_keyword">private</strong> String trigger;
+<a name="52" href="#52">52</a>  
+<a name="53" href="#53">53</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/accada/epcis/repository/query/QuerySubscriptionTriggered.html">QuerySubscriptionTriggered</a>(<strong class="jxr_keyword">final</strong> String subscriptionID, <strong class="jxr_keyword">final</strong> <a href="../../../../../org/accada/epcis/model/QueryParams.html">QueryParams</a> queryParams, <strong class="jxr_keyword">final</strong> String dest,
+<a name="54" href="#54">54</a>              <strong class="jxr_keyword">final</strong> Boolean reportIfEmpty, <strong class="jxr_keyword">final</strong> GregorianCalendar initialRecordTime,
+<a name="55" href="#55">55</a>              <strong class="jxr_keyword">final</strong> GregorianCalendar lastTimeExecuted, <strong class="jxr_keyword">final</strong> String queryName, <strong class="jxr_keyword">final</strong> String trigger,
+<a name="56" href="#56">56</a>              <strong class="jxr_keyword">final</strong> <a href="../../../../../org/accada/epcis/repository/query/Schedule.html">Schedule</a> every10min) <strong class="jxr_keyword">throws</strong> ImplementationExceptionResponse {
+<a name="57" href="#57">57</a>          <strong class="jxr_keyword">super</strong>(subscriptionID, queryParams, dest, reportIfEmpty, initialRecordTime, lastTimeExecuted, every10min,
+<a name="58" href="#58">58</a>                queryName);
+<a name="59" href="#59">59</a>          <strong class="jxr_keyword">this</strong>.trigger = trigger;
+<a name="60" href="#60">60</a>      }
+<a name="61" href="#61">61</a>  
+<a name="62" href="#62">62</a>      <em class="jxr_javadoccomment">/**</em>
+<a name="63" href="#63">63</a>  <em class="jxr_javadoccomment">     * {@inheritDoc} First checks on the trigger condition: if fulfilled then</em>
+<a name="64" href="#64">64</a>  <em class="jxr_javadoccomment">     * execute Query.</em>
+<a name="65" href="#65">65</a>  <em class="jxr_javadoccomment">     * </em>
+<a name="66" href="#66">66</a>  <em class="jxr_javadoccomment">     * @see org.accada.epcis.repository.query.QuerySubscriptionScheduled#handleNotification(javax.management.Notification,</em>
+<a name="67" href="#67">67</a>  <em class="jxr_javadoccomment">     *      java.lang.Object)</em>
+<a name="68" href="#68">68</a>  <em class="jxr_javadoccomment">     */</em>
+<a name="69" href="#69">69</a>      @Override
+<a name="70" href="#70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> handleNotification(<strong class="jxr_keyword">final</strong> Notification pNotification, <strong class="jxr_keyword">final</strong> Object pHandback) {
+<a name="71" href="#71">71</a>          <strong class="jxr_keyword">if</strong> (pHandback == <strong class="jxr_keyword">null</strong>) {
+<a name="72" href="#72">72</a>              LOG.error(<span class="jxr_string">"The timer stating the next scheduled query execution time is null!"</span>);
+<a name="73" href="#73">73</a>              <strong class="jxr_keyword">return</strong>;
+<a name="74" href="#74">74</a>          }
+<a name="75" href="#75">75</a>          Timer timer = (Timer) pHandback;
+<a name="76" href="#76">76</a>  
+<a name="77" href="#77">77</a>          <strong class="jxr_keyword">if</strong> (!doItAgain.booleanValue()) {
+<a name="78" href="#78">78</a>              timer.stop();
+<a name="79" href="#79">79</a>          } <strong class="jxr_keyword">else</strong> {
+<a name="80" href="#80">80</a>              <strong class="jxr_keyword">try</strong> {
+<a name="81" href="#81">81</a>                  LOG.debug(<span class="jxr_string">"Checking trigger condition ..."</span>);
+<a name="82" href="#82">82</a>                  String queryName = <span class="jxr_string">"SimpleEventQuery"</span>;
+<a name="83" href="#83">83</a>                  <a href="../../../../../org/accada/epcis/model/QueryParams.html">QueryParams</a> params = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/accada/epcis/model/QueryParams.html">QueryParams</a>();
+<a name="84" href="#84">84</a>  
+<a name="85" href="#85">85</a>                  <em class="jxr_comment">// add MATCH_anyEPC query param</em>
+<a name="86" href="#86">86</a>                  <a href="../../../../../org/accada/epcis/model/QueryParam.html">QueryParam</a> param = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/accada/epcis/model/QueryParam.html">QueryParam</a>();
+<a name="87" href="#87">87</a>                  param.setName(<span class="jxr_string">"MATCH_anyEPC"</span>);
+<a name="88" href="#88">88</a>                  <a href="../../../../../org/accada/epcis/model/ArrayOfString.html">ArrayOfString</a> strings = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/accada/epcis/model/ArrayOfString.html">ArrayOfString</a>();
+<a name="89" href="#89">89</a>                  strings.getString().add(trigger);
+<a name="90" href="#90">90</a>                  param.setValue(strings);
+<a name="91" href="#91">91</a>                  params.getParam().add(param);
+<a name="92" href="#92">92</a>  
+<a name="93" href="#93">93</a>                  <em class="jxr_comment">// add GE_recordTime query param</em>
+<a name="94" href="#94">94</a>                  param = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/accada/epcis/model/QueryParam.html">QueryParam</a>();
+<a name="95" href="#95">95</a>                  param.setName(<span class="jxr_string">"GE_recordTime"</span>);
+<a name="96" href="#96">96</a>                  param.setValue(initialRecordTime);
+<a name="97" href="#97">97</a>                  params.getParam().add(param);
+<a name="98" href="#98">98</a>  
+<a name="99" href="#99">99</a>                  <em class="jxr_comment">// send the query</em>
+<a name="100" href="#100">100</a>                 <a href="../../../../../org/accada/epcis/model/Poll.html">Poll</a> poll = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/accada/epcis/model/Poll.html">Poll</a>();
+<a name="101" href="#101">101</a>                 poll.setParams(params);
+<a name="102" href="#102">102</a>                 poll.setQueryName(queryName);
+<a name="103" href="#103">103</a>                 <a href="../../../../../org/accada/epcis/model/QueryResults.html">QueryResults</a> results = executePoll(poll);
+<a name="104" href="#104">104</a>                 <strong class="jxr_keyword">if</strong> (results.getResultsBody().getEventList() != <strong class="jxr_keyword">null</strong>) {
+<a name="105" href="#105">105</a>                     LOG.debug(<span class="jxr_string">"Trigger condition fulfilled!"</span>);
+<a name="106" href="#106">106</a>                     LOG.debug(<span class="jxr_string">"Executing subscribed query associated with trigger event ..."</span>);
+<a name="107" href="#107">107</a>                     <strong class="jxr_keyword">super</strong>.executeQuery();
+<a name="108" href="#108">108</a>                     LOG.debug(<span class="jxr_string">"Triggered query successfully executed!"</span>);
+<a name="109" href="#109">109</a>                 }
+<a name="110" href="#110">110</a>             } <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a name="111" href="#111">111</a>                 String msg = <span class="jxr_string">"An error occurred while checking trigger condition for query with subscriptionID '"</span>
+<a name="112" href="#112">112</a>                         + subscriptionID + <span class="jxr_string">"': "</span> + e.getMessage();
+<a name="113" href="#113">113</a>                 LOG.error(msg, e);
+<a name="114" href="#114">114</a>             }
+<a name="115" href="#115">115</a> 
+<a name="116" href="#116">116</a>             <em class="jxr_comment">// determine next scheduled execution time</em>
+<a name="117" href="#117">117</a>             setNextScheduledExecutionTime(timer);
+<a name="118" href="#118">118</a>         }
+<a name="119" href="#119">119</a>     }
+<a name="120" href="#120">120</a> }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

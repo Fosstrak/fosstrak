@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pmd version="4.2.5" timestamp="2010-12-29T09:42:45.748">
+<file name="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\utils\QueryCallbackListener.java">
+<violation beginline="92" endline="94" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.fosstrak.epcis.utils" class="QueryCallbackListener" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\fosstrak\epcis\epcis-commons\src\main\java\org\fosstrak\epcis\utils\TimeParser.java">
+<violation beginline="239" endline="241" begincolumn="29" endcolumn="29" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.fosstrak.epcis.utils" class="TimeParser" method="parse" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+</pmd>
