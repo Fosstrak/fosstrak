@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak HAL - FEIG Configuration</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:35:03 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">HAL</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>HAL Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+      
+            
+      
+            
+            
+            
+      
+              
+            <li class="expanded">
+              <a href="../docs/user-guide.html">User</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/user-simulator.html">Simulator</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-impinj.html">Impinj</a>
+        </li>
+                  
+    <li class="none">
+              <strong>Feig</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/developer-index.html">Developer</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/developer-changelog.html">Developer Changelog</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>HAL Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-commons/project-reports.html">HAL Commons</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-sim/project-reports.html">HAL Simulator</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-impinj/project-reports.html">HAL Impinj</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-feig/project-reports.html">HAL Feig</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>FEIG Configuration</h2><div class="section"><h3>Supported Reader Types</h3><p>Fosstrak HAL FEIG implementation was designed for and tested on following reader types of the FEIG OBID i-scan series:</p><ul><li><a href="#LRU">ID ISC.LRU1000</a> (Ethernet, TPC/IP)</li><li><a href="#MR">ID ISC.MR101-A</a> (RS232/485, COM)<p>The implementations are tested on the reader models mentioned above but may work for other readers with the same interface and protocol: e.g. ID ISC.M02-B, ID ISC.PRH101-A, ID ISC.PR101-A.</p></li></ul></div><div class="section"><h3>ID ISC.<a name="LRU">LRU</a>1000</h3><div class="section"><h4>Configuration of the Fosstrak Reader</h4><p>The following XML code is an example on how to configure the Fosstrak Reader to use this readers HAL implementation. The name can be chosen arbitrary but must be unique if multiple readers are configured. The class implementing the <tt>HardwareAbstraction</tt> interface for this reader type is <tt>org.fosstrak.hal.impl.feig.FeigTCPIPController</tt>. The properties element contains the path to the configuration file. For information about this see the configuration file example below.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+   &lt;!-- All readers (HardwareAbstractions) used --&gt;
+      &lt;readers&gt;
+         &lt;reader&gt;
+            &lt;name&gt;FeigTCPIPController&lt;/name&gt;
+            &lt;class&gt;org.fosstrak.hal.impl.feig.FeigTCPIPController&lt;/class&gt;
+            &lt;properties&gt;/props/FeigTCPIPController.xml&lt;/properties&gt;
+            &lt;readpoint&gt;Antenna1&lt;/readpoint&gt;
+         &lt;/reader&gt;
+      &lt;/readers&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Configuration File Example</h4><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!-- Properties file for Feig i-scan UHF readers using a TCP/IP connection --&gt;
+&lt;!-- Reader: Feig Long Range Reader OBID i-scan ID ISC.LRU1000 (TCP/IP) --&gt;
+&lt;properties&gt;
+
+   &lt;!-- Address of the reader --&gt;
+   &lt;!-- Value: address (string) --&gt;
+   &lt;address&gt;129.132.75.246&lt;/address&gt;
+
+   &lt;!-- The port the reader is listening --&gt;
+   &lt;!-- Value: port number between 0 and 65525 --&gt;
+   &lt;port&gt;10001&lt;/port&gt;
+
+   &lt;!-- The communication timeout in milliseconds --&gt;
+   &lt;!-- Value: timeout (integer value) --&gt;
+   &lt;timeout&gt;5000&lt;/timeout&gt;
+
+   &lt;!-- Configuration file with the transponder model configuration --&gt;
+   &lt;epcTransponderModelsConfig&gt;/props/EPCTransponderModels_default.xml&lt;/epcTransponderModelsConfig&gt;
+
+   &lt;!-- The IdTypes configuration file --&gt;
+   &lt;idTypesConfig&gt;/props/IDTypes_default.xml&lt;/idTypesConfig&gt;
+
+   &lt;!-- List of readpoints that represent specific antennas
+        The name of the readpoint can be chosen arbitrary but it must be unique.
+        The connector of the readpoint is the number of the channel the antenna is connected to.
+        The connector number is an integer in the range 1 to 4. --&gt;
+   &lt;readpoint&gt;
+      &lt;name&gt;Antenna1&lt;/name&gt;
+      &lt;connector&gt;1&lt;/connector&gt;
+   &lt;/readpoint&gt;
+
+&lt;/properties&gt;</pre></div></div></div><div class="section"><h3>ID ISC.<a name="MR">MR</a>101-A</h3><div class="section"><h4>Configuration of the Fosstrak Reader</h4><p>The following XML code is an example on how to configure the Fosstrak Reader to use this readers HAL implementation. The name can be chosen arbitrary but must be unique if multiple readers are configured. The class implementing the <tt>HardwareAbstraction</tt> interface for this reader type is <tt>org.fosstrak.hal.impl.feig.FeigCOMController</tt>. The properties element contains the path to the configuration file. For information about this see the configuration file example below.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+   &lt;!-- All readers (HardwareAbstractions) used --&gt;
+      &lt;readers&gt;
+         &lt;reader&gt;
+            &lt;name&gt;FeigCOMController&lt;/name&gt;
+            &lt;class&gt;org.fosstrak.hal.impl.feig.FeigCOMController&lt;/class&gt;
+            &lt;properties&gt;/props/FeigCOMController.xml&lt;/properties&gt;
+            &lt;readpoint&gt;Antenna1&lt;/readpoint&gt;
+            &lt;readpoint&gt;Antenna2&lt;/readpoint&gt;
+         &lt;/reader&gt;
+      &lt;/readers&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4>Configuration File Example</h4><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!-- Properties file for Feig i-scan HF readers using a serial connection (RS232) --&gt;
+&lt;!-- Reader: Feig Midrange Reader ID ISC.MR/PR/PRH10x (serial version) --&gt;
+&lt;properties&gt;
+
+   &lt;!-- Number of the COM port the reader is attached to --&gt;
+   &lt;!-- Value: COM port number (1-16) --&gt;
+   &lt;comPort&gt;1&lt;/comPort&gt;
+
+   &lt;!-- The communication speed (baud rate) of the COM port --&gt;
+   &lt;!-- Value: 115200, 57600, 38400, 19200, 9600, 4800, 2400 or 1200 --&gt;
+   &lt;baudRate&gt;38400&lt;/baudRate&gt;
+
+   &lt;!-- The serial frame format --&gt;
+   &lt;!-- Value format: dps, where d = databits (7, 8),
+      p = parity (N[one], E[ven], O[dd]) and s = stopbit (0, 1, 2) --&gt;
+   &lt;!-- Example: &lt;frame&gt;8E1&lt;/frame&gt; --&gt;
+   &lt;frame&gt;8E1&lt;/frame&gt;
+
+   &lt;!-- The COM communication timeout in milliseconds --&gt;
+   &lt;!-- Note: Multiplexers and high number of tags increase the readtime.
+      Use a higher timeout value in this case (~1500ms). --&gt;
+   &lt;!-- Value: timeout (integer value) --&gt;
+   &lt;timeout&gt;1000&lt;/timeout&gt;
+
+   &lt;!-- The Tag / Transponder model that is used in the application --&gt;
+   &lt;!-- Note: It is possible to ommit the transponder model. In this case, the
+      tag type is tried to be determined automatically. This requires additional
+      read cycles for specific operations which may not be appropriate. This is
+      the only possibility if more than one transponder type is used within a
+      single application though. --&gt;
+   &lt;!-- Value: transponder type name. Use getSupportedTransponderTypes() to get
+      a list of supported transponders of the attached reader. (This is reader
+      firmware specific and cannot be determined in advance) --&gt;
+   &lt;!-- Example: &lt;transponderModel&gt;ICODESLI&lt;/transponderModel&gt; --&gt;
+   &lt;transponderModel&gt;ICODE1&lt;/transponderModel&gt;
+
+   &lt;!-- The multiplexer configuration file --&gt;
+   &lt;!-- Note: Multiplexer configuration is set up in a separate properties file.
+      For single antenna configuration the multiplexerConfig element can be
+      commented out and a single readpoint name given in this file (see below). --&gt;
+   &lt;!-- Value: multiplexer configuration file name --&gt;
+   &lt;multiplexerConfig&gt;/props/FeigMultiplex.xml&lt;/multiplexerConfig&gt;
+
+   &lt;!-- If no multiplexer configuration file defined, you can declare one single
+      readpoint name here. This parameter is omitted if a multiplexerConfig
+      element exists above. --&gt;
+   &lt;!-- The name of the readpoint can be chosen arbitrary but it must be unique. --&gt;
+   &lt;!--readpoint&gt;
+      &lt;name&gt;Antenna&lt;/name&gt;
+   &lt;/readpoint--&gt;
+
+&lt;/properties&gt;</pre></div><p>Optional multiplex configuration:</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!-- Properties file for Feig antenna multiplexers --&gt;
+&lt;!-- Multiplexer: Feig i-scan ID ISC.ANT.MUX --&gt;
+&lt;properties&gt;
+
+   &lt;!-- List of readpoints that represent specific antennas
+      The name of the readpoint can be chosen arbitrary but it must be unique.
+      The map of the readpoint is a vector of channels that represent the path
+         from the reader to the readpoint (antenna).
+      The map vector has dimension 3 where each component defines the output
+         channel (0-8) of a multiplexer at levels 1-3.
+      Multiplexer levels that are unused for a specific readpoint are set to 0. --&gt;
+   &lt;readpoint&gt;
+      &lt;name&gt;Antenna1&lt;/name&gt;
+      &lt;map&gt;1,0,0&lt;/map&gt;
+   &lt;/readpoint&gt;
+   &lt;readpoint&gt;
+      &lt;name&gt;Antenna2&lt;/name&gt;
+      &lt;map&gt;2,0,0&lt;/map&gt;
+   &lt;/readpoint&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h4><a name="Java Communications API">Java Communications API</a></h4><p>To communicate with the reader over a COM-port, the HAL implementation for ID ISC.MR101-A uses the Java Communications API. It has been desinged and tested with Java Communications 2.0 API on Windows XP (win32).</p><p>The current version of the Java Communications API is 3.0 and can be found on the <a href="http://java.sun.com/products/javacomm/">Java Communications product page</a>. There are versions for Solaris and Linux only, support for Windows has been dropped. <a href="http://www.google.com/search?q=javacomm20-win32.zip+download">Java Communication 2.0 API for Windows</a> can be found on the internet.</p></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

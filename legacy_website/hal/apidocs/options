@@ -1,0 +1,19 @@
+-classpath 'C:/accada/hal/target/classes;C:/accada/hal/hal-commons/target/classes;C:/accada/hal/hal-impl-sim/target/classes;C:/accada/hal/hal-impl-feig/target/classes;C:/accada/hal/hal-impl-impinj/target/classes;C:/Documents and Settings/admin/.m2/repository/log4j/log4j/1.2.12/log4j-1.2.12.jar;C:/Documents and Settings/admin/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar;C:/Documents and Settings/admin/.m2/repository/commons-lang/commons-lang/2.3/commons-lang-2.3.jar;C:/Documents and Settings/admin/.m2/repository/commons-collections/commons-collections/3.2/commons-collections-3.2.jar;C:/Documents and Settings/admin/.m2/repository/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar;C:/Documents and Settings/admin/.m2/repository/javax/servlet/servlet-api/2.2/servlet-api-2.2.jar;C:/Documents and Settings/admin/.m2/repository/avalon-framework/avalon-framework/4.1.3/avalon-framework-4.1.3.jar;C:/Documents and Settings/admin/.m2/repository/commons-beanutils/commons-beanutils-core/1.7.0/commons-beanutils-core-1.7.0.jar;C:/Documents and Settings/admin/.m2/repository/org/fosstrak/hal/hal-commons/0.5.1-SNAPSHOT/hal-commons-0.5.1-SNAPSHOT.jar;C:/Documents and Settings/admin/.m2/repository/xerces/xerces/1.2.3/xerces-1.2.3.jar;C:/Documents and Settings/admin/.m2/repository/commons-jxpath/commons-jxpath/1.2/commons-jxpath-1.2.jar;C:/Documents and Settings/admin/.m2/repository/commons-logging/commons-logging-api/1.0.4/commons-logging-api-1.0.4.jar;C:/Documents and Settings/admin/.m2/repository/commons-logging/commons-logging/1.1/commons-logging-1.1.jar;C:/Documents and Settings/admin/.m2/repository/commons-digester/commons-digester/1.8/commons-digester-1.8.jar;C:/Documents and Settings/admin/.m2/repository/javax/comm/comm/2.0.3/comm-2.0.3.jar;C:/Documents and Settings/admin/.m2/repository/logkit/logkit/1.0.1/logkit-1.0.1.jar;C:/Documents and Settings/admin/.m2/repository/jdom/jdom/b9/jdom-b9.jar;C:/Documents and Settings/admin/.m2/repository/commons-configuration/commons-configuration/1.4/commons-configuration-1.4.jar;C:/Documents and Settings/admin/.m2/repository/ant/ant-optional/1.5.1/ant-optional-1.5.1.jar;C:/Documents and Settings/admin/.m2/repository/commons-codec/commons-codec/1.3/commons-codec-1.3.jar'
+ -encoding
+'ISO-8859-1'
+-protected
+-sourcepath
+'C:/accada/hal/hal-commons/src/main/java;C:/accada/hal/hal-impl-sim/src/main/java;C:/accada/hal/hal-impl-feig/src/main/java;C:/accada/hal/hal-impl-impinj/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2008. All Rights Reserved.'
+-charset
+'ISO-8859-1'
+-d
+'C:/accada/hal/target/site/apidocs'
+-doctitle
+'hal 0.5.1-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'hal 0.5.1-SNAPSHOT API'

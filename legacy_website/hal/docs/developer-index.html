@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak HAL - Developer Index</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:35:03 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">HAL</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>HAL Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/user-guide.html">User</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/user-simulator.html">Simulator</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-impinj.html">Impinj</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-feig.html">Feig</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+      
+            
+      
+              
+            <li class="expanded">
+              <strong>Developer</strong>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/developer-changelog.html">Developer Changelog</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>HAL Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-commons/project-reports.html">HAL Commons</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-sim/project-reports.html">HAL Simulator</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-impinj/project-reports.html">HAL Impinj</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-feig/project-reports.html">HAL Feig</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Developer Index</h2><p>The following sections describe the technical specification of Fosstrak's HAL interface and implementations. It is intended as an introduction to future developers.</p><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Introduction">Introduction</a></li><li><a href="#Architectural">Architectural Overview</a></li><li><a href="#HAL">HAL Interface</a></li><li><a href="#Use">Use HAL directly</a></li></ol></div><div class="section"><h3><a name="Introduction">Introduction</a></h3><p>The goal of Fosstrak HAL is to provide a common interface and wrappers implementing it to uniformly access various RFID readers.</p><p>Each reader has to be accessed through its own proprietary protocol. This is very inflexible. If you access the reader directly and want to exchange it with an other model, you have to adjust your application to control the reader through a different protocol.</p><p>Fosstrak HAL solves this problem by providing one single interface to access all the implemented readers. With this the code specific to the reader is moved from the application to the hardware abstraction layer. The application does not need to adjust to a specific reader but simply uses the <tt>HardwareAbstraction</tt> interface to access all readers.</p><p>New readers currently not implemented in the Fosstrak HAL project can easily be added as a new module. The controller must implement the <tt>HardwareAbstraction</tt> interface and communicate with the reader over the corresponding protocol.</p><p>The Fosstrak HAL project includes a simulator framework. There are several simulator controllers, each implementing the <tt>HardwareAbstraction</tt> interface. This allows to access the simulators in exactly the same way as HAL implementations for hardware readers.</p></div><div class="section"><h3><a name="Architectural">Architectural</a> Overview</h3><p>The following figure gives an overview of the HAL architecture.</p><img src="../images/hal_architecture.png" alt="architectural overview" /><p>The <tt>HardwareAbstraction</tt> defines the interface between the HAL and the Fosstrak Reader or any other applitacion using the Fosstrak HAL. It standardises access to various readers and simulators of readers. This allows uniform usage. The readers and simulators become interchangeable because the code specific to the reader is part of the HAL and not of the application.</p><p>The implementations of the <tt>HardwareAbstraction</tt> interface are divided into multiple modules. One for the simulators and one for each reader manufacturer. A module can contain one or multiple reader controllers.</p></div><div class="section"><h3><a name="HAL">HAL</a> Interface</h3><p>The following UML diagram shows the <tt>HardwareAbstraction</tt> interface.</p><img src="../images/HardwareAbstraction.png" alt="UML diagram of HardwareAbstraction interface" /><p>To explain the interface, the methods are divided into following groups:</p><ul><li><a href="#Identify">Identify</a></li><li><a href="#Asynchronous">Asynchronous Identify</a></li><li><a href="#Read">Read and Write</a></li><li><a href="#Kill">Kill and WriteId</a></li><li><a href="#Controller">Controller Management</a></li></ul><p>The structure of the <tt>Observation</tt> returned by the <tt>identify</tt> method is explicated in an extra <a href="#Observation">Observation</a> paragraph.</p><p>The exact description of each methods arguments, functionality and return types can be looked up in the <a href="../apidocs/index.html">JavaDoc</a>.</p><div class="section"><h4><a name="Identify">Identify</a></h4><p>The <tt>identify</tt> method has to be implemented mandantory and identifies the tags in the range of the read points given as arguments.</p><p>The return type is an array containig an <tt>Observation</tt> for each readpoint given in the argument array. Each <tt>Observation</tt> contains the name of the HAL controller and the read point where the tags were identified, a timestamp when the identification happened, an array of IDs, a corresponding array of <tt>TagDescriptor</tt>s and a boolean set to false if the identification failed.</p></div><div class="section"><h4><a name="Asynchronous">Asynchronous</a> Identify</h4><p>The methods <tt>startAsynchronousIdentify</tt>, <tt>stopAsynchronousIdentify</tt>, <tt>isAsynchronousIdentifyRunning</tt>, <tt>addAsynchronousIdentifyListener</tt>, <tt>removeAsynchronousIdentifyListener</tt> and <tt>supportsAsynchronousIdentify</tt> serve to identify the tags in the range of the given read points in a continuous way that operates asynchronously. Listeners can be added and removed arbitrarily during operation. Implementation of the asynchronous identification is optional.</p></div><div class="section"><h4><a name="Read">Read</a> and Write</h4><p>Implementing the <tt>readBytes</tt> and <tt>writeBytes</tt> methods is facultative. If implemented and supported by the tag, data can be read from or written to a specified tag in range. The transponder ID should be a result of a previous <tt>identify</tt>.</p></div><div class="section"><h4><a name="Kill">Kill</a> and WriteId</h4><p>The <tt>kill</tt> method kills the specified tag if in range. A killed tag does not respond to requests any longer.</p><p>Using <tt>writeId</tt> writes a new ID onto a tag independent of its position in memory. The actual position of the ID depends on the type of tag used. This method may fail even if the addressed tag is in read range because a write operation needs higher power to succeed.</p><p>Both methods are optional to implement and additionally may depend on the capabilities of the tag.</p></div><div class="section"><h4><a name="Controller">Controller</a> Management</h4><p>The <tt>getHALName</tt> and <tt>getReadPointNames</tt> methods are mandantory to implement. They deliver essential information about the HAL.</p><p>All further methods described below are optional to implement.</p><p>The <b>parameter</b>-methods can be used to get parameters set in the configuration file. Depending on the controller implementation, parameters of the reader can be read and set through these methods. Examples of reader parameters are reader information, transmission power, listen before talk parameters, receiver or anti-collision configuration. Available parameters should be declared in the configuration file of the controller or can be requested with the <tt>getAllParameterNames</tt> method.</p><p>The <tt>reset</tt> method reinitialises the controller including the unlocking of all previously locked / muted tags.</p><p>The <b>ReadPoint</b>-methods allow to control the individual read points and get information about them.</p></div><div class="section"><h4><a name="Observation">Observation</a></h4><p>The <tt>identify</tt> method returns an array of <tt>Observation</tt> objects, one for each read point given in the argument array. The following UML class diagram shows the <tt>Observation</tt> and its associated classes.</p><img src="../images/Observation.png" alt="UML class diagram of the Observation" /><p>Among information about place and time of the identification process, an <tt>Observation</tt> contains an array of IDs detected at the read point. A correspondingarray of <tt>TagDescriptor</tt> provides information about the tags associated with the IDs.</p><p>A <tt>TagDescriptor</tt> comprises an <tt>IDType</tt> and a <tt>MemoryDescriptor</tt>. The <tt>IDType</tt> object contains the name and description of the type of ID of the tag. Supported types including description are defined in the IDTypes configuration file. The content of the default IDTypes configuration file shipped with the Fosstrak HAL is listed below:</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!-- List of EPCclass1Gen2 tag chip properties --&gt;
+&lt;!-- Code, Identifier and ID as hexadecimal encoded number, e.g. '0xAB' --&gt;
+&lt;!-- Size in bytes as number, e.g. '2' --&gt;
+&lt;!-- Read and Write as boolean, e.g. 'true' and 'false' --&gt;
+&lt;properties&gt;
+
+   &lt;!-- EPC --&gt;
+   &lt;type&gt;
+      &lt;idType&gt;EPC&lt;/idType&gt;
+      &lt;description&gt;EPC as tag id&lt;/description&gt;
+   &lt;/type&gt;
+
+   &lt;!-- ISO15693 --&gt;
+   &lt;type&gt;
+      &lt;idType&gt;ISO15693&lt;/idType&gt;
+      &lt;description&gt;ID of a ISO 15693 compliant tag&lt;/description&gt;
+   &lt;/type&gt;
+
+   &lt;!-- Philips ICode1 --&gt;
+   &lt;type&gt;
+      &lt;idType&gt;ICode1&lt;/idType&gt;
+      &lt;description&gt;ID of a Philips ICode1 tag&lt;/description&gt;
+   &lt;/type&gt;
+
+   &lt;!-- Philips ICodeUID --&gt;
+   &lt;type&gt;
+      &lt;idType&gt;ICodeUID&lt;/idType&gt;
+      &lt;description&gt;ID of a Philips ICodeUID tag&lt;/description&gt;
+   &lt;/type&gt;
+
+   &lt;!-- Unknown type --&gt;
+   &lt;type&gt;
+      &lt;idType&gt;Unknown&lt;/idType&gt;
+      &lt;description&gt;Unknown tag&lt;/description&gt;
+   &lt;/type&gt;
+
+&lt;/properties&gt;</pre></div><p>A <tt>MemoryDescriptor</tt> includes an array of <tt>MemoryBankDescriptor</tt>. Each of these describes properties of a memory bank on the tag chip: memory size in bytes, if this memory bank is readable and if it is writeable. Properties of ’EPC’ tag chips and their memory banks are defined in the EPCTransponderModels configuration file. An excerpt of the default configuration file with two of the currently supported ’EPC’ tag chips is listed below:</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!-- List of EPCclass1Gen2 tag chip properties --&gt;
+&lt;!-- Code, Identifier and ID as hexadecimal encoded number, e.g. '0xAB' --&gt;
+&lt;!-- Size in bytes as number, e.g. '2' --&gt;
+&lt;!-- Read and Write as boolean, e.g. 'true' and 'false' --&gt;
+&lt;properties&gt;
+
+   &lt;!-- Impinj Monza --&gt;
+   &lt;tag&gt;
+      &lt;type&gt;EPCclass1Gen2&lt;/type&gt;
+      &lt;manufacturer&gt;Impinj&lt;/manufacturer&gt;
+      &lt;modelName&gt;Monza&lt;/modelName&gt;
+      &lt;modelID&gt;0x040&lt;/modelID&gt;
+      &lt;modelID&gt;0x050&lt;/modelID&gt;
+      &lt;modelID&gt;0x070&lt;/modelID&gt;
+      &lt;modelID&gt;0x071&lt;/modelID&gt;
+      &lt;reservedSize&gt;8&lt;/reservedSize&gt;
+      &lt;reservedRead&gt;false&lt;/reservedRead&gt;
+      &lt;reservedWrite&gt;false&lt;/reservedWrite&gt;
+      &lt;epcSize&gt;16&lt;/epcSize&gt;
+      &lt;epcRead&gt;true&lt;/epcRead&gt;
+      &lt;epcWrite&gt;true&lt;/epcWrite&gt;
+      &lt;tidSize&gt;4&lt;/tidSize&gt;
+      &lt;tidRead&gt;true&lt;/tidRead&gt;
+      &lt;tidWrite&gt;false&lt;/tidWrite&gt;
+      &lt;userSize&gt;0&lt;/userSize&gt;
+      &lt;userRead&gt;false&lt;/userRead&gt;
+      &lt;userWrite&gt;false&lt;/userWrite&gt;
+   &lt;/tag&gt;
+
+   &lt;!-- STMicroelectronics XRAG2 --&gt;
+   &lt;!-- NOTE: Dynamic configuration, either 32B EPC memory or 16B EPC and user --&gt;
+   &lt;tag&gt;
+      &lt;type&gt;EPCclass1Gen2&lt;/type&gt;
+      &lt;manufacturer&gt;STMicroelectronics&lt;/manufacturer&gt;
+      &lt;modelName&gt;XRAG2&lt;/modelName&gt;
+      &lt;modelID&gt;0x240&lt;/modelID&gt;
+      &lt;reservedSize&gt;8&lt;/reservedSize&gt;
+      &lt;reservedRead&gt;false&lt;/reservedRead&gt;
+      &lt;reservedWrite&gt;false&lt;/reservedWrite&gt;
+      &lt;epcSize&gt;32&lt;/epcSize&gt;
+      &lt;epcRead&gt;true&lt;/epcRead&gt;
+      &lt;epcWrite&gt;true&lt;/epcWrite&gt;
+      &lt;tidSize&gt;8&lt;/tidSize&gt;
+      &lt;tidRead&gt;true&lt;/tidRead&gt;
+      &lt;tidWrite&gt;false&lt;/tidWrite&gt;
+      &lt;userSize&gt;16&lt;/userSize&gt;
+      &lt;userRead&gt;true&lt;/userRead&gt;
+      &lt;userWrite&gt;true&lt;/userWrite&gt;
+   &lt;/tag&gt;
+
+
+   &lt;!-- Tag Types --&gt;
+   &lt;type&gt;
+      &lt;name&gt;EPCclass1Gen2&lt;/name&gt;
+      &lt;code&gt;0x84&lt;/code&gt;
+   &lt;/type&gt;
+
+
+   &lt;!-- Manufacturers --&gt;
+   &lt;manufacturer&gt;
+      &lt;name&gt;Impinj&lt;/name&gt;
+      &lt;classIdentifier&gt;0xE2&lt;/classIdentifier&gt;
+      &lt;maskDesignerIdentifier&gt;0x001&lt;/maskDesignerIdentifier&gt;
+   &lt;/manufacturer&gt;
+
+   &lt;manufacturer&gt;
+      &lt;name&gt;STMicroelectronics&lt;/name&gt;
+      &lt;classIdentifier&gt;0xE2&lt;/classIdentifier&gt;
+      &lt;maskDesignerIdentifier&gt;0x007&lt;/maskDesignerIdentifier&gt;
+   &lt;/manufacturer&gt;
+
+&lt;/properties&gt;</pre></div></div></div><div class="section"><h3><a name="Use">Use</a> HAL directly</h3><p>The Fosstrak HAL is designed to be used by Fosstrak Reader. However a <tt>HardwareAbstraction</tt> implementation can be used by an other application without using the Fosstrak Reader. This allows uniform access to all implemented readers including the simulator and increases performance if the filtering and reporting system of Fosstrak Reader and Access over the Reader Protocol is not needed.</p><p>The name of the class implementing the <tt>HardwareAbstraction</tt> interface for each reader can be found in the corresponding user documentation. To instanciate this class the constructor has to be called with two arguments of type string. The first parameter is the name of the HAL, the second one is the path and name of the configuration file.</p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

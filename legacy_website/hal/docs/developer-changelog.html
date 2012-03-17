@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak HAL - Developer Change Log</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:35:02 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">HAL</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>HAL Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/user-guide.html">User</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/user-simulator.html">Simulator</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-impinj.html">Impinj</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-feig.html">Feig</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+      
+            
+            
+              
+            <li class="expanded">
+              <a href="../docs/developer-index.html">Developer</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+                  
+    <li class="none">
+              <strong>Developer Changelog</strong>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>HAL Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-commons/project-reports.html">HAL Commons</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-sim/project-reports.html">HAL Simulator</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-impinj/project-reports.html">HAL Impinj</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-feig/project-reports.html">HAL Feig</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Developer Change Log</h2><div class="section"><h3>Changes</h3><ul><li><a href="#0.4.0">Release 0.4.0</a><ul><li><a href="#HardwareAbstraction">HardwareAbstraction Interface</a></li><li><a href="#Own">Own Project</a></li><li><a href="#Impinj">Impinj Speedway</a></li><li><a href="#MR">FEIG MR101-A</a></li><li><a href="#LRU">FEIG LRU1000</a></li><li><a href="#XML">XML Configuration Files</a></li><li><a href="#Resource">Resource Loading</a></li><li><a href="#Simulated">Simulated Tag Memory</a></li><li><a href="#EPCclass1Gen2">EPC class1 Gen2 Tag Models</a></li><li><a href="#Graphic">Graphic Simulator Memory Access</a></li><li><a href="#Tag">Tag Descriptor</a></li></ul></li></ul></div><div class="section"><h3>Release <a name="0.4.0">0.4.0</a></h3><div class="section"><h4><a name="HardwareAbstraction">HardwareAbstraction</a> Interface</h4><p>Changed <tt>HardwareAbstraction</tt> interface to remove inconsistencies and add new features. Most methods are affected. The changes can be divided into following categories:</p><ul><li>The <tt>Observation</tt> returned by the <tt>identify</tt> method can contain a <tt>TagDescriptor</tt> for each tag observed with information about the tag type and memory layout.</li><li>The data of the <tt>readBytes</tt> and <tt>writeBytes</tt> methods is stored in a <tt>UnsignedByteArray</tt> instead of a (signed) <tt>byte[]</tt>.</li><li>Error reporting has been improved with adding additional declarations for exceptions that can arise in the method implementation. Most notably a parameter check can return a specific <tt>ReadPointNotFoundException</tt> or <tt>OutOfBoundsException</tt> if it fails.</li><li>A (mandantory) <tt>getReadPointNames</tt> method has been added.</li><li>Every method that is not required to be implemented provides an additional 'supports'-method. If an optional method is implemented, the associated 'supports'-method returns true. If an optional method is not implemented and returns an <tt>UnsupportedOperationException</tt>, the associated 'supports'-method returns false.</li><li>The <tt>kill</tt> method takes a <tt>readPointName</tt> argument to be consistent with <tt>readBytes</tt> and <tt>writeBytes</tt> methods.</li><li>Some methods have been renamed. The method <tt>programId</tt> is now called <tt>writeId</tt>. Furthermore <tt>getAntennaPowerLevel</tt> and <tt>getAntennaNoiseLevel</tt> have been renamed to <tt>getReadPointPowerLevel</tt> and <tt>getReadPointNoiseLevel</tt> respectively to be consistent with the <tt>startUpReadPoint</tt>, <tt>shutDownReadPoint</tt> and <tt>isReadPointReady</tt> methods.</li><li>The methods for asynchronous identify have been changed to allow multiple listeners. Starting and stopping does not require a listener. These are added and removed with separat methods independent of start and stop.</li></ul></div><div class="section"><h4><a name="Own">Own</a> Project</h4><p>The HAL has moved from a module of Fosstrak Reader to an own project. It is subdivided into a module containing the <tt>HardwareAbstraction</tt> interface with common utilities and modules with implementations of the interface. Each implementation module contains one or more reader controllers of a reader manufacturer or the simulator.</p></div><div class="section"><h4><a name="Impinj">Impinj</a> SPeedway</h4><p>A <tt>HardwareAbstraction</tt> implementation for the Impinj Speedway reader has been added. The controller implements nearly all methods of the interface: <tt>identify</tt> (mandantory), <tt>readBytes</tt>, <tt>writeBytes</tt>, <tt>writeId</tt>, <tt>reset</tt>, <tt>kill</tt>, asynchronous identify and parameters. Not supported is shutting down and starting up a read point and getting read point noise level. Some parameters of the reader can be read and set using the <tt>getParameter</tt> and <tt>setParameter</tt> methods:</p><ul><li><tt>ReaderInfo</tt> (read only)</li><li><tt>TxPower</tt></li><li><tt>SupportedGen2Params</tt> (read only)</li><li><tt>Gen2Params</tt></li><li><tt>LBTParams</tt></li><li><tt>RxConfig</tt></li></ul><p>See th Impinj Mach1 protocol specification for information about functionality and format of the parameters.</p></div><div class="section"><h4>FEIG <a name="MR">MR</a>101-A</h4><p>A <tt>HardwareAbstraction</tt> implementation for FEIG OBID i-scan ID ISC.MR101-A has been added. The controller implements <tt>identify</tt> (mandantory), <tt>readBytes</tt>, <tt>writeBytes</tt>, <tt>reset</tt> and <tt>kill</tt> commands.</p><p>The implementation supports the FEIG OBID i-scan ID ISC.ANT.MUX multiplexer with 8 ports. Multiplexers can be cascaded up to a depth of three. This allows a maximum of 512 antennas on a single reader.</p></div><div class="section"><h4>FEIG <a name="LRU">LRU</a>1000</h4><p>A <tt>HardwareAbstraction</tt> implementation for FEIG OBID i-scan ID ISC.LRU1000 has been added. The controller implements <tt>identify</tt> (mandantory), <tt>readBytes</tt>, <tt>writeBytes</tt>, <tt>reset</tt> and <tt>kill</tt> commands.</p></div><div class="section"><h4><a name="XML">XML</a> Configuration Files</h4><p>All configuration files have been changed to XML format instead of a mix of XML and properties. This increases consistency and XML allows a hierarchical structures which is more readable for complex configurations.</p></div><div class="section"><h4><a name="Resource">Resource</a> Loading</h4><p>Resource loading has been completely redesigned. This fixes <a href="http://sourceforge.net/tracker/index.php?func=detail&aid=1547832&group_id=170795&atid=855583">1547832</a>.</p><p>There were several issues with the previous implementation of resource loading:</p><ul><li>Resource loading was not done uniformly. Sometimes <tt>FileInputStream</tt> was used, elsewere <tt>Class.getResourceAsStream</tt> or <tt>Class.getResource</tt>. Each of these works at bit different, looks for the file at its own places and needs more or less path adjustments to load a file that is packaged in a Java archive.</li><li>A path and postfix of the file name was hardcoded sometimes which made it difficult to name the file correctly and extract the corresponding prefix.</li><li>To adjust a configuration file to its own needs, the Java archive had to be extracted and started in a console by hand instead of just clicking on the executable jar file.</li></ul><p>The new implementation fixes these issues in the following way:</p><ul><li>Locating the resource files is done in a dedicated helper class for all resources.</li><li>The location search algorithm is sophisticated and works for relativ paths with or without leading slash, files in or outsite Java archives, path relative to various places or absolute and the possibility to give a default file name in case a custom file can not be found.</li><li>The resource locator first searches for the custom file. If no custom file can be found, the algorithm takes the default file. It is not necessary to extract the Java archive to customize resources such as configuration files.</li></ul><p>See the <a href="../../reader/docs/developer-changelog.html#1547832">Fosstrak Reader Developer Changlog</a> for a more detailed explanation of the new implementation of the resource loading.</p></div><div class="section"><h4><a name="Simulated">Simulated</a> Tag Memory</h4><p>Changed the tag memory layout of the simulated tag to match the EPCclass1Gen2 standard. The simulated tag now has 64 bit reserved memory, 256 bit EPC memory including CRC and PC bits, 64 bit TID memory with random 32 bit serial number and 256 bit user memory.</p></div><div class="section"><h4><a name="EPCclass1Gen2">EPCclass1Gen2</a> Tag Models</h4><p>An <tt>EPCTransponderModel</tt> class has been added to represent many different EPCclass1Gen2 tags in software. It provides memory layout information for following tag chips:</p><ul><li>Impinj Monza</li><li>Impinj Monaco</li><li>STMicroelectronics XRAG2</li><li>TexasInstruments Gen2</li><li>NXP UCODE EPC G2</li><li>NXP UCODE G2XM</li><li>NXP UCODE G2XL</li><li>Alien H2</li><li>and the Fosstrak Simulator tag with EPCclass1Gen2 compliant memory layout</li></ul><p>These are the most common tag chips also used in tags from other manufacturers. New tag chips can simply be added by writing their TID and memory information to a configuration file. Thereafter they are fully accessible by all reader controllers using the <tt>EPCTransponderModel</tt>. A default EPCTransponderModels configuration file containing TID and memory description for the tags listed above is shipped with the Fosstrak HAL.</p></div><div class="section"><h4><a name="Graphic">Graphic</a> Simulator Memory Access</h4><p>The user interface of the graphic simulator has been extended with the possibility to read and write the memory banks of a simulated tag.</p><img src="../images/memory_banks.png" alt="memory banks in the graphic simulator" /><p>The memory banks can be easily accessed through the context menu of a simulated tag.</p><img src="../images/memory_menu.png" alt="memory banks access through the context menu" /></div><div class="section"><h4><a name="Tag">Tag</a> Descriptor</h4><p>With the changed <tt>HardwareAbstraction</tt> interface, the <tt>Observation</tt> returned by the <tt>identify</tt> method can contain a <tt>TagDescriptor</tt> for each tag observed. It contains information about the ID type and memory layout of the tag. All current implementations (Impinj and FEIG readers) including the simulator add a <tt>TagDescriptor</tt> with according information to the <tt>Observation</tt>.</p></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

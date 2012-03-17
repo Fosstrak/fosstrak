@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak HAL - User Guide</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:35:03 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">HAL</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>HAL Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <strong>User</strong>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/user-simulator.html">Simulator</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-impinj.html">Impinj</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-feig.html">Feig</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/developer-index.html">Developer</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/developer-changelog.html">Developer Changelog</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>HAL Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-commons/project-reports.html">HAL Commons</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-sim/project-reports.html">HAL Simulator</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-impinj/project-reports.html">HAL Impinj</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-feig/project-reports.html">HAL Feig</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>User Guide</h2><div class="section"><h3>Usage of Fosstrak HAL</h3><ul><li>The Fosstrak HAL is designed to be used by Fosstrak Reader. To use it this way, please refer to the <a href="#Getting">Getting Started with Fosstrak Reader</a> and <a href="#Configuring">Configuring Fosstrak HAL</a> sections below.</li><li>The Fosstrak HAL can be used by other applications than Fosstrak Reader for uniform access to readers and the simulator. This increases performance if the filtering and reporting system of Fosstrak Reader is not used. To use Fosstrak HAL this way, please refer to the <a href="#Configuring"> Configuring Fosstrak HAL</a> section below and the <a href="developer-index.html"> Fosstrak HAL Developer</a> section for information about the Hardware Abstraction Interface.</li></ul></div><div class="section"><h3><a name="Getting">Getting</a> Started with Fosstrak Reader</h3><p>To use Fosstrak HAL with Fosstrak Reader, fosstrak-hal-common and the fosstrak-hal- &lt;reader&gt; you want to use has to be included on the class path. The Reader RP/RM Core binary package with dependencies allready includes the fosstrak-hal-common and implementations for the Simulator, Impinj and FEIG readers.</p><p>For instructions on how to use the Fosstrak Reader, please refer to the <a href="../../reader/docs/user-index.html">Fosstrak Reader Getting Started</a>.</p></div><div class="section"><h3><a name="Configuring">Configuring</a> Fosstrak HAL</h3><p>The Fosstrak HAL is configured through XML files. The path to the file is given in the ReaderDevice configuration file of the Reader Core or as an argument to the constructor if the hardware abstraction is accessed directly.</p><p>The configuration of the Fosstrak HAL depends on the reader that is used. Please refer to the configuration instructions for the reader you want to use:</p><ul><li><a href="user-simulator.html">Simulator</a> Graphic, Batch, Command Line or Multi (Client / Server)</li><li><a href="user-impinj.html">Impinj</a> Speedway</li><li><a href="user-feig.html">FEIG</a> ELECTRONICS OBID i-scan ID ISC.MR100/101 (COM) or OBID i-scan ID ISC.LRU1000 (TCP/IP)</li></ul></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

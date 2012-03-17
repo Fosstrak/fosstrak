@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak HAL - Impinj Configuration</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:35:03 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">HAL</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>HAL Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+      
+            
+            
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../docs/user-guide.html">User</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/user-simulator.html">Simulator</a>
+        </li>
+                  
+    <li class="none">
+              <strong>Impinj</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-feig.html">Feig</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/developer-index.html">Developer</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/developer-changelog.html">Developer Changelog</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>HAL Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-commons/project-reports.html">HAL Commons</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-sim/project-reports.html">HAL Simulator</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-impinj/project-reports.html">HAL Impinj</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../hal-impl-feig/project-reports.html">HAL Feig</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Impinj Speedway Configuration</h2><div class="section"><h3>Configuration of the Fosstrak Reader</h3><p>The following XML code is an example on how to configure the Fosstrak Reader to use this readers HAL implementation. The name can be chosen arbitrary but must be unique if multiple readers are configured. The class implementing the <tt>HardwareAbstraction</tt> interface for this reader type is <tt>org.fosstrak.hal.impl.impinj.ImpinjTCPIPController</tt>. The properties element contains the path to the configuration file. For information about this see the configuration file example below.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+   &lt;!-- All readers (HardwareAbstractions) used --&gt;
+      &lt;readers&gt;
+         &lt;reader&gt;
+            &lt;name&gt;ImpinjTCPIPController&lt;/name&gt;
+            &lt;class&gt;org.fosstrak.hal.impl.impinj.ImpinjTCPIPController&lt;/class&gt;
+            &lt;properties&gt;/props/ImpinjTCPIPController.xml&lt;/properties&gt;
+            &lt;readpoint&gt;Antenna1&lt;/readpoint&gt;
+         &lt;/reader&gt;
+      &lt;/readers&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- ... other configuration elements ... --&gt;
+
+&lt;/properties&gt;</pre></div></div><div class="section"><h3>Configuration File Example</h3><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!-- Properties file for Impinj Speedway reader using a TCP/IP connection --&gt;
+&lt;properties&gt;
+
+   &lt;!-- Address of the reader --&gt;
+   &lt;!-- Value: address (string) --&gt;
+   &lt;address&gt;129.132.75.246&lt;/address&gt;
+
+   &lt;!-- The port the reader is listening --&gt;
+   &lt;!-- Value: port number between 0 and 65525 --&gt;
+   &lt;port&gt;49380&lt;/port&gt;
+
+   &lt;!-- The communication timeout in milliseconds --&gt;
+   &lt;!-- Value: timeout (integer value) --&gt;
+   &lt;timeout&gt;5000&lt;/timeout&gt;
+
+   &lt;!-- Configuration file with the transponder model configuration --&gt;
+   &lt;epcTransponderModelsConfig&gt;/props/EPCTransponderModels_default.xml&lt;/epcTransponderModelsConfig&gt;
+
+   &lt;!-- The IdTypes configuration file --&gt;
+   &lt;idTypesConfig&gt;/props/IDTypes_default.xml&lt;/idTypesConfig&gt;
+
+   &lt;!-- The regulatory region for the reader according to Impinj Speedway Reference
+      Design / Mach1 API Specification, Operating Command Set version 2.8.0,
+      chapter 2.3.9 SetRegulatoryRegion' --&gt;
+   &lt;!-- Values:
+        0 (FCC part 15.247, US / North America),
+        1 (ETSI EN 300-220),
+        2 (ETSI EN 302-208 with LBT),
+        3 (Hong Kong 920-925 MHz),
+        4 (Taiwan 922-928 MHz),
+        5 (Japan 952-954 MHz),
+        6 (Japan 952-955 MHz, 10mW max power),
+        7 (ETSI EN 302-208 without LBT),
+        8 (Korea 910-914 MHz) --&gt;
+   &lt;!-- Note: Not every reader hardware implementation supports all regulatory regions! --&gt;
+   &lt;!-- Example: &lt;regulatoryRegion&gt;2&lt;/regulatoryRegion&gt; --&gt;
+   &lt;regulatoryRegion&gt;2&lt;/regulatoryRegion&gt;
+
+   &lt;!-- List of readpoints that represent specific antennas
+        The name of the readpoint can be chosen arbitrary but it must be unique.
+        The connector of the readpoint is the number of the channel the antenna is connected to.
+        The connector number is an integer in the range 1 to 4. --&gt;
+   &lt;readpoint&gt;
+      &lt;name&gt;Antenna1&lt;/name&gt;
+      &lt;connector&gt;1&lt;/connector&gt;
+   &lt;/readpoint&gt;
+
+   &lt;!-- Parameters from the reader. --&gt;
+   &lt;!-- The default settings partly depend on the regulatory region setting --&gt;
+   &lt;!-- These parameters can not be configured here. The values can be requested
+      with the getParameter() and set with the setParameter() method of the HAL --&gt;
+   &lt;!-- The values in this configuration file are informational only, please do
+      not edit them. R means this parameter is read only (getParameter returns
+      value, setParameter throws Exception), R/W means this parameter is readable
+      and writeable (getParameter returns current value, setParameter sets new value --&gt;
+   &lt;!-- Example: getParameter(&quot;reader.ReaderInfo&quot;), setParameter(&quot;reader.TxPower&quot;) --&gt;
+   &lt;reader&gt;
+      &lt;ReaderInfo&gt;R&lt;/ReaderInfo&gt;
+      &lt;TxPower&gt;R/W&lt;/TxPower&gt;
+      &lt;Gen2Params&gt;R/W&lt;/Gen2Params&gt;
+      &lt;SupportedGen2Params&gt;R&lt;/SupportedGen2Params&gt;
+      &lt;LBTParams&gt;R/W&lt;/LBTParams&gt;
+      &lt;RxConfig&gt;R/W&lt;/RxConfig&gt;
+   &lt;/reader&gt;
+
+&lt;/properties&gt;</pre></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
