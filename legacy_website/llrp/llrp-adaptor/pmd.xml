@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.2" timestamp="2009-08-18T11:41:23.479">
+<file name="C:\accada\llrp\llrp-adaptor\src\main\java\org\fosstrak\llrp\client\repository\sql\AbstractSQLRepository.java">
+<violation beginline="538" endline="538" begincolumn="25" endcolumn="33" rule="CheckResultSet" ruleset="Basic Rules" package="org.fosstrak.llrp.client.repository.sql" class="AbstractSQLRepository" method="count" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+</file>
+</pmd>

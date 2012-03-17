@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<title>NewLLRPMessageWizard xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/org/fosstrak/llrp/commander/wizards/NewLLRPMessageWizard.html">View Javadoc</a></div><pre>
+
+<a name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
+<a name="2" href="#2">2</a>   <em class="jxr_comment"> *  </em>
+<a name="3" href="#3">3</a>   <em class="jxr_comment"> *  Fosstrak LLRP Commander (www.fosstrak.org)</em>
+<a name="4" href="#4">4</a>   <em class="jxr_comment"> * </em>
+<a name="5" href="#5">5</a>   <em class="jxr_comment"> *  Copyright (C) 2008 ETH Zurich</em>
+<a name="6" href="#6">6</a>   <em class="jxr_comment"> *</em>
+<a name="7" href="#7">7</a>   <em class="jxr_comment"> *  This program is free software: you can redistribute it and/or modify</em>
+<a name="8" href="#8">8</a>   <em class="jxr_comment"> *  it under the terms of the GNU General Public License as published by</em>
+<a name="9" href="#9">9</a>   <em class="jxr_comment"> *  the Free Software Foundation, either version 3 of the License, or</em>
+<a name="10" href="#10">10</a>  <em class="jxr_comment"> *  (at your option) any later version.</em>
+<a name="11" href="#11">11</a>  <em class="jxr_comment"> *</em>
+<a name="12" href="#12">12</a>  <em class="jxr_comment"> *  This program is distributed in the hope that it will be useful,</em>
+<a name="13" href="#13">13</a>  <em class="jxr_comment"> *  but WITHOUT ANY WARRANTY; without even the implied warranty of</em>
+<a name="14" href="#14">14</a>  <em class="jxr_comment"> *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</em>
+<a name="15" href="#15">15</a>  <em class="jxr_comment"> *  GNU General Public License for more details.</em>
+<a name="16" href="#16">16</a>  <em class="jxr_comment"> *</em>
+<a name="17" href="#17">17</a>  <em class="jxr_comment"> *  You should have received a copy of the GNU General Public License</em>
+<a name="18" href="#18">18</a>  <em class="jxr_comment"> *  along with this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/&gt;" target="alexandria_uri">http://www.gnu.org/licenses/&gt;</a> </em>
+<a name="19" href="#19">19</a>  <em class="jxr_comment"> *</em>
+<a name="20" href="#20">20</a>  <em class="jxr_comment"> */</em>
+<a name="21" href="#21">21</a>  
+<a name="22" href="#22">22</a>  <strong class="jxr_keyword">package</strong> org.fosstrak.llrp.commander.wizards;
+<a name="23" href="#23">23</a>  
+<a name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.eclipse.jface.viewers.IStructuredSelection;
+<a name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.eclipse.jface.wizard.Wizard;
+<a name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.eclipse.ui.INewWizard;
+<a name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.eclipse.ui.IWorkbench;
+<a name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.eclipse.core.runtime.*;
+<a name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.eclipse.jface.operation.*;
+<a name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> java.lang.reflect.InvocationTargetException;
+<a name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.eclipse.jface.dialogs.MessageDialog;
+<a name="32" href="#32">32</a>  <strong class="jxr_keyword">import</strong> org.eclipse.jface.viewers.ISelection;
+<a name="33" href="#33">33</a>  <strong class="jxr_keyword">import</strong> org.eclipse.core.resources.*;
+<a name="34" href="#34">34</a>  <strong class="jxr_keyword">import</strong> org.eclipse.core.runtime.CoreException;
+<a name="35" href="#35">35</a>  <strong class="jxr_keyword">import</strong> java.io.*;
+<a name="36" href="#36">36</a>  <strong class="jxr_keyword">import</strong> org.eclipse.ui.*;
+<a name="37" href="#37">37</a>  <strong class="jxr_keyword">import</strong> org.eclipse.ui.ide.IDE;
+<a name="38" href="#38">38</a>  <strong class="jxr_keyword">import</strong> org.fosstrak.llrp.commander.util.LLRPFactory;
+<a name="39" href="#39">39</a>  <strong class="jxr_keyword">import</strong> org.llrp.ltk.types.LLRPMessage;
+<a name="40" href="#40">40</a>  
+<a name="41" href="#41">41</a>  <em class="jxr_javadoccomment">/**</em>
+<a name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * This wizard lets the user create a new LLRP message with all mandatory parameters set.</em>
+<a name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> * </em>
+<a name="44" href="#44">44</a>  <em class="jxr_javadoccomment"> * The implementation is based on Eclipse's "New File Wizard" template (see plug-in development environment).</em>
+<a name="45" href="#45">45</a>  <em class="jxr_javadoccomment"> *</em>
+<a name="46" href="#46">46</a>  <em class="jxr_javadoccomment"> * @author Ulrich Etter, ETHZ</em>
+<a name="47" href="#47">47</a>  <em class="jxr_javadoccomment"> *</em>
+<a name="48" href="#48">48</a>  <em class="jxr_javadoccomment"> */</em>
+<a name="49" href="#49">49</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/fosstrak/llrp/commander/wizards/NewLLRPMessageWizard.html">NewLLRPMessageWizard</a> <strong class="jxr_keyword">extends</strong> Wizard implements INewWizard {
+<a name="50" href="#50">50</a>  	
+<a name="51" href="#51">51</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> String PLUGIN_ID = <span class="jxr_string">"llrp"</span>;
+<a name="52" href="#52">52</a>  	
+<a name="53" href="#53">53</a>  	<strong class="jxr_keyword">private</strong> <a href="../../../../../org/fosstrak/llrp/commander/wizards/NewLLRPMessageWizardPage.html">NewLLRPMessageWizardPage</a> page;
+<a name="54" href="#54">54</a>  	<strong class="jxr_keyword">private</strong> ISelection selection;
+<a name="55" href="#55">55</a>  
+<a name="56" href="#56">56</a>  	<em class="jxr_javadoccomment">/**</em>
+<a name="57" href="#57">57</a>  <em class="jxr_javadoccomment">	 * Constructor for NewLLRPMessageWizard.</em>
+<a name="58" href="#58">58</a>  <em class="jxr_javadoccomment">	 */</em>
+<a name="59" href="#59">59</a>  	<strong class="jxr_keyword">public</strong> <a href="../../../../../org/fosstrak/llrp/commander/wizards/NewLLRPMessageWizard.html">NewLLRPMessageWizard</a>() {
+<a name="60" href="#60">60</a>  		<strong class="jxr_keyword">super</strong>();
+<a name="61" href="#61">61</a>  		setNeedsProgressMonitor(<strong class="jxr_keyword">true</strong>);
+<a name="62" href="#62">62</a>  	}
+<a name="63" href="#63">63</a>  	
+<a name="64" href="#64">64</a>  	<em class="jxr_javadoccomment">/**</em>
+<a name="65" href="#65">65</a>  <em class="jxr_javadoccomment">	 * Adding the page to the wizard.</em>
+<a name="66" href="#66">66</a>  <em class="jxr_javadoccomment">	 */</em>
+<a name="67" href="#67">67</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> addPages() {
+<a name="68" href="#68">68</a>  		page = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/fosstrak/llrp/commander/wizards/NewLLRPMessageWizardPage.html">NewLLRPMessageWizardPage</a>(selection);
+<a name="69" href="#69">69</a>  		addPage(page);
+<a name="70" href="#70">70</a>  	}
+<a name="71" href="#71">71</a>  
+<a name="72" href="#72">72</a>  	<em class="jxr_javadoccomment">/**</em>
+<a name="73" href="#73">73</a>  <em class="jxr_javadoccomment">	 * This method is called when 'Finish' button is pressed in</em>
+<a name="74" href="#74">74</a>  <em class="jxr_javadoccomment">	 * the wizard. We will create an operation and run it</em>
+<a name="75" href="#75">75</a>  <em class="jxr_javadoccomment">	 * using wizard as execution context.</em>
+<a name="76" href="#76">76</a>  <em class="jxr_javadoccomment">	 */</em>
+<a name="77" href="#77">77</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> performFinish() {
+<a name="78" href="#78">78</a>  		<strong class="jxr_keyword">final</strong> String folderName = page.getFolderName();
+<a name="79" href="#79">79</a>  		<strong class="jxr_keyword">final</strong> String fileName = page.getFileName();
+<a name="80" href="#80">80</a>  		<strong class="jxr_keyword">final</strong> String messageType = page.getLLRPMessageType();
+<a name="81" href="#81">81</a>  		IRunnableWithProgress op = <strong class="jxr_keyword">new</strong> IRunnableWithProgress() {
+<a name="82" href="#82">82</a>  			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> run(IProgressMonitor monitor) <strong class="jxr_keyword">throws</strong> InvocationTargetException {
+<a name="83" href="#83">83</a>  				<strong class="jxr_keyword">try</strong> {
+<a name="84" href="#84">84</a>  					doFinish(folderName, fileName, messageType, monitor);
+<a name="85" href="#85">85</a>  				} <strong class="jxr_keyword">catch</strong> (CoreException e) {
+<a name="86" href="#86">86</a>  					<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> InvocationTargetException(e);
+<a name="87" href="#87">87</a>  				} <strong class="jxr_keyword">finally</strong> {
+<a name="88" href="#88">88</a>  					monitor.done();
+<a name="89" href="#89">89</a>  				}
+<a name="90" href="#90">90</a>  			}
+<a name="91" href="#91">91</a>  		};
+<a name="92" href="#92">92</a>  		<strong class="jxr_keyword">try</strong> {
+<a name="93" href="#93">93</a>  			getContainer().run(<strong class="jxr_keyword">true</strong>, false, op);
+<a name="94" href="#94">94</a>  		} <strong class="jxr_keyword">catch</strong> (InterruptedException e) {
+<a name="95" href="#95">95</a>  			<strong class="jxr_keyword">return</strong> false;
+<a name="96" href="#96">96</a>  		} <strong class="jxr_keyword">catch</strong> (InvocationTargetException e) {
+<a name="97" href="#97">97</a>  			Throwable realException = e.getTargetException();
+<a name="98" href="#98">98</a>  			MessageDialog.openError(getShell(), <span class="jxr_string">"Error"</span>, realException.getMessage());
+<a name="99" href="#99">99</a>  			<strong class="jxr_keyword">return</strong> false;
+<a name="100" href="#100">100</a> 		}
+<a name="101" href="#101">101</a> 		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a name="102" href="#102">102</a> 	}
+<a name="103" href="#103">103</a> 	
+<a name="104" href="#104">104</a> 	<em class="jxr_javadoccomment">/**</em>
+<a name="105" href="#105">105</a> <em class="jxr_javadoccomment">	 * The worker method. It will find the container, create the</em>
+<a name="106" href="#106">106</a> <em class="jxr_javadoccomment">	 * file if missing or just replace its contents, and open</em>
+<a name="107" href="#107">107</a> <em class="jxr_javadoccomment">	 * the editor on the newly created file.</em>
+<a name="108" href="#108">108</a> <em class="jxr_javadoccomment">	 */</em>
+<a name="109" href="#109">109</a> 	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> doFinish(
+<a name="110" href="#110">110</a> 		String folderName,
+<a name="111" href="#111">111</a> 		String fileName,
+<a name="112" href="#112">112</a> 		String messageType, 
+<a name="113" href="#113">113</a> 		IProgressMonitor monitor)
+<a name="114" href="#114">114</a> 		<strong class="jxr_keyword">throws</strong> CoreException {
+<a name="115" href="#115">115</a> 		monitor.beginTask(<span class="jxr_string">"Creating "</span> + fileName, 2);
+<a name="116" href="#116">116</a> 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+<a name="117" href="#117">117</a> 		IResource resource = root.findMember(<strong class="jxr_keyword">new</strong> Path(folderName));
+<a name="118" href="#118">118</a> 		<strong class="jxr_keyword">if</strong> (!resource.exists() || !(resource instanceof IContainer)) {
+<a name="119" href="#119">119</a> 			throwCoreException(<span class="jxr_string">"Container \&quot;"</span> + folderName + <span class="jxr_string">"\&quot; does not exist."</span>);
+<a name="120" href="#120">120</a> 		}
+<a name="121" href="#121">121</a> 		IContainer container = (IContainer) resource;
+<a name="122" href="#122">122</a> 		<strong class="jxr_keyword">final</strong> IFile file = container.getFile(<strong class="jxr_keyword">new</strong> Path(fileName));
+<a name="123" href="#123">123</a> 		<strong class="jxr_keyword">try</strong> {
+<a name="124" href="#124">124</a> 			InputStream stream = openContentStream(messageType);
+<a name="125" href="#125">125</a> 			<strong class="jxr_keyword">if</strong> (file.exists()) {
+<a name="126" href="#126">126</a> 				file.setContents(stream, <strong class="jxr_keyword">true</strong>, <strong class="jxr_keyword">true</strong>, monitor);
+<a name="127" href="#127">127</a> 			} <strong class="jxr_keyword">else</strong> {
+<a name="128" href="#128">128</a> 				file.create(stream, <strong class="jxr_keyword">true</strong>, monitor);
+<a name="129" href="#129">129</a> 			}
+<a name="130" href="#130">130</a> 			stream.close();
+<a name="131" href="#131">131</a> 		} <strong class="jxr_keyword">catch</strong> (IOException e) {
+<a name="132" href="#132">132</a> 		}
+<a name="133" href="#133">133</a> 		monitor.worked(1);
+<a name="134" href="#134">134</a> 		monitor.setTaskName(<span class="jxr_string">"Opening file for editing..."</span>);
+<a name="135" href="#135">135</a> 		getShell().getDisplay().asyncExec(<strong class="jxr_keyword">new</strong> Runnable() {
+<a name="136" href="#136">136</a> 			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> run() {
+<a name="137" href="#137">137</a> 				IWorkbenchPage page =
+<a name="138" href="#138">138</a> 					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+<a name="139" href="#139">139</a> 				<strong class="jxr_keyword">try</strong> {
+<a name="140" href="#140">140</a> 					IDE.openEditor(page, file, <strong class="jxr_keyword">true</strong>);
+<a name="141" href="#141">141</a> 				} <strong class="jxr_keyword">catch</strong> (PartInitException e) {
+<a name="142" href="#142">142</a> 				}
+<a name="143" href="#143">143</a> 			}
+<a name="144" href="#144">144</a> 		});
+<a name="145" href="#145">145</a> 		monitor.worked(1);
+<a name="146" href="#146">146</a> 	}
+<a name="147" href="#147">147</a> 	
+<a name="148" href="#148">148</a> 	<em class="jxr_javadoccomment">/**</em>
+<a name="149" href="#149">149</a> <em class="jxr_javadoccomment">	 * Initializes file contents with a default LLRP message.</em>
+<a name="150" href="#150">150</a> <em class="jxr_javadoccomment">	 */</em>
+<a name="151" href="#151">151</a> 	<strong class="jxr_keyword">private</strong> InputStream openContentStream(String messageType) {
+<a name="152" href="#152">152</a> 		String contents = <span class="jxr_string">""</span>;
+<a name="153" href="#153">153</a> 		<strong class="jxr_keyword">try</strong> {
+<a name="154" href="#154">154</a> 			LLRPMessage message = LLRPFactory.createLLRPMessage(messageType);
+<a name="155" href="#155">155</a> 			contents = message.toXMLString();
+<a name="156" href="#156">156</a> 		} <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a name="157" href="#157">157</a> 			e.printStackTrace();
+<a name="158" href="#158">158</a> 		}
+<a name="159" href="#159">159</a> 		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> ByteArrayInputStream(contents.getBytes());
+<a name="160" href="#160">160</a> 	}
+<a name="161" href="#161">161</a> 
+<a name="162" href="#162">162</a> 	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> throwCoreException(String message) <strong class="jxr_keyword">throws</strong> CoreException {
+<a name="163" href="#163">163</a> 		IStatus status =
+<a name="164" href="#164">164</a> 			<strong class="jxr_keyword">new</strong> Status(IStatus.ERROR, PLUGIN_ID, IStatus.OK, message, <strong class="jxr_keyword">null</strong>);
+<a name="165" href="#165">165</a> 		<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> CoreException(status);
+<a name="166" href="#166">166</a> 	}
+<a name="167" href="#167">167</a> 
+<a name="168" href="#168">168</a> 	<em class="jxr_javadoccomment">/**</em>
+<a name="169" href="#169">169</a> <em class="jxr_javadoccomment">	 * We will accept the selection in the workbench to see if</em>
+<a name="170" href="#170">170</a> <em class="jxr_javadoccomment">	 * we can initialize from it.</em>
+<a name="171" href="#171">171</a> <em class="jxr_javadoccomment">	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)</em>
+<a name="172" href="#172">172</a> <em class="jxr_javadoccomment">	 */</em>
+<a name="173" href="#173">173</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> init(IWorkbench workbench, IStructuredSelection selection) {
+<a name="174" href="#174">174</a> 		<strong class="jxr_keyword">this</strong>.selection = selection;
+<a name="175" href="#175">175</a> 	}
+<a name="176" href="#176">176</a> }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+
