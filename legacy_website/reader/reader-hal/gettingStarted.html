@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Accada - Reader - Reader HAL Module</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                            <img src="../images/banner2_left.jpg" alt="" />
+    
+            </a>
+                          <span id="bannerRight">
+    
+                                            <img src="../images/banner2_middle.jpg" alt="" />
+    
+            </span>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: 06/04/2007
+                          |   
+          <a href="../../index.html">Accada</a>
+              &gt;
+      
+          <a href="../../../../">Reader</a>
+              &gt;
+      
+          reader-hal
+                        </div>
+            <div class="xright">      <a href="../../index.html">Accada</a>
+          |
+          <a href="../index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Accada</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>Reader Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../demo.html">Demo</a>
+        </li>
+              
+    <li class="none">
+              <a href="../started.html">Getting Started</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../howtohelp.html">How to help</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+          </ul>
+          <h5>Reader Project Modules</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../reader-rprm-core/index.html">RP/RM Core</a>
+        </li>
+              
+    <li class="none">
+              <a href="../reader-rp-proxy/index.html">RP Proxy</a>
+        </li>
+              
+    <li class="none">
+              <a href="../reader-rp-client/index.html">RP Client</a>
+        </li>
+              
+          
+              
+            
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../reader-hal/index.html">HAL</a>
+                <ul>
+                  
+    <li class="none">
+              <strong>Getting Started</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="writeWrapper.html">Write your own wrapper</a>
+        </li>
+                  
+    <li class="none">
+              <a href="dependencies.html">Dependencies</a>
+        </li>
+                  
+    <li class="none">
+              <a href="mail-lists.html">Mailing Lists</a>
+        </li>
+                  
+    <li class="none">
+              <a href="source-repository.html">Source Repository</a>
+        </li>
+                  
+    <li class="none">
+              <a href="dependency-convergence.html">Dependency Convergence</a>
+        </li>
+                  
+    <li class="none">
+              <a href="license.html">License</a>
+        </li>
+                  
+    <li class="none">
+              <a href="issue-tracking.html">Issue Tracking</a>
+        </li>
+                  
+    <li class="none">
+              <a href="project-reports.html">Reports</a>
+        </li>
+              </ul>
+        </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Reader HAL Module: Getting Started</h2><p>The Reader HAL Module cannot be used by itself. Its use is currently envisioned together with the Reader RP/RM Core. The RP/RM Core provides all of the filtering, aggregation, messaging, and configuration capabilities specified in the EPCglobal RP and RM specifications. To carry out the actual commands on a physical device or a simulator, the Reader RP/RM Core uses the interface and implementation provided by the reader HAL module.</p><div class="section"><h3>How to use the reader hal module</h3><ul><li>Include as a dependency (by default, it is configured as a dependency in the reader-rprm-core already)</li><li>Use the appropriate configuration files to configure the reader device (or the reader simulator) (The jar includes a number of example config files for the simulator: SimulatorControllerProperties.properties and GraphicSimulator.properties). <p>These are expected in a directory of the classphath named props. The main property file needs to be named after the controller class, e.g. SimulatorControllerProperties.properties for a controller named SimulatorController. It also important that the entries in the controller property file agree with the settings in the ReaderDevice.properties file of the RP/RM Core.</p></li></ul></div><div class="section"><h3>How to configure the Simulator</h3><p>The simulator framework (i.e. the SimulatorController implementation) has a properties file (<a href="example/SimulatorControllerProperties.properties"> SimulatorControllerProperties.properties</a>) as shown below. The property simType has to be set to the fully qualified name of the simulator class. In the current release only the GraphicSimulator is supported. The property numberOfReadPoints specifies the number of read points (i.e. antennas) of the simulator. The read point names are set using the properties readPoint_n, with n as the read point number.</p><div class="source"><pre>
+##########################################################
+#     ACCADA READER PROTOCOL SIMULATOR PROPERTIES        #
+##########################################################
+
+## SimulatorType to be loaded dynamically
+ # State the full package path
+ # currently only the GraphicSimulator is supported
+simType = org.accada.reader.hal.impl.sim.GraphicSimulator
+
+##
+ # Read point definition
+ # numberOfReadPoints specifies the number of sources...
+ #
+ # Read points are numbered according to the following convention:
+ # readPoint_1
+ # readPoint_2
+ #    ...
+ # readPoint_n
+ #
+ # For the read point choose a name what ever you want. The client has to use the same names to address this read points.
+numberOfReadPoints=4
+readPoint_1=Shelf1
+readPoint_2=Shelf2
+readPoint_3=Shelf3
+readPoint_4=Shelf4
+</pre></div><p>The concrete simulator implementation (in our case the GraphicSimulator) itself has a property file to set specific parameters. The name of the property file for the GraphicSimulator is GraphicSimulator.properties (<a href="example/GraphicSimulator.properties"> GraphicSimulator.properties</a>) as shown below. The layout, text and images of the GraphicSimulator can be adjusted by the different properties. The property Language is used to load the texts of the GUI components. The filename is constructed by adding the value of the Language property to GUIText_ and appending .properties (in our case GUIText_en.properties). The other properties set the image, fonts and dimensions of the GUI components of the GraphicSimulator.</p><div class="source"><pre># language
+Language = en
+
+# rfid reader
+ReaderImage = /images/rfid-reader.png
+ReaderWidth = 141
+ReaderHeight = 100
+ReaderLabelSize = 10
+ReaderLabelFont = Verdana
+
+# rfid antenna
+AntennasPerRow = 4
+AntennaImage = /images/rfid-antenna_0.png
+#AntennaImage = /images/rfid-antenna_1.png
+#AntennaImage = /images/rfid-antenna_2.png
+AntennaLabelFont = Verdana
+AntennaLabelSize = 10
+AntennaWidth = 100
+AntennaHeight = 110
+HorizontalInterAntennaPadding = 120
+VerticalInterAntennaPadding = 60
+
+# rfid tag
+TagImage = /images/rfid-tag.png
+TagLabelFont = Verdana
+TagLabelSize = 10
+TagWidth = 100
+TagHeight = 20
+InterTagPadding = 10
+#TagPrefix = A1B4F537D3
+TagPrefix = 9204F0004B0
+
+# paddings
+FramePadding = 50
+HorizontalPadding = 50
+VerticalPadding = 50
+
+# Dialog Windows
+DialogWindowWidth = 800
+DialogWindowHeight = 120</pre></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

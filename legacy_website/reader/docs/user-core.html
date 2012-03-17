@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Fosstrak Reader - User Guide Core</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Jonas Haller" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner_left.gif" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Oct 20, 2008 05:34:28 CEST
+                          |   
+          <a href="../../index.html">Fosstrak</a>
+              &gt;
+      
+          <a href="../">Reader</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Fosstrak</a>
+          |
+          <a href="../index.html">Reader</a>
+          |
+          <a href="../../fc/index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          |
+          <a href="../../hal/index.html">HAL</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Fosstrak</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>Reader Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <a href="../features.html">Features</a>
+        </li>
+              
+    <li class="none">
+              <a href="../demo.html">Demo</a>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../faq.html">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="../howtohelp.html">How to help</a>
+        </li>
+              
+    <li class="none">
+              <a href="../team-list.html">Project Team</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+          <h5>Guides &amp; Documentation</h5>
+        <ul>
+              
+          
+              
+            
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../docs/user-index.html">User</a>
+                <ul>
+                  
+    <li class="none">
+              <strong>Core</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-proxy.html">Proxy</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-client.html">Client</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/user-changelog.html">User Changlog</a>
+        </li>
+              </ul>
+        </li>
+              
+          
+              
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="../docs/developer-index.html">Developer</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../docs/developer-guide.html">Developer Guide</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../docs/developer-changelog.html">Developer Changelog</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../apidocs/index.html">JavaDoc</a>
+        </li>
+          </ul>
+          <h5>Reader Project Modules</h5>
+        <ul>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../reader-rprm-core/project-reports.html">RP/RM Core</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../reader-rp-proxy/project-reports.html">RP Proxy</a>
+              </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+              <a href="../reader-rp-client/project-reports.html">RP Client</a>
+              </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>User Guide Reader RP/RM Core</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Features">Features</a></li><li><a href="#Application">Field of Application</a></li><li><a href="#Installing">Installing the Fosstrak RP/RM Core</a></li><li><a href="#First">First Steps</a></li><li><a href="#Configure">Configure the Reader</a></li></ol></div><div class="section"><h3><a name="Features">Features</a></h3><p>Implements the EPCglobal Reader Protocol Version 1.1. and Reader Management Version 1.0 in Java.</p><p>Elements of the protocol implemented include:</p><ul><li>Transport Binding: TCP and HTTP</li><li>Message Binding: XML and Text</li><li>Synchronous and Asynchronous Messaging (Notification Channels)</li><li>Triggers</li><li>Data Selectors</li><li>SNMP Binding of Reader Management 1.0</li></ul></div><div class="section"><h3>Field of <a name="Application">Application</a></h3><ul><li>Turn a reader that does not implement the EPCglobal Reader Protocol itself into a compliant reader. Deploy the appropriate Fosstrak HAL module and this module as a Reader Protocol compliant proxy together with the reader.<p>At the moment, the following readers that are not Reader Protocol compliant do allready have a Fosstrak HAL implementation:</p><ul><li>Impinj Speedway</li><li>FEIG ELECTRONIC OBID i-scan ID ISC.MR100/101</li><li>FEIG ELECTRONIC OBID i-scan ID ISC.LRU1000</li></ul><p>Similar readers might work, but are not tested.</p><p>New modules with an implementation of the <tt>HardwareAbstraction</tt> interface for other readers can be added to the Fosstrak HAL Project by anyone. See the <a href="../../hal/index.html">Fosstrak HAL Project</a> website for more information.</p></li><li>Use an existing or write your own HAL wrapper for your reader and then leverage the filtering, event generation and messaging provided by our reader implementation.</li><li>Simulate a single reader via a graphical user interface (using the Fosstrak HAL Simulator module).</li><li>Simulate a network of hundred of readers using the simulation framework of the Fosstrak HAL project.</li><li>Embed our reader implementation into your reader.</li></ul></div><div class="section"><h3><a name="Installing">Installing</a> the Fosstrak Reader RP/RM Core</h3><p>The following instructions show how to install the Fosstrak Reader:</p><ul><li>Download the reader binaries with the dependencies included from the <a href="../download.html">download</a> section of the website.</li><li>Unzip the downloaded file</li><li>Make sure a JRE 1.5 or higher is installed and it is added to the path variable.</li></ul></div><div class="section"><h3><a name="First">First</a> Steps</h3><p>Start the reader instance in one of the following ways:</p><ul><li>Invoke the executable jar</li><li>In a console execute<div class="source"><pre>java -jar &lt;path-to&gt;/reader-rprm-core-&lt;version&gt;.jar</pre></div></li><li>In a console execute<div class="source"><pre>java -cp &lt;path-to&gt;/reader-rprm-core-&lt;version&gt;.jar org.fosstrak.reader.rprm.core.ReaderDevice</pre></div></li></ul><p>The reader is now listening for incoming http requests on port 8000, incoming tcp requests on port 5566, and incoming snmp requests on port 161. To communicate with the reader instance, you might want to consider using the Fosstrak Reader RP Proxy, Fosstrak Reader RP Client or a SNMP Manager such as MIB Explorer.</p><p>For more information, on how to use theses tools, please see the <a href="../index.html">Fosstrak Reader</a> project website.</p><p>You might also want to consider adjusting the settings in the ReaderDevice.xml file (see below).</p></div><div class="section"><h3><a name="Configure">Configure</a> the Reader</h3><p>The reader can be configured by setting properties in the ReaderDevice.xml file (see below).</p><p>Properties of the messaging layer of the reader are set in the 'Information about the messaging' section of the configuration file. The properties tcpServerConnection and tcpPort specify if the command channel via TCP is active and which port the reader is listening for incoming TCP connections. Likewise, the properties httpServerConnection and httpPort define if the HTTP command channel is active and which port is used. The property notificationListenTimeout sets the time in ms a notification connection waits in listen mode. The properties threadPoolSize, startPattern and stopPattern must not be changed to ensure correct operation of the reader.</p><p>The reader specific properties such as readpoints, sources, triggers, and reader management information can also be set in the ReaderDevice.xml file. The information about the reader are properties describing the reader including the epc, name and manufacturer of the reader. The properties maxSourceNumber, maxTagSelectorNumber and maxTriggerNumber set a limit for the number of sources, tag selectors and triggers which a client can define.</p><p>In the reader section the different instances of the Fosstrak HAL with their read points are given. In this case the SimulatorController is used with the four read points Shelf1, Shelf2, Shelf3 and Shelf4 which correspond to the four antennas of the simulated reader. The sources of the reader are specified by their name and the read points through which they acquire the RFID data. In our example the reader has four sources wheras each source has one read point that has the same name as the source. In another reader setting one source could have more than one read point. The class name of each implemented controller can be found on the website of the corresponding <a href="../../hal/docs/user-guide.html#Configuring">Fosstrak HAL module</a>.</p><p>If the reader provides IO edge triggers or IO value triggers the classes that implement the functionalities to access the IO ports are specified by the two properties IOEdgeTriggerPortManager and IOValueTriggerPortManager.</p><p>The remaining properties define the information used for the reader management. The properties description, locationDescription, contact and serialNumber specify additional information about the reader. The SNMP agent is specified by the properties mgmtAgentType, mgmtAgentAddress, mgmtAgentPort, macAddress and mgmtSimulatorStart. Alarm channels can be defined using the properties alarmChannels.</p><div class="source"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;properties&gt;
+
+   &lt;!-- Information about the reader --&gt;
+      &lt;epc&gt;ReaderEPC&lt;/epc&gt;
+      &lt;name&gt;MyReader&lt;/name&gt;
+      &lt;manufacturer&gt;ReaderManufacturer&lt;/manufacturer&gt;
+      &lt;manufacturerDescription&gt;ReaderManufacturerDescription&lt;/manufacturerDescription&gt;
+      &lt;model&gt;ReaderModel&lt;/model&gt;
+      &lt;handle&gt;0&lt;/handle&gt;
+      &lt;role&gt;ReaderRole&lt;/role&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- More Information --&gt;
+      &lt;maxSourceNumber&gt;10&lt;/maxSourceNumber&gt;
+      &lt;maxTagSelectorNumber&gt;10&lt;/maxTagSelectorNumber&gt;
+      &lt;maxTriggerNumber&gt;10&lt;/maxTriggerNumber&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- All readers (HardwareAbstractions) used --&gt;
+      &lt;readers&gt;
+         &lt;reader&gt;
+            &lt;name&gt;SimulatorController&lt;/name&gt;
+            &lt;class&gt;org.fosstrak.reader.hal.impl.sim.SimulatorController&lt;/class&gt;
+            &lt;properties&gt;/props/SimulatorController.xml&lt;/properties&gt;
+            &lt;readpoint&gt;Shelf1&lt;/readpoint&gt;
+            &lt;readpoint&gt;Shelf2&lt;/readpoint&gt;
+            &lt;readpoint&gt;Shelf3&lt;/readpoint&gt;
+            &lt;readpoint&gt;Shelf4&lt;/readpoint&gt;
+         &lt;/reader&gt;
+      &lt;/readers&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- List of all sources --&gt;
+      &lt;currentSource&gt;Shelf1&lt;/currentSource&gt;
+      &lt;sources&gt;
+         &lt;source&gt;
+            &lt;name&gt;Shelf1&lt;/name&gt;
+            &lt;fixed&gt;true&lt;/fixed&gt;
+            &lt;readpoint&gt;Shelf1&lt;/readpoint&gt;
+         &lt;/source&gt;
+         &lt;source&gt;
+            &lt;name&gt;Shelf2&lt;/name&gt;
+            &lt;fixed&gt;true&lt;/fixed&gt;
+            &lt;readpoint&gt;Shelf2&lt;/readpoint&gt;
+         &lt;/source&gt;
+         &lt;source&gt;
+            &lt;name&gt;Shelf3&lt;/name&gt;
+            &lt;fixed&gt;true&lt;/fixed&gt;
+            &lt;readpoint&gt;Shelf3&lt;/readpoint&gt;
+         &lt;/source&gt;
+         &lt;source&gt;
+            &lt;name&gt;Shelf4&lt;/name&gt;
+            &lt;fixed&gt;true&lt;/fixed&gt;
+            &lt;readpoint&gt;Shelf4&lt;/readpoint&gt;
+         &lt;/source&gt;
+      &lt;/sources&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- The io trigger classes --&gt;
+      &lt;IOEdgeTriggerPortManager&gt;
+         &lt;port&gt;org.fosstrak.reader.rprm.core.triggers.KeyIOEdgeTriggerPortManager&lt;/port&gt;
+      &lt;/IOEdgeTriggerPortManager&gt;
+      &lt;IOValueTriggerPortManager&gt;
+      &lt;/IOValueTriggerPortManager&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- Information used for the reader management implementation --&gt;
+      &lt;description&gt;Description&lt;/description&gt;
+      &lt;locationDescription&gt;LocationDescription&lt;/locationDescription&gt;
+      &lt;contact&gt;Contact&lt;/contact&gt;
+      &lt;serialNumber&gt;SerialNumber&lt;/serialNumber&gt;
+      &lt;mgmtAgentType&gt;SNMP&lt;/mgmtAgentType&gt;
+      &lt;mgmtAgentAddress&gt;localhost&lt;/mgmtAgentAddress&gt;
+      &lt;mgmtAgentPort&gt;161&lt;/mgmtAgentPort&gt;
+      &lt;macAddress&gt;00-14-A4-2F-2D-73&lt;/macAddress&gt;
+      &lt;mgmtSimulatorStart&gt;false&lt;/mgmtSimulatorStart&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- List of all alarm channels --&gt;
+      &lt;alarmChannels&gt;
+         &lt;alarmChannel&gt;
+            &lt;name&gt;alarmChannel1&lt;/name&gt;
+            &lt;host&gt;localhost&lt;/host&gt;
+            &lt;port&gt;162&lt;/port&gt;
+         &lt;/alarmChannel&gt;
+      &lt;/alarmChannels&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- Information about the messaging --&gt;
+      &lt;tcpServerConnection&gt;true&lt;/tcpServerConnection&gt;
+      &lt;tcpPort&gt;5566&lt;/tcpPort&gt;
+      &lt;httpServerConnection&gt;true&lt;/httpServerConnection&gt;
+      &lt;httpPort&gt;8000&lt;/httpPort&gt;
+      &lt;notificationListenTimeout&gt;30000&lt;/notificationListenTimeout&gt;
+      &lt;threadPoolSize&gt;16&lt;/threadPoolSize&gt;
+   &lt;!-- End --&gt;
+
+   &lt;!-- Information about the source defaults --&gt;
+      &lt;isFixed&gt;false&lt;/isFixed&gt;
+      &lt;glimpsedTimeout&gt;2000&lt;/glimpsedTimeout&gt;
+      &lt;observedThreshold&gt;0&lt;/observedThreshold&gt;
+      &lt;observedTimeout&gt;1000&lt;/observedTimeout&gt;
+      &lt;lostTimeout&gt;0&lt;/lostTimeout&gt;
+      &lt;readCyclesPerTrigger&gt;1&lt;/readCyclesPerTrigger&gt;
+      &lt;maxReadDutyCycles&gt;100&lt;/maxReadDutyCycles&gt;
+      &lt;readTimeout&gt;0&lt;/readTimeout&gt;
+   &lt;!-- End --&gt;
+
+&lt;/properties&gt;</pre></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2008
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<title>ParameterListModel xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../../apidocs/org/accada/reader/rp/client/model/ParameterListModel.html">View Javadoc</a></div><pre>
+
+<a name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
+<a name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright (C) 2007 ETH Zurich</em>
+<a name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
+<a name="4" href="#4">4</a>   <em class="jxr_comment"> * This file is part of Accada (www.accada.org).</em>
+<a name="5" href="#5">5</a>   <em class="jxr_comment"> *</em>
+<a name="6" href="#6">6</a>   <em class="jxr_comment"> * Accada is free software; you can redistribute it and/or</em>
+<a name="7" href="#7">7</a>   <em class="jxr_comment"> * modify it under the terms of the GNU Lesser General Public</em>
+<a name="8" href="#8">8</a>   <em class="jxr_comment"> * License version 2.1, as published by the Free Software Foundation.</em>
+<a name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
+<a name="10" href="#10">10</a>  <em class="jxr_comment"> * Accada is distributed in the hope that it will be useful,</em>
+<a name="11" href="#11">11</a>  <em class="jxr_comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</em>
+<a name="12" href="#12">12</a>  <em class="jxr_comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</em>
+<a name="13" href="#13">13</a>  <em class="jxr_comment"> * Lesser General Public License for more details.</em>
+<a name="14" href="#14">14</a>  <em class="jxr_comment"> *</em>
+<a name="15" href="#15">15</a>  <em class="jxr_comment"> * You should have received a copy of the GNU Lesser General Public</em>
+<a name="16" href="#16">16</a>  <em class="jxr_comment"> * License along with Accada; if not, write to the Free</em>
+<a name="17" href="#17">17</a>  <em class="jxr_comment"> * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,</em>
+<a name="18" href="#18">18</a>  <em class="jxr_comment"> * Boston, MA  02110-1301  USA</em>
+<a name="19" href="#19">19</a>  <em class="jxr_comment"> */</em>
+<a name="20" href="#20">20</a>  
+<a name="21" href="#21">21</a>  <strong class="jxr_keyword">package</strong> org.accada.reader.rp.client.model;
+<a name="22" href="#22">22</a>  
+<a name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> javax.swing.DefaultListModel;
+<a name="24" href="#24">24</a>  
+<a name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.accada.reader.rp.proxy.msg.Parameter;
+<a name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.accada.reader.rp.proxy.msg.ParameterType;
+<a name="27" href="#27">27</a>  
+<a name="28" href="#28">28</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/accada/reader/rp/client/model/ParameterListModel.html">ParameterListModel</a> <strong class="jxr_keyword">extends</strong> DefaultListModel {
+<a name="29" href="#29">29</a>  
+<a name="30" href="#30">30</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> addElement(String name, <a href="../../../../../../org/accada/reader/rp/proxy/msg/ParameterType.html">ParameterType</a> type) <strong class="jxr_keyword">throws</strong> ClassCastException {
+<a name="31" href="#31">31</a>  		Parameter p = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/accada/reader/rp/proxy/msg/Parameter.html">Parameter</a>(name, type);
+<a name="32" href="#32">32</a>  		<strong class="jxr_keyword">super</strong>.addElement(p);
+<a name="33" href="#33">33</a>  	}
+<a name="34" href="#34">34</a>  	
+<a name="35" href="#35">35</a>  	<strong class="jxr_keyword">public</strong> <a href="../../../../../../org/accada/reader/rp/proxy/msg/Parameter.html">Parameter</a>[] getParameters() {
+<a name="36" href="#36">36</a>  		Parameter[] params = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/accada/reader/rp/proxy/msg/Parameter.html">Parameter</a>[getSize()];
+<a name="37" href="#37">37</a>  		<strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i=0; i &lt; getSize(); i++) {
+<a name="38" href="#38">38</a>  			params[i] = (Parameter)<strong class="jxr_keyword">this</strong>.getElementAt(i);
+<a name="39" href="#39">39</a>  		}
+<a name="40" href="#40">40</a>  		<strong class="jxr_keyword">return</strong> params;
+<a name="41" href="#41">41</a>  	}
+<a name="42" href="#42">42</a>  	
+<a name="43" href="#43">43</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+
