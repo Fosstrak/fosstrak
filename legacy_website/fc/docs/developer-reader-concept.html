@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - Logical Reader concept</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                    
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/user-example.html">Quick Start</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-installation.html">Install fc-server</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-testclients.html">Use ALE Clients</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-test-scenarios.html">Test Scenarios</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                    
+                  
+                  
+                  
+                  
+                        
+                  
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Logical Reader concept</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Overview">Overview</a></li><li><a href="#Composite">Composite Pattern</a></li><li><a href="#Observer">Observer Pattern</a></li><li><a href="#Adaptor">Adaptor Pattern</a></li><li><a href="#LogicalReader">LogicalReader</a></li><li><a href="#CompositeReader">CompositeReader</a></li><li><a href="#BaseReader">BaseReader</a></li></ol></div><div class="section"><h3><a name="Overview">Overview</a></h3><p>From the view of an ALE client it is preferable to share a common view on a reader, without having to care about vendor versions, manufacturer and so on. This chapter introduces the concept of logical, composite and base readers that shall provide a uniform access to readers of different types. </p><p>In a first step the chosen design pattern are presented. Then the basic implementation of the Logical Reader API is shown and explained more specific.</p><p>The documentation for the usage of the Logical Reader API through the LogicalReaderManager is not covered here. Please refer to the chapter &quot;<a href="developer-logical-reader-manager.html">LogicalReader Management</a>&quot;</p></div><div class="section"><h3><a name="Composite">Composite</a> Pattern</h3><p>In the EPC Standard basically two reader types are defined (according to chapter 10.2):</p><ul><li>Base Reader (actual channel for manipulating tags)</li><li>Composite Reader (reader composed out of other readers)</li></ul><p>The terminology of a base reader and a composite reader was used directly in a composite pattern. The composite pattern gives a clean and easy way how to treat objects and compositions of objects in the same way. The direct application on the logical reader lead to the design shown in the next image.</p><img src="../images/readerAPI/CompositePattern.png" /><ul><li>LogicalReader is the most general interface to a reader. LogicalReader implements the behaviour of a reader in the context of an ALE client.</li><li>BaseReader models a reader that actually manipulates tags on a physical reader.</li><li>Through CompositeReader a LogicalReader can be built out of different other LogicalReaders (those can be either CompositeReader or BaseReader). CompositeReader accesses its children through the interface provided by LogicalReader.</li></ul><p>To create a reader a static factory method inside LogicalReader is used. Each Reader has to provide two methods. These are a Default-Constructor with the same name as the Reader and an initialize method &quot;public void initialize(String name, LRSpec spec)&quot;. The factory-method extracts the reader type from the LRSpec. Through reflection and dynamic class-loading a new instance of this type is created. That for the default-constructor is used. Once this new instance is available the factory calls the initialize-method on the new object. This makes possible that a reader can prepare itself but without the need of complicated constructor-search in the object-creation process. </p><p>The following subsections &quot;LogicalReader&quot;, &quot;CompositeReader&quot; and &quot;BaseReader&quot; will explain in more detail the different building blocks of the composite pattern.</p><p>In all the diagrams the following conventions were used.</p><ul><li>+ = public methods</li><li># = protected methods</li><li>underlined methods are static</li><li>methods in italics are abstract</li></ul></div><div class="section"><h3><a name="Observer">Observer</a> Pattern</h3><p>To simplify the Tag propagation inside the Logical Reader API an Observer Pattern was chosen. There are two cases to consider, first when an EventCycle acts as an Observer and second when a CompositeReader uses the ObserverPattern for its children. However these cases are conceptually equal as will be explained shortly.</p><ul><li>EventCycle as Observer: When an EventCycle wants to read Tags from a LogicalReader it has to register itself as a java-observer on the Observable LogicalReader. The LogicalReader collects Tags and notifies all its observers through the update(Observable o, Object arg) - method. This ensures that multiple EventCycles can register on the same LogicalReader.</li><li>CompositeReader as Observer: A CompsiteReader is built out of LogicalReaders. It is therefor obvious to reuse the same mechanism to acquire Tags as with the EventCycles. A CompositeReader acts as an Observable for other CompositeReaders or for EventCycles and in the same time it is a Observer for its components accessed as LogicalReaders.</li></ul><img src="../images/readerAPI/ObserverPattern.png" /><p>As the image visualizes a LogicalReader acts in any case only as Observable where CompositeReaders or EventCycles can register. CompositeReaders register themself on other LogicalReaders, therefor act as Observer and as Observable in the same time.</p><p>The following image shall give an example.</p><img src="../images/readerAPI/ObserverPattern_example.png" /><ul><li>&quot;EventCycle 1&quot; has registered on &quot;CompositeReader 1&quot; and &quot;Reader 2&quot;. </li><li>&quot;EventCycle 2&quot; has registered on &quot;CompositeReader 1&quot; and &quot;CompositeReader 2&quot;.</li><li>&quot;CompositeReader 1&quot; has registered on &quot;Reader 1&quot;, &quot;Reader 2&quot; and &quot;Reader 3&quot;.</li><li>&quot;CompositeReader 2&quot; has registered on &quot;CompositeReader 1&quot;, &quot;Reader 3&quot; and &quot;CompositeReader 3&quot;.</li></ul><p>Whenever a BaseReader reads a Tag it calls its notify-method. This method calls the update-method on all the Observers. Like that one BaseReader can send one Tag to multiple receivers. In the same manner CompositeReader calls its notify method whenever a component triggered the update-method.</p></div><div class="section"><h3><a name="Adaptor">Adaptor</a> pattern</h3><p>There are many different physical readers available and one might be interested in using them all in one application without the need to implement several BaseReaders. Therefor the adaptor pattern was used to generalize the notion of a BaseReader. </p><p>The Adaptor pattern translates an interface of a class into another interface. In this case the interfaces of different readers are translated into the interface BaseReader.</p><img src="../images/readerAPI/AdaptorPattern.png" /><p>One drawback of this pattern is, that for each new reader one has to implement a new adaptor. Nevertheless, in our opinion the advantages still overrule the drawbacks.</p><p>The instantiation of such adaptors are explained in the section BaseReader. </p></div><div class="section"><h3><a name="LogicalReader">LogicalReader</a></h3><p>As motivated by the CompositePattern LogicalReader declares the interface to a reader. In following the methods contained in LogicalReader are explained shortly.</p><img src="../images/readerAPI/LogicalReader.png" /><ul><li>setLRSpec/getLRSpec: These methods set/return the logical reader specification (called LRSpec) for a LogicalReader.</li><li>setProperties/getProperties: These methods set/return the logical reader properties (called LRProperty) for a LogicalReader.</li><li>setName/getName: Set/return the name of the current LogicalReader.</li><li>update: Update is an abstract method that is used in either a CompositeReader or a BaseReader. By calling the update-method an ALE client can change the LRSpec of a LogicalReader.</li><li>start/stop: Abstract methods allowing an ALE client to start/stop a LogicalReader.</li><li>setStarted/setStopped: A reader can be suspended from within the LogicalReader API. This is neccessary for a CompositeReader whenever an update inside the CompositeReader occures.</li><li>createReader: This static factory method is used to create/setup a LogicalReader. In a first step the LRSpec is used to determine whether to create a CompositeReader or a LogicalReader. <p>The first case is simply the instantiation of a new CompositeReader object through a constructor-call. The setup of a CompositeReader is explained in the section about CompositeReader.</p><p>The second case is more complicated an shall be explained in the section about BaseReaders.</p><p>In both of the two cases a LogicalReader is returned.</p></li></ul></div><div class="section"><h3><a name="CompositeReader">CompositeReader</a></h3><p>The class CompositeReader models a composite in the composite pattern that can be composed by different other components. The components are in this case LogicalReaders.</p><img src="../images/readerAPI/CompositeReader.png" /><p>The image above shows only new or overwritten methods from LogicalReader. </p><ul><li>unregisterAsObserver: Unregisteres the current CompositeReader from all the leafs (other LogicalReaders).</li><li>update(o: Observable, arg: Object): Whenever an Observable calls its notify-method this update-method is invoked by the java observer pattern. The CompositeReader itself processes the call and then notifies its Observers.</li><li>update(spec: LRSpec): Changes the LRSpec of the CompositeReader. This includes the change of available readers and the LRProperties.</li><li>addReader/removeReader: Modify the readers contained in this CompositeReader. </li><li>start/stop: Whenever changes to the leafs have to be performed these methods are invoked to start/stop the reader</li><li>initialize and CompositeReader: Whenever a new CompositeReader is to be created a call to the initialize-method follows the Constructor-call. <p>In the initialize-method the leafs of the CompositeReader are aquired from the LogicalReaderManager by calling the Logical Reader API. The CompositeReader registers itself on the leafs as an Observer.</p></li></ul></div><div class="section"><h3><a name="BaseReader">BaseReader</a></h3><p>BaseReader models the leaf of the composite pattern. BaseReader provides more methods that can be used to communicate directly with a physical reader. </p><img src="../images/readerAPI/BaseReader.png" /><p>In the image above only new or overwritten methods from LogicalReader are shown. </p><ul><li>addTag: When a new Tag is read on the reader the method addTag is called. The tag is processed and prepared for the usage in the Logical Reader API. Then the Observers of the BaseReader are notified through the notify call of the java observer pattern. </li><li>start/stop: Whenever the reader needs to be stopped these methods can be used.</li><li>connectReader/disconnectReader: BaseReaders provide these two methods to setup the connection between the software (BaseReader) and the physical reader. As this can be time consuming and as maybe not all changes to the reader need a disconnect these methods are provided aside of the start/stop methods.</li><li>update: Changes the LRSpec of the BaseReader. </li><li>identify: To support readers that do not know a polling mechanism, BaseReader provides the identify-method that can be called by a polling thread.</li></ul><p>BaseReader is still an abstract class and cannot be instantiated by the Logical Reader API. In following the instantiation of reader adaptors through the createReader factory-method will be explained.</p><p>From the LRSpec the fully qualified reader type is extracted as a string. This type has to be provided through an LRProperty. Through dynamic class loading the class is loaded and a new instance of the adaptor is created. This instance is already of type LogicalReader. The subsequent call to the initialize-method on the new LogicalReader calls (through the mechanism of overloading) the correct initializer method.</p><p>For further information on the existing adaptors and how you can write your own adaptor refer to the chapter &quot;Implement an Adaptor&quot;.</p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

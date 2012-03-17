@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - Event Cycle</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                    
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/user-example.html">Quick Start</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-installation.html">Install fc-server</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-testclients.html">Use ALE Clients</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-test-scenarios.html">Test Scenarios</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                    
+                  
+                        
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Event Cycle</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Objective">Objective</a></li><li><a href="#Implementation">Implementation</a></li><li><a href="#Creation">Creation and Flow</a></li><li><a href="#Sequence">Sequence Diagram</a></li><li><a href="#State">State Diagram</a></li><li><a href="#Interface">Interface</a></li></ol></div><div class="section"><h3><a name="Objective">Objective</a></h3><p>According to the EPC Standard, an EventCycle is the smallest unit of interaction between an ALE client and an ALE implementation through the ALE reading API. An EventCycle is an intervall of time during which tags are read.</p><p>This document shall provide an overview to the implementation of an EventCycle in the Fosstrak ALE.</p></div><div class="section"><h3><a name="Implementation">Implementation</a></h3><p>The EventCycle is implemented as a thread. After creation the thread waits on the EventCycles monitor.</p><div class="source"><pre>synchronized (this) {
+        try {
+                this.wait();
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
+}</pre></div><p>When there are subscribers for the EventCycle the ReportsGenerator launches the EventCycle through the launch method.</p><div class="source"><pre>// Code fragment from ReportsGenerator
+eventCycle.launch();</pre></div><p>This call will set the EventCycle to the running state</p><div class="source"><pre>this.running = true;
+synchronized (this) {
+        this.notifyAll();
+}</pre></div><p>The EventCycle runs as long as specified by the duration value. The reports are generated and sent through the ReportsGenerator to the subscribers.</p><p>After some cleanup and preparations for the next EventCycle the EventCycle sets itself sleeping and waits for the next launch call.</p><div class="source"><pre>try {
+        synchronized (this) {
+                this.wait();
+        }
+} catch (InterruptedException e) {
+        e.printStackTrace();
+}</pre></div></div><div class="section"><h3><a name="Creation">Creation</a> and Flow</h3><p>An EventCycle is constructed according to an EventCycle specification (called ECSpec). The ECSpec specifies several parameters. The most important ones are the time intervall during which tags are read and the readers where tags shall be collected.</p><p>Whenever a client defines a new EventCycle through the ALE interface, a new ReportsGenerator will be created along an EventCycle. The ReportsGenerator acts as a gateway to the EventCycle for clients. A client does not subscribe on an EventCycle but on the associated ReportsGenerator. The ReportsGenerator ensures that the EventCycle is started/stopped and that subscribers (clients) receive the resulting tags.</p><p>Upon creation the EventCycle aquires the readers from the logical reader API and registers as an Observer. The EventCycle does not accept tags yet.</p><div class="source"><pre>// code piece from the EventCycle constructor
+setAcceptTags(false);</pre></div><p>As soon as a client subscribes for an EventCycle, the ReportsGenerator starts the demanded EventCycle. Tags are now accepted by the EventCycle.</p><p>When the specified duration (EventCycle duration) is over the EventCycle is stopped and the tags are distributed to the clients by the ReportsGenerator. The tag-filtering is performed by the class Reports.</p><div class="source"><pre>ECReports ecReports = getECReports();
+
+// notifySubscribers
+generator.notifySubscribers(ecReports);</pre></div><p>In case where the EventCycle is not repeating (this means that one EventCycle does not run multiple times) all readers are deregistered and the EventCycle is destroyed together with its ReportsGenerator. This is preformed by a call to the stop() method.</p></div><div class="section"><h3><a name="Sequence">Sequence</a> Diagram</h3><p>The following sequence diagram shall visualize the behaviour of an EventCycle. The dashed lines are asynchronous calls whereas the solid lines denote synchronous calls.</p><p>1: A client defines a new EventCycle through the ALE.</p><p>1.1: The ALE checks if this EventCycle already exists. In the present case there is no such EventCycle an therefor the ALE creates a new ReportsGenerator.</p><p>1.1.1: The ReportsGenerator creates a new EventCycle.</p><p>1.1.1.1/2/3: The EventCycle retrieves the readers specified in the ECSpec from the LogicalReaderManager.</p><p>2: The Client subscribes for an EventCycle.</p><p>2.1: The ALE subscribes the Client on the ReportsGenerator.</p><p>2.1.1: The ReportsGenerator starts the EventCycle. The EventCycle now processes tags from the readers.</p><p>3/4/5: The LogicalReader(s) add Tags to the EventCycle.</p><p>6: When the EventCycle reaches its boundaries the reports are generated and sent back to the Client (through the ReportsGenerator).</p><p>7: The Client wants to unsubscribe from an EventCycle.</p><p>7.1: The ALE calls the unsubscribe-method on the corresponding ReportsGenerator.</p><p>8: The Client undefines an EventCycle.</p><p>8.1: The ALE stops the corresponding ReportsGenerator</p><p>8.2: The ReportsGenerator stops the EventCycle</p><img src="../images/ALE/EventCycleSequence.png" /></div><div class="section"><h3><a name="State">State</a> diagram</h3><p>The following state diagram shall visualize the states of an EventCycle. </p><p>The EventCycle is initially null. A ReportsGenerator creates the EventCycle and starts it (Transition to the wait-state). Then a subscription for this EventCycle arrives and the EventCycle is launched (Transition to running state). After the cycle is over the EventCycle returns into the wait-state. When an undefine occurs the EventCycle moves into the stopped final state and becomes destroyed.</p><img src="../images/ALE/EventCycleStateDiagram.png" /></div><div class="section"><h3><a name="Interface">Interface</a></h3><p>The following class interface gives an overview to the methods available from the EventCycle.</p><img src="../images/ALE/EventCycle.png" /><ul><li>EventCycle: The constructor takes a ReportsGenerator as an argument. The constructor performs:<ul><li>Create the EventCycle-thread</li><li>Register the Reports for the reports notification</li><li>Register the logical readers from the logical reader API.</li></ul></li><li>getECReports: this method prepares the ECReports and returns an ECReports-object</li><li>getTags: Returns a Set of tags that are currently available on the EventCycle</li><li>addTag: Adds a Tag to the set of Tags</li><li>update: Whenever a new Tag is read on one of the LogicalReaders this update-method will be called. The EventCycle processes these Tags inside this method.</li><li>stop: When this method is called, the thread is destroyed and as a consequence the EventCycle will be destroyed.</li><li>getName: Returns the associated Name of the EventCycle</li><li>launch: The ReportsGenerator triggers this method when the EventCycle shall be started.</li><li>getLastEventCycleTags: To allow a Report to create ADDITION/DELETION reports the tags from the previous EventCycle need to be known.</li><li>getReportList: Returns the list of all the Reports</li><li>getDurationValue: Returns the duration of the EventCycle. (Set through ECSpec)</li><li>isAcceptingTags: The EventCycle only accepts tags when it is running. </li><li>setAcceptTags: This method allows to flag whether the EventCycle accepts Tags or not.</li></ul></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

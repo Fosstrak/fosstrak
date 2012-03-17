@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - Reports Notification</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                    
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/user-example.html">Quick Start</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-installation.html">Install fc-server</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-testclients.html">Use ALE Clients</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-test-scenarios.html">Test Scenarios</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                    
+                  
+                  
+                  
+                        
+                  
+                  
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Reports Notification</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#Objective">Objective</a></li><li><a href="#Reports">Reports Notification by Subscription</a></li><li><a href="#Poll">Poll and Immediate Reports Notification</a>}</li></ol></div><div class="section"><h3><a name="Objective">Objective</a></h3><p>The Fosstrak Filtering and Collection middleware notifies its subscribers with the desired reports. This guide should give you a brief overview how the subscribers are notified. There are three variants of notification:</p><ul><li>Reports Notification by Subscription</li><li>Poll Reports Notification</li><li>Immediate Reports Notification</li></ul></div><div class="section"><h3><a name="Reports">Reports</a> Notification by Subscription</h3><img src="../images/ReportsNotification/ReportSubscribe.png" /><p>To get a report an application has to subscribe itself to an already existing ECSpec using the Filtering and Collection client or webclient. The subscription has the form of an URI defining a host and a port for the later transfer of the ECReports. The Filtering and Collection middleware gets the corresponding ReportsGenerator using the name of the ECSpec. </p><p>Every time an Event Cycle is finished, each requested report is generated by the report class and sent to the ReportsGenerator. The ReportsGenerator notifies all subscribers in its list of subscribers by forwarding the received reports to the subscribers' URIs.</p></div><div class="section"><h3><a name="Poll">Poll</a> and Immediate Reports Notification</h3><p>Poll and Immediate Reports Notification offer the possibility of a query response inquiry where the ECReports are directly returned as results of the methods. During these two methods the Filtering and Collection middleware sets a polling flag of the involved ReportsGenerator true.</p><img src="../images/ReportsNotification/ReportImmediate.png" /><ul><li>Poll<p>The method poll registers itself to an already defined ECSpec and waits until the first EventCycle is terminated and the ECReports are generated. Instead of registering itself with an URI, where the ECReports are should be sent to, the ECReports are returned directly to the method.</p></li></ul><img src="../images/ReportsNotification/ReportImmediate.png" /><ul><li>Immediate<p>The only difference between the methods poll and immediate are, that immediate has a whole ECSpec as an argument instead of a name of a already defined ECSpec. When the method immediate is executed, a new ReportsGenerator is generated with the specified ECSpec. Then a poll is executed on the newly build ReportsGenerator. </p></li></ul></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Accada Filtering&amp;Collection - User Guide</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft">
+    
+                                            <img src="../images/banner2_left.jpg" alt="" />
+    
+            </a>
+                          <span id="bannerRight">
+    
+                                            <img src="../images/banner2_middle.jpg" alt="" />
+    
+            </span>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: Apr 26, 2007 16:41:24 CEST
+                          |   
+          <a href="../../index.html">Accada</a>
+              &gt;
+      
+          <a href="../">Filtering and Collection</a>
+                        </div>
+            <div class="xright">      <a href="../../index.html">Accada</a>
+          |
+          <a href="../../reader/index.html">Reader</a>
+          |
+          <a href="../index.html">Filtering and Collection</a>
+          |
+          <a href="../../epcis/index.html">EPCIS</a>
+          |
+          <a href="../../tdt/index.html">Tag Data Translation</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Accada</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../../index.html">Home</a>
+        </li>
+          </ul>
+          <h5>Filtering and Collection Project</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../index.html">Overview</a>
+        </li>
+              
+    <li class="none">
+              <strong>Getting Started</strong>
+        </li>
+              
+    <li class="none">
+              <a href="../download.html">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="../license.html">License</a>
+        </li>
+              
+    <li class="none">
+              <a href="../mail-lists.html">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="../issue-tracking.html">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="../source-repository.html">Source Repository</a>
+        </li>
+          </ul>
+                                             
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" id="poweredBy">
+                            <img alt="Auto-ID" src="../images/logos/supportedByAutoid4.png" />
+            </a>
+                               
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>User Guide</h2><div class="section"><h3>Contents</h3><ol type="1"><li><a href="#About">About this Guide</a></li><li><a href="#Server">Server</a></li><li><a href="#Clients">Clients</a></li></ol></div><div class="section"><h3><a name="About">About</a> this Guide</h3><p>The user guide is intended to help those who wish to use the Accada Filtering and Collection modules. Architectural decisions and the system's design are not addressed here.</p><p>The guide is divided into two sections. The first section explains how to install the Filtering and Collection Server as web application in Apache Tomcat. The second section describes how the server (or any ALE-compliant middleware) can be accessed using our testclients.</p></div><div class="section"><h3><a name="Server">Server</a></h3><p>The <b>Filtering and Collection Server</b> comes as a Web Application that can be deployed to Apache Tomcat or any other compatible runtime environment. This guide describes a <a href="http://tomcat.apache.org/">Apache Tomcat</a>-based setup. In order to deploy the Filtering and Collection Server, you need to get the Filtering and Collection WAR file from our <a href="../download.html">download page</a> and simply place it into your Tomcat's webapp directory. After restarting Tomcat, the WAR file will be exploded and the server is ready for use (for more information about the deployment process visit this <a href="http://tomcat.apache.org/tomcat-5.5-doc/manager-howto.html#Deploy%20A%20New%20Application%20Remotely">page</a>). A new folder is created in <tt>$TOMCAT_HOME\webapps&#160;</tt>. This folder contains the file <tt>WEB-INF\classes\InputGenerators.properties </tt> (<a href="../example/InputGenerators.properties"> see example InputGenerators.properties</a>), where all configuration options for the Filtering and Collection server can be set. These include the following:</p><ul><li>command-channel-host: Host of the Reader Device to communicate with.</li><li>command-channel-port: TCP port of the Reader Device.</li><li>notification-channel-host: Host to send Notification Messages to.</li><li>notification-channel-port: TCP port to send Notification Messages to.</li><li>read-time-interval: Time in milliseconds the server waits between two ReadCycles on the Reader Device.</li></ul><p>Please note that you need to append the reader number as a suffix to all these directives. Number starts with zero, so to specify the host of the third reader device, you would use the key <tt>command-channel-host-2</tt>.</p><div class="source"><pre>
+## Input generators
+number-of-inputgenerators = 1
+
+## Connection port to access FC Server
+command-channel-host-0 = localhost
+command-channel-port-0 = 8000
+
+## Connection Port for incomding notifications from a physical reader
+notification-channel-host-0 = localhost
+notification-channel-port-0 = 9000
+read-time-interval-0 = 10000
+</pre></div><p>The logical readers of the <b>Filtering and Collection Server</b> are specified in the XML file <tt>WEB-INF\classes\LogicalReaders.xml </tt> (<a href="../example/LogicalReaders.xml"> see example LogicalReaders.xml</a>). For all logical readers a name has to be given and the physical reader and its sources that comprise the logical reader.</p><p>If everything is configured correctly, the server can be restarted and is for our configuration reachable at the endpoint <tt>http://&lt;hostname&gt;:8080/&lt;WAR-File Name&gt;/services/ALEServicePort</tt>. </p><div class="source"><pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;logicalReaders xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;LogicalReaders.xsd&quot;&gt;
+        &lt;logicalReader name=&quot;LogicalReader1&quot;&gt;
+                &lt;physicalReader name=&quot;MyReader&quot;&gt;
+                        &lt;include&gt;
+                                &lt;source&gt;Shelf1&lt;/source&gt;
+                                &lt;source&gt;Shelf2&lt;/source&gt;
+                        &lt;/include&gt;
+                &lt;/physicalReader&gt;
+        &lt;/logicalReader&gt;
+        &lt;logicalReader name=&quot;LogicalReader2&quot;&gt;
+                &lt;physicalReader name=&quot;MyReader&quot;&gt;
+                        &lt;include&gt;
+                                &lt;source&gt;Shelf3&lt;/source&gt;
+                        &lt;/include&gt;
+                &lt;/physicalReader&gt;
+        &lt;/logicalReader&gt;
+        &lt;logicalReader name=&quot;LogicalReader3&quot;&gt;
+                &lt;physicalReader name=&quot;MyReader&quot;&gt;
+                        &lt;include&gt;
+                                &lt;source&gt;Shelf4&lt;/source&gt;
+                        &lt;/include&gt;
+                &lt;/physicalReader&gt;
+        &lt;/logicalReader&gt;
+&lt;/logicalReaders&gt;
+</pre></div></div><div class="section"><h3><a name="Clients">Clients</a></h3><p>Accada comes with two different testclients that allow to interactively use a Filtering and Collection Server instance. While the first client is a standalone Java application with a Swing GUI, the second client is a web application that can be accessed with any web browser.</p><div class="section"><h4>Standalone Client</h4><p>The <b>Filtering and Collection Standalone Client</b> is a pure Java application. On our <a href="../download.html">download page</a> we provide a ZIP file with all the necessary libraries included.</p><p>The standalone client is configure through the <tt>ALEClient.properties</tt> file. To get started quickly, it should be sufficient to adjust the <tt>EndPoint</tt> option to specify the server to communicate with. All other options can be left unchanged initially. After starting the client with the <tt>java -jar fc-client&lt;Version&gt;.jar</tt> command, you will see the following screen:</p><img src="../images/GUIClientBasic.png" /><p>If the endpoint is not correctly configured an error dialog pops up, informing you that the client couldn't connect to the server:</p><img src="../images/GUIClientFailureDialog.png" /><p>The client's user interface has three sections. Commands can be choosen from a dropdown box in the top section. In the middle, parameters for the selected command can be typed in (not all commands need parameters). Commands are sent to the server by clicking the the <tt>execute</tt> button. </p><img src="../images/GUIClientCommando.png" /><p>The third section is used to display the server's response.</p></div><div class="section"><h4>Web Client</h4><p>The <b>Filtering and Collection Web Client</b> is based on Java Server Pages (JSP). To set it up, you have to get the Web Client WAR file from our <a href="../download.html">download page</a> and simply place it into Tomcat's webapp directory. After restarting Tomcat, the WAR file will be deployed and the Web Client is ready without any need for configuration (for more information about the deployment process, visit this <a href="http://tomcat.apache.org/tomcat-5.5-doc/manager-howto.html#Deploy%20A%20New%20Application%20Remotely">page</a>). To access the Web Client, visit the URL <tt>http://&lt;hostname&gt;:8080/&lt;WAR-File Name&gt;/services/ALEWebCLient.jsp</tt>. Again, you will see a user interface that is divided into three frames. In the left frame, all methods are listed, while the top right one accepts the method arguments and the bottom right frame displays server responses.</p><img src="../images/WebClient.png" /><p>Before invoking any other methods, you will have to set the endpoint (i.e., the Filtering and Collection Server to communicate with) by choosing the <tt>setEndpoint() </tt> method in left frame and inserts the URL of your Filtering and Collection Server in the text field (top right frame). After hitting the <tt>Invoke </tt> button, the endpoint is set. You can use the <tt>getVendorVersion() </tt> method, to check if communication between the Web Client and the server works.</p></div><div class="section"><h4>ECSpecifications</h4><p>The ECSpecs, i.e. the specifications for the Filtering and Collection Server on how to generate reports, can be transfered to the server using one of the two client applications. The define command gives a specification a name for later reference and a file path with the ECSpec XML file. The (<a href="../example/ECSpec_LogicalReader1_noFilters_noGroups_current_every30s.xml"> example ECSpec_LogicalReader1_noFilters_noGroups_current_every30s.xml</a>) is shown below. A specification becomes active after subscribing for it using the subscribe command.</p><div class="source"><pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ns1:ECSpec includeSpecInReports=&quot;false&quot; xmlns:ns1=&quot;urn:epcglobal:ale:xsd:1&quot;&gt;
+        &lt;logicalReaders soapenc:arrayType=&quot;xsd:string[1]&quot; xsi:type=&quot;soapenc:Array&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soapenc=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+                &lt;logicalReader xsi:type=&quot;xsd:string&quot;&gt;LogicalReader1&lt;/logicalReader&gt;
+        &lt;/logicalReaders&gt;
+        &lt;boundarySpec xsi:type=&quot;ns1:ECBoundarySpec&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+                &lt;startTrigger xsi:type=&quot;ns1:ECTrigger&quot; xsi:nil=&quot;true&quot;/&gt;
+                &lt;repeatPeriod unit=&quot;MS&quot; xsi:type=&quot;ns1:ECTime&quot;&gt;30000&lt;/repeatPeriod&gt;
+                &lt;stopTrigger xsi:type=&quot;ns1:ECTrigger&quot; xsi:nil=&quot;true&quot;/&gt;
+                &lt;duration unit=&quot;MS&quot; xsi:type=&quot;ns1:ECTime&quot;&gt;1000&lt;/duration&gt;
+                &lt;stableSetInterval unit=&quot;MS&quot; xsi:type=&quot;ns1:ECTime&quot;&gt;0&lt;/stableSetInterval&gt;
+                &lt;extension xsi:type=&quot;ns1:ECBoundarySpecExtension&quot; xsi:nil=&quot;true&quot;/&gt;
+        &lt;/boundarySpec&gt;
+        &lt;reportSpecs soapenc:arrayType=&quot;ns1:ECReportSpec[1]&quot; xsi:type=&quot;soapenc:Array&quot; xmlns:soapenc=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+                &lt;reportSpec reportIfEmpty=&quot;true&quot; reportName=&quot;Current&quot; reportOnlyOnChange=&quot;false&quot; xsi:type=&quot;ns1:ECReportSpec&quot;&gt;
+                        &lt;reportSet set=&quot;CURRENT&quot; xsi:type=&quot;ns1:ECReportSetSpec&quot;/&gt;
+                        &lt;filterSpec xsi:type=&quot;ns1:ECFilterSpec&quot; xsi:nil=&quot;true&quot;/&gt;
+                        &lt;groupSpec xsi:type=&quot;soapenc:Array&quot; xsi:nil=&quot;true&quot;/&gt;
+                        &lt;output includeCount=&quot;true&quot; includeEPC=&quot;true&quot; includeRawDecimal=&quot;true&quot; includeRawHex=&quot;true&quot; includeTag=&quot;true&quot; xsi:type=&quot;ns1:ECReportOutputSpec&quot;&gt;
+                                &lt;extension xsi:type=&quot;ns1:ECReportOutputSpecExtension&quot; xsi:nil=&quot;true&quot;/&gt;
+                        &lt;/output&gt;
+                        &lt;extension xsi:type=&quot;ns1:ECReportSpecExtension&quot; xsi:nil=&quot;true&quot;/&gt;
+                &lt;/reportSpec&gt;
+        &lt;/reportSpecs&gt;
+        &lt;extension xsi:type=&quot;ns1:ECSpecExtension&quot; xsi:nil=&quot;true&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;/&gt;
+&lt;/ns1:ECSpec&gt;
+</pre></div></div><div class="section"><h4>Displaying Reports</h4><p>For testing purposes, the class org.accada.reader.rp.client.EventSinkUI from the Accada Reader Client module can be used to receive and display reports.</p><p>The following steps show how to install and execute the EventSinkUI class:</p><ul><li>Download the Reader RP Client binaries with the dependencies included from the <a href="../download.html">download</a> section of the website.</li><li>Unzip the downloaded file</li><li>Make sure a JRE 1.5 or higher is installed and it is added to the path variable.</li><li>Start the class in the jar file with the following command: java -cp reader-rp-client-VERSION.jar org.accada.reader.rp.client.EventSinkUI [port]</li><li>As the port use the TCP port to which the filtering and collection module is sending the reports. The port is specified when subscribing for a specification in the notification URI. (e.g. tcp://localhost:9999 as the notification URI). </li></ul></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

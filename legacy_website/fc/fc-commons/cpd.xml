@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="19" tokens="106">
+<file line="269" path="C:\accada\fc\fc-commons\src\main\java\org\fosstrak\ale\util\SerializerUtil.java"/>
+<file line="295" path="C:\accada\fc\fc-commons\src\main\java\org\fosstrak\ale\util\SerializerUtil.java"/>
+<codefragment>
+<![CDATA[
+	public static void serializeECSpec(ECSpec ecSpec, Writer writer) throws IOException {
+		try {
+			String JAXB_CONTEXT = "org.fosstrak.ale.xsd.ale.epcglobal";
+			JAXBContext context = JAXBContext.newInstance(JAXB_CONTEXT);
+			Marshaller marshaller = context.createMarshaller();
+
+			
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, new Boolean(true));
+
+			org.fosstrak.ale.xsd.ale.epcglobal.ObjectFactory objFactory = new org.fosstrak.ale.xsd.ale.epcglobal.ObjectFactory();
+			JAXBElement<ECSpec> theSpec = objFactory.createECSpec(ecSpec);			
+			
+			// store the file to the file path
+			marshaller.marshal(theSpec, writer);
+			
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}		
+	}	
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Fosstrak ALE Middleware - Application Layer Events Service Binding</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../" id="bannerLeft"  >
+    
+                                            <img src="../images/banner_left.gif" alt="Fosstrak" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+    
+  
+    
+            <div class="xleft">
+      <!--
+        Version: 1.0.3-SNAPSHOT
+	-->
+                     
+                <a href="../../index.html">Fosstrak</a>
+                &gt;
+      
+                <a href="../">ALE Middleware</a>
+                          </div>
+            <div class="xright">            <a href="../../epcis/index.html">EPCIS Repository</a>
+            |
+                <a href="../../tdt/index.html">TDT Engine</a>
+            |
+                <a href="../index.html">ALE Middleware</a>
+            |
+                <a href="../../llrp/index.html">LLRP Commander</a>
+            
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+    
+  
+    
+                   <h5>ALE Middleware</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../issue-tracking.html">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDoc</a>
+          </li>
+          </ul>
+              <h5>Guides &amp; Documentation</h5>
+            <ul>
+              
+          
+                    
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="expanded">
+                    <a href="../docs/user-index.html">User Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../docs/user-example.html">Quick Start</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-installation.html">Install fc-server</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-lrdef.html">Define Logical Reader</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-testclients.html">Use ALE Clients</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../docs/user-test-scenarios.html">Test Scenarios</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../../capturingapp/index.html">Capturing App</a>
+          </li>
+              </ul>
+        </li>
+              
+                
+                          
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+              
+        <li class="collapsed">
+                    <a href="../docs/developer-index.html">Developer Guide</a>
+                </li>
+          </ul>
+              <h5>ALE Middleware Modules</h5>
+            <ul>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-client/project-reports.html">FC Client</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-commons/project-reports.html">FC Commons</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-server/project-reports.html">FC Server</a>
+                </li>
+              
+                
+                    
+              
+        <li class="collapsed">
+                    <a href="../fc-webclient/project-reports.html">FC Webclient</a>
+                </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://www.autoidlabs.org/" title="Auto-ID" class="poweredBy">
+                            <img  class="poweredBy"  
+                    alt="Auto-ID" 
+                    src="../images/logos/supportedByAutoid4.png" 
+                    width="90"
+                    height="30"
+              />
+            </a>
+                               
+  
+
+  
+    
+    
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Application Layer Events Service Binding</h2><div class="section"><h3>Content</h3><ol type="1"><li><a href="#Overview">Overview</a></li><li><a href="#EventCycle">EventCycle modification</a></li><li><a href="#Client">Client Subscription</a></li><li><a href="#Immediate">Immediate and Polling</a></li><li><a href="#WSDL">WSDL interface</a></li><li><a href="#ServiceBinding">ServiceBinding</a></li><li><a href="#Status">Status</a></li></ol></div><div class="section"><h3><a name="Overview">Overview</a></h3><p>This document shall give a short overview to the ALE class from the Fosstrak filtering and collection, to the ALEServicePort and to the ALEServiceBinding.</p><p>The ALE is the responsible class for the communication with the applications of the Layer above. It provides: </p><ul><li>Interface for the definition and modification of EventCycles</li><li>Subscription/unsubscription of report notifications</li><li>Administrative methods (eg. VendorVersion).</li></ul><p>The ALEServicePort provides the interface that allows clients to connect to the ALE. The service port provides:</p><ul><li>Serialization and deserialization of ECSpecs and other control messages.</li><li>Binding from the ALE interface to the actual implementation of the Filtering and Collection.</li></ul></div><div class="section"><h3><a name="EventCycle">EventCycle</a> modification</h3><p>The ALE provides the following methods to create or modify EventCycles:</p><ul><li>define: Define takes a two parameters, a name for the EventCycle to be created and an ECSpec for the definition of the EventCycle.</li><li>undefine: When you want to destroy an EventCycle you can call this method with the appropriate name for the EventCycle to be destroyed.</li><li>getECSpecNames: Returns the names of all EventCycles available in the ALE.</li></ul></div><div class="section"><h3><a name="Client">Client</a> Subscription</h3><p>Whenever a client wants to use an ALE service it has to register.</p><ul><li>subscribe: A notificationURI will be subscribed to one of the EventCycles. The EventCycle can be selected through the parameter specName.</li><li>unsubscribe: When a client does no more need the service of an EventCycle it can unsubscribe the notifcationURI.</li><li>getSubscribers: Returns a list of all subscribers for the EventCycle specified.</li></ul></div><div class="section"><h3><a name="Immediate">Immediate</a> and Polling</h3><p>The ALE interface provides 2 mechanisms for &quot;one-off-queries&quot;:</p><ul><li>immediate: A client provides an anonymous ECSpec that will be executed once. The resulting ECReports are sent back.</li><li>poll: A client can poll an existing ECSpec. The Filtering and Collection immediately starts this ECSpec and returns the ECReports.</li></ul></div><div class="section"><h3><a name="WSDL">WSDL</a> interface</h3><p>The interface to the ALE is modelled in the WebServices Description Language WSDL. </p><p>The interface basically describes the methods that are available on the webservice. Consequently the messages that are exchanged (this includes even Exceptions) are modelled in the wsdl as well.</p><p>This guide will not discuss how a wsdl-file has to be written. For further information refer to <a href="{http://incubator.apache.org/cxf/">Apache cxf</a>. This guide just gives a short explanation how the java stubs can be created out of the wsdl file and what changes have to be done to the generated stubs.</p><div class="section"><h4>Advice</h4><p>For technical references you can refer to the w3c standard documentation for wsdl 1.1: <a href="#http://www.w3.org/TR/wsdl"> http://www.w3.org/TR/wsdl </a></p><p>There are many bogus &quot;how to&quot; in the internet. If you ever encounter a problem with the serialization of an xml i advice the following procedure:</p><ul><li>Write a handcrafted java-class holding all the parameters that shall be serialized.</li><li>Add a specific serializer/deserializer to the SerializerUtils (see org.fosstrak.ale.util.SerializerUtil).</li><li>Call that serializer/deserializer and look at the xml that is generated.</li></ul></div><div class="section"><h4>Requirements</h4><ul><li>A working copy of Apache cxf: <a href="http://incubator.apache.org/cxf/">Apache cxf</a></li><li>The EPC base xsd definition: <a href="../files/EPCGlobal.xsd">EPCGlobal.xsd</a></li><li>The ALE definitions: <a href="../files/EPCglobal-ale-1_1-ale.xsd"> EPCglobal-ale-1_1-ale.xsd</a></li><li>The ALE commons : <a href="../files/EPCglobal-ale-1_1-common.xsd"> EPCglobal-ale-1_1-common.xsd</a></li><li>The ALE Serviceport wsdl definition: <a href="../files/EPCglobal-ale-1_1-ale.wsdl"> EPCglobal-ale-1_1-ale.wsdl</a></li></ul></div><div class="section"><h4>Compiling</h4><p>To compile the wsdl file you need <a href="http://incubator.apache.org/cxf/">Apache cxf</a>. </p><p>We will use the wsdl2java program to translate the wsdl to java classes.</p><p>Compile the wsdl:</p><div class="source"><pre>wsdl2java -impl -v 
+        -p urn:epcglobal:xsd:1=org.fosstrak.ale.xsd.epcglobal 
+        -p urn:epcglobal:ale:xsd:1=org.fosstrak.ale.xsd.ale.epcglobal 
+        -p urn:epcglobal:ale:wsdl:1=org.fosstrak.ale.wsdl.ale.epcglobal 
+        EPCglobal-ale-1_1-ale.wsdl</pre></div><p>The flags in detail:</p><ul><li>&quot;-impl&quot;: This tells wsdl2java to generate a stub for the service binding implementation.</li><li>&quot;-p .&quot; : if you omit the namespace mapping all packages get generated into the java namespace _1.</li></ul><p>To implement the service binding you need to implement the java class ALEServicePortTypeImpl.</p><p>In the Fosstrak Filtering and Collection most parts of the wsdl are auto-generated and you need not to change anything (see the pom.xml if you are interested). </p><p>The ALEServicePortTypeImpl is stored in the module fc-server (see the next chapter of this guide).</p></div></div><div class="section"><h3><a name="ServiceBinding">ServiceBinding</a></h3><p>The stubs described in the former chapter are used for the communication between two services. However the binding from these stubs to the actual implementation of the ALE has to be defined explicitly. This task is performed by the ALEServicePortTypeImpl.</p><p>For each method defined in <a href="../files/EPCglobal-ale-1_1-ale.wsdl">EPCglobal-ale-1_1-ale.wsdl</a> there exists a method in the java file ALEServicePortTypeImpl. Whenever a client calls a method on its local method stub, the messages involved get serialized into xml, sent over the communication channel and then deserialized by the server stub. The stub then calls the corresponding method on the ALEServicePortTypeImpl. The ALEServicePortTypeImpl reformatts the incomming message (if necessary) and calls the ALE accordingly.</p><div class="source"><pre>example for getStandardVersion:
+
+    public java.lang.String getStandardVersion(EmptyParms parms) 
+        throws ImplementationExceptionResponse    {
+        
+        if (!isInitialized) { initialize(); }
+        return ALE.getStandardVersion();
+    }</pre></div><p>You need to implement all the methods that shall be provided to clients in the ALEServicePortTypeImpl.</p></div><div class="section"><h3><a name="Status">Status</a></h3><p>Currently the ALE supports the functionality of the logical reader API. For further reading refer to the following documents:</p><ul><li><a href="../features.html"> Features</a></li><li><a href="../apidocs/index.html">Java doc</a></li></ul></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+    
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-9846531-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+      </script> 
+  </body>
+</html>
