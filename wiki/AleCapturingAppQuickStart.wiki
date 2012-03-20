@@ -127,9 +127,9 @@ http://localhost:8080/fc-server-1.0.1/services/ALELRService
   # Verify that a connection between the web-based client and the server can be established by clicking `getVendorVersion()`. A version number should be returned.
   # The next step is to establish a connection from the Filtering & Collection to the reader simulator (basically this means to setup three different readers).
     # Click on `define(String readerName, LRSpec spec)` in the section !LogicalReader API. Do not confuse the `define` method for an !EventCycle with the `define` method for a logical reader! Define three readers. Make sure to set the reader names exactly as they are written below.
-      # `Reader_GoodsReceiving` with [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_GoodsReceiving.xml Reader_GoodsReceiving.xml]
-      # `Reader_PointOfSale` with [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfSale.xml Reader_PointOfSale.xml]
-      # `Reader_PointOfExit` with [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfExit.xml Reader_PointOfExit.xml]
+      # `Reader_GoodsReceiving` with [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/Reader_GoodsReceiving.xml Reader_GoodsReceiving.xml]
+      # `Reader_PointOfSale` with [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/Reader_PointOfSale.xml Reader_PointOfSale.xml]
+      # `Reader_PointOfExit` with [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/Reader_PointOfExit.xml Reader_PointOfExit.xml]
     {{{
 Example:
 
@@ -158,9 +158,9 @@ http://localhost:8080/fc-server-1.0.1/services/ALEService
   # Verify that a connection between the web-based client and the server can be established by clicking `getVendorVersion()`. A version number should be returned.
   # In the next step you will define three ALE ECSpecs. These tell the ALE Middleware how the RFID tag reads arriving from the simulator should be filtered and aggregated.
     # Invoke the method `define(String specName, String specFilePath)`. Do not confuse the `define` method for an !EventCycle with the `define` method for a logical reader. For this scenario we need to create three !EventCycles. Make sure to set the names of the !EventCycles exactly as they are written below:
-      # `EventCycle_GoodsReceiving` with spec [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_GoodsReceiving.xml EventCycle_GoodsReceiving.xml]
-      # `EventCycle_PointOfExit` with spec [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_PointOfExit.xml EventCycle_PointOfExit.xml]
-      # `EventCycle_PointOfSale` with spec [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_PointOfSale.xml EventCycle_PointOfSale.xml]
+      # `EventCycle_GoodsReceiving` with spec [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/EventCycle_GoodsReceiving.xml EventCycle_GoodsReceiving.xml]
+      # `EventCycle_PointOfExit` with spec [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/EventCycle_PointOfExit.xml EventCycle_PointOfExit.xml]
+      # `EventCycle_PointOfSale` with spec [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/EventCycle_PointOfSale.xml EventCycle_PointOfSale.xml]
       {{{
 Example:
 
@@ -297,9 +297,9 @@ http://localhost:8080/fc-server-1.0.1/services/ALELRService
   # The next step is to establish a connection from the Filtering & Collection to the reader simulator (basically this means to setup three different readers).
     # Click on `define(String readerName, LRSpec spec)` in the section !LogicalReader API. Do not confuse the `define` method for an !EventCycle with the `define` method for a logical reader.
     # Define three readers. Make sure to set the reader names exactly as they are written below.
-      # `Reader_GoodsReceiving` with [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_GoodsReceiving.xml Reader_GoodsReceiving.xml]
-      # `Reader_PointOfSale` with [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfSale.xml Reader_PointOfSale.xml]
-      # `Reader_PointOfExit` with [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfExit.xml Reader_PointOfExit.xml]
+      # `Reader_GoodsReceiving` with [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/Reader_GoodsReceiving.xml Reader_GoodsReceiving.xml]
+      # `Reader_PointOfSale` with [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/Reader_PointOfSale.xml Reader_PointOfSale.xml]
+      # `Reader_PointOfExit` with [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/Reader_PointOfExit.xml Reader_PointOfExit.xml]
     {{{
 Example:
 
@@ -329,7 +329,7 @@ http://localhost:8080/fc-server-1.0.1/services/ALEService
   # In the next step you will define one ALE ECSpec. This one tells the ALE Middleware how the RFID tag reads arriving from the simulator should be filtered and aggregated.
     # Invoke the method `define(String specName, String specFilePath)`. Do not confuse the `define` method for an !EventCycle with the `define` method for a logical reader.
     # For this scenario we need to create one !EventCycle. Make sure to set the name of the !EventCycle exactly as it's written below:
-      # `fosstrakDemo` with spec [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/fosstrakDemo.xml fosstrakDemo.xml]
+      # `fosstrakDemo` with spec [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/fosstrakDemo.xml fosstrakDemo.xml]
       {{{
 Example:
 
