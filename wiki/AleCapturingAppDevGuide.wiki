@@ -137,7 +137,7 @@ This guide will explain the different steps that have to be taken to implement a
 
 The guide will omit error handling to keep the documentation short. The complete example at the end of the guide will implement the whole error handling.
 
-Download the source code: [[http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/CaptureApp.java CaptureApp.java]
+Download the source code: [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/CaptureApp.javaCaptureApp.java CaptureApp.java]
 
 To run the capturing app you will need the following packages in your classpath:
   * jaxb-api (eg. jaxb-api-2.0.jar)
@@ -298,7 +298,7 @@ if (httpResponseCode != 200) {
 
 This section gives you an overview to the code for a whole capturing application.
 
-Download the source code: [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/CaptureApp.java CaptureApp.java]
+Download the source code: [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/CaptureApp.java CaptureApp.java]
 
 {{{
 
