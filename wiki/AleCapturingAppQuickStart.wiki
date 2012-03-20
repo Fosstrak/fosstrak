@@ -53,7 +53,7 @@ java -cp hal-impl-sim-0.5.0\hal-impl-sim-0.5.0.jar org.fosstrak.hal.impl.sim.mul
 
 If everything runs fine, an empty window should pop up.
 
-http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/simulatorController.png
+http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/simulatorController.png
 
 === Prepare EPCIS repository ===
 
