@@ -23,15 +23,15 @@ We model a simple store equipped with three RFID readers. One reader (`Reader_Go
   * a copy of the `epcis-repository-0.4.2.war` or newer
   * a copy of the `hal-simulator`. Select `hal-impl-sim-0.5.0-bin-with-dependencies.[zip|tar.gz]` or newer
   * Configuration files:
-    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_GoodsReceiving.xml Reader_GoodsReceiving.xml] (both scenarios)
-    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfExit.xml Reader_PointOfExit.xml] (both scenarios)
-    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/Reader_PointOfSale.xml Reader_PointOfSale.xml] (both scenarios)
-    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/SimulatorClient.xml SimulatorClient.xml] (both scenarios)
-    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/SimulatorController.xml SimulatorController.xml] (both scenarios)
-    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_GoodsReceiving.xml EventCycle_GoodsReceiving.xml] (simple scenario)
-    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_PointOfExit.xml EventCycle_PointOfExit.xml] (simple scenario)
-    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/EventCycle_PointOfSale.xml EventCycle_PointOfSale.xml] (simple scenario)
-    * [http://fosstrak.googlecode.com/svn/wikires/ale/capturingapp/fosstrakDemo.xml fosstrakDemo.xml] (elaborate scenario)
+    * [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/Reader_GoodsReceiving.xml Reader_GoodsReceiving.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/Reader_PointOfExit.xml Reader_PointOfExit.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/Reader_PointOfSale.xml Reader_PointOfSale.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/SimulatorClient.xml SimulatorClient.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/SimulatorController.xml SimulatorController.xml] (both scenarios)
+    * [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/EventCycle_GoodsReceiving.xml EventCycle_GoodsReceiving.xml] (simple scenario)
+    * [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/EventCycle_PointOfExit.xml EventCycle_PointOfExit.xml] (simple scenario)
+    * [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/EventCycle_PointOfSale.xml EventCycle_PointOfSale.xml] (simple scenario)
+    * [http://fosstrak.googlecode.com/svn/capturingapp/trunk/src/site/resources/files/quickstart/fosstrakDemo.xml fosstrakDemo.xml] (elaborate scenario)
   * [http://tomcat.apache.org/ Apache Tomcat] Java Servlet Container
 
 == Preparations ==
