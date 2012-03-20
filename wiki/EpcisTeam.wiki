@@ -9,11 +9,11 @@ The following is a list of developers with commit privileges that have directly 
 || *Name* || *Organization* || *Roles* ||
 || Christof Roduner || ETH Zurich || project coordinator and lead ||
 || Marco Steybe || Zuehlke Engineering || project lead ||
-|| Marc-Antoine Mouilleron || || developer ||
+|| Marc-Antoine Mouilleron || Orange Labs || developer ||
 || Mathias Mueller || University of Fribourg || Webadapter: developer ||
 || Dominique Guinard || ETH Zurich || Webadapter: project lead and developer ||
 || Nikos Kefalakis || Athens Information Technology || developer ||
-|| Adrien Laurence || || developer ||
+|| Adrien Laurence || University of Caen || developer ||
 || Sean Wellington || || developer ||
 || Andrea Groessbauer || || developer ||
 || Alain Remund || || developer ||
