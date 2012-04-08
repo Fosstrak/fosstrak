@@ -1,6 +1,7 @@
 *TDT Engine*
   * [TdtMain Overview]
   * [TdtDownload Download]
+  * [TdtUserGuide User Guide]
 
 *Other Modules*
   * [EpcisMain EPCIS]
