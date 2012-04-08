@@ -7,6 +7,17 @@
 == Latest Release ==
 
 || *Module* || *Version* || *Download* ||
+|| Filtering and Collection Server || 1.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-server/1.1.0/fc-server-1.1.0-bin-with-dependencies.zip fc-server-1.1.0-bin-with-dependencies.zip] ||
+|| Standalone Client || 1.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-client/1.1.0/fc-client-1.1.0-bin-with-dependencies.zip fc-client-1.1.0-bin-with-dependencies.zip] ||
+|| Web-Based Client || 1.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-webclient/1.1.0/fc-webclient-1.0.2-bin-with-dependencies.zip fc-webclient-1.1.0-bin-with-dependencies.zip] ||
+|| || || ||
+|| Capturing Application || 0.1.1 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/capturingapp/capturingapp/0.1.1/capturingapp-0.1.1.war capturingapp-0.1.1.war] ||
+
+The source code for these binaries can be found in the Subversion repository at http://fosstrak.googlecode.com/svn/fc/tags/fc-1.1.0 and at https://fosstrak.googlecode.com/svn/capturingapp/tags/capturingapp-0.1.1.
+
+== Previous Stable Release ==
+
+|| *Module* || *Version* || *Download* ||
 || Filtering and Collection Server || 1.0.2 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-server/1.0.2/fc-server-1.0.2-bin-with-dependencies.zip fc-server-1.0.2-bin-with-dependencies.zip] ||
 || Standalone Client || 1.0.2 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-client/1.0.2/fc-client-1.0.2-bin-with-dependencies.zip fc-client-1.0.2-bin-with-dependencies.zip] ||
 || Web-Based Client || 1.0.2 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-webclient/1.0.2/fc-webclient-1.0.2-bin-with-dependencies.zip fc-webclient-1.0.2-bin-with-dependencies.zip] ||
@@ -22,6 +33,14 @@ The source code for these binaries can be found in the Subversion repository at 
 Please see the [AleUserGuideQuickStart User Guide] for installation and usage instructions.
 
 == Changelog ==
+
+=== Version 1.1.0 (released April 8th, 2012) - new Feature Release by Orange Dev Team. ===
+==== Filtering and Collection Server ====
+ * The configuration files of the ALE middleware are now persistent to eliminate the need to configure instance at each server startup. (by plomion).
+ * ALE controller service to start/stop ECSpecs using a SOAP interface. (by plomion).
+ * Manage the UserMemory of a Tag in the ECReport and the LLRPAdaptor. Modify the CaptureApp to store the User Memory. (by soubra).
+ * LLRP controller service to manage ROSpec using SOAP interface. (by soubra).
+ * Automatic configuration of the persisted ROSpec/AccessSpec for LLRP Reader. (by soubra).
 
 === Version 1.0.2 (released August 14, 2009) ===
 ==== Filtering and Collection Server ====
