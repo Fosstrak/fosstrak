@@ -7,9 +7,10 @@
 == Latest Release ==
 
 || *Module* || *Version* || *Download* ||
+|| TDT || 1.0.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/tdt/tdt/1.0.0/tdt-1.0.0-with-dependencies.bundle tdt-1.0.0-with-dependencies.bundle] ||
 || TDT || 0.9.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/tdt/tdt/0.9.0/tdt-0.9.0-with-dependencies.bundle tdt-0.9.0-with-dependencies.bundle] ||
 
-The source code for this binary can be found in the Subversion repository at http://fosstrak.googlecode.com/svn/tdt/tags/tdt-0.9.0.
+The source code for this binary can be found in the Subversion repository at http://fosstrak.googlecode.com/svn/tdt/tags/
 
 == System Requirements ==
  * JDK 1.6.0_05 or higher
@@ -18,6 +19,11 @@ The source code for this binary can be found in the Subversion repository at htt
 Please see the [TdtUserGuide User Guide] for installation and usage instructions.
 
 == Changelog ==
+
+=== Version 1.0.0 (released April 10, 2012) ===
+ * Added support for TDT Specification Version 1.6
+ * Updated TDTEngine.java to better handle escaped characters in URIs as well as situations where multiple prefixMatch values appear to match (the problem was introduced because bare 00 and 01 in ELEMENT_STRING level match any header beginning with 00 or 01)
+ * 
 
 === Version 0.9.0 (released June 3, 2009) ===
  * Added support for loading TDT translation schemes from a URL. Thanks to Jochen Mader.
