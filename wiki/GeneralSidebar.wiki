@@ -13,3 +13,4 @@
   * [GeneralTeam Team]
   * [GeneralLicense License]
   * [GeneralContact Contact]
+  * [GeneralDeveloperInfo Developer Info] 
