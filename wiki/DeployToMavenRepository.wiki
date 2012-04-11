@@ -4,6 +4,33 @@
 
 This page illustrates how maven articfacts are deployed.
 
+== Deploy new maven artifacts ==
+
+  * Commit all local changes to svn (make sure you use the new google code svn)
+  * Adjust your mvn settings.xml to include sonatype nexus repository credentials 
+  * Make sure description, developer info and scm info are listed in the pom - otherwise, it will be rejected during the sonatype release process
+  * Make sure the following parent is listed in the pom:
+        {{{
+<parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+ </parent>
+}}}
+
+ * run the following mvn commands:
+
+{{{
+$ mvn release:clean
+$ mvn release:prepare
+$ mvn release:perform
+}}}
+
+ * log into sonatype nexus oss repo at https://oss.sonatype.org/index.html#stagingRepositories
+  * search for fosstrak 
+  * browse and inspect files uploaded
+  * click "close" button
+  * click "release" button (with a small delay the artifacts are now available from the central repository)
 
 == Deploy existing artifacts ==
 
