@@ -8,6 +8,7 @@ This page illustrates how maven articfacts are deployed.
 
   * Commit all local changes to svn (make sure you use the new google code svn)
   * Adjust your mvn settings.xml to include sonatype nexus repository credentials 
+  * Install gnupgp if it is not already installed
   * Make sure description, developer info and scm info are listed in the pom - otherwise, it will be rejected during the sonatype release process
   * Make sure the following parent is listed in the pom:
         {{{
