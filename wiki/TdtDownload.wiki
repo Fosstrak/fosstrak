@@ -7,7 +7,7 @@
 == Latest Release ==
 
 || *Module* || *Version* || *Download* ||
-|| TDT || 1.0.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/tdt/tdt/1.0.0/tdt-1.0.0-with-dependencies.bundle tdt-1.0.0-with-dependencies.bundle] ||
+|| TDT || 1.0.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/tdt/tdt/1.0.0/tdt-1.0.0-with-dependencies.jar tdt-1.0.0-with-dependencies.jar] ||
 || TDT || 0.9.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/tdt/tdt/0.9.0/tdt-0.9.0-with-dependencies.bundle tdt-0.9.0-with-dependencies.bundle] ||
 
 The source code for this binary can be found in the Subversion repository at http://fosstrak.googlecode.com/svn/tdt/tags/
