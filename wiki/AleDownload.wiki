@@ -9,7 +9,7 @@
 || *Module* || *Version* || *Download* ||
 || Filtering and Collection Server || 1.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-server/1.1.0/fc-server-1.1.0-bin-with-dependencies.zip fc-server-1.1.0-bin-with-dependencies.zip] ||
 || Standalone Client || 1.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-client/1.1.0/fc-client-1.1.0-bin-with-dependencies.zip fc-client-1.1.0-bin-with-dependencies.zip] ||
-|| Web-Based Client || 1.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-webclient/1.1.0/fc-webclient-1.0.2-bin-with-dependencies.zip fc-webclient-1.1.0-bin-with-dependencies.zip] ||
+|| Web-Based Client || 1.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-webclient/1.1.0/fc-webclient-1.1.0-bin-with-dependencies.zip fc-webclient-1.1.0-bin-with-dependencies.zip] ||
 || || || ||
 || Capturing Application || 0.1.1 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/capturingapp/capturingapp/0.1.1/capturingapp-0.1.1.war capturingapp-0.1.1.war] ||
 
