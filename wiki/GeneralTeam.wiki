@@ -12,7 +12,7 @@
 || Mark Harrison || University of Cambridge || TDT ||
 || Matthias Lampe || Zuehlke Engineering || ALE ||
 || Marc-Antoine Mouilleron || Orange Labs - Business Services || EPCIS ||
-|| Benoit Plomion || Orange Labs || EPCIS ||
+|| Benoit Plomion || Orange Business Services || ALE ||
 || Wafa Soubra || Orange Labs || ALE ||
 || Marco Steybe || Zuehlke Engineering || EPCIS Lead ||
 || Samuel Wieland || ELCA || ALE, LLRP Commander ||
