@@ -8,7 +8,7 @@ This page explains how to build the Fosstrak middleware module from source
 = Details =
 
 Preconditions:
-  * Maven 2.2.* installed
+  * Maven 2.2.+ installed
   * subversion installed
   * java runtime installed
 
