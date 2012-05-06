@@ -9,6 +9,7 @@
     * [AleUserGuideTestClients ALE Clients]
   * Developer Guide
     * [AleDevGuideOverview Overview]
+    * [AleDevGuideHowToBuild How To Build]
     * [AleDevGuideAle ALE Service Binding]
     * [AleDevGuideAlelr ALE LR Service Binding]
     * [AleDevGuideEventCycle Event Cycle]
