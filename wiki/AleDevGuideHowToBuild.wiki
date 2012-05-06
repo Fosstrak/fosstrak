@@ -1,0 +1,26 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+This page explains how to build the Fosstrak middleware module from source
+
+
+= Details =
+
+Preconditions:
+  * Maven 2.2.* installed
+  * subversion installed
+  * java runtime installed
+
+Steps:
+  * svn checkout https://fosstrak.googlecode.com/svn/trunk/fc
+  * download the following three dependencies , since they are currently not available from any maven repository (this is a bit painful and we are planning to change this):
+    # jargs  http://sourceforge.net/projects/jargs/files/jargs/1.0/jargs-1.0.zip/download
+    # javax.comm http://llk.media.mit.edu/projects/picdev/software/javaxcomm.zip
+    # ltkjava-1.0.0.6 http://sourceforge.net/projects/llrp-toolkit/files/llrp-toolkit/ltkjava/1.0.0.6/ltkjava-1.0.0.6-with-dependencies.jar/download
+  * Install each of the three dependencies locally:
+{{{
+mvn install:install-file -Dfile=<path-to-file> -DgroupId=<group-id> \
+    -DartifactId=<artifact-id> -Dversion=<version> -Dpackaging=<packaging>
+}}}
+
