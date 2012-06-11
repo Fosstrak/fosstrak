@@ -19,9 +19,11 @@ Steps:
   * download the following dependencies , since they are currently not available from any maven repository:
     # javax.comm http://llk.media.mit.edu/projects/picdev/software/javaxcomm.zip
     # eclipse webserviceUtils (needed only by fc-webclient) https://www.dropbox.com/s/i62pg37xe8s1y2f/webserviceutils.zip
- {{{   <groupId>org.eclipse.jst.ws.consumption</groupId>
+ {{{   
+<groupId>org.eclipse.jst.ws.consumption</groupId>
     <artifactId>webserviceutils</artifactId>
-    <version>1.0.102.v200609220223</version> }}}
+    <version>1.0.102.v200609220223</version> 
+}}}
   * Install the dependencies locally:
 {{{
 mvn install:install-file -Dfile=<path-to-file> -DgroupId=<group-id> \
