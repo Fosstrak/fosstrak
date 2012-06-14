@@ -26,6 +26,11 @@ The source code for these binaries can be found in the Subversion repository at 
 
 The source code for these binaries can be found in the Subversion repository at http://fosstrak.googlecode.com/svn/fc/tags/fc-1.0.2 and at https://fosstrak.googlecode.com/svn/capturingapp/tags/capturingapp-0.1.1.
 
+
+== Latest Snapshots ==
+
+|| Filtering and Collection Server || 1.1.1-Snapshot || [https://oss.sonatype.org/content/repositories/snapshots/org/fosstrak/fc/ fc-1.1.1-Snapshots] ||
+
 == System Requirements ==
  * JDK 1.6.x or higher
 
@@ -33,6 +38,11 @@ The source code for these binaries can be found in the Subversion repository at 
 Please see the [AleUserGuideQuickStart User Guide] for installation and usage instructions.
 
 == Changelog ==
+
+=== Version 1.1.1-Snapshot ===
+==== Filtering and Collection Server ====
+ * Port fix provided by Gianrico D'Angelis 
+ * Patch to LLRPControllerImpl.java provided by Vladimir Dzalbo
 
 === Version 1.1.0 (released April 8th, 2012) - new Feature Release by Orange Dev Team. ===
 ==== Filtering and Collection Server ====
