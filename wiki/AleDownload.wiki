@@ -6,6 +6,7 @@
 
 == Latest Release ==
 
+<wiki:comment>
 || *Module* || *Version* || *Download* ||
 || Filtering and Collection Server || 1.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-server/1.1.0/fc-server-1.1.0-bin-with-dependencies.zip fc-server-1.1.0-bin-with-dependencies.zip] ||
 || Standalone Client || 1.1.0 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-client/1.1.0/fc-client-1.1.0-bin-with-dependencies.zip fc-client-1.1.0-bin-with-dependencies.zip] ||
@@ -15,7 +16,9 @@
 
 The source code for these binaries can be found in the Subversion repository at http://fosstrak.googlecode.com/svn/fc/tags/fc-1.1.0 and at https://fosstrak.googlecode.com/svn/capturingapp/tags/capturingapp-0.1.1.
 
-== Previous Stable Release ==
+<wiki:/comment>
+
+== Latest Stable Release ==
 
 || *Module* || *Version* || *Download* ||
 || Filtering and Collection Server || 1.0.2 || [https://oss.sonatype.org/content/repositories/public/org/fosstrak/fc/fc-server/1.0.2/fc-server-1.0.2-bin-with-dependencies.zip fc-server-1.0.2-bin-with-dependencies.zip] ||
