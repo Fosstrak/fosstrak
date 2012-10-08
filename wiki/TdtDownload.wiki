@@ -21,6 +21,10 @@ Please see the [TdtUserGuide User Guide] for installation and usage instructions
 
 == Changelog ==
 
+=== TDT .NET Version) ===
+ * Mike Lohmeier contributed a TDT implementation for .NET
+ * see [https://github.com/Zambonilli/FOSSTRAK] for more details
+
 === Version 1.0.0 (released April 10, 2012) ===
  * Added support for TDT Specification Version 1.6
  * Updated TDTEngine.java to better handle escaped characters in URIs as well as situations where multiple prefixMatch values appear to match (the problem was introduced because bare 00 and 01 in ELEMENT_STRING level match any header beginning with 00 or 01)
