@@ -44,6 +44,25 @@ Please see the [AleUserGuideQuickStart User Guide] for installation and usage in
 
 == Changelog ==
 
+=== Version 1.2.0 ===
+==== Filtering and Collection Server ====
+ * Use business Exceptions instead of WSDL generated interface exceptions.
+ * Use Spring to configure a context and initialize the ALE.
+ * Rewrite Logical Reader Manager to provide non-static methods (rewrite as bean).
+ * Rewrite ALE to provide non-static methods (rewrite as bean).
+ * Upgrade CXF to latest stable version.
+ * Abstract EventCycle into Interface and Implementation.
+ * Abstract ReportsGenerator into Interface and Implementation.
+ * Major code optimizations regarding coding style and performance.
+ * Testcases.
+
+==== Filtering and Collection Client ====
+ * preset the endpoint with the current release.
+
+==== Filtering and Collection Commons ====
+ * Business Exceptions for ALE.
+
+
 === Version 1.1.1-Snapshot ===
 ==== Filtering and Collection Server ====
  * Port fix provided by Gianrico D'Angelis 
