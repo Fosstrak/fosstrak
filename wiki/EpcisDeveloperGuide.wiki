@@ -27,7 +27,7 @@ Make sure you have the following prerequisites installed:
 
 === Getting the Source Code ===
 
-First thing you need to do is checking out the sourcecode from the SVN repository (see the [Download] section). In the following we will use the `EPCIS_HOME` variable to refer to the location where you checked out the sources.
+First thing you need to do is checking out the sourcecode from the SVN repository (see the [EpcisDownload Download] section). In the following we will use the `EPCIS_HOME` variable to refer to the location where you checked out the sources.
 
 === Setting up Eclipse ===
 
